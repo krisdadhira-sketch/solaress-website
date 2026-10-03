@@ -108,6 +108,13 @@ footer{background:var(--navy);color:var(--white);border-top:1px solid rgba(255,2
 footer .wrap{display:flex;gap:24px;flex-wrap:wrap;justify-content:space-between;opacity:.8}
 @media(max-width:820px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.svc,.calc,.voices,.about,.consult{grid-template-columns:minmax(0,1fr)}.svc article,.svc article:nth-child(even){padding:24px 0;border-right:0}.proj,.mini{grid-template-columns:repeat(2,minmax(0,1fr))}.band{padding-block:60px}.bill{font-size:48px}.out .big{font-size:40px}}
 @media(max-width:520px){.proj,.mini{grid-template-columns:minmax(0,1fr)}.nav nav{margin-left:0;gap:12px}}
+.gal{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:36px}
+.gal figure{margin:0;position:relative;overflow:hidden;background:var(--navy)}
+.gal img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.gal figcaption{position:absolute;left:0;bottom:0;background:var(--navy);color:var(--white);font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:6px 10px}
+.hero .photo{position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,18,48,.94) 0%,rgba(10,18,48,.78) 55%,rgba(10,18,48,.55) 100%),url(images/hero.jpg) center/cover}
+@media(max-width:820px){.gal{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.gal{grid-template-columns:minmax(0,1fr)}}
 </style>
 </head>
 <body>
@@ -119,7 +126,7 @@ footer .wrap{display:flex;gap:24px;flex-wrap:wrap;justify-content:space-between;
 </div></header>
 
 <section class="dark hero" id="top">
-<div class="sun"></div><div class="cells"></div>
+<div class="photo"></div><div class="sun"></div>
 <div class="wrap">
 <p class="eyebrow">Architectural solar systems · Est. Thailand</p>
 <h1>Solar Energy for<br>Sustainable Solution.</h1>
@@ -169,8 +176,16 @@ footer .wrap{display:flex;gap:24px;flex-wrap:wrap;justify-content:space-between;
 <section class="band light" id="projects"><div class="wrap">
 <p class="eyebrow">The luminous archive</p>
 <h2>Proof, in light.</h2>
+<div class="gal">
+<figure><img src="images/residential-1.jpg" alt="Rooftop solar on a house, seen from the air" loading="lazy"><figcaption>Residential</figcaption></figure>
+<figure><img src="images/medium-1.jpg" alt="Solar array on a raised steel structure on a building roof" loading="lazy"><figcaption>Medium · 20–50 kW</figcaption></figure>
+<figure><img src="images/large-1.jpg" alt="Large solar array covering an industrial roof" loading="lazy"><figcaption>Large scale · Industrial</figcaption></figure>
+<figure><img src="images/residential-2.jpg" alt="Solar panels on a town-house roof" loading="lazy"><figcaption>Residential</figcaption></figure>
+<figure><img src="images/medium-2.jpg" alt="Inverter and protection cabinet installed on a wall" loading="lazy"><figcaption>Medium · 20–50 kW</figcaption></figure>
+<figure><img src="images/large-2.jpg" alt="Solar arrays on several building roofs, seen from the air" loading="lazy"><figcaption>Large scale · Industrial</figcaption></figure>
+</div>
 <div class="proj" id="projgrid"></div>
-<p class="note" style="margin-top:18px">Each tile is a photo slot: on the live site it carries the installation photograph from solar-ess.org.</p>
+
 </div></section>
 
 <section class="band light" id="voices" style="padding-top:0"><div class="wrap">

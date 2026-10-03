@@ -70,7 +70,7 @@ input[type=range]{width:100%;accent-color:var(--hot);margin:14px 0 6px}
 .proj{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:40px}
 .proj article{background:var(--navy);color:var(--white);padding:18px;min-height:190px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;min-width:0}
 .proj article::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(220,230,253,.09) 0 1px,transparent 1px 28px),repeating-linear-gradient(0deg,rgba(220,230,253,.09) 0 1px,transparent 1px 28px)}
-.proj article>*{position:relative}
+.proj article>*{position:relative}.proj article.ph{min-height:260px;background-size:cover;background-position:center}.proj article.ph::before{background:linear-gradient(180deg,rgba(10,18,48,.55) 0%,rgba(10,18,48,.05) 34%,rgba(10,18,48,.2) 52%,rgba(10,18,48,.92) 100%)}.proj article.ph .cap{color:var(--white)}.proj article.ph .k{opacity:.95}
 .proj .k{font-family:var(--mono);font-size:11px;letter-spacing:.12em;opacity:.7}
 .proj .cap{font-size:30px;font-weight:800;letter-spacing:-.02em;color:var(--sky)}
 .proj h3{font-size:18px}
@@ -240,8 +240,8 @@ footer .wrap{display:flex;gap:24px;flex-wrap:wrap;justify-content:space-between;
 <footer><div class="wrap"><span>Solar ESS Co. Ltd. · Solar Energy for Sustainable Solution</span><span>www.solar-ess.org · www.solaress.org</span></div></footer>
 
 <script>
-const P=[["8 kWp","Muangpong","Tachileik, Myanmar"],["13 kWp","Wild Solar","Lampang, Thailand"],["Commercial","Bryde Restaurant","Krabi, Thailand"],["681.6 kWp","Pattalung Betagro","Pattalung, Thailand"],["50 kWp","Phetsavanh Car Care","Vientiane, Laos"],["20 kWp on-grid","Janjwa Chicken Farm","Mae Jan, Chiang Rai"],["20 kWp","GT Sport & Design","Ban Du, Chiang Rai"],["8.0 kWp","Doi Mek","Mae Jan, Chiang Rai"],["40 kWp off-grid","Mon Mekha","Doi Chang, Chiang Rai"],["5.0 kWp 3-phase","Ban Talart","Sankampaeng, Chiang Mai"],["5.0 kWp","Roy and Avis House","Sansai, Chiang Mai"],["5.0 kWp","Angel Villa","Prao, Chiang Mai"]];
-document.getElementById('projgrid').innerHTML=P.map((p,i)=>`<article><div class="k">${String(i+1).padStart(2,'0')} / 12</div><div><div class="cap">${p[0]}</div><h3>${p[1].replace('&','&amp;')}</h3><div class="loc">${p[2]}</div></div></article>`).join('');
+const P=[["8 kWp","Muangpong","Tachileik, Myanmar","muangpong"],["13 kWp","Wild Solar","Lampang, Thailand","wild-solar"],["Commercial","Bryde Restaurant","Krabi, Thailand","bryde"],["681.6 kWp","Pattalung Betagro","Pattalung, Thailand","betagro"],["50 kWp","Phetsavanh Car Care","Vientiane, Laos","phetsavanh"],["5.0 kWp 3-phase","Ban Talart","Sankampaeng, Chiang Mai","ban-talart"],["5.0 kWp","Roy and Avis House","Sansai, Chiang Mai","roy-avis"],["5.0 kWp","Angel Villa","Prao, Chiang Mai","prao"],["20 kWp on-grid","Janjwa Chicken Farm","Mae Jan, Chiang Rai"],["20 kWp","GT Sport & Design","Ban Du, Chiang Rai"],["8.0 kWp","Doi Mek","Mae Jan, Chiang Rai"],["40 kWp off-grid","Mon Mekha","Doi Chang, Chiang Rai"]];
+document.getElementById('projgrid').innerHTML=P.map((p,i)=>`<article${p[3]?` class="ph" style="background-image:url(images/project-${p[3]}.jpg)" role="img" aria-label="${p[1]} solar installation, ${p[2]}"`:''}><div class="k">${String(i+1).padStart(2,'0')} / 12</div><div><div class="cap">${p[0]}</div><h3>${p[1].replace('&','&amp;')}</h3><div class="loc">${p[2]}</div></div></article>`).join('');
 const f=n=>'฿'+Math.round(n).toLocaleString('en-US');
 function calc(){const b=+document.getElementById('bill').value;const size=b/4.5/150;const save=b*12*.85;const cost=size*35000;
 document.getElementById('billv').textContent=f(b);document.getElementById('o-save').textContent=f(save);

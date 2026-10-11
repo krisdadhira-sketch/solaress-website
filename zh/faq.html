@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>常见问题 | Solar ESS</title>
+<meta name="description" content="关于泰国屋顶光伏的 55 个问答：政策、回本周期、质保、维护、安装故障排查和安全。">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Thai:wght@400;600&family=Noto+Sans+SC:wght@400;500;700&display=swap">
+<style>
+/* Layout: alternating navy and white bands, wide display type, mono labels, one red-pink accent. Single committed look, taken from solar-ess.org. */
+:root{--navy:#0A1230;--navy2:#111c47;--blue:#2563EB;--sky:#DCE6FD;--paper:#FAFCFF;--white:#fff;--ink:#0A0E2E;--mute:#3E548E;--line:#DEE3ED;--hot:#FF2D55;
+--display:"Inter Tight","Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;--mono:"IBM Plex Mono","Noto Sans SC","PingFang SC","Microsoft YaHei",ui-monospace,monospace;--thai:"IBM Plex Sans Thai","Inter Tight","Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;color-scheme:light}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--display);font-size:16px;line-height:1.55;margin:0}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--hot);margin:0 0 14px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;letter-spacing:-.02em}
+h1{font-size:clamp(40px,7vw,84px);line-height:1.02;font-weight:800}
+h2{font-size:clamp(30px,4.6vw,54px);line-height:1.06;font-weight:700}
+h3{font-size:22px;font-weight:700}
+p{margin:0}
+.lede{font-size:18px;max-width:60ch;opacity:.85}
+.btn{display:inline-block;font-family:var(--mono);font-size:13px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:14px 22px;border:1.5px solid var(--hot);background:var(--hot);color:var(--white);cursor:pointer}
+.btn.ghost{background:transparent;border-color:currentColor;color:inherit}
+.btn:focus-visible,a:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--navy);color:var(--white);border-bottom:1px solid rgba(255,255,255,.12)}
+.nav .wrap{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding-block:10px}
+.nav img{height:44px;border-radius:6px;background:var(--white);padding:2px}
+.nav nav{display:flex;gap:18px;flex-wrap:wrap;margin-left:auto;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.nav nav a{text-decoration:none;opacity:.8}.nav nav a:hover{opacity:1;color:var(--hot)}
+/* bands */
+.band{padding-block:84px}
+.dark{background:var(--navy);color:var(--white)}
+.light{background:var(--white)}
+/* hero */
+.hero{position:relative;overflow:hidden;padding-block:72px 0}
+.hero .cells{position:absolute;inset:auto -10% -30% -10%;height:70%;transform:perspective(900px) rotateX(62deg);transform-origin:bottom;
+ background:linear-gradient(rgba(10,18,48,0) 0%,rgba(10,18,48,.0) 40%),repeating-linear-gradient(90deg,rgba(220,230,253,.22) 0 2px,transparent 2px 64px),repeating-linear-gradient(0deg,rgba(220,230,253,.22) 0 2px,transparent 2px 64px),linear-gradient(180deg,#13235e,#2563EB);opacity:.55}
+.hero .sun{position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(255,45,85,.55),rgba(255,45,85,0) 68%)}
+.hero .wrap{position:relative}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:rgba(255,255,255,.16);margin-top:64px;border-top:1px solid rgba(255,255,255,.16)}
+.stats div{background:rgba(10,18,48,.86);padding:22px 16px}
+.stats b{display:block;font-size:34px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.stats span{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.75}
+/* services */
+.svc{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;margin-top:44px;border-top:1.5px solid var(--navy)}
+.svc article{padding:28px 24px 30px 0;border-bottom:1px solid var(--line);min-width:0}
+.svc article:nth-child(odd){border-right:1px solid var(--line)}
+.svc article:nth-child(even){padding-left:24px}
+.svc .n{font-family:var(--mono);color:var(--blue);font-size:13px}
+.svc h3{margin:6px 0 8px}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.tags span{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--line);padding:4px 8px;color:var(--mute)}
+/* calculator */
+.calc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;margin-top:40px;align-items:start}
+.calc label{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.75}
+.bill{font-size:64px;font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums;line-height:1.1}
+input[type=range]{width:100%;accent-color:var(--hot);margin:14px 0 6px}
+.range{display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;opacity:.7}
+.note{font-size:13px;opacity:.7;margin-top:16px;max-width:52ch}
+.out{background:var(--navy2);border:1px solid rgba(255,255,255,.14);padding:26px}
+.out .big{font-size:52px;font-weight:800;color:var(--hot);font-variant-numeric:tabular-nums;line-height:1.1}
+.kv{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:22px 0}
+.kv b{display:block;font-size:24px;font-variant-numeric:tabular-nums}
+.kv span,.out small{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.7}
+/* projects */
+.proj{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:40px}
+.proj article{background:var(--navy);color:var(--white);padding:18px;min-height:190px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;min-width:0}
+.proj article::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(220,230,253,.09) 0 1px,transparent 1px 28px),repeating-linear-gradient(0deg,rgba(220,230,253,.09) 0 1px,transparent 1px 28px)}
+.proj article>*{position:relative}
+.proj .k{font-family:var(--mono);font-size:11px;letter-spacing:.12em;opacity:.7}
+.proj .cap{font-size:30px;font-weight:800;letter-spacing:-.02em;color:var(--sky)}
+.proj h3{font-size:18px}
+.proj .loc{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.75}
+/* voices */
+.voices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;margin-top:40px}
+.voices figure{margin:0;border-top:1.5px solid var(--navy);padding-top:20px;min-width:0}
+.voices blockquote{margin:10px 0 16px;font-size:17px}
+.voices figcaption{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.mini{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:32px}
+.mini div{background:var(--paper);border:1px solid var(--line);padding:16px;font-family:var(--thai);font-size:15px;min-width:0}
+.mini b{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin-top:10px;font-weight:500}
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:48px;align-items:start}
+.about p+p{margin-top:14px}
+.brands{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.brands span{font-family:var(--mono);font-size:12px;border:1px solid var(--navy);padding:6px 10px}
+/* faq */
+details{border-bottom:1px solid var(--line);padding:16px 0}
+summary{cursor:pointer;font-weight:600;font-size:18px;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::after{content:"+";font-family:var(--mono);color:var(--hot);font-size:22px;line-height:1}
+details[open] summary::after{content:"\2212"}
+details p{margin-top:10px;max-width:68ch;color:var(--mute)}
+/* consult */
+.consult{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px}
+.ticks{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:10px;font-family:var(--mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+.ticks li::before{content:"";display:inline-block;width:10px;height:10px;background:var(--hot);margin-right:12px}
+form{display:grid;gap:14px}
+form label{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.75;display:grid;gap:6px}
+form input,form select,form textarea{font:inherit;color:var(--white);background:transparent;border:0;border-bottom:1.5px solid rgba(255,255,255,.4);padding:8px 0;border-radius:0}
+form select option{color:var(--ink)}
+#formmsg{font-size:14px;color:var(--sky)}
+.contact{margin-top:28px;font-family:var(--mono);font-size:14px;line-height:1.9;user-select:all}
+footer{background:var(--navy);color:var(--white);border-top:1px solid rgba(255,255,255,.14);padding-block:36px;font-family:var(--mono);font-size:12px;letter-spacing:.06em}
+footer .wrap{display:flex;gap:24px;flex-wrap:wrap;justify-content:space-between;opacity:.8}
+@media(max-width:820px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.svc,.calc,.voices,.about,.consult{grid-template-columns:minmax(0,1fr)}.svc article,.svc article:nth-child(even){padding:24px 0;border-right:0}.proj,.mini{grid-template-columns:repeat(2,minmax(0,1fr))}.band{padding-block:60px}.bill{font-size:48px}.out .big{font-size:40px}}
+@media(max-width:520px){.proj,.mini{grid-template-columns:minmax(0,1fr)}.nav nav{margin-left:0;gap:12px}}
+.dl{display:flex;align-items:center;gap:18px;margin-top:28px;padding:16px 20px;max-width:560px;border:1.5px solid rgba(255,255,255,.28);color:var(--white);text-decoration:none}.dl:hover{border-color:var(--hot)}.dlicon{flex:none;display:grid;place-items:center;width:52px;height:52px;background:var(--hot);color:var(--white)}.dltext{display:grid;gap:3px;min-width:0}.dltext b{font-size:18px}.dltext span{font-size:15px;opacity:.85}.dltext small{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.7}</style>
+<style>
+.faqnav{display:flex;gap:8px;flex-wrap:wrap;margin-top:26px}
+.faqnav a{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(255,255,255,.35);padding:7px 11px}
+.faqnav a:hover{border-color:var(--hot);color:var(--hot)}
+.fsec{padding-block:52px;border-bottom:1px solid var(--line)}
+.fsec h2{font-size:clamp(26px,3.6vw,38px)}
+.fsec .sub{color:var(--mute);margin:6px 0 18px}
+details .a{margin-top:10px;max-width:74ch;color:var(--ink)}
+.a p{margin:6px 0;color:inherit;max-width:none}
+.a .lead{font-weight:700}
+.a h5{margin:12px 0 2px;font-size:15px;color:var(--blue)}
+.a ul,.a ol{margin:6px 0;padding-left:22px}
+.tw{overflow-x:auto}
+.a table{border-collapse:collapse;width:100%;font-size:14px;margin:8px 0}
+.a th{background:var(--navy);color:var(--white);text-align:left;padding:7px 9px}
+.a td{border-top:1px solid var(--line);padding:7px 9px;vertical-align:top}
+.tip{background:var(--sky);border-left:4px solid var(--hot);padding:8px 12px;margin:8px 0;font-size:14px}
+</style>
+<link rel="alternate" hreflang="en" href="https://www.solaress.org/faq.html">
+<link rel="alternate" hreflang="th" href="https://www.solaress.org/th/faq.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://www.solaress.org/zh/faq.html">
+<style>
+.langsw{display:inline-flex;gap:10px;margin-left:14px;font-size:12px;letter-spacing:0;text-transform:none}.langsw a{opacity:.7}.langsw a[aria-current]{opacity:1;font-weight:700}
+body{font-family:"Inter Tight","Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif}
+h1,h2,h3{letter-spacing:0}h1{line-height:1.16}h2{line-height:1.2}
+.eyebrow,.btn,.nav nav,.stats span,.tags span,.calc label,.kv span,.out small,.proj .loc,.voices figcaption,.mini b,.ticks,form label,.gal figcaption,.faqnav a,.pick h3,.card .tag,.steps,.steps b,.spec dt,.dltext small,.tnote .meta,.mform label,footer{letter-spacing:.03em}
+.tfb{background:var(--sky);color:var(--ink);border-top:1px solid var(--line);padding-block:14px;font-size:13px;line-height:1.7}.tfb p{max-width:96ch}.tfb a{color:var(--blue);font-weight:500}
+</style>
+</head>
+<body>
+<header class="nav"><div class="wrap">
+<a href="/zh/#top" aria-label="Solar ESS 首页"><img src="data:image/jpeg;base64,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" alt="Solar ESS 标志"></a>
+<nav><a href="/zh/#services">理念</a><a href="/zh/#projects">项目案例</a><a href="/zh/#calculator">节省测算</a><a href="/zh/picks.html">优选设备</a><a href="/zh/faq.html">常见问题</a><a href="/zh/technical-notes.html">技术资料</a><a href="/zh/#consult">预约咨询</a><span class="langsw"><a href="/faq.html" lang="en">EN</a><a href="/th/faq.html" lang="th" style="font-family:var(--thai)">ไทย</a><a href="/zh/faq.html" lang="zh-Hans" aria-current="true">中文</a></span></nav>
+</div></header>
+<section class="dark band" style="padding-block:64px"><div class="wrap"><p class="eyebrow">常见问题</p><h1 style="font-size:clamp(36px,6vw,64px)">关于泰国光伏的<br>坦率解答。</h1><p class="lede" style="margin-top:18px">55 个问答，涵盖政策与回本、系统选型、质保、维护、环保、安装故障排查和安全。</p><div class="faqnav"><a href="#policy-money-in-thailand">泰国政策与费用</a><a href="#choosing-your-system">选择您的系统</a><a href="#warranty-lifespan">质保与寿命</a><a href="#maintenance-cleaning">维护与清洗</a><a href="#environment-sustainability">环境与可持续性</a><a href="#installation-basics">安装基础</a><a href="#field-troubleshooting-guide">现场故障排查指南</a><a href="#safety-protection">安全与保护</a></div><a class="dl" href="/downloads/Solar-ESS-FAQ-EN-TH.pdf" download><span class="dlicon" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M12 3v12"/><path d="M6 10l6 6 6-6"/><path d="M4 21h16"/></svg></span><span class="dltext"><b>下载光伏常见问题手册</b><span>全部 55 个问答汇成一份 PDF，方便保存或分享。文档语言：英文和泰文（暂无中文版）。</span><small>PDF · 21 页 · 1.7 MB</small></span></a></div></section><div class="light"><div class="wrap">
+<section class="fsec" id="policy-money-in-thailand"><h2>泰国政策与费用</h2><p class="sub">净计费、激励政策、回本周期和价格</p>
+<details><summary>泰国对家庭用户实行净计量 (net metering) 吗？</summary><div class="a">不是真正的净计量。泰国实行的是<b>净计费 (net billing)</b>：您自用的光伏电量按全额零售电价抵扣电网用电，多余上网的电量则按较低的固定价格收购。上网电量和用电量并不是一度抵一度。</div></details>
+<details><summary>卖回电网的电能拿到多少钱？</summary><div class="a">按照面向家庭的“Solar for the People”（全民光伏）计划，收购价为<b>每度 (kWh) 2.20 泰铢</b>，每只电表最多可上网 5 kW。2026 年，全国目标容量由 500 MW 提高到 10,000 MW，收购期限延长至 20 年。PEA/MEA 目前的申请受理情况，欢迎向我们咨询。</div></details>
+<details><summary>有政府补贴或税收优惠吗？</summary><div class="a">有。容量不超过 10 kWp、在 2026 年 3 月 3 日至 2028 年 12 月 31 日期间并网的屋顶并网系统，可享受<b>最高 200,000 泰铢</b>的个人所得税扣除（限一套系统、一只电表，并须取得电子税务发票）。政府还宣布计划对家用系统发放现金补贴，具体细则尚待确认。</div></details>
+<details><summary>实际能省多少税？</summary><div class="a">这项扣除是减少您的应纳税所得额，因此能省多少取决于您适用的税率。税率为 20% 时，200,000 泰铢的扣除约可省税 40,000 泰铢；税率为 10% 时约 20,000 泰铢。</div></details>
+<details><summary>家用系统的回本周期 (ROI) 有多长？</summary><div class="a">如果大部分光伏电量在白天用掉，并网系统一般约 <b>4 到 7 年</b>回本。白天用电越多，再加上税收扣除和余电上网，回本越快。加装电池会延长回本周期，但能提供备用电源并支持夜间用电。</div></details>
+<details><summary>怎样才能更快回本？</summary><div class="a">在有太阳的时候用电：白天开空调、泳池泵、热水器，给电动车充电，在家办公。按白天负荷来确定容量的系统，回本最快。</div></details>
+<details><summary>想装光伏的人越来越多，价格会上涨吗？</summary><div class="a">需求在增长，但全球工厂产能增长得更快，所以从长期看设备价格一直在下降。短期上涨可能来自汇率、运费、铜价和政策带来的抢装潮。</div></details>
+<details><summary>进入市场的供应商越来越多，价格会更便宜吗？</summary><div class="a">设备可能会再便宜一点，但人工、支架、电缆和保护电器不会。报价特别低的，通常是在这些看不见的地方降低了质量。等上一年，损失的电费节省通常比价格上省下的更多。</div></details>
+<details><summary>电价会持续上涨吗？</summary><div class="a">谁也无法保证，不过泰国电价随燃料调整费 (Ft) 浮动，有涨有跌。光伏能把您一部分用电的成本锁定 25 年以上，帮您规避这种不确定性。</div></details>
+<details><summary>安装需要办理许可吗？</summary><div class="a">并网系统需要：向监管机构 (ERC) 备案，取得 PEA 或 MEA 的并网批准，并提交有工程师签字的图纸。2026 年相关规定已经简化。Solar ESS 会为您办理全部手续。</div></details>
+<details><summary>可以分期或贷款安装吗？</summary><div class="a">泰国多家银行提供光伏贷款和 0% 利率分期方案。很多情况下，每月的分期还款额与每月节省的电费相差不多。</div></details>
+</section>
+<section class="fsec" id="choosing-your-system"><h2>选择您的系统</h2><p class="sub">类型、容量和预期效果</p>
+<details><summary>并网、混合还是离网：该选哪一种？</summary><div class="a"><b>并网 (On-grid)</b>：成本最低、回本最快，但没有备用供电。<b>混合 (Hybrid)</b>：增加电池，可供夜间用电和停电备用。<b>离网 (Off-grid)</b>：适用于没有市电的场所；需要更大的电池，通常还要配发电机。</div></details>
+<details><summary>停电时我的光伏系统还能用吗？</summary><div class="a">普通并网逆变器在电网停电时会出于安全原因自动关机。要让重要负载继续运行，需要配备混合逆变器、电池和备用回路。</div></details>
+<details><summary>我需要多大容量的系统？</summary><div class="a">我们根据您的电费单和白天的负荷曲线来确定容量。粗略估算，在泰国每 1 kWp 每月约发电 110 到 130 度，需要约 4.5 到 5 m2 的屋顶面积。</div></details>
+<details><summary>我的屋顶适合安装吗？</summary><div class="a">大多数金属瓦屋面、水泥瓦屋面和混凝土平屋面都可以。报价之前，我们会检查结构强度、屋龄、遮挡、朝向和防水情况。</div></details>
+<details><summary>雨季光伏还能发电吗？</summary><div class="a">能，只是输出会降低。组件在散射光下也能发电。年发电量数据已经把雨季月份计算在内。</div></details>
+<details><summary>我需要电池吗？</summary><div class="a">如果只是为了白天省电费，不需要。如果您那里经常停电、晚间用电多、不允许向电网送电，或者希望用电更加自主，电池才有意义。</div></details>
+<details><summary>光伏能给我的电动车充电吗？</summary><div class="a">能。白天给电动车充电，是富余光伏电量最好的用途之一。智能充电桩可以跟随光伏输出，让车只使用多余的电。</div></details>
+<details><summary>以后可以扩容吗？</summary><div class="a">可以，前提是提前规划。选择容量留有余量、支持接入电池的（混合型）逆变器，并预留屋顶和电缆空间。</div></details>
+</section>
+<section class="fsec" id="warranty-lifespan"><h2>质保与寿命</h2><p class="sub">保什么，保多久</p>
+<details><summary>产品质保期有多长？</summary><div class="a">我们使用的一线 (Tier-1) 设备通常为：<b>组件</b> 12 到 25 年产品质保，外加 25 到 30 年功率输出质保；<b>逆变器</b> 5 到 10 年（部分品牌可延保）；<b>电池</b>约 10 年。各型号的具体条款会在您的报价单中注明。</div></details>
+<details><summary>安装质保期有多长？</summary><div class="a">施工质保涵盖支架安装、接线、防水和调试。质保期限在您的 Solar ESS 报价单和合同中注明。</div></details>
+<details><summary>系统能用多久？</summary><div class="a">组件可用 25 到 30 年甚至更久，输出功率每年衰减约 0.4% 到 0.5%。逆变器通常为 10 到 15 年，因此在系统寿命期内要计划更换一次。LFP 电池的循环寿命一般在 6,000 次以上。</div></details>
+<details><summary>哪些情况会导致质保失效？</summary><div class="a">由不具备资质的人员改动系统；清洗方式不当（高压水枪、强腐蚀性化学品、踩踏组件）；没有适当保护措施而遭受雷击或浪涌；以及对故障报警置之不理。</div></details>
+<details><summary>出了故障该找谁？</summary><div class="a">请先联系 Solar ESS。我们会通过监控平台远程诊断，然后代您向厂家办理索赔。</div></details>
+</section>
+<section class="fsec" id="maintenance-cleaning"><h2>维护与清洗</h2><p class="sub">很省心，但不是完全不用管</p>
+<details><summary>维护费用高吗？</summary><div class="a">不高。光伏系统没有运动部件。每年的费用通常只占每年节省电费的一小部分：清洗加一次检查。</div></details>
+<details><summary>维护包括哪些内容？</summary><div class="a">清洗组件、目视检查组件和支架、紧固接线端子、对直流/交流箱做红外热成像扫描、检查 SPD 和断路器、接地测试、检查逆变器风扇和滤网，以及复核发电数据。</div></details>
+<details><summary>需要我自己花很多精力吗？</summary><div class="a">很少。每周看一次 App 即可。如果发电量突然下降或出现报警，请告诉我们。</div></details>
+<details><summary>组件多久清洗一次？</summary><div class="a">通常每年 1 到 2 次；靠近农田、尘土多的道路、处在烧荒季节或鸟类较多的地方，需要更频繁。脏污的组件可能损失 5% 到 15% 的发电量。</div></details>
+<details><summary>清洗光伏组件要多少钱？</summary><div class="a">取决于组件数量、屋顶高度和通行条件，以及供水情况。我们可以按次报价，也可以提供年度服务套餐。</div></details>
+<details><summary>我可以自己清洗吗？</summary><div class="a">可以，但要小心：使用软毛刷和清水，在清晨或傍晚组件温度较低时进行。不要用高压水枪，不要用清洁剂，不要站在组件上；没有防坠落保护时，切勿上屋顶作业。</div></details>
+</section>
+<section class="fsec" id="environment-sustainability"><h2>环境与可持续性</h2><p class="sub">对尖锐问题的诚实回答</p>
+<details><summary>太阳能是清洁能源，那光伏制造过程清洁吗？</summary><div class="a">并非完全清洁。生产硅、玻璃和铝都要消耗能源和化学品。但一块组件大约 1 到 3 年就能把制造它所耗的能量发回来，之后还能生产 25 年以上的清洁电力。</div></details>
+<details><summary>光伏与化石能源发电相比如何？</summary><div class="a">在整个生命周期内，屋顶光伏的排放约为每 kWh 40 g CO2，而燃气发电约为 490 g，燃煤发电约为 820 g（IPCC 中位值）。</div></details>
+<details><summary>光伏组件会造成环境危机吗？</summary><div class="a">不会。组件的主要成分是玻璃和铝，另有少量的硅、铜和银。标准的晶硅组件在正常使用中没有危害，也不会泄漏。</div></details>
+<details><summary>寿命到期后怎么办？组件可以回收吗？</summary><div class="a">可以。玻璃、铝边框、铜和硅都能回收，按重量计可达 90% 左右甚至更高。泰国的回收能力仍在发展中，所以废旧组件应交给持证的电子废弃物处理商，绝不能填埋或焚烧。</div></details>
+<details><summary>电池会造成资源短缺、童工或环境破坏吗？</summary><div class="a">主要的担忧在于钴。家用储能采用的 <b>LFP（磷酸铁锂）</b>电池不含钴，也不含镍。锂矿开采仍然有一定影响，所以应选择对供应链进行审核的品牌。</div></details>
+<details><summary>旧电池怎么处理？</summary><div class="a">使用 10 年以上的电池仍保有大部分容量，可以在负荷较轻的场合梯次利用。真正到寿命终点时，应交给持证的回收企业，回收其中的锂、铜和铝。</div></details>
+<details><summary>旧组件还有价值吗？</summary><div class="a">有。使用 10 到 15 年后拆下的组件，往往仍有 85% 到 90% 的输出功率，可以在农场、水泵和小型离网场所继续使用。</div></details>
+</section>
+<section class="fsec" id="installation-basics"><h2>安装基础</h2><p class="sub">设计和施工要点</p>
+<details><summary>有遮挡怎么办？</summary><div class="a">一块组件被遮挡，就可能拉低整个组串的输出。我们在设计时会避开阴影，或在受影响的组件上使用优化器或微型逆变器。</div></details>
+<details><summary>为什么连接器这么重要？</summary><div class="a">MC4 连接器品牌不匹配或压接不良，是屋顶光伏火灾最常见的原因。我们在公母两端使用同一品牌的连接器，并使用正确的压接工具。</div></details>
+<details><summary>安装会让我的屋顶漏水吗？</summary><div class="a">施工得当就不会。金属屋面采用夹具，或在波峰上使用带密封的螺钉；瓦屋面采用瓦下挂钩。所有穿孔处都会做密封，并包含在施工质保范围内。</div></details>
+</section>
+<section class="fsec" id="field-troubleshooting-guide"><h2>现场故障排查指南</h2><p class="sub">关于组串、电缆、绝缘、CT、电表和系统控制的详细解答</p>
+<details><summary>组件朝向/倾角不同：应该怎样排布组件？</summary><div class="a"><p class="lead">同一串联组串中的所有组件应保持相同的朝向和倾角，每个屋面单独接一路 MPPT 输入。</p><p>在串联组串中，电流由最弱的那块组件决定，所以一块被遮挡或朝向不同的组件会拖累整个组串。</p><ul><li><b>朝向相同、倾角相差约 10° 以内：</b>可以共用一个组串，损失很小。</li><li><b>朝向不同（例如东面和西面）：</b>分成不同组串，接入不同的 MPPT。</li><li><b>屋面数量多于 MPPT 数量：</b>两个组件数量和型号相同的组串，即使朝向不同，也可以并联接入同一路 MPPT，因为组串电压几乎不随朝向变化。但要确认合计电流不超过该 MPPT 的最大输入电流。</li><li>在同一个串联组串内，<b>切勿混用</b>不同的组件数量、型号或朝向。</li><li><b>结构复杂的屋顶或存在局部遮挡：</b>改用优化器或微型逆变器。</li></ul><div class="tip">接线之前，请确认每个组串在预计最低温度下的 Voc 低于逆变器的最大直流输入电压。</div></div></details>
+<details><summary>电缆被割伤：直流电缆有压痕或破损怎么办？</summary><div class="a"><p class="lead">用合格的光伏电缆和连接器更换受损段；绝不能用胶带修补。</p><p>只要有日光，组串上就可能带有数百伏的直流电压，受损的电缆可能产生电弧、引发火灾或造成绝缘故障。</p><ol><li><b>先确保安全。</b>关闭逆变器，断开直流隔离开关，然后拔开该组串的 MC4 连接器。组件在日光下始终带电，所以应在清晨或傍晚作业，或者把组件遮盖起来。</li><li><b>检查损伤程度。</b>铜芯外露、外护套被割穿或电缆被压扁，都必须更换。如果只是外护套有轻微擦伤，做过绝缘测试后或许可以继续使用。</li><li><b>更换。</b>条件允许时整段更换。如果接头无法避免，应使用一对匹配的 MC4 连接器（同品牌、同型号），并用正确的工具压接。接头要便于检查，不能贴在屋面上，不能泡在积水里，更不能藏在线管内。</li><li><b>重新接入前先测试。</b>测量绝缘电阻（正极对地、负极对地），并检查组串的 Voc 和极性（见下面关于绝缘的问题）。</li><li><b>防止再次发生。</b>电缆应敷设在抗紫外线的线管或线槽内，固定在导轨上，对锋利的边缘做好防护，并防止鼠咬和被压块夹伤。</li></ol></div></details>
+<details><summary>绝缘问题：电缆和接地的绝缘故障该如何处理？</summary><div class="a"><p class="lead">先找出是哪一个组串，再找出对地漏电的那一块组件、那一个连接器或那一段电缆，并予以更换；绝不能关闭逆变器的绝缘保护功能。</p><p>不同品牌的逆变器会把这类故障显示为“PV ISO Fault”、“DC Insulation Impedance Failure”或“Low Insulation Resistance”。</p><h5>常见原因</h5><ul><li>MC4 连接器或组件接线盒内进水</li><li>电缆绝缘层被导轨或压块割伤、夹伤</li><li>组件背板或玻璃开裂</li><li>露水重或下雨（到中午就自行消失的故障，说明是潮气所致）</li><li>边框接地不良或没有接地</li></ul><h5>如何查找</h5><ol><li>留意故障出现的时间：早晨和雨后出现 = 受潮；一直存在 = 物理损伤。</li><li>关闭逆变器，断开直流隔离开关，并断开所有组串。</li><li>用绝缘电阻测试仪（兆欧表）在 1,000 V DC 下（低压组串用 500 V）逐一测试每个组串：先测正极对地，再测负极对地。正常的组串读数一般远高于 1 MΩ。</li><li>把故障组串对半分开，分别测试两半；如此反复，直到定位到某一块组件或某一个连接器。</li><li>检查连接器是否有进水或烧灼痕迹，检查电缆沿线是否有损伤。</li></ol><h5>修复</h5><ul><li>更换有故障的那对连接器、那段电缆或那块组件。</li><li>把接线盒擦干并重新密封；电缆做滴水弯，让水流离连接器。</li><li>检查接地：每个边框和导轨都要可靠接地，接地电阻经过测量并在设计值以内（通常为 5 Ω 或更低）。</li><li>重新接入逆变器之前，把每个组串再测一遍。</li></ul></div></details>
+<details><summary>CT 的问题：逆变器不装 CT 能运行吗？</summary><div class="a"><p class="lead">允许向电网送电的普通并网逆变器可以；混合逆变器或任何需要限制上网功率的系统则不行。</p><p>CT（电流互感器）是逆变器了解建筑从电网取用多少电、或向电网送出多少电的唯一途径。</p><div class="tw"><table><tr><th>系统</th><th>不装 CT</th><th>结果</th></tr><tr><td>并网，允许上网</td><td>可以运行</td><td>满功率发电，多余的电送入电网</td></tr><tr><td>并网，要求零上网（防逆流）</td><td>不可接受</td><td>逆变器无法限制上网功率，电能会流入电网</td></tr><tr><td>带电池的混合系统</td><td>运行效果差</td><td>电池无法跟随负载；夜间可能不放电，或者电池的电被送上电网</td></tr><tr><td>仅工作在备用/离网模式的混合系统</td><td>可以运行</td><td>可为备用负载供电，但没有自发自用控制</td></tr></table></div><div class="tip">如果 CT 损坏，在更换之前请把逆变器切换到安全模式（只有在允许上网的情况下才能关闭上网限制，否则应降低输出）。</div></div></details>
+<details><summary>CT 方向装反或装错相，会有什么影响？</summary><div class="a"><p class="lead">逆变器会做出相反的或毫无规律的判断：不该上网时向电网送电，或者用电网的电给电池充电，监控数据也会出错。</p><div class="tw"><table><tr><th>错误</th><th>逆变器看到的情况</th><th>典型现象</th></tr><tr><td>CT 装反（箭头方向错，或 S1/S2 接反）</td><td>从电网取电被当成向电网送电</td><td>零上网系统满功率向电网送电；房屋明明在从电网取电，逆变器却限功率；电池用电网的电充电；负载显示为负值或不合理的数值</td></tr><tr><td>CT 装错相</td><td>用一相的电流去对应另一相的电压（相差 120°）</td><td>读数偏低、正负号错误或来回跳动；上网控制不稳定</td></tr><tr><td>CT 装在逆变器输出侧，而不是电网进线上</td><td>只能看到自身的输出</td><td>负载始终等于光伏功率；上网功率始终得不到控制</td></tr><tr><td>CT 套在零线上，或同时套住 L 和 N</td><td>接近零</td><td>逆变器认为房屋没有用电</td></tr></table></div><div class="tip"><b>检查方法（已知负载测试）：</b>关闭逆变器，打开一个功率已知的负载（例如 2 kW 的电热水壶）。监控应显示约 2 kW 的取电功率。显示为向电网送电 = CT 装反；远小于 2 kW 或数值飘忽不定 = 装错相或套错了电缆。箭头方向请以该品牌的说明书为准，因为各品牌的规定不同。许多逆变器也可以在设置中把 CT 方向反转。</div></div></details>
+<details><summary>电表：逆变器不装电表能运行吗？</summary><div class="a"><p class="lead">可以，只要逆变器有一只工作正常的 CT（针对支持直接接 CT 的机型），或者不需要上网控制。</p><p>智能电表的作用与 CT 相同——告诉逆变器电网侧的功率——但测量更精确，并通过 RS485 与逆变器通信。</p><ul><li><b>并网，允许上网：</b>不需要电表，也不需要 CT。</li><li><b>带 CT 直接输入的单相混合逆变器：</b>有 CT 就够了，电表可装可不装。</li><li><b>必须依靠电表实现上网控制的机型</b>（许多三相逆变器）：没有电表时，逆变器会报“Meter Communication”错误，无法限制上网功率。</li></ul><p>如果电表通信中断，大多数逆变器要么失去上网控制，要么出于安全把输出降为零；请检查 RS485 接线（A/B 极性）、Modbus 地址和波特率。</p></div></details>
+<details><summary>什么情况下需要使用电表？</summary><div class="a"><p class="lead">凡是对精度、距离有要求，或者是三相系统，都应使用智能电表。</p><ul><li>三相系统要求<b>零上网或限制上网功率</b>，或者电力公司要求提供可靠的上网控制证明</li><li>负载不平衡的<b>三相场所</b>，这样每一相都能被准确测量</li><li>逆变器与总配电箱之间<b>距离较远</b>，超过说明书允许的 CT 线长度</li><li><b>主断路器容量大</b>，需要使用比逆变器随机附带的 CT 更大的外接 CT</li><li><b>同一场所有多台逆变器</b>，通过电表加数据采集器或防逆流控制器统一控制</li><li>需要<b>准确的用电数据</b>，用于客户报告、节省分析或电池容量计算</li></ul></div></details>
+<details><summary>电能倒送：为什么会这样，如何解决？</summary><div class="a"><p class="lead">不该上网时电能却倒送到电网，几乎都是 CT 或电表安装错误，或者没有开启上网限制功能。</p><p>在没有售电协议的情况下向电网送电，等于把电白白送人，还可能违反电力公司的并网条件。</p><h5>现象</h5><ul><li>电力公司的电表记录到上网电量，或者客户的电费没有像预期那样下降</li><li>监控显示负载为负值，或者房屋明明在用电却显示在向电网送电</li><li>电池在夜间用电网的电充电</li></ul><h5>原因与解决办法</h5><div class="tw"><table><tr><th>原因</th><th>解决办法</th></tr><tr><td>CT 箭头方向错误，或 S1/S2 接反</td><td>把 CT 翻转过来或对调两根引线；或在设置中反转 CT 方向</td></tr><tr><td>电表的 L 和 N 接反，或 CT 接到了错误的电表端子</td><td>按电表接线图重新接线</td></tr><tr><td>CT 装在逆变器接入点的下游</td><td>移到电网进线上，位于电力公司电表与全部负载及逆变器之间</td></tr><tr><td>没有开启上网限制/零上网功能</td><td>开启该功能，并把限值设为 0 W（或允许的数值）</td></tr><tr><td>大功率负载突然关闭</td><td>逆变器响应期间出现几秒钟的短时上网尖峰属于正常现象</td></tr></table></div><p>修复之后，重新做一次已知负载测试，并在阳光充足、负载较低的时段观察电力公司的电表。</p></div></details>
+<details><summary>三相系统 CT 接错：三相与 CT 复杂在哪里？</summary><div class="a"><p class="lead">在三相系统中，三只 CT 中的每一只都必须装在与其配对的电压相同的那一相上，而且方向要正确。</p><p>三只 CT 分配到三相有 6 种排列方式，方向又有 8 种组合——共 48 种可能的装法，只有一种是正确的。</p><h5>为什么比单相更难</h5><ul><li><b>相位对应：</b>CT1 必须在 L1 上，CT2 在 L2 上，CT3 在 L3 上，与电表或逆变器的电压线一一对应。接错相会使读数相差 120°，功率看起来偏小或为负值。</li><li><b>多个错误会互相抵消：</b>一只 CT 装反时，总功率看起来可能还算合理，但每一相其实都是错的。</li><li><b>负载不平衡：</b>房屋可能在一相上取电，同时在另一相上向电网送电。如果逆变器把输出平均分配到三相，即使总功率为零，负载较轻的那一相也可能上网。如果逆变器支持，请使用分相上网限制，并确认电力公司的电表是如何记录各相电量的。</li><li><b>相序：</b>检查总配电箱处的 L1-L2-L3 相序是否与逆变器和电表一致。</li></ul><h5>如何验证三相系统的安装</h5><ol><li>关闭逆变器。</li><li>只在 L1 上打开一个功率已知的单相负载。应当只有第 1 相的读数上升，显示的取电功率约等于该负载。</li><li>对 L2 和 L3 重复同样的操作。</li><li>带电阻性负载时，每一相的功率因数都应接近 1。某一相功率为负 = 该相的 CT 装反；功率出现在另一相上 = CT 相互接错。</li><li>开启逆变器，确认每一相的上网功率都保持在设定的限值内。</li></ol></div></details>
+<details><summary>系统控制：系统应该如何设置？</summary><div class="a"><p class="lead">系统控制是指逆变器如何决定光伏、电池和电网的电能流向；应在调试时按照客户的目标和电力公司的规定设置好，然后锁定。</p><h5>工作模式（各品牌名称不同）</h5><div class="tw"><table><tr><th>模式</th><th>作用</th><th>最适合</th></tr><tr><td>自发自用 (Self-use / Self-consumption)</td><td>光伏先供负载，再充电池，最后才送电网</td><td>大多数配有电池的家庭和企业</td></tr><tr><td>上网优先 (Feed-in priority)</td><td>优先上网，电池的电留到以后使用</td><td>签有售电协议的场所</td></tr><tr><td>备用 (Backup / Reserve)</td><td>让电池保持在设定的 SOC，以备停电</td><td>经常停电的场所</td></tr><tr><td>分时电价 (TOU)</td><td>在设定的时段充电或放电</td><td>执行 TOU 分时电价的客户</td></tr><tr><td>离网 (Off-grid)</td><td>不依靠电网运行</td><td>偏远场所</td></tr><tr><td>削峰 (Peak shaving)</td><td>用电池限制从电网取电的最大功率</td><td>收取需量电费的商业场所</td></tr></table></div><h5>每次调试都要检查的设置</h5><ul><li>电网标准 (Grid code) 设为当地电力公司的标准（在泰国为 PEA 或 MEA）</li><li>上网限制/零上网，并确认 CT 或电表已经过验证</li><li>电池类型、充放电电流限值和最低 SOC</li><li>日期、时间和时区（TOU 依赖于此）</li><li>监控 App 已连接，且负载、光伏、电池和电网数值显示正确</li><li>固件为最新版本</li></ul><div class="tip"><b>良好做法：</b>没有明确的理由，不要更改保护设置（电压、频率、防孤岛）；把所有设置记录在交付文件中；只给客户开通 App 的只读权限，让设置只能由安装商修改。</div></div></details>
+</section>
+<section class="fsec" id="safety-protection"><h2>安全与保护</h2><p class="sub">浪涌、接地与消防安全</p>
+<details><summary>你们安装什么样的浪涌保护器 (SPD)？</summary><div class="a"><b>直流侧和交流侧均安装 Type II SPD。</b>交流 SPD 符合 IEC 61643-11，装在配电箱内；直流 SPD 符合 IEC 61643-31，装在汇流箱内或逆变器直流输入端。</div></details>
+<details><summary>Type II SPD 应该具备哪些参数？</summary><div class="a">采用 8/20 微秒波形测试。标称放电电流 (In) 20 kA，最大放电电流 (Imax) 40 kA 或以上。交流最大持续工作电压 (Uc) 例如 275/320/420 V AC；直流额定电压 (Ucpv) 600 或 1000 V DC，应不低于组串的最大开路电压。</div></details>
+<details><summary>为什么接地很重要？</summary><div class="a">只有接地良好，SPD 才能把浪涌泄放出去。组件边框、支架、逆变器和 SPD 都要连接到接地极上，接地电阻须经过测试并足够低。</div></details>
+<details><summary>屋顶光伏有火灾风险吗？</summary><div class="a">按标准安装时风险很低：使用正确的电缆和连接器、直流隔离开关、熔断器或断路器、SPD，以及逆变器的电弧故障和绝缘监测功能。每年做一次红外热成像扫描，可以及早发现过热点。</div></details>
+<details><summary>在暴风雨和雷电天气下安全吗？</summary><div class="a">安全。支架结构按风荷载设计，SPD 加上接地可以防护感应浪涌。装有防雷系统的建筑，光伏阵列需要与防雷系统统筹配合。</div></details>
+<div class="a" style="margin-top:18px"><div class="tw" style="max-width:74ch"><table><tr><th>Type II SPD</th><th>交流侧</th><th>直流侧（光伏）</th></tr><tr><td>标准</td><td>IEC 61643-11</td><td>IEC/EN 61643-31</td></tr><tr><td>测试波形</td><td>8/20 &micro;s</td><td>8/20 &micro;s</td></tr><tr><td>标称放电电流 (In)</td><td>5 到 20 kA（常用 20 kA）</td><td>20 kA</td></tr><tr><td>最大放电电流 (Imax)</td><td>40 到 80 kA</td><td>40 kA 或以上</td></tr><tr><td>安装位置</td><td>分配电箱 / 总配电柜 (MDB)</td><td>汇流箱 / 逆变器直流输入端</td></tr><tr><td>最大持续工作电压 (Uc / Ucpv)</td><td>275、320 或 420 V AC</td><td>600 或 1000 V DC，不低于组串 Voc</td></tr></table></div></div>
+</section>
+<p class="note" style="padding-block:28px;opacity:1;color:var(--mute);max-width:80ch">政策数据截至 2026 年 10 月。电价、配额和激励政策可能调整；节省金额、回本周期和质保数据均为典型范围，不构成保证。您的系统适用的具体条款以报价单为准。</p></div></div>
+<section class="band dark" style="padding-block:56px"><div class="wrap"><h2>还有其他问题？</h2><div style="margin-top:22px"><a class="btn" href="/zh/#consult">预约咨询</a></div></div></section><aside class="tfb"><div class="wrap"><p>本中文版网站为新近翻译。如果您发现有错误或不通顺的中文，欢迎发邮件至 <a href="mailto:kris@solar-ess.org?subject=%E4%B8%AD%E6%96%87%E7%BF%BB%E8%AF%91%E5%8F%8D%E9%A6%88">kris@solar-ess.org</a> 告诉我们。为表谢意，Solar ESS 将赠送您免费会员资格（免收会费），可获取会员资料、参加会员活动并享受产品折扣。</p></div></aside>
+<footer><div class="wrap"><span>Solar ESS Co. Ltd. · Solar Energy for Sustainable Solution</span><span><a href="/zh/members.html">会员专区</a> · www.solar-ess.org · www.solaress.org</span></div></footer>
+</body>
+</html>

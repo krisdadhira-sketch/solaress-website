@@ -67,6 +67,18 @@ p{margin:0}
 .bill{font-size:64px;font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums;line-height:1.1}
 input[type=range]{width:100%;accent-color:var(--hot);margin:14px 0 6px}
 .range{display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;opacity:.7}
+/* bill tube: a slim vertical gauge that fills and heats up as the bill rises */
+.meter{display:flex;gap:16px;align-items:stretch;height:360px;margin:22px 0 4px}
+.tube{position:relative;flex:none;width:54px;border:2px solid rgba(255,255,255,.6);border-radius:28px;background:rgba(255,255,255,.06);overflow:hidden;cursor:ns-resize;touch-action:none}
+.tube .liquid{position:absolute;left:0;right:0;bottom:0;height:var(--fill,20%);background:linear-gradient(to top,hsl(220 95% 62%),var(--c,hsl(220 95% 62%)));box-shadow:inset 0 5px 0 rgba(255,255,255,.35)}
+.tube input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;pointer-events:none}
+.tube:has(input:focus-visible){outline:3px solid var(--sky);outline-offset:3px}
+.scale{position:relative;flex:1;min-width:0;font-family:var(--mono);font-size:12px;letter-spacing:.06em}
+.scale span{position:absolute;left:0;transform:translateY(50%);white-space:nowrap;opacity:.7}
+.scale span::before{content:"";display:inline-block;width:14px;height:1.5px;background:currentColor;vertical-align:middle;margin-right:8px}
+.scale .tier{opacity:1;color:var(--sky)}
+.hint{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--hot);margin-top:12px}
+@media(max-width:520px){.meter{height:300px}}
 .note{font-size:13px;opacity:.7;margin-top:16px;max-width:52ch}
 .out{background:var(--navy2);border:1px solid rgba(255,255,255,.14);padding:26px}
 .out .big{font-size:52px;font-weight:800;color:var(--hot);font-variant-numeric:tabular-nums;line-height:1.1}
@@ -158,13 +170,12 @@ h1,h2,h3{letter-spacing:0}h1{line-height:1.16}h2{line-height:1.2}
 <section class="band dark" id="calculator" style="border-top:1px solid rgba(255,255,255,.16)"><div class="wrap">
 <p class="eyebrow">节省测算</p>
 <h2>您每月的电费<br>是多少？</h2>
-<p class="lede" style="margin-top:18px"><b>玩一玩电费游戏。</b>拿出最近一期电费单，把滑块拖到您的金额，看看系统规模、回本年限和节省金额随之变化，马上知道您属于 5 kWp 的家庭，还是 30 kWp 的企业。</p>
+<p class="lede" style="margin-top:18px"><b>玩一玩电费游戏。</b>拿出最近一期电费单，把管子往上拖到您的金额，看看系统规模、回本年限和节省金额随之变化，马上知道您属于 5 kWp 的家庭，还是 30 kWp 的企业。</p>
 <div class="calc">
 <div>
 <label for="bill">目前每月电费 · 泰铢 / 月</label>
 <div class="bill" id="billv">฿5,000</div>
-<input type="range" id="bill" min="1000" max="100000" step="500" value="5000">
-<div class="range"><span>฿1,000</span><span>฿100,000</span></div>
+<div class="meter"><div class="tube"><div class="liquid"></div><input type="range" id="bill" min="0" max="1000" step="1" value="201" aria-label="每月电费"></div><div class="scale" aria-hidden="true"><span style="bottom:100%">฿100,000</span><span class="tier" style="bottom:44.1%">≈ ฿20,000 · 30 kWp · 企业</span><span class="tier" style="bottom:15.5%">≈ ฿3,400 · 5 kWp · 家庭</span><span style="bottom:0">฿1,000</span></div></div><p class="hint">↑ 沿着管子往上拖：越高，电费负担越重</p>
 <p class="note">估算依据：泰国综合电价 ฿4.5/kWh、每天 5 小时峰值日照、85% 的电费抵扣比例。最终数据以咨询时确认的方案为准。</p>
 </div>
 <div class="out">
@@ -262,11 +273,16 @@ h1,h2,h3{letter-spacing:0}h1{line-height:1.16}h2{line-height:1.2}
 const P=[["681.6 kWp","Pattalung Betagro","泰国博他仑府","betagro"],["250 kWp","Boromarajonani 护理学院","泰国董里府"],["200 kWp","Wichian Matu","泰国董里府"],["100 kWp","董里幼儿园","泰国董里府","trang-kindergarten"],["70 kWp","董里农业学院","泰国董里府","trang-agri"],["50 kWp","Phetsavanh Car Care","老挝万象","phetsavanh"],["40 kWp 离网","Mon Mekha","清莱府 Doi Chang"],["20 kWp 并网","Janjwa 养鸡场","清莱府 Mae Jan"],["20 kWp","GT Sport & Design","清莱府 Ban Du","gt-sport"],["13 kWp","Wild Solar","泰国南邦府","wild-solar"],["10.4 kWp + 300 Ah","Doi Mek","清莱府 Mae Jan","doi-mek"],["8 kWp","Muangpong","缅甸大其力","muangpong"],["8 kWp","Bryde 餐厅","泰国甲米府","bryde"],["5.0 kWp 三相","Ban Talart","清迈府 Sankampaeng","ban-talart"],["5.0 kWp","Roy and Avis 住宅","清迈府 Sansai","roy-avis"],["5.0 kWp","Angel Villa","清迈府 Prao","prao"]];
 document.getElementById('projgrid').innerHTML=P.map((p,i)=>`<article${p[3]?` class="ph" style="background-image:url(/images/project-${p[3]}.jpg)" role="img" aria-label="${p[1]} 光伏安装项目，${p[2]}"`:''}><div class="k">${String(i+1).padStart(2,'0')} / ${P.length}</div><div><div class="cap">${p[0]}</div><h3>${p[1].replace('&','&amp;')}</h3><div class="loc">${p[2]}</div></div></article>`).join('');
 const f=n=>'฿'+Math.round(n).toLocaleString('en-US');
-function calc(){const b=+document.getElementById('bill').value;const size=b/4.5/150;const save=b*12*.85;const cost=size*35000;
+function calc(){const p=+document.getElementById('bill').value/1000;const b=Math.max(1000,Math.round((1000+99000*p*p)/500)*500);tubeShow(p,b);const size=b/4.5/150;const save=b*12*.85;const cost=size*35000;
 document.getElementById('billv').textContent=f(b);document.getElementById('o-save').textContent=f(save);
 document.getElementById('o-size').textContent=size.toFixed(1)+' kWp';document.getElementById('o-pay').textContent=(cost/save).toFixed(1)+' 年';
 document.getElementById('o-co2').textContent=(size*5*365*.0005).toFixed(1)+' 吨/年';document.getElementById('o-25').textContent='฿'+Math.round(save*25/1000).toLocaleString('en-US')+'k';
 document.getElementById('o-cost').textContent=f(Math.round(cost/1000)*1000);}
+const tube=document.querySelector('.tube'),rng=document.getElementById('bill');
+function tubeShow(p,b){const c='hsl('+Math.round(220+125*p)+' 95% 62%)';tube.style.setProperty('--fill',(p*100).toFixed(1)+'%');tube.style.setProperty('--c',c);document.getElementById('billv').style.color=c;rng.setAttribute('aria-valuetext','฿'+b.toLocaleString('en-US'));}
+function fromY(e){const r=tube.getBoundingClientRect();const t=Math.min(1,Math.max(0,1-(e.clientY-r.top)/r.height));rng.value=Math.round(t*1000);calc();}
+tube.addEventListener('pointerdown',e=>{tube.setPointerCapture(e.pointerId);fromY(e);rng.focus({preventScroll:true});});
+tube.addEventListener('pointermove',e=>{if(tube.hasPointerCapture(e.pointerId))fromY(e);});
 document.getElementById('bill').addEventListener('input',calc);calc();
 </script>
 

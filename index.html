@@ -78,6 +78,16 @@ input[type=range]{width:100%;accent-color:var(--hot);margin:14px 0 6px}
 .scale span::before{content:"";display:inline-block;width:14px;height:1.5px;background:currentColor;vertical-align:middle;margin-right:8px}
 .scale .tier{opacity:1;color:var(--sky)}
 .hint{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--hot);margin-top:12px}
+.meter .col{display:flex;flex-direction:column;align-items:center;gap:6px;flex:none}
+.meter .col>b{height:16px;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;opacity:.8}
+.meter .col .tube{flex:1}
+.meter .scale{margin-top:22px}
+.meter .scale.cost{flex:none;width:140px}.meter .scale i{font-style:normal}
+.tube.cash{border-color:rgba(230,233,238,.7)}
+.tube.cash .liquid{background:linear-gradient(to right,#7d838c,#eef1f5 38%,#c3c8cf 62%,#868c95);box-shadow:inset 0 5px 0 rgba(255,255,255,.6)}
+.cashcap{font-size:15px;margin-top:8px;color:#dfe3ea}
+.cashcap b{color:#fff}
+@media(max-width:520px){.meter{gap:10px}.meter .scale{font-size:11px}.meter .scale span::before{width:8px;margin-right:5px}.meter .scale.cost{width:112px}.meter .scale:not(.cost) i{display:none}}
 @media(max-width:520px){.meter{height:300px}}
 .note{font-size:13px;opacity:.7;margin-top:16px;max-width:52ch}
 .out{background:var(--navy2);border:1px solid rgba(255,255,255,.14);padding:26px}
@@ -165,7 +175,8 @@ footer .wrap{display:flex;gap:24px;flex-wrap:wrap;justify-content:space-between;
 <div>
 <label for="bill">Current monthly bill · THB / month</label>
 <div class="bill" id="billv">฿5,000</div>
-<div class="meter"><div class="tube"><div class="liquid"></div><input type="range" id="bill" min="0" max="1000" step="1" value="201" aria-label="Monthly electricity bill"></div><div class="scale" aria-hidden="true"><span style="bottom:100%">฿100,000</span><span class="tier" style="bottom:44.1%">≈ ฿20,000 · 30 kWp · business</span><span class="tier" style="bottom:15.5%">≈ ฿3,400 · 5 kWp · home</span><span style="bottom:0">฿1,000</span></div></div><p class="hint">↑ Drag the tube up: the higher it climbs, the heavier your bill</p>
+<div class="meter"><div class="col"><b>Bill</b><div class="tube"><div class="liquid"></div><input type="range" id="bill" min="0" max="1000" step="1" value="201" aria-label="Monthly electricity bill"></div></div><div class="scale" aria-hidden="true"><span style="bottom:100%">฿100,000</span><span class="tier" style="bottom:44.1%">≈ ฿20,000<i> · business</i></span><span class="tier" style="bottom:15.5%">≈ ฿3,400<i> · home</i></span><span style="bottom:0">฿1,000</span></div><div class="col" aria-hidden="true"><b>Install</b><div class="tube cash"><div class="liquid"></div></div></div><div class="scale cost" aria-hidden="true"><span style="bottom:100%">฿5.2M<i> · 148 kWp</i></span><span class="tier" style="bottom:44.1%">฿1.1M<i> · 30 kWp</i></span><span class="tier" style="bottom:15.5%">฿175k<i> · 5 kWp</i></span><span style="bottom:0">฿52k<i> · 1.5 kWp</i></span></div></div><p class="hint">↑ Drag the tube up: the higher it climbs, the heavier your bill</p>
+<p class="cashcap" id="cashcap" aria-live="polite" data-t="Silver tube: a <b>{s} kWp</b> system costs ≈ {c} one time, about {m} months of today’s bill."></p>
 <p class="note">Estimates use a blended Thai tariff (฿4.5/kWh), 5 peak sun hours per day, and 85% offset. Final figures are confirmed in consultation.</p>
 </div>
 <div class="out">
@@ -267,11 +278,10 @@ document.getElementById('billv').textContent=f(b);document.getElementById('o-sav
 document.getElementById('o-size').textContent=size.toFixed(1)+' kWp';document.getElementById('o-pay').textContent=(cost/save).toFixed(1)+' yrs';
 document.getElementById('o-co2').textContent=(size*5*365*.0005).toFixed(1)+' t/yr';document.getElementById('o-25').textContent='฿'+Math.round(save*25/1000).toLocaleString('en-US')+'k';
 document.getElementById('o-cost').textContent=f(Math.round(cost/1000)*1000);}
-const tube=document.querySelector('.tube'),rng=document.getElementById('bill');
-function tubeShow(p,b){const c='hsl('+Math.round(220+125*p)+' 95% 62%)';tube.style.setProperty('--fill',(p*100).toFixed(1)+'%');tube.style.setProperty('--c',c);document.getElementById('billv').style.color=c;rng.setAttribute('aria-valuetext','฿'+b.toLocaleString('en-US'));}
-function fromY(e){const r=tube.getBoundingClientRect();const t=Math.min(1,Math.max(0,1-(e.clientY-r.top)/r.height));rng.value=Math.round(t*1000);calc();}
-tube.addEventListener('pointerdown',e=>{tube.setPointerCapture(e.pointerId);fromY(e);rng.focus({preventScroll:true});});
-tube.addEventListener('pointermove',e=>{if(tube.hasPointerCapture(e.pointerId))fromY(e);});
+const tubes=document.querySelectorAll('.meter .tube'),tube=tubes[0],rng=document.getElementById('bill'),cap=document.getElementById('cashcap');
+function tubeShow(p,b){const c='hsl('+Math.round(220+125*p)+' 95% 62%)';tubes.forEach(t=>t.style.setProperty('--fill',(p*100).toFixed(1)+'%'));tube.style.setProperty('--c',c);document.getElementById('billv').style.color=c;rng.setAttribute('aria-valuetext','฿'+b.toLocaleString('en-US'));const k=b/4.5/150*35000;cap.innerHTML=cap.dataset.t.replace('{s}',(b/4.5/150).toFixed(1)).replace('{c}','<b>฿'+(Math.round(k/1000)*1000).toLocaleString('en-US')+'</b>').replace('{m}','<b>'+Math.round(k/b)+'</b>');}
+function fromY(e){const r=e.currentTarget.getBoundingClientRect();const t=Math.min(1,Math.max(0,1-(e.clientY-r.top)/r.height));rng.value=Math.round(t*1000);calc();}
+tubes.forEach(t=>{t.addEventListener('pointerdown',e=>{t.setPointerCapture(e.pointerId);fromY(e);rng.focus({preventScroll:true});});t.addEventListener('pointermove',e=>{if(t.hasPointerCapture(e.pointerId))fromY(e);});});
 document.getElementById('bill').addEventListener('input',calc);calc();
 </script>
 

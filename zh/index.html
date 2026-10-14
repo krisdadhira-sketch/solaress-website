@@ -185,9 +185,9 @@ h1,h2,h3{letter-spacing:0}h1{line-height:1.16}h2{line-height:1.2}
 <div>
 <label for="bill">目前每月电费 · 泰铢 / 月</label>
 <div class="bill" id="billv">฿5,000</div>
-<div class="meter"><div class="col"><b>电费</b><div class="tube"><div class="liquid"></div><input type="range" id="bill" min="0" max="1000" step="1" value="201" aria-label="每月电费"></div></div><div class="scale" aria-hidden="true"><span style="bottom:100%">฿100,000</span><span class="tier" style="bottom:44.1%">≈ ฿20,000<i> · 企业</i></span><span class="tier" style="bottom:15.5%">≈ ฿3,400<i> · 家庭</i></span><span style="bottom:0">฿1,000</span></div><div class="col" aria-hidden="true"><b>安装费</b><div class="tube cash"><div class="liquid"></div></div></div><div class="scale cost" aria-hidden="true"><span style="bottom:100%">฿5.2M<i> · 148 kWp</i></span><span class="tier" style="bottom:44.1%">฿1.1M<i> · 30 kWp</i></span><span class="tier" style="bottom:15.5%">฿175k<i> · 5 kWp</i></span><span style="bottom:0">฿52k<i> · 1.5 kWp</i></span></div></div><p class="hint">↑ 沿着管子往上拖：越高，电费负担越重</p>
+<div class="meter"><div class="col"><b>电费</b><div class="tube"><div class="liquid"></div><input type="range" id="bill" min="0" max="1000" step="1" value="201" aria-label="每月电费"></div></div><div class="scale" aria-hidden="true"><span style="bottom:100%">฿100,000</span><span class="tier" style="bottom:44.1%">≈ ฿20,000<i> · 企业</i></span><span class="tier" style="bottom:15.5%">≈ ฿3,400<i> · 家庭</i></span><span style="bottom:0">฿1,000</span></div><div class="col" aria-hidden="true"><b>安装费</b><div class="tube cash"><div class="liquid"></div></div></div><div class="scale cost" aria-hidden="true"><span style="bottom:100%">฿2.9M<i> · 148 kWp</i></span><span class="tier" style="bottom:44.1%">฿670k<i> · 30 kWp</i></span><span class="tier" style="bottom:15.5%">฿153k<i> · 5 kWp</i></span><span style="bottom:0">฿52k<i> · 1.5 kWp</i></span></div></div><p class="hint">↑ 沿着管子往上拖：越高，电费负担越重</p>
 <p class="cashcap" id="cashcap" aria-live="polite" data-t="银色管：<b>{s} kWp</b> 系统一次性安装费用 ≈ {c}，约等于目前 {m} 个月的电费。"></p>
-<p class="note">估算依据：泰国综合电价 ฿4.5/kWh、每天 5 小时峰值日照、85% 的电费抵扣比例。最终数据以咨询时确认的方案为准。</p>
+<p class="note">估算依据：泰国综合电价 ฿4.5/kWh、每天 5 小时峰值日照、85% 的电费抵扣比例。最终数据以咨询时确认的方案为准。系统越大，每 kWp 价格越低。</p>
 </div>
 <div class="out">
 <small>预计每年节省</small>
@@ -200,7 +200,7 @@ h1,h2,h3{letter-spacing:0}h1{line-height:1.16}h2{line-height:1.2}
 </div>
 <small>安装费用（泰国平均水平）</small>
 <div style="font-size:26px;font-weight:700" id="o-cost">฿259,000</div>
-<small>约 ฿35,000 / kWp，不含电池</small>
+<small>约 <span id="o-rate">฿35,000</span> / kWp，不含电池</small>
 <div style="margin-top:22px"><a class="btn" href="#consult">预约咨询</a></div>
 </div></div></div></section>
 
@@ -284,13 +284,14 @@ h1,h2,h3{letter-spacing:0}h1{line-height:1.16}h2{line-height:1.2}
 const P=[["681.6 kWp","Pattalung Betagro","泰国博他仑府","betagro"],["250 kWp","Boromarajonani 护理学院","泰国董里府"],["200 kWp","Wichian Matu","泰国董里府"],["100 kWp","董里幼儿园","泰国董里府","trang-kindergarten"],["70 kWp","董里农业学院","泰国董里府","trang-agri"],["50 kWp","Phetsavanh Car Care","老挝万象","phetsavanh"],["40 kWp 离网","Mon Mekha","清莱府 Doi Chang"],["20 kWp 并网","Janjwa 养鸡场","清莱府 Mae Jan"],["20 kWp","GT Sport & Design","清莱府 Ban Du","gt-sport"],["13 kWp","Wild Solar","泰国南邦府","wild-solar"],["10.4 kWp + 300 Ah","Doi Mek","清莱府 Mae Jan","doi-mek"],["8 kWp","Muangpong","缅甸大其力","muangpong"],["8 kWp","Bryde 餐厅","泰国甲米府","bryde"],["5.0 kWp 三相","Ban Talart","清迈府 Sankampaeng","ban-talart"],["5.0 kWp","Roy and Avis 住宅","清迈府 Sansai","roy-avis"],["5.0 kWp","Angel Villa","清迈府 Prao","prao"]];
 document.getElementById('projgrid').innerHTML=P.map((p,i)=>`<article${p[3]?` class="ph" style="background-image:url(/images/project-${p[3]}.jpg)" role="img" aria-label="${p[1]} 光伏安装项目，${p[2]}"`:''}><div class="k">${String(i+1).padStart(2,'0')} / ${P.length}</div><div><div class="cap">${p[0]}</div><h3>${p[1].replace('&','&amp;')}</h3><div class="loc">${p[2]}</div></div></article>`).join('');
 const f=n=>'฿'+Math.round(n).toLocaleString('en-US');
-function calc(){const p=+document.getElementById('bill').value/1000;const b=Math.max(1000,Math.round((1000+99000*p*p)/500)*500);tubeShow(p,b);const size=b/4.5/150;const save=b*12*.85;const cost=size*35000;
+const rate=s=>{const L=Math.log2;if(s<=3)return 35000;let x=35000*Math.pow(.83,L(Math.min(s,10)/3));if(s>10)x*=Math.pow(.93,L(Math.min(s,100)/10));if(s>100)x*=Math.pow(.96,L(s/100));return x;};
+function calc(){const p=+document.getElementById('bill').value/1000;const b=Math.max(1000,Math.round((1000+99000*p*p)/500)*500);tubeShow(p,b);const size=b/4.5/150;const save=b*12*.85;const cost=size*rate(size);
 document.getElementById('billv').textContent=f(b);document.getElementById('o-save').textContent=f(save);
 document.getElementById('o-size').textContent=size.toFixed(1)+' kWp';document.getElementById('o-pay').textContent=(cost/save).toFixed(1)+' 年';
 document.getElementById('o-co2').textContent=(size*5*365*.0005).toFixed(1)+' 吨/年';document.getElementById('o-25').textContent='฿'+Math.round(save*25/1000).toLocaleString('en-US')+'k';
-document.getElementById('o-cost').textContent=f(Math.round(cost/1000)*1000);}
+document.getElementById('o-cost').textContent=f(Math.round(cost/1000)*1000);document.getElementById('o-rate').textContent=f(Math.round(rate(size)/100)*100);}
 const tubes=document.querySelectorAll('.meter .tube'),tube=tubes[0],rng=document.getElementById('bill'),cap=document.getElementById('cashcap');
-function tubeShow(p,b){const c='hsl('+Math.round(220+125*p)+' 95% 62%)';tubes.forEach(t=>t.style.setProperty('--fill',(p*100).toFixed(1)+'%'));tube.style.setProperty('--c',c);document.getElementById('billv').style.color=c;rng.setAttribute('aria-valuetext','฿'+b.toLocaleString('en-US'));const k=b/4.5/150*35000;cap.innerHTML=cap.dataset.t.replace('{s}',(b/4.5/150).toFixed(1)).replace('{c}','<b>฿'+(Math.round(k/1000)*1000).toLocaleString('en-US')+'</b>').replace('{m}','<b>'+Math.round(k/b)+'</b>');}
+function tubeShow(p,b){const c='hsl('+Math.round(220+125*p)+' 95% 62%)';tubes.forEach(t=>t.style.setProperty('--fill',(p*100).toFixed(1)+'%'));tube.style.setProperty('--c',c);document.getElementById('billv').style.color=c;rng.setAttribute('aria-valuetext','฿'+b.toLocaleString('en-US'));const k=b/4.5/150*rate(b/4.5/150);cap.innerHTML=cap.dataset.t.replace('{s}',(b/4.5/150).toFixed(1)).replace('{c}','<b>฿'+(Math.round(k/1000)*1000).toLocaleString('en-US')+'</b>').replace('{m}','<b>'+Math.round(k/b)+'</b>');}
 function fromY(e){const r=e.currentTarget.getBoundingClientRect();const t=Math.min(1,Math.max(0,1-(e.clientY-r.top)/r.height));rng.value=Math.round(t*1000);calc();}
 tubes.forEach(t=>{t.addEventListener('pointerdown',e=>{t.setPointerCapture(e.pointerId);fromY(e);rng.focus({preventScroll:true});});t.addEventListener('pointermove',e=>{if(t.hasPointerCapture(e.pointerId))fromY(e);});});
 document.getElementById('bill').addEventListener('input',calc);calc();

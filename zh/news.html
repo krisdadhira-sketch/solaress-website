@@ -137,6 +137,13 @@ h1,h2,h3{letter-spacing:0}h1{line-height:1.16}h2{line-height:1.2}
 .eyebrow,.btn,.nav nav,.stats span,.tags span,.calc label,.kv span,.out small,.proj .loc,.voices figcaption,.mini b,.ticks,form label,.gal figcaption,.faqnav a,.pick h3,.card .tag,.steps,.steps b,.spec dt,.dltext small,.tnote .meta,.mform label,footer{letter-spacing:.03em}
 .tfb{background:var(--sky);color:var(--ink);border-top:1px solid var(--line);padding-block:14px;font-size:13px;line-height:1.7}.tfb p{max-width:96ch}.tfb a{color:var(--blue);font-weight:500}
 </style>
+<style>
+.gal{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:22px}
+.gal figure{margin:0;min-width:0}
+.gal img{display:block;width:100%;height:240px;object-fit:cover;background:var(--line)}
+.gal figcaption{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);margin-top:6px}
+@media(max-width:520px){.gal{grid-template-columns:minmax(0,1fr)}.gal img{height:auto}}
+</style>
 </head>
 <body>
 <header class="nav"><div class="wrap">
@@ -144,7 +151,28 @@ h1,h2,h3{letter-spacing:0}h1{line-height:1.16}h2{line-height:1.2}
 <nav><a href="/zh/#services">理念</a><span class="dd"><a href="/zh/#projects">项目案例</a><span class="ddm"><a href="/zh/#calculator">节省测算</a><a href="/zh/technical-notes.html">技术资料</a></span></span><a href="/zh/picks.html">优选设备</a><a href="/zh/news.html">新闻</a><span class="dd end"><a href="/zh/#consult">预约咨询</a><span class="ddm"><a href="/zh/faq.html">常见问题</a></span></span><span class="langsw"><a href="/news.html" lang="en">EN</a><a href="/th/news.html" lang="th" style="font-family:var(--thai)">ไทย</a><a href="/zh/news.html" lang="zh-Hans" aria-current="true">中文</a></span></nav>
 </div></header>
 <section class="dark band" style="padding-block:64px"><div class="wrap"><p class="eyebrow">新闻</p><h1 style="font-size:clamp(36px,6vw,64px)">光伏新闻，<br>通俗易懂。</h1><p class="lede" style="margin-top:18px">简要介绍与我们客户相关的行业新闻，并附上原始出处链接。</p></div></section>
-<section class="band light" style="padding-block:64px"><div class="wrap"><article id="rcbo-direction" style="max-width:760px">
+<section class="band light" style="padding-block:64px"><div class="wrap"><article id="combiner-ats-panels" style="max-width:760px">
+<p class="eyebrow">2026年10月15日 · 来自我们的车间</p><h2 style="font-size:clamp(26px,3.6vw,40px)">两台电柜，出厂前已完成接线与测试</h2>
+<p class="lede" style="margin-top:16px;opacity:1">本周 Solar ESS 团队为清莱的一个光伏项目完成了两台电柜：一台把电源分配到四个回路的配电柜，以及一台让建筑在光伏和电网之间切换的控制柜。两台电柜都在我们的车间完成接线、标识和测试，到现场只需安装和接线。</p>
+<p style="margin-top:14px"><b>配电柜（MDB）。</b>电源经一个总断路器进入，再分配到 LP1 至 LP4 四个出线断路器，每个对应一个负载回路。总断路器之后装有浪涌保护器（SPD），把雷击和开关产生的过电压导入大地；柜门上的数字仪表可随时显示电压和电流。透明护罩防止手指触碰带电母排，柜门上的单线图与柜内实际接线一致。</p>
+<p style="margin-top:14px"><b>光伏 / 电网控制柜。</b>该柜接入两路电源：光伏（经逆变器）和电网（PEA），每路各经一个 100 A 断路器，由自动转换开关（ATS）决定由哪一路为建筑供电。控制柜有三种运行模式：</p>
+<ul style="margin-top:10px"><li><b>手动模式：</b>由人转动柜门上的选择开关来选择电源。</li><li><b>Wi-Fi 模式：</b>业主通过手机应用切换电源。</li><li><b>定时模式：</b>按预设时间切换电源，例如白天用光伏、夜间用电网。</li></ul>
+<p style="margin-top:14px">指示灯显示每路电源的三相状态，两侧各有一块仪表显示供电情况；每条控制线都经过各自的保险丝和继电器，并有编号，方便技术人员日后排查。柜门内侧贴有泰文模式说明图，供业主参考。</p>
+<p style="margin-top:14px"><b>对您意味着什么：</b>做工良好的电柜是光伏系统中您很少看到的部分，却决定了电力分配是否安全、日后维护是否方便。如果您要在拥有多路电源的建筑中加装光伏，欢迎咨询 ATS 控制柜是否适合。我们选用的断路器、浪涌保护器和 ATS 见 <a href='/zh/picks'>Our picks</a> 页面。</p>
+<div class="gal">
+<figure><img loading="lazy" src="/images/news-combiner-mdb-front.jpg" alt="配电柜门：仪表、警示标志和四路单线图"><figcaption>配电柜（MDB）外观</figcaption></figure>
+<figure><img loading="lazy" src="/images/news-combiner-mdb-inside.jpg" alt="配电柜内部：总断路器、浪涌保护器、透明罩下的母排和四个出线断路器"><figcaption>配电柜内部：总断路器至 LP1–LP4</figcaption></figure>
+<figure><img loading="lazy" src="/images/news-combiner-mdb-spd.jpg" alt="浪涌保护器和保险丝座接在总断路器后"><figcaption>总断路器后的浪涌保护器（SPD）</figcaption></figure>
+<figure><img loading="lazy" src="/images/news-combiner-ats-panel-front.jpg" alt="控制柜门：相位指示灯、两块仪表、电源开关和模式选择开关"><figcaption>光伏 / 电网控制柜</figcaption></figure>
+<figure><img loading="lazy" src="/images/news-combiner-ats-panel-inside.jpg" alt="控制柜内部：两个 100 A 断路器、转换开关、保险丝、继电器和 Wi-Fi 控制器"><figcaption>控制柜内部</figcaption></figure>
+<figure><img loading="lazy" src="/images/news-combiner-ats-switch.jpg" alt="四极自动转换开关，端子按相位颜色区分"><figcaption>自动转换开关（ATS）</figcaption></figure>
+<figure><img loading="lazy" src="/images/news-combiner-ats-breakers.jpg" alt="两个 100 A 断路器，标有 GRID-INV 和 GRID"><figcaption>每路电源一个断路器：光伏逆变器与电网</figcaption></figure>
+<figure><img loading="lazy" src="/images/news-combiner-ats-wifi-timer.jpg" alt="导轨上的 Wi-Fi 开关模块和数字定时器"><figcaption>Wi-Fi 控制与定时器</figcaption></figure>
+<figure><img loading="lazy" src="/images/news-combiner-ats-fuses-relays.jpg" alt="控制保险丝 F1–F7 和继电器 R1–R3，导线有编号"><figcaption>控制保险丝 F1–F7 与继电器 R1–R3</figcaption></figure>
+<figure><img loading="lazy" src="/images/news-combiner-ats-mode-chart.jpg" alt="泰文说明图：手动、Wi-Fi 和定时模式"><figcaption>给业主的模式说明图（泰文）</figcaption></figure>
+</div>
+</article>
+<article id="rcbo-direction" style="max-width:760px;margin-top:64px;padding-top:48px;border-top:1.5px solid var(--navy)">
 <p class="eyebrow">2026年10月14日 · 安全</p><h2 style="font-size:clamp(26px,3.6vw,40px)">一直好用的断路器，装了光伏之后却不一定了</h2>
 <p class="lede" style="margin-top:16px;opacity:1">RCBO 是一种小型断路器，在一个器件中同时提供漏电、过载和短路保护。大多数人从没想过电流从哪个方向流过它。但当家里装了光伏、电池或发电机后，这个问题就决定了断路器在故障时能否真正跳闸。</p>
 <p style="margin-top:14px"><b>一个常见的情况。</b>一栋房子多年来一直使用普通 RCBO。电流始终单向流动：从电网经总开关，再经各个 RCBO 流向灯具和插座。后来加装了混合逆变器和电池，并由逆变器为备用回路供电。一切通电后看似正常，但在这条回路上，电流现在可能从断路器设计时并未考虑的一侧进入。</p>

@@ -167,6 +167,17 @@ h1,h2,h3{letter-spacing:0}h1{line-height:1.16}h2{line-height:1.2}
 .cmpleg{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--mute);margin-top:10px}
 @media(max-width:620px){.cmpk{grid-template-columns:repeat(2,minmax(0,1fr))}}
 </style>
+<style>
+.gnd-red{display:grid;gap:12px;margin-top:20px}
+.gnd-red div{min-width:0}
+.gnd-red small{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.gnd-red .t{height:14px;background:var(--line);margin-top:6px;position:relative}
+.gnd-red .t i{position:absolute;top:0;bottom:0;background:var(--hot)}
+.gnd-red .t b{position:absolute;right:0;top:-20px;font-size:13px}
+.gnd-ck{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:12px;counter-reset:g}
+.gnd-ck li{counter-increment:g;display:grid;grid-template-columns:34px minmax(0,1fr);gap:12px;align-items:start;border-top:1px solid var(--line);padding-top:12px}
+.gnd-ck li::before{content:counter(g);display:grid;place-items:center;width:28px;height:28px;background:var(--navy);color:var(--white);font-family:var(--mono);font-size:13px}
+</style>
 </head>
 <body>
 <header class="nav"><div class="wrap">
@@ -174,7 +185,38 @@ h1,h2,h3{letter-spacing:0}h1{line-height:1.16}h2{line-height:1.2}
 <nav><a href="/zh/#services">理念</a><span class="dd"><a href="/zh/#projects">项目案例</a><span class="ddm"><a href="/zh/#calculator">节省测算</a><a href="/zh/technical-notes.html">技术资料</a></span></span><a href="/zh/picks.html">优选设备</a><a href="/zh/news.html">新闻</a><span class="dd end"><a href="/zh/#consult">预约咨询</a><span class="ddm"><a href="/zh/faq.html">常见问题</a></span></span><span class="langsw"><a href="/news.html" lang="en">EN</a><a href="/th/news.html" lang="th" style="font-family:var(--thai)">ไทย</a><a href="/zh/news.html" lang="zh-Hans" aria-current="true">中文</a></span></nav>
 </div></header>
 <section class="dark band" style="padding-block:64px"><div class="wrap"><p class="eyebrow">新闻</p><h1 style="font-size:clamp(36px,6vw,64px)">光伏新闻，<br>通俗易懂。</h1><p class="lede" style="margin-top:18px">简要介绍与我们客户相关的行业新闻，并附上原始出处链接。</p></div></section>
-<section class="band light" style="padding-block:64px"><div class="wrap"><article id="solis-s6-eh3p50k-v38-vs-21a" style="max-width:860px">
+<section class="band light" style="padding-block:64px"><div class="wrap"><article id="pv-grounding-points" style="max-width:760px">
+<p class="eyebrow">2026年10月15日 · 安全</p><h2 style="font-size:clamp(26px,3.6vw,40px)">光伏系统接地：为什么一个接地点不够</h2>
+<p class="lede" style="margin-top:16px;opacity:1">印度尼西亚的一项新研究显示，为光伏阵列增加<b>第二个接地点</b>，可将直接雷击产生的电压冲击降低约一半。我们结合其他最新研究、国际防雷标准和泰国电气安装规范来解读这项研究，结论如下。</p>
+<div class="cmpk"><div><small>增加第二点后电压降低</small><b>43–55%</b></div><div><small>土壤 30 → 3,000 Ωm</small><b>冲击更高</b></div><div><small>最佳接地点</small><b>靠近雷击点</b></div></div>
+<p style="margin-top:22px"><b>研究发现了什么。</b>Institut Teknologi Sepuluh Nopember 和 Universitas Hasanuddin 的研究人员对十块组件模拟了 50 kA 雷击，比较了通过组件边框接地与通过支架接地，改变接地点位置，并对比一个与两个接地连接。结果表明，接地点的位置和数量，比电流走边框还是走支架更重要。</p>
+<div class="gnd-red">
+<div><small>边框接地：增加第二接地点后的电压降幅</small><div class="t" role="img" aria-label="47.5–54.8%"><i style="left:47.5%;width:7.3%"></i><b>47.5–54.8%</b></div></div>
+<div><small>支架接地：增加第二接地点后的电压降幅</small><div class="t" role="img" aria-label="43.2–50.7%"><i style="left:43.2%;width:7.5%"></i><b>43.2–50.7%</b></div></div>
+</div>
+<p style="margin-top:18px">通过支架接地的峰值略低，因为其路径电阻更小。接地点靠近雷击点时电压最低，因为电流路径更短。在干燥或多岩石的土壤中（3,000 Ωm 对比 30 Ωm），所有电压都会升高。该研究为计算机仿真，未涉及电缆或逆变器损坏，因此反映的是趋势，而非实际现场的确切数值。</p>
+<p style="margin-top:22px"><b>其他研究和标准的补充。</b></p>
+<ul style="margin-top:10px;display:grid;gap:10px">
+<li><b>地面电站需要接地网，而不只是接地棒。</b>格拉茨工业大学对 84 m × 84 m 光伏电站的研究发现，角落雷击产生的跨步电压最高，更密的等电位网效果更好，而在高电阻率土壤中，仅达到常用的 10 Ω 接地电阻并不能保证跨步电压安全。</li>
+<li><b>先等电位连接，再接地。</b>所有组件边框、导轨和金属部件应连接成一个连续系统，并以低电阻导体接到建筑的总接地端子。直流导线本身不接地，由逆变器监测其绝缘。</li>
+<li><b>有避雷针时设计不同。</b>如果建筑有防雷系统，阵列应位于其保护范围内并保持规定的间隔距离；若无法保持，则须用可承载雷电流的导体与其连接，并在直流侧安装 1 型浪涌保护器。业内工程师提醒，仅把阵列夹到避雷带上，可能使雷电流沿直流电缆流向逆变器。</li>
+<li><b>两侧都要浪涌保护。</b>在直流和交流两侧尽量靠近逆变器安装浪涌保护器；当保护器与设备之间的电缆超过约 10 m 时，应再加一组。长距离直流线路最好用金属桥架或铠装电缆，而不是塑料管。</li>
+<li><b>泰国规定。</b>泰国工程师协会（EIT）电气安装标准（2556 年版）要求接地棒直径不小于 16 mm、长度不小于 2.40 m、打入地下不少于 2.40 m；金属建筑结构接地以 5 Ω 为限；接地导体按主干线截面选取（主干线不超过 35 mm² 时，铜导体不小于 10 mm²）。</li>
+</ul>
+<p style="margin-top:22px"><b>我们推荐的做法</b></p>
+<ol class="gnd-ck">
+<li><span>用合格的接地夹将所有边框和导轨连接成一个连续系统，并接到建筑总接地。</span></li>
+<li><span>在大型屋顶和地面电站上，使用多个接地连接，布置在阵列两端和角落，接地路径短而直。</span></li>
+<li><span>交付时测量接地电阻；在干燥或多岩石土壤中，增加接地棒或环形接地体直至读数合格。</span></li>
+<li><span>在逆变器处的直流和交流两侧安装浪涌保护器，线路较长时在阵列附近再加一组。</span></li>
+<li><span>直流正负极电缆并行敷设以避免形成环路，长距离线路使用金属桥架或线管。</span></li>
+<li><span>有避雷系统时，按间隔距离或完整的雷电等电位连接设计，切勿只把阵列绑到避雷带上。</span></li>
+<li><span>每年检查一次：接地夹松动、锈蚀及浪涌保护器状态指示。</span></li>
+</ol>
+<p style="margin-top:22px"><b>对您意味着什么：</b>与烧毁的逆变器相比，良好的接地成本很低。如果您的系统只有一根接地线，或您不确定它是如何接地的，欢迎让我们检查。此项工作须由合格电工完成，最终以相关标准和设备厂家说明为准。我们选用的浪涌保护器见 <a href='/zh/picks'>Our picks</a> 页面。</p>
+<p style="margin-top:22px;font-size:14px">来源: <a href="https://www.pv-magazine.com/2026/10/12/multiple-grounding-points-cut-lightning-induced-overvoltage-in-solar-panels-by-up-to-55/" rel="noopener">pv magazine: multiple grounding points (Indonesia study)</a> · <a href="https://www.pv-magazine.com/2026/07/02/new-research-shows-ground-mounted-pv-needs-enhanced-earthing-systems-to-safely-manage-lightning-induced-step-voltages/" rel="noopener">pv magazine: ground-mounted PV step voltages (Graz study)</a> · <a href="https://www.dehn-africa.com/en-za/node/17408" rel="noopener">DEHN: protection for PV systems on buildings</a> · <a href="https://strathprints.strath.ac.uk/90401/1/Jacob-Siew-ISH-2023-Practical-experience-from-industry-on-the-lightning-protection-of-solar-PV-modules.pdf" rel="noopener">University of Strathclyde: industry experience on PV lightning protection</a> · <a href="https://blog.rmutl.ac.th/montri/assets/ee4-%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b8%95%e0%b9%88%e0%b8%ad%e0%b8%a5%e0%b8%87%e0%b8%94%e0%b8%b4%e0%b8%99.pdf" rel="noopener">RMUTL lecture notes on EIT 2556 earthing</a></p>
+</article>
+<article id="solis-s6-eh3p50k-v38-vs-21a" style="max-width:860px;margin-top:64px;padding-top:48px;border-top:1.5px solid var(--navy)">
 <p class="eyebrow">2026年10月15日 · 逆变器</p><h2 style="font-size:clamp(26px,3.6vw,40px)">Solis S6 50 kW 混合逆变器：原版与新“21A”版对比</h2>
 <p class="lede" style="margin-top:16px;opacity:1">Solis 更新了三相高压混合逆变器。<b>S6-EH3P50K-H</b> 保持 50 kW 额定功率和相同机身，但新的 <b>21A</b> 版本每路光伏组串和每个电池端口可承受更大电流，支持更大容量的电池模块，并可并机组成更大系统。以下为两者并列对比。</p>
 <div class="cmpk">

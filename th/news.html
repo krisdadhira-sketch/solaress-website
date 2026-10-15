@@ -170,6 +170,17 @@ h1{line-height:1.22;font-weight:700}h2{line-height:1.3}h3{line-height:1.4}.subh,
 .cmpleg{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--mute);margin-top:10px}
 @media(max-width:620px){.cmpk{grid-template-columns:repeat(2,minmax(0,1fr))}}
 </style>
+<style>
+.gnd-red{display:grid;gap:12px;margin-top:20px}
+.gnd-red div{min-width:0}
+.gnd-red small{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.gnd-red .t{height:14px;background:var(--line);margin-top:6px;position:relative}
+.gnd-red .t i{position:absolute;top:0;bottom:0;background:var(--hot)}
+.gnd-red .t b{position:absolute;right:0;top:-20px;font-size:13px}
+.gnd-ck{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:12px;counter-reset:g}
+.gnd-ck li{counter-increment:g;display:grid;grid-template-columns:34px minmax(0,1fr);gap:12px;align-items:start;border-top:1px solid var(--line);padding-top:12px}
+.gnd-ck li::before{content:counter(g);display:grid;place-items:center;width:28px;height:28px;background:var(--navy);color:var(--white);font-family:var(--mono);font-size:13px}
+</style>
 </head>
 <body>
 <header class="nav"><div class="wrap">
@@ -177,7 +188,38 @@ h1{line-height:1.22;font-weight:700}h2{line-height:1.3}h3{line-height:1.4}.subh,
 <nav><a href="/th/#services">วิสัยทัศน์</a><span class="dd"><a href="/th/#projects">ผลงาน</a><span class="ddm"><a href="/th/#calculator">คำนวณค่าไฟ</a><a href="/th/technical-notes.html">ข้อมูลเทคนิค</a></span></span><a href="/th/picks.html">อุปกรณ์ที่เราเลือก</a><a href="/th/news.html">ข่าวสาร</a><span class="dd end"><a href="/th/#consult">ขอคำปรึกษา</a><span class="ddm"><a href="/th/faq.html">คำถามที่พบบ่อย</a></span></span><span class="langsw"><a href="/news.html" lang="en">EN</a><a href="/th/news.html" lang="th" aria-current="true">ไทย</a><a href="/zh/news.html" lang="zh-Hans">中文</a></span></nav>
 </div></header>
 <section class="dark band" style="padding-block:64px"><div class="wrap"><p class="eyebrow">ข่าวสาร</p><h1 style="font-size:clamp(36px,6vw,64px)">ข่าวโซลาร์<br>ฉบับอ่านง่าย</h1><p class="lede" style="margin-top:18px">สรุปข่าววงการโซลาร์ที่สำคัญต่อลูกค้าของเราแบบสั้น ๆ พร้อมลิงก์ไปยังแหล่งข่าวต้นฉบับ</p></div></section>
-<section class="band light" style="padding-block:64px"><div class="wrap"><article id="solis-s6-eh3p50k-v38-vs-21a" style="max-width:860px">
+<section class="band light" style="padding-block:64px"><div class="wrap"><article id="pv-grounding-points" style="max-width:760px">
+<p class="eyebrow">15 ตุลาคม 2026 · ความปลอดภัย</p><h2 style="font-size:clamp(26px,3.6vw,40px)">การต่อลงดินระบบโซลาร์: ทำไมจุดต่อลงดินจุดเดียวไม่พอ</h2>
+<p class="lede" style="margin-top:16px;opacity:1">งานวิจัยใหม่จากอินโดนีเซียพบว่า การเพิ่ม<b>จุดต่อลงดินจุดที่สอง</b>ให้แผงโซลาร์ ช่วยลดแรงดันกระชากจากฟ้าผ่าโดยตรงได้ราวครึ่งหนึ่ง เราอ่านงานวิจัยนี้ควบคู่กับงานวิจัยอื่นล่าสุด มาตรฐานป้องกันฟ้าผ่าสากล และมาตรฐานการติดตั้งทางไฟฟ้าของไทย สรุปได้ดังนี้</p>
+<div class="cmpk"><div><small>ลดแรงดันเมื่อเพิ่มจุดที่ 2</small><b>43–55%</b></div><div><small>ดิน 30 → 3,000 Ωm</small><b>แรงดันสูงขึ้น</b></div><div><small>จุดต่อลงดินที่ดีที่สุด</small><b>ใกล้จุดฟ้าผ่า</b></div></div>
+<p style="margin-top:22px"><b>งานวิจัยพบอะไร</b> นักวิจัยจาก Institut Teknologi Sepuluh Nopember และ Universitas Hasanuddin จำลองฟ้าผ่า 50 kA ลงชุดแผง 10 แผง เปรียบเทียบการต่อลงดินผ่านกรอบแผงกับผ่านโครงสร้างยึดแผง ย้ายตำแหน่งจุดต่อลงดิน และทดลองต่อลงดินหนึ่งจุดเทียบสองจุด ผลคือ ตำแหน่งและจำนวนจุดต่อลงดินมีผลมากกว่าการเลือกว่าจะให้กระแสไหลผ่านกรอบแผงหรือโครงสร้าง</p>
+<div class="gnd-red">
+<div><small>ต่อลงดินผ่านกรอบแผง: แรงดันลดลงเมื่อเพิ่มจุดที่สอง</small><div class="t" role="img" aria-label="47.5–54.8%"><i style="left:47.5%;width:7.3%"></i><b>47.5–54.8%</b></div></div>
+<div><small>ต่อลงดินผ่านโครงสร้าง: แรงดันลดลงเมื่อเพิ่มจุดที่สอง</small><div class="t" role="img" aria-label="43.2–50.7%"><i style="left:43.2%;width:7.5%"></i><b>43.2–50.7%</b></div></div>
+</div>
+<p style="margin-top:18px">การต่อลงดินผ่านโครงสร้างให้แรงดันสูงสุดต่ำกว่าเล็กน้อย เพราะเส้นทางมีความต้านทานต่ำกว่า จุดต่อลงดินที่อยู่ใกล้จุดฟ้าผ่าให้แรงดันต่ำที่สุด เพราะกระแสเดินทางสั้นกว่า ในดินแห้งหรือดินหิน (3,000 Ωm เทียบกับ 30 Ωm) แรงดันสูงขึ้นทุกกรณี งานนี้เป็นการจำลองด้วยคอมพิวเตอร์และไม่ได้ครอบคลุมความเสียหายต่อสายไฟหรืออินเวอร์เตอร์ จึงบอกแนวโน้ม ไม่ใช่ตัวเลขจริงของหน้างาน</p>
+<p style="margin-top:22px"><b>งานวิจัยอื่นและมาตรฐานบอกอะไรเพิ่ม</b></p>
+<ul style="margin-top:10px;display:grid;gap:10px">
+<li><b>โซลาร์ฟาร์มบนพื้นต้องมีตาข่ายดิน ไม่ใช่แค่หลักดิน</b> งานวิจัยของ Graz University of Technology ในโซลาร์ฟาร์มขนาด 84 × 84 ม. พบว่าฟ้าผ่าที่มุมทำให้แรงดันช่วงก้าวสูงที่สุด ตาข่ายเชื่อมที่ถี่กว่าได้ผลดีกว่า และการได้ค่าความต้านทานดิน 10 Ω ตามที่ใช้กันทั่วไป ไม่ได้รับประกันความปลอดภัยในดินที่มีความต้านทานสูง</li>
+<li><b>เชื่อมให้ถึงกันก่อน แล้วจึงต่อลงดิน</b> กรอบแผง รางยึด และชิ้นส่วนโลหะทั้งหมดควรเชื่อมเป็นระบบเดียวต่อเนื่อง และต่อเข้ากับขั้วต่อดินหลักของอาคารด้วยตัวนำความต้านทานต่ำ ส่วนสายไฟ DC ไม่ต่อลงดิน อินเวอร์เตอร์จะคอยตรวจค่าฉนวนแทน</li>
+<li><b>ถ้ามีระบบล่อฟ้า การออกแบบจะต่างไป</b> หากอาคารมีระบบป้องกันฟ้าผ่า แผงควรอยู่ในเขตป้องกันโดยเว้นระยะห่างตามที่กำหนด หรือหากเว้นระยะไม่ได้ ต้องเชื่อมกับระบบล่อฟ้าด้วยตัวนำที่รับกระแสฟ้าผ่าได้ และติดอุปกรณ์ป้องกันไฟกระชาก Type 1 ฝั่ง DC วิศวกรในอุตสาหกรรมเตือนว่า การหนีบแผงเข้ากับสายล่อฟ้าเฉย ๆ อาจทำให้กระแสฟ้าผ่าวิ่งตามสาย DC ไปถึงอินเวอร์เตอร์</li>
+<li><b>ป้องกันไฟกระชากทั้งสองฝั่ง</b> ติด SPD ทั้งฝั่ง DC และ AC ใกล้อินเวอร์เตอร์ที่สุด และเพิ่มอีกชุดเมื่อสายระหว่าง SPD กับอุปกรณ์ยาวเกินประมาณ 10 ม. สาย DC ที่เดินไกลควรอยู่ในรางโลหะหรือใช้สายเกราะ ดีกว่าท่อพลาสติก</li>
+<li><b>ข้อกำหนดของไทย</b> มาตรฐานการติดตั้งทางไฟฟ้าของ วสท. (2556) กำหนดหลักดินเส้นผ่านศูนย์กลางไม่น้อยกว่า 16 มม. ยาวไม่น้อยกว่า 2.40 ม. ปักลึกไม่น้อยกว่า 2.40 ม. กำหนดค่า 5 Ω สำหรับการต่อลงดินโครงสร้างอาคารที่เป็นโลหะ และกำหนดขนาดสายต่อหลักดินตามขนาดสายประธาน (ทองแดงไม่น้อยกว่า 10 mm² สำหรับสายประธานไม่เกิน 35 mm²)</li>
+</ul>
+<p style="margin-top:22px"><b>แนวทางที่เราแนะนำ</b></p>
+<ol class="gnd-ck">
+<li><span>เชื่อมกรอบแผงและรางทุกชิ้นเป็นระบบเดียวต่อเนื่องด้วยแคลมป์ต่อลงดินที่ถูกต้อง และต่อเข้ากับดินหลักของอาคาร</span></li>
+<li><span>หลังคาขนาดใหญ่และโซลาร์บนพื้น ควรต่อลงดินมากกว่าหนึ่งจุด วางที่ปลายและมุมของแถวแผง ให้เส้นทางลงดินสั้นและตรง</span></li>
+<li><span>วัดค่าความต้านทานดินตอนส่งมอบงาน หากดินแห้งหรือเป็นหิน เพิ่มหลักดินหรือวงแหวนดินจนได้ค่าที่ยอมรับได้</span></li>
+<li><span>ติด SPD ทั้งฝั่ง DC และ AC ที่อินเวอร์เตอร์ และเพิ่มอีกชุดใกล้แผงเมื่อสายเดินไกล</span></li>
+<li><span>เดินสาย DC บวกและลบคู่กันเพื่อไม่ให้เกิดวงลูป และใช้รางหรือท่อโลหะสำหรับระยะไกล</span></li>
+<li><span>ถ้ามีระบบล่อฟ้า ให้ออกแบบระยะห่างหรือการเชื่อมฟ้าผ่าเต็มรูปแบบ ห้ามแค่ผูกแผงเข้ากับสายล่อฟ้า</span></li>
+<li><span>ตรวจปีละครั้ง: แคลมป์หลวม สนิม และไฟแสดงสถานะ SPD</span></li>
+</ol>
+<p style="margin-top:22px"><b>สิ่งนี้มีความหมายกับคุณอย่างไร:</b> การต่อลงดินที่ดีราคาถูกกว่าอินเวอร์เตอร์ที่ไหม้มาก หากระบบของคุณมีสายดินเส้นเดียว หรือไม่แน่ใจว่าต่อลงดินไว้อย่างไร ให้เราช่วยตรวจได้ งานนี้ต้องทำโดยช่างไฟฟ้าที่มีคุณวุฒิ และมาตรฐานที่เกี่ยวข้องกับคู่มือของผู้ผลิตอุปกรณ์เป็นข้อยุติ ดูตัวเลือก SPD ของเราได้ที่หน้า <a href='/th/picks'>Our picks</a></p>
+<p style="margin-top:22px;font-size:14px">แหล่งที่มา: <a href="https://www.pv-magazine.com/2026/10/12/multiple-grounding-points-cut-lightning-induced-overvoltage-in-solar-panels-by-up-to-55/" rel="noopener">pv magazine: multiple grounding points (Indonesia study)</a> · <a href="https://www.pv-magazine.com/2026/07/02/new-research-shows-ground-mounted-pv-needs-enhanced-earthing-systems-to-safely-manage-lightning-induced-step-voltages/" rel="noopener">pv magazine: ground-mounted PV step voltages (Graz study)</a> · <a href="https://www.dehn-africa.com/en-za/node/17408" rel="noopener">DEHN: protection for PV systems on buildings</a> · <a href="https://strathprints.strath.ac.uk/90401/1/Jacob-Siew-ISH-2023-Practical-experience-from-industry-on-the-lightning-protection-of-solar-PV-modules.pdf" rel="noopener">University of Strathclyde: industry experience on PV lightning protection</a> · <a href="https://blog.rmutl.ac.th/montri/assets/ee4-%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b8%95%e0%b9%88%e0%b8%ad%e0%b8%a5%e0%b8%87%e0%b8%94%e0%b8%b4%e0%b8%99.pdf" rel="noopener">RMUTL lecture notes on EIT 2556 earthing</a></p>
+</article>
+<article id="solis-s6-eh3p50k-v38-vs-21a" style="max-width:860px;margin-top:64px;padding-top:48px;border-top:1.5px solid var(--navy)">
 <p class="eyebrow">15 ตุลาคม 2026 · อินเวอร์เตอร์</p><h2 style="font-size:clamp(26px,3.6vw,40px)">Solis S6 ไฮบริด 50 kW: รุ่นเดิมเทียบรุ่นใหม่ “21A”</h2>
 <p class="lede" style="margin-top:16px;opacity:1">Solis ปรับปรุงอินเวอร์เตอร์ไฮบริด 3 เฟสแรงดันสูง รุ่น <b>S6-EH3P50K-H</b> ยังคงพิกัด 50 kW และตัวเครื่องขนาดเดิม แต่รุ่นใหม่ <b>21A</b> รับกระแสจากแต่ละสตริงโซลาร์และแต่ละพอร์ตแบตเตอรี่ได้มากขึ้น รองรับโมดูลแบตเตอรี่ขนาดใหญ่ขึ้น และต่อขนานเป็นระบบใหญ่ขึ้นได้ นี่คือการเทียบแบบตัวต่อตัว</p>
 <div class="cmpk">

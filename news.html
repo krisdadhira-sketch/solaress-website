@@ -157,6 +157,17 @@ footer .wrap{display:flex;gap:24px;flex-wrap:wrap;justify-content:space-between;
 .cmpleg{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--mute);margin-top:10px}
 @media(max-width:620px){.cmpk{grid-template-columns:repeat(2,minmax(0,1fr))}}
 </style>
+<style>
+.gnd-red{display:grid;gap:12px;margin-top:20px}
+.gnd-red div{min-width:0}
+.gnd-red small{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.gnd-red .t{height:14px;background:var(--line);margin-top:6px;position:relative}
+.gnd-red .t i{position:absolute;top:0;bottom:0;background:var(--hot)}
+.gnd-red .t b{position:absolute;right:0;top:-20px;font-size:13px}
+.gnd-ck{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:12px;counter-reset:g}
+.gnd-ck li{counter-increment:g;display:grid;grid-template-columns:34px minmax(0,1fr);gap:12px;align-items:start;border-top:1px solid var(--line);padding-top:12px}
+.gnd-ck li::before{content:counter(g);display:grid;place-items:center;width:28px;height:28px;background:var(--navy);color:var(--white);font-family:var(--mono);font-size:13px}
+</style>
 </head>
 <body>
 <header class="nav"><div class="wrap">
@@ -164,7 +175,38 @@ footer .wrap{display:flex;gap:24px;flex-wrap:wrap;justify-content:space-between;
 <nav><a href="/#services">Vision</a><span class="dd"><a href="/#projects">Projects</a><span class="ddm"><a href="/#calculator">Savings</a><a href="/technical-notes.html">Technical</a></span></span><a href="/picks.html">Our picks</a><a href="/news.html">News</a><span class="dd end"><a href="/#consult">Book consultation</a><span class="ddm"><a href="/faq.html">FAQ</a></span></span><span class="langsw"><a href="/news.html" lang="en" aria-current="true">EN</a><a href="/th/news.html" lang="th" style="font-family:var(--thai)">ไทย</a><a href="/zh/news.html" lang="zh-Hans">中文</a></span></nav>
 </div></header>
 <section class="dark band" style="padding-block:64px"><div class="wrap"><p class="eyebrow">News</p><h1 style="font-size:clamp(36px,6vw,64px)">Solar news,<br>in plain words.</h1><p class="lede" style="margin-top:18px">Short summaries of industry news that matters to our customers, with a link to the original source.</p></div></section>
-<section class="band light" style="padding-block:64px"><div class="wrap"><article id="solis-s6-eh3p50k-v38-vs-21a" style="max-width:860px">
+<section class="band light" style="padding-block:64px"><div class="wrap"><article id="pv-grounding-points" style="max-width:760px">
+<p class="eyebrow">15 October 2026 · Safety</p><h2 style="font-size:clamp(26px,3.6vw,40px)">Grounding a solar system: why one earth point is not enough</h2>
+<p class="lede" style="margin-top:16px;opacity:1">New research from Indonesia shows that adding a <b>second grounding point</b> to a solar array can cut the voltage spike from a direct lightning strike by roughly half. We read the study alongside other recent research, the international lightning standards and the Thai wiring code. Here is what it adds up to.</p>
+<div class="cmpk"><div><small>Voltage cut with a 2nd point</small><b>43–55%</b></div><div><small>Soil 30 → 3,000 Ωm</small><b>Higher spikes</b></div><div><small>Best earth point</small><b>Nearest the strike</b></div></div>
+<p style="margin-top:22px"><b>What the study found.</b> Researchers at Institut Teknologi Sepuluh Nopember and Universitas Hasanuddin simulated a 50 kA lightning strike on a section of ten panels. They compared earthing through the panel frames with earthing through the mounting structure, moved the earth point around, and tried one versus two earth connections. Where the earth point sits, and how many there are, mattered more than whether the frames or the structure carried the current.</p>
+<div class="gnd-red">
+<div><small>Frames earthed: voltage reduction with a second earth point</small><div class="t" role="img" aria-label="47.5–54.8%"><i style="left:47.5%;width:7.3%"></i><b>47.5–54.8%</b></div></div>
+<div><small>Mounting structure earthed: voltage reduction with a second earth point</small><div class="t" role="img" aria-label="43.2–50.7%"><i style="left:43.2%;width:7.5%"></i><b>43.2–50.7%</b></div></div>
+</div>
+<p style="margin-top:18px">Earthing through the mounting structure gave slightly lower peaks because its path has lower resistance. An earth point close to where lightning strikes gave the lowest voltage, because the current has a shorter way to go. In poor, dry or rocky soil (3,000 Ωm against 30 Ωm), every voltage rose. The study is a computer simulation and does not cover damage to cables or inverters, so it shows the direction, not exact numbers for a real site.</p>
+<p style="margin-top:22px"><b>What other research and the standards add.</b></p>
+<ul style="margin-top:10px;display:grid;gap:10px">
+<li><b>Ground-mounted arrays need a mesh, not just a rod.</b> A Graz University of Technology study of an 84 m × 84 m solar farm found that strikes at the corners give the highest step voltages, that a tighter bonding mesh works better, and that meeting the common 10 Ω earth-resistance figure on its own does not guarantee safe step voltages in high-resistivity soil.</li>
+<li><b>Bond first, then earth.</b> All panel frames, rails and metal parts should be joined into one continuous system and connected to the building’s main earth terminal with a low-resistance link. The DC wires themselves are not earthed; the inverter watches their insulation instead.</li>
+<li><b>Lightning rods change the design.</b> If the building has a lightning protection system, the array should either sit inside its protected zone at the required separation distance, or, if that distance cannot be kept, be bonded to it with conductors that can carry lightning current and protected by Type 1 surge arresters on the DC side. Industry engineers warn that simply clamping the array to the lightning tape can send strike current down the DC cables to the inverter.</li>
+<li><b>Surge protection on both sides.</b> Fit SPDs on the DC and AC sides as close to the inverter as possible, and add another set when the cable between the arrester and the equipment runs longer than about 10 m. Long DC runs are better in metal tray or armoured cable than in plastic conduit.</li>
+<li><b>Thai rules.</b> The EIT wiring standard (2556) calls for earth rods at least 16 mm in diameter and 2.40 m long, driven at least 2.40 m into the ground, sets 5 Ω as the limit where a metal building structure is earthed, and sizes the earthing conductor by the main cable (at least 10 mm² copper for main conductors up to 35 mm²).</li>
+</ul>
+<p style="margin-top:22px"><b>The approach we recommend</b></p>
+<ol class="gnd-ck">
+<li><span>Bond every frame and rail into one continuous system with proper earthing clamps, and connect it to the building’s main earth.</span></li>
+<li><span>On larger roofs and ground mounts, use more than one earth connection, placed at the ends and corners of the array, with short, straight paths to the ground.</span></li>
+<li><span>Measure earth resistance at handover. In dry or rocky soil, add rods or a ring electrode until the reading is acceptable.</span></li>
+<li><span>Fit SPDs on both the DC and AC sides at the inverter, and add another set near the array when the cable run is long.</span></li>
+<li><span>Run DC plus and minus cables together to avoid loops, and use metal tray or conduit for long runs.</span></li>
+<li><span>Where there is a lightning rod system, design for the separation distance or full lightning bonding. Never just tie the array to the lightning tape.</span></li>
+<li><span>Inspect once a year: loose clamps, corrosion and SPD status indicators.</span></li>
+</ol>
+<p style="margin-top:22px"><b>What it means for you:</b> good earthing is cheap compared with a burnt inverter. If your system has a single earth wire, or you are not sure how it was earthed, ask us to check it. This is work for a qualified electrician, and the relevant standards and the equipment makers’ instructions have the final word. Our SPD choices are on the <a href='/picks'>Our picks</a> page.</p>
+<p style="margin-top:22px;font-size:14px">Sources: <a href="https://www.pv-magazine.com/2026/10/12/multiple-grounding-points-cut-lightning-induced-overvoltage-in-solar-panels-by-up-to-55/" rel="noopener">pv magazine: multiple grounding points (Indonesia study)</a> · <a href="https://www.pv-magazine.com/2026/07/02/new-research-shows-ground-mounted-pv-needs-enhanced-earthing-systems-to-safely-manage-lightning-induced-step-voltages/" rel="noopener">pv magazine: ground-mounted PV step voltages (Graz study)</a> · <a href="https://www.dehn-africa.com/en-za/node/17408" rel="noopener">DEHN: protection for PV systems on buildings</a> · <a href="https://strathprints.strath.ac.uk/90401/1/Jacob-Siew-ISH-2023-Practical-experience-from-industry-on-the-lightning-protection-of-solar-PV-modules.pdf" rel="noopener">University of Strathclyde: industry experience on PV lightning protection</a> · <a href="https://blog.rmutl.ac.th/montri/assets/ee4-%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b8%95%e0%b9%88%e0%b8%ad%e0%b8%a5%e0%b8%87%e0%b8%94%e0%b8%b4%e0%b8%99.pdf" rel="noopener">RMUTL lecture notes on EIT 2556 earthing</a></p>
+</article>
+<article id="solis-s6-eh3p50k-v38-vs-21a" style="max-width:860px;margin-top:64px;padding-top:48px;border-top:1.5px solid var(--navy)">
 <p class="eyebrow">15 October 2026 · Inverters</p><h2 style="font-size:clamp(26px,3.6vw,40px)">Solis S6 50 kW hybrid: the original vs the new “21A” version</h2>
 <p class="lede" style="margin-top:16px;opacity:1">Solis has refreshed its three-phase high-voltage hybrid inverter. The <b>S6-EH3P50K-H</b> keeps the same 50 kW rating and the same box, but the new <b>21A</b> version takes more current from each solar string and each battery port, works with larger battery modules and can be paralleled into bigger systems. Here are the two side by side.</p>
 <div class="cmpk">

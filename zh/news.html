@@ -178,6 +178,18 @@ h1,h2,h3{letter-spacing:0}h1{line-height:1.16}h2{line-height:1.2}
 .gnd-ck li{counter-increment:g;display:grid;grid-template-columns:34px minmax(0,1fr);gap:12px;align-items:start;border-top:1px solid var(--line);padding-top:12px}
 .gnd-ck li::before{content:counter(g);display:grid;place-items:center;width:28px;height:28px;background:var(--navy);color:var(--white);font-family:var(--mono);font-size:13px}
 </style>
+<style>
+.mk{display:grid;gap:14px;margin-top:22px}
+.mk .row{display:grid;grid-template-columns:150px minmax(0,1fr);gap:12px;align-items:center}
+.mk .lab{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.mk .bars{display:grid;gap:4px}
+.mk .b{height:18px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-size:12px;font-variant-numeric:tabular-nums;color:var(--ink)}
+.mk .b.y25{background:var(--sky)}
+.mk .b.y26{background:var(--hot);color:var(--white);font-weight:600}
+.mk .key{font-family:var(--mono);font-size:11px;color:var(--mute);display:flex;gap:16px}
+.mk .key i{display:inline-block;width:10px;height:10px;margin-right:6px;vertical-align:-1px}
+@media(max-width:520px){.mk .row{grid-template-columns:minmax(0,1fr)}}
+</style>
 </head>
 <body>
 <header class="nav"><div class="wrap">
@@ -185,7 +197,21 @@ h1,h2,h3{letter-spacing:0}h1{line-height:1.16}h2{line-height:1.2}
 <nav><a href="/zh/#services">理念</a><span class="dd"><a href="/zh/#projects">项目案例</a><span class="ddm"><a href="/zh/#calculator">节省测算</a><a href="/zh/technical-notes.html">技术资料</a></span></span><a href="/zh/picks.html">优选设备</a><a href="/zh/news.html">新闻</a><span class="dd end"><a href="/zh/#consult">预约咨询</a><span class="ddm"><a href="/zh/faq.html">常见问题</a></span></span><span class="langsw"><a href="/news.html" lang="en">EN</a><a href="/th/news.html" lang="th" style="font-family:var(--thai)">ไทย</a><a href="/zh/news.html" lang="zh-Hans" aria-current="true">中文</a></span></nav>
 </div></header>
 <section class="dark band" style="padding-block:64px"><div class="wrap"><p class="eyebrow">新闻</p><h1 style="font-size:clamp(36px,6vw,64px)">光伏新闻，<br>通俗易懂。</h1><p class="lede" style="margin-top:18px">简要介绍与我们客户相关的行业新闻，并附上原始出处链接。</p></div></section>
-<section class="band light" style="padding-block:64px"><div class="wrap"><article id="pv-grounding-points" style="max-width:760px">
+<section class="band light" style="padding-block:64px"><div class="wrap"><article id="china-solar-down-rest-up" style="max-width:760px">
+<p class="eyebrow">2026年10月15日 · 市场</p><h2 style="font-size:clamp(26px,3.6vw,40px)">中国光伏装机下降，其他地区持续增长</h2>
+<p class="lede" style="margin-top:16px;opacity:1">彭博新能源财经（BNEF）目前预计 2026 年全球光伏装机 <b>584 GW</b>，比去年减少约 11%。下降全部来自中国，预计中国装机将下降 <b>29%</b>；中国以外市场仍增长约 <b>15%</b>。</p>
+<div class="cmpk"><div><small>中国 2026</small><b>−29%</b></div><div><small>中国以外 2026</small><b>+15%</b></div><div><small>全球 2026</small><b>584 GW</b></div></div>
+<div class="mk">
+<div class="row"><span class="lab">中国</span><div class="bars" role="img" aria-label="中国: 2025 383 GW, 2026 预测 271 GW"><span class="b y25" style="width:58.5%">383 GW</span><span class="b y26" style="width:41.4%">271 GW</span></div></div>
+<div class="row"><span class="lab">中国以外</span><div class="bars" role="img" aria-label="中国以外: 2025 272 GW, 2026 预测 313 GW"><span class="b y25" style="width:41.5%">272 GW</span><span class="b y26" style="width:47.8%">313 GW</span></div></div>
+<div class="row"><span class="lab">全球</span><div class="bars" role="img" aria-label="全球: 2025 655 GW, 2026 预测 584 GW"><span class="b y25" style="width:100.0%">655 GW</span><span class="b y26" style="width:89.2%">584 GW</span></div></div>
+<p class="key"><span><i style="background:var(--sky)"></i>2025</span><span><i style="background:var(--hot)"></i>2026 预测</span></p></div>
+<p style="margin-top:22px"><b>中国放缓。</b>中国 2025 年装机 383 GW，BNEF 预计今年约为 271 GW。2026 年上半年新增约 72 GW，而 2025 年同期为 212 GW。BNEF 认为原因是市场饱和，以及新的五年规划将重点从扩大装机转向储能，与政治或价格无关。</p>
+<p style="margin-top:14px"><b>其他地区持续增长。</b>中国以外的装机预计从 272 GW 增至 313 GW，增长主要来自住宅和工商业，而非大型地面电站。BNEF 点名印度、菲律宾、尼日利亚和马来西亚为增长市场，并称屋顶及工商业光伏已成为全球可再生能源投资最大的领域。</p>
+<p style="margin-top:14px"><b>对您意味着什么：</b>增长正发生在 Solar ESS 所做的领域——住宅、度假村和企业，也发生在我们所在的地区，菲律宾和马来西亚均被点名。中国放缓并不意味着光伏在退步，而是全球最大市场在暂停扩张、转建储能。文章未说明这会如何影响组件价格，因此我们按月跟踪价格，并会相应更新价格表。</p>
+<p style="margin-top:28px"><a href="https://www.pv-magazine.com/2026/10/15/china-solar-down-29-everywhere-else-up-15/" rel="noopener">来源：pv magazine，数据来自 BloombergNEF（英文）</a></p>
+</article>
+<article id="pv-grounding-points" style="max-width:760px;margin-top:64px;padding-top:48px;border-top:1.5px solid var(--navy)">
 <p class="eyebrow">2026年10月15日 · 安全</p><h2 style="font-size:clamp(26px,3.6vw,40px)">光伏系统接地：为什么一个接地点不够</h2>
 <p class="lede" style="margin-top:16px;opacity:1">印度尼西亚的一项新研究显示，为光伏阵列增加<b>第二个接地点</b>，可将直接雷击产生的电压冲击降低约一半。我们结合其他最新研究、国际防雷标准和泰国电气安装规范来解读这项研究，结论如下。</p>
 <div class="cmpk"><div><small>增加第二点后电压降低</small><b>43–55%</b></div><div><small>土壤 30 → 3,000 Ωm</small><b>冲击更高</b></div><div><small>最佳接地点</small><b>靠近雷击点</b></div></div>

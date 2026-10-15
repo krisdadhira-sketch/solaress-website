@@ -168,6 +168,18 @@ footer .wrap{display:flex;gap:24px;flex-wrap:wrap;justify-content:space-between;
 .gnd-ck li{counter-increment:g;display:grid;grid-template-columns:34px minmax(0,1fr);gap:12px;align-items:start;border-top:1px solid var(--line);padding-top:12px}
 .gnd-ck li::before{content:counter(g);display:grid;place-items:center;width:28px;height:28px;background:var(--navy);color:var(--white);font-family:var(--mono);font-size:13px}
 </style>
+<style>
+.mk{display:grid;gap:14px;margin-top:22px}
+.mk .row{display:grid;grid-template-columns:150px minmax(0,1fr);gap:12px;align-items:center}
+.mk .lab{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.mk .bars{display:grid;gap:4px}
+.mk .b{height:18px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-size:12px;font-variant-numeric:tabular-nums;color:var(--ink)}
+.mk .b.y25{background:var(--sky)}
+.mk .b.y26{background:var(--hot);color:var(--white);font-weight:600}
+.mk .key{font-family:var(--mono);font-size:11px;color:var(--mute);display:flex;gap:16px}
+.mk .key i{display:inline-block;width:10px;height:10px;margin-right:6px;vertical-align:-1px}
+@media(max-width:520px){.mk .row{grid-template-columns:minmax(0,1fr)}}
+</style>
 </head>
 <body>
 <header class="nav"><div class="wrap">
@@ -175,7 +187,21 @@ footer .wrap{display:flex;gap:24px;flex-wrap:wrap;justify-content:space-between;
 <nav><a href="/#services">Vision</a><span class="dd"><a href="/#projects">Projects</a><span class="ddm"><a href="/#calculator">Savings</a><a href="/technical-notes.html">Technical</a></span></span><a href="/picks.html">Our picks</a><a href="/news.html">News</a><span class="dd end"><a href="/#consult">Book consultation</a><span class="ddm"><a href="/faq.html">FAQ</a></span></span><span class="langsw"><a href="/news.html" lang="en" aria-current="true">EN</a><a href="/th/news.html" lang="th" style="font-family:var(--thai)">ไทย</a><a href="/zh/news.html" lang="zh-Hans">中文</a></span></nav>
 </div></header>
 <section class="dark band" style="padding-block:64px"><div class="wrap"><p class="eyebrow">News</p><h1 style="font-size:clamp(36px,6vw,64px)">Solar news,<br>in plain words.</h1><p class="lede" style="margin-top:18px">Short summaries of industry news that matters to our customers, with a link to the original source.</p></div></section>
-<section class="band light" style="padding-block:64px"><div class="wrap"><article id="pv-grounding-points" style="max-width:760px">
+<section class="band light" style="padding-block:64px"><div class="wrap"><article id="china-solar-down-rest-up" style="max-width:760px">
+<p class="eyebrow">15 October 2026 · Market</p><h2 style="font-size:clamp(26px,3.6vw,40px)">Solar installs fall in China, rise everywhere else</h2>
+<p class="lede" style="margin-top:16px;opacity:1">BloombergNEF now expects the world to install <b>584 GW</b> of solar in 2026, about 11% less than last year. The whole drop comes from China, where installations are forecast to fall <b>29%</b>. Outside China, the market is still growing, by about <b>15%</b>.</p>
+<div class="cmpk"><div><small>China 2026</small><b>−29%</b></div><div><small>Rest of world 2026</small><b>+15%</b></div><div><small>World 2026</small><b>584 GW</b></div></div>
+<div class="mk">
+<div class="row"><span class="lab">China</span><div class="bars" role="img" aria-label="China: 2025 383 GW, 2026 forecast 271 GW"><span class="b y25" style="width:58.5%">383 GW</span><span class="b y26" style="width:41.4%">271 GW</span></div></div>
+<div class="row"><span class="lab">Rest of world</span><div class="bars" role="img" aria-label="Rest of world: 2025 272 GW, 2026 forecast 313 GW"><span class="b y25" style="width:41.5%">272 GW</span><span class="b y26" style="width:47.8%">313 GW</span></div></div>
+<div class="row"><span class="lab">World</span><div class="bars" role="img" aria-label="World: 2025 655 GW, 2026 forecast 584 GW"><span class="b y25" style="width:100.0%">655 GW</span><span class="b y26" style="width:89.2%">584 GW</span></div></div>
+<p class="key"><span><i style="background:var(--sky)"></i>2025</span><span><i style="background:var(--hot)"></i>2026 forecast</span></p></div>
+<p style="margin-top:22px"><b>China slows down.</b> China installed 383 GW in 2025; BNEF now expects about 271 GW this year. In the first half of 2026 it added roughly 72 GW, against 212 GW in the same months of 2025. BNEF puts this down to a saturated market and a new five-year plan that shifts attention from adding capacity to energy storage, not to politics or prices.</p>
+<p style="margin-top:14px"><b>The rest of the world keeps growing.</b> Outside China, installations are forecast to rise from 272 GW to 313 GW. Most of that growth comes from homes and businesses rather than large solar farms. BNEF named India, the Philippines, Nigeria and Malaysia among the growth markets, and says rooftop and commercial solar is now the largest area of renewable energy investment worldwide.</p>
+<p style="margin-top:14px"><b>What it means for you:</b> the growth is happening where Solar ESS works, on homes, resorts and businesses, and in our own region, with the Philippines and Malaysia named. China’s slowdown does not mean solar is losing ground; it means the world’s biggest market is pausing to build storage. The article does not say how this will affect panel prices, so we are watching prices month by month and will keep our price list in step.</p>
+<p style="margin-top:28px"><a href="https://www.pv-magazine.com/2026/10/15/china-solar-down-29-everywhere-else-up-15/" rel="noopener">Source: pv magazine, using BloombergNEF data (English)</a></p>
+</article>
+<article id="pv-grounding-points" style="max-width:760px;margin-top:64px;padding-top:48px;border-top:1.5px solid var(--navy)">
 <p class="eyebrow">15 October 2026 · Safety</p><h2 style="font-size:clamp(26px,3.6vw,40px)">Grounding a solar system: why one earth point is not enough</h2>
 <p class="lede" style="margin-top:16px;opacity:1">New research from Indonesia shows that adding a <b>second grounding point</b> to a solar array can cut the voltage spike from a direct lightning strike by roughly half. We read the study alongside other recent research, the international lightning standards and the Thai wiring code. Here is what it adds up to.</p>
 <div class="cmpk"><div><small>Voltage cut with a 2nd point</small><b>43–55%</b></div><div><small>Soil 30 → 3,000 Ωm</small><b>Higher spikes</b></div><div><small>Best earth point</small><b>Nearest the strike</b></div></div>

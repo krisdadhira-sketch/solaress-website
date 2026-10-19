@@ -54,18 +54,28 @@ for path in sorted(glob.glob('*.html') + glob.glob('th/*.html') + glob.glob('zh/
         title = txt(h) or txt(soup.title)
         img = el.find('img')
         if el.select_one('.where'):          # job card
-            facts = ' · '.join(txt(b) + ' ' + txt(b.parent).replace(txt(b), '').strip() for b in el.select('.facts .fact b'))
-            desc = ' · '.join(x for x in [txt(el.select_one('.where')), facts, txt(el.select_one('.fit'))] if x)
             kind = txt(el.select_one('.kind'))
             where = txt(el.select_one('.where'))
             factlist = [(txt(b), txt(b.parent).replace(txt(b), '', 1).strip()) for b in el.select('.facts .fact b')]
+            facts = ' · '.join(f'{a} {z}'.strip() for a, z in factlist)
+            # job description: scope / deliverables / duties list
+            lst = el.select_one('details ul') or el.select_one('.body ul')
+            items = [txt(li) for li in lst.find_all('li')] if lst else []
+            lbl = el.select_one('details summary')
+            lbl = re.sub(r'\s*\(\d+\)\s*$', '', txt(lbl)) if lbl else txt(el.select_one('.lbl'))
+            fit = txt(el.select_one('.fit'))
+            parts = [f'{title} – {where}' + (f' · {facts}' if facts else '')]
+            if fit: parts.append(fit)
+            if items: parts.append(f'{lbl}: ' + '; '.join(items))
+            desc = clip('. '.join(p.rstrip('.') for p in parts) + '.', 600)
         else:
             p = el.select_one('p.lede') or next((q for q in el.find_all('p') if len(txt(q)) > 40), None)
             desc = txt(p)
             ey = el.select_one('.eyebrow, .kind, .tag')
             kind, where, factlist = txt(ey), '', []
         md = soup.find('meta', attrs={'name': 'description'})
-        desc = clip(desc or (md.get('content', '') if md else ''))
+        if not desc: desc = clip(md.get('content', '') if md else '')
+        elif not el.select_one('.where'): desc = clip(desc)
         if img and img.get('src') and not img['src'].startswith('data:'):
             iurl = urljoin(purl, img['src'])
             local = iurl.replace(SITE + '/', '')
@@ -73,11 +83,12 @@ for path in sorted(glob.glob('*.html') + glob.glob('th/*.html') + glob.glob('zh/
             except Exception: w = hgt = None
             first_photo = first_photo or (iurl, w, hgt)
         else:
-            key = hashlib.md5(f'{lang}|{page}|{tid}|{title}|{kind}|{where}|{factlist}'.encode()).hexdigest()[:8]
+            items = items if el.select_one('.where') else []
+            key = hashlib.md5(f'{lang}|{page}|{tid}|{title}|{kind}|{where}|{factlist}|{items[:3]}'.encode()).hexdigest()[:8]
             fn = f'images/og/{lang}-{page}-{tid}-{key}.jpg'
             made.add(fn)
             if not os.path.exists(fn):
-                cards.append((fn, dict(lang=lang, title=title, kind=kind, where=where, facts=factlist, desc=desc if not where else '')))
+                cards.append((fn, dict(lang=lang, title=title, kind=kind, where=where, facts=factlist, desc=desc if not where else '', items=items[:3])))
             iurl, w, hgt = SITE + '/' + fn, 1200, 630
         surl = f'{SITE}/s/{lang}/{page}/{tid}.html'
         target = f'{purl}#{tid}'
@@ -115,7 +126,7 @@ if cards:
     .lg img{height:72px;display:block}.in{position:absolute;left:64px;right:64px;top:180px}.k{color:#FF2D55;font:600 24px/1.2 "IBM Plex Mono","Inter","Sarabun","Noto Sans CJK SC",monospace;letter-spacing:.08em;text-transform:uppercase}
     h1{font-size:60px;line-height:1.18;font-weight:700;margin-top:18px;max-height:216px;overflow:hidden}.w{font-size:34px;margin-top:22px;opacity:.95}.w:before{content:"";display:inline-block;width:18px;height:18px;border-radius:50%;background:#FF2D55;margin-right:14px}
     .f{display:flex;gap:16px;margin-top:26px}.f div{border:2px solid rgba(255,255,255,.35);border-radius:12px;padding:10px 18px;font-size:26px}.f b{font-size:30px;margin-right:8px}
-    .d{font-size:28px;line-height:1.45;margin-top:22px;opacity:.85;max-height:122px;overflow:hidden}.u{position:absolute;right:64px;bottom:44px;font-size:26px;opacity:.75;letter-spacing:.04em}'''
+    .d{font-size:28px;line-height:1.45;margin-top:22px;opacity:.85;max-height:122px;overflow:hidden}.s{margin-top:24px;padding-left:0;list-style:none;font-size:25px;line-height:1.4;opacity:.9}.s li:before{content:"✓  ";color:#FF2D55;font-weight:700}.s li{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:1040px}.u{position:absolute;right:64px;bottom:44px;font-size:26px;opacity:.75;letter-spacing:.04em}'''
     with sync_playwright() as p:
         b = p.chromium.launch(); pg = b.new_page(viewport={'width': 1200, 'height': 630})
         for fn, c in cards:
@@ -126,6 +137,7 @@ if cards:
                     + (f'<div class="w">{html.escape(c["where"])}</div>' if c['where'] else '')
                     + (f'<div class="f">{facts}</div>' if facts else '')
                     + (f'<div class="d">{html.escape(c["desc"])}</div>' if c['desc'] else '')
+                    + (('<ul class="s">' + ''.join(f'<li>{html.escape(i)}</li>' for i in c['items']) + '</ul>') if c.get('items') else '')
                     + '</div><div class="u">solaress.org</div>')
             pg.set_content(f'<html lang="{c["lang"]}"><head><meta charset="utf-8"><style>{CSS}</style></head><body>{body}</body></html>')
             pg.screenshot(path=fn, type='jpeg', quality=80)

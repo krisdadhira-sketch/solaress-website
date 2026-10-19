@@ -735,6 +735,12 @@ form input[type=file]{border-bottom:0;padding:6px 0;font-size:14px}
 <li><b>Contact your candidate directly:</b> we publish your job after checking it is real and the pay is fair, then pass on the installers who apply. You talk to them, agree the work and pay them yourself.</li>
 <li><b>Rely on Solar ESS expertise:</b> we screen and recommend skilled installers, check the work against what you asked for, collect and hold the payment, pay the installer when the job is done, and mediate if there is a disagreement.</li></ul>
 <p style="margin:12px 0 0">Not sure which to choose? Pick "Rely on Solar ESS" and we will talk it through with you.</p></div>
+<div class="mediate"><h3>Terms for employers</h3><ul>
+<li><b>Be clear about the job:</b> every post must state the job description, exact location, scope of work and price. Posts missing any of these are not published.</li>
+<li><b>Installer screening:</b> as mediator, Solar ESS screens installers on their profile, work experience and membership contract.</li>
+<li><b>Payment at completion:</b> payment is released at the end of the contract, once the work is complete and both parties are satisfied.</li>
+<li><b>Disputes:</b> Solar ESS mobilises every resource to propose the best win-win solution. Without the consensus of both parties, Solar ESS holds the payment.</li>
+<li><b>Legal action:</b> if the parties still cannot come to terms, the case may be taken further through legal channels, as the two parties decide.</li></ul></div>
 <p class="fine" style="margin-top:18px">Not a member yet? <a href="/members.html" style="color:#fff;text-decoration:underline">Join here</a></p></div>
 <form name="post-a-job" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" action="/thanks.html">
 <input type="hidden" name="form-name" value="post-a-job"><p hidden><label>Leave empty <input name="bot-field"></label></p>
@@ -747,9 +753,10 @@ form input[type=file]{border-bottom:0;padding:6px 0;font-size:14px}
 <label for="p-date">Preferred start date<input id="p-date" name="start-date" type="date"></label>
 <label for="p-mode">How do you want to hire?<select id="p-mode" name="hire-mode" required><option value="Rely on Solar ESS">Rely on Solar ESS expertise (screening, payment held, mediation)</option><option value="Contact directly">Contact my candidate directly</option></select></label>
 <label for="p-pay">Pay offered (THB)<input id="p-pay" name="pay" inputmode="numeric" required></label>
-<label for="p-desc">Job description<textarea id="p-desc" name="description" rows="4" required></textarea></label>
+<label for="p-desc">Job description and scope of work<textarea id="p-desc" name="description" rows="4" required></textarea></label>
 <label for="p-file">Site photo or drawing (optional, max 8 MB)<input id="p-file" name="attachment" type="file" accept=".pdf,.jpg,.jpeg,.png"></label>
 <label class="chk"><input type="checkbox" name="standard-agreed" value="yes" required><span>This job follows the Solar ESS standard: premium materials (copper, IMC/EMT conduit, well-matched breakers and cables) and a qualified, certified electrician. <a href="#standard" style="color:#fff">Our standard</a></span></label>
+<label class="chk"><input type="checkbox" name="employer-terms-agreed" value="yes" required><span>I have stated the job description, location, scope of work and price clearly, and I accept the terms for employers.</span></label>
 <button class="btn" type="submit">Submit job</button>
 </form>
 </div></section>

@@ -706,7 +706,7 @@ form input[type=file]{border-bottom:0;padding:6px 0;font-size:14px}
 </div></div></section>
 
 <section class="band dark" id="apply" style="padding-block:64px"><div class="wrap apply">
-<div><p class="eyebrow">Apply</p><h2>Send us your application</h2><p class="lede" style="margin-top:18px">Fill in the form and attach your CV. We read every application and reply to shortlisted candidates.</p><div class="mediate"><h3>Solar ESS stands in the middle, for both sides</h3><p>This page is the central place where solar jobs for installers are published. Solar ESS acts as the mediator between employers and installers. <a href="/members.html" style="color:#fff;text-decoration:underline">Members</a> can also post their own jobs here for other installers to take on. <a href="#post-job" style="color:#fff;text-decoration:underline">Post a job →</a></p><ul>
+<div><p class="eyebrow">Apply</p><h2>Send us your application</h2><p class="lede" style="margin-top:18px">Fill in the form and attach your CV. We read every application and reply to shortlisted candidates.</p><div class="mediate"><h3>Solar ESS stands in the middle, for both sides</h3><p>This page is the central place where solar jobs for installers are published. Solar ESS acts as the mediator between employers and installers. <a href="/members.html" style="color:#fff;text-decoration:underline">Members</a> can also post their own jobs here for other installers to take on, and contact candidates directly or rely on Solar ESS to manage the hire. <a href="#post-job" style="color:#fff;text-decoration:underline">Post a job →</a></p><ul>
 <li><b>Real jobs, fair pay:</b> we check that every job published on our site is real and pays installers a fair amount.</li>
 <li><b>Real installers:</b> we make sure installers are genuine, professional and skilled, and do not take advantage of employers.</li>
 <li><b>Money held safely:</b> we collect the fee from the employer and hold it before paying the installer.</li>
@@ -725,10 +725,10 @@ form input[type=file]{border-bottom:0;padding:6px 0;font-size:14px}
 </div></section>
 <section class="band dark" id="post-job" style="padding-block:64px;border-top:1px solid rgba(255,255,255,.18)"><div class="wrap apply">
 <div><p class="eyebrow">For members</p><h2>Post a job</h2><p class="lede" style="margin-top:18px">Have a solar job that needs another pair of hands? Members can post it here for other installers.</p>
-<div class="mediate"><h3>What happens next</h3><ul>
-<li>We check the job details and that the pay is fair before publishing it on this page.</li>
-<li>We match suitable installers and get back to you.</li>
-<li>Payment goes through Solar ESS: we hold it, then pay the installer.</li></ul></div>
+<div class="mediate"><h3>Two ways to hire</h3><p>Choose how you want to work with the installers who reply to your post.</p><ul>
+<li><b>Contact your candidate directly:</b> we publish your job after checking it is real and the pay is fair, then pass on the installers who apply. You talk to them, agree the work and pay them yourself.</li>
+<li><b>Rely on Solar ESS expertise:</b> we screen and recommend skilled installers, check the work against what you asked for, collect and hold the payment, pay the installer when the job is done, and mediate if there is a disagreement.</li></ul>
+<p style="margin:12px 0 0">Not sure which to choose? Pick "Rely on Solar ESS" and we will talk it through with you.</p></div>
 <p class="fine" style="margin-top:18px">Not a member yet? <a href="/members.html" style="color:#fff;text-decoration:underline">Join here</a></p></div>
 <form name="post-a-job" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" action="/thanks.html">
 <input type="hidden" name="form-name" value="post-a-job"><p hidden><label>Leave empty <input name="bot-field"></label></p>
@@ -739,6 +739,7 @@ form input[type=file]{border-bottom:0;padding:6px 0;font-size:14px}
 <label for="p-loc">Location (district, province)<input id="p-loc" name="location" required></label>
 <label for="p-size">System size / scope<input id="p-size" name="size" placeholder="e.g. 10 kWp, 24 panels"></label>
 <label for="p-date">Preferred start date<input id="p-date" name="start-date" type="date"></label>
+<label for="p-mode">How do you want to hire?<select id="p-mode" name="hire-mode" required><option value="Rely on Solar ESS">Rely on Solar ESS expertise (screening, payment held, mediation)</option><option value="Contact directly">Contact my candidate directly</option></select></label>
 <label for="p-pay">Pay offered (THB)<input id="p-pay" name="pay" inputmode="numeric" required></label>
 <label for="p-desc">Job description<textarea id="p-desc" name="description" rows="4" required></textarea></label>
 <label for="p-file">Site photo or drawing (optional, max 8 MB)<input id="p-file" name="attachment" type="file" accept=".pdf,.jpg,.jpeg,.png"></label>

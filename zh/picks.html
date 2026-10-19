@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>优选设备 | Solar ESS</title>
+<meta property="og:type" content="website"><meta property="og:site_name" content="Solar ESS"><meta property="og:title" content="优选设备 | Solar ESS"><meta property="og:description" content="Solar ESS 在自己的项目上选用的逆变器、光伏组件、断路器、浪涌保护器、电缆和测试仪器，以及选择它们的理由。全部可向我们购买。"><meta property="og:url" content="https://solaress.org/zh/picks.html"><meta property="og:image" content="https://solaress.org/images/hero.jpg"><meta property="og:locale" content="zh_CN"><meta name="twitter:card" content="summary_large_image">
 <meta name="description" content="Solar ESS 在自己的项目上选用的逆变器、光伏组件、断路器、浪涌保护器、电缆和测试仪器，以及选择它们的理由。全部可向我们购买。">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Thai:wght@400;600&family=Noto+Sans+SC:wght@400;500;700&display=swap">
 <style>
@@ -203,5 +204,6 @@ const key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:u.slice(0,16),iterat
 let pl;try{pl=await crypto.subtle.decrypt({name:'AES-GCM',iv:u.slice(16,28)},key,u.slice(28))}catch(x){m.textContent='密码不正确，请检查后重试，或联系我们。';b.disabled=false;return}
 sv.href=URL.createObjectURL(new Blob([pl],{type:'application/pdf'}));sv.hidden=false;m.textContent='密码正确，下载即将开始；如未开始，请点击下方按钮。';sv.click();}catch(x){m.textContent='价目表无法加载，请稍后再试。'}b.disabled=false;});})();</script>
 <footer><div class="wrap"><span>Solar ESS Co. Ltd. · Solar Energy for Sustainable Solution</span><span><a href="/zh/members.html">会员专区</a> · www.solar-ess.org · www.solaress.org</span></div></footer>
+<script src="/share.js" defer></script>
 </body>
 </html>

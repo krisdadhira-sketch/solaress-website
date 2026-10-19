@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>อุปกรณ์ที่เราเลือก | Solar ESS</title>
+<meta property="og:type" content="website"><meta property="og:site_name" content="Solar ESS"><meta property="og:title" content="อุปกรณ์ที่เราเลือก | Solar ESS"><meta property="og:description" content="อินเวอร์เตอร์ แผงโซลาร์ เบรกเกอร์ อุปกรณ์ป้องกันเสิร์จ สายไฟ และเครื่องมือวัดที่ Solar ESS เลือกใช้ในงานของเราเอง พร้อมเหตุผล ทุกรายการสั่งซื้อจากเราได้"><meta property="og:url" content="https://solaress.org/th/picks.html"><meta property="og:image" content="https://solaress.org/images/hero.jpg"><meta property="og:locale" content="th_TH"><meta name="twitter:card" content="summary_large_image">
 <meta name="description" content="อินเวอร์เตอร์ แผงโซลาร์ เบรกเกอร์ อุปกรณ์ป้องกันเสิร์จ สายไฟ และเครื่องมือวัดที่ Solar ESS เลือกใช้ในงานของเราเอง พร้อมเหตุผล ทุกรายการสั่งซื้อจากเราได้">
 <link rel="alternate" hreflang="en" href="https://www.solaress.org/picks.html">
 <link rel="alternate" hreflang="th" href="https://www.solaress.org/th/picks.html">
@@ -205,5 +206,6 @@ const key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:u.slice(0,16),iterat
 let pl;try{pl=await crypto.subtle.decrypt({name:'AES-GCM',iv:u.slice(16,28)},key,u.slice(28))}catch(x){m.textContent='รหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบแล้วลองอีกครั้ง หรือติดต่อเรา';b.disabled=false;return}
 sv.href=URL.createObjectURL(new Blob([pl],{type:'application/pdf'}));sv.hidden=false;m.textContent='รหัสผ่านถูกต้อง ไฟล์จะเริ่มดาวน์โหลด หากไม่เริ่ม ให้กดปุ่มด้านล่าง';sv.click();}catch(x){m.textContent='ไม่สามารถโหลดรายการราคาได้ กรุณาลองใหม่อีกครั้ง'}b.disabled=false;});})();</script>
 <footer><div class="wrap"><span>บริษัท โซลาร์ เอสส์ จำกัด · Solar Energy for Sustainable Solution</span><span><a href="/th/job.html">ร่วมงานกับเรา</a> · <a href="/th/members.html">สมาชิก</a> · www.solar-ess.org · www.solaress.org</span></div></footer>
+<script src="/share.js" defer></script>
 </body>
 </html>

@@ -709,7 +709,7 @@ form input[type=file]{border-bottom:0;padding:6px 0;font-size:14px}
 </div></div></section>
 
 <section class="band dark" id="apply" style="padding-block:64px;font-family:var(--thai)"><div class="wrap apply">
-<div><p class="eyebrow">สมัครงาน</p><h2 style="font-family:var(--thai)">ส่งใบสมัครถึงเรา</h2><p class="lede" style="margin-top:18px">กรอกแบบฟอร์มและแนบประวัติย่อ (CV) เราอ่านใบสมัครทุกฉบับ และจะติดต่อกลับผู้ที่ผ่านการคัดเลือก</p><div class="mediate"><h3 style="font-family:var(--thai)">โซลาร์ เอสส์ เป็นตัวกลางที่ดูแลทั้งสองฝ่าย</h3><p>หน้านี้คือพื้นที่กลางสำหรับประกาศงานโซลาร์ทุกงานสำหรับช่างติดตั้ง โดยโซลาร์ เอสส์ ทำหน้าที่เป็นตัวกลางระหว่างผู้ว่าจ้างกับช่าง <a href="/th/members.html" style="color:#fff;text-decoration:underline">สมาชิก</a>ยังสามารถประกาศงานของตนเองบนหน้านี้ เพื่อหาช่างติดตั้งคนอื่นมาร่วมงานได้ด้วย</p><ul>
+<div><p class="eyebrow">สมัครงาน</p><h2 style="font-family:var(--thai)">ส่งใบสมัครถึงเรา</h2><p class="lede" style="margin-top:18px">กรอกแบบฟอร์มและแนบประวัติย่อ (CV) เราอ่านใบสมัครทุกฉบับ และจะติดต่อกลับผู้ที่ผ่านการคัดเลือก</p><div class="mediate"><h3 style="font-family:var(--thai)">โซลาร์ เอสส์ เป็นตัวกลางที่ดูแลทั้งสองฝ่าย</h3><p>หน้านี้คือพื้นที่กลางสำหรับประกาศงานโซลาร์ทุกงานสำหรับช่างติดตั้ง โดยโซลาร์ เอสส์ ทำหน้าที่เป็นตัวกลางระหว่างผู้ว่าจ้างกับช่าง <a href="/th/members.html" style="color:#fff;text-decoration:underline">สมาชิก</a>ยังสามารถประกาศงานของตนเองบนหน้านี้ เพื่อหาช่างติดตั้งคนอื่นมาร่วมงานได้ด้วย <a href="#post-job" style="color:#fff;text-decoration:underline">ประกาศงาน →</a></p><ul>
 <li><b>งานจริง ค่าจ้างเป็นธรรม:</b> เราตรวจสอบว่างานทุกงานที่ประกาศบนเว็บไซต์มีอยู่จริง และจ่ายค่าจ้างให้ช่างอย่างเป็นธรรม</li>
 <li><b>ช่างตัวจริง:</b> เราคัดกรองช่างให้เป็นบุคคลจริง เป็นมืออาชีพ มีฝีมือ และไม่เอาเปรียบผู้ว่าจ้าง</li>
 <li><b>เงินปลอดภัย:</b> เราเก็บค่าจ้างจากผู้ว่าจ้างและถือไว้ก่อน แล้วจึงจ่ายให้ช่าง</li>
@@ -724,6 +724,28 @@ form input[type=file]{border-bottom:0;padding:6px 0;font-size:14px}
 <label for="j-cv">ประวัติย่อ (PDF หรือ Word ไม่เกิน 8 MB)<input id="j-cv" name="cv" type="file" accept=".pdf,.doc,.docx"></label>
 <label for="j-msg">เล่าเกี่ยวกับตัวคุณ<textarea id="j-msg" name="message" rows="4"></textarea></label>
 <button class="btn" type="submit" style="font-family:var(--thai)">ส่งใบสมัคร</button>
+</form>
+</div></section>
+<section class="band dark" id="post-job" style="padding-block:64px;border-top:1px solid rgba(255,255,255,.18);font-family:var(--thai)"><div class="wrap apply">
+<div><p class="eyebrow">สำหรับสมาชิก</p><h2 style="font-family:var(--thai)">ประกาศงาน</h2><p class="lede" style="margin-top:18px">มีงานโซลาร์ที่ต้องการช่างมาช่วย? สมาชิกประกาศงานให้ช่างติดตั้งคนอื่นได้ที่นี่</p>
+<div class="mediate"><h3 style="font-family:var(--thai)">ขั้นตอนหลังส่งประกาศ</h3><ul>
+<li>เราตรวจสอบรายละเอียดงานและค่าจ้างให้เป็นธรรม ก่อนเผยแพร่บนหน้านี้</li>
+<li>เราคัดช่างที่เหมาะกับงานและแจ้งกลับให้คุณ</li>
+<li>ค่าจ้างชำระผ่านโซลาร์ เอสส์ เราถือไว้ก่อน แล้วจึงจ่ายให้ช่าง</li></ul></div>
+<p class="fine" style="margin-top:18px">ยังไม่เป็นสมาชิก? <a href="/th/members.html" style="color:#fff;text-decoration:underline">สมัครสมาชิก</a></p></div>
+<form name="post-a-job" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" action="/th/thanks.html">
+<input type="hidden" name="form-name" value="post-a-job"><p hidden><label>Leave empty <input name="bot-field"></label></p>
+<label for="p-name">ชื่อสมาชิก / บริษัท<input id="p-name" name="member" required autocomplete="name"></label>
+<label for="p-email">อีเมลที่ใช้สมัครสมาชิก<input id="p-email" name="email" type="email" required autocomplete="email"></label>
+<label for="p-phone">เบอร์โทรศัพท์<input id="p-phone" name="phone" type="tel" required autocomplete="tel"></label>
+<label for="p-type">ประเภทงาน<select id="p-type" name="job-type" required><option value="Installation">งานติดตั้งระบบโซลาร์</option><option value="Wiring">งานเดินสายไฟ</option><option value="PV cleaning">งานล้างแผงโซลาร์</option><option value="PV O&M">งานล้างแผงและตรวจระบบ (O&M)</option><option value="Repair / troubleshooting">งานซ่อม / แก้ไขปัญหา</option><option value="Mounting / welding">งานโครงยึด / งานเชื่อม</option><option value="Other">อื่นๆ</option></select></label>
+<label for="p-loc">สถานที่ (อำเภอ จังหวัด)<input id="p-loc" name="location" required></label>
+<label for="p-size">ขนาดระบบ / ปริมาณงาน<input id="p-size" name="size" placeholder="เช่น 10 kWp, 24 แผง"></label>
+<label for="p-date">วันที่ต้องการเริ่มงาน<input id="p-date" name="start-date" type="date"></label>
+<label for="p-pay">ค่าจ้างที่เสนอ (บาท)<input id="p-pay" name="pay" inputmode="numeric" required></label>
+<label for="p-desc">รายละเอียดงาน<textarea id="p-desc" name="description" rows="4" required></textarea></label>
+<label for="p-file">รูปหน้างานหรือแบบ (ไม่บังคับ ไม่เกิน 8 MB)<input id="p-file" name="attachment" type="file" accept=".pdf,.jpg,.jpeg,.png"></label>
+<button class="btn" type="submit" style="font-family:var(--thai)">ส่งประกาศงาน</button>
 </form>
 </div></section>
 <footer><div class="wrap"><span>บริษัท โซลาร์ เอสส์ จำกัด · Solar Energy for Sustainable Solution</span><span><a href="/th/job.html">ร่วมงานกับเรา</a> · <a href="/th/members.html">สมาชิก</a> · www.solar-ess.org · www.solaress.org</span></div></footer>

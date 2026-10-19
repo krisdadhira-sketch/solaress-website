@@ -225,8 +225,8 @@ footer .wrap{display:flex;gap:24px;flex-wrap:wrap;justify-content:space-between;
 .th .chip,.th .card .go a,.th .fact,.th .jhero .stat span,.th .card .kind,.th .card .lbl{font-family:var(--thai);letter-spacing:.02em;text-transform:none}
 
 /* Freelance list: one job per row, picture left, details right (like Technical) */
-.cards.fl{grid-template-columns:minmax(0,1fr);gap:0;border-top:1px solid var(--line)}
-.cards.fl .card{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);grid-template-rows:auto 1fr;column-gap:36px;padding:32px 0;background:transparent;border:0;border-bottom:1px solid var(--line)}
+.cards.fl{grid-template-columns:minmax(0,1fr);gap:0;border-top:4px solid var(--navy)}
+.cards.fl .card{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);grid-template-rows:auto 1fr;column-gap:36px;padding:48px 0;background:transparent;border:0;border-bottom:4px solid var(--navy)}
 .cards.fl .card:hover{transform:none;box-shadow:none}
 .cards.fl .card[hidden]{display:none}
 .cards.fl .card .thumb{grid-column:1;grid-row:1 / span 2;align-self:start;border-top:4px solid var(--c)}
@@ -239,7 +239,7 @@ footer .wrap{display:flex;gap:24px;flex-wrap:wrap;justify-content:space-between;
 .cards.fl .card .top{grid-column:2;padding:0}
 .cards.fl .card .body{grid-column:2;padding:14px 0 0;max-width:760px}
 .cards.fl .card .go a{display:inline-flex;gap:14px}
-@media(max-width:760px){.cards.fl .card{grid-template-columns:minmax(0,1fr);row-gap:14px;padding:24px 0}.cards.fl .card .thumb,.cards.fl .card .top,.cards.fl .card .body{grid-column:1;grid-row:auto}.cards.fl .card .thumb.ph{display:none}.cards.fl .card .thumb img{height:200px}}
+@media(max-width:760px){.cards.fl .card{grid-template-columns:minmax(0,1fr);row-gap:14px;padding:36px 0}.cards.fl .card .thumb,.cards.fl .card .top,.cards.fl .card .body{grid-column:1;grid-row:auto}.cards.fl .card .thumb.ph{display:none}.cards.fl .card .thumb img{height:200px}}
 .th .cards.fl .card .thumb.ph span{font-family:var(--thai);letter-spacing:.02em;text-transform:none}
 </style>
 <style>

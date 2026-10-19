@@ -56,13 +56,19 @@
 
   var base = location.origin + location.pathname;
   var pageTitle = document.title;
+  // Topic links go through /s/<lang>/<page>/<id>.html, a small page whose preview
+  // (Open Graph) image is that topic's own photo, then on to page#id.
+  var parts = location.pathname.replace(/^\/+/, '').split('/');
+  var dir = (parts.length > 1 && /^(th|zh)$/.test(parts[0])) ? parts.shift() : 'en';
+  var pname = (parts.join('/') || 'index').replace(/\.html$/, '') || 'index';
+  function topicUrl(id) { return location.origin + '/s/' + dir + '/' + pname + '/' + id + '.html'; }
 
   // Topic share rows
   var sel = '.tnote[id], article[id], section.fsec[id], .cards.fl .card[id], section.pick[id], section.wide[id]';
   document.querySelectorAll(sel).forEach(function (el) {
     var h = el.querySelector('h2, h3');
     var t = (h ? h.textContent.trim() : '') || pageTitle;
-    var row = bar(base + '#' + el.id, t + ' | Solar ESS', T.topic, 'ssh-topic');
+    var row = bar(topicUrl(el.id), t + ' | Solar ESS', T.topic, 'ssh-topic');
     var host = el.querySelector(':scope > .body') || el.querySelector(':scope > .pbody') || el;
     host.appendChild(row);
   });

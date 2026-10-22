@@ -117,6 +117,27 @@ footer .wrap{display:flex;gap:24px;flex-wrap:wrap;justify-content:space-between;
 @media(max-width:820px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.svc,.calc,.voices,.about,.consult{grid-template-columns:minmax(0,1fr)}.svc article,.svc article:nth-child(even){padding:24px 0;border-right:0}.proj,.mini{grid-template-columns:repeat(2,minmax(0,1fr))}.band{padding-block:60px}.bill{font-size:48px}.out .big{font-size:40px}}
 @media(max-width:520px){.proj,.mini{grid-template-columns:minmax(0,1fr)}.nav nav{margin-left:0;gap:12px}}
 .dl{display:flex;align-items:center;gap:18px;margin-top:28px;padding:16px 20px;max-width:560px;border:1.5px solid rgba(255,255,255,.28);color:var(--white);text-decoration:none}.dl:hover{border-color:var(--hot)}.dlicon{flex:none;display:grid;place-items:center;width:52px;height:52px;background:var(--hot);color:var(--white)}.dltext{display:grid;gap:3px;min-width:0}.dltext b{font-size:18px}.dltext span{font-size:15px;opacity:.85}.dltext small{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.7}.langsw{display:inline-flex;gap:10px;margin-left:14px;font-size:12px;letter-spacing:0;text-transform:none}.langsw a{opacity:.7}.langsw a[aria-current]{opacity:1;font-weight:700}[hidden]{display:none!important}@media(hover:hover) and (min-width:761px){.nav nav .ddm a{white-space:nowrap}}@media(hover:none),(max-width:760px){.nav nav .ddm{flex-wrap:wrap;row-gap:8px}}
+
+.topicbar{position:sticky;top:var(--navh,72px);z-index:8;background:var(--paper);border-bottom:1px solid var(--line);padding-block:12px}
+.topicbar .wrap{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.topicdd{position:relative}
+.topicdd summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;background:var(--navy);color:var(--white);font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.topicdd summary::-webkit-details-marker{display:none}
+.topicdd summary::after{content:"\25BE"}
+.topicdd[open] summary::after{content:"\25B4"}
+.topicdd .tmenu{position:absolute;top:100%;left:0;z-index:30;min-width:280px;display:flex;flex-direction:column;background:var(--navy);border:1px solid rgba(255,255,255,.16);box-shadow:0 10px 24px rgba(0,0,0,.25);padding:8px 0}
+.topicdd .tmenu a{color:var(--white);padding:9px 16px;font-size:14px;display:flex;justify-content:space-between;gap:16px;text-decoration:none}
+.topicdd .tmenu a:hover{background:rgba(255,255,255,.08)}
+.topicdd .tmenu a span{opacity:.6;font-family:var(--mono);font-size:12px}
+.topicchips{display:flex;gap:8px;flex-wrap:wrap}
+.topicchips a{font-size:13px;padding:6px 10px;border:1px solid var(--line);background:var(--white);color:var(--ink);text-decoration:none}
+.topicchips a:hover{border-color:var(--blue);color:var(--blue)}
+.topicsec,#topic-top{scroll-margin-top:calc(var(--navh,72px) + 80px)}
+.topicsec+.topicsec{margin-top:56px}
+.topicsec>h2.th{font-size:clamp(26px,3.4vw,38px);padding-bottom:6px;border-bottom:3px solid var(--blue);display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.topicsec>h2.th small{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--mute);font-weight:400}
+.topicsec .notes{margin-top:20px}
+@media(max-width:700px){.topicchips{display:none}.topicbar{position:static}.topicsec,#topic-top{scroll-margin-top:calc(var(--navh,72px) + 12px)}}
 </style>
 <style>
 .faqnav{display:flex;gap:8px;flex-wrap:wrap;margin-top:26px}
@@ -155,55 +176,21 @@ details .a{margin-top:10px;max-width:74ch;color:var(--ink)}
 </div></header>
 <section class="dark band" style="padding-block:64px"><div class="wrap"><p class="eyebrow">Technical</p><h1 style="font-size:clamp(36px,6vw,64px)">How we build,<br>written down.</h1><p class="lede" style="margin-top:18px">Short notes from our engineering work: what a part does, how to choose it, and how to install it properly. Free to read, download and share.</p></div></section>
 
-<section class="band light" style="padding-block:64px"><div class="wrap"><div class="notes">
+<div class="topicbar"><div class="wrap"><details class="topicdd"><summary>Topics</summary><div class="tmenu"><a href="#topic-top">All topics <span>40</span></a><a href="#topic-design">System design & energy <span>5</span></a><a href="#topic-inverters">Inverters & string design <span>8</span></a><a href="#topic-zero-export">Zero export & phase balance <span>5</span></a><a href="#topic-batteries">Batteries <span>3</span></a><a href="#topic-panels">Solar panels & tilt <span>2</span></a><a href="#topic-structures">Structures & footings <span>7</span></a><a href="#topic-safety">Safety & protection <span>7</span></a><a href="#topic-cases">Case studies & research <span>3</span></a></div></details><div class="topicchips"><a href="#topic-design">System design & energy</a><a href="#topic-inverters">Inverters & string design</a><a href="#topic-zero-export">Zero export & phase balance</a><a href="#topic-batteries">Batteries</a><a href="#topic-panels">Solar panels & tilt</a><a href="#topic-structures">Structures & footings</a><a href="#topic-safety">Safety & protection</a><a href="#topic-cases">Case studies & research</a></div></div></div>
+<section class="band light" style="padding-block:64px"><div class="wrap"><div id="topic-top"></div>
+<section class="topicsec" id="topic-design"><h2 class="th">System design & energy <small>5 notes</small></h2><div class="notes">
 
 <article class="tnote" id="crypto-miner-solution"><a href="downloads/Solar-ESS-Crypto-Miner-Solar-Solution_Rev01_20261021.pdf"><img src="images/note-crypto-miner-solution.jpg" alt="First page of how to run a 24-hour crypto miner on solar" width="579" height="819" loading="lazy"></a>
 <div><p class="meta">Design guide · 2 pages · PDF · English</p><h2>Running a 24-hour miner on solar: what it takes</h2>
 <p>A 3.75 kW miner needs 90 kWh a day, about 52 kWh of it at night. Starting from an 8 kW hybrid inverter, 13 kWp of panels and a 48 kWh battery, we compare four upgrade options and show the one that runs the miner fully on solar on sunny days.</p>
 <ul><li>System drawing: what to add (about 6.5 kWp of panels and a 16 kWh battery)</li><li>Sunny-day charts before and after the upgrade</li><li>Monthly PEA use and cost for each option, with a TOU meter</li><li>Three steps, and why 100% solar all year does not pay back</li></ul>
-<div class="acts"><a class="btn" href="downloads/Solar-ESS-Crypto-Miner-Solar-Solution_Rev01_20261021.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-Crypto-Miner-Solar-Solution_Rev01_20261021.pdf" download>Download</a></div></div></article>
+<div class="acts"><a class="btn" href="downloads/Solar-ESS-Crypto-Miner-Solar-Solution_Rev01_20261021.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-Crypto-Miner-Solar-Solution_Rev01_20261021.pdf" download>Download</a><a class="btn ghost" href="downloads/Solar-ESS-Crypto-Miner-Solar-Solution-TH_Rev01_20261022.pdf" lang="th">ภาษาไทย</a></div></div></article>
 
 <article class="tnote" id="crypto-miner-pea"><a href="downloads/Solar-ESS-Crypto-Miner-Solar-Battery-PEA_Rev01_20261021.pdf"><img src="images/note-crypto-miner-pea.jpg" alt="First page of the crypto miner on solar, battery and PEA analysis" width="579" height="819" loading="lazy"></a>
 <div><p class="meta">Energy analysis · 2 pages · PDF · English</p><h2>A crypto miner on solar: how much PEA power will it still use?</h2>
 <p>A 3.75 kW miner runs 24 hours a day, about 90 kWh. We modelled it on an 8 kW hybrid inverter with 13 kWp of solar and a 48 kWh battery, and compared a 60 A battery limit with 150 A. Solar roughly halves the PEA bill, but the night still runs on PEA.</p>
 <ul><li>Hour-by-hour charts: what solar, battery and PEA supply on a sunny day</li><li>PEA use per day for sunny, cloudy and no-solar days</li><li>Monthly PEA energy and cost with and without solar</li><li>Battery current setting, grid-side connection and 25 A wiring for a 24-hour load</li></ul>
-<div class="acts"><a class="btn" href="downloads/Solar-ESS-Crypto-Miner-Solar-Battery-PEA_Rev01_20261021.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-Crypto-Miner-Solar-Battery-PEA_Rev01_20261021.pdf" download>Download</a></div></div></article>
-
-<article class="tnote" id="grid-outage-reminder"><a href="downloads/Solar-ESS-Installer-Reminder-Grid-Outage_Rev01_20261021.pdf"><img src="images/note-grid-outage-reminder.jpg" alt="Installer reminder: PEA power off means On-Grid solar off" width="579" height="819" loading="lazy"></a>
-<div><p class="meta">Installer reminder · 1 page · PDF · English, Thai</p><h2>Tell every customer: PEA power off = On-Grid solar off</h2>
-<p>A one-page reminder for installers. On-Grid inverters must switch off when PEA power fails (anti-islanding), and only the backup (EPS) circuits of a hybrid system keep power. Explain it before handover so customers are not surprised in a blackout.</p>
-<ul><li>Why On-Grid systems switch off</li><li>What On-Grid, Hybrid and Off-Grid systems do in a PEA outage</li><li>What to tell the customer</li><li>Six-step checklist before handover</li></ul>
-<div class="acts"><a class="btn" href="downloads/Solar-ESS-Installer-Reminder-Grid-Outage_Rev01_20261021.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-Installer-Reminder-Grid-Outage_Rev01_20261021.pdf" download>Download</a><a class="btn ghost" href="downloads/Solar-ESS-Installer-Reminder-Grid-Outage-TH_Rev01_20261021.pdf" lang="th" style="font-family:var(--thai)">ภาษาไทย</a></div></div></article>
-
-<article class="tnote" id="footing-selection-chiang-rai"><a href="downloads/Solar-ESS-STR-02-Footing-Selection-Chiang-Rai_Rev01_20261020.pdf"><img src="images/note-footing-selection.jpg" alt="First page of the footing selection analysis for a Chiang Rai ground mount" width="579" height="819" loading="lazy"></a>
-<div><p class="meta">Engineering note · 3 pages · PDF · English</p><h2>Which footing suits a Chiang Rai ground mount best?</h2>
-<p>Six footings for a 36-post low ground mount on acidic red laterite clay compared on wind uplift in the wet season, testing, durability and buildability. Shows why weight-based pads can drop below a safety factor of 1.0 on waterlogged ground, and why helical piles and augered concrete piers stay above 4.</p>
-<ul><li>Star scorecard and uplift safety factors, dry and soaked</li><li>Buoyancy effect on concrete pads in the monsoon</li><li>Independent check of the helical pile design</li><li>Recommended footing plan and drainage</li></ul>
-<div class="acts"><a class="btn" href="downloads/Solar-ESS-STR-02-Footing-Selection-Chiang-Rai_Rev01_20261020.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-STR-02-Footing-Selection-Chiang-Rai_Rev01_20261020.pdf" download>Download</a></div></div></article>
-
-<article class="tnote" id="pv-panel-comparison"><a href="downloads/Solar-ESS-650-670W-PV-Panel-Comparison_Rev01_20261020.pdf"><img src="images/note-pv-panel-comparison.jpg" alt="First page of the 650–670 W solar panel comparison" width="579" height="819" loading="lazy"></a>
-<div><p class="meta">Comparison report · 3 pages · PDF · English, Thai</p><h2>Which 650–670 W solar panel should I choose?</h2>
-<p>Six Tier-1 panels scored with stars for rooftops and for open sites: AIKO, LONGi, Jinko, Tongwei, Trina and JA Solar, backed by independent tests (Kiwa PVEL 2026, RETC 2026, TÜV) and real field results.</p>
-<ul><li>Quick pick for home roofs, carports and ground mounts</li><li>Star scorecard with roof and open-site scores</li><li>Independent test results and field cases from both technologies</li><li>Key specifications and a 30-second decision guide</li></ul>
-<div class="acts"><a class="btn" href="downloads/Solar-ESS-650-670W-PV-Panel-Comparison_Rev01_20261020.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-650-670W-PV-Panel-Comparison_Rev01_20261020.pdf" download>Download</a><a class="btn ghost" href="downloads/Solar-ESS-650-670W-PV-Panel-Comparison-TH_Rev01_20261020.pdf" lang="th" style="font-family:var(--thai)">ภาษาไทย</a></div></div></article>
-
-<article class="tnote" id="1p-hybrid-inverter-comparison"><a href="downloads/Solar-ESS-10-16kW-1P-Hybrid-Inverter-Comparison_Rev03_20261020.pdf"><img src="images/note-1p-hybrid-inverter-comparison.jpg" alt="First page of the 10–16 kW single-phase hybrid inverter comparison" width="579" height="819" loading="lazy"></a>
-<div><p class="meta">Comparison report · 3 pages · PDF · English, Thai</p><h2>Which single-phase hybrid inverter is best?</h2>
-<p>10–16 kW single-phase hybrid inverters for Thai homes compared on power and surge, battery choice, protection and features, warranty and service: Solis, GoodWe, Deye, Sungrow, LuxPower and Growatt.</p>
-<ul><li>Overall scorecard and the best pick for each type of home</li><li>Rated power and starting-surge charts for air cons and pumps</li><li>Side-by-side technical specifications</li><li>Three golden rules before buying, and Thai rules to check</li></ul>
-<div class="acts"><a class="btn" href="downloads/Solar-ESS-10-16kW-1P-Hybrid-Inverter-Comparison_Rev03_20261020.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-10-16kW-1P-Hybrid-Inverter-Comparison_Rev03_20261020.pdf" download>Download</a><a class="btn ghost" href="downloads/Solar-ESS-10-16kW-1P-Hybrid-Inverter-Comparison-TH_Rev03_20261020.pdf" lang="th" style="font-family:var(--thai)">ภาษาไทย</a></div></div></article>
-
-<article class="tnote" id="16kwh-battery-comparison"><a href="downloads/Solar-ESS-16kWh-LV-Battery-Comparison_Rev03_20261020.pdf"><img src="images/note-16kwh-battery-comparison.jpg" alt="First page of the 16 kWh low-voltage battery comparison" width="579" height="819" loading="lazy"></a>
-<div><p class="meta">Comparison report · 3 pages · PDF · English, Thai</p><h2>Which 16 kWh home battery is best?</h2>
-<p>Six low-voltage (51.2 V) LiFePO4 batteries compared on cell quality, performance, warranty and after-sales service: Deye, Solis IntelliHome, Dyness, GoodWe, LVTOPSUN G4 and Sungrow.</p>
-<ul><li>Overall scorecard and the best pick for each inverter brand</li><li>Cycle life and usable energy charts</li><li>Side-by-side technical specifications</li><li>Warranty, after-sales service and inverter compatibility</li></ul>
-<div class="acts"><a class="btn" href="downloads/Solar-ESS-16kWh-LV-Battery-Comparison_Rev03_20261020.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-16kWh-LV-Battery-Comparison_Rev03_20261020.pdf" download>Download</a><a class="btn ghost" href="downloads/Solar-ESS-16kWh-LV-Battery-Comparison-TH_Rev02_20261020.pdf" lang="th" style="font-family:var(--thai)">ภาษาไทย</a></div></div></article>
-
-<article class="tnote" id="16kwh-battery-explained"><a href="downloads/Solar-ESS-16kWh-Battery-Explained-TH_Rev01_20261020.pdf"><img src="images/note-16kwh-battery-explained.jpg" alt="First page of the 16 kWh / 314 Ah battery explainer" width="579" height="819" loading="lazy"></a>
-<div><p class="meta">Customer explainer · 2 pages · PDF · Thai</p><h2>What is a 16 kWh / 314 Ah battery?</h2>
-<p>A simple guide, with formulas, to how 16 LiFePO4 cells of 3.2 V and 314 Ah make a 51.2 V, 16 kWh battery, how much of it you can really use, and how many hours it runs an air con.</p>
-<ul><li>16 cells × 3.2 V in series = 51.2 V (the "48 V system")</li><li>51.2 V × 314 Ah ≈ 16 kWh, about 16 units of electricity</li><li>Usable energy by depth of discharge (90 to 100%)</li><li>Runtime for air cons and household loads</li></ul>
-<div class="acts"><a class="btn" href="downloads/Solar-ESS-16kWh-Battery-Explained-TH_Rev01_20261020.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-16kWh-Battery-Explained-TH_Rev01_20261020.pdf" download>Download</a></div></div></article>
+<div class="acts"><a class="btn" href="downloads/Solar-ESS-Crypto-Miner-Solar-Battery-PEA_Rev01_20261021.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-Crypto-Miner-Solar-Battery-PEA_Rev01_20261021.pdf" download>Download</a><a class="btn ghost" href="downloads/Solar-ESS-Crypto-Miner-Solar-Battery-PEA-TH_Rev01_20261022.pdf" lang="th">ภาษาไทย</a></div></div></article>
 
 <article class="tnote" id="ice-machine-solar-tou"><a href="downloads/Solar-ESS-Ice-Machine-Solar-Day-TOU-Night-1page_Rev01_20261018.pdf"><img src="images/note-ice-machine-solar-tou.jpg" alt="First page of the ice machine solar and TOU summary" width="579" height="819" loading="lazy"></a>
 <div><p class="meta">Customer summary · 1 page · PDF · English, Thai</p><h2>A 24-hour ice machine: solar by day, TOU by night</h2>
@@ -216,23 +203,21 @@ details .a{margin-top:10px;max-width:74ch;color:var(--ink)}
 <p>A daytime solar design for a tube ice machine with an 18 kW 3-phase compressor motor: 96 × 650 W panels on a 50 kW Huawei inverter, covering the machine from about 09:00 to 15:30 on a clear day, with the grid for motor start and cloudy spells.</p>
 <ul><li>Load estimate and string design (6 × 16 panels on 4 MPPT)</li><li>Single-line diagram: DC combiner, inverter, AC box, smart meter for zero export, soft starter / VFD</li><li>Ground-mount panel layout, 6 tables of 2 × 8 panels</li><li>Bill of materials, 29 items</li></ul>
 <div class="acts"><a class="btn" href="downloads/Solar-ESS-Tube-Ice-Plant-62kWp-SLD-Layout-BOM_Rev01_20261019.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-Tube-Ice-Plant-62kWp-SLD-Layout-BOM_Rev01_20261019.pdf" download>Download</a><a class="btn ghost" href="downloads/Solar-ESS-Tube-Ice-Plant-62kWp-SLD-Layout-BOM-TH_Rev01_20261019.pdf" lang="th" style="font-family:var(--thai)">ภาษาไทย</a></div></div></article>
-<article class="tnote" id="battery-wall-elevation"><a href="downloads/Solar-ESS-Battery-Wall-Second-Battery-Elevation_Rev02_20261019.pdf"><img src="images/note-battery-wall-elevation.jpg" alt="First page of the battery wall front elevation" width="579" height="819" loading="lazy"></a>
-<div><p class="meta">Drawing · 2 pages · PDF · English, Thai</p><h2>Adding a second wall battery: front elevation</h2>
-<p>A proposed layout for adding a second 10.24 kWh LiFePO4 wall battery beside the first, under a hybrid inverter, with the DC breaker box moved between the inverter and the batteries.</p>
-<ul><li>Dimensioned front elevation with every item labelled</li><li>Paralleling the two batteries: power cables, BMS link and master address</li><li>Clearances around batteries, breaker box, cable tray and inverter</li><li>Site photo next to an edited photo of the proposed wall</li></ul>
-<div class="acts"><a class="btn" href="downloads/Solar-ESS-Battery-Wall-Second-Battery-Elevation_Rev02_20261019.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-Battery-Wall-Second-Battery-Elevation_Rev02_20261019.pdf" download>Download</a><a class="btn ghost" href="downloads/Solar-ESS-Battery-Wall-Second-Battery-Elevation-TH_Rev02_20261019.pdf" lang="th" style="font-family:var(--thai)">ภาษาไทย</a></div></div></article>
 
-<article class="tnote" id="pad-footing-design"><a href="downloads/Solar-ESS-Ground-Mount-Pad-Footing-Design_Rev01_20261019.pdf"><img src="images/note-pad-footing-design.jpg" alt="First page of the STR-02 pad footing design" width="579" height="819" loading="lazy"></a>
-<div><p class="meta">Design note · 8 pages · PDF · English, Thai</p><h2>Pad footings for a 45-panel low ground mount, designed for wind uplift</h2>
-<p>A construction-ready design for 36 reinforced concrete pad footings under a low, fixed ground-mounted array of 45 × 650 W panels in Chiang Rai.</p>
-<ul><li>Set-out plan with coordinates for every footing and diagonal checks</li><li>Footing section and plan with reinforcement, anchor bolts and base plate</li><li>Wind uplift to DPT 1311-50: 446 kgf per post, safety factor 1.58</li><li>Material quantities, a ten-step build sequence with hold points, and tolerances</li></ul>
-<div class="acts"><a class="btn" href="downloads/Solar-ESS-Ground-Mount-Pad-Footing-Design_Rev01_20261019.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-Ground-Mount-Pad-Footing-Design_Rev01_20261019.pdf" download>Download</a><a class="btn ghost" href="downloads/Solar-ESS-Ground-Mount-Pad-Footing-Design-TH_Rev01_20261019.pdf" lang="th" style="font-family:var(--thai)">ภาษาไทย</a></div></div></article>
+<article class="tnote" id="energy-prediction-tasai"><a href="downloads/Solar-ESS-Energy-Prediction-Tasai-Chiang-Rai.pdf"><img src="images/note-energy-prediction.jpg" alt="First page of the energy prediction report" width="579" height="819" loading="lazy"></a>
+<div><p class="meta">Energy prediction · 10 pages · PDF · English</p><h2>How much energy will it harvest? 6.5 kWp home system in Tasai, Chiang Rai</h2>
+<p>A worked prediction for a 10-panel hybrid system: what the panels should produce by the hour, the day, the season and over 30 years.</p>
+<ul><li>About 26 kWh on an average day and about 9,400 kWh in the first year</li><li>Hour-by-hour output on a clear day, and what heat, haze and rain change</li><li>Why the panels are wired as two strings of five, checked against the inverter limits</li><li>LONGi Hi-MO X10 and Solis hybrid inverter datasheets attached</li></ul>
+<div class="acts"><a class="btn" href="downloads/Solar-ESS-Energy-Prediction-Tasai-Chiang-Rai.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-Energy-Prediction-Tasai-Chiang-Rai.pdf" download>Download</a><a class="btn ghost" href="downloads/Solar-ESS-Energy-Prediction-Chiang-Rai-TH_Rev01_20261022.pdf" lang="th">ภาษาไทย</a></div></div></article>
 
-<article class="tnote" id="alternative-footings"><a href="downloads/Solar-ESS-Ground-Mount-Alternative-Footings_Rev01_20261019.pdf"><img src="images/note-alternative-footings.jpg" alt="First page of the alternative footings note" width="579" height="819" loading="lazy"></a>
-<div><p class="meta">Design note · 6 pages · PDF · English</p><h2>Four footings with the same wind resistance as a concrete pad</h2>
-<p>Alternatives to a buried pad footing that carry the same uplift and lateral wind load, for sites with rock, water, soft ground or limited labour.</p>
-<ul><li>Plain concrete block cast in the hole: one pour, no formwork</li><li>Shallow ballast block for rock or high water near the surface</li><li>Augered concrete pier and steel ground screw, with site pull tests</li><li>Which footing to use for each site condition</li></ul>
-<div class="acts"><a class="btn" href="downloads/Solar-ESS-Ground-Mount-Alternative-Footings_Rev01_20261019.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-Ground-Mount-Alternative-Footings_Rev01_20261019.pdf" download>Download</a></div></div></article>
+</div></section>
+<section class="topicsec" id="topic-inverters"><h2 class="th">Inverters & string design <small>8 notes</small></h2><div class="notes">
+
+<article class="tnote" id="1p-hybrid-inverter-comparison"><a href="downloads/Solar-ESS-10-16kW-1P-Hybrid-Inverter-Comparison_Rev03_20261020.pdf"><img src="images/note-1p-hybrid-inverter-comparison.jpg" alt="First page of the 10–16 kW single-phase hybrid inverter comparison" width="579" height="819" loading="lazy"></a>
+<div><p class="meta">Comparison report · 3 pages · PDF · English, Thai</p><h2>Which single-phase hybrid inverter is best?</h2>
+<p>10–16 kW single-phase hybrid inverters for Thai homes compared on power and surge, battery choice, protection and features, warranty and service: Solis, GoodWe, Deye, Sungrow, LuxPower and Growatt.</p>
+<ul><li>Overall scorecard and the best pick for each type of home</li><li>Rated power and starting-surge charts for air cons and pumps</li><li>Side-by-side technical specifications</li><li>Three golden rules before buying, and Thai rules to check</li></ul>
+<div class="acts"><a class="btn" href="downloads/Solar-ESS-10-16kW-1P-Hybrid-Inverter-Comparison_Rev03_20261020.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-10-16kW-1P-Hybrid-Inverter-Comparison_Rev03_20261020.pdf" download>Download</a><a class="btn ghost" href="downloads/Solar-ESS-10-16kW-1P-Hybrid-Inverter-Comparison-TH_Rev03_20261020.pdf" lang="th" style="font-family:var(--thai)">ภาษาไทย</a></div></div></article>
 
 <article class="tnote" id="mppt-overvoltage"><a href="downloads/Solar-ESS-Huawei-50kW-MPPT-Over-Voltage-Risk_Rev01_20261019.pdf"><img src="images/note-mppt-overvoltage.jpg" alt="First page of “How likely is MPPT over-voltage with 650 W LONGi panels on a Huawei 50 kW inverter?”" width="579" height="819" loading="lazy"></a>
 <div><p class="meta">Risk assessment · 2 pages · PDF · English, Thai</p><h2>How likely is MPPT over-voltage with 650 W LONGi panels on a Huawei 50 kW inverter?</h2>
@@ -270,65 +255,38 @@ details .a{margin-top:10px;max-width:74ch;color:var(--ink)}
 <ul><li>Efficiency, start voltage, MPPT range and current limits side by side</li><li>String voltage check: 16 to 20 panels per string</li><li>Where the MC0’s higher input current matters with bifacial panels</li><li>Three recommended layouts and which model to choose</li></ul>
 <div class="acts"><a class="btn" href="downloads/Solar-ESS-Huawei-50kW-M3-vs-MC0-LONGi650_Rev01_20261019.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-Huawei-50kW-M3-vs-MC0-LONGi650_Rev01_20261019.pdf" download>Download</a><a class="btn ghost" href="downloads/Solar-ESS-Huawei-50kW-M3-vs-MC0-LONGi650-TH_Rev01_20261019.pdf" lang="th" style="font-family:var(--thai)">ภาษาไทย</a></div></div></article>
 
-<article class="tnote" id="hybrid-performance-review"><a href="downloads/Solar-ESS-Hybrid-Plant-Case-Study-Hat-Yai_Rev08_20261018.pdf"><img src="images/note-hybrid-performance-review.jpg" alt="First page of the hybrid plant case study" width="579" height="819" loading="lazy"></a>
-<div><p class="meta">Case study · 4 pages · PDF · English, Thai</p><h2>A hybrid plant that produces more than enough energy for its shop</h2>
-<p>A remote review of a 6.96 kWp hybrid plant with battery at a small business in Hat Yai. It produces more than enough energy for the shop and covers 98% of its electricity.</p>
-<ul><li>Monthly production against a typical 6.96 kWp plant</li><li>Why a low string voltage points to panels not contributing fully, and how to check on site</li><li>Inverter settings checked: self-use mode, unbalanced output and the PEA grid code</li><li>Battery energy counters that do not add up, and why that matters</li><li>Six actions in priority order, from a site check of the array to completing the monitoring records</li></ul>
-<div class="acts"><a class="btn" href="downloads/Solar-ESS-Hybrid-Plant-Case-Study-Hat-Yai_Rev08_20261018.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-Hybrid-Plant-Case-Study-Hat-Yai_Rev08_20261018.pdf" download>Download</a><a class="btn ghost" href="downloads/Solar-ESS-Hybrid-Plant-Case-Study-Hat-Yai-TH_Rev08_20261018.pdf" lang="th" style="font-family:var(--thai)">ภาษาไทย</a></div></div></article>
+<article class="tnote" id="solis-quick-guide-th" lang="th" style="font-family:var(--thai)"><a href="downloads/Solar-ESS-Solis-S6-EH1P-Quick-Guide-TH_Rev02_20261022.pdf"><img src="images/note-solis-guide-th.jpg" alt="หน้าแรกของคู่มือติดตั้งฉบับย่อ Solis S6-EH1P" width="579" height="819" loading="lazy"></a>
+<div><p class="meta" style="letter-spacing:0;text-transform:none">คู่มือติดตั้ง · 1 หน้า · PDF · ภาษาไทย</p><h2>คู่มือติดตั้งฉบับย่อ อินเวอร์เตอร์ไฮบริด Solis S6-EH1P</h2>
+<p>สรุปจุดสำคัญจากคู่มือ Solis V1.1 สำหรับช่างติดตั้งและเจ้าของบ้าน</p>
+<ul><li>ขนาดสายไฟและพิกัดเบรกเกอร์ของแต่ละวงจร</li><li>ระยะห่างในการติดตั้ง</li><li>ข้อควรระวังที่พบบ่อยหน้างาน</li></ul>
+<div class="acts"><a class="btn" href="downloads/Solar-ESS-Solis-S6-EH1P-Quick-Guide-TH_Rev02_20261022.pdf">เปิด PDF</a><a class="btn ghost" href="downloads/Solar-ESS-Solis-S6-EH1P-Quick-Guide-TH_Rev02_20261022.pdf" download>ดาวน์โหลด</a></div></div></article>
+
+</div></section>
+<section class="topicsec" id="topic-zero-export"><h2 class="th">Zero export & phase balance <small>5 notes</small></h2><div class="notes">
+
+<article class="tnote" id="machine-days"><a href="downloads/Ban_Doo_Chiangrai_Machine_vs_NonMachine_Days_EN_Rev03_20261022.pdf"><img src="images/note-machine-days.jpg" alt="First page of the machine days vs non-machine days report" width="579" height="820" loading="lazy"></a>
+<div><p class="meta">Case study · 5 pages · PDF · English</p><h2>A 20 kWp zero-export plant: machine days vs days without the machine</h2>
+<p>A small factory in Chiang Rai runs a 57–62 kW machine two days a week. Solar can cover only a fifth of the machine, while almost all the curtailed solar is lost on the days without it. This report analyses both kinds of day and sets out what to do.</p>
+<ul><li>Production, consumption and PEA purchases by day type</li><li>Modelled daily profiles: where the curtailed energy goes</li><li>Phase imbalance and neutral current</li><li>Actions by day type and battery sizing</li></ul>
+<div class="acts"><a class="btn" href="downloads/Ban_Doo_Chiangrai_Machine_vs_NonMachine_Days_EN_Rev03_20261022.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Ban_Doo_Chiangrai_Machine_vs_NonMachine_Days_EN_Rev03_20261022.pdf" download>Download</a><a class="btn ghost" href="downloads/Ban_Doo_Chiangrai_Machine_vs_NonMachine_Days_TH_Rev03_20261022.pdf" lang="th">ภาษาไทย</a></div></div></article>
 
 <article class="tnote" id="deyecloud-zero-export"><a href="downloads/Solar-ESS-DeyeCloud-Zero-Export-Guide_Rev01_20261018.pdf"><img src="images/note-deyecloud-zero-export.jpg" alt="First page of the DeyeCloud zero-export guide" width="579" height="819" loading="lazy"></a>
 <div><p class="meta">How-to guide · 4 pages · PDF · English</p><h2>How to stop a Deye plant exporting power to the grid (DeyeCloud)</h2>
 <p>A step-by-step guide to checking and setting zero export on a Deye hybrid inverter from the DeyeCloud web portal, with a 20 kWp villa plant on Koh Samui as the worked example.</p>
 <ul><li>Where to find Device Control and System Work Mode-1</li><li>The three settings that stop export: Zero Export To CT, Solar Sell Disable, zero export power about 20 W</li><li>How to read, set and confirm the change, and check export has stopped</li><li>Fix for the blank DeyeCloud page in some Windows apps</li></ul>
-<div class="acts"><a class="btn" href="downloads/Solar-ESS-DeyeCloud-Zero-Export-Guide_Rev01_20261018.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-DeyeCloud-Zero-Export-Guide_Rev01_20261018.pdf" download>Download</a></div></div></article>
+<div class="acts"><a class="btn" href="downloads/Solar-ESS-DeyeCloud-Zero-Export-Guide_Rev01_20261018.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-DeyeCloud-Zero-Export-Guide_Rev01_20261018.pdf" download>Download</a><a class="btn ghost" href="downloads/Solar-ESS-DeyeCloud-Zero-Export-Guide-TH_Rev01_20261022.pdf" lang="th">ภาษาไทย</a></div></div></article>
 
 <article class="tnote" id="unbalanced-output"><a href="downloads/Solar-ESS-Unbalanced-Output_Rev01_20261016.pdf"><img src="images/note-unbalanced-output.jpg" alt="First page of the unbalanced output case study" width="579" height="819" loading="lazy"></a>
 <div><p class="meta">Case study · 2 pages · PDF · English</p><h2>Unbalanced output: one setting that stops a phase buying from the grid under zero export</h2>
 <p>A 20 kWp three-phase on-grid plant in Chiang Rai with export disabled kept buying power on one phase while its solar was held back. Switching on the inverter's Unbalance Output setting fixed it.</p>
 <ul><li>Balanced vs unbalanced output, shown with the plant's own per-phase loads</li><li>After the change: two phases at 0 W at the grid meter, the heavy phase no longer importing</li><li>Why the meter still shows amps at 0 W (reactive current)</li><li>Five checks before you rely on it: read-back, installer access, CTs, phase order, per-phase limit</li></ul>
-<div class="acts"><a class="btn" href="downloads/Solar-ESS-Unbalanced-Output_Rev01_20261016.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-Unbalanced-Output_Rev01_20261016.pdf" download>Download</a></div></div></article>
+<div class="acts"><a class="btn" href="downloads/Solar-ESS-Unbalanced-Output_Rev01_20261016.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-Unbalanced-Output_Rev01_20261016.pdf" download>Download</a><a class="btn ghost" href="downloads/Solar-ESS-Unbalanced-Output-TH_Rev01_20261022.pdf" lang="th">ภาษาไทย</a></div></div></article>
 
 <article class="tnote" id="zero-export-production"><a href="downloads/Solar-ESS-Zero-Export-Production-vs-Consumption.pdf"><img src="images/note-zero-export-production.jpg" alt="First page of the zero-export production vs consumption case study" width="579" height="819" loading="lazy"></a>
 <div><p class="meta">Case study · 2 pages · PDF · English</p><h2>Zero export in practice: why a plant's solar output fell when its load fell</h2>
 <p>A 20 kWp on-grid plant in Chiang Rai, compared over two 15-day periods before and after two adjacent buildings were disconnected. With export disabled, the inverter can only produce what the site uses.</p>
 <ul><li>Consumption fell 42%, and solar production fell 21% despite better weather</li><li>About 35% of October's potential solar went unused on light days and Sundays</li><li>Why a phase imbalance lets “zero export” still leak about 14% of production</li><li>What to do: phase balancing, load shifting, PEA sell-back or a small battery</li></ul>
-<div class="acts"><a class="btn" href="downloads/Solar-ESS-Zero-Export-Production-vs-Consumption.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-Zero-Export-Production-vs-Consumption.pdf" download="">Download</a></div></div></article>
-
-<article class="tnote" id="ground-mount-bom"><a href="downloads/Solar-ESS-Ground-Mount-Structure-BOM.pdf"><img src="images/note-ground-mount-bom.jpg" alt="First page of the ground-mount structure bill of materials" width="579" height="819" loading="lazy"></a>
-<div><p class="meta">Bill of materials · 2 pages · PDF · English</p><h2>What goes into a ground-mount solar structure? A complete bill of materials</h2>
-<p>Every part of a fixed-tilt, two-leg ground-mount table, from posts and rails to clamps, footings and earthing, with typical sizes and quantities for an example 12-module table.</p>
-<ul><li>Frame, rails, bracing, module clamps and fasteners, item by item</li><li>Foundation options: concrete footings or ground screws</li><li>Earthing and bonding parts, with an earth rod at each end of the table</li><li>What to check before ordering: tilt, clearance, wind load and galvanizing</li></ul>
-<div class="acts"><a class="btn" href="downloads/Solar-ESS-Ground-Mount-Structure-BOM.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-Ground-Mount-Structure-BOM.pdf" download>Download</a></div></div></article>
-
-<article class="tnote" id="energy-prediction-tasai"><a href="downloads/Solar-ESS-Energy-Prediction-Tasai-Chiang-Rai.pdf"><img src="images/note-energy-prediction.jpg" alt="First page of the energy prediction report" width="579" height="819" loading="lazy"></a>
-<div><p class="meta">Energy prediction · 10 pages · PDF · English</p><h2>How much energy will it harvest? 6.5 kWp home system in Tasai, Chiang Rai</h2>
-<p>A worked prediction for a 10-panel hybrid system: what the panels should produce by the hour, the day, the season and over 30 years.</p>
-<ul><li>About 26 kWh on an average day and about 9,400 kWh in the first year</li><li>Hour-by-hour output on a clear day, and what heat, haze and rain change</li><li>Why the panels are wired as two strings of five, checked against the inverter limits</li><li>LONGi Hi-MO X10 and Solis hybrid inverter datasheets attached</li></ul>
-<div class="acts"><a class="btn" href="downloads/Solar-ESS-Energy-Prediction-Tasai-Chiang-Rai.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-Energy-Prediction-Tasai-Chiang-Rai.pdf" download>Download</a></div></div></article>
-
-<article class="tnote" id="installation-report-tasai"><a href="downloads/Solar-ESS-Installation-Report-Tasai-Chiang-Rai.pdf"><img src="images/note-installation-report.jpg" alt="First page of the installation photo report" width="579" height="819" loading="lazy"></a>
-<div><p class="meta">Installation report · 7 pages · PDF · English, Thai, Dutch, French</p><h2>Installation photo report: 6.5 kWp home system in Tasai, Chiang Rai</h2>
-<p>A complete handover report for a 10-panel hybrid system, showing how we document an installation for the owner.</p>
-<ul><li>Control cabinet components, switch-on procedure and inverter indicator lights</li><li>String layout, panel structure drawing to scale and the circuit diagram, DC and AC</li><li>Insulation test, thermal check of every connection and the tools used</li><li>Full list of materials with brands and ratings</li></ul>
-<div class="acts"><a class="btn" href="downloads/Solar-ESS-Installation-Report-Tasai-Chiang-Rai.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-Installation-Report-Tasai-Chiang-Rai.pdf" download>Download</a><a class="btn ghost" href="downloads/Solar-ESS-Installation-Report-Tasai-Chiang-Rai-TH.pdf" lang="th" style="font-family:var(--thai)">ภาษาไทย</a><a class="btn ghost" href="downloads/Solar-ESS-Installation-Report-Tasai-Chiang-Rai-NL.pdf" lang="nl">Nederlands</a><a class="btn ghost" href="downloads/Solar-ESS-Installation-Report-Tasai-Chiang-Rai-FR.pdf" lang="fr">Français</a></div></div></article>
-
-<article class="tnote" id="inverter-chamber"><a href="downloads/Solar-ESS-Inverter-Chamber-Frame.pdf"><img src="images/note-inverter-chamber.jpg" alt="Front and side elevation of the inverter and combiner structure" width="819" height="579" loading="lazy"></a>
-<div><p class="meta">Inverter &amp; Combiner Structure · 2 sheets · PDF · English</p><h2>Inverter &amp; Combiner Structure</h2>
-<p>A free-standing steel frame, 1800 wide by 1900 high, that carries the hybrid inverter, the AC/DC combiner box and the wireway in one tidy assembly.</p>
-<ul><li>Front and side elevations with every dimension in millimetres</li><li>Inverter and combiner box spaced evenly between the columns</li><li>Wireway, EMT drops and the IMC riser to the roof</li><li>Member list with sections, quantities and cut lengths</li></ul>
-<div class="acts"><a class="btn" href="downloads/Solar-ESS-Inverter-Chamber-Frame.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-Inverter-Chamber-Frame.pdf" download>Download</a></div></div></article>
-
-<article class="tnote" id="solar-panels-and-fire"><a href="downloads/Solar-ESS-Solar-Panels-and-Fire.pdf"><img src="images/note-solar-fire.jpg" alt="First page of the Solar panels and fire report" width="579" height="820" loading="lazy"></a>
-<div><p class="meta">Fire and life safety · 4 pages · PDF · English, Thai</p><h2>Solar panels and fire: the real risk</h2>
-<p>Solar fires are rare, mostly stay small, and almost always trace back to electrical workmanship, not the panels themselves.</p>
-<ul><li>How often solar systems are involved in a fire</li><li>Where solar fires start and why</li><li>What good installation and yearly maintenance do to the risk</li></ul>
-<div class="acts"><a class="btn" href="downloads/Solar-ESS-Solar-Panels-and-Fire.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-Solar-Panels-and-Fire.pdf" download>Download</a><a class="btn ghost" href="downloads/Solar-ESS-Solar-Panels-and-Fire-TH.pdf" lang="th" style="font-family:var(--thai)">ภาษาไทย</a></div></div></article>
-
-<article class="tnote" id="solis-quick-guide-th" lang="th" style="font-family:var(--thai)"><a href="downloads/Solar-ESS-Solis-S6-EH1P-Quick-Guide-TH.pdf"><img src="images/note-solis-guide-th.jpg" alt="หน้าแรกของคู่มือติดตั้งฉบับย่อ Solis S6-EH1P" width="579" height="819" loading="lazy"></a>
-<div><p class="meta" style="letter-spacing:0;text-transform:none">คู่มือติดตั้ง · 1 หน้า · PDF · ภาษาไทย</p><h2>คู่มือติดตั้งฉบับย่อ อินเวอร์เตอร์ไฮบริด Solis S6-EH1P</h2>
-<p>สรุปจุดสำคัญจากคู่มือ Solis V1.1 สำหรับช่างติดตั้งและเจ้าของบ้าน</p>
-<ul><li>ขนาดสายไฟและพิกัดเบรกเกอร์ของแต่ละวงจร</li><li>ระยะห่างในการติดตั้ง</li><li>ข้อควรระวังที่พบบ่อยหน้างาน</li></ul>
-<div class="acts"><a class="btn" href="downloads/Solar-ESS-Solis-S6-EH1P-Quick-Guide-TH.pdf">เปิด PDF</a><a class="btn ghost" href="downloads/Solar-ESS-Solis-S6-EH1P-Quick-Guide-TH.pdf" download>ดาวน์โหลด</a></div></div></article>
+<div class="acts"><a class="btn" href="downloads/Solar-ESS-Zero-Export-Production-vs-Consumption.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-Zero-Export-Production-vs-Consumption.pdf" download="">Download</a><a class="btn ghost" href="downloads/Solar-ESS-Zero-Export-Production-vs-Consumption-TH_Rev01_20261022.pdf" lang="th">ภาษาไทย</a></div></div></article>
 
 <article class="tnote" id="phase-imbalance"><a href="downloads/Solar-ESS-Phase-Imbalance-Report.pdf"><img src="images/note-phase-imbalance.jpg" alt="First page of the phase imbalance report" width="579" height="819" loading="lazy"></a>
 <div><p class="meta">Case study · 4 pages · PDF · English, Thai</p><h2>Phase imbalance and inverter capacity review</h2>
@@ -336,29 +294,101 @@ details .a{margin-top:10px;max-width:74ch;color:var(--ink)}
 <ul><li>How the load on each phase compares with the inverter's limits</li><li>What severe single-phase loading does to a hybrid inverter</li><li>Why rebalancing the distribution board is the recommended fix</li></ul>
 <div class="acts"><a class="btn" href="downloads/Solar-ESS-Phase-Imbalance-Report.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-Phase-Imbalance-Report.pdf" download>Download</a><a class="btn ghost" href="downloads/Solar-ESS-Phase-Imbalance-Report-TH.pdf" lang="th" style="font-family:var(--thai)">ภาษาไทย</a></div></div></article>
 
-<article class="tnote" id="community-solar-th" lang="th" style="font-family:var(--thai)"><a href="downloads/Solar-ESS-Community-Solar-Thailand-Japan-TH.pdf"><img src="images/note-community-solar-th.jpg" alt="หน้าแรกของสรุปงานวิจัยโซลาร์ชุมชน" width="579" height="819" loading="lazy"></a>
-<div><p class="meta" style="letter-spacing:0;text-transform:none">สรุปงานวิจัย · 2 หน้า · PDF · ภาษาไทย</p><h2>โซลาร์ชุมชน: ไทยและญี่ปุ่นเรียนรู้อะไรจากกันได้บ้าง</h2>
-<p>สรุปงานวิจัยของจุฬาลงกรณ์มหาวิทยาลัย ปี 2561 ที่เปรียบเทียบโซลาร์ฟาร์มชุมชนขนาดประมาณ 1 เมกะวัตต์ สี่แห่งในไทยและญี่ปุ่น</p>
-<ul><li>รูปแบบที่ภาคธุรกิจนำของไทย และรูปแบบที่ประชาชนนำของญี่ปุ่น</li><li>ต้นทุน ผลตอบแทน และการยอมรับของคนในพื้นที่</li><li>โซลาร์ชุมชนที่ดีควรผสมจุดแข็งของทั้งสองแบบ</li></ul>
-<div class="acts"><a class="btn" href="downloads/Solar-ESS-Community-Solar-Thailand-Japan-TH.pdf">เปิด PDF</a><a class="btn ghost" href="downloads/Solar-ESS-Community-Solar-Thailand-Japan-TH.pdf" download>ดาวน์โหลด</a></div></div></article>
+</div></section>
+<section class="topicsec" id="topic-batteries"><h2 class="th">Batteries <small>3 notes</small></h2><div class="notes">
 
-<article class="tnote" id="cement-floor"><a href="downloads/Solar-ESS-Solar-Panels-on-Cement-Floor.pdf"><img src="images/note-cement-floor.jpg" alt="First page of the Solar panels on cement floor package" width="579" height="410" loading="lazy"></a>
-<div><p class="meta">Design case study · 5 pages · PDF · English</p><h2>Solar panels on a cement floor: canopy or low-tilt frames</h2>
-<p>Two ways to mount panels on the same flat concrete roof, both on precast concrete blocks with no drilling into the slab.</p>
-<ul><li>Option A: a raised PV canopy that doubles as a shaded terrace</li><li>Option B: low-tilt steel frames about 0.5 m high</li><li>Height, wind load, steel, cost and maintenance access compared</li><li>Block, rubber pad and anchor plate detail that keeps the waterproofing intact</li></ul>
-<div class="acts"><a class="btn" href="downloads/Solar-ESS-Solar-Panels-on-Cement-Floor.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-Solar-Panels-on-Cement-Floor.pdf" download>Download</a></div></div></article>
+<article class="tnote" id="16kwh-battery-comparison"><a href="downloads/Solar-ESS-16kWh-LV-Battery-Comparison_Rev03_20261020.pdf"><img src="images/note-16kwh-battery-comparison.jpg" alt="First page of the 16 kWh low-voltage battery comparison" width="579" height="819" loading="lazy"></a>
+<div><p class="meta">Comparison report · 3 pages · PDF · English, Thai</p><h2>Which 16 kWh home battery is best?</h2>
+<p>Six low-voltage (51.2 V) LiFePO4 batteries compared on cell quality, performance, warranty and after-sales service: Deye, Solis IntelliHome, Dyness, GoodWe, LVTOPSUN G4 and Sungrow.</p>
+<ul><li>Overall scorecard and the best pick for each inverter brand</li><li>Cycle life and usable energy charts</li><li>Side-by-side technical specifications</li><li>Warranty, after-sales service and inverter compatibility</li></ul>
+<div class="acts"><a class="btn" href="downloads/Solar-ESS-16kWh-LV-Battery-Comparison_Rev03_20261020.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-16kWh-LV-Battery-Comparison_Rev03_20261020.pdf" download>Download</a><a class="btn ghost" href="downloads/Solar-ESS-16kWh-LV-Battery-Comparison-TH_Rev02_20261020.pdf" lang="th" style="font-family:var(--thai)">ภาษาไทย</a></div></div></article>
 
-<article class="tnote" id="pv-carport"><a href="downloads/Solar-ESS-PV-Carport-and-Low-Structure-Design.pdf"><img src="images/note-pv-carport.jpg" alt="First page of the PV carport and low structure design package" width="579" height="410" loading="lazy"></a>
-<div><p class="meta">Design package · 13 pages · PDF · English</p><h2>Combined PV carport and low PV structure, 27.30 kWp</h2>
-<p>A full engineering package for a six-car PV carport with a low PV structure beside it, using 42 LONGi Hi-MO X10 650 W panels.</p>
-<ul><li>Carport for 28 panels and low structure for 14 panels</li><li>Floor works, rain gutter and drainage</li><li>Mid clamps and sealed gaps between panels for a dry carport</li></ul>
-<div class="acts"><a class="btn" href="downloads/Solar-ESS-PV-Carport-and-Low-Structure-Design.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-PV-Carport-and-Low-Structure-Design.pdf" download>Download</a></div></div></article>
+<article class="tnote" id="16kwh-battery-explained"><a href="downloads/Solar-ESS-16kWh-Battery-Explained-TH_Rev01_20261020.pdf"><img src="images/note-16kwh-battery-explained.jpg" alt="First page of the 16 kWh / 314 Ah battery explainer" width="579" height="819" loading="lazy"></a>
+<div><p class="meta">Customer explainer · 2 pages · PDF · Thai</p><h2>What is a 16 kWh / 314 Ah battery?</h2>
+<p>A simple guide, with formulas, to how 16 LiFePO4 cells of 3.2 V and 314 Ah make a 51.2 V, 16 kWh battery, how much of it you can really use, and how many hours it runs an air con.</p>
+<ul><li>16 cells × 3.2 V in series = 51.2 V (the "48 V system")</li><li>51.2 V × 314 Ah ≈ 16 kWh, about 16 units of electricity</li><li>Usable energy by depth of discharge (90 to 100%)</li><li>Runtime for air cons and household loads</li></ul>
+<div class="acts"><a class="btn" href="downloads/Solar-ESS-16kWh-Battery-Explained-TH_Rev01_20261020.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-16kWh-Battery-Explained-TH_Rev01_20261020.pdf" download>Download</a></div></div></article>
+
+<article class="tnote" id="battery-wall-elevation"><a href="downloads/Solar-ESS-Battery-Wall-Second-Battery-Elevation_Rev02_20261019.pdf"><img src="images/note-battery-wall-elevation.jpg" alt="First page of the battery wall front elevation" width="579" height="819" loading="lazy"></a>
+<div><p class="meta">Drawing · 2 pages · PDF · English, Thai</p><h2>Adding a second wall battery: front elevation</h2>
+<p>A proposed layout for adding a second 10.24 kWh LiFePO4 wall battery beside the first, under a hybrid inverter, with the DC breaker box moved between the inverter and the batteries.</p>
+<ul><li>Dimensioned front elevation with every item labelled</li><li>Paralleling the two batteries: power cables, BMS link and master address</li><li>Clearances around batteries, breaker box, cable tray and inverter</li><li>Site photo next to an edited photo of the proposed wall</li></ul>
+<div class="acts"><a class="btn" href="downloads/Solar-ESS-Battery-Wall-Second-Battery-Elevation_Rev02_20261019.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-Battery-Wall-Second-Battery-Elevation_Rev02_20261019.pdf" download>Download</a><a class="btn ghost" href="downloads/Solar-ESS-Battery-Wall-Second-Battery-Elevation-TH_Rev02_20261019.pdf" lang="th" style="font-family:var(--thai)">ภาษาไทย</a></div></div></article>
+
+</div></section>
+<section class="topicsec" id="topic-panels"><h2 class="th">Solar panels & tilt <small>2 notes</small></h2><div class="notes">
+
+<article class="tnote" id="pv-panel-comparison"><a href="downloads/Solar-ESS-650-670W-PV-Panel-Comparison_Rev01_20261020.pdf"><img src="images/note-pv-panel-comparison.jpg" alt="First page of the 650–670 W solar panel comparison" width="579" height="819" loading="lazy"></a>
+<div><p class="meta">Comparison report · 3 pages · PDF · English, Thai</p><h2>Which 650–670 W solar panel should I choose?</h2>
+<p>Six Tier-1 panels scored with stars for rooftops and for open sites: AIKO, LONGi, Jinko, Tongwei, Trina and JA Solar, backed by independent tests (Kiwa PVEL 2026, RETC 2026, TÜV) and real field results.</p>
+<ul><li>Quick pick for home roofs, carports and ground mounts</li><li>Star scorecard with roof and open-site scores</li><li>Independent test results and field cases from both technologies</li><li>Key specifications and a 30-second decision guide</li></ul>
+<div class="acts"><a class="btn" href="downloads/Solar-ESS-650-670W-PV-Panel-Comparison_Rev01_20261020.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-650-670W-PV-Panel-Comparison_Rev01_20261020.pdf" download>Download</a><a class="btn ghost" href="downloads/Solar-ESS-650-670W-PV-Panel-Comparison-TH_Rev01_20261020.pdf" lang="th" style="font-family:var(--thai)">ภาษาไทย</a></div></div></article>
 
 <article class="tnote" id="panel-angle-study"><a href="downloads/Solar-ESS-Chiang-Rai-Panel-Angle-Study.pdf"><img src="images/note-panel-angle.jpg" alt="First page of the Chiang Rai panel angle study" width="579" height="820" loading="lazy"></a>
 <div><p class="meta">Site study · 5 pages · PDF · English, Thai, Dutch</p><h2>Face south at about 20°: panel tilt and direction in Chiang Rai</h2>
 <p>How much sunlight reaches Chiang Rai, and which panel tilt and direction collect the most over a year.</p>
 <ul><li>Anything from 15° to 25° is within half a percent of the best tilt</li><li>What facing east or west costs in yearly energy</li><li>The results applied to a carport roof and an A-shape ground mount</li></ul>
 <div class="acts"><a class="btn" href="downloads/Solar-ESS-Chiang-Rai-Panel-Angle-Study.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-Chiang-Rai-Panel-Angle-Study.pdf" download>Download</a><a class="btn ghost" href="downloads/Solar-ESS-Chiang-Rai-Panel-Angle-Study-TH.pdf" lang="th" style="font-family:var(--thai)">ภาษาไทย</a><a class="btn ghost" href="downloads/Solar-ESS-Chiang-Rai-Panel-Angle-Study-NL.pdf" lang="nl">Nederlands</a></div></div></article>
+
+</div></section>
+<section class="topicsec" id="topic-structures"><h2 class="th">Structures & footings <small>7 notes</small></h2><div class="notes">
+
+<article class="tnote" id="footing-selection-chiang-rai"><a href="downloads/Solar-ESS-STR-02-Footing-Selection-Chiang-Rai_Rev01_20261020.pdf"><img src="images/note-footing-selection.jpg" alt="First page of the footing selection analysis for a Chiang Rai ground mount" width="579" height="819" loading="lazy"></a>
+<div><p class="meta">Engineering note · 3 pages · PDF · English</p><h2>Which footing suits a Chiang Rai ground mount best?</h2>
+<p>Six footings for a 36-post low ground mount on acidic red laterite clay compared on wind uplift in the wet season, testing, durability and buildability. Shows why weight-based pads can drop below a safety factor of 1.0 on waterlogged ground, and why helical piles and augered concrete piers stay above 4.</p>
+<ul><li>Star scorecard and uplift safety factors, dry and soaked</li><li>Buoyancy effect on concrete pads in the monsoon</li><li>Independent check of the helical pile design</li><li>Recommended footing plan and drainage</li></ul>
+<div class="acts"><a class="btn" href="downloads/Solar-ESS-STR-02-Footing-Selection-Chiang-Rai_Rev01_20261020.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-STR-02-Footing-Selection-Chiang-Rai_Rev01_20261020.pdf" download>Download</a><a class="btn ghost" href="downloads/Solar-ESS-STR-02-Footing-Selection-Chiang-Rai-TH_Rev01_20261022.pdf" lang="th">ภาษาไทย</a></div></div></article>
+
+<article class="tnote" id="pad-footing-design"><a href="downloads/Solar-ESS-Ground-Mount-Pad-Footing-Design_Rev01_20261019.pdf"><img src="images/note-pad-footing-design.jpg" alt="First page of the STR-02 pad footing design" width="579" height="819" loading="lazy"></a>
+<div><p class="meta">Design note · 8 pages · PDF · English, Thai</p><h2>Pad footings for a 45-panel low ground mount, designed for wind uplift</h2>
+<p>A construction-ready design for 36 reinforced concrete pad footings under a low, fixed ground-mounted array of 45 × 650 W panels in Chiang Rai.</p>
+<ul><li>Set-out plan with coordinates for every footing and diagonal checks</li><li>Footing section and plan with reinforcement, anchor bolts and base plate</li><li>Wind uplift to DPT 1311-50: 446 kgf per post, safety factor 1.58</li><li>Material quantities, a ten-step build sequence with hold points, and tolerances</li></ul>
+<div class="acts"><a class="btn" href="downloads/Solar-ESS-Ground-Mount-Pad-Footing-Design_Rev01_20261019.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-Ground-Mount-Pad-Footing-Design_Rev01_20261019.pdf" download>Download</a><a class="btn ghost" href="downloads/Solar-ESS-Ground-Mount-Pad-Footing-Design-TH_Rev01_20261019.pdf" lang="th" style="font-family:var(--thai)">ภาษาไทย</a></div></div></article>
+
+<article class="tnote" id="alternative-footings"><a href="downloads/Solar-ESS-Ground-Mount-Alternative-Footings_Rev01_20261019.pdf"><img src="images/note-alternative-footings.jpg" alt="First page of the alternative footings note" width="579" height="819" loading="lazy"></a>
+<div><p class="meta">Design note · 6 pages · PDF · English</p><h2>Four footings with the same wind resistance as a concrete pad</h2>
+<p>Alternatives to a buried pad footing that carry the same uplift and lateral wind load, for sites with rock, water, soft ground or limited labour.</p>
+<ul><li>Plain concrete block cast in the hole: one pour, no formwork</li><li>Shallow ballast block for rock or high water near the surface</li><li>Augered concrete pier and steel ground screw, with site pull tests</li><li>Which footing to use for each site condition</li></ul>
+<div class="acts"><a class="btn" href="downloads/Solar-ESS-Ground-Mount-Alternative-Footings_Rev01_20261019.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-Ground-Mount-Alternative-Footings_Rev01_20261019.pdf" download>Download</a><a class="btn ghost" href="downloads/Solar-ESS-Ground-Mount-Alternative-Footings-TH_Rev01_20261022.pdf" lang="th">ภาษาไทย</a></div></div></article>
+
+<article class="tnote" id="ground-mount-bom"><a href="downloads/Solar-ESS-Ground-Mount-Structure-BOM.pdf"><img src="images/note-ground-mount-bom.jpg" alt="First page of the ground-mount structure bill of materials" width="579" height="819" loading="lazy"></a>
+<div><p class="meta">Bill of materials · 2 pages · PDF · English</p><h2>What goes into a ground-mount solar structure? A complete bill of materials</h2>
+<p>Every part of a fixed-tilt, two-leg ground-mount table, from posts and rails to clamps, footings and earthing, with typical sizes and quantities for an example 12-module table.</p>
+<ul><li>Frame, rails, bracing, module clamps and fasteners, item by item</li><li>Foundation options: concrete footings or ground screws</li><li>Earthing and bonding parts, with an earth rod at each end of the table</li><li>What to check before ordering: tilt, clearance, wind load and galvanizing</li></ul>
+<div class="acts"><a class="btn" href="downloads/Solar-ESS-Ground-Mount-Structure-BOM.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-Ground-Mount-Structure-BOM.pdf" download>Download</a><a class="btn ghost" href="downloads/Solar-ESS-Ground-Mount-Structure-BOM-TH_Rev01_20261022.pdf" lang="th">ภาษาไทย</a></div></div></article>
+
+<article class="tnote" id="inverter-chamber"><a href="downloads/Solar-ESS-Inverter-Chamber-Frame.pdf"><img src="images/note-inverter-chamber.jpg" alt="Front and side elevation of the inverter and combiner structure" width="819" height="579" loading="lazy"></a>
+<div><p class="meta">Inverter &amp; Combiner Structure · 2 sheets · PDF · English</p><h2>Inverter &amp; Combiner Structure</h2>
+<p>A free-standing steel frame, 1800 wide by 1900 high, that carries the hybrid inverter, the AC/DC combiner box and the wireway in one tidy assembly.</p>
+<ul><li>Front and side elevations with every dimension in millimetres</li><li>Inverter and combiner box spaced evenly between the columns</li><li>Wireway, EMT drops and the IMC riser to the roof</li><li>Member list with sections, quantities and cut lengths</li></ul>
+<div class="acts"><a class="btn" href="downloads/Solar-ESS-Inverter-Chamber-Frame.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-Inverter-Chamber-Frame.pdf" download>Download</a><a class="btn ghost" href="downloads/Solar-ESS-Inverter-Chamber-Frame-TH_Rev01_20261022.pdf" lang="th">ภาษาไทย</a></div></div></article>
+
+<article class="tnote" id="cement-floor"><a href="downloads/Solar-ESS-Solar-Panels-on-Cement-Floor.pdf"><img src="images/note-cement-floor.jpg" alt="First page of the Solar panels on cement floor package" width="579" height="410" loading="lazy"></a>
+<div><p class="meta">Design case study · 5 pages · PDF · English</p><h2>Solar panels on a cement floor: canopy or low-tilt frames</h2>
+<p>Two ways to mount panels on the same flat concrete roof, both on precast concrete blocks with no drilling into the slab.</p>
+<ul><li>Option A: a raised PV canopy that doubles as a shaded terrace</li><li>Option B: low-tilt steel frames about 0.5 m high</li><li>Height, wind load, steel, cost and maintenance access compared</li><li>Block, rubber pad and anchor plate detail that keeps the waterproofing intact</li></ul>
+<div class="acts"><a class="btn" href="downloads/Solar-ESS-Solar-Panels-on-Cement-Floor.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-Solar-Panels-on-Cement-Floor.pdf" download>Download</a><a class="btn ghost" href="downloads/Solar-ESS-Solar-Panels-on-Cement-Floor-TH_Rev01_20261022.pdf" lang="th">ภาษาไทย</a></div></div></article>
+
+<article class="tnote" id="pv-carport"><a href="downloads/Solar-ESS-PV-Carport-and-Low-Structure-Design.pdf"><img src="images/note-pv-carport.jpg" alt="First page of the PV carport and low structure design package" width="579" height="410" loading="lazy"></a>
+<div><p class="meta">Design package · 13 pages · PDF · English</p><h2>Combined PV carport and low PV structure, 27.30 kWp</h2>
+<p>A full engineering package for a six-car PV carport with a low PV structure beside it, using 42 LONGi Hi-MO X10 650 W panels.</p>
+<ul><li>Carport for 28 panels and low structure for 14 panels</li><li>Floor works, rain gutter and drainage</li><li>Mid clamps and sealed gaps between panels for a dry carport</li></ul>
+<div class="acts"><a class="btn" href="downloads/Solar-ESS-PV-Carport-and-Low-Structure-Design.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-PV-Carport-and-Low-Structure-Design.pdf" download>Download</a><a class="btn ghost" href="downloads/Solar-ESS-PV-Carport-and-Low-Structure-Design-TH_Rev01_20261022.pdf" lang="th">ภาษาไทย</a></div></div></article>
+
+</div></section>
+<section class="topicsec" id="topic-safety"><h2 class="th">Safety & protection <small>7 notes</small></h2><div class="notes">
+
+<article class="tnote" id="grid-outage-reminder"><a href="downloads/Solar-ESS-Installer-Reminder-Grid-Outage_Rev01_20261021.pdf"><img src="images/note-grid-outage-reminder.jpg" alt="Installer reminder: PEA power off means On-Grid solar off" width="579" height="819" loading="lazy"></a>
+<div><p class="meta">Installer reminder · 1 page · PDF · English, Thai</p><h2>Tell every customer: PEA power off = On-Grid solar off</h2>
+<p>A one-page reminder for installers. On-Grid inverters must switch off when PEA power fails (anti-islanding), and only the backup (EPS) circuits of a hybrid system keep power. Explain it before handover so customers are not surprised in a blackout.</p>
+<ul><li>Why On-Grid systems switch off</li><li>What On-Grid, Hybrid and Off-Grid systems do in a PEA outage</li><li>What to tell the customer</li><li>Six-step checklist before handover</li></ul>
+<div class="acts"><a class="btn" href="downloads/Solar-ESS-Installer-Reminder-Grid-Outage_Rev01_20261021.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-Installer-Reminder-Grid-Outage_Rev01_20261021.pdf" download>Download</a><a class="btn ghost" href="downloads/Solar-ESS-Installer-Reminder-Grid-Outage-TH_Rev01_20261021.pdf" lang="th" style="font-family:var(--thai)">ภาษาไทย</a></div></div></article>
+
+<article class="tnote" id="solar-panels-and-fire"><a href="downloads/Solar-ESS-Solar-Panels-and-Fire.pdf"><img src="images/note-solar-fire.jpg" alt="First page of the Solar panels and fire report" width="579" height="820" loading="lazy"></a>
+<div><p class="meta">Fire and life safety · 4 pages · PDF · English, Thai</p><h2>Solar panels and fire: the real risk</h2>
+<p>Solar fires are rare, mostly stay small, and almost always trace back to electrical workmanship, not the panels themselves.</p>
+<ul><li>How often solar systems are involved in a fire</li><li>Where solar fires start and why</li><li>What good installation and yearly maintenance do to the risk</li></ul>
+<div class="acts"><a class="btn" href="downloads/Solar-ESS-Solar-Panels-and-Fire.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-Solar-Panels-and-Fire.pdf" download>Download</a><a class="btn ghost" href="downloads/Solar-ESS-Solar-Panels-and-Fire-TH.pdf" lang="th" style="font-family:var(--thai)">ภาษาไทย</a></div></div></article>
 
 <article class="tnote" id="overheated-joints"><a href="downloads/Solar-ESS-Research-Report-Overheated-Joints.pdf"><img src="images/note-overheated-joints.jpg" alt="First page of the research report on overheated electrical joints" width="579" height="819" loading="lazy"></a>
 <div><p class="meta">Electrical safety · 7 pages · PDF · English</p><h2>Overheated joints: fire, danger to life and the cost of heat</h2>
@@ -367,18 +397,18 @@ details .a{margin-top:10px;max-width:74ch;color:var(--ink)}
 <p>Have your boards not been scanned in the last year? Read this, then book an inspection.</p>
 <div class="acts"><a class="btn" href="downloads/Solar-ESS-Research-Report-Overheated-Joints.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-Research-Report-Overheated-Joints.pdf" download>Download</a></div></div></article>
 
-<article class="tnote" id="overheated-joints-th" lang="th" style="font-family:var(--thai)"><a href="downloads/Solar-ESS-Research-Report-Overheated-Joints-TH.pdf"><img src="images/note-overheated-joints-th.jpg" alt="หน้าแรกของรายงานวิจัยเรื่องจุดต่อไฟฟ้าร้อนเกิน ฉบับภาษาไทย" width="579" height="819" loading="lazy"></a>
+<article class="tnote" id="overheated-joints-th" lang="th" style="font-family:var(--thai)"><a href="downloads/Solar-ESS-Research-Report-Overheated-Joints-TH_Rev02_20261022.pdf"><img src="images/note-overheated-joints-th.jpg" alt="หน้าแรกของรายงานวิจัยเรื่องจุดต่อไฟฟ้าร้อนเกิน ฉบับภาษาไทย" width="579" height="819" loading="lazy"></a>
 <div><p class="meta" style="font-family:var(--thai);letter-spacing:.02em;font-size:13px">ความปลอดภัยทางไฟฟ้า · 7 หน้า · PDF · ภาษาไทย</p><h2 style="font-family:var(--thai);letter-spacing:0;line-height:1.3">จุดต่อไฟฟ้าร้อนเกิน: ไฟไหม้ อันตรายต่อชีวิต และต้นทุนของความร้อน ฉบับภาษาไทย</h2>
 <p><strong>คำเตือน: จุดต่อที่หลวมร้อนได้เกิน 1,200 °C โดยที่ breaker ไม่ตัด</strong> รายงานฉบับนี้ติดตามขั้วสายจริงหนึ่งจุดในเชียงราย ตั้งแต่งานติดตั้งที่ไม่ได้มาตรฐานจนฉนวนละลาย และบอกวิธีตรวจหาปัญหาแบบเดียวกันในตู้ไฟของคุณก่อนจะสายเกินไป</p>
 <ul><li>ภาพถ่ายสายสองเส้นที่อัดเข้าขั้วเดียว และผลของความร้อนที่เกิดขึ้น</li><li>สถิติไฟไหม้และกรณีศึกษาจากกรุงเทพฯ ลอนดอน และจีน</li><li>เปรียบเทียบอันตรายจากไฟไหม้กับอันตรายต่อชีวิต และสภาพก่อนกับหลังซ่อม</li><li>ความร้อนที่จุดต่อทำให้เสียพลังงานที่คุณจ่ายเงินซื้ออย่างไร</li><li>แนวทางบำรุงรักษาเชิงป้องกัน: ขัน torque ให้ถูกต้อง ทดสอบฉนวน และทำ thermal scan ขณะมีโหลดทุกปี</li></ul>
 <p>ตู้ไฟของคุณไม่ได้สแกนความร้อนมาเกินหนึ่งปีแล้วหรือไม่ อ่านรายงานนี้ แล้วนัดตรวจกับเรา</p>
-<div class="acts"><a class="btn" href="downloads/Solar-ESS-Research-Report-Overheated-Joints-TH.pdf">เปิดอ่าน PDF</a><a class="btn ghost" href="downloads/Solar-ESS-Research-Report-Overheated-Joints-TH.pdf" download>ดาวน์โหลด</a></div></div></article>
+<div class="acts"><a class="btn" href="downloads/Solar-ESS-Research-Report-Overheated-Joints-TH_Rev02_20261022.pdf">เปิดอ่าน PDF</a><a class="btn ghost" href="downloads/Solar-ESS-Research-Report-Overheated-Joints-TH_Rev02_20261022.pdf" download>ดาวน์โหลด</a></div></div></article>
 
 <article class="tnote" id="spd-50cm"><a href="downloads/Solar-ESS-SPD-50cm-Rule.pdf"><img src="images/note-spd-50cm.jpg" alt="First page of the 50 cm rule note" width="579" height="819" loading="lazy"></a>
 <div><p class="meta">Surge protection · 2 pages · PDF · English</p><h2>The 50 cm rule for SPD wiring</h2>
 <p>Why the wires to a surge protection device must be short, and how to keep them short in a real board.</p>
 <ul><li>Why every metre of connecting wire adds about 1,000 V during a surge</li><li>What the equipment sees with 0.25 m, 0.5 m, 1 m and 2 m of leads</li><li>Which three lengths count toward the 50 cm</li><li>V-connection, local earth terminal and other ways to keep it short</li></ul>
-<div class="acts"><a class="btn" href="downloads/Solar-ESS-SPD-50cm-Rule.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-SPD-50cm-Rule.pdf" download>Download</a></div></div></article>
+<div class="acts"><a class="btn" href="downloads/Solar-ESS-SPD-50cm-Rule.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-SPD-50cm-Rule.pdf" download>Download</a><a class="btn ghost" href="downloads/Solar-ESS-SPD-50cm-Rule-TH_Rev01_20261022.pdf" lang="th">ภาษาไทย</a></div></div></article>
 
 <article class="tnote" id="spd-guide"><a href="downloads/Solar-ESS-SPD-Guide-3P-vs-4P.pdf"><img src="images/note-spd-guide.jpg" alt="First page of the Surge Protection Devices guide" width="579" height="819" loading="lazy"></a>
 <div><p class="meta">Surge protection · 4 pages · PDF · English · <a href="#spd-guide-th" lang="th" style="font-family:var(--thai);letter-spacing:0;text-transform:none">มีฉบับภาษาไทย</a></p><h2>Surge Protection Devices (SPD): 3P, 4P and 3+1</h2>
@@ -386,17 +416,40 @@ details .a{margin-top:10px;max-width:74ch;color:var(--ink)}
 <ul><li>How a surge is sent to earth, and how to read the ratings on the label</li><li>Which device fits which earthing arrangement, with a quick chooser</li><li>When the standards require an SPD, and what that means in Thailand</li><li>Where SPDs go in a solar system, and a five-point checklist</li></ul>
 <div class="acts"><a class="btn" href="downloads/Solar-ESS-SPD-Guide-3P-vs-4P.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-SPD-Guide-3P-vs-4P.pdf" download>Download</a></div></div></article>
 
-<article class="tnote" id="spd-guide-th" lang="th" style="font-family:var(--thai)"><a href="downloads/Solar-ESS-SPD-Guide-3P-vs-4P-TH.pdf"><img src="images/note-spd-guide-th.jpg" alt="หน้าแรกของคู่มืออุปกรณ์ป้องกันเสิร์จ (SPD) ฉบับภาษาไทย" width="579" height="819" loading="lazy"></a>
+<article class="tnote" id="spd-guide-th" lang="th" style="font-family:var(--thai)"><a href="downloads/Solar-ESS-SPD-Guide-3P-vs-4P-TH_Rev02_20261022.pdf"><img src="images/note-spd-guide-th.jpg" alt="หน้าแรกของคู่มืออุปกรณ์ป้องกันเสิร์จ (SPD) ฉบับภาษาไทย" width="579" height="819" loading="lazy"></a>
 <div><p class="meta" style="font-family:var(--thai);letter-spacing:.02em;font-size:13px">อุปกรณ์ป้องกันเสิร์จ · 4 หน้า · PDF · ภาษาไทย</p><h2 style="font-family:var(--thai);letter-spacing:0;line-height:1.3">อุปกรณ์ป้องกันเสิร์จ (SPD): 3P, 4P และ 3+1 ฉบับภาษาไทย</h2>
 <p>ฟ้าผ่าครั้งเดียวอาจทำให้อินเวอร์เตอร์ราคาหลักแสนเสียหายได้ คู่มือฉบับนี้อธิบายเป็นภาษาไทยแบบเข้าใจง่าย พร้อมภาพประกอบ ว่า SPD ทำงานอย่างไร และควรเลือกแบบใดให้เหมาะกับตู้ไฟของคุณ</p>
 <ul><li>SPD แบบ 3P, 4P และ 3+1 ต่างกันอย่างไร และตู้ไฟแบบไหนควรใช้แบบใด</li><li>งานโซลาร์ในไทยจำเป็นต้องติด SPD หรือไม่ และติดตรงจุดใดบ้าง</li><li>กฎ 50 ซม. และรายการตรวจสอบ 5 ข้อสำหรับช่างและเจ้าของบ้าน</li></ul>
-<div class="acts"><a class="btn" href="downloads/Solar-ESS-SPD-Guide-3P-vs-4P-TH.pdf">เปิดอ่าน PDF</a><a class="btn ghost" href="downloads/Solar-ESS-SPD-Guide-3P-vs-4P-TH.pdf" download>ดาวน์โหลด</a></div></div></article>
+<div class="acts"><a class="btn" href="downloads/Solar-ESS-SPD-Guide-3P-vs-4P-TH_Rev02_20261022.pdf">เปิดอ่าน PDF</a><a class="btn ghost" href="downloads/Solar-ESS-SPD-Guide-3P-vs-4P-TH_Rev02_20261022.pdf" download>ดาวน์โหลด</a></div></div></article>
 
+</div></section>
+<section class="topicsec" id="topic-cases"><h2 class="th">Case studies & research <small>3 notes</small></h2><div class="notes">
+
+<article class="tnote" id="hybrid-performance-review"><a href="downloads/Solar-ESS-Hybrid-Plant-Case-Study-Hat-Yai_Rev08_20261018.pdf"><img src="images/note-hybrid-performance-review.jpg" alt="First page of the hybrid plant case study" width="579" height="819" loading="lazy"></a>
+<div><p class="meta">Case study · 4 pages · PDF · English, Thai</p><h2>A hybrid plant that produces more than enough energy for its shop</h2>
+<p>A remote review of a 6.96 kWp hybrid plant with battery at a small business in Hat Yai. It produces more than enough energy for the shop and covers 98% of its electricity.</p>
+<ul><li>Monthly production against a typical 6.96 kWp plant</li><li>Why a low string voltage points to panels not contributing fully, and how to check on site</li><li>Inverter settings checked: self-use mode, unbalanced output and the PEA grid code</li><li>Battery energy counters that do not add up, and why that matters</li><li>Six actions in priority order, from a site check of the array to completing the monitoring records</li></ul>
+<div class="acts"><a class="btn" href="downloads/Solar-ESS-Hybrid-Plant-Case-Study-Hat-Yai_Rev08_20261018.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-Hybrid-Plant-Case-Study-Hat-Yai_Rev08_20261018.pdf" download>Download</a><a class="btn ghost" href="downloads/Solar-ESS-Hybrid-Plant-Case-Study-Hat-Yai-TH_Rev08_20261018.pdf" lang="th" style="font-family:var(--thai)">ภาษาไทย</a></div></div></article>
+
+<article class="tnote" id="installation-report-tasai"><a href="downloads/Solar-ESS-Installation-Report-Tasai-Chiang-Rai.pdf"><img src="images/note-installation-report.jpg" alt="First page of the installation photo report" width="579" height="819" loading="lazy"></a>
+<div><p class="meta">Installation report · 7 pages · PDF · English, Thai, Dutch, French</p><h2>Installation photo report: 6.5 kWp home system in Tasai, Chiang Rai</h2>
+<p>A complete handover report for a 10-panel hybrid system, showing how we document an installation for the owner.</p>
+<ul><li>Control cabinet components, switch-on procedure and inverter indicator lights</li><li>String layout, panel structure drawing to scale and the circuit diagram, DC and AC</li><li>Insulation test, thermal check of every connection and the tools used</li><li>Full list of materials with brands and ratings</li></ul>
+<div class="acts"><a class="btn" href="downloads/Solar-ESS-Installation-Report-Tasai-Chiang-Rai.pdf">Open the PDF</a><a class="btn ghost" href="downloads/Solar-ESS-Installation-Report-Tasai-Chiang-Rai.pdf" download>Download</a><a class="btn ghost" href="downloads/Solar-ESS-Installation-Report-Tasai-Chiang-Rai-TH.pdf" lang="th" style="font-family:var(--thai)">ภาษาไทย</a><a class="btn ghost" href="downloads/Solar-ESS-Installation-Report-Tasai-Chiang-Rai-NL.pdf" lang="nl">Nederlands</a><a class="btn ghost" href="downloads/Solar-ESS-Installation-Report-Tasai-Chiang-Rai-FR.pdf" lang="fr">Français</a></div></div></article>
+
+<article class="tnote" id="community-solar-th" lang="th" style="font-family:var(--thai)"><a href="downloads/Solar-ESS-Community-Solar-Thailand-Japan-TH_Rev02_20261022.pdf"><img src="images/note-community-solar-th.jpg" alt="หน้าแรกของสรุปงานวิจัยโซลาร์ชุมชน" width="579" height="819" loading="lazy"></a>
+<div><p class="meta" style="letter-spacing:0;text-transform:none">สรุปงานวิจัย · 2 หน้า · PDF · ภาษาไทย</p><h2>โซลาร์ชุมชน: ไทยและญี่ปุ่นเรียนรู้อะไรจากกันได้บ้าง</h2>
+<p>สรุปงานวิจัยของจุฬาลงกรณ์มหาวิทยาลัย ปี 2561 ที่เปรียบเทียบโซลาร์ฟาร์มชุมชนขนาดประมาณ 1 เมกะวัตต์ สี่แห่งในไทยและญี่ปุ่น</p>
+<ul><li>รูปแบบที่ภาคธุรกิจนำของไทย และรูปแบบที่ประชาชนนำของญี่ปุ่น</li><li>ต้นทุน ผลตอบแทน และการยอมรับของคนในพื้นที่</li><li>โซลาร์ชุมชนที่ดีควรผสมจุดแข็งของทั้งสองแบบ</li></ul>
+<div class="acts"><a class="btn" href="downloads/Solar-ESS-Community-Solar-Thailand-Japan-TH_Rev02_20261022.pdf">เปิด PDF</a><a class="btn ghost" href="downloads/Solar-ESS-Community-Solar-Thailand-Japan-TH_Rev02_20261022.pdf" download>ดาวน์โหลด</a></div></div></article>
+
+</div></section>
 </div></div></section>
 
 <section class="band" style="background:var(--sky);padding-block:56px"><div class="wrap"><h2 style="font-size:clamp(24px,3.4vw,38px)">A question about your own site?</h2><p class="lede" style="margin-top:12px">Tell us what you are building and we will answer with a preliminary design.</p><div style="margin-top:22px"><a class="btn" href="/#consult">Book a consultation</a></div></div></section>
 
 <footer><div class="wrap"><span>Solar ESS Co. Ltd. · Solar Energy for Sustainable Solution</span><span><a href="/job.html">Jobs</a> · <a href="/members.html">Members</a> · www.solar-ess.org · www.solaress.org</span></div></footer>
 <script src="/share.js?v=2" defer></script>
+<script>(function(){const h=document.querySelector("header.nav");const f=()=>h&&document.documentElement.style.setProperty("--navh",h.offsetHeight+"px");f();addEventListener("resize",f)})();document.querySelectorAll(".topicdd .tmenu a").forEach(a=>a.addEventListener("click",()=>a.closest("details").removeAttribute("open")));document.addEventListener("click",e=>{const d=document.querySelector(".topicdd");if(d&&!d.contains(e.target))d.removeAttribute("open")});</script>
 </body>
 </html>

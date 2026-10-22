@@ -120,6 +120,27 @@ footer .wrap{display:flex;gap:24px;flex-wrap:wrap;justify-content:space-between;
 @media(max-width:820px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.svc,.calc,.voices,.about,.consult{grid-template-columns:minmax(0,1fr)}.svc article,.svc article:nth-child(even){padding:24px 0;border-right:0}.proj,.mini{grid-template-columns:repeat(2,minmax(0,1fr))}.band{padding-block:60px}.bill{font-size:48px}.out .big{font-size:40px}}
 @media(max-width:520px){.proj,.mini{grid-template-columns:minmax(0,1fr)}.nav nav{margin-left:0;gap:12px}}
 .dl{display:flex;align-items:center;gap:18px;margin-top:28px;padding:16px 20px;max-width:560px;border:1.5px solid rgba(255,255,255,.28);color:var(--white);text-decoration:none}.dl:hover{border-color:var(--hot)}.dlicon{flex:none;display:grid;place-items:center;width:52px;height:52px;background:var(--hot);color:var(--white)}.dltext{display:grid;gap:3px;min-width:0}.dltext b{font-size:18px}.dltext span{font-size:15px;opacity:.85}.dltext small{font-family:var(--mono);font-size:11px;opacity:.7}@media(hover:hover) and (min-width:761px){.nav nav .ddm a{white-space:nowrap}}@media(hover:none),(max-width:760px){.nav nav .ddm{flex-wrap:wrap;row-gap:8px}}
+
+.topicbar{position:sticky;top:var(--navh,72px);z-index:8;background:var(--paper);border-bottom:1px solid var(--line);padding-block:12px}
+.topicbar .wrap{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.topicdd{position:relative}
+.topicdd summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;background:var(--navy);color:var(--white);font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.topicdd summary::-webkit-details-marker{display:none}
+.topicdd summary::after{content:"\25BE"}
+.topicdd[open] summary::after{content:"\25B4"}
+.topicdd .tmenu{position:absolute;top:100%;left:0;z-index:30;min-width:280px;display:flex;flex-direction:column;background:var(--navy);border:1px solid rgba(255,255,255,.16);box-shadow:0 10px 24px rgba(0,0,0,.25);padding:8px 0}
+.topicdd .tmenu a{color:var(--white);padding:9px 16px;font-size:14px;display:flex;justify-content:space-between;gap:16px;text-decoration:none}
+.topicdd .tmenu a:hover{background:rgba(255,255,255,.08)}
+.topicdd .tmenu a span{opacity:.6;font-family:var(--mono);font-size:12px}
+.topicchips{display:flex;gap:8px;flex-wrap:wrap}
+.topicchips a{font-size:13px;padding:6px 10px;border:1px solid var(--line);background:var(--white);color:var(--ink);text-decoration:none}
+.topicchips a:hover{border-color:var(--blue);color:var(--blue)}
+.topicsec,#topic-top{scroll-margin-top:calc(var(--navh,72px) + 80px)}
+.topicsec+.topicsec{margin-top:56px}
+.topicsec>h2.th{font-size:clamp(26px,3.4vw,38px);padding-bottom:6px;border-bottom:3px solid var(--blue);display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.topicsec>h2.th small{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--mute);font-weight:400}
+.topicsec .notes{margin-top:20px}
+@media(max-width:700px){.topicchips{display:none}.topicbar{position:static}.topicsec,#topic-top{scroll-margin-top:calc(var(--navh,72px) + 12px)}}
 </style>
 <style>
 .faqnav{display:flex;gap:8px;flex-wrap:wrap;margin-top:26px}
@@ -168,55 +189,21 @@ h1{line-height:1.22;font-weight:700}h2{line-height:1.3}h3{line-height:1.4}.subh,
 </div></header>
 <section class="dark band" style="padding-block:64px"><div class="wrap"><p class="eyebrow">ข้อมูลเทคนิค</p><h1 style="font-size:clamp(36px,6vw,64px)">วิธีทำงานของเรา<br>บันทึกไว้เป็นลายลักษณ์อักษร</h1><p class="lede" style="margin-top:18px">บันทึกสั้น ๆ จากงานวิศวกรรมของเรา: อุปกรณ์แต่ละชิ้นทำหน้าที่อะไร เลือกอย่างไร และติดตั้งอย่างไรให้ถูกต้อง อ่าน ดาวน์โหลด และส่งต่อได้ฟรี</p></div></section>
 
-<section class="band light" style="padding-block:64px"><div class="wrap"><div class="notes">
+<div class="topicbar"><div class="wrap"><details class="topicdd"><summary>หัวข้อ</summary><div class="tmenu"><a href="#topic-top">ทุกหัวข้อ <span>38</span></a><a href="#topic-design">ออกแบบระบบและประมาณพลังงาน <span>5</span></a><a href="#topic-inverters">อินเวอร์เตอร์และการออกแบบสตริง <span>8</span></a><a href="#topic-zero-export">ไม่ขายไฟคืนและสมดุลเฟส <span>5</span></a><a href="#topic-batteries">แบตเตอรี่ <span>3</span></a><a href="#topic-panels">แผงโซลาร์และมุมเอียง <span>2</span></a><a href="#topic-structures">โครงสร้างและฐานราก <span>7</span></a><a href="#topic-safety">ความปลอดภัยและการป้องกัน <span>5</span></a><a href="#topic-cases">กรณีศึกษาและงานวิจัย <span>3</span></a></div></details><div class="topicchips"><a href="#topic-design">ออกแบบระบบและประมาณพลังงาน</a><a href="#topic-inverters">อินเวอร์เตอร์และการออกแบบสตริง</a><a href="#topic-zero-export">ไม่ขายไฟคืนและสมดุลเฟส</a><a href="#topic-batteries">แบตเตอรี่</a><a href="#topic-panels">แผงโซลาร์และมุมเอียง</a><a href="#topic-structures">โครงสร้างและฐานราก</a><a href="#topic-safety">ความปลอดภัยและการป้องกัน</a><a href="#topic-cases">กรณีศึกษาและงานวิจัย</a></div></div></div>
+<section class="band light" style="padding-block:64px"><div class="wrap"><div id="topic-top"></div>
+<section class="topicsec" id="topic-design"><h2 class="th">ออกแบบระบบและประมาณพลังงาน <small>5 เรื่อง</small></h2><div class="notes">
 
-<article class="tnote" id="crypto-miner-solution"><a href="/downloads/Solar-ESS-Crypto-Miner-Solar-Solution_Rev01_20261021.pdf"><img src="/images/note-crypto-miner-solution.jpg" alt="หน้าแรกของแนวทางใช้โซลาร์รันเครื่องขุดคริปโต 24 ชั่วโมง" width="579" height="819" loading="lazy"></a>
-<div><p class="meta">แนวทางออกแบบ · 2 หน้า · PDF · ภาษาอังกฤษ</p><h2>รันเครื่องขุดคริปโต 24 ชั่วโมงด้วยโซลาร์: ต้องเพิ่มอะไรบ้าง</h2>
+<article class="tnote" id="crypto-miner-solution"><a href="/downloads/Solar-ESS-Crypto-Miner-Solar-Solution-TH_Rev01_20261022.pdf"><img src="/images/note-crypto-miner-solution-th.jpg" alt="หน้าแรกของแนวทางใช้โซลาร์รันเครื่องขุดคริปโต 24 ชั่วโมง" width="579" height="820" loading="lazy"></a>
+<div><p class="meta">แนวทางออกแบบ · 2 หน้า · PDF · ภาษาไทย</p><h2>รันเครื่องขุดคริปโต 24 ชั่วโมงด้วยโซลาร์: ต้องเพิ่มอะไรบ้าง</h2>
 <p>เครื่องขุดขนาด 3.75 kW ใช้ไฟวันละ 90 หน่วย ในจำนวนนี้ประมาณ 52 หน่วยเป็นช่วงกลางคืน จากระบบเดิมคืออินเวอร์เตอร์ไฮบริด 8 kW แผงโซลาร์ 13 kWp และแบตเตอรี่ 48 kWh เราเปรียบเทียบทางเลือกการขยายระบบ 4 แบบ และแนะนำแบบที่ทำให้เครื่องขุดใช้ไฟโซลาร์ได้ทั้งวันในวันแดดดี</p>
 <ul><li>ภาพระบบ: สิ่งที่ต้องเพิ่ม (แผงประมาณ 6.5 kWp และแบตเตอรี่ 16 kWh)</li><li>กราฟวันแดดดี ก่อนและหลังขยายระบบ</li><li>หน่วยไฟและค่าไฟ PEA ต่อเดือนของแต่ละทางเลือก รวมมิเตอร์ TOU</li><li>3 ขั้นตอน และเหตุผลที่ใช้โซลาร์ 100% ตลอดปีไม่คุ้ม</li></ul>
-<div class="acts"><a class="btn" href="/downloads/Solar-ESS-Crypto-Miner-Solar-Solution_Rev01_20261021.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-Crypto-Miner-Solar-Solution_Rev01_20261021.pdf" download>ดาวน์โหลด</a></div></div></article>
+<div class="acts"><a class="btn" href="/downloads/Solar-ESS-Crypto-Miner-Solar-Solution-TH_Rev01_20261022.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-Crypto-Miner-Solar-Solution-TH_Rev01_20261022.pdf" download>ดาวน์โหลด</a><a class="btn ghost" href="/downloads/Solar-ESS-Crypto-Miner-Solar-Solution_Rev01_20261021.pdf" lang="en">English</a></div></div></article>
 
-<article class="tnote" id="crypto-miner-pea"><a href="/downloads/Solar-ESS-Crypto-Miner-Solar-Battery-PEA_Rev01_20261021.pdf"><img src="/images/note-crypto-miner-pea.jpg" alt="หน้าแรกของบทวิเคราะห์เครื่องขุดคริปโตกับโซลาร์ แบตเตอรี่ และไฟ PEA" width="579" height="819" loading="lazy"></a>
-<div><p class="meta">บทวิเคราะห์พลังงาน · 2 หน้า · PDF · ภาษาอังกฤษ</p><h2>เครื่องขุดคริปโตกับโซลาร์เซลล์: ยังต้องใช้ไฟ PEA เท่าไร</h2>
+<article class="tnote" id="crypto-miner-pea"><a href="/downloads/Solar-ESS-Crypto-Miner-Solar-Battery-PEA-TH_Rev01_20261022.pdf"><img src="/images/note-crypto-miner-pea-th.jpg" alt="หน้าแรกของบทวิเคราะห์เครื่องขุดคริปโตกับโซลาร์ แบตเตอรี่ และไฟ PEA" width="579" height="820" loading="lazy"></a>
+<div><p class="meta">บทวิเคราะห์พลังงาน · 2 หน้า · PDF · ภาษาไทย</p><h2>เครื่องขุดคริปโตกับโซลาร์เซลล์: ยังต้องใช้ไฟ PEA เท่าไร</h2>
 <p>เครื่องขุดขนาด 3.75 kW ทำงาน 24 ชั่วโมง ใช้ไฟประมาณ 90 หน่วยต่อวัน เราจำลองการใช้งานกับอินเวอร์เตอร์ไฮบริด 8 kW แผงโซลาร์ 13 kWp และแบตเตอรี่ 48 kWh เปรียบเทียบการตั้งกระแสแบตเตอรี่ 60 A กับ 150 A โซลาร์ช่วยลดค่าไฟ PEA ได้ประมาณครึ่งหนึ่ง แต่ช่วงกลางคืนยังต้องใช้ไฟ PEA</p>
 <ul><li>กราฟรายชั่วโมง: ไฟจากโซลาร์ แบตเตอรี่ และ PEA ในวันแดดดี</li><li>ไฟ PEA ต่อวัน ในวันแดดดี วันฟ้าครึ้ม และกรณีไม่มีโซลาร์</li><li>หน่วยไฟและค่าไฟ PEA ต่อเดือน แบบมีและไม่มีโซลาร์</li><li>การตั้งกระแสแบตเตอรี่ การต่อฝั่งกริด และการเดินสายเบรกเกอร์ 25 A สำหรับโหลด 24 ชั่วโมง</li></ul>
-<div class="acts"><a class="btn" href="/downloads/Solar-ESS-Crypto-Miner-Solar-Battery-PEA_Rev01_20261021.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-Crypto-Miner-Solar-Battery-PEA_Rev01_20261021.pdf" download>ดาวน์โหลด</a></div></div></article>
-
-<article class="tnote" id="grid-outage-reminder"><a href="/downloads/Solar-ESS-Installer-Reminder-Grid-Outage-TH_Rev01_20261021.pdf"><img src="/images/note-grid-outage-reminder-th.jpg" alt="บันทึกเตือนช่าง: ไฟ PEA ดับ ระบบ On-Grid ดับด้วย" width="579" height="819" loading="lazy"></a>
-<div><p class="meta">บันทึกเตือนช่างติดตั้ง · 1 หน้า · PDF · ภาษาไทย</p><h2>แจ้งลูกค้าทุกครั้ง: ไฟ PEA ดับ = ระบบ On-Grid ดับด้วย</h2>
-<p>บันทึก 1 หน้าสำหรับช่างติดตั้ง อินเวอร์เตอร์ On-Grid ต้องตัดการทำงานเมื่อไฟ PEA ดับ (Anti-Islanding) และระบบ Hybrid จะมีไฟเฉพาะวงจรสำรอง (EPS) เท่านั้น ควรอธิบายลูกค้าก่อนส่งมอบงาน เพื่อไม่ให้ลูกค้าเข้าใจผิดเมื่อไฟดับ</p>
-<ul><li>เหตุผลที่ระบบ On-Grid ต้องดับ</li><li>ระบบ On-Grid, Hybrid และ Off-Grid ทำงานอย่างไรเมื่อไฟ PEA ดับ</li><li>สิ่งที่ควรบอกลูกค้า</li><li>เช็กลิสต์ 6 ข้อก่อนส่งมอบงาน</li></ul>
-<div class="acts"><a class="btn" href="/downloads/Solar-ESS-Installer-Reminder-Grid-Outage-TH_Rev01_20261021.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-Installer-Reminder-Grid-Outage-TH_Rev01_20261021.pdf" download>ดาวน์โหลด</a><a class="btn ghost" href="/downloads/Solar-ESS-Installer-Reminder-Grid-Outage_Rev01_20261021.pdf" lang="en">English</a></div></div></article>
-
-<article class="tnote" id="footing-selection-chiang-rai"><a href="/downloads/Solar-ESS-STR-02-Footing-Selection-Chiang-Rai_Rev01_20261020.pdf"><img src="/images/note-footing-selection.jpg" alt="หน้าแรกของการวิเคราะห์ฐานรากสำหรับโครงสร้างติดตั้งบนพื้นในเชียงราย" width="579" height="819" loading="lazy"></a>
-<div><p class="meta">บันทึกทางวิศวกรรม · 3 หน้า · PDF · ภาษาอังกฤษ</p><h2>ฐานรากแบบไหนเหมาะกับโครงสร้างติดตั้งบนพื้นในเชียงราย?</h2>
-<p>เปรียบเทียบฐานราก 6 แบบ สำหรับโครงสร้างแผงโซลาร์บนพื้น 36 ต้น บนดินลูกรังแดงที่เป็นกรด ด้านแรงถอนจากลมในฤดูฝน การทดสอบ ความทนทาน และความง่ายในการก่อสร้าง แสดงให้เห็นว่าฐานรากที่อาศัยน้ำหนักอาจมีค่าความปลอดภัยต่ำกว่า 1.0 เมื่อดินอิ่มน้ำ ขณะที่เสาเข็มเกลียวแบบใบพัด (Helical pile) และเสาเข็มเจาะคอนกรีตยังสูงกว่า 4</p>
-<ul><li>ตารางคะแนนดาว และค่าความปลอดภัยต่อแรงถอน ทั้งดินแห้งและดินอิ่มน้ำ</li><li>ผลของแรงลอยตัวต่อฐานรากคอนกรีตในฤดูฝน</li><li>การตรวจสอบการออกแบบเสาเข็มเกลียวแบบใบพัด</li><li>แผนฐานรากที่แนะนำ และการระบายน้ำ</li></ul>
-<div class="acts"><a class="btn" href="/downloads/Solar-ESS-STR-02-Footing-Selection-Chiang-Rai_Rev01_20261020.pdf">เปิด PDF (ภาษาอังกฤษ)</a><a class="btn ghost" href="/downloads/Solar-ESS-STR-02-Footing-Selection-Chiang-Rai_Rev01_20261020.pdf" download>ดาวน์โหลด</a></div></div></article>
-
-<article class="tnote" id="pv-panel-comparison"><a href="/downloads/Solar-ESS-650-670W-PV-Panel-Comparison-TH_Rev01_20261020.pdf"><img src="/images/note-pv-panel-comparison.jpg" alt="หน้าแรกของรายงานเปรียบเทียบแผงโซลาร์ 650–670 W" width="579" height="819" loading="lazy"></a>
-<div><p class="meta">รายงานเปรียบเทียบ · 3 หน้า · PDF · ภาษาไทย</p><h2>แผงโซลาร์ 650–670 W เลือกแบรนด์ไหนดี?</h2>
-<p>ให้คะแนนดาวแผงโซลาร์ Tier 1 จำนวน 6 แบรนด์ สำหรับหลังคาและพื้นที่โล่ง: AIKO, LONGi, Jinko, Tongwei, Trina และ JA Solar อ้างอิงผลทดสอบอิสระ (Kiwa PVEL 2026, RETC 2026, TÜV) และผลการใช้งานจริง</p>
-<ul><li>เลือกเร็วสำหรับหลังคาบ้าน โรงจอดรถ และติดตั้งบนพื้น</li><li>ตารางคะแนนดาว พร้อมคะแนนหลังคาและพื้นที่โล่ง</li><li>ผลทดสอบอิสระและผลใช้งานจริงของทั้งสองเทคโนโลยี</li><li>ข้อมูลจำเพาะหลัก และคู่มือตัดสินใจใน 30 วินาที</li></ul>
-<div class="acts"><a class="btn" href="/downloads/Solar-ESS-650-670W-PV-Panel-Comparison-TH_Rev01_20261020.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-650-670W-PV-Panel-Comparison-TH_Rev01_20261020.pdf" download>ดาวน์โหลด</a><a class="btn ghost" href="/downloads/Solar-ESS-650-670W-PV-Panel-Comparison_Rev01_20261020.pdf" lang="en">English</a></div></div></article>
-
-<article class="tnote" id="1p-hybrid-inverter-comparison"><a href="/downloads/Solar-ESS-10-16kW-1P-Hybrid-Inverter-Comparison-TH_Rev03_20261020.pdf"><img src="/images/note-1p-hybrid-inverter-comparison.jpg" alt="หน้าแรกของรายงานเปรียบเทียบไฮบริดอินเวอร์เตอร์ 1 เฟส 10–16 kW" width="579" height="819" loading="lazy"></a>
-<div><p class="meta">รายงานเปรียบเทียบ · 3 หน้า · PDF · ภาษาไทย</p><h2>ไฮบริดอินเวอร์เตอร์ 1 เฟส รุ่นไหนดีที่สุด?</h2>
-<p>เปรียบเทียบไฮบริดอินเวอร์เตอร์ 1 เฟส 10–16 kW สำหรับบ้านในประเทศไทย ด้านกำลังไฟและกระแสกระชาก ตัวเลือกแบตเตอรี่ การป้องกันและฟีเจอร์ การรับประกันและบริการ: Solis, GoodWe, Deye, Sungrow, LuxPower และ Growatt</p>
-<ul><li>ตารางคะแนนรวม และรุ่นที่แนะนำสำหรับบ้านแต่ละแบบ</li><li>กราฟกำลังไฟพิกัดและกำลังกระชากช่วงสตาร์ทแอร์และปั๊ม</li><li>ตารางเปรียบเทียบข้อมูลจำเพาะทางเทคนิค</li><li>กฎทอง 3 ข้อก่อนซื้อ และข้อกำหนดในไทยที่ควรตรวจสอบ</li></ul>
-<div class="acts"><a class="btn" href="/downloads/Solar-ESS-10-16kW-1P-Hybrid-Inverter-Comparison-TH_Rev03_20261020.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-10-16kW-1P-Hybrid-Inverter-Comparison-TH_Rev03_20261020.pdf" download>ดาวน์โหลด</a><a class="btn ghost" href="/downloads/Solar-ESS-10-16kW-1P-Hybrid-Inverter-Comparison_Rev03_20261020.pdf" lang="en">English</a></div></div></article>
-
-<article class="tnote" id="16kwh-battery-comparison"><a href="/downloads/Solar-ESS-16kWh-LV-Battery-Comparison-TH_Rev02_20261020.pdf"><img src="/images/note-16kwh-battery-comparison.jpg" alt="หน้าแรกของรายงานเปรียบเทียบแบตเตอรี่แรงดันต่ำ 16 kWh" width="579" height="819" loading="lazy"></a>
-<div><p class="meta">รายงานเปรียบเทียบ · 3 หน้า · PDF · ภาษาไทย</p><h2>แบตเตอรี่บ้าน 16 kWh รุ่นไหนดีที่สุด?</h2>
-<p>เปรียบเทียบแบตเตอรี่ LiFePO4 แรงดันต่ำ (51.2 V) 6 แบรนด์ ด้านคุณภาพเซลล์ สมรรถนะ การรับประกัน และบริการหลังการขาย: Deye, Solis IntelliHome, Dyness, GoodWe, LVTOPSUN G4 และ Sungrow</p>
-<ul><li>ตารางคะแนนรวม และรุ่นที่แนะนำสำหรับอินเวอร์เตอร์แต่ละแบรนด์</li><li>กราฟอายุรอบการใช้งานและพลังงานที่ใช้ได้จริง</li><li>ตารางเปรียบเทียบข้อมูลจำเพาะทางเทคนิค</li><li>การรับประกัน บริการหลังการขาย และการใช้งานร่วมกับอินเวอร์เตอร์</li></ul>
-<div class="acts"><a class="btn" href="/downloads/Solar-ESS-16kWh-LV-Battery-Comparison-TH_Rev02_20261020.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-16kWh-LV-Battery-Comparison-TH_Rev02_20261020.pdf" download>ดาวน์โหลด</a><a class="btn ghost" href="/downloads/Solar-ESS-16kWh-LV-Battery-Comparison_Rev03_20261020.pdf" lang="en">English</a></div></div></article>
-
-<article class="tnote" id="16kwh-battery-explained"><a href="/downloads/Solar-ESS-16kWh-Battery-Explained-TH_Rev01_20261020.pdf"><img src="/images/note-16kwh-battery-explained.jpg" alt="หน้าแรกของคำอธิบายแบตเตอรี่ 16 kWh / 314 Ah" width="579" height="819" loading="lazy"></a>
-<div><p class="meta">คำอธิบายสำหรับลูกค้า · 2 หน้า · PDF · ภาษาไทย</p><h2>แบตเตอรี่ 16 kWh / 314 Ah คืออะไร?</h2>
-<p>อธิบายแบบเข้าใจง่าย พร้อมสูตรคำนวณ ว่าเซลล์ LiFePO4 3.2 V 314 Ah จำนวน 16 ก้อน กลายเป็นแบตเตอรี่ 51.2 V 16 kWh ได้อย่างไร ใช้ไฟได้จริงเท่าไร และเปิดแอร์ได้กี่ชั่วโมง</p>
-<ul><li>เซลล์ 3.2 V × 16 ก้อน ต่ออนุกรม = 51.2 V ("ระบบ 48V")</li><li>51.2 V × 314 Ah ≈ 16 kWh หรือไฟประมาณ 16 หน่วย</li><li>ไฟที่ใช้ได้จริงตามระดับการคายประจุ (DoD 90–100%)</li><li>ระยะเวลาใช้งานกับแอร์และเครื่องใช้ไฟฟ้าในบ้าน</li></ul>
-<div class="acts"><a class="btn" href="/downloads/Solar-ESS-16kWh-Battery-Explained-TH_Rev01_20261020.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-16kWh-Battery-Explained-TH_Rev01_20261020.pdf" download>ดาวน์โหลด</a></div></div></article>
+<div class="acts"><a class="btn" href="/downloads/Solar-ESS-Crypto-Miner-Solar-Battery-PEA-TH_Rev01_20261022.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-Crypto-Miner-Solar-Battery-PEA-TH_Rev01_20261022.pdf" download>ดาวน์โหลด</a><a class="btn ghost" href="/downloads/Solar-ESS-Crypto-Miner-Solar-Battery-PEA_Rev01_20261021.pdf" lang="en">English</a></div></div></article>
 
 <article class="tnote" id="ice-machine-solar-tou"><a href="/downloads/Solar-ESS-Ice-Machine-Solar-Day-TOU-Night-1page-TH_Rev01_20261018.pdf"><img src="/images/note-ice-machine-solar-tou.jpg" alt="หน้าแรกของสรุปเครื่องทำน้ำแข็งกับโซลาร์และอัตรา TOU" width="579" height="819" loading="lazy"></a>
 <div><p class="meta">สรุปสำหรับลูกค้า · 1 หน้า · PDF · ภาษาไทย</p><h2>เครื่องทำน้ำแข็ง 24 ชั่วโมง: กลางวันใช้โซลาร์ กลางคืนใช้อัตรา TOU</h2>
@@ -229,17 +216,21 @@ h1{line-height:1.22;font-weight:700}h2{line-height:1.3}h3{line-height:1.4}.subh,
 <p>ระบบโซลาร์ใช้กลางวันสำหรับเครื่องทำน้ำแข็งหลอดที่ใช้มอเตอร์คอมเพรสเซอร์ 3 เฟส 18 kW แผง 650 W จำนวน 96 แผง กับอินเวอร์เตอร์ Huawei 50 kW จ่ายไฟให้เครื่องได้ประมาณ 09:00–15:30 น. ในวันฟ้าใส โดยใช้ไฟการไฟฟ้าช่วยตอนสตาร์ทมอเตอร์และช่วงเมฆมาก</p>
 <ul><li>การประเมินโหลดและการออกแบบสตริง (16 แผง × 6 สตริง บน 4 MPPT)</li><li>ไดอะแกรมเส้นเดียว: ตู้รวมสาย DC อินเวอร์เตอร์ ตู้ AC สมาร์ทมิเตอร์ Zero Export และซอฟต์สตาร์ทเตอร์ / VFD</li><li>ผังวางแผงบนพื้นดิน 6 โต๊ะ โต๊ะละ 2 × 8 แผง</li><li>รายการวัสดุ 29 รายการ</li></ul>
 <div class="acts"><a class="btn" href="/downloads/Solar-ESS-Tube-Ice-Plant-62kWp-SLD-Layout-BOM-TH_Rev01_20261019.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-Tube-Ice-Plant-62kWp-SLD-Layout-BOM-TH_Rev01_20261019.pdf" download>ดาวน์โหลด</a><a class="btn ghost" href="/downloads/Solar-ESS-Tube-Ice-Plant-62kWp-SLD-Layout-BOM_Rev01_20261019.pdf" lang="en">English</a></div></div></article>
-<article class="tnote" id="battery-wall-elevation"><a href="/downloads/Solar-ESS-Battery-Wall-Second-Battery-Elevation-TH_Rev02_20261019.pdf"><img src="/images/note-battery-wall-elevation.jpg" alt="หน้าแรกของแบบรูปด้านผนังติดตั้งแบตเตอรี่" width="579" height="819" loading="lazy"></a>
-<div><p class="meta">แบบ · 2 หน้า · PDF · ภาษาไทย</p><h2>การเพิ่มแบตเตอรี่ติดผนังลูกที่สอง: รูปด้านหน้า</h2>
-<p>แบบที่เสนอสำหรับเพิ่มแบตเตอรี่ LiFePO4 ติดผนัง 10.24 kWh ลูกที่สองข้างลูกเดิม ใต้อินเวอร์เตอร์ไฮบริด และย้ายตู้เบรกเกอร์ DC ไปไว้ระหว่างอินเวอร์เตอร์กับแบตเตอรี่</p>
-<ul><li>รูปด้านหน้าพร้อมมิติและป้ายกำกับอุปกรณ์ทุกชิ้น</li><li>การต่อขนานแบตเตอรี่สองลูก: สายไฟ สายสื่อสาร BMS และแอดเดรสตัวหลัก</li><li>ระยะห่างรอบแบตเตอรี่ ตู้เบรกเกอร์ รางเดินสาย และอินเวอร์เตอร์</li><li>ภาพหน้างานเทียบกับภาพตัดต่อของผนังที่เสนอ</li></ul>
-<div class="acts"><a class="btn" href="/downloads/Solar-ESS-Battery-Wall-Second-Battery-Elevation-TH_Rev02_20261019.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-Battery-Wall-Second-Battery-Elevation-TH_Rev02_20261019.pdf" download>ดาวน์โหลด</a><a class="btn ghost" href="/downloads/Solar-ESS-Battery-Wall-Second-Battery-Elevation_Rev02_20261019.pdf" lang="en">English</a></div></div></article>
 
-<article class="tnote" id="pad-footing-design"><a href="/downloads/Solar-ESS-Ground-Mount-Pad-Footing-Design-TH_Rev01_20261019.pdf"><img src="/images/note-pad-footing-design.jpg" alt="หน้าแรกของแบบฐานราก STR-02" width="579" height="819" loading="lazy"></a>
-<div><p class="meta">บันทึกการออกแบบ · 8 หน้า · PDF · ภาษาไทย</p><h2>ฐานรากแผ่สำหรับโครงสร้างติดตั้งบนพื้นดินระดับต่ำ 45 แผง ออกแบบรับแรงยกจากลม</h2>
-<p>แบบพร้อมก่อสร้างของฐานรากแผ่คอนกรีตเสริมเหล็ก 36 ฐาน ใต้โครงสร้างยึดติดตายตัวบนพื้นดินระดับต่ำ สำหรับแผง 650 W จำนวน 45 แผ่น ในเชียงราย</p>
-<ul><li>ผังวางตำแหน่งพร้อมพิกัดทุกฐานและการตรวจระยะทแยง</li><li>รูปตัดและแปลนฐานราก พร้อมเหล็กเสริม สลักเกลียวยึด และแผ่นเหล็กฐาน</li><li>แรงยกจากลมตาม มยผ. 1311-50: 446 กก. ต่อเสา อัตราส่วนความปลอดภัย 1.58</li><li>ปริมาณวัสดุ ลำดับการก่อสร้าง 10 ขั้นพร้อมจุดตรวจ และค่าคลาดเคลื่อนที่ยอมให้</li></ul>
-<div class="acts"><a class="btn" href="/downloads/Solar-ESS-Ground-Mount-Pad-Footing-Design-TH_Rev01_20261019.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-Ground-Mount-Pad-Footing-Design-TH_Rev01_20261019.pdf" download>ดาวน์โหลด</a><a class="btn ghost" href="/downloads/Solar-ESS-Ground-Mount-Pad-Footing-Design_Rev01_20261019.pdf" lang="en">English</a></div></div></article>
+<article class="tnote" id="energy-prediction-tasai"><a href="/downloads/Solar-ESS-Energy-Prediction-Chiang-Rai-TH_Rev01_20261022.pdf"><img src="/images/note-energy-prediction-th.jpg" alt="หน้าแรกของรายงานประมาณการพลังงาน" width="579" height="820" loading="lazy"></a>
+<div><p class="meta">ประมาณการพลังงาน · 10 หน้า · PDF · ภาษาไทย</p><h2>ระบบจะผลิตไฟฟ้าได้เท่าไร? ระบบบ้านพักอาศัย 6.5 kWp ในเชียงราย</h2>
+<p>ตัวอย่างการประมาณการสำหรับระบบไฮบริด 10 แผง: แผงควรผลิตไฟฟ้าได้เท่าไรในแต่ละชั่วโมง แต่ละวัน แต่ละฤดู และตลอด 30 ปี</p>
+<ul><li>ประมาณ 26 kWh ในวันเฉลี่ย และประมาณ 9,400 kWh ในปีแรก</li><li>กำลังผลิตรายชั่วโมงในวันฟ้าใส และผลของความร้อน หมอกควัน และฝน</li><li>เหตุผลที่ต่อแผงเป็นสองสตริง สตริงละห้าแผง พร้อมตรวจเทียบกับขีดจำกัดของ<span class="nw">อินเวอร์เตอร์</span></li><li>แนบดาต้าชีตแผง LONGi Hi-MO X10 และ<span class="nw">อินเวอร์เตอร์</span>ไฮบริด Solis</li></ul>
+<div class="acts"><a class="btn" href="/downloads/Solar-ESS-Energy-Prediction-Chiang-Rai-TH_Rev01_20261022.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-Energy-Prediction-Chiang-Rai-TH_Rev01_20261022.pdf" download>ดาวน์โหลด</a><a class="btn ghost" href="/downloads/Solar-ESS-Energy-Prediction-Tasai-Chiang-Rai.pdf" lang="en">English</a></div></div></article>
+
+</div></section>
+<section class="topicsec" id="topic-inverters"><h2 class="th">อินเวอร์เตอร์และการออกแบบสตริง <small>8 เรื่อง</small></h2><div class="notes">
+
+<article class="tnote" id="1p-hybrid-inverter-comparison"><a href="/downloads/Solar-ESS-10-16kW-1P-Hybrid-Inverter-Comparison-TH_Rev03_20261020.pdf"><img src="/images/note-1p-hybrid-inverter-comparison.jpg" alt="หน้าแรกของรายงานเปรียบเทียบไฮบริดอินเวอร์เตอร์ 1 เฟส 10–16 kW" width="579" height="819" loading="lazy"></a>
+<div><p class="meta">รายงานเปรียบเทียบ · 3 หน้า · PDF · ภาษาไทย</p><h2>ไฮบริดอินเวอร์เตอร์ 1 เฟส รุ่นไหนดีที่สุด?</h2>
+<p>เปรียบเทียบไฮบริดอินเวอร์เตอร์ 1 เฟส 10–16 kW สำหรับบ้านในประเทศไทย ด้านกำลังไฟและกระแสกระชาก ตัวเลือกแบตเตอรี่ การป้องกันและฟีเจอร์ การรับประกันและบริการ: Solis, GoodWe, Deye, Sungrow, LuxPower และ Growatt</p>
+<ul><li>ตารางคะแนนรวม และรุ่นที่แนะนำสำหรับบ้านแต่ละแบบ</li><li>กราฟกำลังไฟพิกัดและกำลังกระชากช่วงสตาร์ทแอร์และปั๊ม</li><li>ตารางเปรียบเทียบข้อมูลจำเพาะทางเทคนิค</li><li>กฎทอง 3 ข้อก่อนซื้อ และข้อกำหนดในไทยที่ควรตรวจสอบ</li></ul>
+<div class="acts"><a class="btn" href="/downloads/Solar-ESS-10-16kW-1P-Hybrid-Inverter-Comparison-TH_Rev03_20261020.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-10-16kW-1P-Hybrid-Inverter-Comparison-TH_Rev03_20261020.pdf" download>ดาวน์โหลด</a><a class="btn ghost" href="/downloads/Solar-ESS-10-16kW-1P-Hybrid-Inverter-Comparison_Rev03_20261020.pdf" lang="en">English</a></div></div></article>
 
 <article class="tnote" id="mppt-overvoltage"><a href="/downloads/Solar-ESS-Huawei-50kW-MPPT-Over-Voltage-Risk-TH_Rev01_20261019.pdf"><img src="/images/note-mppt-overvoltage.jpg" alt="หน้าแรกของ “แรงดันเกินที่ MPPT มีโอกาสเกิดแค่ไหน เมื่อใช้แผง LONGi 650 W กับอินเวอร์เตอร์ Huawei 50 kW”" width="579" height="819" loading="lazy"></a>
 <div><p class="meta">การประเมินความเสี่ยง · 2 หน้า · PDF · ภาษาไทย</p><h2>แรงดันเกินที่ MPPT มีโอกาสเกิดแค่ไหน เมื่อใช้แผง LONGi 650 W กับอินเวอร์เตอร์ Huawei 50 kW</h2>
@@ -277,65 +268,38 @@ h1{line-height:1.22;font-weight:700}h2{line-height:1.3}h3{line-height:1.4}.subh,
 <ul><li>ประสิทธิภาพ แรงดันเริ่มทำงาน ช่วง MPPT และขีดจำกัดกระแส เทียบกันทีละรายการ</li><li>ตรวจแรงดันสตริง 16 ถึง 20 แผง</li><li>เมื่อใดกระแสอินพุตที่สูงกว่าของ MC0 มีผลกับแผง Bifacial</li><li>รูปแบบที่แนะนำ 3 แบบ และควรเลือกรุ่นใด</li></ul>
 <div class="acts"><a class="btn" href="/downloads/Solar-ESS-Huawei-50kW-M3-vs-MC0-LONGi650-TH_Rev01_20261019.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-Huawei-50kW-M3-vs-MC0-LONGi650-TH_Rev01_20261019.pdf" download>ดาวน์โหลด</a><a class="btn ghost" href="/downloads/Solar-ESS-Huawei-50kW-M3-vs-MC0-LONGi650_Rev01_20261019.pdf" lang="en">English</a></div></div></article>
 
-<article class="tnote" id="hybrid-performance-review"><a href="/downloads/Solar-ESS-Hybrid-Plant-Case-Study-Hat-Yai-TH_Rev08_20261018.pdf"><img src="/images/note-hybrid-performance-review.jpg" alt="หน้าแรกของกรณีศึกษาระบบไฮบริด" width="579" height="819" loading="lazy"></a>
-<div><p class="meta">กรณีศึกษา · 3 หน้า · PDF · ภาษาไทย</p><h2>ระบบไฮบริดที่ผลิตไฟได้มากเกินพอสำหรับร้าน</h2>
-<p>ตรวจจากระยะไกลของระบบไฮบริด 6.96 kWp พร้อมแบตเตอรี่ ของธุรกิจขนาดเล็กในหาดใหญ่ ผลิตไฟได้มากเกินพอสำหรับร้าน และร้านใช้ไฟจากระบบเองได้ 98%</p>
-<ul><li>การผลิตรายเดือนเทียบกับระบบ 6.96 kWp ทั่วไป</li><li>แรงดันสตริงที่ต่ำบอกอะไร และวิธีตรวจแผงที่หน้างาน</li><li>การตั้งค่าอินเวอร์เตอร์ที่ตรวจ: โหมด Self Use การจ่ายไฟแบบไม่สมดุลเฟส และมาตรฐานกริดของ กฟภ.</li><li>ตัวนับพลังงานแบตเตอรี่ที่ตัวเลขไม่ตรงกัน และทำไมจึงสำคัญ</li><li>6 สิ่งที่ควรทำ เรียงตามความสำคัญ ตั้งแต่การตรวจแผงที่หน้างานจนถึงการกรอกข้อมูลในระบบมอนิเตอร์ให้ครบ</li></ul>
-<div class="acts"><a class="btn" href="/downloads/Solar-ESS-Hybrid-Plant-Case-Study-Hat-Yai-TH_Rev08_20261018.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-Hybrid-Plant-Case-Study-Hat-Yai-TH_Rev08_20261018.pdf" download>ดาวน์โหลด</a><a class="btn ghost" href="/downloads/Solar-ESS-Hybrid-Plant-Case-Study-Hat-Yai_Rev08_20261018.pdf" lang="en">English</a></div></div></article>
-
-<article class="tnote" id="deyecloud-zero-export"><a href="/downloads/Solar-ESS-DeyeCloud-Zero-Export-Guide_Rev01_20261018.pdf"><img src="/images/note-deyecloud-zero-export.jpg" alt="หน้าแรกของคู่มือตั้งค่าไม่ขายไฟคืนบน DeyeCloud" width="579" height="819" loading="lazy"></a>
-<div><p class="meta">คู่มือ · 4 หน้า · PDF · <span class="enonly">เอกสารภาษาอังกฤษ (English)</span></p><h2>วิธีหยุดระบบ Deye ไม่ให้ขายไฟคืนเข้ากริด (DeyeCloud)</h2>
-<p>คู่มือทีละขั้นตอนสำหรับตรวจและตั้งค่าไม่ขายไฟคืน (Zero Export) ของอินเวอร์เตอร์ไฮบริด Deye ผ่านเว็บ DeyeCloud โดยใช้ระบบ 20 kWp ของวิลล่าที่เกาะสมุยเป็นตัวอย่าง</p>
-<ul><li>หาเมนู Device Control และ System Work Mode-1 ได้ที่ไหน</li><li>การตั้งค่า 3 ข้อที่หยุดการขายไฟคืน: Zero Export To CT, Solar Sell ปิด และ Zero export power ประมาณ 20 W</li><li>วิธีอ่านค่า ตั้งค่า ยืนยัน และตรวจว่าไม่มีไฟไหลออกกริดแล้ว</li><li>วิธีแก้หน้า DeyeCloud ว่างเปล่าในบางแอป Windows</li></ul>
-<div class="acts"><a class="btn" href="/downloads/Solar-ESS-DeyeCloud-Zero-Export-Guide_Rev01_20261018.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-DeyeCloud-Zero-Export-Guide_Rev01_20261018.pdf" download>ดาวน์โหลด</a></div></div></article>
-
-<article class="tnote" id="unbalanced-output"><a href="/downloads/Solar-ESS-Unbalanced-Output_Rev01_20261016.pdf"><img src="/images/note-unbalanced-output.jpg" alt="หน้าแรกของกรณีศึกษาการจ่ายไฟแบบไม่สมดุลเฟส" width="579" height="819" loading="lazy"></a>
-<div><p class="meta">กรณีศึกษา · 2 หน้า · PDF · <span class="enonly">เอกสารภาษาอังกฤษ (English)</span></p><h2>Unbalanced Output: การตั้งค่าเดียวที่หยุดเฟสที่ซื้อไฟจากกริด ในระบบไม่ขายไฟคืน</h2>
-<p>ระบบออนกริด 3 เฟส 20 kWp ในเชียงราย ที่ปิดการขายไฟคืน ยังซื้อไฟจากกริดอยู่หนึ่งเฟส ขณะที่อินเวอร์เตอร์ลดการผลิตไฟโซลาร์ลง เมื่อเปิดการตั้งค่า Unbalance Output ปัญหาก็หมดไป</p>
-<ul><li>เปรียบเทียบการจ่ายไฟแบบสมดุลและไม่สมดุล ด้วยโหลดจริงแต่ละเฟสของระบบนี้</li><li>หลังเปิดใช้: สองเฟสที่มิเตอร์เป็น 0 W และเฟสที่โหลดสูงไม่ซื้อไฟจากกริดแล้ว</li><li>ทำไมมิเตอร์ยังแสดงกระแสแต่กำลังไฟเป็น 0 W (กระแสรีแอคทีฟ)</li><li>5 ข้อที่ต้องตรวจ: อ่านค่ากลับ สิทธิ์ผู้ติดตั้ง CT ลำดับเฟส และขีดจำกัดต่อเฟส</li></ul>
-<div class="acts"><a class="btn" href="/downloads/Solar-ESS-Unbalanced-Output_Rev01_20261016.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-Unbalanced-Output_Rev01_20261016.pdf" download>ดาวน์โหลด</a></div></div></article>
-
-<article class="tnote" id="zero-export-production"><a href="/downloads/Solar-ESS-Zero-Export-Production-vs-Consumption.pdf"><img src="/images/note-zero-export-production.jpg" alt="หน้าแรกของกรณีศึกษาการผลิตและการใช้ไฟของระบบที่ตั้งค่าไม่ขายไฟคืน" width="579" height="819" loading="lazy"></a>
-<div><p class="meta">กรณีศึกษา · 2 หน้า · PDF · <span class="enonly">เอกสารภาษาอังกฤษ (English)</span></p><h2>ระบบไม่ขายไฟคืน (Zero export) ในการใช้งานจริง: ทำไมไฟจากโซลาร์ลดลงเมื่อการใช้ไฟลดลง</h2>
-<p>ระบบออนกริด 20 kWp ในเชียงราย เปรียบเทียบสองช่วง ช่วงละ 15 วัน ก่อนและหลังตัดอาคารข้างเคียงสองหลังออก เมื่อปิดการขายไฟคืน อินเวอร์เตอร์จะผลิตไฟได้เท่าที่อาคารใช้เท่านั้น</p>
-<ul><li>การใช้ไฟลดลง 42% และไฟจากโซลาร์ลดลง 21% แม้อากาศจะดีกว่า</li><li>ราว 35% ของไฟโซลาร์ที่ผลิตได้ในเดือนตุลาคมไม่ได้ถูกใช้ ในวันที่ใช้ไฟน้อยและวันอาทิตย์</li><li>ทำไมโหลดไม่สมดุลระหว่างเฟสทำให้ระบบที่ตั้ง Zero export ยังจ่ายไฟออกกริดราว 14%</li><li>ทางแก้: จัดโหลดให้สมดุล ย้ายการใช้ไฟมาช่วงกลางวัน ขอขายไฟคืน กฟภ. หรือเพิ่มแบตเตอรี่ขนาดเล็ก</li></ul>
-<div class="acts"><a class="btn" href="/downloads/Solar-ESS-Zero-Export-Production-vs-Consumption.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-Zero-Export-Production-vs-Consumption.pdf" download="">ดาวน์โหลด</a></div></div></article>
-
-<article class="tnote" id="ground-mount-bom"><a href="/downloads/Solar-ESS-Ground-Mount-Structure-BOM.pdf"><img src="/images/note-ground-mount-bom.jpg" alt="หน้าแรกของรายการวัสดุโครงสร้างติดตั้งแผงบนพื้น" width="579" height="819" loading="lazy"></a>
-<div><p class="meta">รายการวัสดุ · 2 หน้า · PDF · <span class="enonly">เอกสารภาษาอังกฤษ (English)</span></p><h2>โครงสร้างติดตั้งแผงโซลาร์บนพื้นต้องใช้อะไรบ้าง? รายการวัสดุครบชุด</h2>
-<p>ชิ้นส่วนทุกชิ้นของโต๊ะแผงโซลาร์บนพื้นแบบมุมเอียงคงที่ ขาสองขา ตั้งแต่เสาและราง ไปจนถึงแคลมป์ ฐานราก และระบบต่อลงดิน พร้อมขนาดและจำนวนโดยทั่วไปสำหรับตัวอย่างโต๊ะ 12 แผง</p>
-<ul><li>โครง ราง ค้ำยัน แคลมป์ยึดแผง และนอตสกรู แยกทีละรายการ</li><li>ทางเลือกฐานราก: ฐานคอนกรีตหรือเสาเข็มเกลียว</li><li>ชิ้นส่วนต่อลงดินและเชื่อมประสาน พร้อมหลักดินที่ปลายโต๊ะทั้งสองด้าน</li><li>สิ่งที่ต้องตรวจก่อนสั่งของ: มุมเอียง ระยะสูงจากพื้น แรงลม และการชุบกัลวาไนซ์</li></ul>
-<div class="acts"><a class="btn" href="/downloads/Solar-ESS-Ground-Mount-Structure-BOM.pdf">เปิด PDF (ภาษาอังกฤษ)</a><a class="btn ghost" href="/downloads/Solar-ESS-Ground-Mount-Structure-BOM.pdf" download>ดาวน์โหลด</a></div></div></article>
-
-<article class="tnote" id="energy-prediction-tasai"><a href="/downloads/Solar-ESS-Energy-Prediction-Tasai-Chiang-Rai.pdf"><img src="/images/note-energy-prediction.jpg" alt="หน้าแรกของรายงานประมาณการพลังงาน" width="579" height="819" loading="lazy"></a>
-<div><p class="meta">ประมาณการพลังงาน · 10 หน้า · PDF · <span class="enonly">เอกสารภาษาอังกฤษ (English)</span></p><h2>ระบบจะผลิตไฟฟ้าได้เท่าไร? ระบบบ้านพักอาศัย 6.5 kWp ที่ท่าสาย เชียงราย</h2>
-<p>ตัวอย่างการประมาณการสำหรับระบบไฮบริด 10 แผง: แผงควรผลิตไฟฟ้าได้เท่าไรในแต่ละชั่วโมง แต่ละวัน แต่ละฤดู และตลอด 30 ปี</p>
-<ul><li>ประมาณ 26 kWh ในวันเฉลี่ย และประมาณ 9,400 kWh ในปีแรก</li><li>กำลังผลิตรายชั่วโมงในวันฟ้าใส และผลของความร้อน หมอกควัน และฝน</li><li>เหตุผลที่ต่อแผงเป็นสองสตริง สตริงละห้าแผง พร้อมตรวจเทียบกับขีดจำกัดของ<span class="nw">อินเวอร์เตอร์</span></li><li>แนบดาต้าชีตแผง LONGi Hi-MO X10 และ<span class="nw">อินเวอร์เตอร์</span>ไฮบริด Solis</li></ul>
-<div class="acts"><a class="btn" href="/downloads/Solar-ESS-Energy-Prediction-Tasai-Chiang-Rai.pdf">เปิด PDF (ภาษาอังกฤษ)</a><a class="btn ghost" href="/downloads/Solar-ESS-Energy-Prediction-Tasai-Chiang-Rai.pdf" download>ดาวน์โหลด</a></div></div></article>
-
-<article class="tnote" id="installation-report-tasai"><a href="/downloads/Solar-ESS-Installation-Report-Tasai-Chiang-Rai-TH.pdf"><img src="/images/note-installation-report.jpg" alt="หน้าแรกของรายงานภาพถ่ายงานติดตั้ง" width="579" height="819" loading="lazy"></a>
-<div><p class="meta">รายงานงานติดตั้ง · 7 หน้า · PDF · ไทย, อังกฤษ, ดัตช์, ฝรั่งเศส</p><h2>รายงานภาพถ่ายงานติดตั้ง: ระบบบ้านพักอาศัย 6.5 kWp ที่ท่าสาย เชียงราย</h2>
-<p>รายงานส่งมอบงานฉบับสมบูรณ์ของระบบไฮบริด 10 แผง แสดงให้เห็นว่าเราจัดทำเอกสารงานติดตั้งให้เจ้าของบ้านอย่างไร</p>
-<ul><li>อุปกรณ์ในตู้ควบคุม ขั้นตอนการเปิดระบบ และไฟแสดงสถานะของ<span class="nw">อินเวอร์เตอร์</span></li><li>ผังสตริง แบบโครงสร้างแผงตามมาตราส่วน และวงจรไฟฟ้าทั้ง DC และ AC</li><li>การทดสอบฉนวน การตรวจความร้อนทุกจุดต่อ และเครื่องมือที่ใช้</li><li>รายการวัสดุทั้งหมดพร้อมยี่ห้อและพิกัด</li></ul>
-<div class="acts"><a class="btn" href="/downloads/Solar-ESS-Installation-Report-Tasai-Chiang-Rai-TH.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-Installation-Report-Tasai-Chiang-Rai-TH.pdf" download>ดาวน์โหลด</a><a class="btn ghost" href="/downloads/Solar-ESS-Installation-Report-Tasai-Chiang-Rai.pdf" lang="en">English</a><a class="btn ghost" href="/downloads/Solar-ESS-Installation-Report-Tasai-Chiang-Rai-NL.pdf" lang="nl">Nederlands</a><a class="btn ghost" href="/downloads/Solar-ESS-Installation-Report-Tasai-Chiang-Rai-FR.pdf" lang="fr">Français</a></div></div></article>
-
-<article class="tnote" id="inverter-chamber"><a href="/downloads/Solar-ESS-Inverter-Chamber-Frame.pdf"><img src="/images/note-inverter-chamber.jpg" alt="รูปด้านหน้าและด้านข้างของโครงสร้างติดตั้งอินเวอร์เตอร์และตู้ combiner" width="819" height="579" loading="lazy"></a>
-<div><p class="meta">โครงสร้าง<span class="nw">อินเวอร์เตอร์</span>และตู้ combiner · 2 แผ่น · PDF · <span class="enonly">เอกสารภาษาอังกฤษ (English)</span></p><h2>โครงสร้างติดตั้ง<span class="nw">อินเวอร์เตอร์</span>และตู้ combiner</h2>
-<p>โครงเหล็กตั้งพื้นแบบอิสระ กว้าง 1800 สูง 1900 รองรับ<span class="nw">อินเวอร์เตอร์</span>ไฮบริด ตู้ combiner AC/DC และรางเดินสายไว้ในชุดเดียวอย่างเป็นระเบียบ</p>
-<ul><li>รูปด้านหน้าและด้านข้าง พร้อมทุกมิติเป็นมิลลิเมตร</li><li><span class="nw">อินเวอร์เตอร์</span>และตู้ combiner จัดระยะเท่ากันระหว่างเสา</li><li>รางเดินสาย ท่อ EMT ที่เดินลง และท่อ IMC ที่เดินขึ้นหลังคา</li><li>รายการชิ้นส่วนพร้อมหน้าตัด จำนวน และความยาวตัด</li></ul>
-<div class="acts"><a class="btn" href="/downloads/Solar-ESS-Inverter-Chamber-Frame.pdf">เปิด PDF (ภาษาอังกฤษ)</a><a class="btn ghost" href="/downloads/Solar-ESS-Inverter-Chamber-Frame.pdf" download>ดาวน์โหลด</a></div></div></article>
-
-<article class="tnote" id="solar-panels-and-fire"><a href="/downloads/Solar-ESS-Solar-Panels-and-Fire-TH.pdf"><img src="/images/note-solar-fire.jpg" alt="หน้าแรกของรายงานเรื่องแผงโซลาร์กับไฟไหม้" width="579" height="820" loading="lazy"></a>
-<div><p class="meta">ความปลอดภัยด้านอัคคีภัยและชีวิต · 4 หน้า · PDF · ไทย, อังกฤษ</p><h2>แผงโซลาร์กับ<span class="nw">ไฟไหม้</span>: ความเสี่ยงที่แท้จริง</h2>
-<p><span class="nw">ไฟไหม้</span>จากระบบโซลาร์เกิดขึ้นน้อยมาก ส่วนใหญ่เป็นเหตุขนาดเล็ก และแทบทุกครั้งมีต้นเหตุจากฝีมืองานไฟฟ้า ไม่ใช่จากตัวแผง</p>
-<ul><li>ระบบโซลาร์เกี่ยวข้องกับเหตุ<span class="nw">ไฟไหม้</span>บ่อยแค่ไหน</li><li><span class="nw">ไฟไหม้</span>จากระบบโซลาร์เริ่มที่จุดใดและเพราะอะไร</li><li>งานติดตั้งที่ดีและการบำรุงรักษาทุกปีช่วยลดความเสี่ยงได้อย่างไร</li></ul>
-<div class="acts"><a class="btn" href="/downloads/Solar-ESS-Solar-Panels-and-Fire-TH.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-Solar-Panels-and-Fire-TH.pdf" download>ดาวน์โหลด</a><a class="btn ghost" href="/downloads/Solar-ESS-Solar-Panels-and-Fire.pdf" lang="en">English</a></div></div></article>
-
-<article class="tnote" id="solis-quick-guide-th"><a href="/downloads/Solar-ESS-Solis-S6-EH1P-Quick-Guide-TH.pdf"><img src="/images/note-solis-guide-th.jpg" alt="หน้าแรกของคู่มือติดตั้งฉบับย่อ Solis S6-EH1P" width="579" height="819" loading="lazy"></a>
+<article class="tnote" id="solis-quick-guide-th"><a href="/downloads/Solar-ESS-Solis-S6-EH1P-Quick-Guide-TH_Rev02_20261022.pdf"><img src="/images/note-solis-guide-th.jpg" alt="หน้าแรกของคู่มือติดตั้งฉบับย่อ Solis S6-EH1P" width="579" height="819" loading="lazy"></a>
 <div><p class="meta">คู่มือติดตั้ง · 1 หน้า · PDF · ภาษาไทย</p><h2>คู่มือติดตั้งฉบับย่อ <span class="nw">อินเวอร์เตอร์</span>ไฮบริด Solis S6-EH1P</h2>
 <p>สรุปจุดสำคัญจากคู่มือ Solis V1.1 สำหรับช่างติดตั้งและเจ้าของบ้าน</p>
 <ul><li>ขนาดสายไฟและพิกัด<span class="nw">เบรกเกอร์</span>ของแต่ละวงจร</li><li>ระยะห่างในการติดตั้ง</li><li>ข้อควรระวังที่พบบ่อยหน้างาน</li></ul>
-<div class="acts"><a class="btn" href="/downloads/Solar-ESS-Solis-S6-EH1P-Quick-Guide-TH.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-Solis-S6-EH1P-Quick-Guide-TH.pdf" download>ดาวน์โหลด</a></div></div></article>
+<div class="acts"><a class="btn" href="/downloads/Solar-ESS-Solis-S6-EH1P-Quick-Guide-TH_Rev02_20261022.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-Solis-S6-EH1P-Quick-Guide-TH_Rev02_20261022.pdf" download>ดาวน์โหลด</a></div></div></article>
+
+</div></section>
+<section class="topicsec" id="topic-zero-export"><h2 class="th">ไม่ขายไฟคืนและสมดุลเฟส <small>5 เรื่อง</small></h2><div class="notes">
+
+<article class="tnote" id="machine-days"><a href="/downloads/Ban_Doo_Chiangrai_Machine_vs_NonMachine_Days_TH_Rev03_20261022.pdf"><img src="/images/note-machine-days-th.jpg" alt="หน้าแรกของรายงานวันที่เครื่องจักรทำงานเทียบกับวันที่ไม่มีเครื่องจักร" width="579" height="820" loading="lazy"></a>
+<div><p class="meta">กรณีศึกษา · 5 หน้า · PDF · ภาษาไทย</p><h2>ระบบไม่ขายไฟคืน 20 kWp: วันที่เครื่องจักรทำงาน เทียบกับวันที่ไม่มีเครื่องจักร</h2>
+<p>โรงงานขนาดเล็กในเชียงรายที่มีเครื่องจักร 57–62 kW ทำงานสัปดาห์ละ 2 วัน ไฟแสงอาทิตย์รองรับเครื่องจักรได้เพียงหนึ่งในห้า ขณะที่ไฟแสงอาทิตย์ที่เสียไปเกือบทั้งหมดอยู่ในวันที่ไม่มีเครื่องจักร รายงานนี้แยกวิเคราะห์ทั้งสองแบบและเสนอสิ่งที่ควรทำ</p>
+<ul><li>การผลิต การใช้ไฟ และการซื้อไฟจาก กฟภ. แยกตามประเภทวัน</li><li>กราฟจำลองกำลังผลิตรายวัน: ไฟที่ถูกจำกัดหายไปตรงไหน</li><li>ความไม่สมดุลของเฟสและกระแสในสายนิวทรัล</li><li>ข้อเสนอแยกตามประเภทวัน และการเลือกขนาดแบตเตอรี่</li></ul>
+<div class="acts"><a class="btn" href="/downloads/Ban_Doo_Chiangrai_Machine_vs_NonMachine_Days_TH_Rev03_20261022.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Ban_Doo_Chiangrai_Machine_vs_NonMachine_Days_TH_Rev03_20261022.pdf" download>ดาวน์โหลด</a><a class="btn ghost" href="/downloads/Ban_Doo_Chiangrai_Machine_vs_NonMachine_Days_EN_Rev03_20261022.pdf" lang="en">English</a></div></div></article>
+
+<article class="tnote" id="deyecloud-zero-export"><a href="/downloads/Solar-ESS-DeyeCloud-Zero-Export-Guide-TH_Rev01_20261022.pdf"><img src="/images/note-deyecloud-zero-export-th.jpg" alt="หน้าแรกของคู่มือตั้งค่าไม่ขายไฟคืนบน DeyeCloud" width="579" height="820" loading="lazy"></a>
+<div><p class="meta">คู่มือ · 4 หน้า · PDF · ภาษาไทย</p><h2>วิธีหยุดระบบ Deye ไม่ให้ขายไฟคืนเข้ากริด (DeyeCloud)</h2>
+<p>คู่มือทีละขั้นตอนสำหรับตรวจและตั้งค่าไม่ขายไฟคืน (Zero Export) ของอินเวอร์เตอร์ไฮบริด Deye ผ่านเว็บ DeyeCloud โดยใช้ระบบ 20 kWp ของวิลล่าที่เกาะสมุยเป็นตัวอย่าง</p>
+<ul><li>หาเมนู Device Control และ System Work Mode-1 ได้ที่ไหน</li><li>การตั้งค่า 3 ข้อที่หยุดการขายไฟคืน: Zero Export To CT, Solar Sell ปิด และ Zero export power ประมาณ 20 W</li><li>วิธีอ่านค่า ตั้งค่า ยืนยัน และตรวจว่าไม่มีไฟไหลออกกริดแล้ว</li><li>วิธีแก้หน้า DeyeCloud ว่างเปล่าในบางแอป Windows</li></ul>
+<div class="acts"><a class="btn" href="/downloads/Solar-ESS-DeyeCloud-Zero-Export-Guide-TH_Rev01_20261022.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-DeyeCloud-Zero-Export-Guide-TH_Rev01_20261022.pdf" download>ดาวน์โหลด</a><a class="btn ghost" href="/downloads/Solar-ESS-DeyeCloud-Zero-Export-Guide_Rev01_20261018.pdf" lang="en">English</a></div></div></article>
+
+<article class="tnote" id="unbalanced-output"><a href="/downloads/Solar-ESS-Unbalanced-Output-TH_Rev01_20261022.pdf"><img src="/images/note-unbalanced-output-th.jpg" alt="หน้าแรกของกรณีศึกษาการจ่ายไฟแบบไม่สมดุลเฟส" width="579" height="820" loading="lazy"></a>
+<div><p class="meta">กรณีศึกษา · 2 หน้า · PDF · ภาษาไทย</p><h2>Unbalanced Output: การตั้งค่าเดียวที่หยุดเฟสที่ซื้อไฟจากกริด ในระบบไม่ขายไฟคืน</h2>
+<p>ระบบออนกริด 3 เฟส 20 kWp ในเชียงราย ที่ปิดการขายไฟคืน ยังซื้อไฟจากกริดอยู่หนึ่งเฟส ขณะที่อินเวอร์เตอร์ลดการผลิตไฟโซลาร์ลง เมื่อเปิดการตั้งค่า Unbalance Output ปัญหาก็หมดไป</p>
+<ul><li>เปรียบเทียบการจ่ายไฟแบบสมดุลและไม่สมดุล ด้วยโหลดจริงแต่ละเฟสของระบบนี้</li><li>หลังเปิดใช้: สองเฟสที่มิเตอร์เป็น 0 W และเฟสที่โหลดสูงไม่ซื้อไฟจากกริดแล้ว</li><li>ทำไมมิเตอร์ยังแสดงกระแสแต่กำลังไฟเป็น 0 W (กระแสรีแอคทีฟ)</li><li>5 ข้อที่ต้องตรวจ: อ่านค่ากลับ สิทธิ์ผู้ติดตั้ง CT ลำดับเฟส และขีดจำกัดต่อเฟส</li></ul>
+<div class="acts"><a class="btn" href="/downloads/Solar-ESS-Unbalanced-Output-TH_Rev01_20261022.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-Unbalanced-Output-TH_Rev01_20261022.pdf" download>ดาวน์โหลด</a><a class="btn ghost" href="/downloads/Solar-ESS-Unbalanced-Output_Rev01_20261016.pdf" lang="en">English</a></div></div></article>
+
+<article class="tnote" id="zero-export-production"><a href="/downloads/Solar-ESS-Zero-Export-Production-vs-Consumption-TH_Rev01_20261022.pdf"><img src="/images/note-zero-export-production-th.jpg" alt="หน้าแรกของกรณีศึกษาการผลิตและการใช้ไฟของระบบที่ตั้งค่าไม่ขายไฟคืน" width="579" height="820" loading="lazy"></a>
+<div><p class="meta">กรณีศึกษา · 2 หน้า · PDF · ภาษาไทย</p><h2>ระบบไม่ขายไฟคืน (Zero export) ในการใช้งานจริง: ทำไมไฟจากโซลาร์ลดลงเมื่อการใช้ไฟลดลง</h2>
+<p>ระบบออนกริด 20 kWp ในเชียงราย เปรียบเทียบสองช่วง ช่วงละ 15 วัน ก่อนและหลังตัดอาคารข้างเคียงสองหลังออก เมื่อปิดการขายไฟคืน อินเวอร์เตอร์จะผลิตไฟได้เท่าที่อาคารใช้เท่านั้น</p>
+<ul><li>การใช้ไฟลดลง 42% และไฟจากโซลาร์ลดลง 21% แม้อากาศจะดีกว่า</li><li>ราว 35% ของไฟโซลาร์ที่ผลิตได้ในเดือนตุลาคมไม่ได้ถูกใช้ ในวันที่ใช้ไฟน้อยและวันอาทิตย์</li><li>ทำไมโหลดไม่สมดุลระหว่างเฟสทำให้ระบบที่ตั้ง Zero export ยังจ่ายไฟออกกริดราว 14%</li><li>ทางแก้: จัดโหลดให้สมดุล ย้ายการใช้ไฟมาช่วงกลางวัน ขอขายไฟคืน กฟภ. หรือเพิ่มแบตเตอรี่ขนาดเล็ก</li></ul>
+<div class="acts"><a class="btn" href="/downloads/Solar-ESS-Zero-Export-Production-vs-Consumption-TH_Rev01_20261022.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-Zero-Export-Production-vs-Consumption-TH_Rev01_20261022.pdf" download>ดาวน์โหลด</a><a class="btn ghost" href="/downloads/Solar-ESS-Zero-Export-Production-vs-Consumption.pdf" lang="en">English</a></div></div></article>
 
 <article class="tnote" id="phase-imbalance"><a href="/downloads/Solar-ESS-Phase-Imbalance-Report-TH.pdf"><img src="/images/note-phase-imbalance.jpg" alt="หน้าแรกของรายงานเรื่องเฟสไม่สมดุล" width="579" height="819" loading="lazy"></a>
 <div><p class="meta">กรณีศึกษา · 4 หน้า · PDF · ไทย, อังกฤษ</p><h2>เฟสไม่สมดุลกับการทบทวนกำลังของ<span class="nw">อินเวอร์เตอร์</span></h2>
@@ -343,23 +307,35 @@ h1{line-height:1.22;font-weight:700}h2{line-height:1.3}h3{line-height:1.4}.subh,
 <ul><li>โหลดของแต่ละเฟสเทียบกับขีดจำกัดของ<span class="nw">อินเวอร์เตอร์</span>เป็นอย่างไร</li><li>โหลดที่หนักอยู่เฟสเดียวส่งผลต่อ<span class="nw">อินเวอร์เตอร์</span>ไฮบริดอย่างไร</li><li>เหตุใดการจัดสมดุลโหลดในตู้จ่ายไฟใหม่จึงเป็นวิธีแก้ที่แนะนำ</li></ul>
 <div class="acts"><a class="btn" href="/downloads/Solar-ESS-Phase-Imbalance-Report-TH.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-Phase-Imbalance-Report-TH.pdf" download>ดาวน์โหลด</a><a class="btn ghost" href="/downloads/Solar-ESS-Phase-Imbalance-Report.pdf" lang="en">English</a></div></div></article>
 
-<article class="tnote" id="community-solar-th"><a href="/downloads/Solar-ESS-Community-Solar-Thailand-Japan-TH.pdf"><img src="/images/note-community-solar-th.jpg" alt="หน้าแรกของสรุปงานวิจัยโซลาร์ชุมชน" width="579" height="819" loading="lazy"></a>
-<div><p class="meta">สรุปงานวิจัย · 2 หน้า · PDF · ภาษาไทย</p><h2>โซลาร์ชุมชน: ไทยและญี่ปุ่นเรียนรู้อะไรจากกันได้บ้าง</h2>
-<p>สรุปงานวิจัยของจุฬาลงกรณ์มหาวิทยาลัย ปี 2561 ที่เปรียบเทียบโซลาร์ฟาร์มชุมชนขนาดประมาณ 1 เมกะวัตต์ สี่แห่งในไทยและญี่ปุ่น</p>
-<ul><li>รูปแบบที่ภาคธุรกิจนำของไทย และรูปแบบที่ประชาชนนำของญี่ปุ่น</li><li>ต้นทุน ผลตอบแทน และการยอมรับของคนในพื้นที่</li><li>โซลาร์ชุมชนที่ดีควรผสมจุดแข็งของทั้งสองแบบ</li></ul>
-<div class="acts"><a class="btn" href="/downloads/Solar-ESS-Community-Solar-Thailand-Japan-TH.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-Community-Solar-Thailand-Japan-TH.pdf" download>ดาวน์โหลด</a></div></div></article>
+</div></section>
+<section class="topicsec" id="topic-batteries"><h2 class="th">แบตเตอรี่ <small>3 เรื่อง</small></h2><div class="notes">
 
-<article class="tnote" id="cement-floor"><a href="/downloads/Solar-ESS-Solar-Panels-on-Cement-Floor.pdf"><img src="/images/note-cement-floor.jpg" alt="หน้าแรกของชุดแบบแผงโซลาร์บนพื้นคอนกรีต" width="579" height="410" loading="lazy"></a>
-<div><p class="meta">กรณีศึกษางานออกแบบ · 5 หน้า · PDF · <span class="enonly">เอกสารภาษาอังกฤษ (English)</span></p><h2>แผงโซลาร์บนพื้นคอนกรีต: หลังคาคลุม (canopy) หรือโครงเอียงต่ำ</h2>
-<p>สองวิธีติดตั้งแผงบนดาดฟ้าคอนกรีตเดียวกัน ทั้งสองแบบวางบนบล็อกคอนกรีตสำเร็จรูป โดยไม่ต้องเจาะพื้น</p>
-<ul><li>ทางเลือก A: PV canopy ยกสูง ใช้เป็นระเบียงร่มเงาได้ในตัว</li><li>ทางเลือก B: โครงเหล็กเอียงต่ำ สูงประมาณ 0.5 ม.</li><li>เปรียบเทียบความสูง แรงลม ปริมาณเหล็ก ต้นทุน และการเข้าบำรุงรักษา</li><li>รายละเอียดบล็อก แผ่นยางรอง และแผ่นเหล็กยึด ที่ไม่ทำให้ระบบกันซึมเสียหาย</li></ul>
-<div class="acts"><a class="btn" href="/downloads/Solar-ESS-Solar-Panels-on-Cement-Floor.pdf">เปิด PDF (ภาษาอังกฤษ)</a><a class="btn ghost" href="/downloads/Solar-ESS-Solar-Panels-on-Cement-Floor.pdf" download>ดาวน์โหลด</a></div></div></article>
+<article class="tnote" id="16kwh-battery-comparison"><a href="/downloads/Solar-ESS-16kWh-LV-Battery-Comparison-TH_Rev02_20261020.pdf"><img src="/images/note-16kwh-battery-comparison.jpg" alt="หน้าแรกของรายงานเปรียบเทียบแบตเตอรี่แรงดันต่ำ 16 kWh" width="579" height="819" loading="lazy"></a>
+<div><p class="meta">รายงานเปรียบเทียบ · 3 หน้า · PDF · ภาษาไทย</p><h2>แบตเตอรี่บ้าน 16 kWh รุ่นไหนดีที่สุด?</h2>
+<p>เปรียบเทียบแบตเตอรี่ LiFePO4 แรงดันต่ำ (51.2 V) 6 แบรนด์ ด้านคุณภาพเซลล์ สมรรถนะ การรับประกัน และบริการหลังการขาย: Deye, Solis IntelliHome, Dyness, GoodWe, LVTOPSUN G4 และ Sungrow</p>
+<ul><li>ตารางคะแนนรวม และรุ่นที่แนะนำสำหรับอินเวอร์เตอร์แต่ละแบรนด์</li><li>กราฟอายุรอบการใช้งานและพลังงานที่ใช้ได้จริง</li><li>ตารางเปรียบเทียบข้อมูลจำเพาะทางเทคนิค</li><li>การรับประกัน บริการหลังการขาย และการใช้งานร่วมกับอินเวอร์เตอร์</li></ul>
+<div class="acts"><a class="btn" href="/downloads/Solar-ESS-16kWh-LV-Battery-Comparison-TH_Rev02_20261020.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-16kWh-LV-Battery-Comparison-TH_Rev02_20261020.pdf" download>ดาวน์โหลด</a><a class="btn ghost" href="/downloads/Solar-ESS-16kWh-LV-Battery-Comparison_Rev03_20261020.pdf" lang="en">English</a></div></div></article>
 
-<article class="tnote" id="pv-carport"><a href="/downloads/Solar-ESS-PV-Carport-and-Low-Structure-Design.pdf"><img src="/images/note-pv-carport.jpg" alt="หน้าแรกของชุดแบบ PV carport และโครงสร้าง PV แบบเตี้ย" width="579" height="410" loading="lazy"></a>
-<div><p class="meta">ชุดแบบออกแบบ · 13 หน้า · PDF · <span class="enonly">เอกสารภาษาอังกฤษ (English)</span></p><h2>PV carport ร่วมกับโครงสร้าง PV แบบเตี้ย ขนาด 27.30 kWp</h2>
-<p>ชุดแบบวิศวกรรมฉบับสมบูรณ์ของ PV carport สำหรับรถหกคัน พร้อมโครงสร้าง PV แบบเตี้ยด้านข้าง ใช้แผง LONGi Hi-MO X10 650 W จำนวน 42 แผง</p>
-<ul><li>Carport สำหรับ 28 แผง และโครงสร้างเตี้ยสำหรับ 14 แผง</li><li>งานพื้น รางน้ำฝน และการระบายน้ำ</li><li>Mid clamp และการซีลร่องระหว่างแผง เพื่อให้ใต้ carport แห้ง</li></ul>
-<div class="acts"><a class="btn" href="/downloads/Solar-ESS-PV-Carport-and-Low-Structure-Design.pdf">เปิด PDF (ภาษาอังกฤษ)</a><a class="btn ghost" href="/downloads/Solar-ESS-PV-Carport-and-Low-Structure-Design.pdf" download>ดาวน์โหลด</a></div></div></article>
+<article class="tnote" id="16kwh-battery-explained"><a href="/downloads/Solar-ESS-16kWh-Battery-Explained-TH_Rev01_20261020.pdf"><img src="/images/note-16kwh-battery-explained.jpg" alt="หน้าแรกของคำอธิบายแบตเตอรี่ 16 kWh / 314 Ah" width="579" height="819" loading="lazy"></a>
+<div><p class="meta">คำอธิบายสำหรับลูกค้า · 2 หน้า · PDF · ภาษาไทย</p><h2>แบตเตอรี่ 16 kWh / 314 Ah คืออะไร?</h2>
+<p>อธิบายแบบเข้าใจง่าย พร้อมสูตรคำนวณ ว่าเซลล์ LiFePO4 3.2 V 314 Ah จำนวน 16 ก้อน กลายเป็นแบตเตอรี่ 51.2 V 16 kWh ได้อย่างไร ใช้ไฟได้จริงเท่าไร และเปิดแอร์ได้กี่ชั่วโมง</p>
+<ul><li>เซลล์ 3.2 V × 16 ก้อน ต่ออนุกรม = 51.2 V ("ระบบ 48V")</li><li>51.2 V × 314 Ah ≈ 16 kWh หรือไฟประมาณ 16 หน่วย</li><li>ไฟที่ใช้ได้จริงตามระดับการคายประจุ (DoD 90–100%)</li><li>ระยะเวลาใช้งานกับแอร์และเครื่องใช้ไฟฟ้าในบ้าน</li></ul>
+<div class="acts"><a class="btn" href="/downloads/Solar-ESS-16kWh-Battery-Explained-TH_Rev01_20261020.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-16kWh-Battery-Explained-TH_Rev01_20261020.pdf" download>ดาวน์โหลด</a></div></div></article>
+
+<article class="tnote" id="battery-wall-elevation"><a href="/downloads/Solar-ESS-Battery-Wall-Second-Battery-Elevation-TH_Rev02_20261019.pdf"><img src="/images/note-battery-wall-elevation.jpg" alt="หน้าแรกของแบบรูปด้านผนังติดตั้งแบตเตอรี่" width="579" height="819" loading="lazy"></a>
+<div><p class="meta">แบบ · 2 หน้า · PDF · ภาษาไทย</p><h2>การเพิ่มแบตเตอรี่ติดผนังลูกที่สอง: รูปด้านหน้า</h2>
+<p>แบบที่เสนอสำหรับเพิ่มแบตเตอรี่ LiFePO4 ติดผนัง 10.24 kWh ลูกที่สองข้างลูกเดิม ใต้อินเวอร์เตอร์ไฮบริด และย้ายตู้เบรกเกอร์ DC ไปไว้ระหว่างอินเวอร์เตอร์กับแบตเตอรี่</p>
+<ul><li>รูปด้านหน้าพร้อมมิติและป้ายกำกับอุปกรณ์ทุกชิ้น</li><li>การต่อขนานแบตเตอรี่สองลูก: สายไฟ สายสื่อสาร BMS และแอดเดรสตัวหลัก</li><li>ระยะห่างรอบแบตเตอรี่ ตู้เบรกเกอร์ รางเดินสาย และอินเวอร์เตอร์</li><li>ภาพหน้างานเทียบกับภาพตัดต่อของผนังที่เสนอ</li></ul>
+<div class="acts"><a class="btn" href="/downloads/Solar-ESS-Battery-Wall-Second-Battery-Elevation-TH_Rev02_20261019.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-Battery-Wall-Second-Battery-Elevation-TH_Rev02_20261019.pdf" download>ดาวน์โหลด</a><a class="btn ghost" href="/downloads/Solar-ESS-Battery-Wall-Second-Battery-Elevation_Rev02_20261019.pdf" lang="en">English</a></div></div></article>
+
+</div></section>
+<section class="topicsec" id="topic-panels"><h2 class="th">แผงโซลาร์และมุมเอียง <small>2 เรื่อง</small></h2><div class="notes">
+
+<article class="tnote" id="pv-panel-comparison"><a href="/downloads/Solar-ESS-650-670W-PV-Panel-Comparison-TH_Rev01_20261020.pdf"><img src="/images/note-pv-panel-comparison.jpg" alt="หน้าแรกของรายงานเปรียบเทียบแผงโซลาร์ 650–670 W" width="579" height="819" loading="lazy"></a>
+<div><p class="meta">รายงานเปรียบเทียบ · 3 หน้า · PDF · ภาษาไทย</p><h2>แผงโซลาร์ 650–670 W เลือกแบรนด์ไหนดี?</h2>
+<p>ให้คะแนนดาวแผงโซลาร์ Tier 1 จำนวน 6 แบรนด์ สำหรับหลังคาและพื้นที่โล่ง: AIKO, LONGi, Jinko, Tongwei, Trina และ JA Solar อ้างอิงผลทดสอบอิสระ (Kiwa PVEL 2026, RETC 2026, TÜV) และผลการใช้งานจริง</p>
+<ul><li>เลือกเร็วสำหรับหลังคาบ้าน โรงจอดรถ และติดตั้งบนพื้น</li><li>ตารางคะแนนดาว พร้อมคะแนนหลังคาและพื้นที่โล่ง</li><li>ผลทดสอบอิสระและผลใช้งานจริงของทั้งสองเทคโนโลยี</li><li>ข้อมูลจำเพาะหลัก และคู่มือตัดสินใจใน 30 วินาที</li></ul>
+<div class="acts"><a class="btn" href="/downloads/Solar-ESS-650-670W-PV-Panel-Comparison-TH_Rev01_20261020.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-650-670W-PV-Panel-Comparison-TH_Rev01_20261020.pdf" download>ดาวน์โหลด</a><a class="btn ghost" href="/downloads/Solar-ESS-650-670W-PV-Panel-Comparison_Rev01_20261020.pdf" lang="en">English</a></div></div></article>
 
 <article class="tnote" id="panel-angle-study"><a href="/downloads/Solar-ESS-Chiang-Rai-Panel-Angle-Study-TH.pdf"><img src="/images/note-panel-angle.jpg" alt="หน้าแรกของผลศึกษามุมแผงโซลาร์ที่เชียงราย" width="579" height="820" loading="lazy"></a>
 <div><p class="meta">ผลศึกษาเฉพาะพื้นที่ · 5 หน้า · PDF · ไทย, อังกฤษ, ดัตช์</p><h2>หันทิศใต้ เอียงประมาณ 20°: มุมเอียงและทิศของแผงในเชียงราย</h2>
@@ -367,30 +343,113 @@ h1{line-height:1.22;font-weight:700}h2{line-height:1.3}h3{line-height:1.4}.subh,
 <ul><li>มุมเอียงตั้งแต่ 15° ถึง 25° ให้ผลต่างจากมุมที่ดีที่สุดไม่เกินครึ่งเปอร์เซ็นต์</li><li>การหันทิศตะวันออกหรือตะวันตกทำให้เสียพลังงานต่อปีไปเท่าไร</li><li>การนำผลไปใช้กับหลังคา carport และโครงตั้งพื้นทรง A</li></ul>
 <div class="acts"><a class="btn" href="/downloads/Solar-ESS-Chiang-Rai-Panel-Angle-Study-TH.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-Chiang-Rai-Panel-Angle-Study-TH.pdf" download>ดาวน์โหลด</a><a class="btn ghost" href="/downloads/Solar-ESS-Chiang-Rai-Panel-Angle-Study.pdf" lang="en">English</a><a class="btn ghost" href="/downloads/Solar-ESS-Chiang-Rai-Panel-Angle-Study-NL.pdf" lang="nl">Nederlands</a></div></div></article>
 
-<article class="tnote" id="overheated-joints"><a href="/downloads/Solar-ESS-Research-Report-Overheated-Joints-TH.pdf"><img src="/images/note-overheated-joints-th.jpg" alt="หน้าแรกของรายงานวิจัยเรื่องจุดต่อไฟฟ้าร้อนเกิน ฉบับภาษาไทย" width="579" height="819" loading="lazy"></a>
+</div></section>
+<section class="topicsec" id="topic-structures"><h2 class="th">โครงสร้างและฐานราก <small>7 เรื่อง</small></h2><div class="notes">
+
+<article class="tnote" id="footing-selection-chiang-rai"><a href="/downloads/Solar-ESS-STR-02-Footing-Selection-Chiang-Rai-TH_Rev01_20261022.pdf"><img src="/images/note-footing-selection-th.jpg" alt="หน้าแรกของการวิเคราะห์ฐานรากสำหรับโครงสร้างติดตั้งบนพื้นในเชียงราย" width="579" height="820" loading="lazy"></a>
+<div><p class="meta">บันทึกทางวิศวกรรม · 3 หน้า · PDF · ภาษาไทย</p><h2>ฐานรากแบบไหนเหมาะกับโครงสร้างติดตั้งบนพื้นในเชียงราย?</h2>
+<p>เปรียบเทียบฐานราก 6 แบบ สำหรับโครงสร้างแผงโซลาร์บนพื้น 36 ต้น บนดินลูกรังแดงที่เป็นกรด ด้านแรงถอนจากลมในฤดูฝน การทดสอบ ความทนทาน และความง่ายในการก่อสร้าง แสดงให้เห็นว่าฐานรากที่อาศัยน้ำหนักอาจมีค่าความปลอดภัยต่ำกว่า 1.0 เมื่อดินอิ่มน้ำ ขณะที่เสาเข็มเกลียวแบบใบพัด (Helical pile) และเสาเข็มเจาะคอนกรีตยังสูงกว่า 4</p>
+<ul><li>ตารางคะแนนดาว และค่าความปลอดภัยต่อแรงถอน ทั้งดินแห้งและดินอิ่มน้ำ</li><li>ผลของแรงลอยตัวต่อฐานรากคอนกรีตในฤดูฝน</li><li>การตรวจสอบการออกแบบเสาเข็มเกลียวแบบใบพัด</li><li>แผนฐานรากที่แนะนำ และการระบายน้ำ</li></ul>
+<div class="acts"><a class="btn" href="/downloads/Solar-ESS-STR-02-Footing-Selection-Chiang-Rai-TH_Rev01_20261022.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-STR-02-Footing-Selection-Chiang-Rai-TH_Rev01_20261022.pdf" download>ดาวน์โหลด</a><a class="btn ghost" href="/downloads/Solar-ESS-STR-02-Footing-Selection-Chiang-Rai_Rev01_20261020.pdf" lang="en">English</a></div></div></article>
+
+<article class="tnote" id="pad-footing-design"><a href="/downloads/Solar-ESS-Ground-Mount-Pad-Footing-Design-TH_Rev01_20261019.pdf"><img src="/images/note-pad-footing-design.jpg" alt="หน้าแรกของแบบฐานราก STR-02" width="579" height="819" loading="lazy"></a>
+<div><p class="meta">บันทึกการออกแบบ · 8 หน้า · PDF · ภาษาไทย</p><h2>ฐานรากแผ่สำหรับโครงสร้างติดตั้งบนพื้นดินระดับต่ำ 45 แผง ออกแบบรับแรงยกจากลม</h2>
+<p>แบบพร้อมก่อสร้างของฐานรากแผ่คอนกรีตเสริมเหล็ก 36 ฐาน ใต้โครงสร้างยึดติดตายตัวบนพื้นดินระดับต่ำ สำหรับแผง 650 W จำนวน 45 แผ่น ในเชียงราย</p>
+<ul><li>ผังวางตำแหน่งพร้อมพิกัดทุกฐานและการตรวจระยะทแยง</li><li>รูปตัดและแปลนฐานราก พร้อมเหล็กเสริม สลักเกลียวยึด และแผ่นเหล็กฐาน</li><li>แรงยกจากลมตาม มยผ. 1311-50: 446 กก. ต่อเสา อัตราส่วนความปลอดภัย 1.58</li><li>ปริมาณวัสดุ ลำดับการก่อสร้าง 10 ขั้นพร้อมจุดตรวจ และค่าคลาดเคลื่อนที่ยอมให้</li></ul>
+<div class="acts"><a class="btn" href="/downloads/Solar-ESS-Ground-Mount-Pad-Footing-Design-TH_Rev01_20261019.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-Ground-Mount-Pad-Footing-Design-TH_Rev01_20261019.pdf" download>ดาวน์โหลด</a><a class="btn ghost" href="/downloads/Solar-ESS-Ground-Mount-Pad-Footing-Design_Rev01_20261019.pdf" lang="en">English</a></div></div></article>
+
+<article class="tnote" id="alternative-footings"><a href="/downloads/Solar-ESS-Ground-Mount-Alternative-Footings-TH_Rev01_20261022.pdf"><img src="/images/note-alternative-footings-th.jpg" alt="หน้าแรกของบันทึกฐานรากทางเลือกสำหรับโครงสร้างติดตั้งบนพื้น" width="579" height="820" loading="lazy"></a>
+<div><p class="meta">บันทึกการออกแบบ · 6 หน้า · PDF · ภาษาไทย</p><h2>ฐานรากทางเลือก 4 แบบ ที่รับแรงลมได้เท่าฐานรากแผ่คอนกรีต</h2>
+<p>ทางเลือกแทนฐานรากแผ่แบบฝังดิน ที่รับแรงยกและแรงด้านข้างจากลมได้เท่ากัน สำหรับหน้างานที่เจอหิน น้ำใต้ดิน ดินอ่อน หรือแรงงานจำกัด</p>
+<ul><li>แท่งคอนกรีตหล่อในหลุม: เทครั้งเดียว ไม่ต้องใช้แบบหล่อ</li><li>แท่งถ่วงน้ำหนักแบบตื้น สำหรับหินหรือน้ำใต้ดินใกล้ผิวดิน</li><li>เสาเข็มเจาะคอนกรีต และสกรูเหล็กเกลียวฝังดิน (ground screw) พร้อมการทดสอบแรงถอนหน้างาน</li><li>ควรเลือกฐานรากแบบไหนกับสภาพหน้างานแต่ละแบบ</li></ul>
+<div class="acts"><a class="btn" href="/downloads/Solar-ESS-Ground-Mount-Alternative-Footings-TH_Rev01_20261022.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-Ground-Mount-Alternative-Footings-TH_Rev01_20261022.pdf" download>ดาวน์โหลด</a><a class="btn ghost" href="/downloads/Solar-ESS-Ground-Mount-Alternative-Footings_Rev01_20261019.pdf" lang="en">English</a></div></div></article>
+
+<article class="tnote" id="ground-mount-bom"><a href="/downloads/Solar-ESS-Ground-Mount-Structure-BOM-TH_Rev01_20261022.pdf"><img src="/images/note-ground-mount-bom-th.jpg" alt="หน้าแรกของรายการวัสดุโครงสร้างติดตั้งแผงบนพื้น" width="579" height="820" loading="lazy"></a>
+<div><p class="meta">รายการวัสดุ · 2 หน้า · PDF · ภาษาไทย</p><h2>โครงสร้างติดตั้งแผงโซลาร์บนพื้นต้องใช้อะไรบ้าง? รายการวัสดุครบชุด</h2>
+<p>ชิ้นส่วนทุกชิ้นของโต๊ะแผงโซลาร์บนพื้นแบบมุมเอียงคงที่ ขาสองขา ตั้งแต่เสาและราง ไปจนถึงแคลมป์ ฐานราก และระบบต่อลงดิน พร้อมขนาดและจำนวนโดยทั่วไปสำหรับตัวอย่างโต๊ะ 12 แผง</p>
+<ul><li>โครง ราง ค้ำยัน แคลมป์ยึดแผง และนอตสกรู แยกทีละรายการ</li><li>ทางเลือกฐานราก: ฐานคอนกรีตหรือเสาเข็มเกลียว</li><li>ชิ้นส่วนต่อลงดินและเชื่อมประสาน พร้อมหลักดินที่ปลายโต๊ะทั้งสองด้าน</li><li>สิ่งที่ต้องตรวจก่อนสั่งของ: มุมเอียง ระยะสูงจากพื้น แรงลม และการชุบกัลวาไนซ์</li></ul>
+<div class="acts"><a class="btn" href="/downloads/Solar-ESS-Ground-Mount-Structure-BOM-TH_Rev01_20261022.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-Ground-Mount-Structure-BOM-TH_Rev01_20261022.pdf" download>ดาวน์โหลด</a><a class="btn ghost" href="/downloads/Solar-ESS-Ground-Mount-Structure-BOM.pdf" lang="en">English</a></div></div></article>
+
+<article class="tnote" id="inverter-chamber"><a href="/downloads/Solar-ESS-Inverter-Chamber-Frame-TH_Rev01_20261022.pdf"><img src="/images/note-inverter-chamber-th.jpg" alt="รูปด้านหน้าและด้านข้างของโครงสร้างติดตั้งอินเวอร์เตอร์และตู้ combiner" width="819" height="578" loading="lazy"></a>
+<div><p class="meta">โครงสร้าง<span class="nw">อินเวอร์เตอร์</span>และตู้ combiner · 2 หน้า · PDF · ภาษาไทย</p><h2>โครงสร้างติดตั้ง<span class="nw">อินเวอร์เตอร์</span>และตู้ combiner</h2>
+<p>โครงเหล็กตั้งพื้นแบบอิสระ กว้าง 1800 สูง 1900 รองรับ<span class="nw">อินเวอร์เตอร์</span>ไฮบริด ตู้ combiner AC/DC และรางเดินสายไว้ในชุดเดียวอย่างเป็นระเบียบ</p>
+<ul><li>รูปด้านหน้าและด้านข้าง พร้อมทุกมิติเป็นมิลลิเมตร</li><li><span class="nw">อินเวอร์เตอร์</span>และตู้ combiner จัดระยะเท่ากันระหว่างเสา</li><li>รางเดินสาย ท่อ EMT ที่เดินลง และท่อ IMC ที่เดินขึ้นหลังคา</li><li>รายการชิ้นส่วนพร้อมหน้าตัด จำนวน และความยาวตัด</li></ul>
+<div class="acts"><a class="btn" href="/downloads/Solar-ESS-Inverter-Chamber-Frame-TH_Rev01_20261022.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-Inverter-Chamber-Frame-TH_Rev01_20261022.pdf" download>ดาวน์โหลด</a><a class="btn ghost" href="/downloads/Solar-ESS-Inverter-Chamber-Frame.pdf" lang="en">English</a></div></div></article>
+
+<article class="tnote" id="cement-floor"><a href="/downloads/Solar-ESS-Solar-Panels-on-Cement-Floor-TH_Rev01_20261022.pdf"><img src="/images/note-cement-floor-th.jpg" alt="หน้าแรกของชุดแบบแผงโซลาร์บนพื้นคอนกรีต" width="819" height="578" loading="lazy"></a>
+<div><p class="meta">กรณีศึกษางานออกแบบ · 5 หน้า · PDF · ภาษาไทย</p><h2>แผงโซลาร์บนพื้นคอนกรีต: หลังคาคลุม (canopy) หรือโครงเอียงต่ำ</h2>
+<p>สองวิธีติดตั้งแผงบนดาดฟ้าคอนกรีตเดียวกัน ทั้งสองแบบวางบนบล็อกคอนกรีตสำเร็จรูป โดยไม่ต้องเจาะพื้น</p>
+<ul><li>ทางเลือก A: PV canopy ยกสูง ใช้เป็นระเบียงร่มเงาได้ในตัว</li><li>ทางเลือก B: โครงเหล็กเอียงต่ำ สูงประมาณ 0.5 ม.</li><li>เปรียบเทียบความสูง แรงลม ปริมาณเหล็ก ต้นทุน และการเข้าบำรุงรักษา</li><li>รายละเอียดบล็อก แผ่นยางรอง และแผ่นเหล็กยึด ที่ไม่ทำให้ระบบกันซึมเสียหาย</li></ul>
+<div class="acts"><a class="btn" href="/downloads/Solar-ESS-Solar-Panels-on-Cement-Floor-TH_Rev01_20261022.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-Solar-Panels-on-Cement-Floor-TH_Rev01_20261022.pdf" download>ดาวน์โหลด</a><a class="btn ghost" href="/downloads/Solar-ESS-Solar-Panels-on-Cement-Floor.pdf" lang="en">English</a></div></div></article>
+
+<article class="tnote" id="pv-carport"><a href="/downloads/Solar-ESS-PV-Carport-and-Low-Structure-Design-TH_Rev01_20261022.pdf"><img src="/images/note-pv-carport-th.jpg" alt="หน้าแรกของชุดแบบ PV carport และโครงสร้าง PV แบบเตี้ย" width="819" height="578" loading="lazy"></a>
+<div><p class="meta">ชุดแบบออกแบบ · 31 หน้า · PDF · ภาษาไทย</p><h2>PV carport ร่วมกับโครงสร้าง PV แบบเตี้ย ขนาด 27.30 kWp</h2>
+<p>ชุดแบบวิศวกรรมฉบับสมบูรณ์ของ PV carport สำหรับรถหกคัน พร้อมโครงสร้าง PV แบบเตี้ยด้านข้าง ใช้แผง LONGi Hi-MO X10 650 W จำนวน 42 แผง</p>
+<ul><li>Carport สำหรับ 28 แผง และโครงสร้างเตี้ยสำหรับ 14 แผง</li><li>งานพื้น รางน้ำฝน และการระบายน้ำ</li><li>Mid clamp และการซีลร่องระหว่างแผง เพื่อให้ใต้ carport แห้ง</li></ul>
+<div class="acts"><a class="btn" href="/downloads/Solar-ESS-PV-Carport-and-Low-Structure-Design-TH_Rev01_20261022.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-PV-Carport-and-Low-Structure-Design-TH_Rev01_20261022.pdf" download>ดาวน์โหลด</a><a class="btn ghost" href="/downloads/Solar-ESS-PV-Carport-and-Low-Structure-Design.pdf" lang="en">English</a></div></div></article>
+
+</div></section>
+<section class="topicsec" id="topic-safety"><h2 class="th">ความปลอดภัยและการป้องกัน <small>5 เรื่อง</small></h2><div class="notes">
+
+<article class="tnote" id="grid-outage-reminder"><a href="/downloads/Solar-ESS-Installer-Reminder-Grid-Outage-TH_Rev01_20261021.pdf"><img src="/images/note-grid-outage-reminder-th.jpg" alt="บันทึกเตือนช่าง: ไฟ PEA ดับ ระบบ On-Grid ดับด้วย" width="579" height="819" loading="lazy"></a>
+<div><p class="meta">บันทึกเตือนช่างติดตั้ง · 1 หน้า · PDF · ภาษาไทย</p><h2>แจ้งลูกค้าทุกครั้ง: ไฟ PEA ดับ = ระบบ On-Grid ดับด้วย</h2>
+<p>บันทึก 1 หน้าสำหรับช่างติดตั้ง อินเวอร์เตอร์ On-Grid ต้องตัดการทำงานเมื่อไฟ PEA ดับ (Anti-Islanding) และระบบ Hybrid จะมีไฟเฉพาะวงจรสำรอง (EPS) เท่านั้น ควรอธิบายลูกค้าก่อนส่งมอบงาน เพื่อไม่ให้ลูกค้าเข้าใจผิดเมื่อไฟดับ</p>
+<ul><li>เหตุผลที่ระบบ On-Grid ต้องดับ</li><li>ระบบ On-Grid, Hybrid และ Off-Grid ทำงานอย่างไรเมื่อไฟ PEA ดับ</li><li>สิ่งที่ควรบอกลูกค้า</li><li>เช็กลิสต์ 6 ข้อก่อนส่งมอบงาน</li></ul>
+<div class="acts"><a class="btn" href="/downloads/Solar-ESS-Installer-Reminder-Grid-Outage-TH_Rev01_20261021.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-Installer-Reminder-Grid-Outage-TH_Rev01_20261021.pdf" download>ดาวน์โหลด</a><a class="btn ghost" href="/downloads/Solar-ESS-Installer-Reminder-Grid-Outage_Rev01_20261021.pdf" lang="en">English</a></div></div></article>
+
+<article class="tnote" id="solar-panels-and-fire"><a href="/downloads/Solar-ESS-Solar-Panels-and-Fire-TH.pdf"><img src="/images/note-solar-fire.jpg" alt="หน้าแรกของรายงานเรื่องแผงโซลาร์กับไฟไหม้" width="579" height="820" loading="lazy"></a>
+<div><p class="meta">ความปลอดภัยด้านอัคคีภัยและชีวิต · 4 หน้า · PDF · ไทย, อังกฤษ</p><h2>แผงโซลาร์กับ<span class="nw">ไฟไหม้</span>: ความเสี่ยงที่แท้จริง</h2>
+<p><span class="nw">ไฟไหม้</span>จากระบบโซลาร์เกิดขึ้นน้อยมาก ส่วนใหญ่เป็นเหตุขนาดเล็ก และแทบทุกครั้งมีต้นเหตุจากฝีมืองานไฟฟ้า ไม่ใช่จากตัวแผง</p>
+<ul><li>ระบบโซลาร์เกี่ยวข้องกับเหตุ<span class="nw">ไฟไหม้</span>บ่อยแค่ไหน</li><li><span class="nw">ไฟไหม้</span>จากระบบโซลาร์เริ่มที่จุดใดและเพราะอะไร</li><li>งานติดตั้งที่ดีและการบำรุงรักษาทุกปีช่วยลดความเสี่ยงได้อย่างไร</li></ul>
+<div class="acts"><a class="btn" href="/downloads/Solar-ESS-Solar-Panels-and-Fire-TH.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-Solar-Panels-and-Fire-TH.pdf" download>ดาวน์โหลด</a><a class="btn ghost" href="/downloads/Solar-ESS-Solar-Panels-and-Fire.pdf" lang="en">English</a></div></div></article>
+
+<article class="tnote" id="overheated-joints"><a href="/downloads/Solar-ESS-Research-Report-Overheated-Joints-TH_Rev02_20261022.pdf"><img src="/images/note-overheated-joints-th.jpg" alt="หน้าแรกของรายงานวิจัยเรื่องจุดต่อไฟฟ้าร้อนเกิน ฉบับภาษาไทย" width="579" height="819" loading="lazy"></a>
 <div><p class="meta">ความปลอดภัยทางไฟฟ้า · 7 หน้า · PDF · ไทย, อังกฤษ</p><h2>จุดต่อไฟฟ้าร้อนเกิน: <span class="nw">ไฟไหม้</span> อันตรายต่อชีวิต และต้นทุนของความร้อน</h2>
 <p><strong>คำเตือน: จุดต่อที่หลวมร้อนได้เกิน 1,200 °C โดยที่ breaker ไม่ตัด</strong> รายงานฉบับนี้ติดตามขั้วสายจริงหนึ่งจุดในเชียงราย ตั้งแต่งานติดตั้งที่ไม่ได้มาตรฐานจนฉนวนละลาย และบอกวิธีตรวจหาปัญหาแบบเดียวกันในตู้ไฟของคุณก่อนจะสายเกินไป</p>
 <ul><li>ภาพถ่ายสายสองเส้นที่อัดเข้าขั้วเดียว และผลของความร้อนที่เกิดขึ้น</li><li>สถิติ<span class="nw">ไฟไหม้</span>และกรณีศึกษาจากกรุงเทพฯ ลอนดอน และจีน</li><li>เปรียบเทียบอันตรายจาก<span class="nw">ไฟไหม้</span>กับอันตรายต่อชีวิต และสภาพก่อนกับหลังซ่อม</li><li>ความร้อนที่จุดต่อทำให้เสียพลังงานที่คุณจ่ายเงินซื้ออย่างไร</li><li>แนวทางบำรุงรักษาเชิงป้องกัน: ขัน torque ให้ถูกต้อง ทดสอบฉนวน และทำ thermal scan ขณะมีโหลดทุกปี</li></ul>
 <p>ตู้ไฟของคุณไม่ได้สแกนความร้อนมาเกินหนึ่งปีแล้วหรือไม่ อ่านรายงานนี้ แล้วนัดตรวจกับเรา</p>
-<div class="acts"><a class="btn" href="/downloads/Solar-ESS-Research-Report-Overheated-Joints-TH.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-Research-Report-Overheated-Joints-TH.pdf" download>ดาวน์โหลด</a><a class="btn ghost" href="/downloads/Solar-ESS-Research-Report-Overheated-Joints.pdf" lang="en">English</a></div></div></article>
+<div class="acts"><a class="btn" href="/downloads/Solar-ESS-Research-Report-Overheated-Joints-TH_Rev02_20261022.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-Research-Report-Overheated-Joints-TH_Rev02_20261022.pdf" download>ดาวน์โหลด</a><a class="btn ghost" href="/downloads/Solar-ESS-Research-Report-Overheated-Joints.pdf" lang="en">English</a></div></div></article>
 
-<article class="tnote" id="spd-50cm"><a href="/downloads/Solar-ESS-SPD-50cm-Rule.pdf"><img src="/images/note-spd-50cm.jpg" alt="หน้าแรกของบันทึกเรื่องกฎ 50 ซม." width="579" height="819" loading="lazy"></a>
-<div><p class="meta">อุปกรณ์ป้องกันเสิร์จ · 2 หน้า · PDF · <span class="enonly">เอกสารภาษาอังกฤษ (English)</span></p><h2>กฎ 50 ซม. สำหรับการเดินสาย SPD</h2>
+<article class="tnote" id="spd-50cm"><a href="/downloads/Solar-ESS-SPD-50cm-Rule-TH_Rev01_20261022.pdf"><img src="/images/note-spd-50cm-th.jpg" alt="หน้าแรกของบันทึกเรื่องกฎ 50 ซม." width="579" height="820" loading="lazy"></a>
+<div><p class="meta">อุปกรณ์ป้องกันเสิร์จ · 2 หน้า · PDF · ภาษาไทย</p><h2>กฎ 50 ซม. สำหรับการเดินสาย SPD</h2>
 <p>เหตุใดสายที่ต่อเข้าอุปกรณ์ป้องกันเสิร์จจึงต้องสั้น และจะทำให้สั้นได้อย่างไรในตู้ไฟจริง</p>
 <ul><li>เหตุใดสายต่อทุก ๆ หนึ่งเมตรจึงเพิ่มแรงดันราว 1,000 V ขณะเกิดเสิร์จ</li><li>อุปกรณ์จะเจอแรงดันเท่าไรเมื่อสายยาว 0.25 ม. 0.5 ม. 1 ม. และ 2 ม.</li><li>ความยาวสามช่วงใดบ้างที่นับรวมใน 50 ซม.</li><li>การต่อแบบ V (V-connection) ขั้วดินเฉพาะจุด และวิธีอื่นที่ช่วยให้สายสั้น</li></ul>
-<div class="acts"><a class="btn" href="/downloads/Solar-ESS-SPD-50cm-Rule.pdf">เปิด PDF (ภาษาอังกฤษ)</a><a class="btn ghost" href="/downloads/Solar-ESS-SPD-50cm-Rule.pdf" download>ดาวน์โหลด</a></div></div></article>
+<div class="acts"><a class="btn" href="/downloads/Solar-ESS-SPD-50cm-Rule-TH_Rev01_20261022.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-SPD-50cm-Rule-TH_Rev01_20261022.pdf" download>ดาวน์โหลด</a><a class="btn ghost" href="/downloads/Solar-ESS-SPD-50cm-Rule.pdf" lang="en">English</a></div></div></article>
 
-<article class="tnote" id="spd-guide"><a href="/downloads/Solar-ESS-SPD-Guide-3P-vs-4P-TH.pdf"><img src="/images/note-spd-guide-th.jpg" alt="หน้าแรกของคู่มืออุปกรณ์ป้องกันเสิร์จ (SPD) ฉบับภาษาไทย" width="579" height="819" loading="lazy"></a>
+<article class="tnote" id="spd-guide"><a href="/downloads/Solar-ESS-SPD-Guide-3P-vs-4P-TH_Rev02_20261022.pdf"><img src="/images/note-spd-guide-th.jpg" alt="หน้าแรกของคู่มืออุปกรณ์ป้องกันเสิร์จ (SPD) ฉบับภาษาไทย" width="579" height="819" loading="lazy"></a>
 <div><p class="meta">อุปกรณ์ป้องกันเสิร์จ · 4 หน้า · PDF · ไทย, อังกฤษ</p><h2>อุปกรณ์ป้องกันเสิร์จ (SPD): 3P, 4P และ 3+1</h2>
 <p>ฟ้าผ่าครั้งเดียวอาจทำให้<span class="nw">อินเวอร์เตอร์</span>ราคาหลักแสนเสียหายได้ คู่มือฉบับนี้อธิบายแบบเข้าใจง่าย พร้อมภาพประกอบ ว่า SPD ทำงานอย่างไร และควรเลือกแบบใดให้เหมาะกับตู้ไฟของคุณ</p>
 <ul><li>SPD แบบ 3P, 4P และ 3+1 ต่างกันอย่างไร และตู้ไฟแบบไหนควรใช้แบบใด</li><li>งานโซลาร์ในไทยจำเป็นต้องติด SPD หรือไม่ และติดตรงจุดใดบ้าง</li><li>กฎ 50 ซม. และรายการตรวจสอบ 5 ข้อสำหรับช่างและเจ้าของบ้าน</li></ul>
-<div class="acts"><a class="btn" href="/downloads/Solar-ESS-SPD-Guide-3P-vs-4P-TH.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-SPD-Guide-3P-vs-4P-TH.pdf" download>ดาวน์โหลด</a><a class="btn ghost" href="/downloads/Solar-ESS-SPD-Guide-3P-vs-4P.pdf" lang="en">English</a></div></div></article>
+<div class="acts"><a class="btn" href="/downloads/Solar-ESS-SPD-Guide-3P-vs-4P-TH_Rev02_20261022.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-SPD-Guide-3P-vs-4P-TH_Rev02_20261022.pdf" download>ดาวน์โหลด</a><a class="btn ghost" href="/downloads/Solar-ESS-SPD-Guide-3P-vs-4P.pdf" lang="en">English</a></div></div></article>
 
+</div></section>
+<section class="topicsec" id="topic-cases"><h2 class="th">กรณีศึกษาและงานวิจัย <small>3 เรื่อง</small></h2><div class="notes">
+
+<article class="tnote" id="hybrid-performance-review"><a href="/downloads/Solar-ESS-Hybrid-Plant-Case-Study-Hat-Yai-TH_Rev08_20261018.pdf"><img src="/images/note-hybrid-performance-review.jpg" alt="หน้าแรกของกรณีศึกษาระบบไฮบริด" width="579" height="819" loading="lazy"></a>
+<div><p class="meta">กรณีศึกษา · 3 หน้า · PDF · ภาษาไทย</p><h2>ระบบไฮบริดที่ผลิตไฟได้มากเกินพอสำหรับร้าน</h2>
+<p>ตรวจจากระยะไกลของระบบไฮบริด 6.96 kWp พร้อมแบตเตอรี่ ของธุรกิจขนาดเล็กในหาดใหญ่ ผลิตไฟได้มากเกินพอสำหรับร้าน และร้านใช้ไฟจากระบบเองได้ 98%</p>
+<ul><li>การผลิตรายเดือนเทียบกับระบบ 6.96 kWp ทั่วไป</li><li>แรงดันสตริงที่ต่ำบอกอะไร และวิธีตรวจแผงที่หน้างาน</li><li>การตั้งค่าอินเวอร์เตอร์ที่ตรวจ: โหมด Self Use การจ่ายไฟแบบไม่สมดุลเฟส และมาตรฐานกริดของ กฟภ.</li><li>ตัวนับพลังงานแบตเตอรี่ที่ตัวเลขไม่ตรงกัน และทำไมจึงสำคัญ</li><li>6 สิ่งที่ควรทำ เรียงตามความสำคัญ ตั้งแต่การตรวจแผงที่หน้างานจนถึงการกรอกข้อมูลในระบบมอนิเตอร์ให้ครบ</li></ul>
+<div class="acts"><a class="btn" href="/downloads/Solar-ESS-Hybrid-Plant-Case-Study-Hat-Yai-TH_Rev08_20261018.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-Hybrid-Plant-Case-Study-Hat-Yai-TH_Rev08_20261018.pdf" download>ดาวน์โหลด</a><a class="btn ghost" href="/downloads/Solar-ESS-Hybrid-Plant-Case-Study-Hat-Yai_Rev08_20261018.pdf" lang="en">English</a></div></div></article>
+
+<article class="tnote" id="installation-report-tasai"><a href="/downloads/Solar-ESS-Installation-Report-Tasai-Chiang-Rai-TH.pdf"><img src="/images/note-installation-report.jpg" alt="หน้าแรกของรายงานภาพถ่ายงานติดตั้ง" width="579" height="819" loading="lazy"></a>
+<div><p class="meta">รายงานงานติดตั้ง · 7 หน้า · PDF · ไทย, อังกฤษ, ดัตช์, ฝรั่งเศส</p><h2>รายงานภาพถ่ายงานติดตั้ง: ระบบบ้านพักอาศัย 6.5 kWp ที่ท่าสาย เชียงราย</h2>
+<p>รายงานส่งมอบงานฉบับสมบูรณ์ของระบบไฮบริด 10 แผง แสดงให้เห็นว่าเราจัดทำเอกสารงานติดตั้งให้เจ้าของบ้านอย่างไร</p>
+<ul><li>อุปกรณ์ในตู้ควบคุม ขั้นตอนการเปิดระบบ และไฟแสดงสถานะของ<span class="nw">อินเวอร์เตอร์</span></li><li>ผังสตริง แบบโครงสร้างแผงตามมาตราส่วน และวงจรไฟฟ้าทั้ง DC และ AC</li><li>การทดสอบฉนวน การตรวจความร้อนทุกจุดต่อ และเครื่องมือที่ใช้</li><li>รายการวัสดุทั้งหมดพร้อมยี่ห้อและพิกัด</li></ul>
+<div class="acts"><a class="btn" href="/downloads/Solar-ESS-Installation-Report-Tasai-Chiang-Rai-TH.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-Installation-Report-Tasai-Chiang-Rai-TH.pdf" download>ดาวน์โหลด</a><a class="btn ghost" href="/downloads/Solar-ESS-Installation-Report-Tasai-Chiang-Rai.pdf" lang="en">English</a><a class="btn ghost" href="/downloads/Solar-ESS-Installation-Report-Tasai-Chiang-Rai-NL.pdf" lang="nl">Nederlands</a><a class="btn ghost" href="/downloads/Solar-ESS-Installation-Report-Tasai-Chiang-Rai-FR.pdf" lang="fr">Français</a></div></div></article>
+
+<article class="tnote" id="community-solar-th"><a href="/downloads/Solar-ESS-Community-Solar-Thailand-Japan-TH_Rev02_20261022.pdf"><img src="/images/note-community-solar-th.jpg" alt="หน้าแรกของสรุปงานวิจัยโซลาร์ชุมชน" width="579" height="819" loading="lazy"></a>
+<div><p class="meta">สรุปงานวิจัย · 2 หน้า · PDF · ภาษาไทย</p><h2>โซลาร์ชุมชน: ไทยและญี่ปุ่นเรียนรู้อะไรจากกันได้บ้าง</h2>
+<p>สรุปงานวิจัยของจุฬาลงกรณ์มหาวิทยาลัย ปี 2561 ที่เปรียบเทียบโซลาร์ฟาร์มชุมชนขนาดประมาณ 1 เมกะวัตต์ สี่แห่งในไทยและญี่ปุ่น</p>
+<ul><li>รูปแบบที่ภาคธุรกิจนำของไทย และรูปแบบที่ประชาชนนำของญี่ปุ่น</li><li>ต้นทุน ผลตอบแทน และการยอมรับของคนในพื้นที่</li><li>โซลาร์ชุมชนที่ดีควรผสมจุดแข็งของทั้งสองแบบ</li></ul>
+<div class="acts"><a class="btn" href="/downloads/Solar-ESS-Community-Solar-Thailand-Japan-TH_Rev02_20261022.pdf">เปิด PDF</a><a class="btn ghost" href="/downloads/Solar-ESS-Community-Solar-Thailand-Japan-TH_Rev02_20261022.pdf" download>ดาวน์โหลด</a></div></div></article>
+
+</div></section>
 </div></div></section>
 
 <section class="band" style="background:var(--sky);padding-block:56px"><div class="wrap"><h2 style="font-size:clamp(24px,3.4vw,38px)">มีคำถามเกี่ยวกับหน้างานของคุณเองใช่ไหม</h2><p class="lede" style="margin-top:12px">บอกเราว่าคุณกำลังจะสร้างอะไร แล้วเราจะตอบกลับพร้อมแบบเบื้องต้น</p><div style="margin-top:22px"><a class="btn" href="/th/#consult">ขอคำปรึกษา</a></div></div></section>
 
 <footer><div class="wrap"><span>บริษัท โซลาร์ เอสส์ จำกัด · Solar Energy for Sustainable Solution</span><span><a href="/th/job.html">ร่วมงานกับเรา</a> · <a href="/th/members.html">สมาชิก</a> · www.solar-ess.org · www.solaress.org</span></div></footer>
 <script src="/share.js?v=2" defer></script>
+<script>(function(){const h=document.querySelector("header.nav");const f=()=>h&&document.documentElement.style.setProperty("--navh",h.offsetHeight+"px");f();addEventListener("resize",f)})();document.querySelectorAll(".topicdd .tmenu a").forEach(a=>a.addEventListener("click",()=>a.closest("details").removeAttribute("open")));document.addEventListener("click",e=>{const d=document.querySelector(".topicdd");if(d&&!d.contains(e.target))d.removeAttribute("open")});</script>
 </body>
 </html>

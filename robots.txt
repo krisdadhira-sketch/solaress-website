@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /members/
+Disallow: /thanks.html
+Disallow: /th/thanks.html
+Disallow: /zh/thanks.html
+
+Sitemap: https://solaress.org/sitemap.xml

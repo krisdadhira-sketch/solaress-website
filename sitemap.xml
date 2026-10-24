@@ -25,6 +25,30 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://solaress.org/"/>
   </url>
   <url>
+    <loc>https://solaress.org/bess</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://solaress.org/bess"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://solaress.org/th/bess"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://solaress.org/zh/bess"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://solaress.org/bess"/>
+  </url>
+  <url>
+    <loc>https://solaress.org/th/bess</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://solaress.org/bess"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://solaress.org/th/bess"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://solaress.org/zh/bess"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://solaress.org/bess"/>
+  </url>
+  <url>
+    <loc>https://solaress.org/zh/bess</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://solaress.org/bess"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://solaress.org/th/bess"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://solaress.org/zh/bess"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://solaress.org/bess"/>
+  </url>
+  <url>
     <loc>https://solaress.org/faq</loc>
     <lastmod>2026-10-24</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://solaress.org/faq"/>

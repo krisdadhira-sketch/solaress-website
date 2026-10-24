@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Battery Storage (BESS) Installation in Chiang Rai | Solar ESS</title>
+<meta property="og:type" content="website"><meta property="og:site_name" content="Solar ESS"><meta property="og:title" content="Battery Storage (BESS) Installation in Chiang Rai | Solar ESS"><meta property="og:description" content="Solar ESS installs LiFePO4 battery energy storage (BESS) with hybrid inverters for homes, resorts, farms and businesses in Chiang Rai and Northern Thailand: outage backup, solar at night and off-grid systems."><meta property="og:url" content="https://solaress.org/bess"><meta property="og:image" content="https://solaress.org/images/medium-2.jpg"><meta property="og:locale" content="en_US"><meta name="twitter:card" content="summary_large_image">
+<meta name="description" content="Solar ESS installs LiFePO4 battery energy storage (BESS) with hybrid inverters for homes, resorts, farms and businesses in Chiang Rai and Northern Thailand: outage backup, solar at night and off-grid systems.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Thai:wght@400;600&display=swap">
+<style>
+/* Layout: alternating navy and white bands, wide display type, mono labels, one red-pink accent. Single committed look, taken from solar-ess.org. */
+:root{--navy:#0A1230;--navy2:#111c47;--blue:#2563EB;--sky:#DCE6FD;--paper:#FAFCFF;--white:#fff;--ink:#0A0E2E;--mute:#3E548E;--line:#DEE3ED;--hot:#FF2D55;
+--display:"Inter Tight",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace;--thai:"IBM Plex Sans Thai","Inter Tight",sans-serif;color-scheme:light}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--display);font-size:16px;line-height:1.55;margin:0}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--hot);margin:0 0 14px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;letter-spacing:-.02em}
+h1{font-size:clamp(40px,7vw,84px);line-height:1.02;font-weight:800}
+h2{font-size:clamp(30px,4.6vw,54px);line-height:1.06;font-weight:700}
+h3{font-size:22px;font-weight:700}
+p{margin:0}
+.lede{font-size:18px;max-width:60ch;opacity:.85}
+.btn{display:inline-block;font-family:var(--mono);font-size:13px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:14px 22px;border:1.5px solid var(--hot);background:var(--hot);color:var(--white);cursor:pointer}
+.btn.ghost{background:transparent;border-color:currentColor;color:inherit}
+.btn:focus-visible,a:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--navy);color:var(--white);border-bottom:1px solid rgba(255,255,255,.12)}
+.nav .wrap{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding-block:10px}
+.nav img{height:44px;border-radius:6px;background:var(--white);padding:2px}
+.nav nav{display:flex;gap:18px;flex-wrap:wrap;margin-left:auto;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.nav nav a{text-decoration:none;opacity:.8}.nav nav a:hover{opacity:1;color:var(--hot)}
+/* dropdown sub-menus */
+.nav nav .dd{position:relative;display:inline-flex;align-items:center}
+.nav nav .dd>a::after{content:"\25BE";margin-left:5px;font-size:.9em}
+.nav nav .ddm{display:none;position:absolute;top:100%;left:-14px;z-index:20;min-width:190px;padding:14px 14px 12px;flex-direction:column;gap:12px;background:var(--navy);border:1px solid rgba(255,255,255,.16);box-shadow:0 10px 24px rgba(0,0,0,.25)}
+.nav nav .dd.end .ddm{left:auto;right:-14px}
+.nav nav .dd:hover .ddm,.nav nav .dd:focus-within .ddm{display:flex}
+@media(hover:none),(max-width:760px){.nav nav .dd{flex-wrap:wrap;gap:12px}.nav nav .dd>a::after{content:none}.nav nav .ddm{display:flex;position:static;flex-direction:row;min-width:0;padding:0;border:0;background:none;box-shadow:none;gap:12px}.nav nav .ddm a::before{content:"\00B7  "}}
+/* bands */
+.band{padding-block:84px}
+.dark{background:var(--navy);color:var(--white)}
+.light{background:var(--white)}
+/* hero */
+.hero{position:relative;overflow:hidden;padding-block:72px 0}
+.hero .cells{position:absolute;inset:auto -10% -30% -10%;height:70%;transform:perspective(900px) rotateX(62deg);transform-origin:bottom;
+ background:linear-gradient(rgba(10,18,48,0) 0%,rgba(10,18,48,.0) 40%),repeating-linear-gradient(90deg,rgba(220,230,253,.22) 0 2px,transparent 2px 64px),repeating-linear-gradient(0deg,rgba(220,230,253,.22) 0 2px,transparent 2px 64px),linear-gradient(180deg,#13235e,#2563EB);opacity:.55}
+.hero .sun{position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(255,45,85,.55),rgba(255,45,85,0) 68%)}
+.hero .wrap{position:relative}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:rgba(255,255,255,.16);margin-top:64px;border-top:1px solid rgba(255,255,255,.16)}
+.stats div{background:rgba(10,18,48,.86);padding:22px 16px}
+.stats b{display:block;font-size:34px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.stats span{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.75}
+/* services */
+.svc{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;margin-top:44px;border-top:1.5px solid var(--navy)}
+.svc article{padding:28px 24px 30px 0;border-bottom:1px solid var(--line);min-width:0}
+.svc article:nth-child(odd){border-right:1px solid var(--line)}
+.svc article:nth-child(even){padding-left:24px}
+.svc .n{font-family:var(--mono);color:var(--blue);font-size:13px}
+.svc h3{margin:6px 0 8px}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.tags span{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--line);padding:4px 8px;color:var(--mute)}
+/* calculator */
+.calc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;margin-top:40px;align-items:start}
+.calc label{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.75}
+.bill{font-size:64px;font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums;line-height:1.1}
+input[type=range]{width:100%;accent-color:var(--hot);margin:14px 0 6px}
+.range{display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;opacity:.7}
+.note{font-size:13px;opacity:.7;margin-top:16px;max-width:52ch}
+.out{background:var(--navy2);border:1px solid rgba(255,255,255,.14);padding:26px}
+.out .big{font-size:52px;font-weight:800;color:var(--hot);font-variant-numeric:tabular-nums;line-height:1.1}
+.kv{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:22px 0}
+.kv b{display:block;font-size:24px;font-variant-numeric:tabular-nums}
+.kv span,.out small{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.7}
+/* projects */
+.proj{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:40px}
+.proj article{background:var(--navy);color:var(--white);padding:18px;min-height:190px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;min-width:0}
+.proj article::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(220,230,253,.09) 0 1px,transparent 1px 28px),repeating-linear-gradient(0deg,rgba(220,230,253,.09) 0 1px,transparent 1px 28px)}
+.proj article>*{position:relative}
+.proj .k{font-family:var(--mono);font-size:11px;letter-spacing:.12em;opacity:.7}
+.proj .cap{font-size:30px;font-weight:800;letter-spacing:-.02em;color:var(--sky)}
+.proj h3{font-size:18px}
+.proj .loc{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.75}
+/* voices */
+.voices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;margin-top:40px}
+.voices figure{margin:0;border-top:1.5px solid var(--navy);padding-top:20px;min-width:0}
+.voices blockquote{margin:10px 0 16px;font-size:17px}
+.voices figcaption{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.mini{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:32px}
+.mini div{background:var(--paper);border:1px solid var(--line);padding:16px;font-family:var(--thai);font-size:15px;min-width:0}
+.mini b{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin-top:10px;font-weight:500}
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:48px;align-items:start}
+.about p+p{margin-top:14px}
+.brands{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.brands span{font-family:var(--mono);font-size:12px;border:1px solid var(--navy);padding:6px 10px}
+/* faq */
+details{border-bottom:1px solid var(--line);padding:16px 0}
+summary{cursor:pointer;font-weight:600;font-size:18px;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::after{content:"+";font-family:var(--mono);color:var(--hot);font-size:22px;line-height:1}
+details[open] summary::after{content:"\2212"}
+details p{margin-top:10px;max-width:68ch;color:var(--mute)}
+/* consult */
+.consult{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px}
+.ticks{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:10px;font-family:var(--mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+.ticks li::before{content:"";display:inline-block;width:10px;height:10px;background:var(--hot);margin-right:12px}
+form{display:grid;gap:14px}
+form label{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.75;display:grid;gap:6px}
+form input,form select,form textarea{font:inherit;color:var(--white);background:transparent;border:0;border-bottom:1.5px solid rgba(255,255,255,.4);padding:8px 0;border-radius:0}
+form select option{color:var(--ink)}
+#formmsg{font-size:14px;color:var(--sky)}
+.contact{margin-top:28px;font-family:var(--mono);font-size:14px;line-height:1.9;user-select:all}
+footer{background:var(--navy);color:var(--white);border-top:1px solid rgba(255,255,255,.14);padding-block:36px;font-family:var(--mono);font-size:12px;letter-spacing:.06em}
+footer .wrap{display:flex;gap:24px;flex-wrap:wrap;justify-content:space-between;opacity:.8}
+@media(max-width:820px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.svc,.calc,.voices,.about,.consult{grid-template-columns:minmax(0,1fr)}.svc article,.svc article:nth-child(even){padding:24px 0;border-right:0}.proj,.mini{grid-template-columns:repeat(2,minmax(0,1fr))}.band{padding-block:60px}.bill{font-size:48px}.out .big{font-size:40px}}
+@media(max-width:520px){.proj,.mini{grid-template-columns:minmax(0,1fr)}.nav nav{margin-left:0;gap:12px}}
+.dl{display:flex;align-items:center;gap:18px;margin-top:28px;padding:16px 20px;max-width:560px;border:1.5px solid rgba(255,255,255,.28);color:var(--white);text-decoration:none}.dl:hover{border-color:var(--hot)}.dlicon{flex:none;display:grid;place-items:center;width:52px;height:52px;background:var(--hot);color:var(--white)}.dltext{display:grid;gap:3px;min-width:0}.dltext b{font-size:18px}.dltext span{font-size:15px;opacity:.85}.dltext small{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.7}.langsw{display:inline-flex;gap:10px;margin-left:14px;font-size:12px;letter-spacing:0;text-transform:none}.langsw a{opacity:.7}.langsw a[aria-current]{opacity:1;font-weight:700}[hidden]{display:none!important}@media(hover:hover) and (min-width:761px){.nav nav .ddm a{white-space:nowrap}}@media(hover:none),(max-width:760px){.nav nav .ddm{flex-wrap:wrap;row-gap:8px}}
+.fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:30;display:flex;gap:8px}.fab a{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:999px;background:var(--hot,#FF2D55);color:#fff;font:600 14px/1 var(--sans,system-ui),sans-serif;text-decoration:none;box-shadow:0 6px 18px rgba(10,18,48,.3)}.fab svg{width:18px;height:18px;fill:currentColor}@media print{.fab{display:none}}@media(max-width:380px){.fab a{padding:12px;font-size:0;gap:0}.fab svg{width:20px;height:20px}}
+
+.bh{padding-block:72px}.bh h1{font-size:clamp(34px,5.6vw,60px);line-height:1.05;max-width:18ch}
+.bh .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.why3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:36px;border-top:1.5px solid var(--navy)}
+.why3 article{padding:22px 22px 6px 0}.why3 article+article{padding-left:22px;border-left:1px solid var(--line)}
+.why3 .n{font-family:var(--mono);font-size:13px;color:var(--blue)}.why3 h3{font-size:21px;margin:8px 0}.why3 p{margin:0;color:var(--mute);line-height:1.6}
+.steps{list-style:none;padding:0;margin:34px 0 0;display:grid;gap:0;border-top:1.5px solid var(--navy)}
+.steps li{display:grid;grid-template-columns:60px minmax(0,1fr);gap:14px;padding:18px 0;border-bottom:1px solid var(--line)}
+.steps .num{font-family:var(--mono);font-size:14px;color:var(--hot);padding-top:3px}.steps b{display:block;font-size:18px;margin-bottom:4px}.steps p{margin:0;color:var(--mute);line-height:1.6}
+.hw{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:30px}
+.hw>div{border:1.5px solid var(--navy);padding:22px}.hw h3{margin:0 0 10px;font-size:20px}.hw p{margin:0 0 8px;line-height:1.6}.hw .tags{border:0;padding:0;margin-left:0;display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.hw .tags span{font-family:var(--mono);font-size:12px;border:1px solid var(--navy);padding:5px 9px}
+.size{width:100%;border-collapse:collapse;margin-top:26px;font-size:15px}.size th,.size td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.size th{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.sizewrap{overflow-x:auto}.small{font-size:14px;color:var(--mute);margin-top:12px;max-width:80ch}
+.jobs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:30px}
+.jobs figure{margin:0;border:1.5px solid var(--navy);background:var(--white)}.jobs img{width:100%;height:320px;object-fit:cover;display:block}
+.jobs figcaption{padding:14px 16px;line-height:1.5}.jobs figcaption b{display:block;font-size:17px}
+.jobs2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:18px}.jobs2>div{border:1px solid var(--line);padding:16px;background:var(--white)}.jobs2 b{display:block;font-size:17px}
+.bdl{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.bfaq details{border-bottom:1px solid var(--line);padding:14px 0}.bfaq summary{cursor:pointer;font-weight:600;font-size:17px}.bfaq p{margin:10px 0 0;line-height:1.65;color:var(--mute);max-width:80ch}
+@media(max-width:820px){.why3,.hw,.jobs,.jobs2{grid-template-columns:minmax(0,1fr)}.why3 article+article{padding-left:0;border-left:0;border-top:1px solid var(--line)}.jobs img{height:240px}}
+</style>
+<link rel="canonical" href="https://solaress.org/bess">
+<link rel="alternate" hreflang="en" href="https://solaress.org/bess">
+<link rel="alternate" hreflang="th" href="https://solaress.org/th/bess">
+<link rel="alternate" hreflang="zh-Hans" href="https://solaress.org/zh/bess">
+<link rel="alternate" hreflang="x-default" href="https://solaress.org/bess">
+</head>
+<body>
+
+<header class="nav"><div class="wrap">
+<a href="/#top" aria-label="Solar ESS home"><img src="data:image/jpeg;base64,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" alt="Solar ESS, Solar Energy for Sustainable Solution"></a>
+<nav><span class="dd"><a href="/#projects">Projects</a><span class="ddm"><a href="/#calculator">Savings</a><a href="/technical-notes.html">Technical</a><a href="/quotation.html">Quotation</a><a href="/picks.html">Our picks</a></span></span><span class="dd"><a href="/#services">Vision</a><span class="ddm"><a href="/team.html#team">Our team</a></span></span><a href="/news.html">News</a><span class="dd"><a href="/job.html">For installers</a><span class="ddm"><a href="/job.html">Jobs</a><a href="/job.html?region=north#projects">Northern</a><a href="/job.html?region=central#projects">Central</a><a href="/job.html?region=bangkok#projects">Bangkok</a><a href="/job.html?region=south#projects">Southern</a><a href="/job.html?region=northeast#projects">Northeastern</a><a href="/team.html#network">TSIA - Thailand Solar Installer Alliance</a><a href="/members.html">Members</a></span></span><span class="dd end"><a href="/#consult">Book consultation</a><span class="ddm"><a href="/faq.html">FAQ</a></span></span><span class="langsw"><a href="/bess.html" lang="en" aria-current="true">EN</a><a href="/th/bess.html" lang="th" style="font-family:var(--thai)">ไทย</a><a href="/zh/bess.html" lang="zh-Hans">中文</a></span></nav>
+</div></header>
+
+<section class="dark band bh"><div class="wrap">
+<p class="eyebrow">Battery energy storage · BESS</p>
+<h1>Battery storage installation in Chiang Rai and Northern Thailand.</h1>
+<p class="lede" style="margin-top:20px">Keep the power on through outages and use your daytime solar at night. We size, install and commission LiFePO4 battery systems with hybrid inverters for homes, resorts, farms and businesses.</p>
+<div class="cta"><a class="btn" href="/#consult">Book a consultation</a><a class="btn ghost" href="https://line.me/ti/p/~solaress1" target="_blank" rel="noopener">Chat on LINE</a></div>
+</div></section>
+
+<section class="band light"><div class="wrap">
+<p class="eyebrow">What a battery does for you</p><h2>Three reasons people add a battery.</h2>
+<div class="why3">
+<article><div class="n">01</div><h3>Backup when the grid goes down</h3><p>A plain on-grid inverter switches off for safety whenever PEA power fails, even in full sun. A hybrid inverter with a battery and a backup circuit keeps your essential loads running: lights, fridge, Wi-Fi, pumps, a room air con.</p></article>
+<article><div class="n">02</div><h3>Use your solar at night</h3><p>Thailand pays only a low fixed rate for power you export. Storing the midday surplus and using it in the evening is usually worth more than sending it to the grid.</p></article>
+<article><div class="n">03</div><h3>Power where there is no grid</h3><p>Mountain homestays, farms and remote sites run fully off-grid on solar and batteries, with a generator connection through an ATS for long cloudy spells.</p></article>
+</div></div></section>
+
+<section class="band" style="background:var(--sky)"><div class="wrap">
+<p class="eyebrow">How we design it</p><h2>Sized from your real consumption, not the biggest box on offer.</h2>
+<ol class="steps">
+<li><span class="num">01</span><div><b>Read your consumption</b><p>We look at your bills and, where possible, meter or inverter data to see how much you use in the evening and at night, and your peak loads.</p></div></li>
+<li><span class="num">02</span><div><b>Choose what must stay on</b><p>We agree with you which circuits go on the backup panel, so the battery protects what matters instead of draining on everything.</p></div></li>
+<li><span class="num">03</span><div><b>Match battery and inverter</b><p>Battery size comes from your night-time load; the pairing is checked against the inverter maker's approved battery list, so charging, backup and warranty all work as they should.</p></div></li>
+<li><span class="num">04</span><div><b>Install it safely</b><p>Batteries go in shade, ventilated and off the floor, each with its own DC breaker, copper cabling and proper earthing.</p></div></li>
+<li><span class="num">05</span><div><b>Commission and hand over</b><p>We test the backup switch-over, set up the monitoring app on your phone, handle the PEA connection paperwork and show you how the system works.</p></div></li>
+</ol></div></section>
+
+<section class="band light"><div class="wrap">
+<p class="eyebrow">Hardware we fit</p><h2>LiFePO4 batteries and hybrid inverters we trust.</h2>
+<div class="hw">
+<div><h3>Batteries</h3><p>LiFePO4 (lithium iron phosphate) only: the safer lithium chemistry, and it keeps its cycle life in Thai heat.</p><div class="tags"><span>Intellihome</span><span>LV Topsun G4</span><span>Flex Core ID</span><span>Dyness</span></div></div>
+<div><h3>Hybrid inverters</h3><p>Chosen for after-sales support and how well they run backup and off-grid systems. We also service most other brands.</p><div class="tags"><span>Huawei</span><span>Solis</span><span>Sigenergy</span></div></div>
+</div>
+<div class="sizewrap"><table class="size"><thead><tr><th>Typical setup</th><th>Battery</th><th>Good for</th></tr></thead><tbody>
+<tr><td>Home backup</td><td>One 10–16 kWh wall or floor battery (51.2 V)</td><td>Lights, fridge, Wi-Fi, fans and one air con through the evening and short outages</td></tr>
+<tr><td>Larger home or small resort</td><td>Two or three batteries in parallel (about 30–46 kWh)</td><td>Most of the evening load, longer outages</td></tr>
+<tr><td>Off-grid homestay, farm or business</td><td>Battery bank sized to a full night plus reserve, with a generator connection</td><td>Sites with no grid or a very weak one</td></tr>
+</tbody></table></div>
+<p class="small">A 16 kWh battery stores about 16 units of electricity. Roughly, that runs a 1 kW inverter air con for about 14 hours. Final sizes are confirmed after we see your consumption.</p>
+<div class="bdl"><a class="btn ghost" href="/technical-notes.html#16kwh-battery-comparison" style="color:var(--navy)">Which 16 kWh battery is best? (comparison)</a><a class="btn ghost" href="/technical-notes.html#16kwh-battery-explained" style="color:var(--navy)">What is a 16 kWh battery? (explainer)</a></div>
+</div></section>
+
+<section class="band" style="background:var(--paper)"><div class="wrap">
+<p class="eyebrow">Battery jobs we have done</p><h2>Real installations.</h2>
+<div class="jobs">
+<figure><img src="/images/medium-2.jpg" alt="Three 15.36 kWh LiFePO4 battery units installed side by side under a cable tray" loading="lazy"><figcaption><b>About 46 kWh battery bank</b>Three 51.2 V, 15.36 kWh LiFePO4 units in parallel, under steel conduit and cable tray.</figcaption></figure>
+<figure><img src="/images/job-battery-wall-chiangdao-now.jpg" alt="Solis hybrid inverter mounted above wall batteries in a stairwell" loading="lazy"><figcaption><b>Hybrid inverter and wall batteries · Chiang Dao, Chiang Mai</b>A Solis hybrid inverter on a steel frame with LiFePO4 batteries below, now being expanded with a second battery.</figcaption></figure>
+</div>
+<div class="jobs2">
+<div><b>Doi Mek · Mae Jan, Chiang Rai</b>10.4 kWp solar with a 300 Ah battery.</div>
+<div><b>Mon Mekha · Doi Chang, Chiang Rai</b>40 kWp off-grid system.</div>
+</div></div></section>
+
+<section class="band light bfaq"><div class="wrap">
+<p class="eyebrow">Good to know</p><h2>Battery questions.</h2>
+<div style="margin-top:24px">
+<details><summary>Can I add a battery to my existing solar system?</summary><p>If you already have a hybrid inverter, usually yes: we check that the battery is on the inverter maker's approved list. With a plain on-grid inverter, the inverter normally has to be replaced with a hybrid one or a separate battery inverter added. We will tell you which after a site check.</p></details>
+<details><summary>Does a system with a battery qualify for the ฿200,000 tax deduction?</summary><p>An on-grid rooftop system with a battery can qualify, as long as it is a new system of up to 10 kWp connected to PEA or MEA between 3 March 2026 and 31 December 2028. You need a full e-Tax Invoice, which Solar ESS issues for every system.</p></details>
+<details><summary>Are lithium batteries safe in a house?</summary><p>We fit LiFePO4 only, the most stable lithium chemistry for homes. Each battery gets its own DC breaker, is installed in shade with ventilation and off the floor, and is wired in copper with proper earthing.</p></details>
+<details><summary>Can I connect a generator?</summary><p>Yes. We recommend the generator size and provide the connection point through an ATS. The generator supplier installs and warrants the generator, and we connect it to the solar system together with their team.</p></details>
+<details><summary>How much does a battery system cost?</summary><p>It depends on the battery size, the inverter and how much of your home or business must stay on. The battery is priced on top of the solar system. Book a consultation or message us on LINE and we will send a quotation.</p></details>
+</div></div></section>
+
+<section class="dark band"><div class="wrap">
+<p class="eyebrow">Next step</p><h2>Tell us what must stay on.</h2>
+<p class="lede" style="margin-top:16px">Send a photo of your electricity bill and a list of the appliances you want backed up. We reply with a preliminary design and quotation within two business days.</p>
+<div class="cta" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px"><a class="btn" href="/#consult">Book a consultation</a><a class="btn ghost" href="https://line.me/ti/p/~solaress1" target="_blank" rel="noopener">LINE: solaress1</a><a class="btn ghost" href="tel:+66631516694">063 151 6694</a></div>
+</div></section>
+
+<footer><div class="wrap"><span>Solar ESS Co. Ltd. · Solar Energy for Sustainable Solution</span><span><a href="/job.html">Jobs</a> · <a href="/members.html">Members</a> · www.solar-ess.org · www.solaress.org</span></div></footer>
+<script src="/share.js?v=2" defer></script>
+<div class="fab"><a href="https://line.me/ti/p/~solaress1" target="_blank" rel="noopener" style="background:#06C755" aria-label="LINE ID solaress1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5 1.1-.5 5.9-3.5 8-6C21.4 14.2 22 12.7 22 11c0-4.4-4.5-8-10-8z"/></svg>LINE</a><a href="https://www.facebook.com/profile.php?id=100066770846002" target="_blank" rel="noopener" style="background:#1877F2" aria-label="Solar ESS on Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.5V4.4a20 20 0 0 0-2.2-.1c-2.2 0-3.8 1.3-3.8 3.8v2.4H8v3h2.5V21z"/></svg>Facebook</a><a href="tel:+66631516694" aria-label="Call us: 063 151 6694"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.6a1 1 0 0 1-.25 1z"/></svg>Call us</a></div>
+</body>
+</html>

@@ -290,13 +290,22 @@ h1,h2,h3{letter-spacing:0}h1{line-height:1.16}h2{line-height:1.2}
 <p class="lede" style="margin-top:18px">请告诉我们您的房产情况和用能目标。我们将在两个工作日内回复，并提供初步的系统设计和节省估算。</p>
 <ul class="ticks"><li>免费现场勘察</li><li>方案设计（屋顶光伏）</li><li>无任何附加义务</li></ul>
 <div class="contact"><a href="mailto:kris@solar-ess.org">kris@solar-ess.org</a><br><a href="tel:+66631516694">063 151 6694</a> · <a href="tel:+66894296832">089 429 6832</a><br><a href="https://www.facebook.com/profile.php?id=100066770846002" target="_blank" rel="noopener">Facebook: Solar ESS</a><br><a href="https://line.me/ti/p/~solaress1" target="_blank" rel="noopener">LINE ID: solaress1</a><br>53 Moo 2 Tambon Nanglae, Amphoe Muang, Chiang Rai 57100</div></div>
-<form id="cform" name="consultation" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/zh/thanks.html">
+<form id="cform" name="consultation" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" action="/zh/thanks.html" data-msg='{&quot;sending&quot;: &quot;正在处理照片并发送……&quot;, &quot;toobig&quot;: &quot;压缩后文件共 {s} MB，超过 8 MB 上限。请删除部分文件（或通过 LINE solaress1 发送）后重新提交。&quot;, &quot;fail&quot;: &quot;发送失败。请重试，或通过 LINE solaress1 或 kris@solar-ess.org 发送资料。&quot;, &quot;file&quot;: &quot;已附加 {s} MB 文件&quot;}'>
 <input type="hidden" name="form-name" value="consultation"><p hidden><label>请留空 <input name="bot-field"></label></p>
-<label for="f-name">姓名<input id="f-name" name="name" required></label>
-<label for="f-email">电子邮箱<input id="f-email" name="email" type="email" required></label>
-<label for="f-phone">电话<input id="f-phone" name="phone" type="tel"></label>
-<label for="f-type">物业类型<select id="f-type" name="property_type"><option value="Residential">住宅</option><option value="Commercial">商业</option><option value="Industrial">工业</option><option value="Off-grid site">离网场所</option></select></label>
-<label for="f-msg">留言<textarea id="f-msg" name="message" rows="3"></textarea></label>
+<p class="fsnote" style="margin:0">带 * 的为必填项。其他信息有助于我们更快完成设计：现在上传已有的资料，其余可稍后通过 LINE（solaress1）发送。</p>
+<fieldset><legend>您的信息</legend><label for="f-name">姓名 *<input id="f-name" name="name" required autocomplete="name"></label><div class="f2"><label for="f-email">电子邮箱 *<input id="f-email" name="email" type="email" required autocomplete="email"></label><label for="f-phone">电话 *<input id="f-phone" name="phone" type="tel" required autocomplete="tel"></label></div><div class="f2"><label for="f-line">LINE ID<input id="f-line" name="line_id" ></label><label for="f-type">物业类型<select id="f-type" name="property_type"><option value="Residential">住宅</option><option value="Commercial">商业</option><option value="Industrial">工业</option><option value="Off-grid site">离网场所</option></select></label></div></fieldset>
+<fieldset><legend>1 · 位置</legend><label for="f-pin">Google 地图定位或 GPS 坐标 *<input id="f-pin" name="location_pin" placeholder="https://maps.app.goo.gl/… 或 19.91, 99.84" required></label></fieldset>
+<fieldset><legend>2 · 用电情况</legend><label for="f-bill">月均电费（泰铢）<input id="f-bill" name="monthly_bill_thb" type="number" min="0" step="100" inputmode="numeric"></label><label for="f-billf">最近 3–12 个月电费单（照片或 PDF）*<input id="f-billf" name="electricity_bills" type="file" accept="image/*,.pdf" required></label><label for="f-appl">电器：按功率从大到小，每天使用小时数，白天或夜间<textarea id="f-appl" name="appliances" rows="3" placeholder="例如：18,000 BTU 空调 × 3，8 小时，夜间；水泵 1.5 kW，2 小时，早上"></textarea></label><label for="f-applf">电器清单（文件，可选）<input id="f-applf" name="appliance_list_file" type="file" accept="image/*,.pdf"></label></fieldset>
+<fieldset><legend>3 · 屋顶或安装区域</legend><label for="f-roofp">拟安装光伏板位置的照片 *<input id="f-roofp" name="roof_photo" type="file" accept="image/*,.pdf" required></label><div class="f2"><label for="f-area">大约面积（平方米）<input id="f-area" name="roof_area_m2" type="number" min="0" inputmode="numeric"></label><label for="f-face">朝向<select id="f-face" name="roof_facing"><option value="Not sure">不确定</option><option value="North">北</option><option value="North-east">东北</option><option value="East">东</option><option value="South-east">东南</option><option value="South">南</option><option value="South-west">西南</option><option value="West">西</option><option value="North-west">西北</option><option value="Flat roof">平屋顶</option></select></label></div><div class="f2"><label for="f-rtype">屋顶类型与材料<select id="f-rtype" name="roof_type"><option value="Metal sheet">金属板</option><option value="Tile">瓦片</option><option value="Concrete deck">混凝土屋面</option><option value="Ground mount">地面安装</option><option value="Carport / canopy">车棚 / 遮阳棚</option><option value="Other">其他</option></select></label><label for="f-shade">遮挡物（树木、建筑）<input id="f-shade" name="shading" ></label></div></fieldset>
+<fieldset><legend>4 · 主配电箱（MDB）</legend><label for="f-mdb">打开盖板的配电箱照片<input id="f-mdb" name="mdb_photo" type="file" accept="image/*,.pdf"></label><label for="f-wall">配电箱旁的墙面（用于安装逆变器）<input id="f-wall" name="inverter_wall_photo" type="file" accept="image/*,.pdf"></label></fieldset>
+<fieldset><legend>5 · 线缆路径</legend><label for="f-route">从屋顶到配电箱的走线方式<textarea id="f-route" name="cable_route" rows="2" placeholder="线管、吊顶空间、外墙……"></textarea></label><label for="f-routep">走线路径照片<input id="f-routep" name="cable_route_photo" type="file" accept="image/*,.pdf"></label></fieldset>
+<fieldset><legend>6 · 电表</legend><label for="f-meterp">能看清铭牌额定值的电表照片<input id="f-meterp" name="meter_photo" type="file" accept="image/*,.pdf"></label><div class="f2"><label for="f-phase">相数<select id="f-phase" name="meter_phase"><option value="Not sure">不确定</option><option value="Single-phase">单相</option><option value="Three-phase">三相</option></select></label><label for="f-rating">电表规格<input id="f-rating" name="meter_rating" placeholder="例如 15(45) A" ></label></div></fieldset>
+<fieldset><legend>7 · 主电缆（电表至配电箱）</legend><div class="f2"><label for="f-csize">电缆截面（平方毫米）<input id="f-csize" name="main_cable_size" ></label><label for="f-cmat">导体<select id="f-cmat" name="main_cable_conductor"><option value="Not sure">不确定</option><option value="Copper">铜</option><option value="Aluminium">铝</option></select></label></div></fieldset>
+<fieldset><legend>8 · 单线图</legend><label for="f-sld">电气图纸（如有）<input id="f-sld" name="single_line_diagram" type="file" accept="image/*,.pdf"></label></fieldset>
+<fieldset><legend>9 · 设备近距离照片</legend><p class="fsnote">清晰可读的照片：断路器品牌/额定电流/极数/分断能力 kA、电缆外皮印字、电表、逆变器或水泵的铭牌。</p><label for="f-cu1">近照 1<input id="f-cu1" name="closeup_photo_1" type="file" accept="image/*,.pdf"></label><label for="f-cu2">近照 2<input id="f-cu2" name="closeup_photo_2" type="file" accept="image/*,.pdf"></label><label for="f-cu3">近照 3<input id="f-cu3" name="closeup_photo_3" type="file" accept="image/*,.pdf"></label></fieldset>
+<fieldset><legend>10 · 现场联系人</legend><p class="fsnote">您的电工或管理人员。我们会向其索取更多信息、在安装期间与其合作，并用于日后的维护支持。</p><label for="f-pname">姓名<input id="f-pname" name="point_person_name" ></label><div class="f2"><label for="f-pphone">电话<input id="f-pphone" name="point_person_phone" type="tel"></label><label for="f-pline">LINE ID<input id="f-pline" name="point_person_line" ></label></div></fieldset>
+<label for="f-msg">其他说明<textarea id="f-msg" name="message" rows="3"></textarea></label>
+<p class="fsnote" id="fsize">照片会自动压缩。总计不超过 8 MB（PDF 按原始大小计算）。</p>
 <button class="btn" type="submit">提交申请</button>
 <div id="formmsg" role="status"></div>
 </form>
@@ -304,7 +313,7 @@ h1,h2,h3{letter-spacing:0}h1{line-height:1.16}h2{line-height:1.2}
 <div class="wrap" id="checklist" style="margin-top:56px;padding-top:40px;border-top:1px solid rgba(255,255,255,.18)">
 <p class="eyebrow">资料清单</p><h2 style="font-size:clamp(26px,3.6vw,40px)">评估之前：请提供以下资料</h2>
 <p class="lede" style="margin-top:14px">计划在家中安装太阳能光伏？请向我们提供以下资料，以便评估您的房屋。</p>
-<ol class="cklist"><li><b>位置</b><p>房屋的 Google 地图定位（GPS）。</p></li><li><b>用电情况</b><p>最近 3–12 个月的电费单。</p><p>电器清单：按负载从大到小排列，注明每天使用小时数及使用时段（白天或夜间）。</p></li><li><b>屋顶或安装区域</b><p>拟安装光伏组件位置的照片。</p><p>区域的大致面积及朝向。</p><p>屋顶类型和材料（彩钢瓦、瓦片、混凝土等）。</p><p>遮挡物（树木、建筑物）。</p></li><li><b>总配电箱（MDB）</b><p>打开盖板的配电箱照片，以及配电箱旁拟安装逆变器的墙面照片。</p></li><li><b>走线路径</b><p>从屋顶到总配电箱的走线方式（线管、吊顶内、外墙），如有请附照片。</p></li><li><b>电表</b><p>电表照片，需能看到额定值标签（例如 15(45) A），并注明单相或三相。</p></li><li><b>主电缆</b><p>电表到总配电箱的电缆规格（平方毫米），以及铜芯或铝芯。</p></li><li><b>单线图</b><p>房屋电气系统图（如有）。</p></li><li><b>设备近距离照片</b><p>清晰、能看清参数的近距离照片，例如：</p><ul><li>总断路器及其他断路器：品牌、额定电流（A）、极数、分断能力（kA）；</li><li>电缆外皮上的印字：规格（平方毫米）、型号（例如 THW、VCT、NYY）、铜芯或铝芯；</li><li>电表以及现有逆变器或水泵上的铭牌。</li></ul></li><li><b>联系人</b><p>一位联系人（例如电工或房屋管理人）的姓名、电话和 LINE ID。我们将：</p><ul><li>在评估期间向其询问更多信息；</li><li>在安装期间与其现场配合；</li><li>日后联系其进行运维支持（检查、维护、故障处理）。</li></ul></li></ol>
+<p class="lede" style="margin-top:10px;font-size:16px">以上资料均可直接在上方的咨询表单中上传。<a href="#cform" style="color:var(--sky)">前往表单</a></p><ol class="cklist"><li><b>位置</b><p>房屋的 Google 地图定位（GPS）。</p></li><li><b>用电情况</b><p>最近 3–12 个月的电费单。</p><p>电器清单：按负载从大到小排列，注明每天使用小时数及使用时段（白天或夜间）。</p></li><li><b>屋顶或安装区域</b><p>拟安装光伏组件位置的照片。</p><p>区域的大致面积及朝向。</p><p>屋顶类型和材料（彩钢瓦、瓦片、混凝土等）。</p><p>遮挡物（树木、建筑物）。</p></li><li><b>总配电箱（MDB）</b><p>打开盖板的配电箱照片，以及配电箱旁拟安装逆变器的墙面照片。</p></li><li><b>走线路径</b><p>从屋顶到总配电箱的走线方式（线管、吊顶内、外墙），如有请附照片。</p></li><li><b>电表</b><p>电表照片，需能看到额定值标签（例如 15(45) A），并注明单相或三相。</p></li><li><b>主电缆</b><p>电表到总配电箱的电缆规格（平方毫米），以及铜芯或铝芯。</p></li><li><b>单线图</b><p>房屋电气系统图（如有）。</p></li><li><b>设备近距离照片</b><p>清晰、能看清参数的近距离照片，例如：</p><ul><li>总断路器及其他断路器：品牌、额定电流（A）、极数、分断能力（kA）；</li><li>电缆外皮上的印字：规格（平方毫米）、型号（例如 THW、VCT、NYY）、铜芯或铝芯；</li><li>电表以及现有逆变器或水泵上的铭牌。</li></ul></li><li><b>联系人</b><p>一位联系人（例如电工或房屋管理人）的姓名、电话和 LINE ID。我们将：</p><ul><li>在评估期间向其询问更多信息；</li><li>在安装期间与其现场配合；</li><li>日后联系其进行运维支持（检查、维护、故障处理）。</li></ul></li></ol>
 <p style="margin-top:22px;opacity:.9">发送至：LINE solaress1  ·  kris@solar-ess.org  ·  电话 063 151 6694, 089 429 6832</p>
 <div style="margin-top:22px;display:flex;flex-wrap:wrap;gap:14px;align-items:center"><a class="btn" href="/downloads/Solar-ESS-Home-Solar-Assessment-Checklist-ZH_Rev01_20261025.pdf" download>下载清单（PDF，可打印）</a><span style="font-size:14px;opacity:.8">其他语言: <a href="/downloads/Solar-ESS-Home-Solar-Assessment-Checklist_Rev01_20261025.pdf" lang="en">English</a> · <a href="/downloads/Solar-ESS-Home-Solar-Assessment-Checklist-TH_Rev01_20261025.pdf" lang="th">ภาษาไทย</a></span></div>
 </div>
@@ -333,5 +342,41 @@ document.getElementById('bill').addEventListener('input',calc);calc();
 
 <script src="/share.js?v=2" defer></script>
 <div class="fab"><a href="https://line.me/ti/p/~solaress1" target="_blank" rel="noopener" style="background:#06C755" aria-label="LINE ID solaress1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5 1.1-.5 5.9-3.5 8-6C21.4 14.2 22 12.7 22 11c0-4.4-4.5-8-10-8z"/></svg>LINE</a><a href="https://www.facebook.com/profile.php?id=100066770846002" target="_blank" rel="noopener" style="background:#1877F2" aria-label="Solar ESS on Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.5V4.4a20 20 0 0 0-2.2-.1c-2.2 0-3.8 1.3-3.8 3.8v2.4H8v3h2.5V21z"/></svg>Facebook</a><a href="tel:+66631516694" aria-label="致电我们: 063 151 6694"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.6a1 1 0 0 1-.25 1z"/></svg>致电我们</a></div>
+<style>
+#cform fieldset{border:0;border-top:1px solid rgba(255,255,255,.18);margin:0;padding:16px 0 0;display:grid;gap:14px;min-width:0}
+#cform legend{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--hot);padding:0 0 4px;font-weight:700}
+#cform .fsnote{font-size:13px;opacity:.75;margin:0;line-height:1.5}
+#cform .f2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px}
+#cform input[type=file]{font-size:13px;border-bottom-style:dashed;padding:10px 0;max-width:100%}
+#cform input[type=file]::file-selector-button{font:inherit;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;background:transparent;color:var(--white);border:1px solid rgba(255,255,255,.5);padding:6px 10px;margin-right:10px;cursor:pointer}
+#cform textarea::placeholder,#cform input::placeholder{color:rgba(255,255,255,.4)}
+#cform button[disabled]{opacity:.6;cursor:wait}
+@media(min-width:821px){.consult>div:first-child{position:sticky;top:90px;align-self:start}}
+@media(max-width:560px){#cform .f2{grid-template-columns:minmax(0,1fr)}}
+</style>
+<script>
+(function(){var f=document.getElementById('cform');if(!f||!window.fetch||!window.FormData)return;
+var M=JSON.parse(f.dataset.msg),out=document.getElementById('formmsg'),sz=document.getElementById('fsize'),LIMIT=8e6,MAXPX=1600;
+function mb(n){return (n/1e6).toFixed(1)}
+function shrink(file){return new Promise(function(res){
+ if(!/^image\/(jpeg|png|webp|heic|heif)/i.test(file.type)||file.size<500e3){res(file);return}
+ var u=URL.createObjectURL(file),im=new Image();
+ im.onload=function(){var s=Math.min(1,MAXPX/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*s);c.height=Math.round(im.height*s);
+  c.getContext('2d').drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(u);
+  c.toBlob(function(b){res(b&&b.size<file.size?new File([b],file.name.replace(/\.\w+$/,'')+'.jpg',{type:'image/jpeg'}):file)},'image/jpeg',.82)};
+ im.onerror=function(){URL.revokeObjectURL(u);res(file)};im.src=u})}
+function build(){var fd=new FormData(),jobs=[];
+ Array.prototype.forEach.call(f.elements,function(el){if(!el.name||el.disabled)return;
+  if(el.type==='file'){if(el.files[0])jobs.push(shrink(el.files[0]).then(function(x){return [el.name,x]}))}
+  else fd.append(el.name,el.value)});
+ return Promise.all(jobs).then(function(fs){var t=0;fs.forEach(function(p){fd.append(p[0],p[1],p[1].name);t+=p[1].size});return {fd:fd,total:t}})}
+f.addEventListener('change',function(e){if(e.target.type!=='file')return;var t=0;Array.prototype.forEach.call(f.querySelectorAll('input[type=file]'),function(i){if(i.files[0])t+=i.files[0].size});
+ sz.textContent=M.file.replace('{s}',mb(t))});
+f.addEventListener('submit',function(e){e.preventDefault();var btn=f.querySelector('button[type=submit]');btn.disabled=true;out.textContent=M.sending;
+ build().then(function(r){if(r.total>LIMIT){out.textContent=M.toobig.replace('{s}',mb(r.total));btn.disabled=false;return}
+  return fetch('/',{method:'POST',body:r.fd}).then(function(x){if(!x.ok)throw 0;location.href=f.getAttribute('action')})})
+ .catch(function(){out.textContent=M.fail;btn.disabled=false})});
+})();
+</script>
 </body>
 </html>

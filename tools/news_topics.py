@@ -20,12 +20,12 @@ ALL = {'en': 'All news', 'th': 'ข่าวทั้งหมด', 'zh': '全�
 TOPICS = {
  'subsidy': ['public-reaction-50000-subsidy', 'thailand-50000-baht-solar-subsidy', 'thai-rooftop-solar-policy', 'thailand-mandatory-panel-standard',
              'thailand-ocpb-faulty-solar', 'solar-disadvantages-honest'],
- 'datacenter': ['data-centres-thailand-power', 'global-energy-review-2025'],
+ 'datacenter': ['data-centres-power-water', 'data-centres-thailand-power', 'global-energy-review-2025'],
  'innovation': ['fraunhofer-silicon-anode-cells', 'tongwei-93-bifaciality', 'risen-anti-glare', 'mova-lumegret-s5000',
                 'solis-s6-eh3p50k-v38-vs-21a', 'thailand-solar-battery-recycling-estate'],
  'adoption': ['global-energy-review-2025', 'china-solar-down-rest-up', 'module-prices-october-2026', 'nz-solar-complaints-surge',
               'thai-rooftop-solar-policy'],
- 'consumption': ['global-energy-review-2025', 'data-centres-thailand-power', 'tni-state-of-power-2024', 'ucs-solar-environmental-impacts'],
+ 'consumption': ['data-centres-power-water', 'global-energy-review-2025', 'data-centres-thailand-power', 'tni-state-of-power-2024', 'ucs-solar-environmental-impacts'],
 }
 GUIDE = {
  'en': ('Full guide: Thailand\'s 50,000-baht solar subsidy', 'Who qualifies, when to register, what you still pay, loans and sell-back – updated as rules are announced.', '/solar-subsidy-50000.html', 'Read the guide →'),
@@ -53,8 +53,19 @@ S_FB = [('https://www.facebook.com/sondhitalk/posts/pfbid0CvqEsNWv6xiPDiboohHHZY
         ('https://www.facebook.com/thestandardth/posts/pfbid0t56JcRws3qzh2LA2LEVwsnpBLfAuwBqhiPkwfB3SPpMLF5wgQnfUxZWz3zbvmzhTl', {'en':'Facebook: THE STANDARD (about 37 comments read)','th':'Facebook: THE STANDARD (อ่านราว 37 ความคิดเห็น)','zh':'Facebook：THE STANDARD（阅读约 37 条评论）'}),
         ('https://www.facebook.com/thairath/posts/pfbid0313AjX5ZpapoqfSmLjKnxd4QfezdSSA8Vp1cFNdqwt7ZRAqR7UUWy4NvUoM8SSC7Ll', {'en':'Facebook: Thairath (about 12 comments read)','th':'Facebook: ไทยรัฐออนไลน์ (อ่านราว 12 ความคิดเห็น)','zh':'Facebook：Thairath（阅读约 12 条评论）'})]
 
+S_DW = [('https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai', {'en':'Source: IEA, Energy and AI – energy demand from AI (English)','th':'ที่มา: IEA รายงาน Energy and AI (ภาษาอังกฤษ)','zh':'来源：国际能源署（IEA）《能源与人工智能》（英文）'}),
+        ('https://www.lincolninst.edu/publications/land-lines-magazine/articles/land-water-impacts-data-centers/', {'en':'Source: Lincoln Institute of Land Policy, 17 October 2025 (English)','th':'ที่มา: Lincoln Institute of Land Policy 17 ตุลาคม 2025 (ภาษาอังกฤษ)','zh':'来源：林肯土地政策研究院，2025年10月17日（英文）'})]
+
 NEW = {
 'en': [
+ art('data-centres-power-water', '27 October 2026 · Data centres', 'Why data centres use so much electricity and water',
+     'Data centres used about <b>415 TWh</b> of electricity in 2024, about 1.5% of the world’s total, and the IEA expects this to more than double to about <b>945 TWh</b> by 2030. AI is the main reason: its chips are far more power-hungry, and they run hot.',
+     [('World use, 2024', '415 TWh'), ('Forecast, 2030', '945 TWh'), ('Large site, water per day', 'up to 19 million litres')],
+     ['<b>Why so much electricity.</b> AI runs on clusters of specialised chips (GPUs) that draw far more power than ordinary servers. The servers themselves use about 60% of a modern data centre’s electricity, according to the IEA. Cooling uses about 7% in the most efficient large sites and more than 30% in less efficient ones; storage and networking take most of the rest.',
+      '<b>Why so much water.</b> Much of the heat is removed by evaporative cooling, where water soaks up heat and evaporates. The Lincoln Institute reports that a large data centre can need up to 5 million US gallons a day (about 19 million litres), similar to a town of 50,000 people. There is also an indirect water cost: about half of the electricity US data centres use comes from fossil-fuel plants, which use water to make steam.',
+      '<b>The trade-off.</b> Operators can save water by cooling with more electricity (closed-loop and air systems), or save electricity by using more water. Because AI chips run so hot, many lean on water.',
+      '<b>Why it matters in Thailand.</b> Thailand has approved large data centre investments, and in a Federation of Thai Industries survey most executives named water supply as their top concern (see <a href="#data-centres-thailand-power">Thailand’s data centre boom</a>). Solar panels make electricity without burning fuel or boiling water, which is one reason data centres are asking to buy renewable power directly.'],
+     src(S_DW, 'en')),
  art('public-reaction-50000-subsidy', '27 October 2026 · Public reaction', 'What people on Facebook are saying about the 50,000-baht solar subsidy',
      'We read about <b>175 public comments</b> under four widely shared Facebook posts about the scheme (25–26 October). Clear worries outnumbered clear support by roughly six to one. Most worries were about money and trust, not about whether solar works.',
      [('Comments read', '≈ 175'), ('Mainly concerns', '≈ 70%'), ('Mainly supportive', '≈ 12%')],
@@ -79,6 +90,14 @@ NEW = {
      src(S_GE, 'en')),
 ],
 'th': [
+ art('data-centres-power-water', '27 ตุลาคม 2026 · ดาต้าเซ็นเตอร์', 'ทำไมดาต้าเซ็นเตอร์ใช้ไฟและน้ำมากขนาดนี้',
+     'ปี 2024 ดาต้าเซ็นเตอร์ทั่วโลกใช้ไฟราว <b>415 TWh</b> หรือประมาณ 1.5% ของไฟฟ้าทั้งโลก และ IEA คาดว่าจะเพิ่มขึ้นกว่าเท่าตัวเป็นราว <b>945 TWh</b> ภายในปี 2030 สาเหตุหลักคือ AI เพราะชิปใช้ไฟมากกว่าเดิมมากและร้อนจัด',
+     [('ใช้ไฟทั่วโลก 2024', '415 TWh'), ('คาดการณ์ 2030', '945 TWh'), ('น้ำของศูนย์ขนาดใหญ่ต่อวัน', 'สูงสุด 19 ล้านลิตร')],
+     ['<b>ทำไมใช้ไฟมาก</b> AI ทำงานบนชิปเฉพาะทาง (GPU) จำนวนมากที่กินไฟมากกว่าเซิร์ฟเวอร์ทั่วไปหลายเท่า IEA ระบุว่าตัวเซิร์ฟเวอร์ใช้ไฟราว 60% ของดาต้าเซ็นเตอร์สมัยใหม่ ส่วนระบบระบายความร้อนใช้ราว 7% ในศูนย์ขนาดใหญ่ที่มีประสิทธิภาพสูง และมากกว่า 30% ในศูนย์ที่ประสิทธิภาพต่ำ ที่เหลือส่วนใหญ่เป็นระบบจัดเก็บข้อมูลและเครือข่าย',
+      '<b>ทำไมใช้น้ำมาก</b> ความร้อนส่วนใหญ่ถูกระบายด้วยระบบหล่อเย็นแบบระเหย คือให้น้ำดูดความร้อนแล้วระเหยออกไป Lincoln Institute รายงานว่าดาต้าเซ็นเตอร์ขนาดใหญ่อาจใช้น้ำถึง 5 ล้านแกลลอนสหรัฐต่อวัน (ราว 19 ล้านลิตร) ใกล้เคียงเมืองที่มีประชากร 50,000 คน ยังมีการใช้น้ำทางอ้อมด้วย เพราะไฟที่ดาต้าเซ็นเตอร์ในสหรัฐฯ ใช้ราวครึ่งหนึ่งมาจากโรงไฟฟ้าเชื้อเพลิงฟอสซิล ซึ่งต้องใช้น้ำทำไอน้ำ',
+      '<b>ต้องเลือกระหว่างน้ำกับไฟ</b> ผู้ประกอบการประหยัดน้ำได้ด้วยการใช้ไฟมากขึ้น (ระบบวงจรปิดหรือระบบลม) หรือประหยัดไฟได้ด้วยการใช้น้ำมากขึ้น เมื่อชิป AI ร้อนจัด หลายแห่งจึงหันไปใช้น้ำ',
+      '<b>เกี่ยวกับไทยอย่างไร</b> ไทยอนุมัติการลงทุนดาต้าเซ็นเตอร์มูลค่าสูง และผลสำรวจของสภาอุตสาหกรรมฯ พบว่าผู้บริหารส่วนใหญ่กังวลเรื่องน้ำมากที่สุด (ดู <a href="#data-centres-thailand-power">ดาต้าเซ็นเตอร์บูมในไทย</a>) โซลาร์ผลิตไฟได้โดยไม่ต้องเผาเชื้อเพลิงหรือต้มน้ำ ซึ่งเป็นเหตุผลหนึ่งที่ดาต้าเซ็นเตอร์ขอซื้อไฟพลังงานหมุนเวียนโดยตรง'],
+     src(S_DW, 'th')),
  art('public-reaction-50000-subsidy', '27 ตุลาคม 2026 · เสียงประชาชน', 'คนบน Facebook พูดถึงโซลาร์ 50,000 บาทว่าอย่างไร',
      'เราอ่านความคิดเห็นสาธารณะราว <b>175 ความคิดเห็น</b> ใต้โพสต์ Facebook ที่มีคนแชร์มาก 4 โพสต์ (25–26 ตุลาคม) ความกังวลมีมากกว่าความเห็นสนับสนุนราวหกต่อหนึ่ง และส่วนใหญ่เป็นเรื่องเงินและความไว้ใจ ไม่ใช่เรื่องว่าโซลาร์ใช้ได้จริงหรือไม่',
      [('ความคิดเห็นที่อ่าน', '≈ 175'), ('ส่วนใหญ่กังวล', '≈ 70%'), ('ส่วนใหญ่สนับสนุน', '≈ 12%')],
@@ -103,6 +122,14 @@ NEW = {
      src(S_GE, 'th')),
 ],
 'zh': [
+ art('data-centres-power-water', '2026年10月27日 · 数据中心', '数据中心为何如此耗电耗水',
+     '2024 年全球数据中心用电约 <b>415 TWh</b>，约占全球电力的 1.5%；IEA 预计到 2030 年将翻倍以上，达到约 <b>945 TWh</b>。主要原因是 AI：其芯片耗电量大得多，而且发热严重。',
+     [('2024 年全球用电', '415 TWh'), ('2030 年预测', '945 TWh'), ('大型数据中心日用水', '最高约 1900 万升')],
+     ['<b>为何耗电。</b>AI 运行在大量专用芯片（GPU）集群上，耗电远超普通服务器。IEA 指出，服务器本身约占现代数据中心用电的 60%；冷却在最高效的大型数据中心约占 7%，在效率较低的数据中心超过 30%；其余主要是存储和网络设备。',
+      '<b>为何耗水。</b>大部分热量通过蒸发冷却带走：水吸收热量后蒸发。林肯土地政策研究院报告称，大型数据中心每天可能需要多达 500 万美制加仑（约 1900 万升）水，相当于 5 万人口城镇的用水量。此外还有间接用水：美国数据中心约一半电力来自化石燃料电厂，而这些电厂需要用水产生蒸汽。',
+      '<b>水与电的取舍。</b>运营方可以多用电（闭环或风冷系统）来省水，也可以多用水来省电。由于 AI 芯片发热极高，许多数据中心倾向于用水。',
+      '<b>与泰国的关系。</b>泰国已批准大额数据中心投资，泰国工业联合会的调查显示多数高管最担心供水（见<a href="#data-centres-thailand-power">泰国数据中心热潮</a>）。光伏发电无需燃烧燃料或烧水，这也是数据中心要求直接购买可再生电力的原因之一。'],
+     src(S_DW, 'zh')),
  art('public-reaction-50000-subsidy', '2026年10月27日 · 公众反应', 'Facebook 网友如何评价 5 万泰铢家庭光伏补贴',
      '我们阅读了 4 篇广泛转发的 Facebook 帖子下约 <b>175 条公开评论</b>（10 月 25–26 日）。明确担忧的评论约为明确支持的六倍，且大多关于钱和信任，而非光伏本身是否有效。',
      [('阅读评论', '≈ 175'), ('以担忧为主', '≈ 70%'), ('以支持为主', '≈ 12%')],

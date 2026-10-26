@@ -254,4 +254,18 @@
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://solaress.org/zh/critics"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://solaress.org/critics"/>
   </url>
+  <url>
+    <loc>https://solaress.org/solar-subsidy-50000</loc>
+    <lastmod>2026-10-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://solaress.org/solar-subsidy-50000"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://solaress.org/th/solar-subsidy-50000"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://solaress.org/solar-subsidy-50000"/>
+  </url>
+  <url>
+    <loc>https://solaress.org/th/solar-subsidy-50000</loc>
+    <lastmod>2026-10-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://solaress.org/solar-subsidy-50000"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://solaress.org/th/solar-subsidy-50000"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://solaress.org/solar-subsidy-50000"/>
+  </url>
 </urlset>

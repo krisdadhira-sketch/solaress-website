@@ -129,16 +129,21 @@ def build(lang, path):
     t = L[lang]
     first = existing_first(src)
     arts = []
-    # existing hand-written first video (24/25 Oct 2026)
+    # existing hand-written video (24 Oct 2026), slotted in by date so newer videos stay on top
     m0 = dict(day=24, mon=10, yr=2026, dur='5:41')
-    arts.append(article(lang, 'UV8XIDNeP_w', first['title'], first['thai'], first['lis'], m0, 'solar'))
+    first_art = article(lang, 'UV8XIDNeP_w', first['title'], first['thai'], first['lis'], m0, 'solar')
+    key0 = (m0['yr'], m0['mon'], m0['day'])
+    placed = False
     for vid in order:
+        if not placed and (meta[vid]['yr'], meta[vid]['mon'], meta[vid]['day']) <= key0:
+            arts.append(first_art); placed = True
         v, m = byid[vid], meta[vid]
         if lang == 'en': title, sub = esc(v['title_en']), esc(m['title_th'])
         elif lang == 'zh': title, sub = esc(v['title_zh']), esc(m['title_th'])
         else: title, sub = esc(m['title_th']), ''
         bl = [esc(b) for b in v['sum_' + lang]]
         arts.append(article(lang, vid, title, sub, bl, m, v['topic']))
+    if not placed: arts.append(first_art)
     total = len(arts)
     chips = f'<button type="button" data-t="all" aria-pressed="true">{t["all"]}</button>' + ''.join(
         f'<button type="button" data-t="{k}" aria-pressed="false">{t[k]}</button>' for k in TOPICS)

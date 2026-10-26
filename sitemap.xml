@@ -268,4 +268,18 @@
     <xhtml:link rel="alternate" hreflang="th" href="https://solaress.org/th/solar-subsidy-50000"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://solaress.org/solar-subsidy-50000"/>
   </url>
+  <url>
+    <loc>https://solaress.org/data-centre-impacts</loc>
+    <lastmod>2026-10-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://solaress.org/data-centre-impacts"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://solaress.org/th/data-centre-impacts"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://solaress.org/data-centre-impacts"/>
+  </url>
+  <url>
+    <loc>https://solaress.org/th/data-centre-impacts</loc>
+    <lastmod>2026-10-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://solaress.org/data-centre-impacts"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://solaress.org/th/data-centre-impacts"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://solaress.org/data-centre-impacts"/>
+  </url>
 </urlset>

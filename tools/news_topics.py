@@ -20,12 +20,12 @@ ALL = {'en': 'All news', 'th': 'ข่าวทั้งหมด', 'zh': '全�
 TOPICS = {
  'subsidy': ['public-reaction-50000-subsidy', 'thailand-50000-baht-solar-subsidy', 'thai-rooftop-solar-policy', 'thailand-mandatory-panel-standard',
              'thailand-ocpb-faulty-solar', 'solar-disadvantages-honest'],
- 'datacenter': ['data-centres-power-water', 'data-centres-thailand-power', 'global-energy-review-2025'],
+ 'datacenter': ['data-centre-impacts-guide', 'data-centres-power-water', 'data-centres-thailand-power', 'global-energy-review-2025'],
  'innovation': ['fraunhofer-silicon-anode-cells', 'tongwei-93-bifaciality', 'risen-anti-glare', 'mova-lumegret-s5000',
                 'solis-s6-eh3p50k-v38-vs-21a', 'thailand-solar-battery-recycling-estate'],
  'adoption': ['global-energy-review-2025', 'china-solar-down-rest-up', 'module-prices-october-2026', 'nz-solar-complaints-surge',
               'thai-rooftop-solar-policy'],
- 'consumption': ['data-centres-power-water', 'global-energy-review-2025', 'data-centres-thailand-power', 'tni-state-of-power-2024', 'ucs-solar-environmental-impacts'],
+ 'consumption': ['data-centre-impacts-guide', 'data-centres-power-water', 'global-energy-review-2025', 'data-centres-thailand-power', 'tni-state-of-power-2024', 'ucs-solar-environmental-impacts'],
 }
 GUIDE = {
  'en': ('Full guide: Thailand\'s 50,000-baht solar subsidy', 'Who qualifies, when to register, what you still pay, loans and sell-back – updated as rules are announced.', '/solar-subsidy-50000.html', 'Read the guide →'),
@@ -56,8 +56,17 @@ S_FB = [('https://www.facebook.com/sondhitalk/posts/pfbid0CvqEsNWv6xiPDiboohHHZY
 S_DW = [('https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai', {'en':'Source: IEA, Energy and AI – energy demand from AI (English)','th':'ที่มา: IEA รายงาน Energy and AI (ภาษาอังกฤษ)','zh':'来源：国际能源署（IEA）《能源与人工智能》（英文）'}),
         ('https://www.lincolninst.edu/publications/land-lines-magazine/articles/land-water-impacts-data-centers/', {'en':'Source: Lincoln Institute of Land Policy, 17 October 2025 (English)','th':'ที่มา: Lincoln Institute of Land Policy 17 ตุลาคม 2025 (ภาษาอังกฤษ)','zh':'来源：林肯土地政策研究院，2025年10月17日（英文）'})]
 
+S_DI = [('/data-centre-impacts.html', {'en':'Read the full guide: Data centres – the real costs and benefits','th':'อ่านฉบับเต็ม: ดาต้าเซ็นเตอร์ ต้นทุนที่แท้จริงและประโยชน์ (ภาษาไทย)','zh':'阅读完整指南：数据中心的真实成本与收益（英文）'})]
+
 NEW = {
 'en': [
+ art('data-centre-impacts-guide', '27 October 2026 · Data centres', 'Data centres: the real environmental and socio-economic costs, and the benefits',
+     'Our new guide pulls together the evidence on what data centres mean for electricity, emissions, water, air quality, e-waste, jobs, power bills and tax revenue, and what Thailand is doing about it.',
+     [('CO₂ a year today', '≈ 180 Mt'), ('Jobs per large site (US county)', '≈ 100–200'), ('Thai execs naming water top concern', '68.8%')],
+     ['<b>Environment.</b> About 415 TWh of electricity in 2024, heading for 945 TWh by 2030; about 30% still from coal; up to 19 million litres of water a day at a large site; diesel backup generators and e-waste from fast chip upgrades.',
+      '<b>Economy and society.</b> Huge investment but few permanent jobs; in one US grid, data centres drove most of a ninefold jump in capacity prices that reached household bills; billions in tax breaks; and competition for water with farms and towns.',
+      '<b>Thailand.</b> A four-pillar screening framework, power and water mapping, closed-loop cooling for new projects, a 2,000 MW direct renewable-power pilot and proposed rules so large users bear the true cost of imported gas.'],
+     [(d['en'], u) for u, d in S_DI]),
  art('data-centres-power-water', '27 October 2026 · Data centres', 'Why data centres use so much electricity and water',
      'Data centres used about <b>415 TWh</b> of electricity in 2024, about 1.5% of the world’s total, and the IEA expects this to more than double to about <b>945 TWh</b> by 2030. AI is the main reason: its chips are far more power-hungry, and they run hot.',
      [('World use, 2024', '415 TWh'), ('Forecast, 2030', '945 TWh'), ('Large site, water per day', 'up to 19 million litres')],
@@ -90,6 +99,13 @@ NEW = {
      src(S_GE, 'en')),
 ],
 'th': [
+ art('data-centre-impacts-guide', '27 ตุลาคม 2026 · ดาต้าเซ็นเตอร์', 'ดาต้าเซ็นเตอร์: ต้นทุนที่แท้จริงต่อสิ่งแวดล้อม เศรษฐกิจและสังคม และประโยชน์',
+     'คู่มือฉบับใหม่ของเรารวบรวมหลักฐานว่าดาต้าเซ็นเตอร์ส่งผลอย่างไรต่อไฟฟ้า การปล่อยคาร์บอน น้ำ คุณภาพอากาศ ขยะอิเล็กทรอนิกส์ การจ้างงาน ค่าไฟ และรายได้ภาษี และประเทศไทยกำลังรับมืออย่างไร',
+     [('CO₂ ต่อปีในปัจจุบัน', '≈ 180 ล้านตัน'), ('งานต่อศูนย์ขนาดใหญ่ (สหรัฐฯ)', '≈ 100–200'), ('ผู้บริหารไทยที่กังวลเรื่องน้ำที่สุด', '68.8%')],
+     ['<b>สิ่งแวดล้อม</b> ใช้ไฟราว 415 TWh ในปี 2024 และกำลังไปสู่ 945 TWh ในปี 2030 ราว 30% ยังมาจากถ่านหิน ศูนย์ขนาดใหญ่ใช้น้ำได้ถึง 19 ล้านลิตรต่อวัน มีเครื่องปั่นไฟดีเซลสำรอง และขยะอิเล็กทรอนิกส์จากการเปลี่ยนชิปเร็ว',
+      '<b>เศรษฐกิจและสังคม</b> เงินลงทุนมหาศาลแต่งานประจำน้อย ในระบบไฟฟ้าหนึ่งของสหรัฐฯ ดาต้าเซ็นเตอร์เป็นสาเหตุหลักที่ราคากำลังผลิตพุ่งเกือบเก้าเท่าจนกระทบค่าไฟบ้าน สิทธิประโยชน์ภาษีหลายพันล้าน และการแย่งน้ำกับเกษตรกรและชุมชน',
+      '<b>ประเทศไทย</b> กรอบคัดกรอง 4 เสาหลัก แผนที่ไฟฟ้าและน้ำ ระบบหล่อเย็นวงจรปิดสำหรับโครงการใหม่ โครงการนำร่องซื้อไฟพลังงานหมุนเวียนโดยตรง 2,000 MW และข้อเสนอให้ผู้ใช้ไฟรายใหญ่รับต้นทุนจริงของก๊าซนำเข้า'],
+     [(d['th'], '/th/data-centre-impacts.html') for u, d in S_DI]),
  art('data-centres-power-water', '27 ตุลาคม 2026 · ดาต้าเซ็นเตอร์', 'ทำไมดาต้าเซ็นเตอร์ใช้ไฟและน้ำมากขนาดนี้',
      'ปี 2024 ดาต้าเซ็นเตอร์ทั่วโลกใช้ไฟราว <b>415 TWh</b> หรือประมาณ 1.5% ของไฟฟ้าทั้งโลก และ IEA คาดว่าจะเพิ่มขึ้นกว่าเท่าตัวเป็นราว <b>945 TWh</b> ภายในปี 2030 สาเหตุหลักคือ AI เพราะชิปใช้ไฟมากกว่าเดิมมากและร้อนจัด',
      [('ใช้ไฟทั่วโลก 2024', '415 TWh'), ('คาดการณ์ 2030', '945 TWh'), ('น้ำของศูนย์ขนาดใหญ่ต่อวัน', 'สูงสุด 19 ล้านลิตร')],
@@ -122,6 +138,13 @@ NEW = {
      src(S_GE, 'th')),
 ],
 'zh': [
+ art('data-centre-impacts-guide', '2026年10月27日 · 数据中心', '数据中心：对环境和社会经济的真实成本与收益',
+     '我们的新指南汇总了数据中心对电力、碳排放、水、空气质量、电子垃圾、就业、电费和税收的影响证据，以及泰国的应对措施。',
+     [('当前年 CO₂ 排放', '≈ 1.8 亿吨'), ('大型数据中心带来的岗位（美国县）', '≈ 100–200'), ('泰国高管首要担忧为缺水', '68.8%')],
+     ['<b>环境。</b>2024 年用电约 415 TWh，2030 年将达 945 TWh；约 30% 仍来自煤电；大型数据中心每天用水最高约 1900 万升；还有柴油备用发电机和芯片快速换代产生的电子垃圾。',
+      '<b>经济与社会。</b>投资巨大但长期岗位少；在美国一个电网区域，数据中心是容量电价上涨近九倍的主因，并传导到家庭电费；数十亿美元税收优惠；与农民和城镇争水。',
+      '<b>泰国。</b>四大支柱审查框架、电力与水资源联合规划、新项目须采用闭环冷却、2,000 MW 可再生电力直购试点，以及让大用户承担进口天然气真实成本的拟议规则。'],
+     [(d['zh'], u) for u, d in S_DI]),
  art('data-centres-power-water', '2026年10月27日 · 数据中心', '数据中心为何如此耗电耗水',
      '2024 年全球数据中心用电约 <b>415 TWh</b>，约占全球电力的 1.5%；IEA 预计到 2030 年将翻倍以上，达到约 <b>945 TWh</b>。主要原因是 AI：其芯片耗电量大得多，而且发热严重。',
      [('2024 年全球用电', '415 TWh'), ('2030 年预测', '945 TWh'), ('大型数据中心日用水', '最高约 1900 万升')],

@@ -1,0 +1,8 @@
+{
+  "name": "solaress-website",
+  "private": true,
+  "description": "Static site; dependencies are only for the Netlify poll function.",
+  "dependencies": {
+    "@netlify/blobs": "11.1.4"
+  }
+}

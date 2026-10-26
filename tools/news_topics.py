@@ -2,7 +2,7 @@
 """News topics: News dropdown menu on every page, topic tags + filter bar on the
 news pages, and the topic articles. Idempotent. Run: python3 tools/news_topics.py
 To tag a new article, add its id to TOPICS below and re-run."""
-import glob, os, re
+import glob, html, os, re
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'); os.chdir(ROOT)
 
 LABELS = {
@@ -139,6 +139,36 @@ JS = ('<script id="ntopics-js">(function(){function ap(){var h=decodeURIComponen
       'var show=e.classList.contains("ntcard")?t==="subsidy":(!t||ts.indexOf(t)>=0);e.style.display=show?(e.classList.contains("ntcard")?"block":""):"none"});'
       'if(t){var b=document.getElementById("ntopics");if(b)scrollTo(0,b.getBoundingClientRect().top+scrollY-96)}}addEventListener("hashchange",ap);ap()})();</script>\n')
 
+POLL = {
+ 'en': ('Do you agree with the 50,000-baht household solar subsidy?', [('agree','Agree'),('disagree','Disagree'),('undecided','Undecided')], 'Vote', 'Thank you for voting. You can change your vote.', '{n} votes so far', 'One vote per device/network. Results show after you vote.', 'The poll is not available right now. Please try again later.'),
+ 'th': ('คุณเห็นด้วยกับโครงการโซลาร์ 50,000 บาทหรือไม่?', [('agree','เห็นด้วย'),('disagree','ไม่เห็นด้วย'),('undecided','ยังไม่ตัดสินใจ')], 'โหวต', 'ขอบคุณที่ร่วมโหวต เปลี่ยนคำตอบได้', 'โหวตแล้ว {n} คน', 'โหวตได้ 1 ครั้งต่ออุปกรณ์/เครือข่าย ผลโหวตจะแสดงหลังคุณโหวต', 'ระบบโหวตไม่พร้อมใช้งานขณะนี้ กรุณาลองใหม่ภายหลัง'),
+ 'zh': ('您是否赞同 5 万泰铢家庭光伏补贴计划？', [('agree','赞同'),('disagree','不赞同'),('undecided','未决定')], '投票', '感谢投票，您可以更改选择。', '已有 {n} 票', '每个设备/网络限投一票，投票后显示结果。', '投票暂时不可用，请稍后再试。'),
+}
+POLL_CSS = ('<style id="poll-css">.poll{margin-top:32px;border:1.5px solid var(--navy);background:var(--white);padding:20px 22px}'
+            '.poll h3{font-size:20px}.poll .opts{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}'
+            '.poll .opts button{font:inherit;cursor:pointer;border:1.5px solid var(--navy);background:var(--white);color:var(--navy);padding:9px 18px}'
+            '.poll .opts button[aria-pressed="true"]{background:var(--navy);color:var(--white)}'
+            '.poll .res{margin-top:16px;display:grid;gap:8px}.poll .res[hidden]{display:none}.poll .row{display:grid;grid-template-columns:120px 1fr 56px;gap:10px;align-items:center;font-size:15px}'
+            '.poll .bar{height:14px;background:rgba(0,0,0,.08)}.poll .bar i{display:block;height:100%;background:var(--hot)}'
+            '.poll small{display:block;margin-top:12px;color:var(--mute)}</style>\n')
+POLL_JS = (r"""<script id="poll-js">(function(){document.querySelectorAll('.poll[data-poll]').forEach(function(el){var id=el.getAttribute('data-poll'),msg=el.querySelector('.msg'),res=el.querySelector('.res');
+function show(d){var t=d.total||0;el.querySelectorAll('.row').forEach(function(r){var k=r.getAttribute('data-k'),n=(d.counts||{})[k]||0,p=t?Math.round(100*n/t):0;r.querySelector('i').style.width=p+'%';r.querySelector('b').textContent=p+'%'});
+el.querySelector('.tot').textContent=el.getAttribute('data-tot').replace('{n}',t);el.querySelectorAll('.opts button').forEach(function(b){b.setAttribute('aria-pressed',String(b.value===d.mine))});
+if(d.mine){res.hidden=false;msg.textContent=el.getAttribute('data-thanks')}}
+function fail(){msg.textContent=el.getAttribute('data-fail')}
+fetch('/api/poll?id='+id,{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(show).catch(function(){});
+el.querySelectorAll('.opts button').forEach(function(b){b.addEventListener('click',function(){fetch('/api/poll?id='+id,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({choice:b.value})}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(show).catch(fail)})})})})();</script>
+""")
+
+def poll_html(lang, pid):
+    q, opts, vote, thanks, tot, note, fail = POLL[lang]
+    return (f'<div class="poll" data-poll="{pid}" data-thanks="{html.escape(thanks)}" data-tot="{html.escape(tot)}" data-fail="{html.escape(fail)}">'
+            f'<h3>{q}</h3><div class="opts" role="group" aria-label="{html.escape(q)}">' +
+            ''.join(f'<button type="button" value="{k}" aria-pressed="false">{lab}</button>' for k, lab in opts) +
+            '</div><div class="res" hidden>' +
+            ''.join(f'<div class="row" data-k="{k}"><span>{lab}</span><div class="bar"><i style="width:0"></i></div><b>0%</b></div>' for k, lab in opts) +
+            f'<p class="tot" style="font-size:14px"></p></div><p class="msg" aria-live="polite" style="margin-top:10px;font-size:15px"></p><small>{note}</small></div>\n')
+
 def nav_dd(lang):
     url, name = NEWS[lang]
     items = ''.join(f'<a href="{u or url + "#topic-" + k}">{lab}</a>' for k, lab, u in LABELS[lang])
@@ -189,5 +219,14 @@ for lang, f in (('en', 'news.html'), ('th', 'th/news.html'), ('zh', 'zh/news.htm
         s = s.replace('</head>', CSS + '</head>', 1)
     s = re.sub(r'<script id="ntopics-js">.*?</script>\n', '', s, flags=re.S)
     i = s.rfind('</body>'); s = s[:i] + JS + s[i:]
+    # poll after the public-reaction article
+    s = re.sub(r'<div class="poll" data-poll="subsidy-50000".*?</small></div>\n', '', s, flags=re.S)
+    m = re.search(r'<article id="public-reaction-50000-subsidy".*?(</article>)', s, re.S)
+    if m:
+        s = s[:m.start(1)] + poll_html(lang, 'subsidy-50000') + s[m.start(1):]
+    if 'id="poll-css"' not in s:
+        s = s.replace('</head>', POLL_CSS + '</head>', 1)
+    s = re.sub(r'<script id="poll-js">.*?</script>\n', '', s, flags=re.S)
+    i = s.rfind('</body>'); s = s[:i] + POLL_JS + s[i:]
     open(f, 'w', encoding='utf-8').write(s)
     print(f, 'articles', s.count('<article id='), 'tagged', s.count('data-topics=') - 1)

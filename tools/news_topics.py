@@ -18,7 +18,7 @@ LABELS = {
 NEWS = {'en': ('/news.html', 'News'), 'th': ('/th/news.html', 'ข่าวสาร'), 'zh': ('/zh/news.html', '新闻')}
 ALL = {'en': 'All news', 'th': 'ข่าวทั้งหมด', 'zh': '全部新闻'}
 TOPICS = {
- 'subsidy': ['thailand-50000-baht-solar-subsidy', 'thai-rooftop-solar-policy', 'thailand-mandatory-panel-standard',
+ 'subsidy': ['public-reaction-50000-subsidy', 'thailand-50000-baht-solar-subsidy', 'thai-rooftop-solar-policy', 'thailand-mandatory-panel-standard',
              'thailand-ocpb-faulty-solar', 'solar-disadvantages-honest'],
  'datacenter': ['data-centres-thailand-power', 'global-energy-review-2025'],
  'innovation': ['fraunhofer-silicon-anode-cells', 'tongwei-93-bifaciality', 'risen-anti-glare', 'mova-lumegret-s5000',
@@ -48,8 +48,21 @@ S_DC = [('https://www.thestar.com.my/aseanplus/aseanplus-news/2026/08/22/thailan
 S_GE = [('https://www.iea.org/reports/global-energy-review-2026/key-findings', {'en': 'Source: IEA, Global Energy Review 2026 – key findings (English)', 'th': 'ที่มา: IEA รายงาน Global Energy Review 2026 (ภาษาอังกฤษ)', 'zh': '来源：国际能源署（IEA）《全球能源回顾 2026》主要结论（英文）'})]
 src = lambda S, l: [(d[l], u) for u, d in S]
 
+S_FB = [('https://www.facebook.com/sondhitalk/posts/pfbid0CvqEsNWv6xiPDiboohHHZY27s9pfsj5d6u6oatmSnQLqdHHrsjAZmgjsjrn39GH8l', {'en':'Facebook: คุยทุกเรื่องกับสนธิ (about 90 of 374 comments read)','th':'Facebook: คุยทุกเรื่องกับสนธิ (อ่านราว 90 จาก 374 ความคิดเห็น)','zh':'Facebook：คุยทุกเรื่องกับสนธิ（阅读约 90/374 条评论）'}),
+        ('https://www.facebook.com/jarm/posts/pfbid02Zvk2SJRPrBiRQTuTWcVo16ARnKm7gzkkiUAvdKdjPaLWYgLyrMCswCkjWL8T5YkDl', {'en':'Facebook: Jarm – จาม (about 38 comments read)','th':'Facebook: Jarm – จาม (อ่านราว 38 ความคิดเห็น)','zh':'Facebook：Jarm – จาม（阅读约 38 条评论）'}),
+        ('https://www.facebook.com/thestandardth/posts/pfbid0t56JcRws3qzh2LA2LEVwsnpBLfAuwBqhiPkwfB3SPpMLF5wgQnfUxZWz3zbvmzhTl', {'en':'Facebook: THE STANDARD (about 37 comments read)','th':'Facebook: THE STANDARD (อ่านราว 37 ความคิดเห็น)','zh':'Facebook：THE STANDARD（阅读约 37 条评论）'}),
+        ('https://www.facebook.com/thairath/posts/pfbid0313AjX5ZpapoqfSmLjKnxd4QfezdSSA8Vp1cFNdqwt7ZRAqR7UUWy4NvUoM8SSC7Ll', {'en':'Facebook: Thairath (about 12 comments read)','th':'Facebook: ไทยรัฐออนไลน์ (อ่านราว 12 ความคิดเห็น)','zh':'Facebook：Thairath（阅读约 12 条评论）'})]
+
 NEW = {
 'en': [
+ art('public-reaction-50000-subsidy', '27 October 2026 · Public reaction', 'What people on Facebook are saying about the 50,000-baht solar subsidy',
+     'We read about <b>175 public comments</b> under four widely shared Facebook posts about the scheme (25–26 October). Clear worries outnumbered clear support by roughly six to one. Most worries were about money and trust, not about whether solar works.',
+     [('Comments read', '≈ 175'), ('Mainly concerns', '≈ 70%'), ('Mainly supportive', '≈ 12%')],
+     ['<b>What supporters say.</b> It pays off for homes that use power in the daytime: retirees, home offices, shops and cafés with air-conditioning. One owner of a 5 kW system for three years says it saves about 2,000 baht a month when the bill is above about 5,000 baht. Others welcome help for people who could not afford solar in one go, say energy will only get dearer, and note that more rooftop solar means less imported gas.',
+      '<b>What worries people.</b> The biggest theme by far is debt: the 50,000 baht is seen as bait for a much bigger loan. Next come distrust of who supplies the equipment and who profits; the low 2.20-baht buy-back price against the 4-plus baht people pay; fears that installers will raise prices; long payback against inverter and battery life; no help at night without a battery; and safety and quality (fire, roof leaks, poor installers, panels without the Thai standard mark, e-waste). Some think the money should go to fuel prices, flood relief, farmers or the elderly instead, or that only people who already have money will benefit.',
+      '<b>Common questions.</b> How many years will power be bought back? Where do the panels come from, and what is the warranty? Can homes that already have solar use the subsidy to expand? Must people use an installer chosen by the government? What does a battery cost on top?',
+      '<b>A note on the sample.</b> Two of the four posts were framed critically, so this is not an opinion poll. Comments were read on 27 October 2026, before the official rules were published; we have not recorded any names. Our answers to the five biggest concerns are in the <a href="/solar-subsidy-50000.html">50,000-baht subsidy guide</a>.'],
+     src(S_FB, 'en')),
  art('data-centres-thailand-power', '27 October 2026 · Data centres', 'Thailand’s data centre boom: what it means for the grid',
      'Thailand’s Board of Investment approved <b>26 data centre projects</b> worth almost 500 billion baht in 2025, and new applications passed <b>1 trillion baht</b> by the first quarter of 2026. The planned pipeline is about <b>2.87 GW</b>, mostly in the Eastern Economic Corridor.',
      [('Planned pipeline', '2.87 GW'), ('Approved in 2025', '≈ ฿500 bn'), ('World data centres, 2025', '≈ 485 TWh')],
@@ -66,6 +79,14 @@ NEW = {
      src(S_GE, 'en')),
 ],
 'th': [
+ art('public-reaction-50000-subsidy', '27 ตุลาคม 2026 · เสียงประชาชน', 'คนบน Facebook พูดถึงโซลาร์ 50,000 บาทว่าอย่างไร',
+     'เราอ่านความคิดเห็นสาธารณะราว <b>175 ความคิดเห็น</b> ใต้โพสต์ Facebook ที่มีคนแชร์มาก 4 โพสต์ (25–26 ตุลาคม) ความกังวลมีมากกว่าความเห็นสนับสนุนราวหกต่อหนึ่ง และส่วนใหญ่เป็นเรื่องเงินและความไว้ใจ ไม่ใช่เรื่องว่าโซลาร์ใช้ได้จริงหรือไม่',
+     [('ความคิดเห็นที่อ่าน', '≈ 175'), ('ส่วนใหญ่กังวล', '≈ 70%'), ('ส่วนใหญ่สนับสนุน', '≈ 12%')],
+     ['<b>ฝ่ายที่สนับสนุนพูดว่า</b> คุ้มสำหรับบ้านที่ใช้ไฟตอนกลางวัน เช่น ผู้เกษียณ โฮมออฟฟิศ ร้านค้า และร้านกาแฟที่เปิดแอร์ ผู้ที่ติดระบบ 5 kW มา 3 ปีเล่าว่าประหยัดได้ราว 2,000 บาทต่อเดือนเมื่อค่าไฟเกินราว 5,000 บาท บางคนยินดีที่รัฐช่วยคนที่ไม่มีเงินก้อน มองว่าพลังงานจะแพงขึ้นเรื่อย ๆ และถ้าติดกันมากจะลดการนำเข้าก๊าซได้',
+      '<b>สิ่งที่คนกังวล</b> อันดับหนึ่งคือหนี้ มองว่าเงิน 50,000 บาทเป็นเหยื่อล่อให้กู้ก้อนใหญ่กว่า รองลงมาคือความไม่ไว้ใจว่าใครเป็นผู้จัดหาอุปกรณ์และใครได้ประโยชน์ ราคารับซื้อ 2.20 บาทต่ำเมื่อเทียบกับค่าไฟที่จ่ายกว่า 4 บาท กลัวผู้ติดตั้งขึ้นราคา ระยะคืนทุนนานเมื่อเทียบอายุอินเวอร์เตอร์และแบตเตอรี่ กลางคืนใช้ไม่ได้ถ้าไม่มีแบตเตอรี่ และเรื่องความปลอดภัยและคุณภาพ (ไฟไหม้ หลังคารั่ว ช่างไม่ได้มาตรฐาน แผงที่ไม่มี มอก. ขยะอิเล็กทรอนิกส์) บางคนเห็นว่าควรนำเงินไปลดราคาน้ำมัน ช่วยน้ำท่วม เกษตรกร หรือผู้สูงอายุแทน หรือกังวลว่าคนที่มีเงินอยู่แล้วเท่านั้นจะได้ประโยชน์',
+      '<b>คำถามที่พบบ่อย</b> รัฐจะรับซื้อไฟกี่ปี แผงมาจากไหน รับประกันกี่ปี บ้านที่ติดโซลาร์แล้วใช้สิทธิ์ขยายระบบได้ไหม ต้องใช้ผู้ติดตั้งที่รัฐกำหนดหรือไม่ และแบตเตอรี่ต้องจ่ายเพิ่มเท่าไร',
+      '<b>หมายเหตุเรื่องกลุ่มตัวอย่าง</b> โพสต์ 2 ใน 4 นำเสนอในเชิงวิจารณ์ ผลนี้จึงไม่ใช่โพล อ่านความคิดเห็นเมื่อ 27 ตุลาคม 2026 ก่อนมีหลักเกณฑ์ทางการ และไม่ได้บันทึกชื่อผู้แสดงความคิดเห็น คำตอบของเราต่อ 5 ข้อกังวลหลักอยู่ใน <a href="/th/solar-subsidy-50000.html">สรุปโซลาร์ 50,000 บาท</a>'],
+     src(S_FB, 'th')),
  art('data-centres-thailand-power', '27 ตุลาคม 2026 · ดาต้าเซ็นเตอร์', 'ดาต้าเซ็นเตอร์บูมในไทย: มีผลกับระบบไฟฟ้าอย่างไร',
      'บีโอไออนุมัติ <b>โครงการดาต้าเซ็นเตอร์ 26 โครงการ</b> มูลค่าเกือบ 5 แสนล้านบาทในปี 2025 และคำขอใหม่เกิน <b>1 ล้านล้านบาท</b> ภายในไตรมาสแรกของปี 2026 โครงการที่วางแผนไว้รวมราว <b>2.87 GW</b> ส่วนใหญ่อยู่ในเขตพัฒนาพิเศษภาคตะวันออก (EEC)',
      [('โครงการที่วางแผน', '2.87 GW'), ('อนุมัติปี 2025', '≈ 5 แสนล้านบาท'), ('ดาต้าเซ็นเตอร์ทั่วโลก 2025', '≈ 485 TWh')],
@@ -82,6 +103,14 @@ NEW = {
      src(S_GE, 'th')),
 ],
 'zh': [
+ art('public-reaction-50000-subsidy', '2026年10月27日 · 公众反应', 'Facebook 网友如何评价 5 万泰铢家庭光伏补贴',
+     '我们阅读了 4 篇广泛转发的 Facebook 帖子下约 <b>175 条公开评论</b>（10 月 25–26 日）。明确担忧的评论约为明确支持的六倍，且大多关于钱和信任，而非光伏本身是否有效。',
+     [('阅读评论', '≈ 175'), ('以担忧为主', '≈ 70%'), ('以支持为主', '≈ 12%')],
+     ['<b>支持者的观点。</b>白天用电多的家庭划算：退休人士、家庭办公、开空调的商店和咖啡馆。一位已安装 5 kW 系统 3 年的用户表示，月电费超过约 5,000 泰铢时每月可省约 2,000 泰铢。也有人欢迎政府帮助无法一次性付款的家庭，认为能源只会越来越贵，屋顶光伏越多，进口天然气就越少。',
+      '<b>人们担心什么。</b>最大的担忧是负债：认为 5 万泰铢是诱导人们借更多钱的诱饵。其次是不信任设备由谁供应、谁获利；2.20 泰铢的回购价远低于每度 4 泰铢以上的电价；担心安装商涨价；回本期长于逆变器和电池寿命；没有电池夜间无法使用；以及安全与质量（火灾、屋顶漏水、安装不规范、无泰国标准标志的组件、电子垃圾）。也有人认为这笔钱应用于降低油价、救灾、农民或老人，或担心只有本来有钱的人受益。',
+      '<b>常见问题。</b>电力回购多少年？组件来自哪里、保修多久？已装光伏的家庭能否用补贴扩容？是否必须使用政府指定的安装商？电池另需多少钱？',
+      '<b>关于样本。</b>4 篇帖子中有 2 篇立场偏批评，因此这不是民意调查。评论于 2026 年 10 月 27 日、官方细则公布前阅读，未记录任何评论者姓名。我们对五大担忧的回答见<a href="/solar-subsidy-50000.html">5 万泰铢补贴指南（英文）</a>。'],
+     src(S_FB, 'zh')),
  art('data-centres-thailand-power', '2026年10月27日 · 数据中心', '泰国数据中心热潮：对电网意味着什么',
      '泰国投资促进委员会（BOI）在 2025 年批准了 <b>26 个数据中心项目</b>，总值近 5000 亿泰铢；到 2026 年第一季度，新申请已超过 <b>1 万亿泰铢</b>。规划项目约 <b>2.87 GW</b>，主要位于东部经济走廊（EEC）。',
      [('规划容量', '2.87 GW'), ('2025 年获批', '≈ 5000 亿泰铢'), ('2025 年全球数据中心用电', '≈ 485 TWh')],
@@ -139,9 +168,9 @@ for lang, f in (('en', 'news.html'), ('th', 'th/news.html'), ('zh', 'zh/news.htm
         if f'<article id="{aid}"' not in s:
             first = s.find('<article id=')
             # previous first article gets the separator style
-            m = re.compile(r'<article id="([^"]+)" style="max-width:760px">').match(s, first)
+            m = re.compile(r'<article id="([^"]+)"((?: data-topics="[^"]*")?) style="max-width:760px">').match(s, first)
             if m:
-                s = s[:first] + f'<article id="{m.group(1)}" {SEP}>' + s[m.end():]
+                s = s[:first] + f'<article id="{m.group(1)}"{m.group(2)} {SEP}>' + s[m.end():]
             s = s[:first] + a.replace(f' {SEP}>', ' style="max-width:760px">', 1) + s[first:]
     # tags
     for aid in set(re.findall(r'<article id="([^"]+)"', s)):

@@ -1,0 +1,164 @@
+#!/usr/bin/env python3
+"""News topics: News dropdown menu on every page, topic tags + filter bar on the
+news pages, and the topic articles. Idempotent. Run: python3 tools/news_topics.py
+To tag a new article, add its id to TOPICS below and re-run."""
+import glob, os, re
+ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'); os.chdir(ROOT)
+
+LABELS = {
+ 'en': [('subsidy', '50,000 for Solar Homeowner', '/solar-subsidy-50000.html'), ('datacenter', 'Data Center', None),
+        ('innovation', 'Innovation', None), ('adoption', 'Global Adoption of Solar Installation', None),
+        ('consumption', 'Global Energy Consumption', None)],
+ 'th': [('subsidy', 'โซลาร์ 50,000 บาท สำหรับเจ้าของบ้าน', '/th/solar-subsidy-50000.html'), ('datacenter', 'ดาต้าเซ็นเตอร์', None),
+        ('innovation', 'นวัตกรรม', None), ('adoption', 'การติดตั้งโซลาร์ทั่วโลก', None),
+        ('consumption', 'การใช้พลังงานของโลก', None)],
+ 'zh': [('subsidy', '5万泰铢家庭光伏补贴', '/solar-subsidy-50000.html'), ('datacenter', '数据中心', None),
+        ('innovation', '创新', None), ('adoption', '全球光伏普及', None), ('consumption', '全球能源消费', None)],
+}
+NEWS = {'en': ('/news.html', 'News'), 'th': ('/th/news.html', 'ข่าวสาร'), 'zh': ('/zh/news.html', '新闻')}
+ALL = {'en': 'All news', 'th': 'ข่าวทั้งหมด', 'zh': '全部新闻'}
+TOPICS = {
+ 'subsidy': ['thailand-50000-baht-solar-subsidy', 'thai-rooftop-solar-policy', 'thailand-mandatory-panel-standard',
+             'thailand-ocpb-faulty-solar', 'solar-disadvantages-honest'],
+ 'datacenter': ['data-centres-thailand-power', 'global-energy-review-2025'],
+ 'innovation': ['fraunhofer-silicon-anode-cells', 'tongwei-93-bifaciality', 'risen-anti-glare', 'mova-lumegret-s5000',
+                'solis-s6-eh3p50k-v38-vs-21a', 'thailand-solar-battery-recycling-estate'],
+ 'adoption': ['global-energy-review-2025', 'china-solar-down-rest-up', 'module-prices-october-2026', 'nz-solar-complaints-surge',
+              'thai-rooftop-solar-policy'],
+ 'consumption': ['global-energy-review-2025', 'data-centres-thailand-power', 'tni-state-of-power-2024', 'ucs-solar-environmental-impacts'],
+}
+GUIDE = {
+ 'en': ('Full guide: Thailand\'s 50,000-baht solar subsidy', 'Who qualifies, when to register, what you still pay, loans and sell-back – updated as rules are announced.', '/solar-subsidy-50000.html', 'Read the guide →'),
+ 'th': ('สรุปฉบับเต็ม: โซลาร์ 50,000 บาท', 'ใครได้สิทธิ์ ลงทะเบียนเมื่อไร ต้องจ่ายเองเท่าไร สินเชื่อ และการขายไฟคืน อัปเดตทุกครั้งที่มีประกาศใหม่', '/th/solar-subsidy-50000.html', 'อ่านสรุป →'),
+ 'zh': ('完整指南：泰国 5 万泰铢家庭光伏补贴（英文）', '谁有资格、何时登记、自付多少、贷款与余电回购——随新规公布持续更新。', '/solar-subsidy-50000.html', '阅读指南 →'),
+}
+SEP = 'style="max-width:760px;margin-top:64px;padding-top:48px;border-top:1.5px solid var(--navy)"'
+
+def cmpk(items):
+    return '<div class="cmpk">' + ''.join(f'<div><small>{a}</small><b>{b}</b></div>' for a, b in items) + '</div>\n'
+
+def art(aid, eyebrow, h2, lede, kp, paras, src):
+    return (f'<article id="{aid}" {SEP}>\n<p class="eyebrow">{eyebrow}</p><h2 style="font-size:clamp(26px,3.6vw,40px)">{h2}</h2>\n'
+            f'<p class="lede" style="margin-top:16px;opacity:1">{lede}</p>\n' + cmpk(kp) +
+            ''.join(f'<p style="margin-top:{22 if i == 0 else 14}px">{p}</p>\n' for i, p in enumerate(paras)) +
+            '<p style="margin-top:28px">' + '<br>'.join(f'<a href="{u}" rel="noopener">{t}</a>' for t, u in src) + '</p>\n</article>\n')
+
+S_DC = [('https://www.thestar.com.my/aseanplus/aseanplus-news/2026/08/22/thailand039s-data-centre-boom-tests-the-grid-the-rules-and-the-workforce', {'en': 'Source: The Nation via The Star, 22 August 2026 (English)', 'th': 'ที่มา: The Nation ผ่าน The Star 22 สิงหาคม 2026 (ภาษาอังกฤษ)', 'zh': '来源：The Nation（经 The Star 转载），2026年8月22日（英文）'}),
+        ('https://ourworldindata.org/how-much-energy-do-data-centers-and-artificial-intelligence-use', {'en': 'Source: Our World in Data, using IEA estimates, 20 July 2026 (English)', 'th': 'ที่มา: Our World in Data ใช้ตัวเลขประมาณการของ IEA 20 กรกฎาคม 2026 (ภาษาอังกฤษ)', 'zh': '来源：Our World in Data，采用 IEA 估算，2026年7月20日（英文）'})]
+S_GE = [('https://www.iea.org/reports/global-energy-review-2026/key-findings', {'en': 'Source: IEA, Global Energy Review 2026 – key findings (English)', 'th': 'ที่มา: IEA รายงาน Global Energy Review 2026 (ภาษาอังกฤษ)', 'zh': '来源：国际能源署（IEA）《全球能源回顾 2026》主要结论（英文）'})]
+src = lambda S, l: [(d[l], u) for u, d in S]
+
+NEW = {
+'en': [
+ art('data-centres-thailand-power', '27 October 2026 · Data centres', 'Thailand’s data centre boom: what it means for the grid',
+     'Thailand’s Board of Investment approved <b>26 data centre projects</b> worth almost 500 billion baht in 2025, and new applications passed <b>1 trillion baht</b> by the first quarter of 2026. The planned pipeline is about <b>2.87 GW</b>, mostly in the Eastern Economic Corridor.',
+     [('Planned pipeline', '2.87 GW'), ('Approved in 2025', '≈ ฿500 bn'), ('World data centres, 2025', '≈ 485 TWh')],
+     ['<b>Worldwide.</b> The IEA estimates data centres used about 485 TWh in 2025, roughly 1.5% of the world’s electricity, and expects this to reach about 945 TWh (around 3%) by 2030. Centres built for AI used about a third of it.',
+      '<b>In Thailand.</b> Reports say the country has enough generating capacity (a reserve margin above 25%); the bottleneck is transmission. EGAT plans a 31-billion-baht transmission upgrade in the EEC. A pilot letting data centres buy renewable power directly is capped at 2,000 MW, with final rules still pending in mid-2026. Data centres are reported to pay about 5–6 baht per unit, against roughly 3–4 baht for homes. Water is the other worry: in a Federation of Thai Industries survey, 68.8% of executives named water supply as their top concern.',
+      '<b>What it means for you:</b> very large new users will compete with everyone else for grid upgrades over the next few years. The reports do not say this will raise household tariffs, so we are not predicting that. What you can control is how much of your daytime power you make yourself, on your own roof.'],
+     src(S_DC, 'en')),
+ art('global-energy-review-2025', '27 October 2026 · Global energy', 'World energy use in 2025: electricity grew twice as fast, and solar led the growth',
+     'The IEA’s Global Energy Review 2026 says world energy demand grew <b>1.3%</b> in 2025, below the average of the past decade, while electricity demand grew by nearly <b>3%</b>. Solar was the largest single source of new supply.',
+     [('Energy demand 2025', '+1.3%'), ('Electricity demand', '≈ +3%'), ('New solar generation', '600 TWh')],
+     ['<b>Electricity is the fast-growing part.</b> Electricity demand grew more than twice as fast as energy use overall. In the United States, data centres accounted for half of all electricity demand growth; worldwide, data centres and electric vehicles grew quickly from a small base.',
+      '<b>Solar led the growth.</b> Solar PV met over a quarter of the increase in total energy demand and added about 600 TWh of generation, about 70% of the growth in electricity generation. The world added a record 800 GW of renewable capacity, 75% of it solar. Low-emission sources covered nearly 60% of demand growth, and CO₂ emissions rose about 0.4%.',
+      '<b>What it means for you:</b> the panels on your roof are now the world’s main source of new electricity, not an experiment. For how installations are shifting between countries, see <a href="#china-solar-down-rest-up">Solar installs fall in China, rise everywhere else</a>.'],
+     src(S_GE, 'en')),
+],
+'th': [
+ art('data-centres-thailand-power', '27 ตุลาคม 2026 · ดาต้าเซ็นเตอร์', 'ดาต้าเซ็นเตอร์บูมในไทย: มีผลกับระบบไฟฟ้าอย่างไร',
+     'บีโอไออนุมัติ <b>โครงการดาต้าเซ็นเตอร์ 26 โครงการ</b> มูลค่าเกือบ 5 แสนล้านบาทในปี 2025 และคำขอใหม่เกิน <b>1 ล้านล้านบาท</b> ภายในไตรมาสแรกของปี 2026 โครงการที่วางแผนไว้รวมราว <b>2.87 GW</b> ส่วนใหญ่อยู่ในเขตพัฒนาพิเศษภาคตะวันออก (EEC)',
+     [('โครงการที่วางแผน', '2.87 GW'), ('อนุมัติปี 2025', '≈ 5 แสนล้านบาท'), ('ดาต้าเซ็นเตอร์ทั่วโลก 2025', '≈ 485 TWh')],
+     ['<b>ทั่วโลก</b> IEA ประเมินว่าดาต้าเซ็นเตอร์ใช้ไฟราว 485 TWh ในปี 2025 หรือประมาณ 1.5% ของไฟฟ้าทั้งโลก และคาดว่าจะเพิ่มเป็นราว 945 TWh (ประมาณ 3%) ภายในปี 2030 โดยศูนย์ที่สร้างเพื่อ AI ใช้ไฟราวหนึ่งในสาม',
+      '<b>ในประเทศไทย</b> รายงานระบุว่าไทยมีกำลังผลิตเพียงพอ (กำลังผลิตสำรองเกิน 25%) แต่คอขวดอยู่ที่ระบบสายส่ง กฟผ. วางแผนลงทุนปรับปรุงสายส่งใน EEC 3.1 หมื่นล้านบาท โครงการนำร่องให้ดาต้าเซ็นเตอร์ซื้อไฟพลังงานหมุนเวียนโดยตรงจำกัดไว้ที่ 2,000 MW และหลักเกณฑ์ยังไม่ออก ณ กลางปี 2026 มีรายงานว่าดาต้าเซ็นเตอร์จ่ายค่าไฟราว 5–6 บาทต่อหน่วย เทียบกับบ้านเรือนราว 3–4 บาท อีกเรื่องที่น่ากังวลคือน้ำ ผลสำรวจของสภาอุตสาหกรรมฯ พบว่าผู้บริหาร 68.8% กังวลเรื่องน้ำมากที่สุด',
+      '<b>สิ่งนี้มีความหมายกับคุณอย่างไร:</b> ผู้ใช้ไฟรายใหญ่รายใหม่จะใช้งบปรับปรุงระบบไฟฟ้าร่วมกับทุกคนในอีกไม่กี่ปีข้างหน้า รายงานไม่ได้บอกว่าค่าไฟบ้านจะขึ้นเพราะเรื่องนี้ เราจึงไม่คาดการณ์เช่นนั้น สิ่งที่คุณควบคุมได้คือสัดส่วนไฟตอนกลางวันที่คุณผลิตใช้เองบนหลังคาบ้าน'],
+     src(S_DC, 'th')),
+ art('global-energy-review-2025', '27 ตุลาคม 2026 · พลังงานโลก', 'การใช้พลังงานของโลกปี 2025: ไฟฟ้าโตเร็วกว่าสองเท่า และโซลาร์นำการเติบโต',
+     'รายงาน Global Energy Review 2026 ของ IEA ระบุว่าความต้องการพลังงานของโลกเพิ่มขึ้น <b>1.3%</b> ในปี 2025 ต่ำกว่าค่าเฉลี่ยสิบปีที่ผ่านมา ขณะที่ความต้องการไฟฟ้าเพิ่มเกือบ <b>3%</b> และโซลาร์เป็นแหล่งพลังงานใหม่ที่ใหญ่ที่สุด',
+     [('ความต้องการพลังงาน 2025', '+1.3%'), ('ความต้องการไฟฟ้า', '≈ +3%'), ('ไฟจากโซลาร์ที่เพิ่มขึ้น', '600 TWh')],
+     ['<b>ไฟฟ้าคือส่วนที่โตเร็ว</b> ความต้องการไฟฟ้าโตเร็วกว่าการใช้พลังงานโดยรวมมากกว่าสองเท่า ในสหรัฐฯ ดาต้าเซ็นเตอร์คิดเป็นครึ่งหนึ่งของการเติบโตของความต้องการไฟฟ้า ส่วนทั่วโลก ดาต้าเซ็นเตอร์และรถยนต์ไฟฟ้าโตเร็วจากฐานที่ยังเล็ก',
+      '<b>โซลาร์นำการเติบโต</b> โซลาร์ตอบสนองความต้องการพลังงานที่เพิ่มขึ้นได้มากกว่าหนึ่งในสี่ และผลิตไฟเพิ่มราว 600 TWh หรือประมาณ 70% ของการผลิตไฟฟ้าที่เพิ่มขึ้น ทั่วโลกติดตั้งพลังงานหมุนเวียนใหม่เป็นสถิติ 800 GW โดย 75% เป็นโซลาร์ แหล่งพลังงานคาร์บอนต่ำตอบสนองความต้องการที่เพิ่มขึ้นเกือบ 60% และการปล่อย CO₂ เพิ่มราว 0.4%',
+      '<b>สิ่งนี้มีความหมายกับคุณอย่างไร:</b> แผงโซลาร์บนหลังคาบ้านคุณคือแหล่งไฟฟ้าใหม่หลักของโลกแล้ว ไม่ใช่เทคโนโลยีทดลอง ดูการเปลี่ยนแปลงการติดตั้งในแต่ละประเทศได้ที่ <a href="#china-solar-down-rest-up">ติดตั้งโซลาร์ในจีนลดลง แต่ทั่วโลกที่เหลือเพิ่มขึ้น</a>'],
+     src(S_GE, 'th')),
+],
+'zh': [
+ art('data-centres-thailand-power', '2026年10月27日 · 数据中心', '泰国数据中心热潮：对电网意味着什么',
+     '泰国投资促进委员会（BOI）在 2025 年批准了 <b>26 个数据中心项目</b>，总值近 5000 亿泰铢；到 2026 年第一季度，新申请已超过 <b>1 万亿泰铢</b>。规划项目约 <b>2.87 GW</b>，主要位于东部经济走廊（EEC）。',
+     [('规划容量', '2.87 GW'), ('2025 年获批', '≈ 5000 亿泰铢'), ('2025 年全球数据中心用电', '≈ 485 TWh')],
+     ['<b>全球。</b>IEA 估计，2025 年数据中心用电约 485 TWh，约占全球电力的 1.5%，预计到 2030 年将增至约 945 TWh（约 3%）。其中为 AI 建设的数据中心约占三分之一。',
+      '<b>泰国。</b>报道称泰国发电容量充足（备用率超过 25%），瓶颈在输电。泰国电力局（EGAT）计划在 EEC 投资 310 亿泰铢升级输电网。允许数据中心直接购买可再生电力的试点上限为 2,000 MW，截至 2026 年年中细则仍未出台。据报道，数据中心电价约每度 5–6 泰铢，家庭约 3–4 泰铢。另一个担忧是用水：泰国工业联合会的调查中，68.8% 的高管将供水列为首要担忧。',
+      '<b>对您意味着什么：</b>未来几年，大型新用户将与所有人共同分享电网升级资源。报道并未说家庭电价会因此上涨，我们也不作此预测。您能掌控的，是白天用电中有多少由自家屋顶自发自用。'],
+     src(S_DC, 'zh')),
+ art('global-energy-review-2025', '2026年10月27日 · 全球能源', '2025 年全球能源消费：电力增速是总量的两倍，光伏领跑',
+     'IEA《全球能源回顾 2026》指出，2025 年全球能源需求增长 <b>1.3%</b>，低于过去十年平均水平；电力需求增长近 <b>3%</b>。光伏是最大的单一新增来源。',
+     [('2025 年能源需求', '+1.3%'), ('电力需求', '≈ +3%'), ('光伏新增发电量', '600 TWh')],
+     ['<b>电力是增长最快的部分。</b>电力需求增速是能源总需求的两倍多。在美国，数据中心占电力需求增长的一半；在全球，数据中心和电动汽车从较小基数快速增长。',
+      '<b>光伏领跑增长。</b>光伏满足了能源总需求增量的四分之一以上，新增发电约 600 TWh，约占发电增量的 70%。全球新增可再生能源装机创纪录达 800 GW，其中 75% 为光伏。低排放能源满足了近 60% 的需求增长，二氧化碳排放上升约 0.4%。',
+      '<b>对您意味着什么：</b>您屋顶上的光伏板已是全球新增电力的主要来源，而不是试验性技术。各国装机变化请见<a href="#china-solar-down-rest-up">中国光伏装机下降，其他地区持续增长</a>。'],
+     src(S_GE, 'zh')),
+],
+}
+
+CSS = ('<style id="ntopics-css">.ntopics{display:flex;flex-wrap:wrap;gap:8px;max-width:960px;margin-bottom:8px}'
+       '.ntopics a{border:1.5px solid var(--navy);padding:7px 14px;font-size:14px;text-decoration:none;color:var(--navy);background:var(--white)}'
+       '.ntopics a[aria-current="true"]{background:var(--navy);color:var(--white)}'
+       '.ntcard{display:none;max-width:760px;margin-top:40px;border-left:4px solid var(--hot);background:var(--white);padding:16px 20px}'
+       '.ntcard h2{font-size:22px}.ntcard p{margin-top:6px}</style>\n')
+JS = ('<script id="ntopics-js">(function(){function ap(){var h=decodeURIComponent(location.hash.slice(1)),t=h.indexOf("topic-")===0?h.slice(6):"";'
+      'document.querySelectorAll("#ntopics a").forEach(function(a){a.setAttribute("aria-current",String(a.getAttribute("data-t")===t))});'
+      'document.querySelectorAll("article[id],.ntcard").forEach(function(e){var ts=(e.getAttribute("data-topics")||"").split(" ");'
+      'var show=e.classList.contains("ntcard")?t==="subsidy":(!t||ts.indexOf(t)>=0);e.style.display=show?(e.classList.contains("ntcard")?"block":""):"none"});'
+      'if(t){var b=document.getElementById("ntopics");if(b)scrollTo(0,b.getBoundingClientRect().top+scrollY-96)}}addEventListener("hashchange",ap);ap()})();</script>\n')
+
+def nav_dd(lang):
+    url, name = NEWS[lang]
+    items = ''.join(f'<a href="{u or url + "#topic-" + k}">{lab}</a>' for k, lab, u in LABELS[lang])
+    return f'<span class="dd"><a href="{url}">{name}</a><span class="ddm">{items}</span></span>'
+
+# 1. nav on every page
+n = 0
+for f in glob.glob('*.html') + glob.glob('th/*.html') + glob.glob('zh/*.html'):
+    s = open(f, encoding='utf-8').read(); o = s
+    for lang, (url, name) in NEWS.items():
+        plain = f'<nav><a href="{url}">{name}</a>'
+        if plain in s:
+            s = s.replace(plain, '<nav>' + nav_dd(lang))
+        else:  # refresh existing dropdown
+            s = re.sub(r'<nav><span class="dd"><a href="' + re.escape(url) + r'">[^<]*</a><span class="ddm">.*?</span></span>',
+                       lambda m: '<nav>' + nav_dd(lang), s, count=1)
+    if s != o:
+        open(f, 'w', encoding='utf-8').write(s); n += 1
+print('nav updated in', n, 'files')
+
+# 2. news pages
+for lang, f in (('en', 'news.html'), ('th', 'th/news.html'), ('zh', 'zh/news.html')):
+    s = open(f, encoding='utf-8').read()
+    first = s.find('<article id=')
+    for a in reversed(NEW[lang]):
+        aid = re.search(r'id="([^"]+)"', a).group(1)
+        if f'<article id="{aid}"' not in s:
+            first = s.find('<article id=')
+            # previous first article gets the separator style
+            m = re.compile(r'<article id="([^"]+)" style="max-width:760px">').match(s, first)
+            if m:
+                s = s[:first] + f'<article id="{m.group(1)}" {SEP}>' + s[m.end():]
+            s = s[:first] + a.replace(f' {SEP}>', ' style="max-width:760px">', 1) + s[first:]
+    # tags
+    for aid in set(re.findall(r'<article id="([^"]+)"', s)):
+        ts = [k for k, ids in TOPICS.items() if aid in ids]
+        s = re.sub(r'(<article id="' + re.escape(aid) + r'")(?: data-topics="[^"]*")?', lambda m: m.group(1) + (f' data-topics="{" ".join(ts)}"' if ts else ''), s, count=1)
+    # filter bar + guide card
+    s = re.sub(r'<nav class="ntopics".*?</nav>\n<div class="ntcard".*?</div>\n', '', s, flags=re.S)
+    url = NEWS[lang][0]
+    bar = (f'<nav class="ntopics" id="ntopics" aria-label="Topics"><a href="{url}#all" data-t="">{ALL[lang]}</a>' +
+           ''.join(f'<a href="{url}#topic-{k}" data-t="{k}">{lab}</a>' for k, lab, u in LABELS[lang]) + '</nav>\n')
+    g = GUIDE[lang]
+    card = f'<div class="ntcard" data-topics="subsidy"><h2>{g[0]}</h2><p>{g[1]}</p><p><a class="btn" href="{g[2]}">{g[3]}</a></p></div>\n'
+    first = s.find('<article id=')
+    s = s[:first] + bar + card + s[first:]
+    if 'id="ntopics-css"' not in s:
+        s = s.replace('</head>', CSS + '</head>', 1)
+    s = re.sub(r'<script id="ntopics-js">.*?</script>\n', '', s, flags=re.S)
+    i = s.rfind('</body>'); s = s[:i] + JS + s[i:]
+    open(f, 'w', encoding='utf-8').write(s)
+    print(f, 'articles', s.count('<article id='), 'tagged', s.count('data-topics=') - 1)

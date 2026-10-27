@@ -18,9 +18,9 @@ LABELS = {
 NEWS = {'en': ('/news.html', 'News'), 'th': ('/th/news.html', 'ข่าวสาร'), 'zh': ('/zh/news.html', '新闻')}
 ALL = {'en': 'All news', 'th': 'ข่าวทั้งหมด', 'zh': '全部新闻'}
 TOPICS = {
- 'subsidy': ['public-reaction-50000-subsidy', 'thailand-50000-baht-solar-subsidy', 'thai-rooftop-solar-policy', 'thailand-mandatory-panel-standard',
+ 'subsidy': ['electrification-who-pays-teaser', 'public-reaction-50000-subsidy', 'thailand-50000-baht-solar-subsidy', 'thai-rooftop-solar-policy', 'thailand-mandatory-panel-standard',
              'thailand-ocpb-faulty-solar', 'solar-disadvantages-honest'],
- 'datacenter': ['data-centre-impacts-guide', 'data-centres-power-water', 'data-centres-thailand-power', 'global-energy-review-2025'],
+ 'datacenter': ['electrification-who-pays-teaser', 'data-centre-impacts-guide', 'data-centres-power-water', 'data-centres-thailand-power', 'global-energy-review-2025'],
  'innovation': ['fraunhofer-silicon-anode-cells', 'tongwei-93-bifaciality', 'risen-anti-glare', 'mova-lumegret-s5000',
                 'solis-s6-eh3p50k-v38-vs-21a', 'thailand-solar-battery-recycling-estate'],
  'adoption': ['global-energy-review-2025', 'china-solar-down-rest-up', 'module-prices-october-2026', 'nz-solar-complaints-surge',
@@ -60,6 +60,12 @@ S_DI = [('/data-centre-impacts.html', {'en':'Read the full guide: Data centres �
 
 NEW = {
 'en': [
+ art('electrification-who-pays-teaser', '27 October 2026 · Analysis', 'Thailand’s electrification: who pays, who gains?',
+     'As data centres drive new demand for clean power, we looked at who gets to sell it, who benefits from the 200,000-baht tax deduction and the 50,000-baht scheme, and what is still unclear, grading every claim by its evidence.',
+     [('Minimum size to sell green power directly', '1,000 kVA'), ('Household buy-back', '2.20 baht'), ('Low-use home margin over a loan', '≈ 210 baht/month')],
+     ['<b>Main findings.</b> The direct-sale rules are written for large plants; per unit, households and big solar farms are paid about the same, but contracts and scale differ. The tax deduction is worth more the higher your income. The 50,000-baht scheme’s terms are still unclear, and low-use homes have the thinnest margin.',
+      '<b>Before you sign:</b> a six-point checklist covers the rulebook, installer choice, the loan rate after the promotion, the buy-back term, your daytime use and the warranty.'],
+     [('Read the full analysis', '/electrification-who-pays.html')]),
  art('data-centre-impacts-guide', '27 October 2026 · Data centres', 'Data centres: the real environmental and socio-economic costs, and the benefits',
      'Our new guide pulls together the evidence on what data centres mean for electricity, emissions, water, air quality, e-waste, jobs, power bills and tax revenue, and what Thailand is doing about it.',
      [('CO₂ a year today', '≈ 180 Mt'), ('Jobs per large site (US county)', '≈ 100–200'), ('Thai execs naming water top concern', '68.8%')],
@@ -99,6 +105,12 @@ NEW = {
      src(S_GE, 'en')),
 ],
 'th': [
+ art('electrification-who-pays-teaser', '27 ตุลาคม 2026 · บทวิเคราะห์', 'การเดินทางสู่ไฟฟ้าของไทย: ใครจ่าย ใครได้?',
+     'เมื่อดาต้าเซ็นเตอร์ทำให้ความต้องการไฟสะอาดพุ่งขึ้น เราดูว่าใครได้ขายไฟ ใครได้ประโยชน์จากลดหย่อนภาษี 200,000 บาทและโครงการ 50,000 บาท และอะไรยังไม่ชัด พร้อมให้ระดับหลักฐานทุกข้อ',
+     [('ขนาดขั้นต่ำที่ขายไฟสีเขียวได้ตรง', '1,000 kVA'), ('ราคารับซื้อไฟจากบ้าน', '2.20 บาท'), ('บ้านใช้ไฟน้อย เหลือหลังหักค่างวด', '≈ 210 บาท/เดือน')],
+     ['<b>ข้อค้นพบหลัก</b> กติกาการขายไฟตรงเขียนไว้สำหรับโรงไฟฟ้าขนาดใหญ่ ราคาต่อหน่วยของบ้านกับโซลาร์ฟาร์มใกล้เคียงกัน แต่สัญญาและขนาดต่างกันมาก ลดหย่อนภาษีให้ประโยชน์มากขึ้นตามรายได้ เงื่อนไขโครงการ 50,000 บาทยังไม่ชัด และบ้านที่ใช้ไฟน้อยมีกำไรบางที่สุด',
+      '<b>ก่อนเซ็น:</b> เช็กลิสต์ 6 ข้อ ทั้งหลักเกณฑ์ การเลือกผู้ติดตั้ง ดอกเบี้ยหลังโปร ระยะรับซื้อไฟ การใช้ไฟกลางวัน และการรับประกัน'],
+     [('อ่านบทวิเคราะห์ฉบับเต็ม', '/th/electrification-who-pays.html')]),
  art('data-centre-impacts-guide', '27 ตุลาคม 2026 · ดาต้าเซ็นเตอร์', 'ดาต้าเซ็นเตอร์: ต้นทุนที่แท้จริงต่อสิ่งแวดล้อม เศรษฐกิจและสังคม และประโยชน์',
      'คู่มือฉบับใหม่ของเรารวบรวมหลักฐานว่าดาต้าเซ็นเตอร์ส่งผลอย่างไรต่อไฟฟ้า การปล่อยคาร์บอน น้ำ คุณภาพอากาศ ขยะอิเล็กทรอนิกส์ การจ้างงาน ค่าไฟ และรายได้ภาษี และประเทศไทยกำลังรับมืออย่างไร',
      [('CO₂ ต่อปีในปัจจุบัน', '≈ 180 ล้านตัน'), ('งานต่อศูนย์ขนาดใหญ่ (สหรัฐฯ)', '≈ 100–200'), ('ผู้บริหารไทยที่กังวลเรื่องน้ำที่สุด', '68.8%')],
@@ -138,6 +150,12 @@ NEW = {
      src(S_GE, 'th')),
 ],
 'zh': [
+ art('electrification-who-pays-teaser', '2026年10月27日 · 分析', '泰国电气化之路：谁付钱，谁得益？',
+     '数据中心推高清洁电力需求之际，我们分析了谁能出售绿电、谁从 20 万泰铢减税和 5 万泰铢补贴中获益、哪些仍不明确，并为每项结论标注证据等级。',
+     [('直接出售绿电的最低规模', '1,000 kVA'), ('家庭余电回购价', '2.20 泰铢'), ('低用电家庭扣除贷款后每月结余', '≈ 210 泰铢')],
+     ['<b>主要发现。</b>直购电规则为大型电站而设；家庭与大型光伏电站的单位电价相近，但合同期限和规模差别很大。减税优惠随收入提高而增加。5 万泰铢计划的条款仍不明确，低用电家庭的结余最薄。',
+      '<b>签约前：</b>六点清单涵盖细则、安装商选择、优惠期后的利率、回购期限、白天用电量和书面保修。'],
+     [('阅读完整分析（英文）', '/electrification-who-pays.html')]),
  art('data-centre-impacts-guide', '2026年10月27日 · 数据中心', '数据中心：对环境和社会经济的真实成本与收益',
      '我们的新指南汇总了数据中心对电力、碳排放、水、空气质量、电子垃圾、就业、电费和税收的影响证据，以及泰国的应对措施。',
      [('当前年 CO₂ 排放', '≈ 1.8 亿吨'), ('大型数据中心带来的岗位（美国县）', '≈ 100–200'), ('泰国高管首要担忧为缺水', '68.8%')],

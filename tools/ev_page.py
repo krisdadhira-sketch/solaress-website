@@ -49,11 +49,11 @@ def card(c):
 EN = dict(
     lang="en", tpl="quotation.html", out="ev.html",
     title="EV Charger Circuit Packages: Home EV Charging Installation | Solar ESS",
-    desc="Dedicated EV charger circuit packages by Solar ESS: CHINT, ABB or Schneider, shock-protection RCBO, earthing, testing and free gifts. Free quotation on LINE.",
+    desc="Dedicated EV charger circuit packages by Solar ESS: CHINT, ABB or Schneider, shock-protection RCBO, earthing, testing and free gifts. Call for a free inspection.",
     hero=('<section class="dark band" style="padding-block:64px"><div class="wrap"><p class="eyebrow">Projects · EV Charger</p>'
           '<h1 style="font-size:clamp(36px,6vw,64px)">EV home charging,<br>wired safely.</h1>'
           '<p class="lede" style="margin-top:18px">A dedicated second circuit for your EV charger: a separate run from your board, a shock-protection breaker, proper earthing, and every connection tested. Two promotions: pick a brand, or pick a protection level.</p>'
-          '<div class="cta" style="margin-top:26px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="https://line.me/ti/p/~solaress1" target="_blank" rel="noopener">Free quotation on LINE</a><a class="btn ghost" href="tel:+66631516694">Call 063 151 6694</a></div></div></section>'),
+          '<div class="cta" style="margin-top:26px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="tel:+66631516694">Call for a free inspection · 063 151 6694</a><a class="btn ghost" href="https://line.me/ti/p/~solaress1" target="_blank" rel="noopener">LINE: solaress1</a></div></div></section>'),
     p1=("Promotion 1", "Pick your brand", "The same professional installation in every package."),
     p1cards=[dict(lv="Value", name="CHINT", brand="CHINT board and breakers", price="8,900", baht="baht"),
              dict(lv="European standard", name="ABB", brand="ABB board and breakers", price="9,900", baht="baht", hl=1, badge="Most popular"),
@@ -76,19 +76,19 @@ EN = dict(
     solar_h="Want to charge from the sun? We are a solar team first.",
     solar_p="Ask about our EV + solar bundle discount when you install solar with Solar ESS within 12 months of your EV circuit.",
     terms="Cable run up to 15 m · extra 300 baht per metre · prices exclude the charger and the 35 mm² meter supply cable (if it needs replacing) · e-Tax Invoice available.",
-    cta=('<section class="dark band" style="padding-block:56px"><div class="wrap"><h2 class="evh2">Free quotation</h2>'
-         '<p class="lede" style="margin-top:10px">Send photos of your electricity meter and main board on LINE and we will assess your site before installation.</p>'
-         '<div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="https://line.me/ti/p/~solaress1" target="_blank" rel="noopener">LINE ID: solaress1</a><a class="btn ghost" href="tel:+66631516694">063 151 6694</a><a class="btn ghost" href="tel:+66894296832">089 429 6832</a><a class="btn ghost" href="/#consult">Book a consultation</a></div></div></section>'),
+    cta=('<section class="dark band" style="padding-block:56px"><div class="wrap"><h2 class="evh2">Call for a free inspection</h2>'
+         '<p class="lede" style="margin-top:10px">Call us to book a free site inspection and quotation, or send photos of your electricity meter and main board on LINE.</p>'
+         '<div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="tel:+66631516694">Call 063 151 6694</a><a class="btn ghost" href="tel:+66894296832">089 429 6832</a><a class="btn ghost" href="https://line.me/ti/p/~solaress1" target="_blank" rel="noopener">LINE ID: solaress1</a><a class="btn ghost" href="/#consult">Book a consultation</a></div></div></section>'),
 )
 
 TH = dict(
     lang="th", tpl="th/quotation.html", out="th/ev.html",
     title="แพ็กเกจติดตั้งวงจรชาร์จรถ EV ที่บ้าน | Solar ESS",
-    desc="แพ็กเกจวงจรที่ 2 สำหรับเครื่องชาร์จรถ EV โดยโซลาร์ เอสส์ เลือก CHINT ABB หรือ Schneider มีเบรกเกอร์กันไฟดูด หลักดิน ทดสอบ และของแถม ขอใบเสนอราคาฟรีทางไลน์",
+    desc="แพ็กเกจวงจรที่ 2 สำหรับเครื่องชาร์จรถ EV โดยโซลาร์ เอสส์ เลือก CHINT ABB หรือ Schneider มีเบรกเกอร์กันไฟดูด หลักดิน ทดสอบ และของแถม โทรนัดตรวจหน้างานฟรี",
     hero=('<section class="dark band" style="padding-block:64px"><div class="wrap"><p class="eyebrow">ผลงาน · ที่ชาร์จรถ EV</p>'
           '<h1 style="font-size:clamp(34px,5.6vw,60px)">ติดตั้งวงจรชาร์จรถ EV<br>ถูกต้อง ปลอดภัย</h1>'
           '<p class="lede" style="margin-top:18px">วงจรที่ 2 สำหรับเครื่องชาร์จ EV โดยเฉพาะ เดินสายแยกจากไฟบ้าน มีเบรกเกอร์กันไฟดูด ต่อหลักดินถูกต้อง และทดสอบทุกจุด มี 2 โปรโมชันให้เลือก: เลือกตามแบรนด์ หรือเลือกตามระดับการป้องกัน</p>'
-          '<div class="cta" style="margin-top:26px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="https://line.me/ti/p/~solaress1" target="_blank" rel="noopener">ขอใบเสนอราคาฟรีทางไลน์</a><a class="btn ghost" href="tel:+66631516694">โทร 063 151 6694</a></div></div></section>'),
+          '<div class="cta" style="margin-top:26px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="tel:+66631516694">โทรนัดตรวจหน้างานฟรี · 063 151 6694</a><a class="btn ghost" href="https://line.me/ti/p/~solaress1" target="_blank" rel="noopener">ไลน์: solaress1</a></div></div></section>'),
     p1=("โปรโมชัน 1", "เลือกแบรนด์อุปกรณ์ที่ต้องการ", "ทุกแพ็กเกจได้งานติดตั้งมาตรฐานเดียวกัน"),
     p1cards=[dict(lv="คุ้มค่า", name="CHINT", brand="ตู้ + เบรกเกอร์ CHINT", price="8,900", baht="บาท"),
              dict(lv="มาตรฐานยุโรป", name="ABB", brand="ตู้ + เบรกเกอร์ ABB", price="9,900", baht="บาท", hl=1, badge="ยอดนิยม"),
@@ -111,9 +111,9 @@ TH = dict(
     solar_h="อยากชาร์จรถด้วยแดด? เราคือทีมโซลาร์โดยตรง",
     solar_p="สอบถามส่วนลดแพ็กเกจ EV + โซลาร์ เมื่อติดตั้งโซลาร์กับ Solar ESS ภายใน 12 เดือนหลังติดตั้งวงจร EV",
     terms="ระยะเดินสายไม่เกิน 15 ม. · ส่วนเกิน 300 บาท/ม. · ราคาไม่รวมเครื่องชาร์จ และสายเมนเข้ามิเตอร์ 35 ตร.มม. (ถ้าต้องเปลี่ยน) · ออกใบกำกับภาษีอิเล็กทรอนิกส์ (e-Tax Invoice) ได้",
-    cta=('<section class="dark band" style="padding-block:56px"><div class="wrap"><h2 class="evh2">ขอใบเสนอราคาฟรี</h2>'
-         '<p class="lede" style="margin-top:10px">ส่งรูปมิเตอร์และตู้ไฟมาทางไลน์ เราประเมินหน้างานให้ก่อนติดตั้ง</p>'
-         '<div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="https://line.me/ti/p/~solaress1" target="_blank" rel="noopener">LINE ID: solaress1</a><a class="btn ghost" href="tel:+66631516694">063 151 6694</a><a class="btn ghost" href="tel:+66894296832">089 429 6832</a><a class="btn ghost" href="/th/#consult">นัดขอคำปรึกษา</a></div></div></section>'),
+    cta=('<section class="dark band" style="padding-block:56px"><div class="wrap"><h2 class="evh2">โทรนัดตรวจหน้างานฟรี</h2>'
+         '<p class="lede" style="margin-top:10px">โทรนัดตรวจหน้างานและรับใบเสนอราคาฟรี หรือส่งรูปมิเตอร์และตู้ไฟมาทางไลน์</p>'
+         '<div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="tel:+66631516694">โทร 063 151 6694</a><a class="btn ghost" href="tel:+66894296832">089 429 6832</a><a class="btn ghost" href="https://line.me/ti/p/~solaress1" target="_blank" rel="noopener">LINE ID: solaress1</a><a class="btn ghost" href="/th/#consult">นัดขอคำปรึกษา</a></div></div></section>'),
 )
 
 def body(L):

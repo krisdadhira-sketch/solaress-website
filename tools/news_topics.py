@@ -18,7 +18,7 @@ LABELS = {
 NEWS = {'en': ('/news.html', 'News'), 'th': ('/th/news.html', 'ข่าวสาร'), 'zh': ('/zh/news.html', '新闻')}
 ALL = {'en': 'All news', 'th': 'ข่าวทั้งหมด', 'zh': '全部新闻'}
 TOPICS = {
- 'subsidy': ['electrification-who-pays-teaser', 'public-reaction-50000-subsidy', 'thailand-50000-baht-solar-subsidy', 'thai-rooftop-solar-policy', 'thailand-mandatory-panel-standard',
+ 'subsidy': ['installer-rules-50000-subsidy', 'electrification-who-pays-teaser', 'public-reaction-50000-subsidy', 'thailand-50000-baht-solar-subsidy', 'thai-rooftop-solar-policy', 'thailand-mandatory-panel-standard',
              'thailand-ocpb-faulty-solar', 'solar-disadvantages-honest'],
  'datacenter': ['electrification-who-pays-teaser', 'data-centre-impacts-guide', 'data-centres-power-water', 'data-centres-thailand-power', 'global-energy-review-2025'],
  'innovation': ['fraunhofer-silicon-anode-cells', 'tongwei-93-bifaciality', 'risen-anti-glare', 'mova-lumegret-s5000',

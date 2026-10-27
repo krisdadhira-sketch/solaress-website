@@ -193,7 +193,7 @@ C = {
  back='ข่าวดาต้าเซ็นเตอร์ทั้งหมด', backurl='/th/news.html#topic-datacenter'),
 }
 
-PDF = {'en': 'downloads/Data_Centre_Impacts_Guide_EN_Rev01_20261027.pdf', 'th': 'downloads/Data_Centre_Impacts_Guide_TH_Rev01_20261027.pdf', 'zh': 'downloads/Data_Centre_Impacts_Guide_ZH_Rev01_20261027.pdf'}
+PDF = {'en': 'downloads/Data_Centre_Impacts_Guide_EN_Rev02_20261028.pdf', 'th': 'downloads/Data_Centre_Impacts_Guide_TH_Rev02_20261028.pdf', 'zh': 'downloads/Data_Centre_Impacts_Guide_ZH_Rev02_20261028.pdf'}
 DLH = {'en': ('Download the full guide (PDF)', ['English', 'ไทย', '中文']), 'th': ('ดาวน์โหลดฉบับเต็ม (PDF)', ['English', 'ไทย', '中文']), 'zh': ('下载完整指南（PDF）', ['English', 'ไทย', '中文'])}
 def dl_block(lang):
     h, labs = DLH[lang]

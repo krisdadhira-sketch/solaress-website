@@ -193,9 +193,16 @@ C = {
  back='ข่าวดาต้าเซ็นเตอร์ทั้งหมด', backurl='/th/news.html#topic-datacenter'),
 }
 
+PDF = {'en': 'downloads/Data_Centre_Impacts_Guide_EN_Rev01_20261027.pdf', 'th': 'downloads/Data_Centre_Impacts_Guide_TH_Rev01_20261027.pdf', 'zh': 'downloads/Data_Centre_Impacts_Guide_ZH_Rev01_20261027.pdf'}
+DLH = {'en': ('Download the full guide (PDF)', ['English', 'ไทย', '中文']), 'th': ('ดาวน์โหลดฉบับเต็ม (PDF)', ['English', 'ไทย', '中文']), 'zh': ('下载完整指南（PDF）', ['English', 'ไทย', '中文'])}
+def dl_block(lang):
+    h, labs = DLH[lang]
+    return ('<div class="dl" style="margin-top:22px;border-left:4px solid var(--hot);background:var(--white);padding:14px 18px"><b>' + h + '</b><p style="margin-top:8px">' +
+            ' '.join(f'<a class="btn{"" if k == lang else " ghost"}" href="/{PDF[k]}" download style="margin:4px 6px 4px 0">{lab} ↓</a>' for k, lab in zip(('en', 'th', 'zh'), labs)) + '</p></div>')
+
 def build(lang):
     c = C[lang]; e = lambda x: html.escape(x, quote=True)
-    shell = open('th/news.html' if lang == 'th' else 'news.html', encoding='utf-8').read()
+    shell = open({'th': 'th/news.html', 'zh': 'zh/news.html'}.get(lang, 'news.html'), encoding='utf-8').read()
     he = shell.find('</head>'); bs = shell.find('<section', shell.find('<body')); ft = shell.find('<footer')
     head = shell[:he]
     head = re.sub(r'<title>.*?</title>', f'<title>{e(c["title"])}</title>', head, flags=re.S)
@@ -209,6 +216,7 @@ def build(lang):
     head = re.sub(r'<style id="(ntopics|poll)-css">.*?</style>\n?', '', head, flags=re.S)
     head += ('<link rel="alternate" hreflang="th" href="https://solaress.org/th/data-centre-impacts">\n'
              '<link rel="alternate" hreflang="en" href="https://solaress.org/data-centre-impacts">\n'
+             '<link rel="alternate" hreflang="zh-Hans" href="https://solaress.org/zh/data-centre-impacts">\n'
              '<link rel="alternate" hreflang="x-default" href="https://solaress.org/data-centre-impacts">\n')
     ld = [{"@context": "https://schema.org", "@type": "Article", "headline": c['title'].split(' | ')[0], "description": c['desc'],
            "inLanguage": lang, "datePublished": "2026-10-27", "dateModified": UPDATED_ISO, "mainEntityOfPage": c['url'],
@@ -233,7 +241,7 @@ def build(lang):
                f'<p class="lede" style="margin-top:18px">{c["lede"]}</p></div></section>\n')
     b = ['<section class="band light" style="padding-block:56px"><div class="wrap lf"><article style="max-width:760px">',
          '<div class="kf">' + ''.join(f'<div><b>{a}</b><span>{s}</span></div>' for a, s in c['kf']) + '</div>',
-         f'<nav class="toc" aria-label="{e(c["toc"])}">' + ''.join(f'<a href="#{sid}">{h}</a>' for sid, h, _ in c['sections']) + '</nav>']
+         f'<nav class="toc" aria-label="{e(c["toc"])}">' + ''.join(f'<a href="#{sid}">{h}</a>' for sid, h, _ in c['sections']) + '</nav>', dl_block(lang)]
     for sid, h, subs in c['sections']:
         b.append(f'<h2 id="{sid}">{h}</h2>')
         for sh, paras in subs:
@@ -249,4 +257,8 @@ def build(lang):
     out.append(tail)
     open(c['out'], 'w', encoding='utf-8').write(''.join(out)); print('wrote', c['out'])
 
-for l in C: build(l)
+from dc_impacts_zh import ZH
+C['zh'] = ZH
+
+if __name__ == '__main__':
+    for l in C: build(l)

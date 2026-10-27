@@ -306,4 +306,18 @@
     <xhtml:link rel="alternate" hreflang="th" href="https://solaress.org/th/electrification-who-pays"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://solaress.org/electrification-who-pays"/>
   </url>
+  <url>
+    <loc>https://solaress.org/ev</loc>
+    <lastmod>2026-10-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://solaress.org/ev"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://solaress.org/th/ev"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://solaress.org/ev"/>
+  </url>
+  <url>
+    <loc>https://solaress.org/th/ev</loc>
+    <lastmod>2026-10-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://solaress.org/ev"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://solaress.org/th/ev"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://solaress.org/ev"/>
+  </url>
 </urlset>

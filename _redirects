@@ -1,0 +1,34 @@
+# Old Wix pages (still in Google's index) -> new site. 301 = permanent, passes ranking to the new page.
+# Rules without "!" only apply when no real file exists at that path, so they never hide a live page.
+
+/home              /                         301
+/home-1            /                         301
+/about             /team.html                301
+/about-us          /team.html                301
+/about-3           /#voices                  301
+/about-5           /team.html#team           301
+/about-*           /team.html                301
+/copy-of-*         /team.html                301
+/team-1            /team.html                301
+/team-*            /team.html                301
+/education         /technical-notes.html     301
+/education-*       /technical-notes.html     301
+/news-1            /news.html                301
+/blog              /news.html                301
+/blog/*            /news.html                301
+/post/*            /news.html                301
+/projects          /#projects                301
+/projects-*        /#projects                301
+/portfolio         /#projects                301
+/services          /#services                301
+/service-page/*    /#services                301
+/contact           /#consult                 301
+/contact-us        /#consult                 301
+/contact-*         /#consult                 301
+/book-online       /#consult                 301
+/shop              /picks.html               301
+/product-page/*    /picks.html               301
+/category/*        /picks.html               301
+/jobs              /job.html                 301
+/careers           /job.html                 301
+/faq-1             /faq.html                 301

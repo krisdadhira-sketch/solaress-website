@@ -78,7 +78,7 @@ EN = dict(
     terms="Cable run up to 15 m · extra 300 baht per metre · prices exclude the charger and the 35 mm² meter supply cable (if it needs replacing) · e-Tax Invoice available.",
     cta=('<section class="dark band" style="padding-block:56px"><div class="wrap"><h2 class="evh2">Call for a free inspection</h2>'
          '<p class="lede" style="margin-top:10px">Call us to book a free site inspection and quotation, or send photos of your electricity meter and main board on LINE.</p>'
-         '<div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="tel:+66631516694">Call 063 151 6694</a><a class="btn ghost" href="tel:+66894296832">089 429 6832</a><a class="btn ghost" href="https://line.me/ti/p/~solaress1" target="_blank" rel="noopener">LINE ID: solaress1</a><a class="btn ghost" href="/#consult">Book a consultation</a></div></div></section>'),
+         '<div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="tel:+66631516694">Call 063 151 6694</a><a class="btn ghost" href="tel:+66896325829">089 632 5829</a><a class="btn ghost" href="https://line.me/ti/p/~solaress1" target="_blank" rel="noopener">LINE ID: solaress1</a><a class="btn ghost" href="/#consult">Book a consultation</a></div></div></section>'),
 )
 
 TH = dict(
@@ -113,7 +113,7 @@ TH = dict(
     terms="ระยะเดินสายไม่เกิน 15 ม. · ส่วนเกิน 300 บาท/ม. · ราคาไม่รวมเครื่องชาร์จ และสายเมนเข้ามิเตอร์ 35 ตร.มม. (ถ้าต้องเปลี่ยน) · ออกใบกำกับภาษีอิเล็กทรอนิกส์ (e-Tax Invoice) ได้",
     cta=('<section class="dark band" style="padding-block:56px"><div class="wrap"><h2 class="evh2">โทรนัดตรวจหน้างานฟรี</h2>'
          '<p class="lede" style="margin-top:10px">โทรนัดตรวจหน้างานและรับใบเสนอราคาฟรี หรือส่งรูปมิเตอร์และตู้ไฟมาทางไลน์</p>'
-         '<div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="tel:+66631516694">โทร 063 151 6694</a><a class="btn ghost" href="tel:+66894296832">089 429 6832</a><a class="btn ghost" href="https://line.me/ti/p/~solaress1" target="_blank" rel="noopener">LINE ID: solaress1</a><a class="btn ghost" href="/th/#consult">นัดขอคำปรึกษา</a></div></div></section>'),
+         '<div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="tel:+66631516694">โทร 063 151 6694</a><a class="btn ghost" href="tel:+66896325829">089 632 5829</a><a class="btn ghost" href="https://line.me/ti/p/~solaress1" target="_blank" rel="noopener">LINE ID: solaress1</a><a class="btn ghost" href="/th/#consult">นัดขอคำปรึกษา</a></div></div></section>'),
 )
 
 def body(L):

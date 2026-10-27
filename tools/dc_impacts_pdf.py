@@ -11,9 +11,9 @@ os.chdir(ROOT)
 FONTS = os.path.join(ROOT, 'tools', 'fonts')
 LOGO = 'data:image/jpeg;base64,' + base64.b64encode(open('images/solar-ess-report-logo.jpg', 'rb').read()).decode()
 ADDR = {
- 'en': 'Solar ESS Co. Ltd.<br>53 Moo 2 Tambon Nanglae, Amphoe Muang, Chiang Rai 57100<br>Tel 063 151 6694, 089 429 6832 · LINE solaress1<br>www.solaress.org · www.โซลาร์เอสส์.com',
- 'th': 'บริษัท โซลาร์ เอสส์ จำกัด<br>53 หมู่ 2 ต.นางแล อ.เมือง จ.เชียงราย 57100<br>โทร 063 151 6694, 089 429 6832 · LINE solaress1<br>www.solaress.org · www.โซลาร์เอสส์.com',
- 'zh': 'Solar ESS Co. Ltd.<br>53 Moo 2 Tambon Nanglae, Amphoe Muang, Chiang Rai 57100<br>电话 063 151 6694, 089 429 6832 · LINE solaress1<br>www.solaress.org · www.โซลาร์เอสส์.com',
+ 'en': 'Solar ESS Co. Ltd.<br>53 Moo 2 Tambon Nanglae, Amphoe Muang, Chiang Rai 57100<br>Tel 063 151 6694, 089 632 5829 · LINE solaress1<br>www.solaress.org · www.โซลาร์เอสส์.com',
+ 'th': 'บริษัท โซลาร์ เอสส์ จำกัด<br>53 หมู่ 2 ต.นางแล อ.เมือง จ.เชียงราย 57100<br>โทร 063 151 6694, 089 632 5829 · LINE solaress1<br>www.solaress.org · www.โซลาร์เอสส์.com',
+ 'zh': 'Solar ESS Co. Ltd.<br>53 Moo 2 Tambon Nanglae, Amphoe Muang, Chiang Rai 57100<br>电话 063 151 6694, 089 632 5829 · LINE solaress1<br>www.solaress.org · www.โซลาร์เอสส์.com',
 }
 FAM = {'en': "'Sarabun', sans-serif", 'th': "'Sarabun', sans-serif", 'zh': "'Noto Sans CJK SC', 'Sarabun', sans-serif"}
 PAGE = {'en': 'Page', 'th': 'หน้า', 'zh': '第'}

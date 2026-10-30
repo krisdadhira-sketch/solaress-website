@@ -199,6 +199,30 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://solaress.org/statement"/>
   </url>
   <url>
+    <loc>https://solaress.org/profile</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://solaress.org/profile"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://solaress.org/th/profile"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://solaress.org/zh/profile"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://solaress.org/profile"/>
+  </url>
+  <url>
+    <loc>https://solaress.org/th/profile</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://solaress.org/profile"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://solaress.org/th/profile"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://solaress.org/zh/profile"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://solaress.org/profile"/>
+  </url>
+  <url>
+    <loc>https://solaress.org/zh/profile</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://solaress.org/profile"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://solaress.org/th/profile"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://solaress.org/zh/profile"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://solaress.org/profile"/>
+  </url>
+  <url>
     <loc>https://solaress.org/th/statement</loc>
     <lastmod>2026-10-30</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://solaress.org/statement"/>

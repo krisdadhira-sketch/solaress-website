@@ -1,0 +1,97 @@
+<style>
+.vform{display:grid;gap:16px;max-width:420px}
+.vform label{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.8;display:grid;gap:6px}
+.vform input{font:inherit;font-size:18px;color:var(--white);background:transparent;border:0;border-bottom:1.5px solid rgba(255,255,255,.4);padding:8px 0;border-radius:0}
+.vmsg{min-height:22px;font-size:14px}.vmsg.err{color:#ff8fa6}
+.light .vmsg.err{color:#c4163b}
+.vstat{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:24px}
+.vstat div{background:var(--white);padding:18px 16px}.vstat b{display:block;font-size:30px;font-weight:800;font-variant-numeric:tabular-nums}
+.vstat span{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+@media(max-width:640px){.vstat{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.vtools{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:28px}
+.vtools input{font:inherit;padding:10px 12px;border:1.5px solid var(--line);min-width:240px}
+.btn.dark-ghost{background:transparent;border-color:var(--ink);color:var(--ink)}
+.tbl{width:100%;border-collapse:collapse;margin-top:16px;font-size:15px}
+.tbl th{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);text-align:left;font-weight:500;border-bottom:1.5px solid var(--navy);padding:10px 8px;cursor:pointer;white-space:nowrap}
+.tbl td{border-bottom:1px solid var(--line);padding:10px 8px;vertical-align:top}
+.tbl td.num,.tbl th.num{text-align:right;font-variant-numeric:tabular-nums}
+.tbl tr.st{cursor:pointer}.tbl tr.st:hover td{background:#f1f5ff}
+.tscroll{overflow-x:auto}
+.heat{display:grid;grid-template-columns:repeat(20,minmax(0,1fr));gap:3px;margin-top:14px}
+@media(max-width:700px){.heat{grid-template-columns:repeat(10,minmax(0,1fr))}}
+.heat div{aspect-ratio:1;display:grid;place-items:center;font-family:var(--mono);font-size:10px;border:1px solid var(--line);background:var(--white)}
+.detail{background:var(--paper);border:1px solid var(--line);padding:18px;margin:6px 0 10px}
+.detail .tests{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:4px;margin-top:10px}
+.detail .tests button{font:inherit;font-size:12px;border:1px solid var(--line);background:var(--white);padding:6px 2px;cursor:pointer}
+.detail .tests button[disabled]{cursor:default;opacity:.35}
+.attempts{margin-top:14px;font-size:14px}
+.attempts pre{white-space:pre-wrap;font-family:var(--mono);font-size:12px;background:var(--white);border:1px solid var(--line);padding:12px;max-height:320px;overflow:auto}
+[hidden]{display:none!important}
+</style>
+<main>
+<section id="a-login" class="dark band" style="padding-block:72px"><div class="wrap">
+<p class="eyebrow">Teacher</p><h1 style="font-size:clamp(36px,6vw,64px)">Vocabulary test<br>results.</h1>
+<p class="lede" style="margin-top:18px">Every student's scores across the 100 synonym tests. Enter the teacher password.</p>
+<form class="vform" id="a-form" novalidate style="margin-top:28px">
+<label>Teacher password<input id="a-pw" type="password" autocomplete="current-password" required></label>
+<button class="btn" type="submit">Open results</button><p class="vmsg" role="status"></p></form>
+</div></section>
+
+<section id="a-main" class="band light" style="padding-top:48px" hidden><div class="wrap">
+<p class="eyebrow">Teacher dashboard</p><h2 style="font-size:clamp(28px,4vw,44px)">Student performance</h2>
+<div class="vstat"><div><b id="k-st">0</b><span>Students</span></div><div><b id="k-at">0</b><span>Tests completed</span></div><div><b id="k-avg">–</b><span>Average score</span></div><div><b id="k-act">0</b><span>Active last 7 days</span></div></div>
+<h3 style="margin-top:40px">Average best score per test</h3>
+<p style="font-size:14px;color:var(--mute);margin-top:6px">Darker green = higher class average. Grey = nobody has taken it yet. Hover for detail.</p>
+<div class="heat" id="a-heat"></div>
+<div class="vtools"><input id="a-q" type="search" placeholder="Search name, email or school"><button class="btn" id="a-csv" type="button">Download CSV</button><button class="btn dark-ghost" id="a-ref" type="button">Refresh</button><button class="btn dark-ghost" id="a-out" type="button">Lock</button></div>
+<div class="tscroll"><table class="tbl" id="a-tbl"><thead><tr>
+<th data-k="name">Student</th><th data-k="school">School / class</th><th data-k="taken" class="num">Tests taken</th><th data-k="passed" class="num">Passed</th><th data-k="avg" class="num">Avg best</th><th data-k="highest" class="num">Highest test</th><th data-k="lastTs" class="num">Last activity</th></tr></thead><tbody></tbody></table></div>
+<p style="font-size:13px;color:var(--mute);margin-top:12px">Click a student to see each test, every attempt and their answers. Passed = 16/20 or more.</p>
+</div></section>
+</main>
+<script>
+(function(){
+var API='/api/vocab',$=function(id){return document.getElementById(id)},pw='',data=null,sortK='name',sortD=1,open=null;
+try{pw=sessionStorage.getItem('vocabAdmin')||''}catch(e){}
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function when(ts){return ts?new Date(ts).toLocaleString('en-GB',{timeZone:'Asia/Bangkok',day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'}):'–'}
+async function get(a,q){var r=await fetch(API+'?a='+a+(q||''),{headers:{'x-admin-password':pw}});var d={};try{d=await r.json()}catch(e){}if(!r.ok)throw new Error(d.error||'Could not load results.');return d}
+function sum(s){var ns=Object.keys(s.tests).map(Number),taken=ns.length,best=ns.map(function(n){return s.tests[n].best}),last=0,att=0;
+ ns.forEach(function(n){s.tests[n].attempts.forEach(function(a){att++;if(a.ts>last)last=a.ts})});
+ return{taken:taken,attempts:att,passed:best.filter(function(b){return b>=16}).length,avg:taken?best.reduce(function(a,b){return a+b},0)/taken:-1,highest:taken?Math.max.apply(null,ns):0,lastTs:last}}
+async function load(){data=await get('admin');data.students.forEach(function(s){Object.assign(s,sum(s))});draw();$('a-login').hidden=true;$('a-main').hidden=false}
+$('a-form').onsubmit=async function(e){e.preventDefault();var m=this.querySelector('.vmsg');pw=$('a-pw').value;m.textContent='Opening…';m.className='vmsg';
+ try{await load();try{sessionStorage.setItem('vocabAdmin',pw)}catch(x){}m.textContent=''}catch(x){m.textContent=x.message;m.className='vmsg err'}};
+$('a-out').onclick=function(){pw='';try{sessionStorage.removeItem('vocabAdmin')}catch(e){}$('a-main').hidden=true;$('a-login').hidden=false};
+$('a-ref').onclick=function(){load().catch(function(x){alert(x.message)})};
+$('a-q').oninput=draw;
+document.querySelector('#a-tbl thead').onclick=function(e){var th=e.target.closest('th');if(!th)return;var k=th.dataset.k;sortD=sortK===k?-sortD:(k==='name'||k==='school'?1:-1);sortK=k;draw()};
+function draw(){var S=data.students,att=0,tot=0,cnt=0,wk=Date.now()-7*864e5,act=0,per=[];for(var i=0;i<100;i++)per.push([]);
+ S.forEach(function(s){att+=s.attempts;if(s.lastTs>wk)act++;Object.keys(s.tests).forEach(function(n){s.tests[n].attempts.forEach(function(a){tot+=a.score;cnt++});per[n-1].push(s.tests[n].best)})});
+ $('k-st').textContent=S.length;$('k-at').textContent=att;$('k-avg').textContent=cnt?(tot/cnt).toFixed(1)+'/20':'–';$('k-act').textContent=act;
+ $('a-heat').innerHTML=per.map(function(p,i){if(!p.length)return '<div title="Test '+(i+1)+': not taken" style="background:#eef1f6;color:#9aa6c2">'+(i+1)+'</div>';
+  var av=p.reduce(function(a,b){return a+b},0)/p.length,t=av/20,bg='hsl(145,'+(35+30*t)+'%,'+(92-50*t)+'%)';
+  return '<div title="Test '+(i+1)+': '+p.length+' student(s), average best '+av.toFixed(1)+'/20" style="background:'+bg+';color:'+(t>.6?'#fff':'#0A0E2E')+'">'+(i+1)+'</div>'}).join('');
+ var q=$('a-q').value.trim().toLowerCase(),rows=S.filter(function(s){return !q||(s.name+' '+s.email+' '+s.school).toLowerCase().indexOf(q)>=0});
+ rows.sort(function(a,b){var x=a[sortK],y=b[sortK];return (typeof x==='string'?x.localeCompare(y):x-y)*sortD});
+ var h=rows.map(function(s){var o=open===s.email;return '<tr class="st" data-e="'+esc(s.email)+'"><td><b>'+esc(s.name)+'</b><br><span style="font-size:13px;color:var(--mute)">'+esc(s.email)+'</span></td><td>'+esc(s.school||'–')+'</td><td class="num">'+s.taken+'</td><td class="num">'+s.passed+'</td><td class="num">'+(s.avg<0?'–':s.avg.toFixed(1))+'</td><td class="num">'+(s.highest||'–')+'</td><td class="num">'+when(s.lastTs)+'</td></tr>'+(o?'<tr><td colspan="7">'+detail(s)+'</td></tr>':'')}).join('');
+ document.querySelector('#a-tbl tbody').innerHTML=h||'<tr><td colspan="7" style="color:var(--mute)">No students yet. Share www.solaress.org/vocabulary with your students.</td></tr>'}
+function detail(s){var b='';for(var n=1;n<=100;n++){var t=s.tests[n];b+='<button type="button" data-n="'+n+'" '+(t?'':'disabled')+' title="Test '+n+(t?': best '+t.best+'/20, '+t.attempts.length+' attempt(s)':'')+'" style="'+(t?(t.best>=16?'background:#e3f6ea':'background:#DCE6FD'):'')+'">'+n+(t?'<br><b>'+t.best+'</b>':'')+'</button>'}
+ return '<div class="detail" data-e="'+esc(s.email)+'"><b>'+esc(s.name)+'</b> · joined '+when(Date.parse(s.created))+' · '+s.attempts+' attempts<div class="tests">'+b+'</div><div class="attempts"></div>'+
+ '<p style="margin-top:14px;font-size:13px"><a href="#" class="reset">Set a new password for this student</a></p></div>'}
+document.querySelector('#a-tbl tbody').onclick=async function(e){
+ var tr=e.target.closest('tr.st');if(tr){open=open===tr.dataset.e?null:tr.dataset.e;draw();return}
+ var d=e.target.closest('.detail');if(!d)return;var s=data.students.find(function(x){return x.email===d.dataset.e});
+ if(e.target.closest('.reset')){e.preventDefault();var np=prompt('New password for '+s.name+' (at least 6 characters):');if(!np)return;
+  try{var r=await fetch(API+'?a=reset',{method:'POST',headers:{'x-admin-password':pw,'content-type':'application/json'},body:JSON.stringify({email:s.email,password:np})});var j=await r.json();alert(r.ok?'Password changed. Tell the student their new password.':j.error)}catch(x){alert('Could not change the password.')}return}
+ var b=e.target.closest('button[data-n]');if(!b)return;var n=+b.dataset.n,t=s.tests[n],box=d.querySelector('.attempts');
+ box.innerHTML='<b>Test '+n+'</b> — '+t.attempts.map(function(a,i){return '<a href="#" data-ts="'+a.ts+'">#'+(i+1)+': '+a.score+'/20 · '+Math.round(a.seconds/60)+' min · '+when(a.ts)+'</a>'}).join(' &nbsp;|&nbsp; ')+'<div class="ans"></div>';
+ box.onclick=async function(ev){var a=ev.target.closest('a[data-ts]');if(!a)return;ev.preventDefault();var out=box.querySelector('.ans');out.textContent='Loading…';
+  try{var r=await get('attempt','&email='+encodeURIComponent(s.email)+'&n='+n+'&ts='+a.dataset.ts);out.innerHTML='<pre>'+esc(r.review.map(function(x,i){return (i+1)+'. '+x.word+' → '+(x.chosen||'(none)')+(x.correct?'  ✓':'  ✗  correct: '+x.answer)}).join('\n'))+'</pre>'}catch(x){out.textContent=x.message}}};
+$('a-csv').onclick=function(){var L=[['Name','Email','School','Test','Level','Attempt','Score','Out of','Minutes','Date (Bangkok)']];
+ data.students.forEach(function(s){Object.keys(s.tests).map(Number).sort(function(a,b){return a-b}).forEach(function(n){s.tests[n].attempts.forEach(function(a,i){L.push([s.name,s.email,s.school,n,Math.ceil(n/10),i+1,a.score,20,(a.seconds/60).toFixed(1),when(a.ts)])})})});
+ var csv='﻿'+L.map(function(r){return r.map(function(c){c=String(c);return /[",\n]/.test(c)?'"'+c.replace(/"/g,'""')+'"':c}).join(',')}).join('\r\n');
+ var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));var d=new Date();a.download='Vocabulary_Results_'+d.getFullYear()+String(d.getMonth()+1).padStart(2,'0')+String(d.getDate()).padStart(2,'0')+'.csv';a.click()};
+if(pw)load().catch(function(){pw=''});
+})();
+</script>

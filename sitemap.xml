@@ -392,4 +392,8 @@
     <xhtml:link rel="alternate" hreflang="th" href="https://solaress.org/th/ev"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://solaress.org/ev"/>
   </url>
+  <url>
+    <loc>https://solaress.org/vocabulary</loc>
+    <lastmod>2026-11-01</lastmod>
+  </url>
 </urlset>

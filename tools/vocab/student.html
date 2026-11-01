@@ -1,0 +1,193 @@
+<style>
+.vq{--ok:#0f9d58}
+.vauth{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:48px;align-items:start}
+@media(max-width:860px){.vauth{grid-template-columns:1fr;gap:32px}}
+.vtabs{display:flex;gap:0;margin-bottom:22px;border-bottom:1px solid rgba(255,255,255,.25)}
+.vtabs button{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;background:none;border:0;color:inherit;opacity:.65;padding:10px 16px 12px 0;margin-right:18px;cursor:pointer;border-bottom:2px solid transparent}
+.vtabs button[aria-selected=true]{opacity:1;border-bottom-color:var(--hot)}
+.vform{display:grid;gap:16px;max-width:440px}
+.vform label{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.8;display:grid;gap:6px}
+.vform input{font:inherit;font-size:18px;color:var(--white);background:transparent;border:0;border-bottom:1.5px solid rgba(255,255,255,.4);padding:8px 0;border-radius:0;text-transform:none;letter-spacing:0}
+.vmsg{min-height:22px;font-size:14px}.vmsg.err{color:#ff8fa6}
+.steps{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:10px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;opacity:.85}
+.steps li::before{content:"→ ";color:var(--hot)}
+.vbar{display:flex;flex-wrap:wrap;gap:14px 28px;align-items:end;justify-content:space-between}
+.vstat{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:28px}
+.vstat div{background:var(--white);padding:18px 16px}.vstat b{display:block;font-size:30px;font-weight:800;font-variant-numeric:tabular-nums}
+.vstat span{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+@media(max-width:640px){.vstat{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.vlevel{margin-top:40px}
+.vlevel h3{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.vlevel h3 small{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);font-weight:500}
+.vgrid{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:8px;margin-top:14px}
+@media(max-width:760px){.vgrid{grid-template-columns:repeat(5,minmax(0,1fr))}}
+.vgrid button{font:inherit;cursor:pointer;border:1.5px solid var(--line);background:var(--white);color:var(--ink);padding:10px 4px 8px;display:grid;gap:2px;text-align:center;min-height:62px}
+.vgrid button:hover{border-color:var(--blue)}
+.vgrid b{font-size:18px;font-weight:800}.vgrid span{font-family:var(--mono);font-size:11px;color:var(--mute)}
+.vgrid .done{background:var(--sky);border-color:#b8c8f5}
+.vgrid .pass{background:#e3f6ea;border-color:#9bd3ae}
+.vgrid .next{border-color:var(--hot);box-shadow:inset 0 0 0 1px var(--hot)}
+.vlegend{display:flex;gap:18px;flex-wrap:wrap;margin-top:20px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.vlegend i{display:inline-block;width:12px;height:12px;border:1.5px solid var(--line);vertical-align:-1px;margin-right:6px}
+.vqlist{display:grid;gap:14px;margin-top:28px;counter-reset:q}
+.vqi{border:1px solid var(--line);background:var(--white);padding:20px 20px 18px}
+.vqi legend{float:left;width:100%;padding:0;margin:0 0 14px;font-size:22px;font-weight:700}
+.vqi legend small{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);font-weight:500;margin-right:10px}
+.vqi legend em{font-style:normal;font-family:var(--mono);font-size:12px;color:var(--mute);font-weight:400;margin-left:8px}
+.vopts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;clear:both}
+@media(max-width:700px){.vopts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.vopts label{font-family:var(--display);text-transform:none;letter-spacing:0;color:var(--ink);display:flex;align-items:center;gap:10px;border:1.5px solid var(--line);padding:12px;cursor:pointer;font-size:17px}
+.vopts input{accent-color:var(--hot);width:18px;height:18px;margin:0}
+.vopts label:has(input:checked){border-color:var(--hot);background:#fff4f6}
+.vqi.r-ok{border-color:#9bd3ae}.vqi.r-bad{border-color:#f3a3b3}
+.vopts label.is-ans{border-color:var(--ok);background:#e3f6ea}
+.vopts label.is-wrong{border-color:var(--hot);background:#ffe6eb;text-decoration:line-through}
+.vprog{position:sticky;top:72px;z-index:5;background:var(--paper);padding:12px 0;border-bottom:1px solid var(--line);display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+@media(max-width:900px){.vprog{top:60px}}
+.vprog .track{flex:1;min-width:160px;height:6px;background:var(--line)}.vprog .fill{height:100%;background:var(--hot);width:0;transition:width .2s}
+.vprog span{font-family:var(--mono);font-size:12px;letter-spacing:.08em}
+.vscore{font-size:clamp(64px,12vw,120px);font-weight:800;line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.vactions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.btn.dark-ghost{background:transparent;border-color:var(--ink);color:var(--ink)}
+.btn[disabled]{opacity:.5;cursor:wait}
+[hidden]{display:none!important}
+</style>
+
+<!-- Netlify Forms: each finished test is also sent to this form, which emails the teacher -->
+<form name="vocab-results" data-netlify="true" netlify-honeypot="bot-field" hidden>
+<input name="bot-field"><input name="subject"><input name="student"><input name="email"><input name="school"><input name="test"><input name="level"><input name="score"><input name="percent"><input name="time"><input name="attempt"><input name="best"><input name="submitted"><textarea name="answers"></textarea>
+</form>
+
+<main class="vq">
+<!-- 1. login / register -->
+<section id="v-auth" class="dark band" style="padding-block:72px"><div class="wrap vauth">
+<div><p class="eyebrow">English vocabulary · คำศัพท์ภาษาอังกฤษ</p>
+<h1 style="font-size:clamp(36px,6vw,64px)">100 synonym<br>tests.</h1>
+<p class="lede" style="margin-top:18px">Twenty questions per test. Pick the word that means the same as the word shown. Test 1 starts with everyday words; test 100 ends with words most native speakers find hard.</p>
+<ul class="steps"><li>10 levels · 10 tests each · 2,000 words</li><li>Your score is saved after every test</li><li>Retake any test to beat your best</li></ul></div>
+<div>
+<div class="vtabs" role="tablist"><button type="button" role="tab" id="t-login" aria-selected="true">Log in</button><button type="button" role="tab" id="t-reg" aria-selected="false">New student</button></div>
+<form class="vform" id="f-login" novalidate>
+<label>Email<input id="l-email" type="email" autocomplete="email" required></label>
+<label>Password<input id="l-pw" type="password" autocomplete="current-password" required></label>
+<button class="btn" type="submit">Log in</button>
+<p class="vmsg" role="status"></p>
+</form>
+<form class="vform" id="f-reg" novalidate hidden>
+<label>Full name<input id="r-name" autocomplete="name" required></label>
+<label>Email<input id="r-email" type="email" autocomplete="email" required></label>
+<label>School or class (optional)<input id="r-school" autocomplete="organization"></label>
+<label>Choose a password<input id="r-pw" type="password" autocomplete="new-password" minlength="6" required></label>
+<button class="btn" type="submit">Create account</button>
+<p class="vmsg" role="status"></p>
+<p style="font-size:13px;opacity:.7">Your name, email and scores are shared with your teacher at Solar ESS. Forgot your password? Ask your teacher to reset it.</p>
+</form>
+</div>
+</div></section>
+
+<!-- 2. test list -->
+<section id="v-home" class="band light" hidden><div class="wrap">
+<div class="vbar"><div><p class="eyebrow">Signed in</p><h2 id="v-hello" style="font-size:clamp(28px,4vw,44px)">Hello</h2></div>
+<div class="vactions" style="margin:0"><button class="btn" id="v-next" type="button">Start next test</button><button class="btn dark-ghost" id="v-out" type="button">Log out</button></div></div>
+<div class="vstat"><div><b id="s-done">0</b><span>Tests taken</span></div><div><b id="s-pass">0</b><span>Passed (16/20+)</span></div><div><b id="s-avg">–</b><span>Average best score</span></div><div><b id="s-level">1</b><span>Current level</span></div></div>
+<div class="vlegend"><span><i></i>Not taken</span><span><i style="background:var(--sky);border-color:#b8c8f5"></i>Taken</span><span><i style="background:#e3f6ea;border-color:#9bd3ae"></i>Passed 16/20 or more</span><span><i style="border-color:var(--hot)"></i>Recommended next</span></div>
+<div id="v-levels"></div>
+</div></section>
+
+<!-- 3. a test -->
+<section id="v-test" class="band light" style="padding-top:40px" hidden><div class="wrap">
+<p class="eyebrow" id="q-eyebrow">Test</p><h2 id="q-title" style="font-size:clamp(28px,4vw,44px)">Test</h2>
+<p class="lede" style="margin-top:10px;opacity:1">Choose the word closest in meaning to the word in bold.</p>
+<div class="vprog"><div class="track"><div class="fill" id="q-fill"></div></div><span id="q-count">0 / 20 answered</span></div>
+<form id="q-form" novalidate><div class="vqlist" id="q-list"></div>
+<div class="vactions"><button class="btn" type="submit" id="q-send">Submit answers</button><button class="btn dark-ghost" type="button" id="q-back">Back to tests</button></div>
+<p class="vmsg" id="q-msg" role="status" style="margin-top:12px"></p></form>
+</div></section>
+
+<!-- 4. result -->
+<section id="v-res" class="band light" style="padding-top:40px" hidden><div class="wrap">
+<p class="eyebrow" id="r-eyebrow">Result</p>
+<div class="vscore"><span id="r-score">0</span><span style="opacity:.35">/20</span></div>
+<p class="lede" id="r-note" style="margin-top:12px;opacity:1"></p>
+<div class="vactions"><button class="btn" id="r-next" type="button">Next test</button><button class="btn dark-ghost" id="r-again" type="button">Try again</button><button class="btn dark-ghost" id="r-home" type="button">All tests</button></div>
+<h3 style="margin-top:44px">Review your answers</h3>
+<div class="vqlist" id="r-list"></div>
+</div></section>
+</main>
+
+<script>
+(function(){
+var API='/api/vocab',TK='vocabToken',LV=['Starter','Elementary','Pre-intermediate','Intermediate','Upper-intermediate','Advanced','Proficient','Expert','Scholar','Master'];
+var $=function(id){return document.getElementById(id)};
+var token=null;try{token=localStorage.getItem(TK)}catch(e){}
+var state={tests:[],user:null,cur:null,started:0};
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+async function api(a,opt,q){opt=opt||{};var h={'content-type':'application/json'};if(token)h.authorization='Bearer '+token;
+ var r=await fetch(API+'?a='+a+(q||''),{method:opt.body?'POST':'GET',headers:h,body:opt.body?JSON.stringify(opt.body):undefined});
+ var d={};try{d=await r.json()}catch(e){}
+ if(r.status===401&&a!=='login'){logout();throw new Error(d.error||'Please log in again.')}
+ if(!r.ok)throw new Error(d.error||'Something went wrong. Please try again.');return d}
+function show(id){['v-auth','v-home','v-test','v-res'].forEach(function(s){$(s).hidden=s!==id});scrollTo(0,0)}
+function msg(form,t,err){var m=form.querySelector('.vmsg');m.textContent=t||'';m.className='vmsg'+(err?' err':'')}
+function setTok(t){token=t;try{t?localStorage.setItem(TK,t):localStorage.removeItem(TK)}catch(e){}}
+function logout(){setTok(null);state.user=null;show('v-auth')}
+// tabs
+function tab(reg){$('t-login').setAttribute('aria-selected',!reg);$('t-reg').setAttribute('aria-selected',reg);$('f-login').hidden=reg;$('f-reg').hidden=!reg}
+$('t-login').onclick=function(){tab(false)};$('t-reg').onclick=function(){tab(true)};
+$('f-login').onsubmit=async function(e){e.preventDefault();var f=this;msg(f,'Logging in…');
+ try{var d=await api('login',{body:{email:$('l-email').value,password:$('l-pw').value}});setTok(d.token);msg(f,'');await home()}catch(x){msg(f,x.message,true)}};
+$('f-reg').onsubmit=async function(e){e.preventDefault();var f=this;msg(f,'Creating your account…');
+ try{var d=await api('register',{body:{name:$('r-name').value,email:$('r-email').value,school:$('r-school').value,password:$('r-pw').value}});setTok(d.token);msg(f,'');await home()}catch(x){msg(f,x.message,true)}};
+$('v-out').onclick=logout;
+function nextTest(){var t=state.tests.find(function(t){return !(t.best>=16)});return t?t.n:100}
+async function home(){
+ var d=await api('tests');state.tests=d.tests;state.user=d.user;
+ $('v-hello').textContent='Hello, '+d.user.name;
+ var taken=d.tests.filter(function(t){return t.attempts}),pass=taken.filter(function(t){return t.best>=16});
+ $('s-done').textContent=taken.length;$('s-pass').textContent=pass.length;
+ $('s-avg').textContent=taken.length?(taken.reduce(function(a,t){return a+t.best},0)/taken.length).toFixed(1)+'/20':'–';
+ var nx=nextTest();$('s-level').textContent=Math.ceil(nx/10);
+ var h='';for(var L=1;L<=10;L++){h+='<div class="vlevel"><h3>Level '+L+' <span style="font-weight:500">'+LV[L-1]+'</span><small>Tests '+((L-1)*10+1)+'–'+(L*10)+'</small></h3><div class="vgrid">';
+  for(var n=(L-1)*10+1;n<=L*10;n++){var t=d.tests[n-1],c=t.best>=16?'pass':t.attempts?'done':'';if(n===nx)c+=' next';
+   h+='<button type="button" class="'+c+'" data-n="'+n+'" aria-label="Test '+n+(t.attempts?', best '+t.best+' of 20':', not taken')+'"><b>'+n+'</b><span>'+(t.attempts?t.best+'/20':'—')+'</span></button>'}
+  h+='</div></div>'}
+ $('v-levels').innerHTML=h;show('v-home')}
+$('v-levels').onclick=function(e){var b=e.target.closest('button[data-n]');if(b)openTest(+b.dataset.n)};
+$('v-next').onclick=function(){openTest(nextTest())};
+async function openTest(n){
+ try{var d=await api('test',{},'&n='+n)}catch(x){alertMsg(x.message);return}
+ state.cur=d;state.started=Date.now();
+ $('q-eyebrow').textContent='Level '+d.level+' · '+d.levelName;$('q-title').textContent='Test '+n+' of 100';
+ $('q-list').innerHTML=d.questions.map(function(q){return '<fieldset class="vqi"><legend><small>'+(q.i+1)+'</small><b>'+esc(q.word)+'</b><em>'+esc(q.pos)+'</em></legend><div class="vopts">'+
+  q.options.map(function(o){return '<label><input type="radio" name="q'+q.i+'" value="'+esc(o)+'">'+esc(o)+'</label>'}).join('')+'</div></fieldset>'}).join('');
+ $('q-msg').textContent='';$('q-send').disabled=false;count();show('v-test')}
+function alertMsg(t){var m=document.createElement('p');m.className='vmsg err';m.textContent=t;$('v-levels').prepend(m);setTimeout(function(){m.remove()},5000)}
+function answers(){return state.cur.questions.map(function(q){var c=document.querySelector('input[name=q'+q.i+']:checked');return c?c.value:''})}
+function count(){var a=answers().filter(Boolean).length,t=state.cur.questions.length;$('q-count').textContent=a+' / '+t+' answered';$('q-fill').style.width=(a/t*100)+'%'}
+$('q-list').addEventListener('change',count);
+$('q-back').onclick=function(){if(answers().some(Boolean)&&!confirmLeave())return;home()};
+function confirmLeave(){return window.confirm('Leave this test? Your answers will not be saved.')}
+$('q-form').onsubmit=async function(e){e.preventDefault();var a=answers(),miss=a.filter(function(x){return !x}).length;
+ if(miss){$('q-msg').textContent='Please answer all questions ('+miss+' left).';$('q-msg').className='vmsg err';
+  var first=a.indexOf('');var el=document.querySelectorAll('.vqi')[first];if(el)el.scrollIntoView({behavior:'smooth',block:'center'});return}
+ $('q-send').disabled=true;$('q-msg').className='vmsg';$('q-msg').textContent='Checking your answers…';
+ var secs=Math.round((Date.now()-state.started)/1000);
+ try{var r=await api('submit',{body:{n:state.cur.n,answers:a,seconds:secs}})}catch(x){$('q-msg').textContent=x.message;$('q-msg').className='vmsg err';$('q-send').disabled=false;return}
+ sendMail(r);result(r)};
+function mmss(s){return Math.floor(s/60)+' min '+(s%60)+' s'}
+function sendMail(r){var u=r.user,pct=Math.round(r.score/r.total*100);
+ var lines=r.review.map(function(x,i){return (i+1)+'. '+x.word+' → '+(x.chosen||'(none)')+(x.correct?'  ✓':'  ✗ correct: '+x.answer)}).join('\n');
+ var f={'form-name':'vocab-results',subject:'Vocabulary test '+r.n+': '+u.name+' scored '+r.score+'/'+r.total,student:u.name,email:u.email,school:u.school||'-',test:'Test '+r.n+' of 100',level:'Level '+r.level+' · '+LV[r.level-1],score:r.score+' / '+r.total,percent:pct+'%',time:mmss(r.seconds),attempt:String(r.attempts),best:r.best+' / 20',submitted:new Date(r.ts).toLocaleString('en-GB',{timeZone:'Asia/Bangkok'})+' (Bangkok)',answers:lines};
+ fetch('/',{method:'POST',headers:{'content-type':'application/x-www-form-urlencoded'},body:new URLSearchParams(f).toString()}).catch(function(){})}
+function result(r){
+ $('r-eyebrow').textContent='Test '+r.n+' · Level '+r.level+' · '+LV[r.level-1];$('r-score').textContent=r.score;
+ var note=r.score>=18?'Excellent work.':r.score>=16?'Passed. Well done.':r.score>=12?'Good effort. Score 16 or more to pass.':'Keep practising. Review the answers below, then try again.';
+ $('r-note').textContent=note+' Time: '+mmss(r.seconds)+'. Best score on this test: '+r.best+'/20 (attempt '+r.attempts+').';
+ $('r-next').hidden=r.n>=100;$('r-next').onclick=function(){openTest(r.n+1)};$('r-again').onclick=function(){openTest(r.n)};
+ $('r-list').innerHTML=r.review.map(function(x,i){return '<div class="vqi '+(x.correct?'r-ok':'r-bad')+'"><legend style="float:none"><small>'+(i+1)+'</small><b>'+esc(x.word)+'</b><em>'+esc(x.pos)+'</em></legend><div class="vopts">'+
+  '<label class="is-ans">✓ '+esc(x.answer)+'</label>'+(x.correct?'':'<label class="is-wrong">'+esc(x.chosen||'no answer')+'</label>')+'</div></div>'}).join('');
+ show('v-res')}
+$('r-home').onclick=function(){home()};
+if(token)home().catch(function(){show('v-auth')});else show('v-auth');
+})();
+</script>

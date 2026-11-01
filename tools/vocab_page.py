@@ -28,5 +28,5 @@ def page(fname, title, desc, frag, index):
 
 page("vocabulary.html", "Vocabulary Tests | Solar ESS",
      "100 English synonym tests, 20 questions each, from everyday words to advanced vocabulary. Log in, take a test and track your scores.",
-     "student.html", True)
+     "student.html", False)
 page("vocab-admin.html", "Vocabulary Results | Solar ESS", "Teacher dashboard for the Solar ESS vocabulary tests.", "admin.html", False)

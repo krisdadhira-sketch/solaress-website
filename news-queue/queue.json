@@ -1,0 +1,64 @@
+[
+ {
+  "pdf": "Solar-ESS-News-JinkoSolar-Tiger-Neo-5-510W_Rev01_20261102.pdf",
+  "queued": "2026-11-02",
+  "publish_on": "2026-11-02",
+  "id": "jinko-tiger-neo-5-510w",
+  "topics": "innovation",
+  "eyebrow": "Technology",
+  "title": "JinkoSolar launches Tiger Neo 5.0, a 510 W rooftop panel for homes",
+  "lede": "JinkoSolar's new all-black home panel reaches 25.5% efficiency and comes with a 40-year warranty. Here is the news in short.",
+  "bullets": [
+   "New 48-cell, all-black panel (JKM485–510T series) for premium homes and villas with limited roof space.",
+   "Up to 510 W with 25.52% efficiency (about 255 W/m²).",
+   "New TAC cell technology combining TOPCon, heterojunction and back-contact designs.",
+   "Loses less power in the heat: −0.24%/°C, compared with about −0.26%/°C on earlier TOPCon panels.",
+   "Dual-glass, front side only; 1,762 × 1,134 × 30 mm and 22 kg.",
+   "40-year product warranty and 40-year linear power warranty.",
+   "Aimed first at Europe and Australia; price and availability not yet announced."
+  ],
+  "thailand_note": "For Thai roofs the lower heat loss is worth about 0.8% more output on a hot day. Until a Thai price and local stock exist, our picks for small roofs stay the AIKO and LONGi back-contact panels; for large roofs 650 W panels remain the lowest cost per watt.",
+  "sources": [
+   {
+    "name": "pv magazine",
+    "date": "20 October 2026",
+    "title": "JinkoSolar unveils 510 W rooftop solar module with 25.5% efficiency, 40-year warranty",
+    "url": "https://www.pv-magazine.com/2026/10/20/jinkosolar-unveils-510-w-rooftop-solar-module-with-25-5-efficiency-40-year-warranty/"
+   }
+  ]
+ },
+ {
+  "pdf": "Solar-ESS-News-JinkoSolar-No1-Seventh-Time-2025_Rev01_20261102.pdf",
+  "queued": "2026-11-02",
+  "publish_on": "2026-11-02",
+  "id": "jinko-no1-seventh-time-2025",
+  "topics": "adoption",
+  "eyebrow": "Market",
+  "title": "JinkoSolar stays the world's No. 1 solar panel maker for the 7th time",
+  "lede": "JinkoSolar shipped 86.8 GW of panels in 2025 and kept the top spot again, but sales fell and the company made a loss. Here is the news in short.",
+  "bullets": [
+   "2025 shipments: 86.8 GW of solar modules, the world's No. 1 module seller for the seventh time.",
+   "All-time total: more than 400 GW shipped by the end of Q1 2026, over 220 GW of them Tiger Neo panels.",
+   "Current flagship: Tiger Neo 3.0 N-type TOPCon panels, over 24.8% efficiency and up to 670 W.",
+   "Patents: more than 3,500 by the end of 2025, including over 700 for N-type TOPCon technology.",
+   "2026 plan: panels above 640 W expected to be more than 60% of shipments.",
+   "The other side: shipments fell about 7% from 92.9 GW in 2024 and the company made a loss, citing weak prices, rising costs and industry overcapacity.",
+   "Outlook: 75–85 GW of panel shipments expected in 2026; energy storage grew 420% to 5.2 GWh in 2025."
+  ],
+  "thailand_note": "pv magazine lists JinkoSolar itself as the author of the main article, so it is a company article rather than independent reporting. The decline and the loss come from TaiyangNews.",
+  "sources": [
+   {
+    "name": "pv magazine (article by JinkoSolar)",
+    "date": "1 June 2026",
+    "title": "JinkoSolar shipped 86.8 GW of modules in 2025, securing lead in global sales for the seventh time",
+    "url": "https://www.pv-magazine.com/2026/06/01/jinkosolar-shipped-86-8-gw-of-modules-in-2025-securing-lead-in-global-sales-for-the-seventh-time/"
+   },
+   {
+    "name": "TaiyangNews",
+    "date": "2026",
+    "title": "JinkoSolar Ships 86 GW Modules In FY2025; Reports Annual Loss",
+    "url": "https://taiyangnews.info/business/jinkosolar-fy-2025-financial-results"
+   }
+  ]
+ }
+]

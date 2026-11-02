@@ -60,5 +60,33 @@
     "url": "https://taiyangnews.info/business/jinkosolar-fy-2025-financial-results"
    }
   ]
+ },
+ {
+  "pdf": "Solar-ESS-Field-Note-Harmony-Huailan-Battery-Settings_Rev01_20261102.pdf",
+  "queued": "2026-11-02",
+  "publish_on": "2026-11-02",
+  "id": "harmony-huailan-battery-settings",
+  "topics": "storage",
+  "eyebrow": "Field note",
+  "title": "Harmony @Huailan: battery settings changed to buy less from the grid",
+  "lede": "Our review of this Chiang Mai eco-lodge's 10 kW solar + battery system showed its battery settings were costing money. On 2 November 2026 we changed them remotely. Here is what changed, in plain words.",
+  "bullets": [
+   "Before: the battery was held at 40% most of the day and night, and pushed up to 80% from 09:00 to 17:00.",
+   "Before: grid charging was on in every time slot, so the inverter bought grid power in the morning to fill the battery just before the sun could do it for free.",
+   "Now: the battery can run down to 25% in every time slot before the house draws from the grid.",
+   "Now: grid charging is off in every slot, so the battery is charged by the sun only. Time of Use stays on and selling to the grid stays off.",
+   "The inverter confirmed the new settings at 09:00 on 2 November 2026.",
+   "Expected result: less grid electricity bought, especially early in the morning, and more of the battery used every night.",
+   "Trade-off: in a night-time blackout there may be as little as 25% left in the battery; the owner can raise the night slots to 40% if backup matters more than savings."
+  ],
+  "thailand_note": "Many hybrid systems in Thailand are left on installer default settings. Checking the battery and grid-charge settings against how the building actually uses power is a free way to cut the electricity bill.",
+  "sources": [
+   {
+    "name": "Solar ESS Working Group",
+    "date": "2 November 2026",
+    "title": "Site monitoring data and inverter control log, Harmony @Huailan",
+    "url": "https://www.solaress.org/news.html"
+   }
+  ]
  }
 ]

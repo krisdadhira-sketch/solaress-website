@@ -109,9 +109,9 @@ T = {
     f_langs="Languages your team speaks", langs=["Thai", "English", "Chinese", "Burmese", "Lao"], f_avail="Availability", avails=["Full time", "Project based", "Weekends / part time"],
     f_legal="Legal name (person or company)", f_tax="Tax ID or national ID no.", f_cname="Contact person", f_phone="Phone", f_email="Email", f_line="LINE ID", f_addr="Address",
     f_rate="Typical labour rate, THB per kWp (optional, kept private)", f_ref="A past customer we may contact, with phone (optional)",
-    docs_fine="PDF for documents; JPG or PNG for photos. Keep all files together under 8 MB.",
-    f_logo="Profile photo or logo (published)", f_cert="Electrician certificate (PDF)", f_id="Company registration, or ID card for individuals (PDF)",
-    f_port="Portfolio of past works (PDF, optional)", f_ph1="Project photo 1 (published)", f_ph2="Project photo 2 (optional, published)", f_ph3="Project photo 3 (optional, published)",
+    docs_fine="All uploads are optional. PDF for documents; JPG or PNG for photos. Keep all files together under 8 MB. We may ask for your electrician certificate and ID before we approve your profile.",
+    f_logo="Profile photo or logo (optional, published)", f_cert="Electrician certificate (PDF, optional)", f_id="Company registration, or ID card for individuals (PDF, optional)",
+    f_port="Portfolio of past works (PDF, optional)", f_ph1="Project photo 1 (optional, published)", f_ph2="Project photo 2 (optional, published)", f_ph3="Project photo 3 (optional, published)",
     a_pub="I agree that Solar ESS may publish Sections 1 and 2 and the photos marked “published” on solaress.org. My contact details and documents stay private.",
     a_terms="I agree that jobs from this directory are contracted through Solar ESS as main contractor, and that I will use premium materials and have the work done by a qualified electrician.",
     a_true="I confirm the information is true, and Solar ESS may verify it, visit a site or contact past customers.",
@@ -160,9 +160,9 @@ T = {
     f_langs="ภาษาที่ทีมใช้ได้", langs=["ไทย", "อังกฤษ", "จีน", "พม่า", "ลาว"], f_avail="รูปแบบการรับงาน", avails=["เต็มเวลา", "รายโครงการ", "วันหยุด / พาร์ตไทม์"],
     f_legal="ชื่อตามกฎหมาย (บุคคลหรือบริษัท)", f_tax="เลขประจำตัวผู้เสียภาษีหรือเลขบัตรประชาชน", f_cname="ผู้ติดต่อ", f_phone="เบอร์โทร", f_email="อีเมล", f_line="LINE ID", f_addr="ที่อยู่",
     f_rate="ค่าแรงโดยทั่วไป บาทต่อ kWp (ไม่บังคับ เก็บเป็นความลับ)", f_ref="ลูกค้าเก่าที่เราติดต่อได้ พร้อมเบอร์โทร (ไม่บังคับ)",
-    docs_fine="เอกสารเป็น PDF รูปภาพเป็น JPG หรือ PNG ขนาดไฟล์รวมไม่เกิน 8 MB",
-    f_logo="รูปโปรไฟล์หรือโลโก้ (เผยแพร่)", f_cert="ใบรับรองช่างไฟฟ้า (PDF)", f_id="หนังสือรับรองบริษัท หรือบัตรประชาชนสำหรับบุคคล (PDF)",
-    f_port="ผลงานที่ผ่านมา (PDF ไม่บังคับ)", f_ph1="รูปผลงาน 1 (เผยแพร่)", f_ph2="รูปผลงาน 2 (ไม่บังคับ เผยแพร่)", f_ph3="รูปผลงาน 3 (ไม่บังคับ เผยแพร่)",
+    docs_fine="การแนบไฟล์ทั้งหมดไม่บังคับ เอกสารเป็น PDF รูปภาพเป็น JPG หรือ PNG ขนาดไฟล์รวมไม่เกิน 8 MB เราอาจขอใบรับรองช่างไฟฟ้าและบัตรประชาชนก่อนอนุมัติโปรไฟล์",
+    f_logo="รูปโปรไฟล์หรือโลโก้ (ไม่บังคับ เผยแพร่)", f_cert="ใบรับรองช่างไฟฟ้า (PDF ไม่บังคับ)", f_id="หนังสือรับรองบริษัท หรือบัตรประชาชนสำหรับบุคคล (PDF ไม่บังคับ)",
+    f_port="ผลงานที่ผ่านมา (PDF ไม่บังคับ)", f_ph1="รูปผลงาน 1 (ไม่บังคับ เผยแพร่)", f_ph2="รูปผลงาน 2 (ไม่บังคับ เผยแพร่)", f_ph3="รูปผลงาน 3 (ไม่บังคับ เผยแพร่)",
     a_pub="ข้าพเจ้ายินยอมให้ Solar ESS เผยแพร่ข้อมูลส่วนที่ 1 และ 2 และรูปภาพที่ระบุว่า “เผยแพร่” บน solaress.org โดยข้อมูลติดต่อและเอกสารของข้าพเจ้าจะไม่ถูกเผยแพร่",
     a_terms="ข้าพเจ้ายอมรับว่างานจากหน้านี้ทำสัญญาผ่าน Solar ESS ในฐานะผู้รับเหมาหลัก และจะใช้วัสดุคุณภาพ โดยให้ช่างไฟฟ้าที่มีใบรับรองเป็นผู้ทำงาน",
     a_true="ข้าพเจ้ายืนยันว่าข้อมูลเป็นความจริง และยินยอมให้ Solar ESS ตรวจสอบ เยี่ยมชมหน้างาน หรือติดต่อลูกค้าเก่า",
@@ -369,12 +369,12 @@ def build(lang):
            f'</fieldset>'
            # 4 documents
            f'<fieldset><legend>{esc(t["s4"])}</legend><p class="fine">{esc(t["docs_fine"])}</p>'
-           f'<label for="r-logo">{esc(t["f_logo"])}<input id="r-logo" name="profile-photo" type="file" accept=".jpg,.jpeg,.png" required></label>'
-           f'<label for="r-cert">{esc(t["f_cert"])}<input id="r-cert" name="electrician-certificate" type="file" accept=".pdf" required></label>'
-           f'<label for="r-id">{esc(t["f_id"])}<input id="r-id" name="registration-or-id" type="file" accept=".pdf" required></label>'
+           f'<label for="r-logo">{esc(t["f_logo"])}<input id="r-logo" name="profile-photo" type="file" accept=".jpg,.jpeg,.png"></label>'
+           f'<label for="r-cert">{esc(t["f_cert"])}<input id="r-cert" name="electrician-certificate" type="file" accept=".pdf"></label>'
+           f'<label for="r-id">{esc(t["f_id"])}<input id="r-id" name="registration-or-id" type="file" accept=".pdf"></label>'
            f'<label for="r-lic">{esc(t["f_lic"])}<input id="r-lic" name="licences-certificates" type="file" accept=".pdf"></label>'
            f'<label for="r-port">{esc(t["f_port"])}<input id="r-port" name="portfolio" type="file" accept=".pdf"></label>'
-           f'<label for="r-ph1">{esc(t["f_ph1"])}<input id="r-ph1" name="project-photo-1" type="file" accept=".jpg,.jpeg,.png" required></label>'
+           f'<label for="r-ph1">{esc(t["f_ph1"])}<input id="r-ph1" name="project-photo-1" type="file" accept=".jpg,.jpeg,.png"></label>'
            f'<label for="r-ph2">{esc(t["f_ph2"])}<input id="r-ph2" name="project-photo-2" type="file" accept=".jpg,.jpeg,.png"></label>'
            f'<label for="r-ph3">{esc(t["f_ph3"])}<input id="r-ph3" name="project-photo-3" type="file" accept=".jpg,.jpeg,.png"></label>'
            f'</fieldset>'

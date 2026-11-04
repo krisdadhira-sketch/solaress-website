@@ -24,6 +24,13 @@
     if (L(p, 'serves')) dl += '<dt>' + esc(T.serves) + '</dt><dd>' + esc(L(p, 'serves')) + '</dd>';
     if (p.max_size) dl += '<dt>' + esc(T.max) + '</dt><dd>' + esc((I.sizes || {})[p.max_size] || p.max_size) + '</dd>';
     if (p.brands && p.brands.length) dl += '<dt>' + esc(T.brands_l) + '</dt><dd>' + esc(p.brands.join(', ')) + '</dd>';
+    var eng = (p.engineering || []).map(function (s) { return (I.eng || {})[s] || s; }).join(', ');
+    var saf = (p.safety || []).map(function (s) { return (I.safety || {})[s] || s; }).join(', ');
+    var av = I.avail || {};
+    function q(a, lv) { var s = av[a] || ''; return s ? s + (lv ? ': ' + lv : '') : ''; }
+    var engT = q(p.engineer, eng), safT = q(p.safety_officer, saf);
+    if (engT) dl += '<dt>' + esc(T.eng_l) + '</dt><dd>' + esc(engT) + '</dd>';
+    if (safT) dl += '<dt>' + esc(T.safety_l) + '</dt><dd>' + esc(safT) + '</dd>';
     if (tools) dl += '<dt>' + esc(T.tools_l) + '</dt><dd>' + esc(tools) + '</dd>';
     if (langs) dl += '<dt>' + esc(T.langs_l) + '</dt><dd>' + esc(langs) + '</dd>';
     return '<article class="pcard" id="partner-' + esc(p.id) + '">' +

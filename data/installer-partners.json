@@ -1,5 +1,5 @@
 {
-  "_howto": "Approved installer partners shown on /partners.html and /th/partners.html. Add one object per approved registration to 'partners'. Never add phone, email, LINE, address or ID numbers here: this file is public. Put photos in /images/partners/. region: north | northeast | central | bangkok | east | west | south. services: res-ongrid hybrid offgrid ci ground battery ev electrical structure cleaning om troubleshoot. max_size: 10 | 50 | 200 | 1000 | 1000+. tools: insulation earth clamp ivcurve thermal drone access vehicle. Fields ending _th are the Thai text (fall back to English when missing).",
+  "_howto": "Approved installer partners shown on /partners.html and /th/partners.html. Add one object per approved registration to 'partners'. Never add phone, email, LINE, address or ID numbers here: this file is public. Put photos in /images/partners/. region: north | northeast | central | bangkok | east | west | south. services: res-ongrid hybrid offgrid ci ground battery ev electrical structure cleaning om troubleshoot. max_size: 10 | 50 | 200 | 1000 | 1000+. tools: insulation earth clamp ivcurve thermal drone access vehicle. Fields ending _th are the Thai text (fall back to English when missing). engineering (COE licence): associate professional senior adjunct. safety (จป.): professional management adv-technical technical supervisory. engineer and safety_officer (can they provide one on a job): in-team | can-arrange | no; levels go in engineering / safety.",
   "_example": {
     "id": "cr-001",
     "name": "Example Solar Team",
@@ -13,19 +13,44 @@
     "district_th": "เมือง",
     "serves": "Phayao, Lampang",
     "serves_th": "พะเยา ลำปาง",
-    "services": ["res-ongrid", "hybrid", "cleaning"],
+    "services": [
+      "res-ongrid",
+      "hybrid",
+      "cleaning"
+    ],
     "max_size": "50",
     "years": 6,
     "team": 4,
     "electricians": 2,
     "projects": 80,
     "kwp": 450,
-    "brands": ["Solis", "Deye"],
-    "tools": ["insulation", "clamp", "thermal"],
+    "brands": [
+      "Solis",
+      "Deye"
+    ],
+    "tools": [
+      "insulation",
+      "clamp",
+      "thermal"
+    ],
+    "engineer": "in-team",
+    "engineering": [
+      "associate"
+    ],
+    "safety_officer": "can-arrange",
+    "safety": [
+      "technical"
+    ],
     "tax_invoice": false,
     "insured": true,
-    "languages": ["Thai", "English"],
-    "languages_th": ["ไทย", "อังกฤษ"],
+    "languages": [
+      "Thai",
+      "English"
+    ],
+    "languages_th": [
+      "ไทย",
+      "อังกฤษ"
+    ],
     "intro": "Residential hybrid systems and battery retrofits around Chiang Rai.",
     "intro_th": "ระบบไฮบริดสำหรับบ้านและการเพิ่มแบตเตอรี่ในพื้นที่เชียงราย",
     "logo": "/images/partners/cr-001-logo.jpg",

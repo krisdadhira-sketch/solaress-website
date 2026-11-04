@@ -16,3 +16,10 @@ Regional directory of approved subcontract installers, a registration form (`ins
 - Directory data: `data/installer-partners.json` (public file: never put phone, email, LINE, address or ID numbers in it). Add one object per approved registration; `_example` shows the fields. Photos go in `images/partners/`.
 - Page text and forms: edit `tools/partners_page.py`, then run `python3 tools/partners_page.py`. Card rendering: `partners.js`.
 - Add form notifications for `installer-partner` and `installer-request` in Netlify (Forms > Form notifications > Email) to get each submission by email.
+
+## TSIA members & installer partners: review and publish (/members-admin.html)
+
+- Every TSIA membership (`tsia-membership`) and installer-partner (`installer-partner`) submission is saved as *pending* by `netlify/functions/submission-created.mjs` (Netlify Blobs store `members`); uploaded photos are copied at the same time.
+- Review at **/members-admin.html** (noindex). Approve → the profile appears at once on /team.html#network (TSIA, via `tsia.js`) or /partners.html (via `partners.js`). Reject, hide or move back to review at any time.
+- Public API `/api/members?a=public&type=tsia|partner` returns only public fields; phone, email, LINE, address, tax/ID numbers and documents are never returned.
+- Admin password: `MEMBERS_ADMIN_PASSWORD` in Netlify environment variables; if unset, the vocabulary teacher password is used.

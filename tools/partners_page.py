@@ -252,7 +252,7 @@ def build(lang):
     src = (ROOT / ("th/team.html" if th else "team.html")).read_text(encoding="utf-8")
     head_end = src.index('<section class="dark band"')
     head = src[:head_end]
-    foot = src[src.index("<footer>"):]
+    foot = re.sub(r'\n?<script src="/tsia\.js[^>]*></script>', "", src[src.index("<footer>"):])
 
     # page meta
     url = f"https://solaress.org{t['pre']}/partners"
@@ -391,7 +391,7 @@ def build(lang):
     script = ("<script>window.PARTNER_I18N=" + json.dumps({
         "lang": lang, "t": labels,
         "regions": dict(regions), "services": dict(svcs), "tools": dict(tools), "sizes": dict(sizes), "eng": dict(eng), "safety": dict(safety), "avail": {"in-team": t["av_short"][0], "can-arrange": t["av_short"][1]},
-    }, ensure_ascii=False) + ";</script>\n<script src=\"/partners.js?v=5\" defer></script>\n")
+    }, ensure_ascii=False) + ";</script>\n<script src=\"/partners.js?v=6\" defer></script>\n")
 
     page = head + hero + howsec + directory + request + reg + script + foot
     out = ROOT / ("th/partners.html" if th else "partners.html")

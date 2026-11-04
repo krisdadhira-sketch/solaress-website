@@ -86,11 +86,12 @@
   if (fReg) fReg.addEventListener('change', render);
   if (fSvc) fSvc.addEventListener('change', render);
 
-  fetch('/data/installer-partners.json', { cache: 'no-cache' })
-    .then(function (r) { return r.ok ? r.json() : { partners: [] }; })
-    .catch(function () { return { partners: [] }; })
-    .then(function (d) {
-      partners = (d && d.partners) || [];
+  var getJSON = function (u) { return fetch(u, { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; }); };
+  // approved registrations (reviewed at /members-admin.html) plus any entries added by hand to the JSON file
+  Promise.all([getJSON('/data/installer-partners.json'), getJSON('/api/members?a=public&type=partner')])
+    .then(function (res) {
+      var seen = {};
+      partners = ((res[0] && res[0].partners) || []).concat((res[1] && res[1].items) || []).filter(function (p) { if (!p || !p.id || seen[p.id]) return false; seen[p.id] = 1; return true; });
       partners.sort(function (a, b) { return (b.projects || 0) - (a.projects || 0); });
       render(); fillSelect();
       var m = location.hash.match(/^#partner-(.+)$/);

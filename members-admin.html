@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Review TSIA &amp; Installer Partner Applications | Solar ESS</title>
+
+<style>
+:root{--navy:#0A1230;--blue:#2563EB;--ink:#0A0E2E;--mute:#3E548E;--line:#DEE3ED;--paper:#F6F8FC;--ok:#15803D;--no:#B42318}
+*{box-sizing:border-box}body{margin:0;font:15px/1.5 "IBM Plex Sans Thai","Inter",system-ui,sans-serif;color:var(--ink);background:var(--paper)}
+header{background:var(--navy);color:#fff;padding:14px 20px;display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+header b{font-size:18px}header a{color:#C7D2FE}
+main{max-width:1100px;margin:0 auto;padding:20px}
+.login{max-width:420px;margin:60px auto;background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px}
+input,select,button{font:inherit}input[type=password]{width:100%;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;margin:10px 0}
+button{border:0;border-radius:10px;padding:9px 16px;font-weight:600;cursor:pointer;background:var(--blue);color:#fff}
+button.ok{background:var(--ok)}button.no{background:var(--no)}button.ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line)}
+.bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
+.bar select{padding:8px 10px;border:1.5px solid var(--line);border-radius:10px;background:#fff}
+.tabs button{background:#fff;color:var(--ink);border:1.5px solid var(--line)}.tabs button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:16px}
+.head{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:flex-start}
+.head h3{margin:0;font-size:19px}.meta{color:var(--mute);font-size:13px}
+.st{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:99px;padding:3px 10px;color:#fff}
+.st.pending{background:#B45309}.st.approved{background:var(--ok)}.st.rejected{background:var(--no)}.st.hidden{background:#64748B}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:12px}
+.cols h4{margin:0 0 6px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.pub{background:#EEF2FF;border-radius:12px;padding:12px}.priv{background:#FFF7ED;border-radius:12px;padding:12px}
+dl{display:grid;grid-template-columns:auto 1fr;gap:3px 12px;margin:0;font-size:14px}dt{color:var(--mute)}dd{margin:0;word-break:break-word}
+.imgs{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.imgs img{height:110px;border-radius:10px;border:1px solid var(--line)}
+.acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.empty{color:var(--mute);text-align:center;padding:40px}
+.err{color:var(--no)}
+@media(max-width:760px){.cols{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><b>Solar ESS · Review applications</b><span><a href="/team.html#network">TSIA page</a> · <a href="/partners.html">Installer partners page</a></span></header>
+<main>
+<div class="login" id="login">
+  <h2 style="margin-top:0">Admin sign-in</h2>
+  <p class="meta">Same password as the vocabulary teacher dashboard, unless MEMBERS_ADMIN_PASSWORD is set in Netlify.</p>
+  <input type="password" id="pw" placeholder="Admin password" autocomplete="current-password">
+  <button id="go">Sign in</button> <span id="lerr" class="err"></span>
+</div>
+<div id="app" hidden>
+  <div class="bar">
+    <span class="tabs"><button data-t="tsia" class="on">TSIA members</button> <button data-t="partner">Installer partners</button></span>
+    <select id="filter"><option value="pending">Waiting for review</option><option value="approved">Published</option><option value="rejected">Rejected</option><option value="hidden">Hidden</option><option value="">All</option></select>
+    <button class="ghost" id="reload">Refresh</button>
+    <span class="meta" id="count"></span>
+  </div>
+  <div id="list"></div>
+</div>
+</main>
+<script>
+(function(){
+  var PW = '', items = [], tab = 'tsia';
+  try { PW = sessionStorage.getItem('members-admin-pw') || ''; } catch(e) {}
+  var $ = function(id){ return document.getElementById(id); };
+  function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  function val(v){ if (v && typeof v === 'object' && !Array.isArray(v)) return v.url ? '<a href="'+esc(v.url)+'" target="_blank" rel="noopener">'+esc(v.filename || 'file')+'</a>' : esc(JSON.stringify(v)); if (Array.isArray(v)) return esc(v.join(', ')); var s = String(v||''); return /^https?:\/\//.test(s) ? '<a href="'+esc(s)+'" target="_blank" rel="noopener">open file</a>' : esc(s); }
+  function api(q, opt){ opt = opt || {}; opt.headers = Object.assign({'x-admin-password': PW, 'content-type':'application/json'}, opt.headers||{}); return fetch('/api/members?' + q, opt).then(function(r){ return r.json().then(function(j){ if (!r.ok) throw new Error(j.error || r.status); return j; }); }); }
+
+  var PUB = {
+    tsia: ['organisation','business-type','province','regions','services','year-established','team-size','certified-electricians','projects-completed','total-kwp-installed','brands','public-intro'],
+    partner: ['display-name','partner-type','region','base-province','base-district','provinces-served','services','max-system-size','introduction','years-experience','team-size','certified-electricians','projects-completed','total-kwp-installed','inverter-brands','other-inverter-brands','battery-brands','tools','engineer-availability','engineering-licence','safety-officer-availability','safety-officer','work-at-height-availability','work-at-height-certified','tax-invoice','insurance','languages','availability']
+  };
+  var IMG = { tsia: ['photo-1','photo-2','photo-3'], partner: ['profile-photo','project-photo-1','project-photo-2','project-photo-3'] };
+
+  function dl(d, keys){ return '<dl>' + keys.filter(function(k){ return d[k] != null && d[k] !== ''; }).map(function(k){ return '<dt>'+esc(k)+'</dt><dd>'+val(d[k])+'</dd>'; }).join('') + '</dl>'; }
+
+  function card(x){
+    var d = x.data || {}, pub = PUB[x.type] || [];
+    var priv = Object.keys(d).filter(function(k){ return pub.indexOf(k) < 0 && IMG[x.type].indexOf(k) < 0; });
+    var name = d.organisation || d['display-name'] || '(no name)';
+    var imgs = (x.images || []).map(function(f){ return '<img data-src="/api/members?a=img&id='+encodeURIComponent(x.id)+'&f='+f+'" alt="'+esc(f)+'">'; }).join('');
+    var b = function(st, cls, label){ return x.status === st ? '' : '<button class="'+cls+'" data-id="'+esc(x.id)+'" data-st="'+st+'">'+label+'</button>'; };
+    return '<div class="card"><div class="head"><div><h3>'+esc(name)+'</h3><div class="meta">Received '+esc(new Date(x.created).toLocaleString('en-GB'))+(x.approved ? ' · approved '+esc(new Date(x.approved).toLocaleDateString('en-GB')) : '')+' · '+esc(d.language||'')+'</div></div><span class="st '+esc(x.status)+'">'+esc(x.status)+'</span></div>'
+      + '<div class="cols"><div class="pub"><h4>Will be published</h4>'+dl(d, pub)+(imgs ? '<div class="imgs">'+imgs+'</div>' : '')+'</div>'
+      + '<div class="priv"><h4>Private — never published</h4>'+dl(d, priv)+'</div></div>'
+      + '<div class="acts">'+b('approved','ok','Approve & publish')+b('rejected','no','Reject')+(x.status==='approved' ? b('hidden','ghost','Hide from website') : '')+(x.status!=='pending' ? b('pending','ghost','Move back to review') : '')+'</div></div>';
+  }
+
+  function render(){
+    var f = $('filter').value;
+    var list = items.filter(function(x){ return x.type === tab && (!f || x.status === f); });
+    var waiting = items.filter(function(x){ return x.status === 'pending'; });
+    $('count').textContent = waiting.length + ' waiting for review in total';
+    $('list').innerHTML = list.length ? list.map(card).join('') : '<div class="empty">Nothing here.</div>';
+    // load preview photos with the admin password (they are not public until approved)
+    Array.prototype.forEach.call(document.querySelectorAll('img[data-src]'), function(im){
+      fetch(im.getAttribute('data-src'), {headers:{'x-admin-password':PW}}).then(function(r){ return r.ok ? r.blob() : null; }).then(function(bl){ if (bl) im.src = URL.createObjectURL(bl); });
+    });
+  }
+  function load(){ return api('a=list').then(function(j){ items = j.items || []; render(); }); }
+
+  function signin(){
+    PW = $('pw').value || PW;
+    api('a=list').then(function(j){
+      try { sessionStorage.setItem('members-admin-pw', PW); } catch(e) {}
+      $('login').hidden = true; $('app').hidden = false; items = j.items || []; render();
+    }).catch(function(e){ $('lerr').textContent = e.message; });
+  }
+  $('go').onclick = signin;
+  $('pw').addEventListener('keydown', function(e){ if (e.key === 'Enter') signin(); });
+  $('reload').onclick = load;
+  $('filter').onchange = render;
+  document.querySelector('.tabs').addEventListener('click', function(e){
+    var t = e.target.getAttribute('data-t'); if (!t) return; tab = t;
+    Array.prototype.forEach.call(document.querySelectorAll('.tabs button'), function(b){ b.classList.toggle('on', b === e.target); });
+    render();
+  });
+  $('list').addEventListener('click', function(e){
+    var id = e.target.getAttribute('data-id'), st = e.target.getAttribute('data-st');
+    if (!id) return;
+    if (st === 'approved' && !confirm('Publish this profile on solaress.org now? Contact details stay private.')) return;
+    e.target.disabled = true;
+    api('a=set', {method:'POST', body: JSON.stringify({id:id, status:st})}).then(load).catch(function(err){ alert(err.message); e.target.disabled = false; });
+  });
+  if (PW) { $('pw').value = PW; signin(); }
+})();
+</script>
+</body>
+</html>

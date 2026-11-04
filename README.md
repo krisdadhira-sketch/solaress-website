@@ -22,4 +22,5 @@ Regional directory of approved subcontract installers, a registration form (`ins
 - Every TSIA membership (`tsia-membership`) and installer-partner (`installer-partner`) submission is saved as *pending* by `netlify/functions/submission-created.mjs` (Netlify Blobs store `members`); uploaded photos are copied at the same time.
 - Review at **/members-admin.html** (noindex). Approve → the profile appears at once on /team.html#network (TSIA, via `tsia.js`) or /partners.html (via `partners.js`). Reject, hide or move back to review at any time.
 - Public API `/api/members?a=public&type=tsia|partner` returns only public fields; phone, email, LINE, address, tax/ID numbers and documents are never returned.
+- Delete: a rejected or hidden entry can be removed for good with "Delete permanently" (click twice); its photos are deleted too. Published or waiting entries cannot be deleted.
 - Admin password: `MEMBERS_ADMIN_PASSWORD` in Netlify environment variables; if unset, the vocabulary teacher password is used.

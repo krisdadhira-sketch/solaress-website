@@ -80,7 +80,7 @@ dl{display:grid;grid-template-columns:auto 1fr;gap:3px 12px;margin:0;font-size:1
     return '<div class="card"><div class="head"><div><h3>'+esc(name)+'</h3><div class="meta">Received '+esc(new Date(x.created).toLocaleString('en-GB'))+(x.approved ? ' · approved '+esc(new Date(x.approved).toLocaleDateString('en-GB')) : '')+' · '+esc(d.language||'')+'</div></div><span class="st '+esc(x.status)+'">'+esc(x.status)+'</span></div>'
       + '<div class="cols"><div class="pub"><h4>Will be published</h4>'+dl(d, pub)+(imgs ? '<div class="imgs">'+imgs+'</div>' : '')+'</div>'
       + '<div class="priv"><h4>Private — never published</h4>'+dl(d, priv)+'</div></div>'
-      + '<div class="acts">'+b('approved','ok','Approve & publish')+b('rejected','no','Reject')+(x.status==='approved' ? b('hidden','ghost','Hide from website') : '')+(x.status!=='pending' ? b('pending','ghost','Move back to review') : '')+'</div></div>';
+      + '<div class="acts">'+b('approved','ok','Approve & publish')+b('rejected','no','Reject')+(x.status==='approved' ? b('hidden','ghost','Hide from website') : '')+(x.status!=='pending' ? b('pending','ghost','Move back to review') : '')+((x.status==='rejected'||x.status==='hidden') ? '<button class="no" data-id="'+esc(x.id)+'" data-del="1">Delete permanently</button>' : '')+'</div></div>';
   }
 
   function render(){
@@ -115,6 +115,20 @@ dl{display:grid;grid-template-columns:auto 1fr;gap:3px 12px;margin:0;font-size:1
   $('list').addEventListener('click', function(e){
     var id = e.target.getAttribute('data-id'), st = e.target.getAttribute('data-st');
     if (!id) return;
+    if (e.target.getAttribute('data-del')) {
+      var d = e.target;
+      if (!d.getAttribute('data-armed')) {
+        d.setAttribute('data-armed', '1'); d.textContent = 'Click again to delete for good';
+        setTimeout(function(){ if (d.isConnected && d.getAttribute('data-armed')) { d.removeAttribute('data-armed'); d.textContent = 'Delete permanently'; } }, 6000);
+        return;
+      }
+      d.disabled = true; d.textContent = 'Deleting…';
+      api('a=delete', {method:'POST', body: JSON.stringify({id:id})}).then(load).catch(function(err){
+        d.disabled = false; d.removeAttribute('data-armed'); d.textContent = 'Delete permanently';
+        var m = document.createElement('p'); m.style.color = '#b42318'; m.textContent = 'Not deleted: ' + err.message; d.parentNode.appendChild(m);
+      });
+      return;
+    }
     var b = e.target;
     // Ask on the page itself (no pop-up): first click arms the button, second click publishes.
     if (st === 'approved' && !b.getAttribute('data-armed')) {

@@ -7,6 +7,7 @@
 // Admin (header "x-admin-password"):
 //   GET  /api/members?a=list                           -> every submission with all fields
 //   POST /api/members?a=set {id, status}               -> status: approved | rejected | pending | hidden
+//   POST /api/members?a=delete {id}                     -> permanently remove a rejected/hidden entry and its photos
 //   GET  /api/members?a=img&id=..&f=..                 -> any photo (preview before approval)
 //
 // Admin password: MEMBERS_ADMIN_PASSWORD environment variable in Netlify; if not set, the same
@@ -110,6 +111,19 @@ export default async (req) => {
     if (b.status === "approved" && !sub.approved) sub.approved = new Date().toISOString();
     await s.setJSON(key, sub);
     return json({ ok: true, item: sub });
+  }
+
+  // Permanently remove a rejected or hidden entry and its photos (published or waiting entries cannot be deleted).
+  if (a === "delete" && req.method === "POST") {
+    let b = {};
+    try { b = await req.json(); } catch {}
+    const id = String(b.id || ""), key = "sub/" + id;
+    const sub = await s.get(key, { type: "json" });
+    if (!sub) return json({ error: "not found" }, 404);
+    if (!["rejected", "hidden"].includes(sub.status)) return json({ error: "Reject or hide it first, then delete." }, 400);
+    for (const f of sub.images || []) await s.delete(`img/${id}/${f}`);
+    await s.delete(key);
+    return json({ ok: true });
   }
 
   return json({ error: "unknown action" }, 400);

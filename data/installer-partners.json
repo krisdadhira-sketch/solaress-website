@@ -1,5 +1,5 @@
 {
-  "_howto": "Approved installer partners shown on /partners.html and /th/partners.html. Add one object per approved registration to 'partners'. Never add phone, email, LINE, address or ID numbers here: this file is public. Put photos in /images/partners/. region: north | northeast | central | bangkok | east | west | south. services: res-ongrid hybrid offgrid ci ground battery ev electrical structure cleaning om troubleshoot. max_size: 10 | 50 | 200 | 1000 | 1000+. tools: insulation earth clamp ivcurve thermal drone access vehicle. Fields ending _th are the Thai text (fall back to English when missing). engineering (COE licence): associate professional senior adjunct. safety (จป.): professional management adv-technical technical supervisory. engineer and safety_officer (can they provide one on a job): in-team | can-arrange | no; levels go in engineering / safety.",
+  "_howto": "Approved installer partners shown on /partners.html and /th/partners.html. Add one object per approved registration to 'partners'. Never add phone, email, LINE, address or ID numbers here: this file is public. Put photos in /images/partners/. region: north | northeast | central | bangkok | east | west | south. services: res-ongrid hybrid offgrid ci ground battery ev electrical structure cleaning om troubleshoot. max_size: 10 | 50 | 200 | 1000 | 1000+. tools: insulation earth clamp ivcurve thermal drone access vehicle. Fields ending _th are the Thai text (fall back to English when missing). engineering (COE licence): associate professional senior adjunct. safety (จป.): professional management adv-technical technical supervisory. engineer and safety_officer (can they provide one on a job): in-team | can-arrange | no; levels go in engineering / safety. work_at_height: in-team | can-arrange | no; work_at_height_certified: number of certified members.",
   "_example": {
     "id": "cr-001",
     "name": "Example Solar Team",
@@ -41,6 +41,8 @@
     "safety": [
       "technical"
     ],
+    "work_at_height": "in-team",
+    "work_at_height_certified": 3,
     "tax_invoice": false,
     "insured": true,
     "languages": [

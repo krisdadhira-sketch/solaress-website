@@ -104,7 +104,7 @@ T = {
     f_region="Main region", f_prov="Base province", f_amphoe="Base district (amphoe)", f_serves="Other provinces you work in (optional)",
     f_svc="Services you offer", f_size="Largest single system you can install", f_bio="Short introduction (up to 400 characters): what you do best and the kind of jobs you want",
     f_years="Years installing solar", f_team="Installers in your team", f_elec="Certified electricians in your team", f_proj="Solar projects completed (approx.)", f_kwp="Total capacity installed (kWp, approx.)",
-    f_brands="Inverter brands you have installed", f_other_brand="Other brands (optional)", f_batt="Battery brands you have installed (optional)", f_tools="Tools and equipment you own", f_eng_q="Can you provide a licensed engineer (COE licence for professional practice) on a job?", f_eng="If yes, which licence level(s)?", f_safety_q="Can you provide a qualified safety officer (จป.) on a job?", f_safety="If yes, which level(s)?", av=["Yes, in our team", "Yes, we can arrange one for a job", "Not available"], av_short=["In team", "Can arrange", ""], f_lic="Copies of engineering licence / safety officer certificates (PDF, optional, kept private)", eng_l="Engineers", safety_l="Safety officers",
+    f_brands="Inverter brands you have installed", f_other_brand="Other brands (optional)", f_batt="Battery brands you have installed (optional)", f_tools="Tools and equipment you own", f_eng_q="Can you provide a licensed engineer (COE licence for professional practice) on a job?", f_eng="If yes, which licence level(s)?", f_safety_q="Can you provide a qualified safety officer (จป.) on a job?", f_safety="If yes, which level(s)?", f_wah_q="Can you provide Work at Height certified workers on a job?", f_wah_n="Work at Height certified members in your team", wah_l="Work at height", av=["Yes, in our team", "Yes, we can arrange one for a job", "Not available"], av_short=["In team", "Can arrange", ""], f_lic="Copies of engineering licence, safety officer and Work at Height certificates (PDF, optional, kept private)", eng_l="Engineers", safety_l="Safety officers",
     f_vat="Can you issue a tax invoice (VAT registered)?", yes="Yes", no="No", f_ins="Do you carry work or liability insurance?",
     f_langs="Languages your team speaks", langs=["Thai", "English", "Chinese", "Burmese", "Lao"], f_avail="Availability", avails=["Full time", "Project based", "Weekends / part time"],
     f_legal="Legal name (person or company)", f_tax="Tax ID or national ID no.", f_cname="Contact person", f_phone="Phone", f_email="Email", f_line="LINE ID", f_addr="Address",
@@ -155,7 +155,7 @@ T = {
     f_region="ภูมิภาคหลัก", f_prov="จังหวัดที่ตั้ง", f_amphoe="อำเภอที่ตั้ง", f_serves="จังหวัดอื่นที่รับงาน (ไม่บังคับ)",
     f_svc="บริการที่คุณให้", f_size="ขนาดระบบใหญ่ที่สุดต่อหนึ่งงานที่ติดตั้งได้", f_bio="แนะนำตัวสั้น ๆ (ไม่เกิน 400 ตัวอักษร): งานที่ถนัดและงานที่อยากรับ",
     f_years="ประสบการณ์ติดตั้งโซลาร์ (ปี)", f_team="จำนวนช่างในทีม", f_elec="ช่างไฟฟ้าที่มีใบรับรองในทีม", f_proj="โครงการโซลาร์ที่ทำเสร็จ (โดยประมาณ)", f_kwp="กำลังติดตั้งรวม (kWp โดยประมาณ)",
-    f_brands="ยี่ห้ออินเวอร์เตอร์ที่เคยติดตั้ง", f_other_brand="ยี่ห้ออื่น (ไม่บังคับ)", f_batt="ยี่ห้อแบตเตอรี่ที่เคยติดตั้ง (ไม่บังคับ)", f_tools="เครื่องมือและอุปกรณ์ที่มี", f_eng_q="จัดหาวิศวกรที่มีใบอนุญาตประกอบวิชาชีพวิศวกรรมควบคุม (สภาวิศวกร) ประจำงานได้หรือไม่", f_eng="ถ้าได้ ระดับใบอนุญาต", f_safety_q="จัดหาเจ้าหน้าที่ความปลอดภัยในการทำงาน (จป.) ประจำงานได้หรือไม่", f_safety="ถ้าได้ ระดับ จป.", av=["ได้ มีในทีม", "ได้ จัดหามาประจำงานได้", "ไม่มี"], av_short=["มีในทีม", "จัดหาได้", ""], f_lic="สำเนาใบอนุญาตวิศวกร / ใบรับรอง จป. (PDF ไม่บังคับ เก็บเป็นความลับ)", eng_l="วิศวกร", safety_l="จป.",
+    f_brands="ยี่ห้ออินเวอร์เตอร์ที่เคยติดตั้ง", f_other_brand="ยี่ห้ออื่น (ไม่บังคับ)", f_batt="ยี่ห้อแบตเตอรี่ที่เคยติดตั้ง (ไม่บังคับ)", f_tools="เครื่องมือและอุปกรณ์ที่มี", f_eng_q="จัดหาวิศวกรที่มีใบอนุญาตประกอบวิชาชีพวิศวกรรมควบคุม (สภาวิศวกร) ประจำงานได้หรือไม่", f_eng="ถ้าได้ ระดับใบอนุญาต", f_safety_q="จัดหาเจ้าหน้าที่ความปลอดภัยในการทำงาน (จป.) ประจำงานได้หรือไม่", f_safety="ถ้าได้ ระดับ จป.", f_wah_q="จัดหาช่างที่ผ่านการอบรมการทำงานบนที่สูง (Work at Height) ประจำงานได้หรือไม่", f_wah_n="จำนวนช่างในทีมที่ผ่านการอบรมการทำงานบนที่สูง", wah_l="งานบนที่สูง", av=["ได้ มีในทีม", "ได้ จัดหามาประจำงานได้", "ไม่มี"], av_short=["มีในทีม", "จัดหาได้", ""], f_lic="สำเนาใบอนุญาตวิศวกร ใบรับรอง จป. และใบรับรองการทำงานบนที่สูง (PDF ไม่บังคับ เก็บเป็นความลับ)", eng_l="วิศวกร", safety_l="จป.",
     f_vat="ออกใบกำกับภาษีได้หรือไม่ (จดทะเบียนภาษีมูลค่าเพิ่ม)", yes="ได้", no="ไม่ได้", f_ins="มีประกันภัยงานหรือประกันความรับผิดหรือไม่",
     f_langs="ภาษาที่ทีมใช้ได้", langs=["ไทย", "อังกฤษ", "จีน", "พม่า", "ลาว"], f_avail="รูปแบบการรับงาน", avails=["เต็มเวลา", "รายโครงการ", "วันหยุด / พาร์ตไทม์"],
     f_legal="ชื่อตามกฎหมาย (บุคคลหรือบริษัท)", f_tax="เลขประจำตัวผู้เสียภาษีหรือเลขบัตรประชาชน", f_cname="ผู้ติดต่อ", f_phone="เบอร์โทร", f_email="อีเมล", f_line="LINE ID", f_addr="ที่อยู่",
@@ -348,6 +348,8 @@ def build(lang):
            f'<div><p class="grp">{esc(t["f_eng"])}</p>{chks("engineering-licence", eng)}</div>'
            f'<div><p class="grp">{esc(t["f_safety_q"])}</p>{radios("safety-officer-availability", avail3)}</div>'
            f'<div><p class="grp">{esc(t["f_safety"])}</p>{chks("safety-officer", safety)}</div>'
+           f'<div><p class="grp">{esc(t["f_wah_q"])}</p>{radios("work-at-height-availability", avail3)}</div>'
+           f'<label for="r-wah">{esc(t["f_wah_n"])}<input id="r-wah" name="work-at-height-certified" type="number" min="0"></label>'
            f'<div><p class="grp">{esc(t["f_vat"])}</p>{radios("tax-invoice", yn)}</div>'
            f'<div><p class="grp">{esc(t["f_ins"])}</p>{radios("insurance", yn)}</div>'
            f'<div><p class="grp">{esc(t["f_langs"])}</p>{chks("languages", lang_items, required_one=True, cols3=True)}</div>'
@@ -384,12 +386,12 @@ def build(lang):
            f'</fieldset>'
            f'<button class="btn" type="submit">{esc(t["reg_btn"])}</button></form></div></section>\n')
 
-    labels = {k: t[k] for k in ["empty", "empty_cta", "verified", "base", "serves", "max", "yrs", "team", "elec", "proj", "kwp", "brands_l", "tools_l", "vat", "ins", "langs_l", "req_btn", "eng_l", "safety_l"]}
+    labels = {k: t[k] for k in ["empty", "empty_cta", "verified", "base", "serves", "max", "yrs", "team", "elec", "proj", "kwp", "brands_l", "tools_l", "vat", "ins", "langs_l", "req_btn", "eng_l", "safety_l", "wah_l"]}
     import json
     script = ("<script>window.PARTNER_I18N=" + json.dumps({
         "lang": lang, "t": labels,
         "regions": dict(regions), "services": dict(svcs), "tools": dict(tools), "sizes": dict(sizes), "eng": dict(eng), "safety": dict(safety), "avail": {"in-team": t["av_short"][0], "can-arrange": t["av_short"][1]},
-    }, ensure_ascii=False) + ";</script>\n<script src=\"/partners.js?v=4\" defer></script>\n")
+    }, ensure_ascii=False) + ";</script>\n<script src=\"/partners.js?v=5\" defer></script>\n")
 
     page = head + hero + howsec + directory + request + reg + script + foot
     out = ROOT / ("th/partners.html" if th else "partners.html")

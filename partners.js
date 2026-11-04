@@ -30,6 +30,8 @@
     function q(a, lv) { var s = av[a] || ''; return s ? s + (lv ? ': ' + lv : '') : ''; }
     var engT = q(p.engineer, eng), safT = q(p.safety_officer, saf);
     if (engT) dl += '<dt>' + esc(T.eng_l) + '</dt><dd>' + esc(engT) + '</dd>';
+    var wahT = q(p.work_at_height, p.work_at_height_certified ? String(p.work_at_height_certified) : '');
+    if (wahT) dl += '<dt>' + esc(T.wah_l) + '</dt><dd>' + esc(wahT) + '</dd>';
     if (safT) dl += '<dt>' + esc(T.safety_l) + '</dt><dd>' + esc(safT) + '</dd>';
     if (tools) dl += '<dt>' + esc(T.tools_l) + '</dt><dd>' + esc(tools) + '</dd>';
     if (langs) dl += '<dt>' + esc(T.langs_l) + '</dt><dd>' + esc(langs) + '</dd>';

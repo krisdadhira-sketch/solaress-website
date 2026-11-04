@@ -358,7 +358,7 @@ def build(lang):
            # 3 private
            f'<fieldset><legend>{esc(t["s3"])}</legend>'
            f'<div class="two"><label for="r-legal">{esc(t["f_legal"])}<input id="r-legal" name="legal-name" required></label>'
-           f'<label for="r-tax">{esc(t["f_tax"])}<input id="r-tax" name="tax-or-id-number" required inputmode="numeric" pattern="[0-9 -]{{13,17}}"></label></div>'
+           f'<label for="r-tax">{esc(t["f_tax"])}<input id="r-tax" name="tax-or-id-number" required inputmode="numeric" pattern="[0-9 \\-]{{13,17}}"></label></div>'
            f'<div class="two"><label for="r-cname">{esc(t["f_cname"])}<input id="r-cname" name="contact-name" required autocomplete="name"></label>'
            f'<label for="r-phone">{esc(t["f_phone"])}<input id="r-phone" name="phone" type="tel" required autocomplete="tel"></label></div>'
            f'<div class="two"><label for="r-email">{esc(t["f_email"])}<input id="r-email" name="email" type="email" required autocomplete="email"></label>'

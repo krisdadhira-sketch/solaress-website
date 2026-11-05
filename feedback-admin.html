@@ -34,6 +34,7 @@ th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute
 .qgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px;margin-top:10px;font-size:14px}
 .qgrid div{display:flex;justify-content:space-between;gap:10px;border:1px solid var(--line);border-radius:10px;padding:8px 10px}
 tr.sel td{background:#EEF2FF}#teams tr{cursor:pointer}
+.chip{background:#fff;color:var(--ink);border:1.5px solid var(--line);border-radius:99px;padding:5px 12px;font-size:13px;font-weight:600}.chip.on{background:var(--navy);color:#fff;border-color:var(--navy)}.chip small{font-weight:400;opacity:.7;margin-left:4px}
 .issued{background:#ECFDF5;border:1px solid #A7F3D0;border-radius:12px;padding:12px;margin-top:12px}
 .err{color:var(--no)}.empty{color:var(--mute);text-align:center;padding:30px}
 @media(max-width:800px){.grid{grid-template-columns:1fr}}
@@ -65,7 +66,8 @@ tr.sel td{background:#EEF2FF}#teams tr{cursor:pointer}
       <label>Customer name (optional)<input id="i-cust"></label>
       <label>Customer phone (optional)<input id="i-phone" type="tel"></label>
     </div>
-    <datalist id="joblist"></datalist><datalist id="teamlist"><option value="Solar ESS team"></option></datalist>
+    <div style="margin-top:10px"><span class="meta">Choose the team (or type another name above):</span><div class="acts" id="teamchips" style="margin-top:6px"></div></div>
+    <datalist id="joblist"></datalist><datalist id="teamlist"></datalist>
     <p style="margin:12px 0 0"><button id="create">Create codes</button> <span id="ierr" class="err"></span></p>
     <div id="issued"></div>
   </div>
@@ -183,8 +185,13 @@ tr.sel td{background:#EEF2FF}#teams tr{cursor:pointer}
         .concat([].map.call(doc.querySelectorAll('article.card.p h3'), function(h){ return h.textContent.trim(); }));
       $('joblist').innerHTML = names.filter(function(n){ if (!n || seen[n]) return false; return seen[n] = 1; }).map(function(n){ return '<option value="'+esc(n)+'">'; }).join('');
     }).catch(function(){});
+    var TEAMS = [['Solar ESS team','Chiang Rai HQ'],['Krabi Solar ESS','Krabi office'],['Bangkok Solar ESS','Bangkok'],['ESS DEE Solar','alliance'],['SAP Group','Phuket'],['Thumbs Up ESS','TSIA partner'],['SAVE SUN Co., Ltd.','alliance']];
+    function drawChips(){ var cur = $('i-team').value;
+      $('teamchips').innerHTML = TEAMS.map(function(t){ return '<button type="button" class="chip'+(cur === t[0] ? ' on' : '')+'" data-team="'+esc(t[0])+'">'+esc(t[0])+(t[1] ? '<small>'+esc(t[1])+'</small>' : '')+'</button>'; }).join('');
+      $('teamlist').innerHTML = TEAMS.map(function(t){ return '<option value="'+esc(t[0])+'">'; }).join(''); }
+    drawChips();
     Promise.all(['partner','tsia'].map(function(t){ return fetch('/api/members?a=public&type='+t).then(function(r){ return r.ok ? r.json() : {items:[]}; }).catch(function(){ return {items:[]}; }); }))
-      .then(function(rs){ $('teamlist').innerHTML += [].concat.apply([], rs.map(function(r){ return (r.items || []).map(function(x){ return '<option value="'+esc(x.name)+'">'; }); })).join(''); });
+      .then(function(rs){ rs.forEach(function(r, i){ (r.items || []).forEach(function(x){ if (x.name && !TEAMS.some(function(t){ return t[0] === x.name; })) TEAMS.push([x.name, i === 0 ? 'installer partner' + (x.province ? ' · ' + x.province : '') : 'TSIA member']); }); }); drawChips(); });
   }
   function signin(){
     PW = ($('pw').value || PW).trim();
@@ -197,6 +204,9 @@ tr.sel td{background:#EEF2FF}#teams tr{cursor:pointer}
   $('pw').addEventListener('keydown', function(e){ if (e.key === 'Enter') signin(); });
   $('reload').onclick = load;
   $('jf').onchange = renderJobs; $('jq').oninput = renderJobs;
+  $('teamchips').addEventListener('click', function(e){ var b = e.target.closest('[data-team]'); if (!b) return; $('i-team').value = b.getAttribute('data-team'); drawChipsOn(); });
+  $('i-team').addEventListener('input', function(){ drawChipsOn(); });
+  function drawChipsOn(){ Array.prototype.forEach.call(document.querySelectorAll('#teamchips .chip'), function(c){ c.classList.toggle('on', c.getAttribute('data-team') === $('i-team').value); }); }
   $('create').onclick = function(){
     $('ierr').textContent = '';
     post('create', {job: $('i-job').value, team: $('i-team').value, customer: $('i-cust').value, phone: $('i-phone').value, post: ($('i-job').value === FORJOB ? FORPOST : '')})

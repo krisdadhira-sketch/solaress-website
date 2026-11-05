@@ -1,12 +1,10 @@
 # -*- coding: utf-8 -*-
-"""Customer satisfaction feedback page after a job: /feedback.html and /th/feedback.html.
+"""Finished-job pages: customer feedback (/feedback.html) and the installer team's job report (/job-report.html), EN + TH.
 
-10 questions scored 5/4/2/1 (no middle score) (work, personality, interaction), and NPS 0-10.
-Form "job-feedback" (Netlify Forms) -> netlify/functions/submission-created.mjs saves it in Blobs store
-"feedback" -> team scorecards at /feedback-admin.html (same password as /members-admin.html).
-
-Prefill: /feedback.html?job=<job title>&team=<team name> (send this link to the customer after a job).
-Job list is read from the Jobs page; teams come from approved installer partners and TSIA members.
+Flow: the team sends a job report with the customer's phone -> it becomes a finished job (store "feedback").
+The customer opens /feedback.html, enters that phone number, and rates the job once: 10 questions scored
+5 Perfect / 4 Good / 2 Fair / 1 Poor (no middle score) and NPS 0-10. Answers go to /api/feedback (checked there).
+Team record: /feedback-admin.html. Every project job post on the Jobs page links to both pages (tools/job_links.py).
 Run from the repo root:  python3 tools/feedback_page.py   (then python3 tools/analytics_tag.py)
 """
 import json, re
@@ -36,32 +34,54 @@ GROUPS = [
     ]),
 ]
 
-MORE = {"en": [("yes-job", "Yes: I have another job for this team or Solar ESS"), ("yes-referral", "Yes: I will refer a friend, family member or business"),
-               ("maybe", "Maybe later"), ("no", "No, not at the moment")],
-        "th": [("yes-job", "ใช่: มีงานอื่นให้ทีมนี้หรือ Solar ESS อีก"), ("yes-referral", "ใช่: จะแนะนำเพื่อน ญาติ หรือธุรกิจที่รู้จัก"),
-               ("maybe", "อาจจะในภายหลัง"), ("no", "ยังไม่มีในตอนนี้")]}
-
 T = {
-"en": dict(pre="", title="Rate a Finished Job · Customer Feedback | Solar ESS",
-    desc="Tell us how the installer did: 10 quick questions on the work, the team and communication, scored 1 to 5.",
+"en": dict(pre="", lang="en",
+    title="Rate a Finished Job · Customer Feedback | Solar ESS",
+    desc="Customers rate the installer team after a finished job: 10 quick questions on the work, the team and communication.",
     eyebrow="Customer feedback", h1="How did the job go?",
-    lede="Your scores keep every installer team honest. Ten quick questions, about two minutes. Your answers go to Solar ESS only and are never published with your name.",
-    s_job="1. The job", job="Which job?", job_other="Other or not listed", team="Which team did the work?", team_sol="Solar ESS team", team_other="Team name, if not listed",
+    lede="Your scores keep every installer team honest, and your feedback completes the job so the team can be paid. Ten quick questions, about two minutes. Your answers go to Solar ESS only and are never published with your name.",
+    s_login="1. Find your job", login_note="Enter the phone number you gave the installer team for this job. Only the customer of a finished job can rate it, once.",
+    phone="Your phone number", go="Find my job", nf="No finished job is waiting for feedback under this number. Check the number, or contact Solar ESS: LINE solaress1 · 063 151 6694.",
+    pick="Choose the job you want to rate", jl="Job", tl="Team", dl="Finished",
     s_q="2. Your scores", scale_note="5 Perfect · 4 Good · 2 Fair · 1 Poor (there is no middle score: please choose the one closest to your experience)",
     s_nps="3. Would you recommend us?", nps_q="How likely are you to recommend this team and Solar ESS to a friend or colleague?", nps_lo="0 = not at all", nps_hi="10 = extremely likely",
-    more_q="Will you bring us more business?", ref="Who should we contact? Name and phone (optional)",
-    s_you="4. About you", name="Your name", phone="Phone (optional, kept private)", comment="Anything else we should know: what went well, what to improve (optional)",
-    send="Send feedback", choose="Choose one", privacy="We use your answers only to check and improve our installer teams."),
-"th": dict(pre="/th", title="ประเมินความพึงพอใจหลังจบงาน | Solar ESS",
-    desc="บอกเราว่าทีมช่างทำงานเป็นอย่างไร 10 คำถามสั้น ๆ เรื่องงาน ทีม และการสื่อสาร ให้คะแนน 1 ถึง 5",
+    s_you="4. About you", name="Your name", comment="Anything else we should know: what went well, what to improve (optional)",
+    send="Send feedback", sending="Sending…", fail="Sending failed. Please try again, or send us your feedback by LINE solaress1.", done="This job has already been rated. Thank you!",
+    privacy="We use your answers only to check and improve our installer teams.",
+    # job report
+    r_title="Job Report for Installer Teams | Solar ESS", r_desc="Installer teams: report a finished job to Solar ESS and open customer feedback for it.",
+    r_eyebrow="Installer teams", r_h1="Job finished? Send your report.",
+    r_lede="Send this when the work is handed over. It records the job for Solar ESS and lets the customer rate your team, using the phone number you enter below. No login needed. Solar ESS releases payment only after both this report and the customer's feedback are received.",
+    r_s1="1. The job", r_job="Which job?", r_job_other="Job name, if not listed", other="Other or not listed", r_team="Your team", r_team_sol="Solar ESS team", r_team_other="Team name, if not listed",
+    r_date="Date finished", r_s2="2. The customer", r_cname="Customer name", r_cphone="Customer phone (the customer uses it to rate your work; never published)",
+    r_s3="3. The work", r_work="Work done", r_mat="Materials used (optional)", r_test="Test results or readings (optional)", r_issue="Problems found or follow-up needed (optional)",
+    r_s4="4. Photos and report (optional)", r_files_note="JPG or PNG for photos, PDF for the report. Keep all files together under 8 MB.",
+    r_before="Photo before", r_after="Photo after", r_ph3="Another photo", r_file="Report file (for example the PV cleaning report form, PDF)",
+    r_s5="5. Sent by", r_name="Your name", r_phone="Your phone", r_send="Send job report",
+    choose="Choose one"),
+"th": dict(pre="/th", lang="th",
+    title="ประเมินความพึงพอใจหลังจบงาน | Solar ESS",
+    desc="ลูกค้าประเมินทีมช่างหลังจบงาน 10 คำถามสั้น ๆ เรื่องงาน ทีม และการสื่อสาร",
     eyebrow="ประเมินความพึงพอใจ", h1="งานเป็นอย่างไรบ้าง",
-    lede="คะแนนของคุณช่วยให้ทีมช่างทุกทีมรักษามาตรฐาน 10 คำถามสั้น ๆ ใช้เวลาประมาณ 2 นาที คำตอบส่งถึง Solar ESS เท่านั้น และจะไม่เผยแพร่พร้อมชื่อของคุณ",
-    s_job="1. งานที่ประเมิน", job="งานไหน", job_other="งานอื่น หรือไม่มีในรายการ", team="ทีมไหนเป็นผู้ทำงาน", team_sol="ทีม Solar ESS", team_other="ชื่อทีม (หากไม่มีในรายการ)",
+    lede="คะแนนของคุณช่วยให้ทีมช่างทุกทีมรักษามาตรฐาน และแบบประเมินของคุณคือขั้นตอนสุดท้ายของงานก่อนที่ทีมจะได้รับค่าจ้าง 10 คำถามสั้น ๆ ใช้เวลาประมาณ 2 นาที คำตอบส่งถึง Solar ESS เท่านั้น และจะไม่เผยแพร่พร้อมชื่อของคุณ",
+    s_login="1. ค้นหางานของคุณ", login_note="กรอกเบอร์โทรที่คุณให้ไว้กับทีมช่างสำหรับงานนี้ เฉพาะลูกค้าของงานที่เสร็จแล้วเท่านั้นที่ประเมินได้ และประเมินได้ครั้งเดียว",
+    phone="เบอร์โทรของคุณ", go="ค้นหางาน", nf="ไม่พบงานที่รอการประเมินสำหรับเบอร์นี้ กรุณาตรวจสอบเบอร์ หรือติดต่อ Solar ESS: LINE solaress1 · 063 151 6694",
+    pick="เลือกงานที่ต้องการประเมิน", jl="งาน", tl="ทีม", dl="เสร็จเมื่อ",
     s_q="2. คะแนนของคุณ", scale_note="5 ดีเยี่ยม · 4 ดี · 2 พอใช้ · 1 ควรปรับปรุง (ไม่มีคะแนนกลาง กรุณาเลือกข้อที่ใกล้เคียงกับความรู้สึกของคุณที่สุด)",
     s_nps="3. คุณจะแนะนำเราไหม", nps_q="คุณมีแนวโน้มจะแนะนำทีมนี้และ Solar ESS ให้เพื่อนหรือคนรู้จักมากน้อยเพียงใด", nps_lo="0 = ไม่แนะนำเลย", nps_hi="10 = แนะนำแน่นอน",
-    more_q="คุณจะมีงานเพิ่มเติมหรือแนะนำลูกค้าให้เราไหม", ref="ให้เราติดต่อใคร ชื่อและเบอร์โทร (ไม่บังคับ)",
-    s_you="4. ข้อมูลของคุณ", name="ชื่อของคุณ", phone="เบอร์โทร (ไม่บังคับ เก็บเป็นความลับ)", comment="ความเห็นเพิ่มเติม: สิ่งที่ดี และสิ่งที่ควรปรับปรุง (ไม่บังคับ)",
-    send="ส่งแบบประเมิน", choose="เลือก", privacy="เราใช้คำตอบของคุณเพื่อตรวจสอบและพัฒนาทีมช่างของเราเท่านั้น"),
+    s_you="4. ข้อมูลของคุณ", name="ชื่อของคุณ", comment="ความเห็นเพิ่มเติม: สิ่งที่ดี และสิ่งที่ควรปรับปรุง (ไม่บังคับ)",
+    send="ส่งแบบประเมิน", sending="กำลังส่ง…", fail="ส่งไม่สำเร็จ กรุณาลองอีกครั้ง หรือส่งความเห็นทาง LINE solaress1", done="งานนี้ได้รับการประเมินแล้ว ขอบคุณค่ะ",
+    privacy="เราใช้คำตอบของคุณเพื่อตรวจสอบและพัฒนาทีมช่างของเราเท่านั้น",
+    r_title="รายงานจบงานสำหรับทีมช่าง | Solar ESS", r_desc="ทีมช่าง: รายงานงานที่เสร็จแล้วให้ Solar ESS และเปิดให้ลูกค้าประเมินงาน",
+    r_eyebrow="สำหรับทีมช่าง", r_h1="งานเสร็จแล้ว? ส่งรายงานจบงาน",
+    r_lede="ส่งเมื่อส่งมอบงานแล้ว รายงานนี้บันทึกงานให้ Solar ESS และเปิดให้ลูกค้าประเมินทีมของคุณ โดยใช้เบอร์โทรลูกค้าที่กรอกด้านล่าง ไม่ต้องเข้าสู่ระบบ Solar ESS จะจ่ายค่างานเมื่อได้รับทั้งรายงานนี้และแบบประเมินจากลูกค้าแล้วเท่านั้น",
+    r_s1="1. งาน", r_job="งานไหน", r_job_other="ชื่องาน (หากไม่มีในรายการ)", other="งานอื่น หรือไม่มีในรายการ", r_team="ทีมของคุณ", r_team_sol="ทีม Solar ESS", r_team_other="ชื่อทีม (หากไม่มีในรายการ)",
+    r_date="วันที่งานเสร็จ", r_s2="2. ลูกค้า", r_cname="ชื่อลูกค้า", r_cphone="เบอร์โทรลูกค้า (ลูกค้าใช้เบอร์นี้ประเมินงานของคุณ ไม่เผยแพร่)",
+    r_s3="3. งานที่ทำ", r_work="รายละเอียดงานที่ทำ", r_mat="วัสดุที่ใช้ (ไม่บังคับ)", r_test="ผลการทดสอบหรือค่าที่วัดได้ (ไม่บังคับ)", r_issue="ปัญหาที่พบ หรืองานที่ต้องติดตาม (ไม่บังคับ)",
+    r_s4="4. รูปภาพและรายงาน (ไม่บังคับ)", r_files_note="รูปภาพเป็น JPG หรือ PNG รายงานเป็น PDF ขนาดรวมทุกไฟล์ไม่เกิน 8 MB",
+    r_before="รูปก่อนทำงาน", r_after="รูปหลังทำงาน", r_ph3="รูปเพิ่มเติม", r_file="ไฟล์รายงาน (เช่น แบบฟอร์มรายงานล้างแผง PDF)",
+    r_s5="5. ผู้ส่งรายงาน", r_name="ชื่อของคุณ", r_phone="เบอร์โทรของคุณ", r_send="ส่งรายงานจบงาน",
+    choose="เลือก"),
 }
 
 CSS = """<style id="fb-css">
@@ -85,6 +105,7 @@ CSS = """<style id="fb-css">
 .nps span{min-width:42px;justify-content:center;padding:8px 0}
 .npsl{display:flex;justify-content:space-between;font-size:12px;color:var(--mute);font-weight:400}
 .more{display:grid;gap:8px}.more label{display:flex;gap:10px;align-items:flex-start;font-weight:400}.more input{margin-top:4px;width:auto}
+.jobbox{background:var(--sky);border-radius:14px;padding:14px 18px;font-size:15px;line-height:1.7}
 .fbw .fine{font-size:13px;color:var(--mute);margin:0}
 @media (max-width:640px){.fbw .two{grid-template-columns:minmax(0,1fr)}.rate span{padding:7px 10px}.nps span{min-width:36px}}
 </style>"""
@@ -95,40 +116,55 @@ def esc(s):
 
 
 def jobs(lang):
+    """Every job name on the Jobs page: the apply list plus every project post (open or closed)."""
+    import html as H
     h = (ROOT / ("th/job.html" if lang == "th" else "job.html")).read_text(encoding="utf-8")
     m = re.search(r'<select id="j-role"[^>]*>(.*?)</select>', h, re.S)
-    out = re.findall(r"<option[^>]*>(.*?)</option>", m.group(1)) if m else []
-    return [re.sub(r"<[^>]+>", "", o).strip() for o in out if o.strip()]
+    out = [H.unescape(re.sub(r"<[^>]+>", "", o)).strip() for o in (re.findall(r"<option[^>]*>(.*?)</option>", m.group(1)) if m else [])]
+    for art in re.findall(r'<article class="card p".*?</article>', h, re.S):
+        j = re.search(r'<div class="go"><a [^>]*data-job="([^"]*)"', art)
+        name = H.unescape(j.group(1)) if j else H.unescape(re.sub(r"<[^>]+>", "", (re.search(r"<h3>(.*?)</h3>", art, re.S) or [None, ""])[1])).strip()
+        if name and name not in out:
+            out.append(name)
+    return [o for o in out if o]
 
 
-def build(lang):
-    t, th = T[lang], lang == "th"
-    li = 1 if th else 0
+def page_head(lang, title, desc, slug):
+    th = lang == "th"
     src = (ROOT / ("th/team.html" if th else "team.html")).read_text(encoding="utf-8")
     head = src[:src.index('<section class="dark band"')]
     foot = re.sub(r'\n?<script src="/tsia\.js[^>]*></script>', "", src[src.index("<footer>"):])
-    url = f"https://solaress.org{t['pre']}/feedback"
-    head = re.sub(r"<title>.*?</title>", f"<title>{esc(t['title'])}</title>", head, count=1)
-    for prop, val in [("og:title", t["title"]), ("og:description", t["desc"]), ("og:url", url + ".html")]:
+    url = f"https://solaress.org{'/th' if th else ''}/{slug}"
+    head = re.sub(r"<title>.*?</title>", f"<title>{esc(title)}</title>", head, count=1)
+    for prop, val in [("og:title", title), ("og:description", desc), ("og:url", url + ".html")]:
         head = re.sub(r'(<meta property="%s" content=")[^"]*' % prop, lambda m: m.group(1) + esc(val), head, count=1)
-    head = re.sub(r'(<meta name="description" content=")[^"]*', lambda m: m.group(1) + esc(t["desc"]), head, count=1)
+    head = re.sub(r'(<meta name="description" content=")[^"]*', lambda m: m.group(1) + esc(desc), head, count=1)
     head = re.sub(r'<link rel="canonical" href="[^"]*">', f'<link rel="canonical" href="{url}">', head, count=1)
     head = re.sub(r'<link rel="alternate" hreflang="[^"]*" href="[^"]*">\s*', "", head)
-    head = head.replace('<meta charset="utf-8">', '<meta charset="utf-8">\n<meta name="robots" content="noindex, follow">', 1)
+    if 'name="robots"' not in head:
+        head = head.replace('<meta charset="utf-8">', '<meta charset="utf-8">\n<meta name="robots" content="noindex, follow">', 1)
     head = re.sub(r'<span class="langsw">.*?</span>(?=</nav>)',
-                  '<span class="langsw"><a href="/feedback.html" lang="en"' + ('' if th else ' aria-current="true"') + '>EN</a>'
-                  '<a href="/th/feedback.html" lang="th" style="font-family:var(--thai)"' + (' aria-current="true"' if th else '') + '>ไทย</a></span>',
+                  f'<span class="langsw"><a href="/{slug}.html" lang="en"' + ('' if th else ' aria-current="true"') + '>EN</a>'
+                  f'<a href="/th/{slug}.html" lang="th" style="font-family:var(--thai)"' + (' aria-current="true"' if th else '') + '>ไทย</a></span>',
                   head, count=1, flags=re.S)
     head = head.replace("</head>", CSS + "\n</head>", 1)
+    return head, foot
 
-    job_opts = f'<option value="">{esc(t["choose"])}</option>' + "".join(f'<option>{esc(j)}</option>' for j in jobs(lang)) + f'<option>{esc(t["job_other"])}</option>'
-    team_opts = f'<option value="">{esc(t["choose"])}</option><option>{esc(t["team_sol"])}</option><option value="__other">{esc(t["team_other"])}</option>'
+
+def hero(eyebrow, h1, lede):
+    return (f'<section class="dark band" style="padding-block:64px"><div class="wrap"><p class="eyebrow">{esc(eyebrow)}</p>'
+            f'<h1 style="font-size:clamp(36px,6vw,64px)">{esc(h1)}</h1><p class="lede" style="margin-top:18px">{esc(lede)}</p></div></section>\n')
+
+
+def build_feedback(lang):
+    t, th = T[lang], lang == "th"
+    li = 1 if th else 0
+    head, foot = page_head(lang, t["title"], t["desc"], "feedback")
 
     def rate(name):
         return '<div class="rate">' + "".join(
             f'<label><input type="radio" name="{name}" value="{v}"{" required" if i == 0 else ""}><span><b>{v}</b> {esc(lab)}</span></label>'
             for i, (v, lab) in enumerate(SCALE[lang])) + "</div>"
-
     qs = ""
     for (g_en, g_th), items in GROUPS:
         qs += f"<h3>{esc(g_th if th else g_en)}</h3>"
@@ -136,50 +172,94 @@ def build(lang):
             qs += f'<div class="q"><p>{k[1:]}. {esc(tth if th else en)}</p>{rate(k)}</div>'
     nps = '<div class="rate nps">' + "".join(
         f'<label><input type="radio" name="nps" value="{i}"{" required" if i == 0 else ""}><span>{i}</span></label>' for i in range(11)) + "</div>"
-    more = '<div class="more">' + "".join(
-        f'<label><input type="radio" name="more-business" value="{v}"{" required" if i == 0 else ""}><span>{esc(l)}</span></label>' for i, (v, l) in enumerate(MORE[lang])) + "</div>"
 
-    body = (
-        f'<section class="dark band" style="padding-block:64px"><div class="wrap"><p class="eyebrow">{esc(t["eyebrow"])}</p>'
-        f'<h1 style="font-size:clamp(36px,6vw,64px)">{esc(t["h1"])}</h1><p class="lede" style="margin-top:18px">{esc(t["lede"])}</p></div></section>\n'
-        f'<section class="band light" style="padding-block:48px"><div class="wrap fbw">'
-        f'<form name="job-feedback" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="{t["pre"]}/thanks.html">'
-        f'<input type="hidden" name="form-name" value="job-feedback"><input type="hidden" name="language" value="{"Thai" if th else "English"}">'
-        f'<p hidden><label>Leave empty <input name="bot-field"></label></p>'
-        f'<fieldset><legend>{esc(t["s_job"])}</legend>'
-        f'<label for="f-job">{esc(t["job"])}<select id="f-job" name="job" required>{job_opts}</select></label>'
-        f'<div class="two"><label for="f-team">{esc(t["team"])}<select id="f-team" name="team" required>{team_opts}</select></label>'
-        f'<label for="f-team-other" id="f-team-other-l" hidden>{esc(t["team_other"])}<input id="f-team-other" name="team-other"></label></div></fieldset>'
+    body = (hero(t["eyebrow"], t["h1"], t["lede"]) +
+        '<section class="band light" style="padding-block:48px"><div class="wrap fbw">'
+        f'<form id="fb-login" style="margin-top:0"><fieldset><legend>{esc(t["s_login"])}</legend><p class="fine">{esc(t["login_note"])}</p>'
+        f'<div class="two"><label for="f-phone">{esc(t["phone"])}<input id="f-phone" type="tel" inputmode="tel" autocomplete="tel" required></label>'
+        f'<div style="align-self:end"><button class="btn" type="submit">{esc(t["go"])}</button></div></div>'
+        f'<p class="fine" id="fb-nf" hidden style="color:#B42318">{esc(t["nf"])}</p><div id="fb-jobs" class="more" hidden></div></fieldset></form>'
+        f'<form id="fb-form" hidden><div class="jobbox" id="fb-job"></div>'
         f'<fieldset><legend>{esc(t["s_q"])}</legend><p class="fine">{esc(t["scale_note"])}</p>{qs}</fieldset>'
         f'<fieldset><legend>{esc(t["s_nps"])}</legend><div class="q" style="border:0;padding:0"><p>11. {esc(t["nps_q"])}</p>{nps}'
-        f'<div class="npsl"><span>{esc(t["nps_lo"])}</span><span>{esc(t["nps_hi"])}</span></div></div>'
-        f'</fieldset>'
-        f'<fieldset><legend>{esc(t["s_you"])}</legend><div class="two"><label for="f-name">{esc(t["name"])}<input id="f-name" name="name" required autocomplete="name"></label>'
-        f'<label for="f-phone">{esc(t["phone"])}<input id="f-phone" name="phone" type="tel" autocomplete="tel"></label></div>'
+        f'<div class="npsl"><span>{esc(t["nps_lo"])}</span><span>{esc(t["nps_hi"])}</span></div></div></fieldset>'
+        f'<fieldset><legend>{esc(t["s_you"])}</legend><label for="f-name">{esc(t["name"])}<input id="f-name" name="name" required autocomplete="name"></label>'
         f'<label for="f-com">{esc(t["comment"])}<textarea id="f-com" name="comment" rows="4"></textarea></label></fieldset>'
-        f'<p class="fine">{esc(t["privacy"])}</p><button class="btn" type="submit">{esc(t["send"])}</button></form></div></section>\n'
-    )
-    script = """<script>
-(function(){var f=document.querySelector('form[name=job-feedback]');if(!f)return;var q=new URLSearchParams(location.search);
-var job=f.querySelector('#f-job'),team=f.querySelector('#f-team'),ol=document.getElementById('f-team-other-l'),oi=document.getElementById('f-team-other');
+        f'<p class="fine">{esc(t["privacy"])}</p><p class="fine" id="fb-out" style="color:#B42318"></p><button class="btn" type="submit">{esc(t["send"])}</button></form>'
+        '</div></section>\n')
+    L = {k: t[k] for k in ["jl", "tl", "dl", "pick", "nf", "sending", "fail", "done", "send"]}
+    script = ("<script>window.FB_T=" + json.dumps(L, ensure_ascii=False) + ";window.FB_LANG=" + json.dumps("Thai" if th else "English") + ";</script>\n" + r"""<script>
+(function(){var T=window.FB_T,$=function(i){return document.getElementById(i)},jobs=[],cur=null,phone='';
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function api(a,b){return fetch('/api/feedback?a='+a,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(b)}).then(function(r){return r.json().then(function(j){if(!r.ok){var e=new Error(j.error||r.status);e.code=j.error;throw e}return j})})}
+function show(j){cur=j;$('fb-job').innerHTML='<b>'+esc(T.jl)+':</b> '+esc(j.job)+'<br><b>'+esc(T.tl)+':</b> '+esc(j.team)+(j.date?'<br><b>'+esc(T.dl)+':</b> '+esc(j.date):'');$('fb-form').hidden=false;$('fb-form').scrollIntoView({behavior:'smooth'})}
+$('fb-login').addEventListener('submit',function(e){e.preventDefault();phone=$('f-phone').value;$('fb-nf').hidden=true;$('fb-jobs').hidden=true;$('fb-form').hidden=true;
+ api('check',{phone:phone}).then(function(r){jobs=r.jobs||[];if(!jobs.length){$('fb-nf').hidden=false;return}
+  if(jobs.length===1)return show(jobs[0]);
+  $('fb-jobs').innerHTML='<p class="fine">'+esc(T.pick)+'</p>'+jobs.map(function(j,i){return '<label><input type="radio" name="pickjob" value="'+i+'"><span>'+esc(j.job)+' · '+esc(j.team)+(j.date?' · '+esc(j.date):'')+'</span></label>'}).join('');$('fb-jobs').hidden=false})
+ .catch(function(){$('fb-nf').hidden=false})});
+$('fb-jobs').addEventListener('change',function(e){if(e.target.name==='pickjob')show(jobs[+e.target.value])});
+$('fb-form').addEventListener('submit',function(e){e.preventDefault();if(!cur)return;var f=e.target,b={phone:phone,jobId:cur.id,language:window.FB_LANG,name:f.name.value,comment:f.comment.value};
+ for(var i=1;i<=10;i++){var c=f.querySelector('input[name=q'+i+']:checked');b['q'+i]=c?c.value:''}var n=f.querySelector('input[name=nps]:checked');b.nps=n?n.value:'';
+ var btn=f.querySelector('button[type=submit]');btn.disabled=true;btn.textContent=T.sending;$('fb-out').textContent='';
+ api('submit',b).then(function(){try{sessionStorage.setItem('ga_form','job-feedback')}catch(x){}location.href=(window.FB_LANG==='Thai'?'/th':'')+'/thanks.html'})
+ .catch(function(err){btn.disabled=false;btn.textContent=T.send;$('fb-out').textContent=err.code==='already-rated'?T.done:T.fail})});
+})();
+</script>
+""")
+    out = ROOT / ("th/feedback.html" if th else "feedback.html")
+    out.write_text(head + body + script + foot, encoding="utf-8")
+    print("wrote", out.relative_to(ROOT))
+
+
+def build_report(lang):
+    t, th = T[lang], lang == "th"
+    head, foot = page_head(lang, t["r_title"], t["r_desc"], "job-report")
+    job_opts = f'<option value="">{esc(t["choose"])}</option>' + "".join(f'<option>{esc(j)}</option>' for j in jobs(lang)) + f'<option value="__other">{esc(t["other"])}</option>'
+    team_opts = f'<option value="">{esc(t["choose"])}</option><option>{esc(t["r_team_sol"])}</option><option value="__other">{esc(t["r_team_other"])}</option>'
+    body = (hero(t["r_eyebrow"], t["r_h1"], t["r_lede"]) +
+        '<section class="band light" style="padding-block:48px"><div class="wrap fbw">'
+        f'<form name="job-report" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" action="{t["pre"]}/thanks.html">'
+        f'<input type="hidden" name="form-name" value="job-report"><input type="hidden" name="language" value="{"Thai" if th else "English"}"><p hidden><label>Leave empty <input name="bot-field"></label></p>'
+        f'<fieldset><legend>{esc(t["r_s1"])}</legend>'
+        f'<label for="r-job">{esc(t["r_job"])}<select id="r-job" name="job" required>{job_opts}</select></label>'
+        f'<label for="r-job-other" id="r-job-other-l" hidden>{esc(t["r_job_other"])}<input id="r-job-other" name="job-other"></label>'
+        f'<div class="two"><label for="r-team">{esc(t["r_team"])}<select id="r-team" name="team" required>{team_opts}</select></label>'
+        f'<label for="r-date">{esc(t["r_date"])}<input id="r-date" name="completed" type="date" required></label></div>'
+        f'<label for="r-team-other" id="r-team-other-l" hidden>{esc(t["r_team_other"])}<input id="r-team-other" name="team-other"></label></fieldset>'
+        f'<fieldset><legend>{esc(t["r_s2"])}</legend><div class="two"><label for="r-cname">{esc(t["r_cname"])}<input id="r-cname" name="customer-name" required></label>'
+        f'<label for="r-cphone">{esc(t["r_cphone"])}<input id="r-cphone" name="customer-phone" type="tel" inputmode="tel" required pattern="[0-9 +()\\-]{{9,16}}"></label></div></fieldset>'
+        f'<fieldset><legend>{esc(t["r_s3"])}</legend><label for="r-work">{esc(t["r_work"])}<textarea id="r-work" name="work-done" rows="4" required></textarea></label>'
+        f'<label for="r-mat">{esc(t["r_mat"])}<textarea id="r-mat" name="materials" rows="2"></textarea></label>'
+        f'<label for="r-test">{esc(t["r_test"])}<textarea id="r-test" name="test-results" rows="2"></textarea></label>'
+        f'<label for="r-issue">{esc(t["r_issue"])}<textarea id="r-issue" name="follow-up" rows="2"></textarea></label></fieldset>'
+        f'<fieldset><legend>{esc(t["r_s4"])}</legend><p class="fine">{esc(t["r_files_note"])}</p>'
+        f'<div class="two"><label for="r-pb">{esc(t["r_before"])}<input id="r-pb" name="photo-before" type="file" accept=".jpg,.jpeg,.png"></label>'
+        f'<label for="r-pa">{esc(t["r_after"])}<input id="r-pa" name="photo-after" type="file" accept=".jpg,.jpeg,.png"></label></div>'
+        f'<div class="two"><label for="r-p3">{esc(t["r_ph3"])}<input id="r-p3" name="photo-3" type="file" accept=".jpg,.jpeg,.png"></label>'
+        f'<label for="r-file">{esc(t["r_file"])}<input id="r-file" name="report-file" type="file" accept=".pdf"></label></div></fieldset>'
+        f'<fieldset><legend>{esc(t["r_s5"])}</legend><div class="two"><label for="r-name">{esc(t["r_name"])}<input id="r-name" name="reporter-name" required autocomplete="name"></label>'
+        f'<label for="r-phone">{esc(t["r_phone"])}<input id="r-phone" name="reporter-phone" type="tel" required autocomplete="tel"></label></div></fieldset>'
+        f'<button class="btn" type="submit">{esc(t["r_send"])}</button></form></div></section>\n')
+    script = r"""<script>
+(function(){var f=document.querySelector('form[name=job-report]');if(!f)return;var q=new URLSearchParams(location.search);
 function pick(sel,v){if(!v)return false;for(var i=0;i<sel.options.length;i++){if(sel.options[i].text.trim()===v.trim()){sel.selectedIndex=i;return true}}return false}
-function syncTeam(){var o=team.value==='__other';ol.hidden=!o;oi.required=o}
-team.addEventListener('change',syncTeam);
-var wantTeam=q.get('team');
-function addTeams(names){var other=team.querySelector('option[value=__other]');names.forEach(function(n){if(!n)return;for(var i=0;i<team.options.length;i++)if(team.options[i].text===n)return;var o=document.createElement('option');o.textContent=n;team.insertBefore(o,other)});
- if(wantTeam&&!pick(team,wantTeam)){team.value='__other';oi.value=wantTeam}syncTeam()}
+function other(sel,lab,inp){function s(){var o=sel.value==='__other';lab.hidden=!o;inp.required=o}sel.addEventListener('change',s);s();return s}
+var job=f.querySelector('#r-job'),team=f.querySelector('#r-team');
+var sj=other(job,document.getElementById('r-job-other-l'),document.getElementById('r-job-other')),st=other(team,document.getElementById('r-team-other-l'),document.getElementById('r-team-other'));
+if(q.get('job')&&!pick(job,q.get('job'))){job.value='__other';document.getElementById('r-job-other').value=q.get('job')}sj();
+var d=document.getElementById('r-date');if(!d.value)d.value=new Date().toISOString().slice(0,10);
 Promise.all(['partner','tsia'].map(function(t){return fetch('/api/members?a=public&type='+t).then(function(r){return r.ok?r.json():{items:[]}}).catch(function(){return{items:[]}})}))
- .then(function(rs){addTeams([].concat.apply([],rs.map(function(r){return(r.items||[]).map(function(x){return x.name})})))});
-if(q.get('job')&&!pick(job,q.get('job'))){job.selectedIndex=job.options.length-1}
+ .then(function(rs){var oth=team.querySelector('option[value=__other]');[].concat.apply([],rs.map(function(r){return(r.items||[]).map(function(x){return x.name})})).forEach(function(n){if(!n)return;for(var i=0;i<team.options.length;i++)if(team.options[i].text===n)return;var o=document.createElement('option');o.textContent=n;team.insertBefore(o,oth)});st()});
 })();
 </script>
 """
-    page = head + body + script + foot
-    out = ROOT / ("th/feedback.html" if th else "feedback.html")
-    out.write_text(page, encoding="utf-8")
-    print("wrote", out.relative_to(ROOT), len(page))
+    out = ROOT / ("th/job-report.html" if th else "job-report.html")
+    out.write_text(head + body + script + foot, encoding="utf-8")
+    print("wrote", out.relative_to(ROOT))
 
 
 if __name__ == "__main__":
-    build("en")
-    build("th")
+    for lg in ("en", "th"):
+        build_feedback(lg)
+        build_report(lg)

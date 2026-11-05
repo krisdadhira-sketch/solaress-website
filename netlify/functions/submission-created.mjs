@@ -16,7 +16,7 @@ export default async (req) => {
   let body;
   try { body = await req.json(); } catch { return new Response("bad body", { status: 400 }); }
   const p = body && body.payload;
-  if (p && p.form_name === "job-feedback") return saveFeedback(p);
+  if (p && p.form_name === "job-report") return saveReport(p);
   const cfg = p && FORMS[p.form_name];
   if (!cfg) return new Response("ignored");
 
@@ -53,17 +53,46 @@ export default async (req) => {
   return new Response("saved");
 };
 
-// Customer satisfaction feedback after a job (form "job-feedback" on /feedback.html).
-// Saved in store "feedback"; team scorecards are worked out by /api/feedback (admin only).
-async function saveFeedback(p) {
+// Job report from the installer team after a job (form "job-report" on /job-report.html).
+// Saved as a finished job in store "feedback" (key job/<id>) with the customer's phone, so the customer
+// can then rate the job at /feedback.html. Files are copied now because Netlify's file links expire.
+function normPhone(v) {
+  let d = String(v || "").replace(/\D/g, "");
+  if (d.startsWith("66") && d.length >= 11) d = "0" + d.slice(2);
+  return d.length >= 9 ? d : "";
+}
+const REPORT_FILES = ["photo-before", "photo-after", "photo-3", "report-file"];
+const MAX_FILE = 6 * 1024 * 1024;
+async function saveReport(p) {
   const store = getStore({ name: "feedback", consistency: "strong" });
-  const id = String(p.id || p.number || Date.now()).replace(/[^A-Za-z0-9_-]/g, "");
-  if (await store.get("fb/" + id)) return new Response("exists");
+  const id = "r" + String(p.id || p.number || Date.now()).replace(/[^A-Za-z0-9_-]/g, "");
+  if (await store.get("job/" + id)) return new Response("exists");
   const data = {};
   for (const [k, v] of Object.entries(p.data || {})) {
     if (["bot-field", "form-name", "ip", "user_agent", "referrer"].includes(k)) continue;
     data[k] = v;
   }
-  await store.setJSON("fb/" + id, { id, created: p.created_at || new Date().toISOString(), data });
+  const files = [];
+  for (const f of REPORT_FILES) {
+    const url = fileUrl(data[f]);
+    if (!url) continue;
+    try {
+      const r = await fetch(url);
+      const type = r.headers.get("content-type") || "";
+      if (!r.ok || !/^(image\/(jpeg|png|webp)|application\/pdf)/.test(type)) continue;
+      const buf = await r.arrayBuffer();
+      if (buf.byteLength > MAX_FILE) continue;
+      await store.set(`file/${id}/${f}`, buf, { metadata: { type } });
+      files.push(f);
+    } catch { /* keep the report even if a file could not be copied */ }
+  }
+  // a select with an "other" option (value "__other") plus a free-text box
+  const pick = (sel, other) => String(data[sel] && data[sel] !== "__other" ? data[sel] : data[other] || "").trim();
+  await store.setJSON("job/" + id, {
+    id, created: p.created_at || new Date().toISOString(), source: "report",
+    job: pick("job", "job-other"), team: pick("team", "team-other"),
+    phone: normPhone(data["customer-phone"]), customer: String(data["customer-name"] || "").trim(), date: String(data["completed"] || ""),
+    data, files, blocked: false, rated: null,
+  });
   return new Response("saved");
 }

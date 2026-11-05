@@ -29,6 +29,10 @@ Regional directory of approved subcontract installers, a registration form (`ins
 
 Every public page carries the GA4 tag for stream "solaress.org" (`G-46HG0JWSZV`, property "Solar ESS Co. Ltd."), between `<!--ga4-->` markers. **After adding or regenerating any page, run `python3 tools/analytics_tag.py`** (idempotent). Custom events: `book_consultation_click`, `phone_click`, `line_click`, `facebook_click`, `form_sent` (with `form_name`) and `generate_lead` (consultation / installer-request forms). Mark `generate_lead` as a Key event in GA (Admin > Data display > Events).
 
-## Customer feedback & team scorecards (/feedback, /feedback-admin.html)
+## Finished jobs, customer feedback, payment & team scorecards (/job-report, /feedback, /feedback-admin.html)
 
-After a job, send the customer `https://solaress.org/feedback.html?job=<job title>&team=<team name>` (Thai: `/th/feedback.html`). 10 questions scored 5 / 4 / 2 / 1 (no middle score) (work q1–q5, personality q6–q8, interaction q9–q10) and NPS 0–10. Form `job-feedback` → `submission-created.mjs` saves it in Blobs store `feedback` → `/api/feedback` (`netlify/functions/feedback/feedback.mjs`) builds each team's record. View at **/feedback-admin.html** (same password as members-admin; CSV download). Page text: `tools/feedback_page.py` (re-run after the job list changes, then `tools/analytics_tag.py`).
+1. **Installer team** sends a job report at `/job-report.html` (no login; Netlify form `job-report`) with the customer's phone. `submission-created.mjs` saves it as a finished job (Blobs store `feedback`, key `job/<id>`, files copied).
+2. **Customer** opens `/feedback.html`, enters that phone number, and rates the job once: 10 questions scored 5 / 4 / 2 / 1 (no middle score) and NPS 0–10. Sent to `/api/feedback` (`netlify/functions/feedback/feedback.mjs`), which checks the phone, the job and one response per job.
+3. **Payment**: a job is *ready to pay* only when both the report and the customer's feedback are in; mark it paid at **/feedback-admin.html** (same password as members-admin). The team record there counts only these checked responses.
+
+Every project job post on the Jobs page links to both forms (`tools/job_links.py`; re-run after editing the Jobs page). Page text: `tools/feedback_page.py`, then `tools/analytics_tag.py`.

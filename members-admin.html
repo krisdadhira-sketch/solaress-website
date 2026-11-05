@@ -97,7 +97,7 @@ dl{display:grid;grid-template-columns:auto 1fr;gap:3px 12px;margin:0;font-size:1
   function load(){ return api('a=list').then(function(j){ items = j.items || []; render(); }); }
 
   function signin(){
-    PW = $('pw').value || PW;
+    PW = ($('pw').value || PW).trim();
     api('a=list').then(function(j){
       try { sessionStorage.setItem('members-admin-pw', PW); } catch(e) {}
       $('login').hidden = true; $('app').hidden = false; items = j.items || []; render();

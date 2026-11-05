@@ -30,10 +30,11 @@ function checkHash(pw, stored) {
   return got.length === want.length && crypto.timingSafeEqual(got, want);
 }
 function isAdmin(req) {
-  const pw = req.headers.get("x-admin-password") || "";
+  const pw = String(req.headers.get("x-admin-password") || "").trim();
   if (!pw) return false;
-  if (process.env.MEMBERS_ADMIN_PASSWORD) return eq(pw, process.env.MEMBERS_ADMIN_PASSWORD);
-  if (process.env.VOCAB_ADMIN_PASSWORD) return eq(pw, process.env.VOCAB_ADMIN_PASSWORD);
+  const mp = String(process.env.MEMBERS_ADMIN_PASSWORD || "").trim(), vp = String(process.env.VOCAB_ADMIN_PASSWORD || "").trim();
+  if (mp) return eq(pw, mp);
+  if (vp) return eq(pw, vp);
   return checkHash(pw, VOCAB_ADMIN_HASH);
 }
 
@@ -86,6 +87,9 @@ async function body(req) { try { return await req.json(); } catch { return {}; }
 export default async (req) => {
   const u = new URL(req.url), a = u.searchParams.get("a");
   const s = getStore({ name: "feedback", consistency: "strong" });
+
+  // Setup check: does the server see the admin password variables? (never returns the values)
+  if (a === "status") return json({ members_admin_password_set: !!String(process.env.MEMBERS_ADMIN_PASSWORD || "").trim(), vocab_admin_password_set: !!String(process.env.VOCAB_ADMIN_PASSWORD || "").trim() });
 
   // ---- public: installer or customer with a code
   if (a === "code" && req.method === "POST") {

@@ -175,7 +175,7 @@ tr.sel td{background:#EEF2FF}#teams tr{cursor:pointer}
       .then(function(rs){ $('teamlist').innerHTML += [].concat.apply([], rs.map(function(r){ return (r.items || []).map(function(x){ return '<option value="'+esc(x.name)+'">'; }); })).join(''); });
   }
   function signin(){
-    PW = $('pw').value || PW;
+    PW = ($('pw').value || PW).trim();
     api('a=list').then(function(j){ try { sessionStorage.setItem('members-admin-pw', PW); } catch(e) {}
       $('login').hidden = true; $('app').hidden = false; data = j; render(); fillLists();
       if (FORJOB) { $('i-job').value = FORJOB; $('issue').classList.add('hi'); $('jq').value = FORJOB; renderJobs(); $('i-team').focus(); }

@@ -325,7 +325,10 @@ def build(lang):
            f'<div class="mediate"><h3>{esc(t["get_h"])}</h3><ul>{get}</ul></div>'
            f'<div class="mediate"><h3>{esc(t["rule_h"])}</h3><ul>{rule}</ul></div>'
            f'<div class="mediate"><h3>{esc(t["priv_h"])}</h3><p>{esc(t["priv"])}</p></div>'
-           f'<p class="fine" style="margin-top:18px">{esc(t["reg_after"])}</p></div>'
+           f'<p class="fine" style="margin-top:18px">{esc(t["reg_after"])}</p>'
+           + (f'<p style="margin-top:14px"><a class="btn ghost" href="/th/installer-test.html">ทำแบบทดสอบช่างติดตั้ง 100 ข้อ (ช่วยให้อนุมัติได้เร็วขึ้น)</a></p></div>' if th else
+              f'<p style="margin-top:14px"><a class="btn ghost" href="/installer-test.html">Take the 100-question installer test (speeds up approval)</a></p></div>')
+           +
            f'<form name="installer-partner" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" action="{t["pre"]}/thanks.html">'
            f'<input type="hidden" name="form-name" value="installer-partner"><input type="hidden" name="language" value="{"Thai" if th else "English"}"><p hidden><label>Leave empty <input name="bot-field"></label></p>'
            f'<p class="quick">{esc(t["quick"])}</p>'

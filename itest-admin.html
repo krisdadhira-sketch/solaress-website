@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Installer Test Results | Solar ESS</title>
+<style>
+:root{--navy:#0A1230;--blue:#2563EB;--ink:#0A0E2E;--mute:#3E548E;--line:#DEE3ED;--paper:#F6F8FC;--ok:#15803D;--mid:#B45309;--no:#B42318}
+*{box-sizing:border-box}body{margin:0;font:15px/1.5 "IBM Plex Sans Thai","Inter",system-ui,sans-serif;color:var(--ink);background:var(--paper)}
+header{background:var(--navy);color:#fff;padding:14px 20px;display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+header b{font-size:18px}header a{color:#C7D2FE}
+main{max-width:1200px;margin:0 auto;padding:20px}
+.login{max-width:420px;margin:60px auto;background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px}
+input,button,select{font:inherit}input[type=password],input.q{width:100%;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;margin:10px 0}
+button{border:0;border-radius:10px;padding:9px 16px;font-weight:600;cursor:pointer;background:var(--blue);color:#fff}button.ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line)}button.sm{padding:4px 10px;font-size:13px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:16px;overflow-x:auto}
+.meta{color:var(--mute);font-size:13px}.err{color:var(--no)}
+table{border-collapse:collapse;width:100%;font-size:14px}th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);white-space:nowrap}
+.pill{display:inline-block;font-size:12px;font-weight:700;border-radius:99px;padding:3px 10px;color:#fff}.p{background:var(--ok)}.f{background:var(--no)}
+.sc{font-weight:700}.wrong{border-left:4px solid var(--no);padding:8px 12px;margin:8px 0;background:#FEF2F2;border-radius:8px}.wrong small{color:var(--mute)}
+.bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
+</style>
+</head>
+<body>
+<header><b>Solar ESS · Installer test results</b><span><a href="/installer-test.html" target="_blank">Test page</a> · <a href="/feedback-admin.html">Job admin</a> · <a href="/members-admin.html">Review applications</a></span></header>
+<main>
+<div class="login" id="login"><h2 style="margin-top:0">Admin sign-in</h2><p class="meta">Same password as the job admin and applications pages.</p>
+<input type="password" id="pw" placeholder="Admin password" autocomplete="current-password"><button id="go">Sign in</button> <span id="lerr" class="err"></span></div>
+<div id="app" hidden>
+  <div class="bar"><button class="ghost" id="reload">Refresh</button><button class="ghost" id="csv">Download results (CSV)</button><input class="q" id="q" placeholder="Search name, phone, province or team" style="max-width:320px;margin:0"><span class="meta" id="count"></span></div>
+  <div class="card"><table><thead><tr><th>Date</th><th>Candidate</th><th>Province / team</th><th>Score</th><th id="sh"></th><th>Time</th><th></th></tr></thead><tbody id="rows"></tbody></table></div>
+  <div class="card" id="detail" hidden></div>
+</div>
+</main>
+<script>
+(function(){
+  var PW = '', D = {attempts:[], sections:[]};
+  try { PW = sessionStorage.getItem('members-admin-pw') || ''; } catch(e) {}
+  var $ = function(id){ return document.getElementById(id); };
+  function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  function api(q, opt){ opt = opt || {}; opt.headers = Object.assign({'x-admin-password': PW, 'content-type':'application/json'}, opt.headers || {});
+    return fetch('/api/itest?' + q, opt).then(function(r){ return r.json().then(function(j){ if (!r.ok) throw new Error(j.error || r.status); return j; }); }); }
+  function mins(s){ return s ? Math.round(s / 60) + ' min' : ''; }
+  function render(){
+    var q = $('q').value.trim().toLowerCase();
+    var list = D.attempts.filter(function(a){ return !q || [a.name, a.phone, a.province, a.team, a.email].join(' ').toLowerCase().indexOf(q) >= 0; });
+    $('count').textContent = list.length + ' attempts · pass mark ' + D.pass + '%';
+    $('sh').textContent = D.sections.map(function(s){ return s.id; }).join(' · ');
+    $('rows').innerHTML = list.length ? list.map(function(a){
+      return '<tr><td>'+esc(new Date(a.created).toLocaleString('en-GB'))+'</td><td><b>'+esc(a.name)+'</b><br><span class="meta">'+esc(a.phone)+(a.email ? ' · '+esc(a.email) : '')+'</span></td><td>'+esc(a.province)+'<br><span class="meta">'+esc(a.team)+'</span></td>'
+        + '<td><span class="sc">'+a.score+'/'+a.total+'</span> ('+a.pct+'%)<br><span class="pill '+(a.pass?'p':'f')+'">'+(a.pass?'Passed':'Not passed')+'</span></td>'
+        + '<td>'+D.sections.map(function(s){ var x = a.sections[s.id] || {}; return s.id+' '+x.correct+'/'+x.total; }).join('<br>')+'</td><td>'+mins(a.seconds)+'</td>'
+        + '<td><button class="sm ghost" data-v="'+esc(a.id)+'">Answers</button> <button class="sm ghost" data-d="'+esc(a.id)+'">Delete</button></td></tr>';
+    }).join('') : '<tr><td colspan="7" class="meta" style="text-align:center;padding:30px">No attempts yet. Share www.solaress.org/installer-test.html with installers.</td></tr>';
+  }
+  function load(){ return api('a=list').then(function(j){ D = j; render(); }); }
+  function signin(){ PW = ($('pw').value || PW).trim();
+    api('a=list').then(function(j){ try { sessionStorage.setItem('members-admin-pw', PW); } catch(e) {} $('login').hidden = true; $('app').hidden = false; D = j; render(); })
+    .catch(function(e){ $('lerr').textContent = e.message; }); }
+  $('go').onclick = signin; $('pw').addEventListener('keydown', function(e){ if (e.key === 'Enter') signin(); });
+  $('reload').onclick = load; $('q').oninput = render;
+  $('rows').addEventListener('click', function(e){ var id;
+    if ((id = e.target.getAttribute('data-v'))) return api('a=attempt&id=' + encodeURIComponent(id)).then(function(j){
+      var w = j.items.filter(function(x){ return !x.correct; }), a = j.attempt;
+      $('detail').hidden = false;
+      $('detail').innerHTML = '<h2 style="margin-top:0">'+esc(a.name)+' · '+a.score+'/'+a.total+' ('+a.pct+'%)</h2><p class="meta">'+w.length+' wrong or unanswered</p>'
+        + w.map(function(x){ var g = x.given == null ? 'No answer' : (x.options[x.given].th + ' / ' + x.options[x.given].en), c = x.options[x.answer];
+          return '<div class="wrong"><b>'+(x.i+1)+' ('+x.sec+'). '+esc(x.th)+'</b><br><small>'+esc(x.en)+'</small><br>Answered: '+esc(g)+'<br>Correct: <b>'+esc(c.th+' / '+c.en)+'</b><br><small>'+esc(x.explain)+'</small></div>'; }).join('');
+      $('detail').scrollIntoView({behavior:'smooth'}); });
+    if ((id = e.target.getAttribute('data-d'))) { if (e.target.dataset.sure !== '1') { e.target.dataset.sure = '1'; e.target.textContent = 'Click again'; return; }
+      return api('a=delete', {method:'POST', body: JSON.stringify({id:id})}).then(load); }
+  });
+  $('csv').onclick = function(){
+    var cols = ['created','name','phone','email','province','team','score','total','pct','pass'].concat(D.sections.map(function(s){ return s.id; })).concat(['minutes']);
+    var rows = [cols.join(',')].concat(D.attempts.map(function(a){ var r = Object.assign({}, a, {minutes: Math.round((a.seconds||0)/60)}); D.sections.forEach(function(s){ r[s.id] = (a.sections[s.id]||{}).correct; });
+      return cols.map(function(c){ return '"' + String(r[c] == null ? '' : r[c]).replace(/"/g, '""') + '"'; }).join(','); }));
+    var l = document.createElement('a'); l.href = URL.createObjectURL(new Blob(['﻿' + rows.join('\n')], {type:'text/csv'})); l.download = 'solar-ess-installer-test_' + new Date().toISOString().slice(0,10).replace(/-/g,'') + '.csv'; l.click();
+  };
+  if (PW) signin();
+})();
+</script>
+</body>
+</html>

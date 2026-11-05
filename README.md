@@ -37,3 +37,10 @@ Every public page carries the GA4 tag for stream "solaress.org" (`G-46HG0JWSZV`,
 4. **Release payment**: possible only when both are in; the admin checks both and clicks *Release payment*. Team record = customer feedback on issued jobs only.
 
 Page text: `tools/feedback_page.py`, then `tools/analytics_tag.py`. Data: Blobs store `feedback` (`job/`, `code/`, `fb/`, `file/`).
+
+## Installer test (/installer-test, /itest-admin.html)
+
+100-question "Practical Solar Installation" test, Thai + English: A electrical 50, B wiring 20, C mounting 20, D customer 10; pass mark 70%.
+- Questions: `tools/itest/questions_a.py`, `tools/itest/questions_bcd.py` → `python3 tools/itest/build_bank.py` → `netlify/functions/itest/bank.json` (answer key stays server-side).
+- Pages: `python3 tools/itest/page.py` (then `tools/analytics_tag.py`). API: `netlify/functions/itest/itest.mjs` at `/api/itest`; attempts in Blobs store `itest`.
+- Results: **/itest-admin.html** (same admin password): scores per section, wrong answers with the key and explanation, CSV.

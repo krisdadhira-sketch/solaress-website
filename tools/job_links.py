@@ -46,5 +46,11 @@ for f, title in L.items():
           # posts already marked finished in the page itself (old "Closed" label) get the same closed look
           "})();</script><!--/jls-->\n")
     h = h.replace("</body>", js + "</body>", 1)
+    # installer test button in the hero
+    h = re.sub(r"<!--itl-->.*?<!--/itl-->", "", h, flags=re.S)
+    tl = ('<!--itl--> <a class="btn ghost" href="/th/installer-test.html" style="margin-left:8px">ทำแบบทดสอบช่างติดตั้ง (100 ข้อ)</a><!--/itl-->' if th
+          else '<!--itl--> <a class="btn ghost" href="/installer-test.html" style="margin-left:8px">Take the installer test (100 questions)</a><!--/itl-->')
+    anchor = "ต้องการจ้างช่าง? ประกาศงานฟรี</a>" if th else "Hiring? Post a job free</a>"
+    h = h.replace(anchor, anchor + tl, 1)
     open(f, "w", encoding="utf-8").write(h)
     print(f, n, "posts,", h.count('<div class="jl">'), "with links")

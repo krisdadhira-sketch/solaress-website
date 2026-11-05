@@ -52,6 +52,11 @@ tr.sel td{background:#EEF2FF}#teams tr{cursor:pointer}
 <div id="app" hidden>
   <div class="bar"><button class="ghost" id="reload">Refresh</button><button class="ghost" id="csv">Download customer feedback (CSV)</button><span class="meta" id="count"></span></div>
 
+  <div class="card hi" id="postcard" hidden><h2>Job post on the Jobs page</h2>
+    <p class="meta" id="postinfo"></p>
+    <div class="acts" style="margin-top:8px"><button class="sm ghost" data-ps="open">Open (active)</button><button class="sm" data-ps="closed">Close: show as finished (grey)</button><button class="sm no" data-ps="hidden">Hide from the Jobs page</button></div>
+    <p class="meta" style="margin-top:8px">Closing greys the post out with "Closed – job completed" and removes it from the application list. Releasing payment closes the post automatically.</p>
+  </div>
   <div class="card" id="issue"><h2>Issue the job report and customer feedback forms</h2>
     <p class="meta">Creates two one-time codes for this job: one for the installer team (job report) and one for the customer (feedback). Copy each message and send it by LINE.</p>
     <div class="grid f">
@@ -82,7 +87,7 @@ tr.sel td{background:#EEF2FF}#teams tr{cursor:pointer}
 <script>
 (function(){
   var PW = '', data = {items:[], jobs:[], teams:[]}, sel = null, open = {}, lastIssued = null;
-  var Q0 = new URLSearchParams(location.search), FORJOB = Q0.get('job') || '';
+  var Q0 = new URLSearchParams(location.search), FORJOB = Q0.get('job') || '', FORPOST = Q0.get('post') || '', POSTS = {};
   try { PW = sessionStorage.getItem('members-admin-pw') || ''; } catch(e) {}
   var $ = function(id){ return document.getElementById(id); };
   var Q = {q1:'Quality and neatness of the workmanship',q2:'Materials used as agreed',q3:'Finished on time',q4:'Safety and site left clean',q5:'Tested and working at handover',
@@ -125,12 +130,13 @@ tr.sel td{background:#EEF2FF}#teams tr{cursor:pointer}
         + '<td><span class="meta">Installer</span> <span class="code">'+esc(j.codes.installer)+'</span><br><span class="meta">Customer</span> <span class="code">'+esc(j.codes.customer)+'</span></td>'
         + '<td>'+(r ? '✓ '+day(r.created)+' <a href="#" data-open="'+esc(j.id)+'">view</a>' : '<span class="meta">not yet</span>')+'</td>'
         + '<td>'+(fb ? sc(fbAvg(fb))+' NPS '+esc(fb.data.nps)+' <a href="#" data-open="'+esc(j.id)+'">view</a>' : '<span class="meta">not yet</span>')+'</td>'
-        + '<td><span class="pill '+ST[st][0]+'">'+ST[st][1]+(st === 'rel' ? ' '+day(j.released) : '')+'</span></td><td><div class="acts">'
+        + '<td><span class="pill '+ST[st][0]+'">'+ST[st][1]+(st === 'rel' ? ' '+day(j.released) : '')+'</span>'+(j.post ? '<br><span class="meta">Post: '+PSL[pstate(j.post)]+'</span>' : '')+'</td><td><div class="acts">'
         + (st === 'ready' ? '<button class="sm ok" data-rel="'+esc(j.id)+'">Release payment</button>' : '')
         + (st === 'rel' ? '<button class="sm ghost" data-unrel="'+esc(j.id)+'">Undo release</button>' : '')
         + (!r && st !== 'can' ? '<button class="sm ghost" data-cpi="'+esc(j.id)+'">Copy message for installer</button>' : '')
         + (!fb && st !== 'can' ? '<button class="sm ghost" data-cpc="'+esc(j.id)+'">Copy message for customer</button>' : '')
         + (st !== 'can' && st !== 'rel' ? '<button class="sm ghost" data-can="'+esc(j.id)+'">Cancel</button>' : '')
+        + (j.post && pstate(j.post) === 'open' ? '<button class="sm ghost" data-pclose="'+esc(j.id)+'">Close job post</button>' : '') + (j.post && pstate(j.post) !== 'open' ? '<button class="sm ghost" data-popen="'+esc(j.id)+'">Reopen job post</button>' : '')
         + (st === 'can' ? '<button class="sm ghost" data-uncan="'+esc(j.id)+'">Reopen</button><button class="sm no" data-del="'+esc(j.id)+'">Delete</button>' : '')
         + '</div></td></tr>';
       if (open[j.id]) {
@@ -163,7 +169,13 @@ tr.sel td{background:#EEF2FF}#teams tr{cursor:pointer}
     $('count').textContent = jobs.length + ' jobs · ' + ready + ' ready to release payment · ' + data.items.length + ' customer responses';
     renderIssued(); renderJobs(); renderTeams();
   }
-  function load(){ return api('a=list').then(function(j){ data = j; render(); }); }
+  var PSL = {open:'Open (active)', closed:'Closed – shown as finished', hidden:'Hidden from the Jobs page'};
+  function loadPosts(){ return fetch('/api/feedback?a=posts&t=' + Date.now(), {cache:'no-store'}).then(function(r){ return r.json(); }).then(function(d){ POSTS = d.posts || {}; renderPost(); renderJobs(); }).catch(function(){}); }
+  function pstate(id){ return id && POSTS[id] ? POSTS[id].state : 'open'; }
+  function renderPost(){ if (!FORPOST) return; $('postcard').hidden = false;
+    $('postinfo').innerHTML = esc(FORJOB) + ' · status: <b>' + PSL[pstate(FORPOST)] + '</b>'; }
+  function setPost(id, state, job){ return post('post', {post:id, state:state, job:job}).then(function(r){ POSTS = r.posts || {}; renderPost(); renderJobs(); }).catch(function(e){ alert(e.message); }); }
+  function load(){ return api('a=list').then(function(j){ data = j; render(); loadPosts(); }); }
   function fillLists(){
     fetch('/job.html').then(function(r){ return r.text(); }).then(function(h){
       var doc = new DOMParser().parseFromString(h, 'text/html'), seen = {};
@@ -177,7 +189,7 @@ tr.sel td{background:#EEF2FF}#teams tr{cursor:pointer}
   function signin(){
     PW = ($('pw').value || PW).trim();
     api('a=list').then(function(j){ try { sessionStorage.setItem('members-admin-pw', PW); } catch(e) {}
-      $('login').hidden = true; $('app').hidden = false; data = j; render(); fillLists();
+      $('login').hidden = true; $('app').hidden = false; data = j; render(); fillLists(); loadPosts();
       if (FORJOB) { $('i-job').value = FORJOB; $('issue').classList.add('hi'); $('jq').value = FORJOB; renderJobs(); $('i-team').focus(); }
     }).catch(function(e){ $('lerr').textContent = e.message; });
   }
@@ -187,13 +199,16 @@ tr.sel td{background:#EEF2FF}#teams tr{cursor:pointer}
   $('jf').onchange = renderJobs; $('jq').oninput = renderJobs;
   $('create').onclick = function(){
     $('ierr').textContent = '';
-    post('create', {job: $('i-job').value, team: $('i-team').value, customer: $('i-cust').value, phone: $('i-phone').value})
+    post('create', {job: $('i-job').value, team: $('i-team').value, customer: $('i-cust').value, phone: $('i-phone').value, post: ($('i-job').value === FORJOB ? FORPOST : '')})
       .then(function(r){ lastIssued = r.job; $('i-cust').value = ''; $('i-phone').value = ''; return load(); })
       .catch(function(e){ $('ierr').textContent = e.message; });
   };
   function findJob(id){ return (data.jobs || []).filter(function(x){ return x.id === id; })[0] || (lastIssued && lastIssued.id === id ? lastIssued : null); }
   document.addEventListener('click', function(e){
     var t = e.target, id;
+    if ((id = t.getAttribute('data-ps'))) return setPost(FORPOST, id, FORJOB);
+    if ((id = t.getAttribute('data-pclose'))) { var jj = findJob(id); return setPost(jj.post, 'closed', jj.job); }
+    if ((id = t.getAttribute('data-popen'))) { var jo = findJob(id); return setPost(jo.post, 'open', jo.job); }
     if ((id = t.getAttribute('data-cpi'))) return copy(msgInstaller(findJob(id)), t);
     if ((id = t.getAttribute('data-cpc'))) return copy(msgCustomer(findJob(id)), t);
     if ((id = t.getAttribute('data-open'))) { e.preventDefault(); open[id] = !open[id]; return renderJobs(); }

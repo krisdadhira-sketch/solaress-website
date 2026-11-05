@@ -18,6 +18,8 @@
 //   POST /api/feedback?a=jobdel {id}                            delete a job, its codes, files and feedback
 //   POST /api/feedback?a=delete {id}                            delete one feedback (the customer code works again)
 //   GET  /api/feedback?a=file&id=..&f=..                        a file from a job report
+//   POST /api/feedback?a=post {post, state: open|closed|hidden, job}   job post status on the Jobs page (also public GET a=posts)
+// Releasing payment also closes the job's post automatically.
 import { getStore } from "@netlify/blobs";
 import crypto from "node:crypto";
 
@@ -91,6 +93,12 @@ export default async (req) => {
   // Setup check: does the server see the admin password variables? (never returns the values)
   if (a === "status") return json({ members_admin_password_set: !!String(process.env.MEMBERS_ADMIN_PASSWORD || "").trim(), vocab_admin_password_set: !!String(process.env.VOCAB_ADMIN_PASSWORD || "").trim() });
 
+  // Job post status on the Jobs page (open / closed / hidden), keyed by the post's id on job.html.
+  if (a === "posts") {
+    const st = (await s.get("posts/status", { type: "json" })) || {};
+    return new Response(JSON.stringify({ posts: st }), { headers: { "content-type": "application/json", "cache-control": "public, max-age=30" } });
+  }
+
   // ---- public: installer or customer with a code
   if (a === "code" && req.method === "POST") {
     const r = await byCode(s, (await body(req)).code);
@@ -125,6 +133,16 @@ export default async (req) => {
     const items = await all(s, "fb/"), jobs = await all(s, "job/");
     return json({ items, jobs, teams: scorecards(items) });
   }
+  if (a === "post" && req.method === "POST") {
+    const b = await body(req), id = cleanId(b.post);
+    if (!id) return json({ error: "post id needed" }, 400);
+    const st = (await s.get("posts/status", { type: "json" })) || {};
+    if (b.state === "open") delete st[id];
+    else if (b.state === "closed" || b.state === "hidden") st[id] = { state: b.state, at: new Date().toISOString(), job: txt(b.job) };
+    else return json({ error: "state must be open, closed or hidden" }, 400);
+    await s.setJSON("posts/status", st);
+    return json({ ok: true, posts: st });
+  }
   if (a === "create" && req.method === "POST") {
     const b = await body(req);
     if (!txt(b.job) || !txt(b.team)) return json({ error: "Job and team are needed." }, 400);
@@ -133,7 +151,7 @@ export default async (req) => {
     do { ci = makeCode(); } while (await s.get("code/" + ci));
     do { cc = makeCode(); } while (cc === ci || await s.get("code/" + cc));
     const job = { id, created: new Date().toISOString(), job: txt(b.job), team: txt(b.team, 120),
-      customer: txt(b.customer, 120), phone: txt(b.phone, 30), codes: { installer: ci, customer: cc },
+      customer: txt(b.customer, 120), phone: txt(b.phone, 30), post: cleanId(b.post), codes: { installer: ci, customer: cc },
       report: null, rated: null, released: null, cancelled: false };
     await s.setJSON("code/" + ci, { jobId: id, role: "installer" });
     await s.setJSON("code/" + cc, { jobId: id, role: "customer" });
@@ -148,6 +166,11 @@ export default async (req) => {
     if ("released" in b) {
       if (b.released && !(job.report && job.rated)) return json({ error: "Payment can be released only when both the job report and the customer's feedback are in." }, 400);
       job.released = b.released ? new Date().toISOString() : null;
+      // payment released = job finished: close its post on the Jobs page
+      if (b.released && job.post) {
+        const st = (await s.get("posts/status", { type: "json" })) || {};
+        if (!st[job.post]) { st[job.post] = { state: "closed", at: job.released, job: job.job }; await s.setJSON("posts/status", st); }
+      }
     }
     await s.setJSON(key, job);
     return json({ ok: true });

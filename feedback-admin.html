@@ -66,7 +66,7 @@ tr.sel td{background:#EEF2FF}#teams tr{cursor:pointer}
       <label>Customer name (optional)<input id="i-cust"></label>
       <label>Customer phone (optional)<input id="i-phone" type="tel"></label>
     </div>
-    <div style="margin-top:10px"><span class="meta">Choose the team (or type another name above):</span><div class="acts" id="teamchips" style="margin-top:6px"></div></div>
+    <div style="margin-top:10px"><span class="meta">Choose the team: Solar ESS, any approved TSIA member or installer partner, or <b>Others</b> to let the installer write their team name on the report.</span><div class="acts" id="teamchips" style="margin-top:6px"></div></div>
     <datalist id="joblist"></datalist><datalist id="teamlist"></datalist>
     <p style="margin:12px 0 0"><button id="create">Create codes</button> <span id="ierr" class="err"></span></p>
     <div id="issued"></div>
@@ -89,7 +89,7 @@ tr.sel td{background:#EEF2FF}#teams tr{cursor:pointer}
 <script>
 (function(){
   var PW = '', data = {items:[], jobs:[], teams:[]}, sel = null, open = {}, lastIssued = null;
-  var Q0 = new URLSearchParams(location.search), FORJOB = Q0.get('job') || '', FORPOST = Q0.get('post') || '', POSTS = {};
+  var TEAMS = [], TEAMOPEN = false, Q0 = new URLSearchParams(location.search), FORJOB = Q0.get('job') || '', FORPOST = Q0.get('post') || '', POSTS = {};
   try { PW = sessionStorage.getItem('members-admin-pw') || ''; } catch(e) {}
   var $ = function(id){ return document.getElementById(id); };
   var Q = {q1:'Quality and neatness of the workmanship',q2:'Materials used as agreed',q3:'Finished on time',q4:'Safety and site left clean',q5:'Tested and working at handover',
@@ -109,7 +109,7 @@ tr.sel td{background:#EEF2FF}#teams tr{cursor:pointer}
 
   // ready-made LINE messages (Thai + English together, so they work for everyone)
   function msgInstaller(j){ var u = 'https://solaress.org/th/job-report.html?c=' + j.codes.installer;
-    return 'งาน: ' + j.job + '\nทีม: ' + j.team + '\nเมื่อส่งมอบงานแล้ว กรุณาส่งรายงานจบงานที่\n' + u + '\nรหัสรายงาน: ' + j.codes.installer
+    return 'งาน: ' + j.job + (j.team ? '\nทีม: ' + j.team : '') + '\nเมื่อส่งมอบงานแล้ว กรุณาส่งรายงานจบงานที่\n' + u + '\nรหัสรายงาน: ' + j.codes.installer
       + '\nSolar ESS จะจ่ายค่างานเมื่อได้รับและตรวจสอบทั้งรายงานนี้และแบบประเมินจากลูกค้าแล้ว\n\nJob report (English): https://solaress.org/job-report.html?c=' + j.codes.installer + '\nPayment is released after both your report and the customer\'s feedback are received and checked.'; }
   function msgCustomer(j){ var u = 'https://solaress.org/th/feedback.html?c=' + j.codes.customer;
     return 'สวัสดีค่ะ' + (j.customer ? ' คุณ' + j.customer : '') + '\nขอบคุณที่ใช้บริการ Solar ESS งาน "' + j.job + '" เสร็จเรียบร้อยแล้ว\nรบกวนประเมินทีมช่างสั้น ๆ (2 นาที) ที่\n' + u + '\nรหัสประเมิน: ' + j.codes.customer
@@ -119,7 +119,7 @@ tr.sel td{background:#EEF2FF}#teams tr{cursor:pointer}
 
   function renderIssued(){
     var j = lastIssued; if (!j) { $('issued').innerHTML = ''; return; }
-    $('issued').innerHTML = '<div class="issued"><b>Codes created for:</b> '+esc(j.job)+' · '+esc(j.team)
+    $('issued').innerHTML = '<div class="issued"><b>Codes created for:</b> '+esc(j.job)+' · '+(j.team ? esc(j.team) : 'Others (installer writes the team name)')
       + '<p style="margin:8px 0">Installer (job report): <span class="code">'+esc(j.codes.installer)+'</span> &nbsp; <button class="sm" data-cpi="'+esc(j.id)+'">Copy message for installer</button></p>'
       + '<p style="margin:0">Customer (feedback): <span class="code">'+esc(j.codes.customer)+'</span> &nbsp; <button class="sm" data-cpc="'+esc(j.id)+'">Copy message for customer</button></p></div>';
   }
@@ -128,7 +128,7 @@ tr.sel td{background:#EEF2FF}#teams tr{cursor:pointer}
     var jobs = (data.jobs || []).filter(function(j){ return (!f || state(j) === f) && (!q || (j.job + ' ' + j.team).toLowerCase().indexOf(q) >= 0); });
     $('jobs').innerHTML = jobs.length ? jobs.map(function(j){
       var st = state(j), fb = fbOf(j), r = j.report;
-      var row = '<tr><td>'+day(j.created)+'</td><td style="min-width:220px">'+esc(j.job)+(j.customer || j.phone ? '<br><span class="meta">'+esc(j.customer)+' '+esc(j.phone)+'</span>' : '')+'</td><td>'+esc(j.team)+'</td>'
+      var row = '<tr><td>'+day(j.created)+'</td><td style="min-width:220px">'+esc(j.job)+(j.customer || j.phone ? '<br><span class="meta">'+esc(j.customer)+' '+esc(j.phone)+'</span>' : '')+'</td><td>'+(j.team ? esc(j.team) : '<span class="meta">Others (installer writes it)</span>')+'</td>'
         + '<td><span class="meta">Installer</span> <span class="code">'+esc(j.codes.installer)+'</span><br><span class="meta">Customer</span> <span class="code">'+esc(j.codes.customer)+'</span></td>'
         + '<td>'+(r ? '✓ '+day(r.created)+' <a href="#" data-open="'+esc(j.id)+'">view</a>' : '<span class="meta">not yet</span>')+'</td>'
         + '<td>'+(fb ? sc(fbAvg(fb))+' NPS '+esc(fb.data.nps)+' <a href="#" data-open="'+esc(j.id)+'">view</a>' : '<span class="meta">not yet</span>')+'</td>'
@@ -185,9 +185,10 @@ tr.sel td{background:#EEF2FF}#teams tr{cursor:pointer}
         .concat([].map.call(doc.querySelectorAll('article.card.p h3'), function(h){ return h.textContent.trim(); }));
       $('joblist').innerHTML = names.filter(function(n){ if (!n || seen[n]) return false; return seen[n] = 1; }).map(function(n){ return '<option value="'+esc(n)+'">'; }).join('');
     }).catch(function(){});
-    var TEAMS = [['Solar ESS team','Chiang Rai HQ'],['Krabi Solar ESS','Krabi office'],['Bangkok Solar ESS','Bangkok'],['ESS DEE Solar','alliance'],['SAP Group','Phuket'],['Thumbs Up ESS','TSIA partner'],['SAVE SUN Co., Ltd.','alliance']];
+    TEAMS = [['Solar ESS team','Chiang Rai HQ']];
     function drawChips(){ var cur = $('i-team').value;
-      $('teamchips').innerHTML = TEAMS.map(function(t){ return '<button type="button" class="chip'+(cur === t[0] ? ' on' : '')+'" data-team="'+esc(t[0])+'">'+esc(t[0])+(t[1] ? '<small>'+esc(t[1])+'</small>' : '')+'</button>'; }).join('');
+      $('teamchips').innerHTML = TEAMS.map(function(t){ return '<button type="button" class="chip'+(cur === t[0] && !TEAMOPEN ? ' on' : '')+'" data-team="'+esc(t[0])+'">'+esc(t[0])+(t[1] ? '<small>'+esc(t[1])+'</small>' : '')+'</button>'; }).join('')
+        + '<button type="button" class="chip'+(TEAMOPEN ? ' on' : '')+'" data-team="__others">Others<small>installer writes the team name</small></button>';
       $('teamlist').innerHTML = TEAMS.map(function(t){ return '<option value="'+esc(t[0])+'">'; }).join(''); }
     drawChips();
     Promise.all(['partner','tsia'].map(function(t){ return fetch('/api/members?a=public&type='+t).then(function(r){ return r.ok ? r.json() : {items:[]}; }).catch(function(){ return {items:[]}; }); }))
@@ -204,13 +205,14 @@ tr.sel td{background:#EEF2FF}#teams tr{cursor:pointer}
   $('pw').addEventListener('keydown', function(e){ if (e.key === 'Enter') signin(); });
   $('reload').onclick = load;
   $('jf').onchange = renderJobs; $('jq').oninput = renderJobs;
-  $('teamchips').addEventListener('click', function(e){ var b = e.target.closest('[data-team]'); if (!b) return; $('i-team').value = b.getAttribute('data-team'); drawChipsOn(); });
-  $('i-team').addEventListener('input', function(){ drawChipsOn(); });
-  function drawChipsOn(){ Array.prototype.forEach.call(document.querySelectorAll('#teamchips .chip'), function(c){ c.classList.toggle('on', c.getAttribute('data-team') === $('i-team').value); }); }
+  $('teamchips').addEventListener('click', function(e){ var b = e.target.closest('[data-team]'); if (!b) return; var v = b.getAttribute('data-team');
+    TEAMOPEN = v === '__others'; $('i-team').value = TEAMOPEN ? '' : v; $('i-team').placeholder = TEAMOPEN ? 'Others: the installer writes it on the report' : 'Team name'; drawChipsOn(); });
+  $('i-team').addEventListener('input', function(){ if ($('i-team').value) TEAMOPEN = false; drawChipsOn(); });
+  function drawChipsOn(){ Array.prototype.forEach.call(document.querySelectorAll('#teamchips .chip'), function(c){ var v = c.getAttribute('data-team'); c.classList.toggle('on', v === '__others' ? TEAMOPEN : (!TEAMOPEN && v === $('i-team').value)); }); }
   $('create').onclick = function(){
     $('ierr').textContent = '';
-    post('create', {job: $('i-job').value, team: $('i-team').value, customer: $('i-cust').value, phone: $('i-phone').value, post: ($('i-job').value === FORJOB ? FORPOST : '')})
-      .then(function(r){ lastIssued = r.job; $('i-cust').value = ''; $('i-phone').value = ''; return load(); })
+    post('create', {job: $('i-job').value, team: TEAMOPEN ? '' : $('i-team').value, teamOpen: TEAMOPEN, customer: $('i-cust').value, phone: $('i-phone').value, post: ($('i-job').value === FORJOB ? FORPOST : '')})
+      .then(function(r){ lastIssued = r.job; TEAMOPEN = false; $('i-team').placeholder = 'Team name'; drawChipsOn(); $('i-cust').value = ''; $('i-phone').value = ''; return load(); })
       .catch(function(e){ $('ierr').textContent = e.message; });
   };
   function findJob(id){ return (data.jobs || []).filter(function(x){ return x.id === id; })[0] || (lastIssued && lastIssued.id === id ? lastIssued : null); }

@@ -13,7 +13,8 @@
 //   POST /api/feedback?a=submit {code, q1..q10, nps, name, comment, language}   (customer code)
 // Admin (header "x-admin-password", same password as /members-admin.html):
 //   GET  /api/feedback?a=list                                   -> {items, jobs, teams}
-//   POST /api/feedback?a=create {job, team, customer, phone}    -> {job} with codes
+//   POST /api/feedback?a=create {job, team, customer, phone, post, teamOpen}  -> {job} with codes
+//        teamOpen (admin chose "Others"): team left empty; the installer writes the team name on the job report
 //   POST /api/feedback?a=jobset {id, released?, blocked?}       release payment (needs report + feedback) / cancel
 //   POST /api/feedback?a=jobdel {id}                            delete a job, its codes, files and feedback
 //   POST /api/feedback?a=delete {id}                            delete one feedback (the customer code works again)
@@ -104,7 +105,7 @@ export default async (req) => {
     const r = await byCode(s, (await body(req)).code);
     if (!r || r.job.cancelled) return json({ error: "not-found" }, 404);
     const used = r.role === "installer" ? !!r.job.report : !!r.job.rated;
-    return json({ role: r.role, job: r.job.job, team: r.job.team, used });
+    return json({ role: r.role, job: r.job.job, team: r.job.team, teamOpen: !!r.job.teamOpen && !r.job.team, used });
   }
   if (a === "submit" && req.method === "POST") {
     const b = await body(req);
@@ -145,12 +146,13 @@ export default async (req) => {
   }
   if (a === "create" && req.method === "POST") {
     const b = await body(req);
-    if (!txt(b.job) || !txt(b.team)) return json({ error: "Job and team are needed." }, 400);
+    const teamOpen = !!b.teamOpen && !txt(b.team);
+    if (!txt(b.job) || (!txt(b.team) && !teamOpen)) return json({ error: "Job and team are needed (or choose Others)." }, 400);
     const id = newId();
     let ci, cc;
     do { ci = makeCode(); } while (await s.get("code/" + ci));
     do { cc = makeCode(); } while (cc === ci || await s.get("code/" + cc));
-    const job = { id, created: new Date().toISOString(), job: txt(b.job), team: txt(b.team, 120),
+    const job = { id, created: new Date().toISOString(), job: txt(b.job), team: txt(b.team, 120), teamOpen,
       customer: txt(b.customer, 120), phone: txt(b.phone, 30), post: cleanId(b.post), codes: { installer: ci, customer: cc },
       report: null, rated: null, released: null, cancelled: false };
     await s.setJSON("code/" + ci, { jobId: id, role: "installer" });

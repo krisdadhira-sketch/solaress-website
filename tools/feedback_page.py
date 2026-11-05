@@ -197,7 +197,7 @@ function api(a,b){return fetch('/api/feedback?a='+a,{method:'POST',headers:{'con
 function msg(t){$('fb-nf').textContent=t;$('fb-nf').hidden=false}
 function open(){code=$('f-phone').value.trim().toUpperCase();$('fb-nf').hidden=true;$('fb-form').hidden=true;if(!code)return;
  api('code',{code:code}).then(function(r){if(r.role!=='customer')return msg(T.wrongrole);if(r.used)return msg(T.done);cur=r;
-  $('fb-job').innerHTML='<b>'+esc(T.jl)+':</b> '+esc(r.job)+'<br><b>'+esc(T.tl)+':</b> '+esc(r.team);$('fb-form').hidden=false;$('fb-form').scrollIntoView({behavior:'smooth'})})
+  $('fb-job').innerHTML='<b>'+esc(T.jl)+':</b> '+esc(r.job)+(r.team?'<br><b>'+esc(T.tl)+':</b> '+esc(r.team):'');$('fb-form').hidden=false;$('fb-form').scrollIntoView({behavior:'smooth'})})
  .catch(function(){msg(T.nf)})}
 $('fb-login').addEventListener('submit',function(e){e.preventDefault();open()});
 var q=new URLSearchParams(location.search).get('c');if(q){$('f-phone').value=q;open()}
@@ -227,6 +227,7 @@ def build_report(lang):
         f'<input type="hidden" name="form-name" value="job-report"><input type="hidden" name="language" value="{"Thai" if th else "English"}"><p hidden><label>Leave empty <input name="bot-field"></label></p>'
         f'<input type="hidden" name="code" id="rp-c"><input type="hidden" name="job" id="rp-j"><input type="hidden" name="team" id="rp-t">'
         f'<div class="jobbox" id="rp-job"></div>'
+        f'<label for="rp-tn" id="rp-tn-l" hidden>{esc(t["r_team_other"])}<input id="rp-tn" name="team-name" maxlength="120"></label>'
         f'<fieldset><legend>{esc(t["r_s3"])}</legend><label for="r-date">{esc(t["r_date"])}<input id="r-date" name="completed" type="date" required></label>'
         f'<label for="r-work">{esc(t["r_work"])}<textarea id="r-work" name="work-done" rows="4" required></textarea></label>'
         f'<label for="r-mat">{esc(t["r_mat"])}<textarea id="r-mat" name="materials" rows="2"></textarea></label>'
@@ -248,7 +249,8 @@ function msg(t){$('rp-msg').textContent=t;$('rp-msg').hidden=false}
 function open(){var code=$('rp-code').value.trim().toUpperCase();$('rp-msg').hidden=true;f.hidden=true;if(!code)return;
  fetch('/api/feedback?a=code',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({code:code})}).then(function(r){return r.ok?r.json():Promise.reject()})
  .then(function(r){if(r.role!=='installer')return msg(T.wrong);if(r.used)return msg(T.used);
-  $('rp-c').value=code;$('rp-j').value=r.job;$('rp-t').value=r.team;$('rp-job').innerHTML='<b>'+esc(T.jl)+':</b> '+esc(r.job)+'<br><b>'+esc(T.tl)+':</b> '+esc(r.team);
+  $('rp-c').value=code;$('rp-j').value=r.job;$('rp-t').value=r.team;$('rp-job').innerHTML='<b>'+esc(T.jl)+':</b> '+esc(r.job)+(r.team?'<br><b>'+esc(T.tl)+':</b> '+esc(r.team):'');
+  $('rp-tn-l').hidden=!r.teamOpen;$('rp-tn').required=!!r.teamOpen;
   var d=$('r-date');if(!d.value)d.value=new Date().toISOString().slice(0,10);f.hidden=false;f.scrollIntoView({behavior:'smooth'})}).catch(function(){msg(T.nf)})}
 $('rp-login').addEventListener('submit',function(e){e.preventDefault();open()});
 var q=new URLSearchParams(location.search).get('c');if(q){$('rp-code').value=q;open()}

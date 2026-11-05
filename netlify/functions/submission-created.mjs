@@ -85,6 +85,8 @@ async function saveReport(p) {
       files.push(f);
     } catch { /* keep the report even if a file could not be copied */ }
   }
+  // admin chose "Others": the installer writes their team name on the report
+  if (job.teamOpen && !job.team) job.team = String(data["team-name"] || "").trim().slice(0, 120) || "Not stated";
   delete data.code;
   for (const f of REPORT_FILES) delete data[f];
   job.report = { created: p.created_at || new Date().toISOString(), data, files };

@@ -9,7 +9,7 @@ from urllib.parse import quote
 L = {"job.html": ("Admin: issue job report & customer feedback"),
      "th/job.html": ("ผู้ดูแล: ออกแบบรายงานจบงานและแบบประเมินลูกค้า")}
 CSS = ('<style id="jl-css">.jl{display:flex;justify-content:flex-end;margin-top:8px;font-size:12px}'
-       '.card.is-closed{position:relative;background:#eef0f4!important;border-color:#cbd2dc!important}.card.is-closed .thumb,.card.is-closed .top,.card.is-closed .body>*:not(.go):not(.jl){filter:grayscale(1) blur(1.8px);opacity:.5;pointer-events:none;user-select:none}.card.is-closed::before{content:attr(data-closed);position:absolute;top:16px;right:16px;z-index:3;background:#334155;color:#fff;font-weight:800;font-size:13px;letter-spacing:.08em;text-transform:uppercase;padding:7px 14px;border-radius:99px;box-shadow:0 4px 14px rgba(15,23,42,.25)}.card.is-closed .go a{display:none!important}.closed-tag{display:inline-block;padding:10px 14px;background:#475569;color:#fff;font-weight:700;border-radius:6px}.card.is-closed .jl a{opacity:1;color:#334155;font-weight:700}.jl a{display:inline-flex;align-items:center;gap:4px;color:var(--mute,#3E548E);opacity:.55;text-decoration:none}.jl a:hover{opacity:1}.jl a:hover{text-decoration:underline}</style>')
+       '.card.is-closed{position:relative;background:#eef0f4!important;border-color:#cbd2dc!important}.card.is-closed .thumb,.card.is-closed .top,.card.is-closed .body>*:not(.go):not(.jl){filter:grayscale(1) blur(1.8px);opacity:.5;pointer-events:none;user-select:none}.card.is-closed::before{content:attr(data-closed);position:absolute;top:16px;right:16px;z-index:3;background:#334155;color:#fff;font-weight:800;font-size:13px;letter-spacing:.08em;text-transform:uppercase;padding:7px 14px;border-radius:99px;box-shadow:0 4px 14px rgba(15,23,42,.25)}.card.is-closed .go a{display:none!important}.card.is-closed .go .closed{background:#475569;border-radius:6px}.closed-tag{display:inline-block;padding:10px 14px;background:#475569;color:#fff;font-weight:700;border-radius:6px}.card.is-closed .jl a{opacity:1;color:#334155;font-weight:700}.jl a{display:inline-flex;align-items:center;gap:4px;color:var(--mute,#3E548E);opacity:.55;text-decoration:none}.jl a:hover{opacity:1}.jl a:hover{text-decoration:underline}</style>')
 for f, title in L.items():
     h = open(f, encoding="utf-8").read()
     h = re.sub(r"<!--jl-->.*?<!--/jl-->", "", h, flags=re.S)
@@ -36,12 +36,15 @@ for f, title in L.items():
     th = f.startswith("th/")
     tag = "ปิดรับแล้ว – งานเสร็จสิ้น" if th else "Closed – job completed"
     badge = "ปิดงานแล้ว" if th else "Job closed"
-    js = ("<!--jls--><script>(function(){fetch('/api/feedback?a=posts').then(function(r){return r.ok?r.json():{posts:{}}}).then(function(d){var P=d.posts||{};"
+    js = ("<!--jls--><script>(function(){function mark(){[].forEach.call(document.querySelectorAll('article.card .go .closed'),function(c){var a=c.closest('article');a.classList.add('is-closed');a.setAttribute('data-closed'," + repr(badge) + ")})}"
+          "window.addEventListener('load',function(){setTimeout(mark,50)});fetch('/api/feedback?a=posts').then(function(r){return r.ok?r.json():{posts:{}}}).then(function(d){var P=d.posts||{};"
           "Object.keys(P).forEach(function(id){var a=document.getElementById(id);if(!a||!a.classList.contains('card'))return;"
           "var name=(a.querySelector('.go a[data-job]')||{}).getAttribute?a.querySelector('.go a[data-job]').getAttribute('data-job'):'';"
           "if(P[id].state==='hidden'){a.style.display='none'}else{a.classList.add('is-closed');a.setAttribute('data-closed'," + repr(badge) + ");var g=a.querySelector('.go');"
           "if(g&&!g.querySelector('.closed-tag,.closed')){var t=document.createElement('span');t.className='closed-tag';t.textContent=" + repr(tag) + ";g.appendChild(t)}}"
-          "if(name){[].forEach.call(document.querySelectorAll('#j-role option'),function(o){if(o.textContent===name)o.disabled=true})}})}).catch(function(){})})();</script><!--/jls-->\n")
+          "if(name){[].forEach.call(document.querySelectorAll('#j-role option'),function(o){if(o.textContent===name)o.disabled=true})}})}).catch(function(){})"
+          # posts already marked finished in the page itself (old "Closed" label) get the same closed look
+          "})();</script><!--/jls-->\n")
     h = h.replace("</body>", js + "</body>", 1)
     open(f, "w", encoding="utf-8").write(h)
     print(f, n, "posts,", h.count('<div class="jl">'), "with links")

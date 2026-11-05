@@ -1,6 +1,21 @@
 <!doctype html>
 <html lang="zh-Hans">
 <head>
+<!--ga4--><script async src="https://www.googletagmanager.com/gtag/js?id=G-46HG0JWSZV"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-46HG0JWSZV');
+(function(){var LEAD={'consultation':1,'installer-request':1};
+function ev(n,p){try{gtag('event',n,p||{})}catch(e){}}
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href]');if(!a)return;var h=a.getAttribute('href')||'';
+ if(/#consult$/.test(h))ev('book_consultation_click',{link_text:(a.textContent||'').trim().slice(0,60),page_path:location.pathname});
+ else if(/^tel:/i.test(h))ev('phone_click',{link_url:h.slice(4),page_path:location.pathname});
+ else if(/line\.me/i.test(h))ev('line_click',{page_path:location.pathname});
+ else if(/facebook\.com/i.test(h))ev('facebook_click',{page_path:location.pathname});},true);
+document.addEventListener('submit',function(e){var f=e.target;try{sessionStorage.setItem('ga_form',f.getAttribute('name')||f.id||'form')}catch(x){}},true);
+if(/\/thanks\.html$/.test(location.pathname)){var n=null;try{n=sessionStorage.getItem('ga_form');sessionStorage.removeItem('ga_form')}catch(x){}
+ if(n){ev('form_sent',{form_name:n});if(LEAD[n])ev('generate_lead',{form_name:n})}}
+})();</script><!--/ga4-->
+
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>数据中心：对环境和社会经济的影响及其对泰国的意义 | Solar ESS</title>

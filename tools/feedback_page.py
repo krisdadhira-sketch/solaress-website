@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Customer satisfaction feedback page after a job: /feedback.html and /th/feedback.html.
 
-10 questions scored 1-5 (work, personality, interaction), NPS 0-10 and "will you bring more business?".
+10 questions scored 5/4/2/1 (no middle score) (work, personality, interaction), NPS 0-10 and "will you bring more business?".
 Form "job-feedback" (Netlify Forms) -> netlify/functions/submission-created.mjs saves it in Blobs store
 "feedback" -> team scorecards at /feedback-admin.html (same password as /members-admin.html).
 
@@ -14,8 +14,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 
-SCALE = {"en": [("5", "Perfect"), ("4", "Good"), ("3", "Normal"), ("2", "Fair"), ("1", "Poor")],
-         "th": [("5", "ดีเยี่ยม"), ("4", "ดี"), ("3", "ปานกลาง"), ("2", "พอใช้"), ("1", "ควรปรับปรุง")]}
+SCALE = {"en": [("5", "Perfect"), ("4", "Good"), ("2", "Fair"), ("1", "Poor")],
+         "th": [("5", "ดีเยี่ยม"), ("4", "ดี"), ("2", "พอใช้"), ("1", "ควรปรับปรุง")]}
 
 GROUPS = [
     (("The work", "งานที่ทำ"), [
@@ -47,7 +47,7 @@ T = {
     eyebrow="Customer feedback", h1="How did the job go?",
     lede="Your scores keep every installer team honest. Ten quick questions, about two minutes. Your answers go to Solar ESS only and are never published with your name.",
     s_job="1. The job", job="Which job?", job_other="Other or not listed", team="Which team did the work?", team_sol="Solar ESS team", team_other="Team name, if not listed",
-    s_q="2. Your scores", scale_note="5 Perfect · 4 Good · 3 Normal · 2 Fair · 1 Poor",
+    s_q="2. Your scores", scale_note="5 Perfect · 4 Good · 2 Fair · 1 Poor (there is no middle score: please choose the one closest to your experience)",
     s_nps="3. Would you recommend us?", nps_q="How likely are you to recommend this team and Solar ESS to a friend or colleague?", nps_lo="0 = not at all", nps_hi="10 = extremely likely",
     more_q="Will you bring us more business?", ref="Who should we contact? Name and phone (optional)",
     s_you="4. About you", name="Your name", phone="Phone (optional, kept private)", comment="Anything else we should know: what went well, what to improve (optional)",
@@ -57,7 +57,7 @@ T = {
     eyebrow="ประเมินความพึงพอใจ", h1="งานเป็นอย่างไรบ้าง",
     lede="คะแนนของคุณช่วยให้ทีมช่างทุกทีมรักษามาตรฐาน 10 คำถามสั้น ๆ ใช้เวลาประมาณ 2 นาที คำตอบส่งถึง Solar ESS เท่านั้น และจะไม่เผยแพร่พร้อมชื่อของคุณ",
     s_job="1. งานที่ประเมิน", job="งานไหน", job_other="งานอื่น หรือไม่มีในรายการ", team="ทีมไหนเป็นผู้ทำงาน", team_sol="ทีม Solar ESS", team_other="ชื่อทีม (หากไม่มีในรายการ)",
-    s_q="2. คะแนนของคุณ", scale_note="5 ดีเยี่ยม · 4 ดี · 3 ปานกลาง · 2 พอใช้ · 1 ควรปรับปรุง",
+    s_q="2. คะแนนของคุณ", scale_note="5 ดีเยี่ยม · 4 ดี · 2 พอใช้ · 1 ควรปรับปรุง (ไม่มีคะแนนกลาง กรุณาเลือกข้อที่ใกล้เคียงกับความรู้สึกของคุณที่สุด)",
     s_nps="3. คุณจะแนะนำเราไหม", nps_q="คุณมีแนวโน้มจะแนะนำทีมนี้และ Solar ESS ให้เพื่อนหรือคนรู้จักมากน้อยเพียงใด", nps_lo="0 = ไม่แนะนำเลย", nps_hi="10 = แนะนำแน่นอน",
     more_q="คุณจะมีงานเพิ่มเติมหรือแนะนำลูกค้าให้เราไหม", ref="ให้เราติดต่อใคร ชื่อและเบอร์โทร (ไม่บังคับ)",
     s_you="4. ข้อมูลของคุณ", name="ชื่อของคุณ", phone="เบอร์โทร (ไม่บังคับ เก็บเป็นความลับ)", comment="ความเห็นเพิ่มเติม: สิ่งที่ดี และสิ่งที่ควรปรับปรุง (ไม่บังคับ)",

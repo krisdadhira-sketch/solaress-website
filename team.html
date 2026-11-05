@@ -276,33 +276,33 @@ addEventListener('resize',function(){if(innerWidth>900&&h.classList.contains('mo
 <p class="fine" style="margin-top:18px">We use your details only to review your membership application.</p></div>
 <form name="tsia-membership" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" action="/thanks.html">
 <input type="hidden" name="form-name" value="tsia-membership"><input type="hidden" name="language" value="English"><p hidden><label>Leave empty <input name="bot-field"></label></p>
-<fieldset><legend>1. Organisation</legend>
+<p class="fine" style="margin:0 0 10px;opacity:.9">Only the organisation name, province, contact name and phone are required. Everything else, including all documents, is optional: we may ask for documents before approval.</p><fieldset><legend>1. Organisation</legend>
 <label for="t-org">Organisation name<input id="t-org" name="organisation" required autocomplete="organization"></label>
-<div class="two"><label for="t-type">Type of business<select id="t-type" name="business-type" required><option value="">Choose one</option><option>Company limited</option><option>Limited partnership</option><option>Registered individual / sole trader</option><option>Other</option></select></label><label for="t-tax">Tax ID / company registration no.<input id="t-tax" name="tax-id" required inputmode="numeric"></label></div>
-<div class="two"><label for="t-year">Year established<input id="t-year" name="year-established" inputmode="numeric" required></label><label for="t-prov">Province of head office<input id="t-prov" name="province" required></label></div>
-<label for="t-addr">Business address<textarea id="t-addr" name="address" rows="2" required></textarea></label>
+<div class="two"><label for="t-type">Type of business<select id="t-type" name="business-type"><option value="">Choose one</option><option>Company limited</option><option>Limited partnership</option><option>Registered individual / sole trader</option><option>Other</option></select></label><label for="t-tax">Tax ID / company registration no.<input id="t-tax" name="tax-id" inputmode="numeric"></label></div>
+<div class="two"><label for="t-year">Year established<input id="t-year" name="year-established" inputmode="numeric"></label><label for="t-prov">Province of head office<input id="t-prov" name="province" required></label></div>
+<label for="t-addr">Business address<textarea id="t-addr" name="address" rows="2"></textarea></label>
 <div><p class="fine" style="margin-bottom:8px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.8">Regions you serve</p><div class="chks"><label class="chk"><input type="checkbox" name="regions" value="Northern"><span>Northern</span></label><label class="chk"><input type="checkbox" name="regions" value="Northeastern"><span>Northeastern</span></label><label class="chk"><input type="checkbox" name="regions" value="Central"><span>Central</span></label><label class="chk"><input type="checkbox" name="regions" value="Bangkok and vicinity"><span>Bangkok and vicinity</span></label><label class="chk"><input type="checkbox" name="regions" value="Eastern"><span>Eastern</span></label><label class="chk"><input type="checkbox" name="regions" value="Western"><span>Western</span></label><label class="chk"><input type="checkbox" name="regions" value="Southern"><span>Southern</span></label></div></div>
 <label for="t-web">Website, Facebook or LINE (optional)<input id="t-web" name="website-social"></label>
 </fieldset>
 <fieldset><legend>2. Contact person</legend>
-<div class="two"><label for="t-cname">Full name<input id="t-cname" name="contact-name" required autocomplete="name"></label><label for="t-cpos">Position<input id="t-cpos" name="contact-position" required autocomplete="organization-title"></label></div>
-<div class="two"><label for="t-phone">Phone<input id="t-phone" name="phone" type="tel" required autocomplete="tel"></label><label for="t-email">Email<input id="t-email" name="email" type="email" required autocomplete="email"></label></div>
+<div class="two"><label for="t-cname">Full name<input id="t-cname" name="contact-name" required autocomplete="name"></label><label for="t-cpos">Position<input id="t-cpos" name="contact-position" autocomplete="organization-title"></label></div>
+<div class="two"><label for="t-phone">Phone<input id="t-phone" name="phone" type="tel" required autocomplete="tel"></label><label for="t-email">Email<input id="t-email" name="email" type="email" autocomplete="email"></label></div>
 <label for="t-line">LINE ID (optional)<input id="t-line" name="line-id"></label>
 </fieldset>
 <fieldset><legend>3. Team and services</legend>
-<div class="two"><label for="t-team">Number of installers in your team<input id="t-team" name="team-size" type="number" min="1" required></label><label for="t-elec">Certified electricians in your team<input id="t-elec" name="certified-electricians" type="number" min="0" required></label></div>
+<div class="two"><label for="t-team">Number of installers in your team<input id="t-team" name="team-size" type="number" min="1"></label><label for="t-elec">Certified electricians in your team<input id="t-elec" name="certified-electricians" type="number" min="0"></label></div>
 <div><p class="fine" style="margin-bottom:8px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.8">Services you provide</p><div class="chks"><label class="chk"><input type="checkbox" name="services" value="Residential on-grid"><span>Residential on-grid</span></label><label class="chk"><input type="checkbox" name="services" value="Hybrid and battery systems"><span>Hybrid and battery systems</span></label><label class="chk"><input type="checkbox" name="services" value="Off-grid systems"><span>Off-grid systems</span></label><label class="chk"><input type="checkbox" name="services" value="Commercial and industrial (C&I)"><span>Commercial and industrial (C&I)</span></label><label class="chk"><input type="checkbox" name="services" value="Cleaning and maintenance"><span>Cleaning and maintenance</span></label><label class="chk"><input type="checkbox" name="services" value="EV chargers"><span>EV chargers</span></label><label class="chk"><input type="checkbox" name="services" value="Design and engineering"><span>Design and engineering</span></label><label class="chk"><input type="checkbox" name="services" value="Supply of equipment"><span>Supply of equipment</span></label></div></div>
-<div class="two"><label for="t-kwp">Total capacity installed so far (kWp, approx.)<input id="t-kwp" name="total-kwp-installed" inputmode="decimal" required></label><label for="t-nproj">Number of projects completed (approx.)<input id="t-nproj" name="projects-completed" type="number" min="0" required></label></div>
+<div class="two"><label for="t-kwp">Total capacity installed so far (kWp, approx.)<input id="t-kwp" name="total-kwp-installed" inputmode="decimal"></label><label for="t-nproj">Number of projects completed (approx.)<input id="t-nproj" name="projects-completed" type="number" min="0"></label></div>
 <label for="t-brands">Brands you install most (inverters, panels, batteries)<input id="t-brands" name="brands"></label>
 </fieldset>
 <fieldset><legend>4. Past works</legend>
-<label for="t-past">Your three most recent or best projects: customer type, location, system size, year and what you did<textarea id="t-past" name="past-works" rows="5" required></textarea></label>
+<label for="t-past">Your three most recent or best projects: customer type, location, system size, year and what you did<textarea id="t-past" name="past-works" rows="5"></textarea></label>
 </fieldset>
 <fieldset><legend>5. Documents</legend>
 <p class="fine">PDF for documents; JPG or PNG for photos. Keep all files together under 8 MB.</p>
-<label for="t-prof">Company profile (PDF)<input id="t-prof" name="company-profile" type="file" accept=".pdf" required></label>
-<label for="t-reg">Company registration certificate or commercial registration (PDF)<input id="t-reg" name="company-registration" type="file" accept=".pdf" required></label>
-<label for="t-port">Portfolio of past works (PDF)<input id="t-port" name="portfolio" type="file" accept=".pdf" required></label>
+<label for="t-prof">Company profile (PDF)<input id="t-prof" name="company-profile" type="file" accept=".pdf"></label>
+<label for="t-reg">Company registration certificate or commercial registration (PDF)<input id="t-reg" name="company-registration" type="file" accept=".pdf"></label>
+<label for="t-port">Portfolio of past works (PDF)<input id="t-port" name="portfolio" type="file" accept=".pdf"></label>
 <label for="t-ph1">Photo of past installation 1 (optional, JPG/PNG)<input id="t-ph1" name="photo-1" type="file" accept=".jpg,.jpeg,.png"></label>
 <label for="t-ph2">Photo of past installation 2 (optional, JPG/PNG)<input id="t-ph2" name="photo-2" type="file" accept=".jpg,.jpeg,.png"></label>
 <label for="t-ph3">Photo of past installation 3 (optional, JPG/PNG)<input id="t-ph3" name="photo-3" type="file" accept=".jpg,.jpeg,.png"></label>

@@ -287,33 +287,33 @@ addEventListener('resize',function(){if(innerWidth>900&&h.classList.contains('mo
 <p class="fine" style="margin-top:18px">เราใช้ข้อมูลของท่านเพื่อพิจารณาใบสมัครสมาชิกเท่านั้น</p></div>
 <form name="tsia-membership" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" action="/th/thanks.html">
 <input type="hidden" name="form-name" value="tsia-membership"><input type="hidden" name="language" value="ไทย"><p hidden><label>เว้นว่างไว้ <input name="bot-field"></label></p>
-<fieldset><legend>1. ข้อมูลองค์กร</legend>
+<p class="fine" style="margin:0 0 10px;opacity:.9">ช่องที่ต้องกรอกมีเพียงชื่อองค์กร จังหวัด ชื่อผู้ติดต่อ และเบอร์โทร ส่วนอื่นรวมถึงเอกสารทั้งหมดไม่บังคับ เราอาจขอเอกสารเพิ่มเติมก่อนอนุมัติ</p><fieldset><legend>1. ข้อมูลองค์กร</legend>
 <label for="t-org">ชื่อองค์กร / บริษัท<input id="t-org" name="organisation" required autocomplete="organization"></label>
-<div class="two"><label for="t-type">ประเภทธุรกิจ<select id="t-type" name="business-type" required><option value="">เลือก</option><option>บริษัทจำกัด</option><option>ห้างหุ้นส่วนจำกัด</option><option>บุคคลธรรมดาที่จดทะเบียนพาณิชย์</option><option>อื่น ๆ</option></select></label><label for="t-tax">เลขประจำตัวผู้เสียภาษี / เลขทะเบียนนิติบุคคล<input id="t-tax" name="tax-id" required inputmode="numeric"></label></div>
-<div class="two"><label for="t-year">ปีที่ก่อตั้ง<input id="t-year" name="year-established" inputmode="numeric" required></label><label for="t-prov">จังหวัดที่ตั้งสำนักงานใหญ่<input id="t-prov" name="province" required></label></div>
-<label for="t-addr">ที่อยู่สถานประกอบการ<textarea id="t-addr" name="address" rows="2" required></textarea></label>
+<div class="two"><label for="t-type">ประเภทธุรกิจ<select id="t-type" name="business-type"><option value="">เลือก</option><option>บริษัทจำกัด</option><option>ห้างหุ้นส่วนจำกัด</option><option>บุคคลธรรมดาที่จดทะเบียนพาณิชย์</option><option>อื่น ๆ</option></select></label><label for="t-tax">เลขประจำตัวผู้เสียภาษี / เลขทะเบียนนิติบุคคล<input id="t-tax" name="tax-id" inputmode="numeric"></label></div>
+<div class="two"><label for="t-year">ปีที่ก่อตั้ง<input id="t-year" name="year-established" inputmode="numeric"></label><label for="t-prov">จังหวัดที่ตั้งสำนักงานใหญ่<input id="t-prov" name="province" required></label></div>
+<label for="t-addr">ที่อยู่สถานประกอบการ<textarea id="t-addr" name="address" rows="2"></textarea></label>
 <div><p class="fine" style="margin-bottom:8px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.8">ภูมิภาคที่ให้บริการ</p><div class="chks"><label class="chk"><input type="checkbox" name="regions" value="ภาคเหนือ"><span>ภาคเหนือ</span></label><label class="chk"><input type="checkbox" name="regions" value="ภาคตะวันออกเฉียงเหนือ"><span>ภาคตะวันออกเฉียงเหนือ</span></label><label class="chk"><input type="checkbox" name="regions" value="ภาคกลาง"><span>ภาคกลาง</span></label><label class="chk"><input type="checkbox" name="regions" value="กรุงเทพฯ และปริมณฑล"><span>กรุงเทพฯ และปริมณฑล</span></label><label class="chk"><input type="checkbox" name="regions" value="ภาคตะวันออก"><span>ภาคตะวันออก</span></label><label class="chk"><input type="checkbox" name="regions" value="ภาคตะวันตก"><span>ภาคตะวันตก</span></label><label class="chk"><input type="checkbox" name="regions" value="ภาคใต้"><span>ภาคใต้</span></label></div></div>
 <label for="t-web">เว็บไซต์ Facebook หรือ LINE (ถ้ามี)<input id="t-web" name="website-social"></label>
 </fieldset>
 <fieldset><legend>2. ผู้ติดต่อ</legend>
-<div class="two"><label for="t-cname">ชื่อ-นามสกุล<input id="t-cname" name="contact-name" required autocomplete="name"></label><label for="t-cpos">ตำแหน่ง<input id="t-cpos" name="contact-position" required autocomplete="organization-title"></label></div>
-<div class="two"><label for="t-phone">โทรศัพท์<input id="t-phone" name="phone" type="tel" required autocomplete="tel"></label><label for="t-email">อีเมล<input id="t-email" name="email" type="email" required autocomplete="email"></label></div>
+<div class="two"><label for="t-cname">ชื่อ-นามสกุล<input id="t-cname" name="contact-name" required autocomplete="name"></label><label for="t-cpos">ตำแหน่ง<input id="t-cpos" name="contact-position" autocomplete="organization-title"></label></div>
+<div class="two"><label for="t-phone">โทรศัพท์<input id="t-phone" name="phone" type="tel" required autocomplete="tel"></label><label for="t-email">อีเมล<input id="t-email" name="email" type="email" autocomplete="email"></label></div>
 <label for="t-line">LINE ID (ถ้ามี)<input id="t-line" name="line-id"></label>
 </fieldset>
 <fieldset><legend>3. ทีมงานและบริการ</legend>
-<div class="two"><label for="t-team">จำนวนช่างติดตั้งในทีม<input id="t-team" name="team-size" type="number" min="1" required></label><label for="t-elec">จำนวนช่างไฟฟ้าที่มีใบรับรอง<input id="t-elec" name="certified-electricians" type="number" min="0" required></label></div>
+<div class="two"><label for="t-team">จำนวนช่างติดตั้งในทีม<input id="t-team" name="team-size" type="number" min="1"></label><label for="t-elec">จำนวนช่างไฟฟ้าที่มีใบรับรอง<input id="t-elec" name="certified-electricians" type="number" min="0"></label></div>
 <div><p class="fine" style="margin-bottom:8px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.8">บริการที่ท่านให้</p><div class="chks"><label class="chk"><input type="checkbox" name="services" value="ระบบออนกริดสำหรับบ้าน"><span>ระบบออนกริดสำหรับบ้าน</span></label><label class="chk"><input type="checkbox" name="services" value="ระบบไฮบริดและแบตเตอรี่"><span>ระบบไฮบริดและแบตเตอรี่</span></label><label class="chk"><input type="checkbox" name="services" value="ระบบออฟกริด"><span>ระบบออฟกริด</span></label><label class="chk"><input type="checkbox" name="services" value="อาคารพาณิชย์และโรงงาน (C&I)"><span>อาคารพาณิชย์และโรงงาน (C&I)</span></label><label class="chk"><input type="checkbox" name="services" value="ทำความสะอาดและบำรุงรักษา"><span>ทำความสะอาดและบำรุงรักษา</span></label><label class="chk"><input type="checkbox" name="services" value="เครื่องชาร์จรถไฟฟ้า"><span>เครื่องชาร์จรถไฟฟ้า</span></label><label class="chk"><input type="checkbox" name="services" value="ออกแบบและวิศวกรรม"><span>ออกแบบและวิศวกรรม</span></label><label class="chk"><input type="checkbox" name="services" value="จำหน่ายอุปกรณ์"><span>จำหน่ายอุปกรณ์</span></label></div></div>
-<div class="two"><label for="t-kwp">กำลังติดตั้งรวมที่ผ่านมา (kWp โดยประมาณ)<input id="t-kwp" name="total-kwp-installed" inputmode="decimal" required></label><label for="t-nproj">จำนวนโครงการที่ทำเสร็จแล้ว (โดยประมาณ)<input id="t-nproj" name="projects-completed" type="number" min="0" required></label></div>
+<div class="two"><label for="t-kwp">กำลังติดตั้งรวมที่ผ่านมา (kWp โดยประมาณ)<input id="t-kwp" name="total-kwp-installed" inputmode="decimal"></label><label for="t-nproj">จำนวนโครงการที่ทำเสร็จแล้ว (โดยประมาณ)<input id="t-nproj" name="projects-completed" type="number" min="0"></label></div>
 <label for="t-brands">ยี่ห้อที่ติดตั้งบ่อย (อินเวอร์เตอร์ แผง แบตเตอรี่)<input id="t-brands" name="brands"></label>
 </fieldset>
 <fieldset><legend>4. ผลงานที่ผ่านมา</legend>
-<label for="t-past">ผลงานล่าสุดหรือผลงานเด่น 3 โครงการ: ประเภทลูกค้า สถานที่ ขนาดระบบ ปีที่ติดตั้ง และงานที่ท่านทำ<textarea id="t-past" name="past-works" rows="5" required></textarea></label>
+<label for="t-past">ผลงานล่าสุดหรือผลงานเด่น 3 โครงการ: ประเภทลูกค้า สถานที่ ขนาดระบบ ปีที่ติดตั้ง และงานที่ท่านทำ<textarea id="t-past" name="past-works" rows="5"></textarea></label>
 </fieldset>
 <fieldset><legend>5. เอกสารแนบ</legend>
 <p class="fine">เอกสารเป็น PDF รูปภาพเป็น JPG หรือ PNG ขนาดไฟล์รวมไม่เกิน 8 MB</p>
-<label for="t-prof">โปรไฟล์บริษัท (PDF)<input id="t-prof" name="company-profile" type="file" accept=".pdf" required></label>
-<label for="t-reg">หนังสือรับรองการจดทะเบียนบริษัท หรือทะเบียนพาณิชย์ (PDF)<input id="t-reg" name="company-registration" type="file" accept=".pdf" required></label>
-<label for="t-port">แฟ้มผลงานที่ผ่านมา (PDF)<input id="t-port" name="portfolio" type="file" accept=".pdf" required></label>
+<label for="t-prof">โปรไฟล์บริษัท (PDF)<input id="t-prof" name="company-profile" type="file" accept=".pdf"></label>
+<label for="t-reg">หนังสือรับรองการจดทะเบียนบริษัท หรือทะเบียนพาณิชย์ (PDF)<input id="t-reg" name="company-registration" type="file" accept=".pdf"></label>
+<label for="t-port">แฟ้มผลงานที่ผ่านมา (PDF)<input id="t-port" name="portfolio" type="file" accept=".pdf"></label>
 <label for="t-ph1">รูปผลงานติดตั้ง 1 (ถ้ามี JPG/PNG)<input id="t-ph1" name="photo-1" type="file" accept=".jpg,.jpeg,.png"></label>
 <label for="t-ph2">รูปผลงานติดตั้ง 2 (ถ้ามี JPG/PNG)<input id="t-ph2" name="photo-2" type="file" accept=".jpg,.jpeg,.png"></label>
 <label for="t-ph3">รูปผลงานติดตั้ง 3 (ถ้ามี JPG/PNG)<input id="t-ph3" name="photo-3" type="file" accept=".jpg,.jpeg,.png"></label>

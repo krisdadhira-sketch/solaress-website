@@ -284,33 +284,33 @@ addEventListener('resize',function(){if(innerWidth>900&&h.classList.contains('mo
 <p class="fine" style="margin-top:18px">您的信息仅用于审核会员申请。</p></div>
 <form name="tsia-membership" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" action="/zh/thanks.html">
 <input type="hidden" name="form-name" value="tsia-membership"><input type="hidden" name="language" value="中文"><p hidden><label>Leave empty <input name="bot-field"></label></p>
-<fieldset><legend>1. 机构信息</legend>
+<p class="fine" style="margin:0 0 10px;opacity:.9">仅机构名称、所在府、联系人姓名和电话为必填。其余内容（包括所有文件）均为选填，审核前我们可能会向您索取文件。</p><fieldset><legend>1. 机构信息</legend>
 <label for="t-org">机构 / 公司名称<input id="t-org" name="organisation" required autocomplete="organization"></label>
-<div class="two"><label for="t-type">企业类型<select id="t-type" name="business-type" required><option value="">请选择</option><option>有限公司</option><option>有限合伙</option><option>已登记个体工商户</option><option>其他</option></select></label><label for="t-tax">税号 / 公司注册号<input id="t-tax" name="tax-id" required inputmode="numeric"></label></div>
-<div class="two"><label for="t-year">成立年份<input id="t-year" name="year-established" inputmode="numeric" required></label><label for="t-prov">总部所在府<input id="t-prov" name="province" required></label></div>
-<label for="t-addr">营业地址<textarea id="t-addr" name="address" rows="2" required></textarea></label>
+<div class="two"><label for="t-type">企业类型<select id="t-type" name="business-type"><option value="">请选择</option><option>有限公司</option><option>有限合伙</option><option>已登记个体工商户</option><option>其他</option></select></label><label for="t-tax">税号 / 公司注册号<input id="t-tax" name="tax-id" inputmode="numeric"></label></div>
+<div class="two"><label for="t-year">成立年份<input id="t-year" name="year-established" inputmode="numeric"></label><label for="t-prov">总部所在府<input id="t-prov" name="province" required></label></div>
+<label for="t-addr">营业地址<textarea id="t-addr" name="address" rows="2"></textarea></label>
 <div><p class="fine" style="margin-bottom:8px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.8">服务区域</p><div class="chks"><label class="chk"><input type="checkbox" name="regions" value="北部"><span>北部</span></label><label class="chk"><input type="checkbox" name="regions" value="东北部"><span>东北部</span></label><label class="chk"><input type="checkbox" name="regions" value="中部"><span>中部</span></label><label class="chk"><input type="checkbox" name="regions" value="曼谷及周边"><span>曼谷及周边</span></label><label class="chk"><input type="checkbox" name="regions" value="东部"><span>东部</span></label><label class="chk"><input type="checkbox" name="regions" value="西部"><span>西部</span></label><label class="chk"><input type="checkbox" name="regions" value="南部"><span>南部</span></label></div></div>
 <label for="t-web">网站、Facebook 或 LINE（选填）<input id="t-web" name="website-social"></label>
 </fieldset>
 <fieldset><legend>2. 联系人</legend>
-<div class="two"><label for="t-cname">姓名<input id="t-cname" name="contact-name" required autocomplete="name"></label><label for="t-cpos">职位<input id="t-cpos" name="contact-position" required autocomplete="organization-title"></label></div>
-<div class="two"><label for="t-phone">电话<input id="t-phone" name="phone" type="tel" required autocomplete="tel"></label><label for="t-email">电子邮件<input id="t-email" name="email" type="email" required autocomplete="email"></label></div>
+<div class="two"><label for="t-cname">姓名<input id="t-cname" name="contact-name" required autocomplete="name"></label><label for="t-cpos">职位<input id="t-cpos" name="contact-position" autocomplete="organization-title"></label></div>
+<div class="two"><label for="t-phone">电话<input id="t-phone" name="phone" type="tel" required autocomplete="tel"></label><label for="t-email">电子邮件<input id="t-email" name="email" type="email" autocomplete="email"></label></div>
 <label for="t-line">LINE ID（选填）<input id="t-line" name="line-id"></label>
 </fieldset>
 <fieldset><legend>3. 团队与服务</legend>
-<div class="two"><label for="t-team">团队安装师傅人数<input id="t-team" name="team-size" type="number" min="1" required></label><label for="t-elec">持证电工人数<input id="t-elec" name="certified-electricians" type="number" min="0" required></label></div>
+<div class="two"><label for="t-team">团队安装师傅人数<input id="t-team" name="team-size" type="number" min="1"></label><label for="t-elec">持证电工人数<input id="t-elec" name="certified-electricians" type="number" min="0"></label></div>
 <div><p class="fine" style="margin-bottom:8px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.8">提供的服务</p><div class="chks"><label class="chk"><input type="checkbox" name="services" value="住宅并网系统"><span>住宅并网系统</span></label><label class="chk"><input type="checkbox" name="services" value="混合与储能系统"><span>混合与储能系统</span></label><label class="chk"><input type="checkbox" name="services" value="离网系统"><span>离网系统</span></label><label class="chk"><input type="checkbox" name="services" value="商业与工业 (C&I)"><span>商业与工业 (C&I)</span></label><label class="chk"><input type="checkbox" name="services" value="清洁与维护"><span>清洁与维护</span></label><label class="chk"><input type="checkbox" name="services" value="电动车充电桩"><span>电动车充电桩</span></label><label class="chk"><input type="checkbox" name="services" value="设计与工程"><span>设计与工程</span></label><label class="chk"><input type="checkbox" name="services" value="设备供应"><span>设备供应</span></label></div></div>
-<div class="two"><label for="t-kwp">累计安装容量（kWp，约）<input id="t-kwp" name="total-kwp-installed" inputmode="decimal" required></label><label for="t-nproj">已完成项目数量（约）<input id="t-nproj" name="projects-completed" type="number" min="0" required></label></div>
+<div class="two"><label for="t-kwp">累计安装容量（kWp，约）<input id="t-kwp" name="total-kwp-installed" inputmode="decimal"></label><label for="t-nproj">已完成项目数量（约）<input id="t-nproj" name="projects-completed" type="number" min="0"></label></div>
 <label for="t-brands">常用品牌（逆变器、组件、电池）<input id="t-brands" name="brands"></label>
 </fieldset>
 <fieldset><legend>4. 过往项目</legend>
-<label for="t-past">最近或最具代表性的三个项目：客户类型、地点、系统容量、年份及您的工作内容<textarea id="t-past" name="past-works" rows="5" required></textarea></label>
+<label for="t-past">最近或最具代表性的三个项目：客户类型、地点、系统容量、年份及您的工作内容<textarea id="t-past" name="past-works" rows="5"></textarea></label>
 </fieldset>
 <fieldset><legend>5. 文件</legend>
 <p class="fine">文件请用 PDF，照片请用 JPG 或 PNG。所有文件合计不超过 8 MB。</p>
-<label for="t-prof">公司简介 (PDF)<input id="t-prof" name="company-profile" type="file" accept=".pdf" required></label>
-<label for="t-reg">公司注册证明或商业登记 (PDF)<input id="t-reg" name="company-registration" type="file" accept=".pdf" required></label>
-<label for="t-port">过往项目作品集 (PDF)<input id="t-port" name="portfolio" type="file" accept=".pdf" required></label>
+<label for="t-prof">公司简介 (PDF)<input id="t-prof" name="company-profile" type="file" accept=".pdf"></label>
+<label for="t-reg">公司注册证明或商业登记 (PDF)<input id="t-reg" name="company-registration" type="file" accept=".pdf"></label>
+<label for="t-port">过往项目作品集 (PDF)<input id="t-port" name="portfolio" type="file" accept=".pdf"></label>
 <label for="t-ph1">安装项目照片 1（选填，JPG/PNG）<input id="t-ph1" name="photo-1" type="file" accept=".jpg,.jpeg,.png"></label>
 <label for="t-ph2">安装项目照片 2（选填，JPG/PNG）<input id="t-ph2" name="photo-2" type="file" accept=".jpg,.jpeg,.png"></label>
 <label for="t-ph3">安装项目照片 3（选填，JPG/PNG）<input id="t-ph3" name="photo-3" type="file" accept=".jpg,.jpeg,.png"></label>

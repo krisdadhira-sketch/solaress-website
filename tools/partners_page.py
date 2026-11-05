@@ -98,7 +98,7 @@ T = {
     reg_lede="Installers, electricians and installation companies anywhere in Thailand can register. Approved teams are listed in their region and receive subcontract work from Solar ESS and from partners who outsource through us.",
     get_h="What partners get", get=["A public profile in your region, seen by homeowners, businesses and other installers looking to outsource", "Subcontract jobs from Solar ESS, with clear scope, materials list and fair, agreed prices", "Payment secured by Solar ESS before work starts and paid on completion", "Technical support, material supply in some cases, and help if a dispute arises"],
     rule_h="What we expect", rule=["Work done or supervised by a qualified electrician with a certificate", "Premium materials: copper cable, IMC/EMT conduit runs, well-matched breakers and cables", "Clear quotes: labour only, and labour & materials", "All jobs from the directory are contracted through Solar ESS"],
-    priv_h="What we publish", priv="Only Sections 1 and 2 and the photos you mark for publication. Your phone number, email, LINE, address, ID and documents are never published.",
+    priv_h="What we publish", priv="Only your team profile, experience and the photos you mark for publication. Your phone number, email, LINE, address, ID and documents are never published.",
     s1="1. Public profile (published)", s2="2. Experience and capability (published)", s3="3. Private details (never published)", s4="4. Documents and photos", s5="5. Agreement",
     f_name="Team or business name as it should appear", f_type="Type", types=["Individual installer", "Installation team (not registered)", "Registered company / partnership"],
     f_region="Main region", f_prov="Base province", f_amphoe="Base district (amphoe)", f_serves="Other provinces you work in (optional)",
@@ -115,8 +115,11 @@ T = {
     a_pub="I agree that Solar ESS may publish Sections 1 and 2 and the photos marked “published” on solaress.org. My contact details and documents stay private.",
     a_terms="I agree that jobs from this directory are contracted through Solar ESS as main contractor, and that I will use premium materials and have the work done by a qualified electrician.",
     a_true="I confirm the information is true, and Solar ESS may verify it, visit a site or contact past customers.",
+    quick="Takes about 2 minutes. Only the fields marked * are needed; we call you to fill in the rest.",
+    more_h="More about your team (optional): helps us approve you faster", docs_h="Documents and photos (optional)",
+    a_all="I agree that Solar ESS may publish my team profile (never my contact details or documents), that jobs from this directory are contracted through Solar ESS as main contractor with premium materials and a qualified electrician, and that Solar ESS may verify what I send.",
     reg_btn="Send registration",
-    reg_after="We review every registration and reply by phone or email. Approved profiles appear in the directory, usually within 7 days.",
+    reg_after="We review every registration and call you back to complete your profile. Approved profiles appear in the directory, usually within 7 days.",
     req_eyebrow="Request an installer", req_h="Tell us about your job",
     req_lede="Choose a team from the directory, or leave it blank and we will match the right partner in your area. Solar ESS replies with scope, price and the team assigned.",
     q_partner="Team you prefer", q_none="Any team: let Solar ESS choose", q_name="Your name", q_company="Company (optional)", q_phone="Phone", q_email="Email",
@@ -149,7 +152,7 @@ T = {
     reg_lede="ช่างติดตั้ง ช่างไฟฟ้า และบริษัทติดตั้งทั่วประเทศลงทะเบียนได้ ทีมที่ผ่านการอนุมัติจะแสดงในภูมิภาคของตน และได้รับงานช่วงจาก Solar ESS และจากพันธมิตรที่จ้างงานผ่านเรา",
     get_h="สิ่งที่พันธมิตรได้รับ", get=["โปรไฟล์สาธารณะในภูมิภาคของคุณ ให้เจ้าของบ้าน ธุรกิจ และผู้ติดตั้งรายอื่นที่ต้องการจ้างงานเห็น", "งานช่วงจาก Solar ESS พร้อมขอบเขตงาน รายการวัสดุ และราคาที่ตกลงกันอย่างเป็นธรรม", "Solar ESS รับเงินค่างานไว้ก่อนเริ่มงาน และจ่ายเมื่องานเสร็จ", "การสนับสนุนด้านเทคนิค วัสดุในบางกรณี และความช่วยเหลือเมื่อมีข้อพิพาท"],
     rule_h="สิ่งที่เราคาดหวัง", rule=["งานทำหรือควบคุมโดยช่างไฟฟ้าที่มีใบรับรอง", "ใช้วัสดุคุณภาพ: สายทองแดง ท่อ IMC/EMT เบรกเกอร์และสายไฟที่เหมาะสมกัน", "เสนอราคาชัดเจน: ค่าแรงอย่างเดียว และค่าแรงพร้อมวัสดุ", "งานทุกงานจากหน้านี้ทำสัญญาผ่าน Solar ESS"],
-    priv_h="ข้อมูลที่เราเผยแพร่", priv="เฉพาะส่วนที่ 1 และ 2 และรูปภาพที่ระบุว่าเผยแพร่ เบอร์โทร อีเมล LINE ที่อยู่ บัตรประชาชน และเอกสารของคุณจะไม่ถูกเผยแพร่",
+    priv_h="ข้อมูลที่เราเผยแพร่", priv="เฉพาะโปรไฟล์ทีม ประสบการณ์ และรูปภาพที่ระบุว่าเผยแพร่ เบอร์โทร อีเมล LINE ที่อยู่ บัตรประชาชน และเอกสารของคุณจะไม่ถูกเผยแพร่",
     s1="1. โปรไฟล์สาธารณะ (เผยแพร่)", s2="2. ประสบการณ์และความสามารถ (เผยแพร่)", s3="3. ข้อมูลส่วนตัว (ไม่เผยแพร่)", s4="4. เอกสารและรูปภาพ", s5="5. ข้อตกลง",
     f_name="ชื่อทีมหรือชื่อธุรกิจที่ต้องการให้แสดง", f_type="ประเภท", types=["ช่างอิสระ", "ทีมช่าง (ยังไม่จดทะเบียน)", "บริษัท / ห้างหุ้นส่วนที่จดทะเบียน"],
     f_region="ภูมิภาคหลัก", f_prov="จังหวัดที่ตั้ง", f_amphoe="อำเภอที่ตั้ง", f_serves="จังหวัดอื่นที่รับงาน (ไม่บังคับ)",
@@ -166,8 +169,11 @@ T = {
     a_pub="ข้าพเจ้ายินยอมให้ Solar ESS เผยแพร่ข้อมูลส่วนที่ 1 และ 2 และรูปภาพที่ระบุว่า “เผยแพร่” บน solaress.org โดยข้อมูลติดต่อและเอกสารของข้าพเจ้าจะไม่ถูกเผยแพร่",
     a_terms="ข้าพเจ้ายอมรับว่างานจากหน้านี้ทำสัญญาผ่าน Solar ESS ในฐานะผู้รับเหมาหลัก และจะใช้วัสดุคุณภาพ โดยให้ช่างไฟฟ้าที่มีใบรับรองเป็นผู้ทำงาน",
     a_true="ข้าพเจ้ายืนยันว่าข้อมูลเป็นความจริง และยินยอมให้ Solar ESS ตรวจสอบ เยี่ยมชมหน้างาน หรือติดต่อลูกค้าเก่า",
+    quick="ใช้เวลาประมาณ 2 นาที กรอกเฉพาะช่องที่มีเครื่องหมาย * ส่วนที่เหลือเราจะโทรสอบถามเพิ่มเติม",
+    more_h="ข้อมูลเพิ่มเติมของทีม (ไม่บังคับ): ช่วยให้อนุมัติได้เร็วขึ้น", docs_h="เอกสารและรูปภาพ (ไม่บังคับ)",
+    a_all="ข้าพเจ้ายินยอมให้ Solar ESS เผยแพร่โปรไฟล์ทีม (ไม่เผยแพร่ข้อมูลติดต่อและเอกสาร) ยอมรับว่างานจากหน้านี้ทำสัญญาผ่าน Solar ESS ในฐานะผู้รับเหมาหลัก โดยใช้วัสดุคุณภาพและช่างไฟฟ้าที่มีใบรับรอง และยินยอมให้ Solar ESS ตรวจสอบข้อมูลที่ส่งมา",
     reg_btn="ส่งใบลงทะเบียน",
-    reg_after="เราตรวจสอบทุกใบลงทะเบียนและติดต่อกลับทางโทรศัพท์หรืออีเมล โปรไฟล์ที่ผ่านการอนุมัติจะแสดงในหน้านี้ โดยปกติภายใน 7 วัน",
+    reg_after="เราตรวจสอบทุกใบลงทะเบียนและโทรกลับเพื่อกรอกโปรไฟล์ให้ครบ โปรไฟล์ที่ผ่านการอนุมัติจะแสดงในหน้านี้ โดยปกติภายใน 7 วัน",
     req_eyebrow="ขอใช้บริการทีมช่าง", req_h="บอกรายละเอียดงานของคุณ",
     req_lede="เลือกทีมจากรายชื่อ หรือเว้นว่างไว้ให้เราจับคู่ทีมพันธมิตรที่เหมาะสมในพื้นที่ของคุณ Solar ESS จะตอบกลับพร้อมขอบเขตงาน ราคา และทีมที่รับผิดชอบ",
     q_partner="ทีมที่ต้องการ", q_none="ทีมใดก็ได้: ให้ Solar ESS เลือก", q_name="ชื่อของคุณ", q_company="บริษัท (ไม่บังคับ)", q_phone="เบอร์โทร", q_email="อีเมล",
@@ -205,6 +211,7 @@ CSS = """<style id="partners-css">
 .pform .chks{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px 14px}.pform .chk{display:flex!important;gap:10px;align-items:flex-start;font-family:inherit!important;font-size:14px!important;letter-spacing:0!important;text-transform:none!important;line-height:1.45;opacity:.95!important}.pform .chk input{width:auto!important;margin-top:3px;border:0;flex:none;accent-color:var(--blue)}
 .pform .grp{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.8;margin:0 0 8px}
 .pform .chks3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px 14px}
+.pform details{border:1px solid rgba(255,255,255,.22);border-radius:14px;padding:4px 16px;margin:6px 0}.pform details[open]{padding-bottom:16px}.pform summary{cursor:pointer;padding:12px 0;font-weight:600;font-size:15px}.pform details>div{display:grid;gap:16px}.pform .req{color:var(--hot,#FF2D55)}.pform .quick{font-size:14px;opacity:.85;margin:0 0 6px}
 .pform .cnt{font-size:12px;opacity:.7;text-align:right}
 @media (max-width:860px){.how{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.pform .apply,.pform .two,.pform .chks,.pform .chks3{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:520px){.how{grid-template-columns:minmax(0,1fr)}}
@@ -321,54 +328,49 @@ def build(lang):
            f'<p class="fine" style="margin-top:18px">{esc(t["reg_after"])}</p></div>'
            f'<form name="installer-partner" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" action="{t["pre"]}/thanks.html">'
            f'<input type="hidden" name="form-name" value="installer-partner"><input type="hidden" name="language" value="{"Thai" if th else "English"}"><p hidden><label>Leave empty <input name="bot-field"></label></p>'
-           # 1 public profile
-           f'<fieldset><legend>{esc(t["s1"])}</legend>'
-           f'<label for="r-name">{esc(t["f_name"])}<input id="r-name" name="display-name" required maxlength="80"></label>'
-           f'<div><p class="grp">{esc(t["f_type"])}</p>{radios("partner-type", types)}</div>'
-           f'<div class="two"><label for="r-region">{esc(t["f_region"])}<select id="r-region" name="region" required>{opts(regions, choose)}</select></label>'
-           f'<label for="r-prov">{esc(t["f_prov"])}<input id="r-prov" name="base-province" required></label></div>'
-           f'<div class="two"><label for="r-amphoe">{esc(t["f_amphoe"])}<input id="r-amphoe" name="base-district" required></label>'
+           f'<p class="quick">{esc(t["quick"])}</p>'
+           # short required core
+           f'<label for="r-name"><span>{esc(t["f_name"])} <b class="req">*</b></span><input id="r-name" name="display-name" required maxlength="80"></label>'
+           f'<div class="two"><label for="r-region"><span>{esc(t["f_region"])} <b class="req">*</b></span><select id="r-region" name="region" required>{opts(regions, choose)}</select></label>'
+           f'<label for="r-prov"><span>{esc(t["f_prov"])} <b class="req">*</b></span><input id="r-prov" name="base-province" required></label></div>'
+           f'<div><p class="grp">{esc(t["f_svc"])} <span class="req">*</span></p>{chks("services", svcs, required_one=True)}</div>'
+           f'<div class="two"><label for="r-cname"><span>{esc(t["f_cname"])} <b class="req">*</b></span><input id="r-cname" name="contact-name" required autocomplete="name"></label>'
+           f'<label for="r-phone"><span>{esc(t["f_phone"])} <b class="req">*</b></span><input id="r-phone" name="phone" type="tel" required autocomplete="tel"></label></div>'
+           f'<div class="two"><label for="r-line">{esc(t["f_line"])}<input id="r-line" name="line-id"></label>'
+           f'<label for="r-email">{esc(t["f_email"])}<input id="r-email" name="email" type="email" autocomplete="email"></label></div>'
+           f'<div class="two"><label for="r-years">{esc(t["f_years"])}<input id="r-years" name="years-experience" type="number" min="0" max="60"></label>'
+           f'<label for="r-size">{esc(t["f_size"])}<select id="r-size" name="max-system-size">{opts(sizes, choose)}</select></label></div>'
+           f'<div><p class="grp">{esc(t["f_eng_q"])}</p>{radios("engineer-availability", avail3, required=False)}</div>'
+           f'<div><p class="grp">{esc(t["f_safety_q"])}</p>{radios("safety-officer-availability", avail3, required=False)}</div>'
+           f'<div><p class="grp">{esc(t["f_wah_q"])}</p>{radios("work-at-height-availability", avail3, required=False)}</div>'
+           # optional details, folded
+           f'<details><summary>{esc(t["more_h"])}</summary><div>'
+           f'<div><p class="grp">{esc(t["f_type"])}</p>{radios("partner-type", types, required=False)}</div>'
+           f'<div class="two"><label for="r-amphoe">{esc(t["f_amphoe"])}<input id="r-amphoe" name="base-district"></label>'
            f'<label for="r-serves">{esc(t["f_serves"])}<input id="r-serves" name="provinces-served"></label></div>'
-           f'<div><p class="grp">{esc(t["f_svc"])}</p>{chks("services", svcs, required_one=True)}</div>'
-           f'<label for="r-size">{esc(t["f_size"])}<select id="r-size" name="max-system-size" required>{opts(sizes, choose)}</select></label>'
-           f'<label for="r-bio">{esc(t["f_bio"])}<textarea id="r-bio" name="introduction" rows="3" maxlength="400" required></textarea></label><p class="cnt" data-count="r-bio">0 / 400</p>'
-           f'</fieldset>'
-           # 2 experience
-           f'<fieldset><legend>{esc(t["s2"])}</legend>'
-           f'<div class="two"><label for="r-years">{esc(t["f_years"])}<input id="r-years" name="years-experience" type="number" min="0" max="60" required></label>'
-           f'<label for="r-team">{esc(t["f_team"])}<input id="r-team" name="team-size" type="number" min="1" required></label></div>'
-           f'<div class="two"><label for="r-elec">{esc(t["f_elec"])}<input id="r-elec" name="certified-electricians" type="number" min="1" required></label>'
-           f'<label for="r-proj">{esc(t["f_proj"])}<input id="r-proj" name="projects-completed" type="number" min="0" required></label></div>'
-           f'<label for="r-kwp">{esc(t["f_kwp"])}<input id="r-kwp" name="total-kwp-installed" inputmode="decimal" required></label>'
+           f'<label for="r-bio">{esc(t["f_bio"])}<textarea id="r-bio" name="introduction" rows="3" maxlength="400"></textarea></label><p class="cnt" data-count="r-bio">0 / 400</p>'
+           f'<div class="two"><label for="r-team">{esc(t["f_team"])}<input id="r-team" name="team-size" type="number" min="1"></label>'
+           f'<label for="r-elec">{esc(t["f_elec"])}<input id="r-elec" name="certified-electricians" type="number" min="0"></label></div>'
+           f'<div class="two"><label for="r-proj">{esc(t["f_proj"])}<input id="r-proj" name="projects-completed" type="number" min="0"></label>'
+           f'<label for="r-kwp">{esc(t["f_kwp"])}<input id="r-kwp" name="total-kwp-installed" inputmode="decimal"></label></div>'
            f'<div><p class="grp">{esc(t["f_brands"])}</p>{chks("inverter-brands", brand_items, cols3=True)}</div>'
            f'<div class="two"><label for="r-obrand">{esc(t["f_other_brand"])}<input id="r-obrand" name="other-inverter-brands"></label>'
            f'<label for="r-batt">{esc(t["f_batt"])}<input id="r-batt" name="battery-brands"></label></div>'
            f'<div><p class="grp">{esc(t["f_tools"])}</p>{chks("tools", tools)}</div>'
-           f'<div><p class="grp">{esc(t["f_eng_q"])}</p>{radios("engineer-availability", avail3)}</div>'
            f'<div><p class="grp">{esc(t["f_eng"])}</p>{chks("engineering-licence", eng)}</div>'
-           f'<div><p class="grp">{esc(t["f_safety_q"])}</p>{radios("safety-officer-availability", avail3)}</div>'
            f'<div><p class="grp">{esc(t["f_safety"])}</p>{chks("safety-officer", safety)}</div>'
-           f'<div><p class="grp">{esc(t["f_wah_q"])}</p>{radios("work-at-height-availability", avail3)}</div>'
            f'<label for="r-wah">{esc(t["f_wah_n"])}<input id="r-wah" name="work-at-height-certified" type="number" min="0"></label>'
-           f'<div><p class="grp">{esc(t["f_vat"])}</p>{radios("tax-invoice", yn)}</div>'
-           f'<div><p class="grp">{esc(t["f_ins"])}</p>{radios("insurance", yn)}</div>'
-           f'<div><p class="grp">{esc(t["f_langs"])}</p>{chks("languages", lang_items, required_one=True, cols3=True)}</div>'
-           f'<div><p class="grp">{esc(t["f_avail"])}</p>{radios("availability", avail_items)}</div>'
-           f'</fieldset>'
-           # 3 private
-           f'<fieldset><legend>{esc(t["s3"])}</legend>'
-           f'<div class="two"><label for="r-legal">{esc(t["f_legal"])}<input id="r-legal" name="legal-name" required></label>'
-           f'<label for="r-tax">{esc(t["f_tax"])}<input id="r-tax" name="tax-or-id-number" required inputmode="numeric" pattern="[0-9 \\-]{{13,17}}"></label></div>'
-           f'<div class="two"><label for="r-cname">{esc(t["f_cname"])}<input id="r-cname" name="contact-name" required autocomplete="name"></label>'
-           f'<label for="r-phone">{esc(t["f_phone"])}<input id="r-phone" name="phone" type="tel" required autocomplete="tel"></label></div>'
-           f'<div class="two"><label for="r-email">{esc(t["f_email"])}<input id="r-email" name="email" type="email" required autocomplete="email"></label>'
-           f'<label for="r-line">{esc(t["f_line"])}<input id="r-line" name="line-id" required></label></div>'
-           f'<label for="r-addr">{esc(t["f_addr"])}<textarea id="r-addr" name="address" rows="2" required></textarea></label>'
+           f'<div><p class="grp">{esc(t["f_vat"])}</p>{radios("tax-invoice", yn, required=False)}</div>'
+           f'<div><p class="grp">{esc(t["f_ins"])}</p>{radios("insurance", yn, required=False)}</div>'
+           f'<div><p class="grp">{esc(t["f_langs"])}</p>{chks("languages", lang_items, cols3=True)}</div>'
+           f'<div><p class="grp">{esc(t["f_avail"])}</p>{radios("availability", avail_items, required=False)}</div>'
+           f'<div class="two"><label for="r-legal">{esc(t["f_legal"])}<input id="r-legal" name="legal-name"></label>'
+           f'<label for="r-tax">{esc(t["f_tax"])}<input id="r-tax" name="tax-or-id-number" inputmode="numeric" pattern="[0-9 \\-]{{13,17}}"></label></div>'
+           f'<label for="r-addr">{esc(t["f_addr"])}<textarea id="r-addr" name="address" rows="2"></textarea></label>'
            f'<div class="two"><label for="r-rate">{esc(t["f_rate"])}<input id="r-rate" name="labour-rate-thb-per-kwp" inputmode="decimal"></label>'
            f'<label for="r-ref">{esc(t["f_ref"])}<input id="r-ref" name="customer-reference"></label></div>'
-           f'</fieldset>'
-           # 4 documents
-           f'<fieldset><legend>{esc(t["s4"])}</legend><p class="fine">{esc(t["docs_fine"])}</p>'
+           f'</div></details>'
+           f'<details><summary>{esc(t["docs_h"])}</summary><div><p class="fine">{esc(t["docs_fine"])}</p>'
            f'<label for="r-logo">{esc(t["f_logo"])}<input id="r-logo" name="profile-photo" type="file" accept=".jpg,.jpeg,.png"></label>'
            f'<label for="r-cert">{esc(t["f_cert"])}<input id="r-cert" name="electrician-certificate" type="file" accept=".pdf"></label>'
            f'<label for="r-id">{esc(t["f_id"])}<input id="r-id" name="registration-or-id" type="file" accept=".pdf"></label>'
@@ -377,13 +379,10 @@ def build(lang):
            f'<label for="r-ph1">{esc(t["f_ph1"])}<input id="r-ph1" name="project-photo-1" type="file" accept=".jpg,.jpeg,.png"></label>'
            f'<label for="r-ph2">{esc(t["f_ph2"])}<input id="r-ph2" name="project-photo-2" type="file" accept=".jpg,.jpeg,.png"></label>'
            f'<label for="r-ph3">{esc(t["f_ph3"])}<input id="r-ph3" name="project-photo-3" type="file" accept=".jpg,.jpeg,.png"></label>'
-           f'</fieldset>'
-           # 5 agreement
-           f'<fieldset><legend>{esc(t["s5"])}</legend>'
-           f'<label class="chk"><input type="checkbox" name="agree-publish" value="yes" required><span>{esc(t["a_pub"])}</span></label>'
-           f'<label class="chk"><input type="checkbox" name="agree-terms" value="yes" required><span>{esc(t["a_terms"])}</span></label>'
-           f'<label class="chk"><input type="checkbox" name="agree-verification" value="yes" required><span>{esc(t["a_true"])}</span></label>'
-           f'</fieldset>'
+           f'</div></details>'
+           # one agreement (covers publish, terms and verification)
+           f'<label class="chk"><input type="checkbox" name="agree-terms" value="yes" required><span>{esc(t["a_all"])} <span class="req">*</span></span></label>'
+           f'<input type="hidden" name="agree-publish" value="yes"><input type="hidden" name="agree-verification" value="yes">'
            f'<button class="btn" type="submit">{esc(t["reg_btn"])}</button></form></div></section>\n')
 
     labels = {k: t[k] for k in ["empty", "empty_cta", "verified", "base", "serves", "max", "yrs", "team", "elec", "proj", "kwp", "brands_l", "tools_l", "vat", "ins", "langs_l", "req_btn", "eng_l", "safety_l", "wah_l"]}

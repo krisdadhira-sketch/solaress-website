@@ -42,7 +42,7 @@ for f in sorted(glob.glob("*.html") + glob.glob("th/*.html") + glob.glob("zh/*.h
     if f in SKIP:
         continue
     h = open(f, encoding="utf-8").read()
-    h = re.sub(r"<!--ga4-->.*?<!--/ga4-->\n?", "", h, flags=re.S)
+    h = re.sub(r"\n?<!--ga4-->.*?<!--/ga4-->\n?", "", h, flags=re.S)
     m = re.search(r"<head[^>]*>", h, flags=re.I)
     if not m:
         print("no <head>:", f); continue

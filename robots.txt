@@ -5,6 +5,7 @@ Disallow: /thanks.html
 Disallow: /th/thanks.html
 Disallow: /zh/thanks.html
 Disallow: /members-admin.html
+Disallow: /feedback-admin.html
 Disallow: /vocab-admin.html
 
 Sitemap: https://solaress.org/sitemap.xml

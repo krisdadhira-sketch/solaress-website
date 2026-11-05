@@ -16,6 +16,7 @@ export default async (req) => {
   let body;
   try { body = await req.json(); } catch { return new Response("bad body", { status: 400 }); }
   const p = body && body.payload;
+  if (p && p.form_name === "job-feedback") return saveFeedback(p);
   const cfg = p && FORMS[p.form_name];
   if (!cfg) return new Response("ignored");
 
@@ -51,3 +52,18 @@ export default async (req) => {
   });
   return new Response("saved");
 };
+
+// Customer satisfaction feedback after a job (form "job-feedback" on /feedback.html).
+// Saved in store "feedback"; team scorecards are worked out by /api/feedback (admin only).
+async function saveFeedback(p) {
+  const store = getStore({ name: "feedback", consistency: "strong" });
+  const id = String(p.id || p.number || Date.now()).replace(/[^A-Za-z0-9_-]/g, "");
+  if (await store.get("fb/" + id)) return new Response("exists");
+  const data = {};
+  for (const [k, v] of Object.entries(p.data || {})) {
+    if (["bot-field", "form-name", "ip", "user_agent", "referrer"].includes(k)) continue;
+    data[k] = v;
+  }
+  await store.setJSON("fb/" + id, { id, created: p.created_at || new Date().toISOString(), data });
+  return new Response("saved");
+}

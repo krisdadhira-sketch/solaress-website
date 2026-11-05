@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Team Scorecards · Customer Feedback | Solar ESS</title>
+<style>
+:root{--navy:#0A1230;--blue:#2563EB;--ink:#0A0E2E;--mute:#3E548E;--line:#DEE3ED;--paper:#F6F8FC;--ok:#15803D;--mid:#B45309;--no:#B42318}
+*{box-sizing:border-box}body{margin:0;font:15px/1.5 "IBM Plex Sans Thai","Inter",system-ui,sans-serif;color:var(--ink);background:var(--paper)}
+header{background:var(--navy);color:#fff;padding:14px 20px;display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+header b{font-size:18px}header a{color:#C7D2FE}
+main{max-width:1200px;margin:0 auto;padding:20px}
+.login{max-width:420px;margin:60px auto;background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px}
+input,select,button{font:inherit}input[type=password]{width:100%;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;margin:10px 0}
+button{border:0;border-radius:10px;padding:9px 16px;font-weight:600;cursor:pointer;background:var(--blue);color:#fff}
+button.ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line)}button.no{background:var(--no)}
+.bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:16px;overflow-x:auto}
+h2{margin:0 0 10px;font-size:20px}.meta{color:var(--mute);font-size:13px}
+table{border-collapse:collapse;width:100%;font-size:14px}th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
+th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+tr.sel td{background:#EEF2FF}tbody tr{cursor:pointer}
+.sc{display:inline-block;min-width:44px;text-align:center;font-weight:700;border-radius:8px;padding:2px 8px;color:#fff}
+.g{background:var(--ok)}.m{background:var(--mid)}.b{background:var(--no)}.n{background:#94A3B8}
+.qgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px;margin-top:10px;font-size:14px}
+.qgrid div{display:flex;justify-content:space-between;gap:10px;border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+.resp{border-top:1px solid var(--line);padding:12px 0}.resp:first-child{border-top:0}
+.resp .sc{min-width:30px;padding:1px 6px;font-size:13px}
+.err{color:var(--no)}.empty{color:var(--mute);text-align:center;padding:30px}
+</style>
+</head>
+<body>
+<header><b>Solar ESS · Team scorecards (customer feedback)</b><span><a href="/feedback.html" target="_blank">Feedback form</a> · <a href="/members-admin.html">Review applications</a></span></header>
+<main>
+<div class="login" id="login">
+  <h2 style="margin-top:0">Admin sign-in</h2>
+  <p class="meta">Same password as the applications review page.</p>
+  <input type="password" id="pw" placeholder="Admin password" autocomplete="current-password">
+  <button id="go">Sign in</button> <span id="lerr" class="err"></span>
+</div>
+<div id="app" hidden>
+  <div class="bar"><button class="ghost" id="reload">Refresh</button><button class="ghost" id="csv">Download all responses (CSV)</button><span class="meta" id="count"></span></div>
+  <div class="card"><h2>Team record</h2>
+    <p class="meta">Scores out of 5 (5 Perfect · 4 Good · 3 Normal · 2 Fair · 1 Poor). NPS = % promoters (9–10) minus % detractors (0–6), from −100 to +100. Click a team to see its details and responses.</p>
+    <table><thead><tr><th>Team</th><th>Responses</th><th>Overall</th><th>Work</th><th>Personality</th><th>Interaction</th><th>NPS</th><th>More work</th><th>Referrals</th><th>Last feedback</th></tr></thead><tbody id="teams"></tbody></table>
+  </div>
+  <div class="card" id="detail" hidden></div>
+</div>
+</main>
+<script>
+(function(){
+  var PW = '', data = {items:[], teams:[]}, sel = null;
+  try { PW = sessionStorage.getItem('members-admin-pw') || ''; } catch(e) {}
+  var $ = function(id){ return document.getElementById(id); };
+  var Q = {q1:'Quality and neatness of the workmanship',q2:'Materials used as agreed',q3:'Finished on time',q4:'Safety and site left clean',q5:'Tested and working at handover',
+           q6:'Polite, respectful, well presented',q7:'Honest about price and scope',q8:'Punctual, kept promises',q9:'Clear communication, quick replies',q10:'Explained use and care of the system'};
+  var MORE = {'yes-job':'Has another job','yes-referral':'Will refer someone','maybe':'Maybe later','no':'No'};
+  function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  function sc(v, max){ if (v == null) return '<span class="sc n">–</span>'; var r = v / (max || 5); return '<span class="sc '+(r >= .8 ? 'g' : r >= .6 ? 'm' : 'b')+'">'+v+'</span>'; }
+  function nps(v){ if (v == null) return '<span class="sc n">–</span>'; return '<span class="sc '+(v >= 30 ? 'g' : v >= 0 ? 'm' : 'b')+'">'+(v > 0 ? '+' : '')+v+'</span>'; }
+  function day(s){ return s ? new Date(s).toLocaleDateString('en-GB') : ''; }
+  function team(d){ return (d['team-other'] || d.team || 'Not stated').trim() || 'Not stated'; }
+  function api(q, opt){ opt = opt || {}; opt.headers = Object.assign({'x-admin-password': PW, 'content-type':'application/json'}, opt.headers || {});
+    return fetch('/api/feedback?' + q, opt).then(function(r){ return r.json().then(function(j){ if (!r.ok) throw new Error(j.error || r.status); return j; }); }); }
+
+  function render(){
+    $('count').textContent = data.items.length + ' responses from ' + data.teams.length + ' team(s)';
+    $('teams').innerHTML = data.teams.length ? data.teams.map(function(t){
+      return '<tr data-team="'+esc(t.team)+'"'+(t.team === sel ? ' class="sel"' : '')+'><td><b>'+esc(t.team)+'</b></td><td>'+t.responses+'</td><td>'+sc(t.overall)+'</td><td>'+sc(t.groups.work)+'</td><td>'+sc(t.groups.personality)+'</td><td>'+sc(t.groups.interaction)+'</td><td>'+nps(t.nps)+'</td><td>'+t.more_business.job+'</td><td>'+t.more_business.referral+'</td><td>'+day(t.last)+'</td></tr>';
+    }).join('') : '<tr><td colspan="10" class="empty">No feedback yet. Send customers the link to /feedback.html after each job.</td></tr>';
+    var t = data.teams.filter(function(x){ return x.team === sel; })[0];
+    if (!t) { $('detail').hidden = true; return; }
+    var rs = data.items.filter(function(x){ return team(x.data) === sel; });
+    $('detail').hidden = false;
+    $('detail').innerHTML = '<h2>'+esc(t.team)+'</h2><p class="meta">'+t.responses+' responses · promoters '+t.promoters+' · passives '+t.passives+' · detractors '+t.detractors+' · more work '+t.more_business.job+' · referrals '+t.more_business.referral+' · maybe '+t.more_business.maybe+' · no '+t.more_business.no+'</p>'
+      + '<div class="qgrid">'+Object.keys(Q).map(function(k){ return '<div><span>'+k.slice(1)+'. '+esc(Q[k])+'</span>'+sc(t.questions[k])+'</div>'; }).join('')+'</div>'
+      + '<h2 style="margin-top:20px">Responses</h2>' + rs.map(function(r){ var d = r.data;
+        return '<div class="resp"><b>'+esc(d.name)+'</b> <span class="meta">· '+day(r.created)+' · '+esc(d.job)+(d.phone ? ' · '+esc(d.phone) : '')+'</span><div style="margin-top:6px">'
+          + Object.keys(Q).map(function(k){ return k.slice(1)+' '+sc(d[k] == null ? null : +d[k]); }).join(' ')
+          + ' &nbsp; NPS '+sc(d.nps == null ? null : +d.nps, 10)+' &nbsp; '+esc(MORE[d['more-business']] || '')+(d.referral ? ' · referral: '+esc(d.referral) : '')+'</div>'
+          + (d.comment ? '<p style="margin:6px 0 0">“'+esc(d.comment)+'”</p>' : '')
+          + '<p style="margin:6px 0 0"><button class="ghost" data-del="'+esc(r.id)+'" style="padding:4px 10px;font-size:13px">Delete (test or spam)</button></p></div>'; }).join('');
+  }
+  function load(){ return api('a=list').then(function(j){ data = j; render(); }); }
+  function signin(){
+    PW = $('pw').value || PW;
+    api('a=list').then(function(j){ try { sessionStorage.setItem('members-admin-pw', PW); } catch(e) {}
+      $('login').hidden = true; $('app').hidden = false; data = j; render();
+    }).catch(function(e){ $('lerr').textContent = e.message; });
+  }
+  $('go').onclick = signin;
+  $('pw').addEventListener('keydown', function(e){ if (e.key === 'Enter') signin(); });
+  $('reload').onclick = load;
+  $('teams').addEventListener('click', function(e){ var tr = e.target.closest('tr[data-team]'); if (!tr) return; sel = tr.getAttribute('data-team'); render(); $('detail').scrollIntoView({behavior:'smooth'}); });
+  $('detail').addEventListener('click', function(e){ var id = e.target.getAttribute('data-del'); if (!id) return;
+    if (e.target.dataset.sure !== '1') { e.target.dataset.sure = '1'; e.target.textContent = 'Click again to delete'; return; }
+    api('a=delete', {method:'POST', body: JSON.stringify({id: id})}).then(load); });
+  $('csv').onclick = function(){
+    var cols = ['created','team','job','name','phone','q1','q2','q3','q4','q5','q6','q7','q8','q9','q10','nps','more-business','referral','comment','language'];
+    var rows = [cols.join(',')].concat(data.items.map(function(r){ var d = Object.assign({}, r.data, {created: r.created, team: team(r.data)});
+      return cols.map(function(c){ return '"' + String(d[c] == null ? '' : d[c]).replace(/"/g, '""') + '"'; }).join(','); }));
+    var a = document.createElement('a'); a.href = URL.createObjectURL(new Blob(['﻿' + rows.join('\n')], {type:'text/csv'}));
+    a.download = 'solar-ess-feedback_' + new Date().toISOString().slice(0,10).replace(/-/g,'') + '.csv'; a.click();
+  };
+  if (PW) signin();
+})();
+</script>
+</body>
+</html>

@@ -21,7 +21,7 @@ Admin > Data display > Events.
 import glob, re
 
 GA_ID = "G-46HG0JWSZV"
-SKIP = {"members-admin.html", "vocab-admin.html", "googlef2e2bf45e07052f3.html"}
+SKIP = {"members-admin.html", "vocab-admin.html", "feedback-admin.html", "googlef2e2bf45e07052f3.html"}
 
 TAG = f"""<!--ga4--><script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments)}}gtag('js',new Date());gtag('config','{GA_ID}');

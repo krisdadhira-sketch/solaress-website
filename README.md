@@ -28,3 +28,7 @@ Regional directory of approved subcontract installers, a registration form (`ins
 ## Google Analytics (GA4)
 
 Every public page carries the GA4 tag for stream "solaress.org" (`G-46HG0JWSZV`, property "Solar ESS Co. Ltd."), between `<!--ga4-->` markers. **After adding or regenerating any page, run `python3 tools/analytics_tag.py`** (idempotent). Custom events: `book_consultation_click`, `phone_click`, `line_click`, `facebook_click`, `form_sent` (with `form_name`) and `generate_lead` (consultation / installer-request forms). Mark `generate_lead` as a Key event in GA (Admin > Data display > Events).
+
+## Customer feedback & team scorecards (/feedback, /feedback-admin.html)
+
+After a job, send the customer `https://solaress.org/feedback.html?job=<job title>&team=<team name>` (Thai: `/th/feedback.html`). 10 questions scored 1–5 (work q1–q5, personality q6–q8, interaction q9–q10), NPS 0–10 and "will you bring more business?". Form `job-feedback` → `submission-created.mjs` saves it in Blobs store `feedback` → `/api/feedback` (`netlify/functions/feedback/feedback.mjs`) builds each team's record. View at **/feedback-admin.html** (same password as members-admin; CSV download). Page text: `tools/feedback_page.py` (re-run after the job list changes, then `tools/analytics_tag.py`).

@@ -53,25 +53,24 @@ export default async (req) => {
   return new Response("saved");
 };
 
-// Job report from the installer team after a job (form "job-report" on /job-report.html).
-// Saved as a finished job in store "feedback" (key job/<id>) with the customer's phone, so the customer
-// can then rate the job at /feedback.html. Files are copied now because Netlify's file links expire.
-function normPhone(v) {
-  let d = String(v || "").replace(/\D/g, "");
-  if (d.startsWith("66") && d.length >= 11) d = "0" + d.slice(2);
-  return d.length >= 9 ? d : "";
-}
+// Job report from the installer team (form "job-report" on /job-report.html?c=<installer code>).
+// Accepted only with a valid, unused installer code issued by Solar ESS at /feedback-admin.html; anything else is ignored.
+// The report is attached to that job in store "feedback". Files are copied now because Netlify's file links expire.
 const REPORT_FILES = ["photo-before", "photo-after", "photo-3", "report-file"];
 const MAX_FILE = 6 * 1024 * 1024;
 async function saveReport(p) {
   const store = getStore({ name: "feedback", consistency: "strong" });
-  const id = "r" + String(p.id || p.number || Date.now()).replace(/[^A-Za-z0-9_-]/g, "");
-  if (await store.get("job/" + id)) return new Response("exists");
   const data = {};
   for (const [k, v] of Object.entries(p.data || {})) {
     if (["bot-field", "form-name", "ip", "user_agent", "referrer"].includes(k)) continue;
     data[k] = v;
   }
+  const code = String(data.code || "").toUpperCase().replace(/[^A-Z0-9]/g, "");
+  const ref = code.length >= 6 ? await store.get("code/" + code, { type: "json" }) : null;
+  if (!ref || ref.role !== "installer") return new Response("ignored: no valid installer code");
+  const job = await store.get("job/" + ref.jobId, { type: "json" });
+  if (!job || job.cancelled) return new Response("ignored: job not open");
+  if (job.report) return new Response("ignored: report already sent");
   const files = [];
   for (const f of REPORT_FILES) {
     const url = fileUrl(data[f]);
@@ -82,17 +81,13 @@ async function saveReport(p) {
       if (!r.ok || !/^(image\/(jpeg|png|webp)|application\/pdf)/.test(type)) continue;
       const buf = await r.arrayBuffer();
       if (buf.byteLength > MAX_FILE) continue;
-      await store.set(`file/${id}/${f}`, buf, { metadata: { type } });
+      await store.set(`file/${job.id}/${f}`, buf, { metadata: { type } });
       files.push(f);
     } catch { /* keep the report even if a file could not be copied */ }
   }
-  // a select with an "other" option (value "__other") plus a free-text box
-  const pick = (sel, other) => String(data[sel] && data[sel] !== "__other" ? data[sel] : data[other] || "").trim();
-  await store.setJSON("job/" + id, {
-    id, created: p.created_at || new Date().toISOString(), source: "report",
-    job: pick("job", "job-other"), team: pick("team", "team-other"),
-    phone: normPhone(data["customer-phone"]), customer: String(data["customer-name"] || "").trim(), date: String(data["completed"] || ""),
-    data, files, blocked: false, rated: null,
-  });
+  delete data.code;
+  for (const f of REPORT_FILES) delete data[f];
+  job.report = { created: p.created_at || new Date().toISOString(), data, files };
+  await store.setJSON("job/" + job.id, job);
   return new Response("saved");
 }

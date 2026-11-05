@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Finished Jobs, Payments &amp; Team Scorecards | Solar ESS</title>
+<title>Job Admin: Reports, Feedback &amp; Payment Release | Solar ESS</title>
 <style>
 :root{--navy:#0A1230;--blue:#2563EB;--ink:#0A0E2E;--mute:#3E548E;--line:#DEE3ED;--paper:#F6F8FC;--ok:#15803D;--mid:#B45309;--no:#B42318}
 *{box-sizing:border-box}body{margin:0;font:15px/1.5 "IBM Plex Sans Thai","Inter",system-ui,sans-serif;color:var(--ink);background:var(--paper)}
@@ -12,45 +12,68 @@ header{background:var(--navy);color:#fff;padding:14px 20px;display:flex;gap:14px
 header b{font-size:18px}header a{color:#C7D2FE}
 main{max-width:1200px;margin:0 auto;padding:20px}
 .login{max-width:420px;margin:60px auto;background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px}
-input,select,button{font:inherit}input[type=password]{width:100%;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;margin:10px 0}
+input,select,button,textarea{font:inherit}input[type=password]{width:100%;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;margin:10px 0}
+.f input,.f select{width:100%;padding:9px 11px;border:1.5px solid var(--line);border-radius:10px;background:#fff}
+.f label{display:grid;gap:4px;font-size:13px;font-weight:600;color:var(--mute)}
+.grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:12px;align-items:end}
 button{border:0;border-radius:10px;padding:9px 16px;font-weight:600;cursor:pointer;background:var(--blue);color:#fff}
-button.ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line)}button.no{background:var(--no)}
+button.ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line)}button.no{background:var(--no)}button.ok{background:var(--ok)}button.sm{padding:4px 10px;font-size:13px}
 .bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
 .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:16px;overflow-x:auto}
+.card.hi{border:2px solid var(--blue)}
 h2{margin:0 0 10px;font-size:20px}.meta{color:var(--mute);font-size:13px}
-table{border-collapse:collapse;width:100%;font-size:14px}th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
-th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
-tr.sel td{background:#EEF2FF}tbody tr{cursor:pointer}
+table{border-collapse:collapse;width:100%;font-size:14px}th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);white-space:nowrap}
 .sc{display:inline-block;min-width:44px;text-align:center;font-weight:700;border-radius:8px;padding:2px 8px;color:#fff}
 .g{background:var(--ok)}.m{background:var(--mid)}.b{background:var(--no)}.n{background:#94A3B8}
+.pill{display:inline-block;font-size:12px;font-weight:700;border-radius:99px;padding:3px 10px;color:#fff;white-space:nowrap}
+.s-rep{background:var(--mid)}.s-fb{background:#9A3412}.s-ready{background:var(--ok)}.s-rel{background:var(--blue)}.s-can{background:#64748B}
+.code{font-family:ui-monospace,monospace;font-weight:700;letter-spacing:.08em;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:2px 8px}
+.acts{display:flex;flex-wrap:wrap;gap:6px}
+.rep{background:var(--paper);border-radius:12px;padding:12px;margin-top:6px}.rep dl{display:grid;grid-template-columns:auto 1fr;gap:3px 12px;margin:0}.rep dt{color:var(--mute)}.rep dd{margin:0;white-space:pre-wrap}.rep img{height:120px;border-radius:10px;margin:6px 6px 0 0;border:1px solid var(--line)}
 .qgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px;margin-top:10px;font-size:14px}
 .qgrid div{display:flex;justify-content:space-between;gap:10px;border:1px solid var(--line);border-radius:10px;padding:8px 10px}
-.resp{border-top:1px solid var(--line);padding:12px 0}.resp:first-child{border-top:0}
-.resp .sc{min-width:30px;padding:1px 6px;font-size:13px}
-.pill{display:inline-block;font-size:12px;font-weight:700;border-radius:99px;padding:3px 10px;color:#fff;white-space:nowrap}.p-ready{background:var(--ok)}.p-wait{background:var(--mid)}.p-paid{background:var(--blue)}.p-block{background:#64748B}
-.rep{background:var(--paper);border-radius:12px;padding:12px;margin-top:8px;white-space:normal}.rep dl{display:grid;grid-template-columns:auto 1fr;gap:3px 12px;margin:0}.rep dt{color:var(--mute)}.rep dd{margin:0}.rep img{height:120px;border-radius:10px;margin:6px 6px 0 0;border:1px solid var(--line)}
-button.sm{padding:4px 10px;font-size:13px}
+tr.sel td{background:#EEF2FF}#teams tr{cursor:pointer}
+.issued{background:#ECFDF5;border:1px solid #A7F3D0;border-radius:12px;padding:12px;margin-top:12px}
 .err{color:var(--no)}.empty{color:var(--mute);text-align:center;padding:30px}
+@media(max-width:800px){.grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<header><b>Solar ESS · Finished jobs, payments &amp; team record</b><span><a href="/job-report.html" target="_blank">Job report form</a> · <a href="/feedback.html" target="_blank">Customer feedback form</a> · <a href="/members-admin.html">Review applications</a></span></header>
+<header><b>Solar ESS · Job admin: reports, feedback &amp; payment</b><span><a href="/job.html">Jobs page</a> · <a href="/members-admin.html">Review applications</a></span></header>
 <main>
 <div class="login" id="login">
   <h2 style="margin-top:0">Admin sign-in</h2>
+  <p class="meta" id="forjob"></p>
   <p class="meta">Same password as the applications review page.</p>
   <input type="password" id="pw" placeholder="Admin password" autocomplete="current-password">
   <button id="go">Sign in</button> <span id="lerr" class="err"></span>
 </div>
 <div id="app" hidden>
-  <div class="bar"><button class="ghost" id="reload">Refresh</button><button class="ghost" id="csv">Download all responses (CSV)</button><span class="meta" id="count"></span></div>
-  <div class="card"><h2>Finished jobs and payment</h2>
-    <p class="meta">A job is <b>ready to pay</b> only when both the team's job report and the customer's feedback are in. Customers rate at /feedback.html with the phone number in the report, once per job.</p>
-    <div class="bar" style="margin:10px 0 0"><select id="jf"><option value="">All jobs</option><option value="ready">Ready to pay</option><option value="wait">Waiting for customer feedback</option><option value="paid">Paid</option><option value="block">Feedback blocked</option></select></div>
-    <table><thead><tr><th>Finished</th><th>Job</th><th>Team</th><th>Customer</th><th>Report</th><th>Feedback</th><th>Payment</th><th></th></tr></thead><tbody id="jobs"></tbody></table>
+  <div class="bar"><button class="ghost" id="reload">Refresh</button><button class="ghost" id="csv">Download customer feedback (CSV)</button><span class="meta" id="count"></span></div>
+
+  <div class="card" id="issue"><h2>Issue the job report and customer feedback forms</h2>
+    <p class="meta">Creates two one-time codes for this job: one for the installer team (job report) and one for the customer (feedback). Copy each message and send it by LINE.</p>
+    <div class="grid f">
+      <label>Job<input id="i-job" list="joblist" placeholder="Job title"></label>
+      <label>Team that did the work<input id="i-team" list="teamlist" placeholder="Team name"></label>
+      <label>Customer name (optional)<input id="i-cust"></label>
+      <label>Customer phone (optional)<input id="i-phone" type="tel"></label>
+    </div>
+    <datalist id="joblist"></datalist><datalist id="teamlist"><option value="Solar ESS team"></option></datalist>
+    <p style="margin:12px 0 0"><button id="create">Create codes</button> <span id="ierr" class="err"></span></p>
+    <div id="issued"></div>
   </div>
+
+  <div class="card"><h2>Jobs</h2>
+    <p class="meta">Payment can be released only when both the installer's job report and the customer's feedback are in. Open each to check the team and the customer are happy and there is no issue, then click <b>Release payment</b>.</p>
+    <div class="bar" style="margin:10px 0 0"><select id="jf"><option value="">All jobs</option><option value="rep">Waiting for job report</option><option value="fb">Waiting for customer feedback</option><option value="ready">Ready to release payment</option><option value="rel">Payment released</option><option value="can">Cancelled</option></select>
+      <input id="jq" placeholder="Search job or team" style="padding:7px 10px;border:1.5px solid var(--line);border-radius:10px"></div>
+    <table><thead><tr><th>Created</th><th>Job</th><th>Team</th><th>Codes</th><th>Job report</th><th>Customer feedback</th><th>Status</th><th></th></tr></thead><tbody id="jobs"></tbody></table>
+  </div>
+
   <div class="card"><h2>Team record</h2>
-    <p class="meta">Scores out of 5 (5 Perfect · 4 Good · 2 Fair · 1 Poor; there is no 3, so customers must lean one way). NPS = % promoters (9–10) minus % detractors (0–6), from −100 to +100. Click a team to see its details and responses.</p>
+    <p class="meta">From customer feedback on issued jobs only. Scores out of 5 (5 Perfect · 4 Good · 2 Fair · 1 Poor; there is no 3). NPS = % promoters (9–10) minus % detractors (0–6), from −100 to +100. Click a team for details.</p>
     <table><thead><tr><th>Team</th><th>Responses</th><th>Overall</th><th>Work</th><th>Personality</th><th>Interaction</th><th>NPS</th><th>Last feedback</th></tr></thead><tbody id="teams"></tbody></table>
   </div>
   <div class="card" id="detail" hidden></div>
@@ -58,105 +81,136 @@ button.sm{padding:4px 10px;font-size:13px}
 </main>
 <script>
 (function(){
-  var PW = '', data = {items:[], teams:[]}, sel = null;
+  var PW = '', data = {items:[], jobs:[], teams:[]}, sel = null, open = {}, lastIssued = null;
+  var Q0 = new URLSearchParams(location.search), FORJOB = Q0.get('job') || '';
   try { PW = sessionStorage.getItem('members-admin-pw') || ''; } catch(e) {}
   var $ = function(id){ return document.getElementById(id); };
   var Q = {q1:'Quality and neatness of the workmanship',q2:'Materials used as agreed',q3:'Finished on time',q4:'Safety and site left clean',q5:'Tested and working at handover',
            q6:'Polite, respectful, well presented',q7:'Honest about price and scope',q8:'Punctual, kept promises',q9:'Clear communication, quick replies',q10:'Explained use and care of the system'};
-  var MORE = {'yes-job':'Has another job','yes-referral':'Will refer someone','maybe':'Maybe later','no':'No'};
+  var ST = {rep:['s-rep','Waiting for job report'], fb:['s-fb','Waiting for customer feedback'], ready:['s-ready','Ready to release payment'], rel:['s-rel','Payment released'], can:['s-can','Cancelled']};
+  if (FORJOB) $('forjob').innerHTML = 'Job: <b>' + esc(FORJOB) + '</b>';
   function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
   function sc(v, max){ if (v == null) return '<span class="sc n">–</span>'; var r = v / (max || 5); return '<span class="sc '+(r >= .8 ? 'g' : r >= .6 ? 'm' : 'b')+'">'+v+'</span>'; }
   function nps(v){ if (v == null) return '<span class="sc n">–</span>'; return '<span class="sc '+(v >= 30 ? 'g' : v >= 0 ? 'm' : 'b')+'">'+(v > 0 ? '+' : '')+v+'</span>'; }
   function day(s){ return s ? new Date(s).toLocaleDateString('en-GB') : ''; }
-  function team(r){ return r.team || 'Not stated'; }
   function api(q, opt){ opt = opt || {}; opt.headers = Object.assign({'x-admin-password': PW, 'content-type':'application/json'}, opt.headers || {});
     return fetch('/api/feedback?' + q, opt).then(function(r){ return r.json().then(function(j){ if (!r.ok) throw new Error(j.error || r.status); return j; }); }); }
-
-  function jobState(j){ if (j.paid) return 'paid'; if (j.blocked) return 'block'; return j.rated ? 'ready' : 'wait'; }
-  var PILL = {ready:['p-ready','Ready to pay'], wait:['p-wait','Waiting for customer feedback'], paid:['p-paid','Paid'], block:['p-block','Feedback blocked']};
-  var open = {};
+  function post(a, b){ return api('a=' + a, {method:'POST', body: JSON.stringify(b)}); }
+  function state(j){ if (j.cancelled) return 'can'; if (j.released) return 'rel'; if (!j.report) return 'rep'; if (!j.rated) return 'fb'; return 'ready'; }
   function fbOf(j){ return data.items.filter(function(x){ return x.id === j.rated; })[0]; }
   function fbAvg(fb){ var v = []; for (var i = 1; i <= 10; i++) { var x = +fb.data['q'+i]; if (x) v.push(x); } return v.length ? Math.round(v.reduce(function(a,b){return a+b;},0)/v.length*100)/100 : null; }
+
+  // ready-made LINE messages (Thai + English together, so they work for everyone)
+  function msgInstaller(j){ var u = 'https://solaress.org/th/job-report.html?c=' + j.codes.installer;
+    return 'งาน: ' + j.job + '\nทีม: ' + j.team + '\nเมื่อส่งมอบงานแล้ว กรุณาส่งรายงานจบงานที่\n' + u + '\nรหัสรายงาน: ' + j.codes.installer
+      + '\nSolar ESS จะจ่ายค่างานเมื่อได้รับและตรวจสอบทั้งรายงานนี้และแบบประเมินจากลูกค้าแล้ว\n\nJob report (English): https://solaress.org/job-report.html?c=' + j.codes.installer + '\nPayment is released after both your report and the customer\'s feedback are received and checked.'; }
+  function msgCustomer(j){ var u = 'https://solaress.org/th/feedback.html?c=' + j.codes.customer;
+    return 'สวัสดีค่ะ' + (j.customer ? ' คุณ' + j.customer : '') + '\nขอบคุณที่ใช้บริการ Solar ESS งาน "' + j.job + '" เสร็จเรียบร้อยแล้ว\nรบกวนประเมินทีมช่างสั้น ๆ (2 นาที) ที่\n' + u + '\nรหัสประเมิน: ' + j.codes.customer
+      + '\n\nPlease rate the team (2 minutes): https://solaress.org/feedback.html?c=' + j.codes.customer + '\nThank you!'; }
+  function copy(text, btn){ (navigator.clipboard ? navigator.clipboard.writeText(text) : Promise.reject()).then(function(){ var o = btn.textContent; btn.textContent = 'Copied ✓'; setTimeout(function(){ btn.textContent = o; }, 1800); })
+    .catch(function(){ window.prompt('Copy this message:', text); }); }
+
+  function renderIssued(){
+    var j = lastIssued; if (!j) { $('issued').innerHTML = ''; return; }
+    $('issued').innerHTML = '<div class="issued"><b>Codes created for:</b> '+esc(j.job)+' · '+esc(j.team)
+      + '<p style="margin:8px 0">Installer (job report): <span class="code">'+esc(j.codes.installer)+'</span> &nbsp; <button class="sm" data-cpi="'+esc(j.id)+'">Copy message for installer</button></p>'
+      + '<p style="margin:0">Customer (feedback): <span class="code">'+esc(j.codes.customer)+'</span> &nbsp; <button class="sm" data-cpc="'+esc(j.id)+'">Copy message for customer</button></p></div>';
+  }
   function renderJobs(){
-    var f = $('jf').value, jobs = (data.jobs || []).filter(function(j){ return !f || jobState(j) === f; });
+    var f = $('jf').value, q = $('jq').value.trim().toLowerCase();
+    var jobs = (data.jobs || []).filter(function(j){ return (!f || state(j) === f) && (!q || (j.job + ' ' + j.team).toLowerCase().indexOf(q) >= 0); });
     $('jobs').innerHTML = jobs.length ? jobs.map(function(j){
-      var st = jobState(j), fb = fbOf(j), d = j.data || {};
-      var row = '<tr><td>'+esc(j.date || day(j.created))+'</td><td style="white-space:normal;min-width:220px">'+esc(j.job)+'</td><td>'+esc(j.team)+'</td><td>'+esc(j.customer)+'<br><span class="meta">'+esc(j.phone)+'</span></td>'
-        + '<td>'+(j.source === 'report' ? '✓ <a href="#" data-open="'+esc(j.id)+'">view</a>' : '–')+'</td>'
-        + '<td>'+(fb ? sc(fbAvg(fb))+' NPS '+esc(fb.data.nps) : '<span class="meta">waiting</span>')+'</td>'
-        + '<td><span class="pill '+PILL[st][0]+'">'+PILL[st][1]+(st === 'paid' ? ' '+day(j.paid) : '')+'</span></td><td>'
-        + (st === 'ready' ? '<button class="sm" data-pay="'+esc(j.id)+'">Mark paid</button> ' : '')
-        + (st === 'paid' ? '<button class="sm ghost" data-unpay="'+esc(j.id)+'">Undo paid</button> ' : '')
-        + (st === 'wait' ? '<button class="sm ghost" data-copy="'+esc(j.id)+'">Copy message for customer</button> <button class="sm ghost" data-block="'+esc(j.id)+'">Block</button> ' : '')
-        + (st === 'block' ? '<button class="sm ghost" data-unblock="'+esc(j.id)+'">Unblock</button> <button class="sm no" data-jdel="'+esc(j.id)+'">Delete</button>' : '')
-        + '</td></tr>';
+      var st = state(j), fb = fbOf(j), r = j.report;
+      var row = '<tr><td>'+day(j.created)+'</td><td style="min-width:220px">'+esc(j.job)+(j.customer || j.phone ? '<br><span class="meta">'+esc(j.customer)+' '+esc(j.phone)+'</span>' : '')+'</td><td>'+esc(j.team)+'</td>'
+        + '<td><span class="meta">Installer</span> <span class="code">'+esc(j.codes.installer)+'</span><br><span class="meta">Customer</span> <span class="code">'+esc(j.codes.customer)+'</span></td>'
+        + '<td>'+(r ? '✓ '+day(r.created)+' <a href="#" data-open="'+esc(j.id)+'">view</a>' : '<span class="meta">not yet</span>')+'</td>'
+        + '<td>'+(fb ? sc(fbAvg(fb))+' NPS '+esc(fb.data.nps)+' <a href="#" data-open="'+esc(j.id)+'">view</a>' : '<span class="meta">not yet</span>')+'</td>'
+        + '<td><span class="pill '+ST[st][0]+'">'+ST[st][1]+(st === 'rel' ? ' '+day(j.released) : '')+'</span></td><td><div class="acts">'
+        + (st === 'ready' ? '<button class="sm ok" data-rel="'+esc(j.id)+'">Release payment</button>' : '')
+        + (st === 'rel' ? '<button class="sm ghost" data-unrel="'+esc(j.id)+'">Undo release</button>' : '')
+        + (!r && st !== 'can' ? '<button class="sm ghost" data-cpi="'+esc(j.id)+'">Copy message for installer</button>' : '')
+        + (!fb && st !== 'can' ? '<button class="sm ghost" data-cpc="'+esc(j.id)+'">Copy message for customer</button>' : '')
+        + (st !== 'can' && st !== 'rel' ? '<button class="sm ghost" data-can="'+esc(j.id)+'">Cancel</button>' : '')
+        + (st === 'can' ? '<button class="sm ghost" data-uncan="'+esc(j.id)+'">Reopen</button><button class="sm no" data-del="'+esc(j.id)+'">Delete</button>' : '')
+        + '</div></td></tr>';
       if (open[j.id]) {
-        var keys = ['work-done','materials','test-results','follow-up','reporter-name','reporter-phone','language'];
-        row += '<tr><td colspan="8"><div class="rep"><dl>'+keys.filter(function(k){ return d[k]; }).map(function(k){ return '<dt>'+esc(k)+'</dt><dd>'+esc(d[k])+'</dd>'; }).join('')+'</dl>'
-          + (j.files || []).map(function(fl){ return fl === 'report-file' ? '<p><a href="#" data-file="'+esc(j.id)+'|'+fl+'">Download report PDF</a></p>' : '<img data-fsrc="/api/feedback?a=file&id='+encodeURIComponent(j.id)+'&f='+fl+'" alt="'+esc(fl)+'">'; }).join('')
-          + '</div></td></tr>';
+        var d = (r && r.data) || {}, keys = ['completed','work-done','materials','test-results','follow-up','reporter-name','reporter-phone','language'];
+        row += '<tr><td colspan="8"><div class="rep"><b>Job report</b>' + (r ? '<dl>'+keys.filter(function(k){ return d[k]; }).map(function(k){ return '<dt>'+esc(k)+'</dt><dd>'+esc(d[k])+'</dd>'; }).join('')+'</dl>'
+          + (r.files || []).map(function(fl){ return fl === 'report-file' ? '<p><a href="#" data-file="'+esc(j.id)+'|'+fl+'">Open report PDF</a></p>' : '<img data-fsrc="/api/feedback?a=file&id='+encodeURIComponent(j.id)+'&f='+fl+'" alt="'+esc(fl)+'">'; }).join('') : '<p class="meta">Not sent yet.</p>')
+          + '</div><div class="rep"><b>Customer feedback</b>' + (fb ? '<p style="margin:6px 0">'+esc(fb.data.name)+' · '+day(fb.created)+' · NPS '+esc(fb.data.nps)+'</p><div class="qgrid">'
+          + Object.keys(Q).map(function(k){ return '<div><span>'+k.slice(1)+'. '+esc(Q[k])+'</span>'+sc(fb.data[k] == null ? null : +fb.data[k])+'</div>'; }).join('')+'</div>'
+          + (fb.data.comment ? '<p style="margin:8px 0 0">“'+esc(fb.data.comment)+'”</p>' : '')
+          + '<p style="margin:8px 0 0"><button class="sm ghost" data-fbdel="'+esc(fb.id)+'">Delete this feedback (the customer code works again)</button></p>' : '<p class="meta">Not sent yet.</p>') + '</div></td></tr>';
       }
       return row;
-    }).join('') : '<tr><td colspan="8" class="empty">No finished jobs yet. Teams send a job report at /job-report.html when the work is handed over.</td></tr>';
+    }).join('') : '<tr><td colspan="8" class="empty">No jobs here yet. Use ⚙ Admin on a job post, or the form above, to issue codes.</td></tr>';
     Array.prototype.forEach.call(document.querySelectorAll('img[data-fsrc]'), function(im){
       fetch(im.getAttribute('data-fsrc'), {headers:{'x-admin-password':PW}}).then(function(r){ return r.ok ? r.blob() : null; }).then(function(bl){ if (bl) im.src = URL.createObjectURL(bl); });
     });
   }
-  function render(){
-    renderJobs();
-    var ready = (data.jobs || []).filter(function(j){ return jobState(j) === 'ready'; }).length;
-    $('count').textContent = (data.jobs || []).length + ' finished jobs · ' + ready + ' ready to pay · ' + data.items.length + ' customer responses';
+  function renderTeams(){
     $('teams').innerHTML = data.teams.length ? data.teams.map(function(t){
       return '<tr data-team="'+esc(t.team)+'"'+(t.team === sel ? ' class="sel"' : '')+'><td><b>'+esc(t.team)+'</b></td><td>'+t.responses+'</td><td>'+sc(t.overall)+'</td><td>'+sc(t.groups.work)+'</td><td>'+sc(t.groups.personality)+'</td><td>'+sc(t.groups.interaction)+'</td><td>'+nps(t.nps)+'</td><td>'+day(t.last)+'</td></tr>';
-    }).join('') : '<tr><td colspan="8" class="empty">No feedback yet. Send customers the link to /feedback.html after each job.</td></tr>';
+    }).join('') : '<tr><td colspan="8" class="empty">No customer feedback yet.</td></tr>';
     var t = data.teams.filter(function(x){ return x.team === sel; })[0];
     if (!t) { $('detail').hidden = true; return; }
-    var rs = data.items.filter(function(x){ return x.jobId && team(x) === sel; });
     $('detail').hidden = false;
     $('detail').innerHTML = '<h2>'+esc(t.team)+'</h2><p class="meta">'+t.responses+' responses · promoters '+t.promoters+' · passives '+t.passives+' · detractors '+t.detractors+'</p>'
-      + '<div class="qgrid">'+Object.keys(Q).map(function(k){ return '<div><span>'+k.slice(1)+'. '+esc(Q[k])+'</span>'+sc(t.questions[k])+'</div>'; }).join('')+'</div>'
-      + '<h2 style="margin-top:20px">Responses</h2>' + rs.map(function(r){ var d = r.data;
-        return '<div class="resp"><b>'+esc(d.name)+'</b> <span class="meta">· '+day(r.created)+' · '+esc(d.job)+(d.phone ? ' · '+esc(d.phone) : '')+'</span><div style="margin-top:6px">'
-          + Object.keys(Q).map(function(k){ return k.slice(1)+' '+sc(d[k] == null ? null : +d[k]); }).join(' ')
-          + ' &nbsp; NPS '+sc(d.nps == null ? null : +d.nps, 10)+'</div>'
-          + (d.comment ? '<p style="margin:6px 0 0">“'+esc(d.comment)+'”</p>' : '')
-          + '<p style="margin:6px 0 0"><button class="ghost" data-del="'+esc(r.id)+'" style="padding:4px 10px;font-size:13px">Delete (test or spam)</button></p></div>'; }).join('');
+      + '<div class="qgrid">'+Object.keys(Q).map(function(k){ return '<div><span>'+k.slice(1)+'. '+esc(Q[k])+'</span>'+sc(t.questions[k])+'</div>'; }).join('')+'</div>';
+  }
+  function render(){
+    var jobs = data.jobs || [], ready = jobs.filter(function(j){ return state(j) === 'ready'; }).length;
+    $('count').textContent = jobs.length + ' jobs · ' + ready + ' ready to release payment · ' + data.items.length + ' customer responses';
+    renderIssued(); renderJobs(); renderTeams();
   }
   function load(){ return api('a=list').then(function(j){ data = j; render(); }); }
+  function fillLists(){
+    fetch('/job.html').then(function(r){ return r.text(); }).then(function(h){
+      var doc = new DOMParser().parseFromString(h, 'text/html'), seen = {};
+      var names = [].map.call(doc.querySelectorAll('article.card .go a[data-job]'), function(a){ return a.getAttribute('data-job'); })
+        .concat([].map.call(doc.querySelectorAll('article.card.p h3'), function(h){ return h.textContent.trim(); }));
+      $('joblist').innerHTML = names.filter(function(n){ if (!n || seen[n]) return false; return seen[n] = 1; }).map(function(n){ return '<option value="'+esc(n)+'">'; }).join('');
+    }).catch(function(){});
+    Promise.all(['partner','tsia'].map(function(t){ return fetch('/api/members?a=public&type='+t).then(function(r){ return r.ok ? r.json() : {items:[]}; }).catch(function(){ return {items:[]}; }); }))
+      .then(function(rs){ $('teamlist').innerHTML += [].concat.apply([], rs.map(function(r){ return (r.items || []).map(function(x){ return '<option value="'+esc(x.name)+'">'; }); })).join(''); });
+  }
   function signin(){
     PW = $('pw').value || PW;
     api('a=list').then(function(j){ try { sessionStorage.setItem('members-admin-pw', PW); } catch(e) {}
-      $('login').hidden = true; $('app').hidden = false; data = j; render();
+      $('login').hidden = true; $('app').hidden = false; data = j; render(); fillLists();
+      if (FORJOB) { $('i-job').value = FORJOB; $('issue').classList.add('hi'); $('jq').value = FORJOB; renderJobs(); $('i-team').focus(); }
     }).catch(function(e){ $('lerr').textContent = e.message; });
   }
   $('go').onclick = signin;
   $('pw').addEventListener('keydown', function(e){ if (e.key === 'Enter') signin(); });
   $('reload').onclick = load;
-  $('teams').addEventListener('click', function(e){ var tr = e.target.closest('tr[data-team]'); if (!tr) return; sel = tr.getAttribute('data-team'); render(); $('detail').scrollIntoView({behavior:'smooth'}); });
-  $('detail').addEventListener('click', function(e){ var id = e.target.getAttribute('data-del'); if (!id) return;
-    if (e.target.dataset.sure !== '1') { e.target.dataset.sure = '1'; e.target.textContent = 'Click again to delete'; return; }
-    api('a=delete', {method:'POST', body: JSON.stringify({id: id})}).then(load); });
-  $('jf').onchange = renderJobs;
-  $('jobs').addEventListener('click', function(e){
+  $('jf').onchange = renderJobs; $('jq').oninput = renderJobs;
+  $('create').onclick = function(){
+    $('ierr').textContent = '';
+    post('create', {job: $('i-job').value, team: $('i-team').value, customer: $('i-cust').value, phone: $('i-phone').value})
+      .then(function(r){ lastIssued = r.job; $('i-cust').value = ''; $('i-phone').value = ''; return load(); })
+      .catch(function(e){ $('ierr').textContent = e.message; });
+  };
+  function findJob(id){ return (data.jobs || []).filter(function(x){ return x.id === id; })[0] || (lastIssued && lastIssued.id === id ? lastIssued : null); }
+  document.addEventListener('click', function(e){
     var t = e.target, id;
+    if ((id = t.getAttribute('data-cpi'))) return copy(msgInstaller(findJob(id)), t);
+    if ((id = t.getAttribute('data-cpc'))) return copy(msgCustomer(findJob(id)), t);
     if ((id = t.getAttribute('data-open'))) { e.preventDefault(); open[id] = !open[id]; return renderJobs(); }
-    if ((id = t.getAttribute('data-pay'))) return api('a=jobset', {method:'POST', body: JSON.stringify({id:id, paid:true})}).then(load).catch(function(x){ alert(x.message); });
-    if ((id = t.getAttribute('data-unpay'))) return api('a=jobset', {method:'POST', body: JSON.stringify({id:id, paid:false})}).then(load);
-    if ((id = t.getAttribute('data-block'))) return api('a=jobset', {method:'POST', body: JSON.stringify({id:id, blocked:true})}).then(load);
-    if ((id = t.getAttribute('data-unblock'))) return api('a=jobset', {method:'POST', body: JSON.stringify({id:id, blocked:false})}).then(load);
-    if ((id = t.getAttribute('data-jdel'))) { if (t.dataset.sure !== '1') { t.dataset.sure = '1'; t.textContent = 'Click again to delete'; return; } return api('a=jobdel', {method:'POST', body: JSON.stringify({id:id})}).then(load); }
-    if ((id = t.getAttribute('data-copy'))) {
-      var j = data.jobs.filter(function(x){ return x.id === id; })[0], th = (j.data && j.data.language) === 'Thai';
-      var msg = th ? 'สวัสดีค่ะ คุณ' + (j.customer || '') + '\nขอบคุณที่ใช้บริการ Solar ESS งาน "' + j.job + '" เสร็จเรียบร้อยแล้ว\nรบกวนประเมินทีมช่างสั้น ๆ (2 นาที) ที่ https://solaress.org/th/feedback.html\nกรอกเบอร์ ' + j.phone + ' เพื่อเปิดแบบประเมิน ขอบคุณค่ะ'
-        : 'Dear ' + (j.customer || 'customer') + ',\nThank you for choosing Solar ESS. The job "' + j.job + '" is finished.\nPlease rate the team (2 minutes) at https://solaress.org/feedback.html\nEnter your phone number ' + j.phone + ' to open the form. Thank you!';
-      navigator.clipboard.writeText(msg).then(function(){ t.textContent = 'Copied ✓'; });
-    }
+    if ((id = t.getAttribute('data-rel'))) return post('jobset', {id:id, released:true}).then(load).catch(function(x){ alert(x.message); });
+    if ((id = t.getAttribute('data-unrel'))) return post('jobset', {id:id, released:false}).then(load);
+    if ((id = t.getAttribute('data-can'))) { if (t.dataset.sure !== '1') { t.dataset.sure = '1'; t.textContent = 'Click again to cancel'; return; } return post('jobset', {id:id, cancelled:true}).then(load); }
+    if ((id = t.getAttribute('data-uncan'))) return post('jobset', {id:id, cancelled:false}).then(load);
+    if ((id = t.getAttribute('data-del'))) { if (t.dataset.sure !== '1') { t.dataset.sure = '1'; t.textContent = 'Click again to delete'; return; } return post('jobdel', {id:id}).then(load); }
+    if ((id = t.getAttribute('data-fbdel'))) { if (t.dataset.sure !== '1') { t.dataset.sure = '1'; t.textContent = 'Click again to delete'; return; } return post('delete', {id:id}).then(load); }
     if ((id = t.getAttribute('data-file'))) { e.preventDefault(); var p = id.split('|');
       fetch('/api/feedback?a=file&id='+encodeURIComponent(p[0])+'&f='+p[1], {headers:{'x-admin-password':PW}}).then(function(r){ return r.blob(); }).then(function(bl){ window.open(URL.createObjectURL(bl)); }); }
+    var tr = t.closest && t.closest('#teams tr[data-team]');
+    if (tr) { sel = tr.getAttribute('data-team'); renderTeams(); $('detail').scrollIntoView({behavior:'smooth'}); }
   });
   $('csv').onclick = function(){
-    var cols = ['created','team','job','name','phone','q1','q2','q3','q4','q5','q6','q7','q8','q9','q10','nps','comment','language'];
-    var rows = [cols.join(',')].concat(data.items.map(function(r){ var d = Object.assign({}, r.data, {created: r.created, team: team(r), job: r.job, phone: r.phone});
+    var cols = ['created','team','job','name','q1','q2','q3','q4','q5','q6','q7','q8','q9','q10','nps','comment','language'];
+    var rows = [cols.join(',')].concat(data.items.map(function(r){ var d = Object.assign({}, r.data, {created: r.created, team: r.team, job: r.job});
       return cols.map(function(c){ return '"' + String(d[c] == null ? '' : d[c]).replace(/"/g, '""') + '"'; }).join(','); }));
     var a = document.createElement('a'); a.href = URL.createObjectURL(new Blob(['﻿' + rows.join('\n')], {type:'text/csv'}));
     a.download = 'solar-ess-feedback_' + new Date().toISOString().slice(0,10).replace(/-/g,'') + '.csv'; a.click();

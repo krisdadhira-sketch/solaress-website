@@ -29,10 +29,11 @@ Regional directory of approved subcontract installers, a registration form (`ins
 
 Every public page carries the GA4 tag for stream "solaress.org" (`G-46HG0JWSZV`, property "Solar ESS Co. Ltd."), between `<!--ga4-->` markers. **After adding or regenerating any page, run `python3 tools/analytics_tag.py`** (idempotent). Custom events: `book_consultation_click`, `phone_click`, `line_click`, `facebook_click`, `form_sent` (with `form_name`) and `generate_lead` (consultation / installer-request forms). Mark `generate_lead` as a Key event in GA (Admin > Data display > Events).
 
-## Finished jobs, customer feedback, payment & team scorecards (/job-report, /feedback, /feedback-admin.html)
+## Job admin: installer report, customer feedback, payment release & team record (/feedback-admin.html)
 
-1. **Installer team** sends a job report at `/job-report.html` (no login; Netlify form `job-report`) with the customer's phone. `submission-created.mjs` saves it as a finished job (Blobs store `feedback`, key `job/<id>`, files copied).
-2. **Customer** opens `/feedback.html`, enters that phone number, and rates the job once: 10 questions scored 5 / 4 / 2 / 1 (no middle score) and NPS 0–10. Sent to `/api/feedback` (`netlify/functions/feedback/feedback.mjs`), which checks the phone, the job and one response per job.
-3. **Payment**: a job is *ready to pay* only when both the report and the customer's feedback are in; mark it paid at **/feedback-admin.html** (same password as members-admin). The team record there counts only these checked responses.
+1. **Admin issues codes**: every project job post on the Jobs page ends with a small ⚙ Admin icon (`tools/job_links.py`, re-run after editing the Jobs page) → `/feedback-admin.html?job=<job>`. Sign in (same password as members-admin), enter the team, click *Create codes* → two one-time codes: installer and customer. *Copy message* gives a ready LINE message (Thai + English) with the link.
+2. **Installer** opens `/job-report.html?c=<code>` (EN/TH) and sends the report (Netlify form `job-report`); `submission-created.mjs` attaches it only for a valid, unused installer code.
+3. **Customer** opens `/feedback.html?c=<code>` (EN/TH) and rates once: 10 questions 5 / 4 / 2 / 1 (no middle score) + NPS 0–10, checked by `/api/feedback` (`netlify/functions/feedback/feedback.mjs`).
+4. **Release payment**: possible only when both are in; the admin checks both and clicks *Release payment*. Team record = customer feedback on issued jobs only.
 
-Every project job post on the Jobs page links to both forms (`tools/job_links.py`; re-run after editing the Jobs page). Page text: `tools/feedback_page.py`, then `tools/analytics_tag.py`.
+Page text: `tools/feedback_page.py`, then `tools/analytics_tag.py`. Data: Blobs store `feedback` (`job/`, `code/`, `fb/`, `file/`).

@@ -43,7 +43,7 @@ tr.sel td{background:#EEF2FF}tbody tr{cursor:pointer}
   <div class="bar"><button class="ghost" id="reload">Refresh</button><button class="ghost" id="csv">Download all responses (CSV)</button><span class="meta" id="count"></span></div>
   <div class="card"><h2>Team record</h2>
     <p class="meta">Scores out of 5 (5 Perfect · 4 Good · 2 Fair · 1 Poor; there is no 3, so customers must lean one way). NPS = % promoters (9–10) minus % detractors (0–6), from −100 to +100. Click a team to see its details and responses.</p>
-    <table><thead><tr><th>Team</th><th>Responses</th><th>Overall</th><th>Work</th><th>Personality</th><th>Interaction</th><th>NPS</th><th>More work</th><th>Referrals</th><th>Last feedback</th></tr></thead><tbody id="teams"></tbody></table>
+    <table><thead><tr><th>Team</th><th>Responses</th><th>Overall</th><th>Work</th><th>Personality</th><th>Interaction</th><th>NPS</th><th>Last feedback</th></tr></thead><tbody id="teams"></tbody></table>
   </div>
   <div class="card" id="detail" hidden></div>
 </div>
@@ -67,18 +67,18 @@ tr.sel td{background:#EEF2FF}tbody tr{cursor:pointer}
   function render(){
     $('count').textContent = data.items.length + ' responses from ' + data.teams.length + ' team(s)';
     $('teams').innerHTML = data.teams.length ? data.teams.map(function(t){
-      return '<tr data-team="'+esc(t.team)+'"'+(t.team === sel ? ' class="sel"' : '')+'><td><b>'+esc(t.team)+'</b></td><td>'+t.responses+'</td><td>'+sc(t.overall)+'</td><td>'+sc(t.groups.work)+'</td><td>'+sc(t.groups.personality)+'</td><td>'+sc(t.groups.interaction)+'</td><td>'+nps(t.nps)+'</td><td>'+t.more_business.job+'</td><td>'+t.more_business.referral+'</td><td>'+day(t.last)+'</td></tr>';
-    }).join('') : '<tr><td colspan="10" class="empty">No feedback yet. Send customers the link to /feedback.html after each job.</td></tr>';
+      return '<tr data-team="'+esc(t.team)+'"'+(t.team === sel ? ' class="sel"' : '')+'><td><b>'+esc(t.team)+'</b></td><td>'+t.responses+'</td><td>'+sc(t.overall)+'</td><td>'+sc(t.groups.work)+'</td><td>'+sc(t.groups.personality)+'</td><td>'+sc(t.groups.interaction)+'</td><td>'+nps(t.nps)+'</td><td>'+day(t.last)+'</td></tr>';
+    }).join('') : '<tr><td colspan="8" class="empty">No feedback yet. Send customers the link to /feedback.html after each job.</td></tr>';
     var t = data.teams.filter(function(x){ return x.team === sel; })[0];
     if (!t) { $('detail').hidden = true; return; }
     var rs = data.items.filter(function(x){ return team(x.data) === sel; });
     $('detail').hidden = false;
-    $('detail').innerHTML = '<h2>'+esc(t.team)+'</h2><p class="meta">'+t.responses+' responses · promoters '+t.promoters+' · passives '+t.passives+' · detractors '+t.detractors+' · more work '+t.more_business.job+' · referrals '+t.more_business.referral+' · maybe '+t.more_business.maybe+' · no '+t.more_business.no+'</p>'
+    $('detail').innerHTML = '<h2>'+esc(t.team)+'</h2><p class="meta">'+t.responses+' responses · promoters '+t.promoters+' · passives '+t.passives+' · detractors '+t.detractors+'</p>'
       + '<div class="qgrid">'+Object.keys(Q).map(function(k){ return '<div><span>'+k.slice(1)+'. '+esc(Q[k])+'</span>'+sc(t.questions[k])+'</div>'; }).join('')+'</div>'
       + '<h2 style="margin-top:20px">Responses</h2>' + rs.map(function(r){ var d = r.data;
         return '<div class="resp"><b>'+esc(d.name)+'</b> <span class="meta">· '+day(r.created)+' · '+esc(d.job)+(d.phone ? ' · '+esc(d.phone) : '')+'</span><div style="margin-top:6px">'
           + Object.keys(Q).map(function(k){ return k.slice(1)+' '+sc(d[k] == null ? null : +d[k]); }).join(' ')
-          + ' &nbsp; NPS '+sc(d.nps == null ? null : +d.nps, 10)+' &nbsp; '+esc(MORE[d['more-business']] || '')+(d.referral ? ' · referral: '+esc(d.referral) : '')+'</div>'
+          + ' &nbsp; NPS '+sc(d.nps == null ? null : +d.nps, 10)+'</div>'
           + (d.comment ? '<p style="margin:6px 0 0">“'+esc(d.comment)+'”</p>' : '')
           + '<p style="margin:6px 0 0"><button class="ghost" data-del="'+esc(r.id)+'" style="padding:4px 10px;font-size:13px">Delete (test or spam)</button></p></div>'; }).join('');
   }
@@ -97,7 +97,7 @@ tr.sel td{background:#EEF2FF}tbody tr{cursor:pointer}
     if (e.target.dataset.sure !== '1') { e.target.dataset.sure = '1'; e.target.textContent = 'Click again to delete'; return; }
     api('a=delete', {method:'POST', body: JSON.stringify({id: id})}).then(load); });
   $('csv').onclick = function(){
-    var cols = ['created','team','job','name','phone','q1','q2','q3','q4','q5','q6','q7','q8','q9','q10','nps','more-business','referral','comment','language'];
+    var cols = ['created','team','job','name','phone','q1','q2','q3','q4','q5','q6','q7','q8','q9','q10','nps','comment','language'];
     var rows = [cols.join(',')].concat(data.items.map(function(r){ var d = Object.assign({}, r.data, {created: r.created, team: team(r.data)});
       return cols.map(function(c){ return '"' + String(d[c] == null ? '' : d[c]).replace(/"/g, '""') + '"'; }).join(','); }));
     var a = document.createElement('a'); a.href = URL.createObjectURL(new Blob(['﻿' + rows.join('\n')], {type:'text/csv'}));

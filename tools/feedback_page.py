@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Customer satisfaction feedback page after a job: /feedback.html and /th/feedback.html.
 
-10 questions scored 5/4/2/1 (no middle score) (work, personality, interaction), NPS 0-10 and "will you bring more business?".
+10 questions scored 5/4/2/1 (no middle score) (work, personality, interaction), and NPS 0-10.
 Form "job-feedback" (Netlify Forms) -> netlify/functions/submission-created.mjs saves it in Blobs store
 "feedback" -> team scorecards at /feedback-admin.html (same password as /members-admin.html).
 
@@ -153,8 +153,7 @@ def build(lang):
         f'<fieldset><legend>{esc(t["s_q"])}</legend><p class="fine">{esc(t["scale_note"])}</p>{qs}</fieldset>'
         f'<fieldset><legend>{esc(t["s_nps"])}</legend><div class="q" style="border:0;padding:0"><p>11. {esc(t["nps_q"])}</p>{nps}'
         f'<div class="npsl"><span>{esc(t["nps_lo"])}</span><span>{esc(t["nps_hi"])}</span></div></div>'
-        f'<div class="q"><p>12. {esc(t["more_q"])}</p>{more}</div>'
-        f'<label for="f-ref">{esc(t["ref"])}<input id="f-ref" name="referral"></label></fieldset>'
+        f'</fieldset>'
         f'<fieldset><legend>{esc(t["s_you"])}</legend><div class="two"><label for="f-name">{esc(t["name"])}<input id="f-name" name="name" required autocomplete="name"></label>'
         f'<label for="f-phone">{esc(t["phone"])}<input id="f-phone" name="phone" type="tel" autocomplete="tel"></label></div>'
         f'<label for="f-com">{esc(t["comment"])}<textarea id="f-com" name="comment" rows="4"></textarea></label></fieldset>'

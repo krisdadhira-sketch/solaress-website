@@ -62,3 +62,7 @@ Page text: `tools/feedback_page.py`, then `tools/analytics_tag.py`. Data: Blobs 
 - API `netlify/functions/itest/itest.mjs` at `/api/itest`: `status`, `start`, `submit`, `cert` (public); `list`, `attempt`, `delete` (admin). Blobs store `itest`: `att/<id>`, `cert/<SESS-Ln-XXXXXXXX>`.
 - Certificate: `/certificate.html?id=…`, A4 landscape, metal tier per level (Bronze, Silver, Gold, Platinum, Diamond), QR to the verify link; Level 3+ shows "Accepted for Solar ESS installation work". No phone number is shown.
 - Results: **/itest-admin.html** (same admin password): filter by level, certificate numbers, wrong answers with the key and explanation, CSV.
+
+## Job search (/job.html, /th/job.html)
+
+Search box under the region chips of Project Based Jobs: province / district / place (English or Thai, on either page) + "Type of work" (electrical, solar installation, PV cleaning & O&M, repair, civil & structure, supply). Built by `python3 tools/job_search.py`: it tags each project card with `data-work` (keyword rules in the script) and `data-q` (location in both languages). **Re-run it after adding or editing jobs.** Links can pre-fill it: `/job.html?q=Hat%20Yai&type=cleaning`.

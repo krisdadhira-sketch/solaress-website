@@ -37,9 +37,9 @@ def ic(k):
 
 T = {
  "en": dict(
-  menu="All Risks Insured", pre="",
-  eyebrow="Insured · All Risks cover", h2="Every installation insured: all risks, anywhere in Thailand.",
-  lede="Solar ESS holds an Erection All Risks (EAR) open-cover policy with Dhipaya Insurance Public Company Limited, the contractor's all-risks insurance for installation work. It covers our solar rooftop projects anywhere in Thailand, so domestic and international employers can hand over their site with confidence.",
+  menu="Contractor All Risk (CAR)", pre="",
+  eyebrow="Insured · Contractor All Risk (CAR)", h2="Every installation insured: all risks, anywhere in Thailand.",
+  lede="Solar ESS is insured under Contractor All Risk (CAR) insurance with Dhipaya Insurance Public Company Limited: an open cover for all our solar rooftop installation projects anywhere in Thailand, so domestic and international employers can hand over their site with confidence. The policy is issued in the erection form (Erection All Risks, EAR), the CAR cover used for installation work.",
   cards=[("works", "All risks on the works", "Accidental loss or damage to the installation and materials during construction, one week of testing and a 12-month maintenance period. Contract works up to 5 million baht per contract."),
          ("tp", "Third-party liability", "Injury to people or damage to property of others caused by the work: up to 1,000,000 baht per accident and per project, 2,000,000 baht in the policy year. No excess for injury or death."),
          ("prop", "Your existing building", "Damage to the employer's existing building or property caused by our work: up to 1,000,000 baht per accident and per project, 2,000,000 baht in the policy year."),
@@ -51,9 +51,9 @@ T = {
   note="Policy certificate and project endorsement furnished upon request or upon signing of contract. Cover is subject to the policy terms, conditions and exclusions.",
   cta="Ask for the insurance certificate", consult="/#consult"),
  "th": dict(
-  menu="ประกันภัยทุกความเสี่ยง", pre="/th",
-  eyebrow="มีประกันภัย · คุ้มครองทุกความเสี่ยง", h2="ทุกงานติดตั้งมีประกันภัยทุกความเสี่ยง ทั่วประเทศไทย",
-  lede="โซลาร์ เอสส์ ทำประกันภัยความเสี่ยงภัยทุกชนิดของผู้รับเหมาติดตั้ง (Erection All Risks: EAR) แบบ Open Cover กับ บริษัท ทิพยประกันภัย จำกัด (มหาชน) ซึ่งเป็นประกันภัยทุกความเสี่ยงสำหรับงานติดตั้ง คุ้มครองงานติดตั้งโซลาร์บนหลังคาของเราทุกที่ในประเทศไทย ผู้ว่าจ้างทั้งในประเทศและต่างประเทศจึงมอบหน้างานให้เราได้อย่างมั่นใจ",
+  menu="ประกันภัย CAR ทุกความเสี่ยง", pre="/th",
+  eyebrow="มีประกันภัย · Contractor All Risk (CAR)", h2="ทุกงานติดตั้งมีประกันภัยทุกความเสี่ยง ทั่วประเทศไทย",
+  lede="โซลาร์ เอสส์ มีประกันภัยความเสี่ยงภัยทุกชนิดของผู้รับเหมา (Contractor All Risk: CAR) กับ บริษัท ทิพยประกันภัย จำกัด (มหาชน) แบบ Open Cover คุ้มครองงานติดตั้งโซลาร์บนหลังคาของเราทุกที่ในประเทศไทย ผู้ว่าจ้างทั้งในประเทศและต่างประเทศจึงมอบหน้างานให้เราได้อย่างมั่นใจ กรมธรรม์ออกในรูปแบบงานติดตั้ง (Erection All Risks: EAR) ซึ่งเป็นประกัน CAR สำหรับงานติดตั้ง",
   cards=[("works", "คุ้มครองทุกความเสี่ยงของงาน", "ความเสียหายหรือสูญหายจากอุบัติเหตุต่องานติดตั้งและวัสดุ ระหว่างก่อสร้าง ช่วงทดสอบ 1 สัปดาห์ และระยะบำรุงรักษา 12 เดือน มูลค่างานไม่เกิน 5 ล้านบาทต่อสัญญา"),
          ("tp", "ความรับผิดต่อบุคคลภายนอก", "การบาดเจ็บของบุคคลอื่นหรือความเสียหายต่อทรัพย์สินของผู้อื่นที่เกิดจากการทำงาน ไม่เกิน 1,000,000 บาทต่ออุบัติเหตุและต่อโครงการ และ 2,000,000 บาทตลอดปีกรมธรรม์ ไม่มีความเสียหายส่วนแรกกรณีบาดเจ็บหรือเสียชีวิต"),
          ("prop", "ทรัพย์สินเดิมของผู้ว่าจ้าง", "ความเสียหายต่ออาคารหรือทรัพย์สินเดิมของผู้ว่าจ้างที่เกิดจากการทำงานของเรา ไม่เกิน 1,000,000 บาทต่ออุบัติเหตุและต่อโครงการ และ 2,000,000 บาทตลอดปีกรมธรรม์"),
@@ -65,9 +65,9 @@ T = {
   note="แสดงหนังสือรับรองกรมธรรม์และเอกสารแนบท้ายโครงการตามคำขอ หรือเมื่อลงนามในสัญญา ความคุ้มครองเป็นไปตามเงื่อนไข ข้อกำหนด และข้อยกเว้นของกรมธรรม์",
   cta="ขอหนังสือรับรองประกันภัย", consult="/th/#consult"),
  "zh": dict(
-  menu="全险投保", pre="/zh",
-  eyebrow="已投保 · 一切险", h2="每项安装均已投保一切险，覆盖泰国全境。",
-  lede="Solar ESS 已向泰国 Dhipaya Insurance Public Company Limited（ทิพยประกันภัย）投保安装工程一切险（Erection All Risks，EAR）开放式保单，即承包商用于安装工程的一切险。保单覆盖我们在泰国任何地点的屋顶光伏项目，让国内外业主可以放心交付现场。",
+  menu="承包商一切险 (CAR)", pre="/zh",
+  eyebrow="已投保 · 承包商一切险 (CAR)", h2="每项安装均已投保一切险，覆盖泰国全境。",
+  lede="Solar ESS 已向泰国 Dhipaya Insurance Public Company Limited（ทิพยประกันภัย）投保承包商一切险（Contractor All Risk，CAR）开放式保单，覆盖我们在泰国任何地点的屋顶光伏安装项目，让国内外业主可以放心交付现场。保单以安装工程一切险（EAR）形式签发，即适用于安装工程的 CAR 保障。",
   cards=[("works", "工程一切险", "施工期间、1 周调试期及 12 个月维护期内，安装工程及材料因意外造成的损失或损坏。每份合同工程价值最高 500 万泰铢。"),
          ("tp", "第三者责任", "施工造成他人人身伤害或财产损失：每次事故及每个项目最高 1,000,000 泰铢，保单年度累计 2,000,000 泰铢；人身伤亡无免赔额。"),
          ("prop", "业主现有建筑", "施工造成业主现有建筑或财产损坏：每次事故及每个项目最高 1,000,000 泰铢，保单年度累计 2,000,000 泰铢。"),

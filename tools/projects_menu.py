@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Projects dropdown on every page (EN/TH/ZH), Nov 2026:
+"""Services (formerly Projects) dropdown on every page (EN/TH/ZH), Nov 2026:
 Solar Package (Quotation indented under it), EV Charger, Preventive Maintenance, Consultation (FAQ indented), Solar ESS Care.
 Idempotent: rewrites the list inside the Projects dropdown.  Run from the repo root:  python3 tools/projects_menu.py"""
 import re
@@ -15,7 +15,8 @@ M = {
  "zh": [("/package.html", "太阳能套餐（英文）", 0), ("/zh/quotation.html", "报价单", 1), ("/ev.html", "电动车充电（英文）", 0),
         ("/maintenance.html", "预防性维护（英文）", 0), ("/zh/#consult", "预约咨询", 0), ("/zh/faq.html", "常见问题", 1), ("/zh/care.html", "Solar ESS Care", 0)],
 }
-DD = re.compile(r'(<a href="(?:/th/|/zh/|/)#projects">[^<]*</a><span class="ddm">)(.*?)(</span>)', re.S)
+DD = re.compile(r'(<a href="(?:/th/|/zh/|/)#projects">)([^<]*)(</a><span class="ddm">)(.*?)(</span>)', re.S)
+LABEL = {"en": "Services", "th": "บริการ", "zh": "服务"}
 n = 0
 for f in sorted(ROOT.rglob("*.html")):
     s = f.read_text(encoding="utf-8")
@@ -24,7 +25,7 @@ for f in sorted(ROOT.rglob("*.html")):
         continue
     lang = "th" if "/th/#projects" in m.group(1) else "zh" if "/zh/#projects" in m.group(1) else "en"
     items = "".join(f'<a href="{u}"{IND if i else ""}>{t}</a>' for u, t, i in M[lang])
-    new = s[:m.start(2)] + items + s[m.end(2):]
+    new = s[:m.start(2)] + LABEL[lang] + s[m.end(2):m.start(4)] + items + s[m.end(4):]
     if new != s:
         f.write_text(new, encoding="utf-8"); n += 1
 print("updated", n, "pages")

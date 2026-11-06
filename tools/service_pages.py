@@ -66,7 +66,7 @@ PKG = {
  "en": dict(
   title="Solar Packages: On-grid, Hybrid and Off-grid Systems | Solar ESS",
   desc="Solar ESS solar packages for homes, businesses and farms: on-grid, hybrid with battery, off-grid and commercial systems, installed to standard across Thailand. Ask for a package price.",
-  body=lambda: hero("Projects · Solar Package", "Solar packages,<br>sized for your site.",
+  body=lambda: hero("Services · Solar Package", "Solar packages,<br>sized for your site.",
       "Four ways to go solar, from a small on-grid roof to a fully off-grid site. Every package is sized from your electricity bill and roof, built with quality, well-matched materials and installed by a qualified team. Prices are sent on request, worked out for your site.",
       "Ask for a package price", '<a class="btn ghost" href="/quotation.html">See sample quotations</a>')
    + "\n" + section("Packages", "Choose the system that fits how you use power", "Sizes are a guide; we confirm the right size after looking at 3–12 months of your bills and photos of your roof and main board.",
@@ -96,7 +96,7 @@ PKG = {
  "th": dict(
   title="แพ็กเกจโซลาร์เซลล์: ออนกริด ไฮบริด และออฟกริด | Solar ESS",
   desc="แพ็กเกจโซลาร์เซลล์ Solar ESS สำหรับบ้าน ธุรกิจ และฟาร์ม: ออนกริด ไฮบริดพร้อมแบตเตอรี่ ออฟกริด และระบบเชิงพาณิชย์ ติดตั้งได้มาตรฐานทั่วประเทศไทย สอบถามราคาแพ็กเกจได้",
-  body=lambda: hero("ผลงาน · แพ็กเกจโซลาร์", "แพ็กเกจโซลาร์<br>ออกแบบตามหน้างานของคุณ",
+  body=lambda: hero("บริการ · แพ็กเกจโซลาร์", "แพ็กเกจโซลาร์<br>ออกแบบตามหน้างานของคุณ",
       "4 แบบให้เลือก ตั้งแต่ระบบออนกริดบนหลังคาขนาดเล็ก จนถึงระบบออฟกริดเต็มรูปแบบ ทุกแพ็กเกจคำนวณขนาดจากบิลค่าไฟและหลังคาของคุณ ใช้วัสดุคุณภาพที่เข้ากันอย่างถูกต้อง และติดตั้งโดยทีมช่างที่มีคุณวุฒิ ราคาแจ้งตามคำขอ คำนวณเฉพาะหน้างานของคุณ",
       "สอบถามราคาแพ็กเกจ", '<a class="btn ghost" href="/th/quotation.html">ดูตัวอย่างใบเสนอราคา</a>')
    + "\n" + section("แพ็กเกจ", "เลือกระบบที่เหมาะกับการใช้ไฟของคุณ", "ขนาดเป็นเพียงแนวทาง เราจะยืนยันขนาดที่เหมาะสมหลังดูบิลค่าไฟ 3–12 เดือน และรูปหลังคากับตู้ไฟหลัก",
@@ -132,7 +132,7 @@ PM = {
  "en": dict(
   title="Preventive Maintenance for Solar PV Systems | Solar ESS",
   desc="Solar ESS preventive maintenance plans: PV cleaning, string measurements, thermal scan, connection and breaker checks, inverter and battery health, earthing and SPD, with a written report.",
-  body=lambda: hero("Projects · Preventive Maintenance", "Keep your solar<br>safe and producing.",
+  body=lambda: hero("Services · Preventive Maintenance", "Keep your solar<br>safe and producing.",
       "Dust, loose connections, wrong settings and tired batteries quietly cut output and can become a fire risk. Our preventive maintenance finds them early: we clean, measure, tighten, check the settings and send you a written report with photos.",
       "Book a maintenance visit", '<a class="btn ghost" href="/technical-notes.html#topic-monthly">See our Monthly Report</a>')
    + "\n" + section("Plans", "Choose how often we visit", "For systems installed by Solar ESS or by others. Prices depend on system size, access and location and are sent on request.",
@@ -156,7 +156,7 @@ PM = {
  "th": dict(
   title="บำรุงรักษาเชิงป้องกันระบบโซลาร์เซลล์ | Solar ESS",
   desc="แผนบำรุงรักษาเชิงป้องกันจาก Solar ESS: ล้างแผง วัดค่าสตริง สแกนความร้อน ตรวจจุดต่อและเบรกเกอร์ ตรวจอินเวอร์เตอร์และแบตเตอรี่ สายดินและ SPD พร้อมรายงานเป็นลายลักษณ์อักษร",
-  body=lambda: hero("ผลงาน · บำรุงรักษาเชิงป้องกัน", "ดูแลโซลาร์ให้ปลอดภัย<br>และผลิตไฟเต็มที่",
+  body=lambda: hero("บริการ · บำรุงรักษาเชิงป้องกัน", "ดูแลโซลาร์ให้ปลอดภัย<br>และผลิตไฟเต็มที่",
       "ฝุ่น จุดต่อหลวม การตั้งค่าผิด และแบตเตอรี่เสื่อม ทำให้ผลิตไฟได้น้อยลงโดยไม่รู้ตัว และอาจเสี่ยงไฟไหม้ การบำรุงรักษาเชิงป้องกันช่วยพบปัญหาตั้งแต่เนิ่น ๆ เราล้าง วัดค่า ขันจุดต่อ ตรวจการตั้งค่า และส่งรายงานพร้อมรูปถ่ายให้คุณ",
       "นัดบำรุงรักษา", '<a class="btn ghost" href="/th/technical-notes.html#topic-monthly">ดูรายงานประจำเดือน</a>')
    + "\n" + section("แผนบริการ", "เลือกความถี่ในการเข้าดูแล", "สำหรับระบบที่ติดตั้งโดย Solar ESS หรือผู้ติดตั้งรายอื่น ราคาขึ้นกับขนาดระบบ การเข้าถึง และพื้นที่ แจ้งราคาตามคำขอ",

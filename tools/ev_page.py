@@ -50,7 +50,7 @@ EN = dict(
     lang="en", tpl="quotation.html", out="ev.html",
     title="EV Charger Circuit Packages: Home EV Charging Installation | Solar ESS",
     desc="Dedicated EV charger circuit packages by Solar ESS: CHINT, ABB or Schneider, shock-protection RCBO, earthing, testing and free gifts. Call for a free inspection.",
-    hero=('<section class="dark band" style="padding-block:64px"><div class="wrap"><p class="eyebrow">Projects · EV Charger</p>'
+    hero=('<section class="dark band" style="padding-block:64px"><div class="wrap"><p class="eyebrow">Services · EV Charger</p>'
           '<h1 style="font-size:clamp(36px,6vw,64px)">EV home charging,<br>wired safely.</h1>'
           '<p class="lede" style="margin-top:18px">A dedicated second circuit for your EV charger: a separate run from your board, a shock-protection breaker, proper earthing, and every connection tested. Two promotions: pick a brand, or pick a protection level.</p>'
           '<div class="cta" style="margin-top:26px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="tel:+66631516694">Call for a free inspection · 063 151 6694</a><a class="btn ghost" href="https://line.me/ti/p/~solaress1" target="_blank" rel="noopener">LINE: solaress1</a></div></div></section>'),
@@ -85,7 +85,7 @@ TH = dict(
     lang="th", tpl="th/quotation.html", out="th/ev.html",
     title="แพ็กเกจติดตั้งวงจรชาร์จรถ EV ที่บ้าน | Solar ESS",
     desc="แพ็กเกจวงจรที่ 2 สำหรับเครื่องชาร์จรถ EV โดยโซลาร์ เอสส์ เลือก CHINT ABB หรือ Schneider มีเบรกเกอร์กันไฟดูด หลักดิน ทดสอบ และของแถม โทรนัดตรวจหน้างานฟรี",
-    hero=('<section class="dark band" style="padding-block:64px"><div class="wrap"><p class="eyebrow">ผลงาน · ที่ชาร์จรถ EV</p>'
+    hero=('<section class="dark band" style="padding-block:64px"><div class="wrap"><p class="eyebrow">บริการ · ที่ชาร์จรถ EV</p>'
           '<h1 style="font-size:clamp(34px,5.6vw,60px)">ติดตั้งวงจรชาร์จรถ EV<br>ถูกต้อง ปลอดภัย</h1>'
           '<p class="lede" style="margin-top:18px">วงจรที่ 2 สำหรับเครื่องชาร์จ EV โดยเฉพาะ เดินสายแยกจากไฟบ้าน มีเบรกเกอร์กันไฟดูด ต่อหลักดินถูกต้อง และทดสอบทุกจุด มี 2 โปรโมชันให้เลือก: เลือกตามแบรนด์ หรือเลือกตามระดับการป้องกัน</p>'
           '<div class="cta" style="margin-top:26px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="tel:+66631516694">โทรนัดตรวจหน้างานฟรี · 063 151 6694</a><a class="btn ghost" href="https://line.me/ti/p/~solaress1" target="_blank" rel="noopener">ไลน์: solaress1</a></div></div></section>'),

@@ -66,3 +66,8 @@ Post status from the ⚙ Admin icon: Open for quotes, On hold (waiting for custo
 ## Job search (/job.html, /th/job.html)
 
 Search box under the region chips of Project Based Jobs: province / district / place (English or Thai, on either page) + "Type of work" (electrical, solar installation, PV cleaning & O&M, repair, civil & structure, supply). Built by `python3 tools/job_search.py`: it tags each project card with `data-work` (keyword rules in the script) and `data-q` (location in both languages). **Re-run it after adding or editing jobs.** Links can pre-fill it: `/job.html?q=Hat%20Yai&type=cleaning`.
+
+## Projects menu, Solar Package and Preventive Maintenance (Nov 2026)
+
+- Projects dropdown (all pages, EN/TH/ZH): Solar Package (Quotation indented), EV Charger, Preventive Maintenance, Consultation (FAQ indented), Solar ESS Care. Set by `python3 tools/projects_menu.py` (idempotent).
+- Pages `package.html`, `maintenance.html` (+ `th/`) are built by `python3 tools/service_pages.py` from the quotation page shell. No prices on them (sent on request). After building: `tools/projects_menu.py`, then `tools/analytics_tag.py`.

@@ -17,8 +17,8 @@ VOC = re.compile(r'<a href="/vocabulary\.html">(?:Solar ESS Test|แบบทด
 def menu(lang):
     """Items appended to the Solar ESS dropdown: Solar Test and its 5 levels (indented). The vocabulary test is not in the menu (Nov 2026); share www.solaress.org/vocabulary.html directly."""
     t = L[lang]
-    items = "".join(f'<a href="{t["page"]}?level={i}" style="padding-left:30px;font-size:.92em">{t["lv"]} {i} · {(th if lang == "th" else en)}</a>' for i, (en, th) in enumerate(LV, 1))
-    return (f'<!--tmenu--><a href="{t["page"]}" style="border-top:1px solid rgba(255,255,255,.15)">{t["top"]} ▸</a>{items}'
+    items = "".join(f'<a href="{t["page"]}?level={i}">{t["lv"]} {i} · {(th if lang == "th" else en)}</a>' for i, (en, th) in enumerate(LV, 1))
+    return (f'<!--tmenu--><a href="{t["page"]}">{t["top"]}</a>{items}'
             f'<!--/tmenu-->')
 
 

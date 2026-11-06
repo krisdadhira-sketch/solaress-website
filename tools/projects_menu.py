@@ -6,7 +6,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-IND = ' style="padding-left:30px;font-size:.92em"'
+IND = ''  # all dropdown items at the same level
 M = {
  "en": [("/package.html", "Solar Package", 0), ("/quotation.html", "Quotation", 1), ("/ev.html", "EV Charger", 0),
         ("/maintenance.html", "Preventive Maintenance", 0), ("/#consult", "Consultation", 0), ("/faq.html", "FAQ", 1), ("/care.html", "Solar ESS Care", 0)],

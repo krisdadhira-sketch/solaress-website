@@ -4,6 +4,9 @@
 // (individual, team or company) with the same phone number (store "members", any status except rejected/hidden),
 // and a pass at level n-1 with that phone. Pass = 100% (25/25); only a pass issues a certificate, verifiable at
 // /certificate.html?id=... Solar ESS accepts installation work from Level 3 (work: true on the certificate).
+// Each start shuffles question and answer order (session ses/<id>, valid 3 h). After an attempt at a level, the same
+// phone or email must wait 30 days before taking that level again. Certificates are valid for 1 year; a level with a valid
+// certificate cannot be retaken, an expired one can (renewal). Any pass, even expired, counts as the prerequisite.
 // The answer key lives only here (bank.json).
 //
 // Public:
@@ -20,6 +23,11 @@ import bank from "./bank.json" with { type: "json" };
 
 const PASS_PCT = bank.pass_pct || 100;   // certificate and next level only at this score
 const WORK_LEVEL = bank.work_level || 3;  // Solar ESS accepts installation work from this level
+const RETAKE_DAYS = 30, SESSION_MS = 3 * 3600 * 1000, VALID_DAYS = 365;   // certificates are valid for 1 year
+const validUntil = (iso) => { const d = new Date(iso); d.setFullYear(d.getFullYear() + 1); d.setDate(d.getDate() - 1); return d.toISOString(); };
+const isValid = (iso) => Date.now() <= Date.parse(validUntil(iso)) + 864e5;
+const normEmail = (v) => String(v || "").trim().toLowerCase();
+const shuffled = (n) => { const a = [...Array(n).keys()]; for (let i = n - 1; i > 0; i--) { const j = crypto.randomInt(i + 1); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 const VOCAB_ADMIN_HASH = "162cdaefe4e9558d229a4846cd021775:5c036e020b55e8727a91b98d8e554c7456200d65599147cff4efea07459dc0fd";
 const json = (b, s = 200) => new Response(JSON.stringify(b), { status: s, headers: { "content-type": "application/json", "cache-control": "no-store" } });
 function eq(a, b) { a = Buffer.from(String(a)); b = Buffer.from(String(b)); return a.length === b.length && crypto.timingSafeEqual(a, b); }
@@ -64,19 +72,31 @@ async function registration(phone) {
   }
   return null;
 }
-async function passedLevels(s, phone) {
-  const passed = {};
-  for (const a of await list(s, "att/")) if (a.phone === phone && a.pass && !passed[a.level]) passed[a.level] = a.cert;
-  return passed;
+async function history(s, phone, email) {
+  const passed = {}, ever = {}, expired = {}, wait = {}, cut = Date.now() - RETAKE_DAYS * 864e5;
+  for (const a of await list(s, "att/")) {          // newest first
+    if (!(a.phone === phone || (email && normEmail(a.email) === email))) continue;
+    if (a.pass && a.phone === phone) {
+      ever[a.level] = ever[a.level] || a.cert;
+      if (isValid(a.created)) { if (!passed[a.level]) passed[a.level] = a.cert; }
+      else if (!expired[a.level]) expired[a.level] = a.cert;
+    }
+    const t = Date.parse(a.created);
+    if (!a.pass && t > cut) { const until = new Date(t + RETAKE_DAYS * 864e5).toISOString(); if (!wait[a.level] || until > wait[a.level]) wait[a.level] = until; }
+  }
+  for (const l in passed) delete expired[l];
+  return { passed, ever, expired, wait };
 }
 // Level 1 is open to anyone. Levels 2-5 need a TSIA or installer-partner registration (individual, team or company)
 // with the same phone, and the level below passed (100%).
-async function eligibility(s, phone, level) {
+async function eligibility(s, phone, level, email) {
   if (!phone) return { ok: false, reason: "phone" };
   const reg = await registration(phone);
   if (!reg && level > 1) return { ok: false, reason: "not-registered" };
-  const passed = await passedLevels(s, phone);
-  if (level > 1 && !passed[level - 1]) return { ok: false, reason: "prerequisite", need: level - 1, reg, passed };
+  const { passed, ever, wait } = await history(s, phone, normEmail(email));
+  if (level > 1 && !ever[level - 1]) return { ok: false, reason: "prerequisite", need: level - 1, reg, passed };
+  if (passed[level]) return { ok: false, reason: "passed", cert: passed[level] };
+  if (wait[level]) return { ok: false, reason: "wait", until: wait[level] };
   return { ok: true, reg, passed };
 }
 const summary = (a) => ({ id: a.id, created: a.created, level: a.level, name: a.name, phone: a.phone, email: a.email, province: a.province, team: a.team,
@@ -92,19 +112,22 @@ export default async (req) => {
     const phone = normPhone(b.phone);
     if (!phone) return json({ error: "phone" }, 400);
     const reg = await registration(phone);
-    const passed = await passedLevels(s, phone);
-    let next = 1; while (passed[next] && next < 5) next++;
-    if (passed[5]) next = null;
-    return json({ registered: !!reg, regType: reg && reg.type, regName: reg ? reg.name : "", passed, next, levels: LEVELS, pass: PASS_PCT, workLevel: WORK_LEVEL });
+    const { passed, ever, expired, wait } = await history(s, phone, normEmail(b.email));
+    let next = 1; while (ever[next] && next < 5) next++;
+    if (ever[5]) next = null;
+    return json({ registered: !!reg, regType: reg && reg.type, regName: reg ? reg.name : "", passed, ever, expired, wait, retakeDays: RETAKE_DAYS, next, levels: LEVELS, pass: PASS_PCT, workLevel: WORK_LEVEL });
   }
 
   if (a === "start" && req.method === "POST") {
     const phone = normPhone(b.phone), level = parseInt(b.level, 10);
     if (!levelInfo(level)) return json({ error: "level" }, 400);
-    const el = await eligibility(s, phone, level);
-    if (!el.ok) return json({ error: el.reason, need: el.need }, 403);
-    return json({ level: levelInfo(level), sections: bank.sections, pass: PASS_PCT,
-      questions: qsOf(level).map((q, k) => ({ i: k, sec: q.sec, th: q.th, en: q.en, options: q.options })) });
+    const el = await eligibility(s, phone, level, b.email);
+    if (!el.ok) return json({ error: el.reason, need: el.need, until: el.until, cert: el.cert }, 403);
+    const qs = qsOf(level), order = shuffled(qs.length), perms = order.map((k) => shuffled(qs[k].options.length));
+    const sid = Date.now().toString(36) + crypto.randomBytes(8).toString("hex");
+    await s.setJSON("ses/" + sid, { id: sid, phone, level, order, perms, created: Date.now() });
+    return json({ session: sid, expires: new Date(Date.now() + SESSION_MS).toISOString(), level: levelInfo(level), sections: bank.sections, pass: PASS_PCT,
+      questions: order.map((k, n) => ({ i: n, sec: qs[k].sec, th: qs[k].th, en: qs[k].en, options: perms[n].map((o) => qs[k].options[o]) })) });
   }
 
   if (a === "submit" && req.method === "POST") {
@@ -113,13 +136,19 @@ export default async (req) => {
     if (!levelInfo(level) || !name) return json({ error: "Name, phone and level are required." }, 400);
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return json({ error: "A valid email is required." }, 400);
     if (!team) return json({ error: "Company / team name is required." }, 400);
-    const el = await eligibility(s, phone, level);
-    if (!el.ok) return json({ error: el.reason, need: el.need }, 403);
-    const qs = qsOf(level), answers = Array.isArray(b.answers) ? b.answers.slice(0, qs.length) : [];
+    const ses = await s.get("ses/" + cleanId(b.session), { type: "json" });
+    if (!ses || ses.phone !== phone || ses.level !== level) return json({ error: "session" }, 400);
+    if (Date.now() - ses.created > SESSION_MS) { await s.delete("ses/" + ses.id); return json({ error: "expired" }, 400); }
+    const el = await eligibility(s, phone, level, email);
+    if (!el.ok) return json({ error: el.reason, need: el.need, until: el.until }, 403);
+    await s.delete("ses/" + ses.id);
+    const qs = qsOf(level), shown = Array.isArray(b.answers) ? b.answers.slice(0, qs.length) : [];
+    const answers = Array(qs.length).fill(null);        // back to bank order and bank option numbers
+    ses.order.forEach((k, n) => { const v = shown[n]; if (v !== null && v !== undefined && v !== "" && ses.perms[n][+v] !== undefined) answers[k] = ses.perms[n][+v]; });
     const sections = {};
     let score = 0;
     const given = qs.map((q, k) => {
-      const v = answers[k] === null || answers[k] === undefined || answers[k] === "" ? null : parseInt(answers[k], 10);
+      const v = answers[k];
       (sections[q.sec] ||= { correct: 0, total: 0 }).total++;
       if (v === q.answer) { score++; sections[q.sec].correct++; }
       return v;
@@ -135,14 +164,14 @@ export default async (req) => {
     await s.setJSON("att/" + id, { id, created, level, name, phone, email, province: txt(b.province), team,
       regType: el.reg ? el.reg.type : "", language: txt(b.language, 20), seconds: Math.max(0, Math.min(36000, parseInt(b.seconds, 10) || 0)),
       answers: given, score, total, pct, pass, sections, cert });
-    return json({ score, total, pct, pass, passMark: PASS_PCT, sections, cert, level: levelInfo(level) });
+    return json({ score, total, pct, pass, passMark: PASS_PCT, sections, cert, level: levelInfo(level), validFrom: pass ? created : null, validUntil: pass ? validUntil(created) : null });
   }
 
   if (a === "cert") {
     const c = await s.get("cert/" + cleanId(u.searchParams.get("id")).toUpperCase(), { type: "json" });
     if (!c) return json({ error: "not-found" }, 404);
     const l = levelInfo(c.level);
-    return json({ id: c.id, name: c.name, level: c.level, title_en: l.en, title_th: l.th, pct: c.pct, score: c.score, total: c.total, date: c.date, work: c.level >= WORK_LEVEL });
+    return json({ id: c.id, name: c.name, level: c.level, title_en: l.en, title_th: l.th, pct: c.pct, score: c.score, total: c.total, date: c.date, validFrom: c.date, validUntil: validUntil(c.date), valid: isValid(c.date), work: c.level >= WORK_LEVEL });
   }
 
   if (!isAdmin(req)) return json({ error: "Admin password is not right." }, 401);

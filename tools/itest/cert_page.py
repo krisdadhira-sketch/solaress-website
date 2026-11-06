@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """/certificate.html?id=SESS-L1-XXXXXXXX : formal, printable A4-landscape certificate for a passed installer-test level.
-Issued only for 100% (25/25). Level 3+ carries 'Accepted for Solar ESS installation work'.
+Issued only for 100% (25/25); valid for 1 year (validFrom/validUntil from the API, EXPIRED stamp after).
+ Level 3+ carries 'Accepted for Solar ESS installation work'.
 Each level has its own metal tier (Bronze, Silver, Gold, Platinum, Diamond) for the seal, frame and ribbon.
 Security look: guilloche frame and rosettes, microtext border, logo watermark, QR code to the verify link.
 Data comes from GET /api/itest?a=cert&id=... (name, level, score, date; never the phone). Anyone can open the link to verify.
@@ -55,10 +56,11 @@ h1{font-family:Cinzel,serif;font-size:50px;line-height:1.05;margin:8px 0 0;color
 .qr{position:absolute;right:40px;bottom:44px;text-align:center;font-family:Inter,sans-serif;font-size:9.5px;color:var(--mute);width:190px}
 .qr .box{background:#fff;border:1.5px solid var(--m1);padding:6px;display:inline-block;border-radius:6px}.qr svg{display:block;width:104px;height:104px}
 .qr b{display:block;color:var(--ink);font-size:10.5px;margin-top:4px;white-space:nowrap}
-.meta{position:absolute;left:270px;right:240px;bottom:84px;display:grid;grid-template-columns:1fr 1.2fr 1.2fr;gap:10px;text-align:center;font-family:Inter,sans-serif;font-size:10.5px;color:var(--mute);letter-spacing:.04em}
+.meta{position:absolute;left:258px;right:228px;bottom:84px;display:grid;grid-template-columns:.9fr 1.6fr 1.2fr;gap:10px;text-align:center;font-family:Inter,sans-serif;font-size:10.5px;color:var(--mute);letter-spacing:.04em}
 .meta b{display:block;font-family:'Cormorant Garamond',serif;font-size:21px;color:var(--ink);letter-spacing:0;margin-top:2px;white-space:nowrap}.meta i{font-style:normal;font-family:'Noto Serif Thai',serif;font-size:11px}
 .iss{position:absolute;left:270px;right:240px;bottom:28px;text-align:center;font-family:Inter,sans-serif;font-size:11px;color:var(--mute)}
 .iss .ln{width:300px;margin:0 auto 6px;border-top:1px solid var(--m3)}.iss b{color:var(--ink);font-size:12.5px;letter-spacing:.02em}
+.exp{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%) rotate(-18deg);font-family:Cinzel,serif;font-weight:800;font-size:76px;letter-spacing:.08em;color:rgba(180,35,24,.55);border:6px solid rgba(180,35,24,.55);border-radius:14px;padding:6px 30px;white-space:nowrap;pointer-events:none}
 .msg{max-width:640px;margin:60px auto;background:#fff;border-radius:16px;padding:28px;text-align:center}
 @page{size:A4 landscape;margin:0}
 @media print{body{background:#fff}.bar{display:none}.wrapc{padding:0}.cert{box-shadow:none;zoom:1!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
@@ -104,13 +106,14 @@ function seal(T,n){var cx=95,cy=95,g='<defs><linearGradient id="sg" x1="0" y1="0
  var st='';for(var s=0;s<n;s++){var sx=cx-(n-1)*7+s*14,sy=cy+29;st+='<path transform="translate('+sx+' '+sy+') scale(.55)" d="M0-10 2.9-3.1 10-3.1 4.3 1.2 6.5 8.1 0 3.9-6.5 8.1-4.3 1.2-10-3.1-2.9-3.1Z" fill="#0A1230"/>'}
  return '<svg class="seal" viewBox="0 0 190 232">'+g+st+'</svg>'}
 function qr(text){try{var q=qrcode(0,'M');q.addData(text);q.make();return q.createSvgTag({cellSize:3,margin:0,scalable:true})}catch(e){return ''}}
+function fmt(iso,loc){return new Date(iso).toLocaleDateString(loc,{day:'numeric',month:'short',year:'numeric'})}
 function fit(){var el=document.querySelector('.cert');if(el)el.style.zoom=Math.min(1,(innerWidth-32)/1123)}
 if(!id){bad();return}
 fetch('/api/itest?a=cert&id='+encodeURIComponent(id)).then(function(r){return r.ok?r.json():Promise.reject()}).then(function(c){
- var T=TIERS[c.level]||TIERS[1],url='https://solaress.org/certificate.html?id='+c.id,d=new Date(c.date),
-  de=d.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}),dt=d.toLocaleDateString('th-TH',{day:'numeric',month:'long',year:'numeric'});
+ var T=TIERS[c.level]||TIERS[1],url='https://solaress.org/certificate.html?id='+c.id;
+ if(!c.validFrom){c.validFrom=c.date;var u=new Date(c.date);u.setFullYear(u.getFullYear()+1);u.setDate(u.getDate()-1);c.validUntil=u.toISOString()}
  document.title=c.name+' · Level '+c.level+' '+c.title_en+' | Solar ESS Certificate';
- document.getElementById('okv').hidden=false;
+ var ok=document.getElementById('okv');ok.hidden=false;if(c.valid===false){ok.style.color='#B42318';ok.textContent='✕ Expired on '+fmt(c.validUntil,'en-GB')+' · หมดอายุแล้ว'}else{ok.textContent='✓ Verified by Solar ESS · valid until '+fmt(c.validUntil,'en-GB')+' · ตรวจสอบแล้ว'}
  document.getElementById('c').innerHTML='<div class="cert" style="--m1:'+T[1]+';--m2:'+T[2]+';--m3:'+T[3]+'">'+frame(T)
  +'<div class="paper">'+bg(T)+'<img class="wm" src="'+LOGO+'" alt=""><div class="in">'
  +'<div class="top"><img src="'+LOGO+'" alt="Solar ESS"><div class="addr"><b>Solar ESS Co. Ltd.</b><br>53 Moo 2, Nang Lae, Mueang Chiang Rai<br>Chiang Rai 57100, Thailand<br>www.solaress.org · www.โซลาร์เอสส์.com</div></div>'
@@ -121,10 +124,10 @@ fetch('/api/itest?a=cert&id='+encodeURIComponent(id)).then(function(r){return r.
  +'<div class="ttl">LEVEL '+c.level+' · '+esc(c.title_en.toUpperCase())+'</div><div class="ttlt">ระดับ '+c.level+' · '+esc(c.title_th)+'</div>'
  +'<div class="tier">'+T[0]+' TIER</div>'+(c.work?'<div class="work">✓ ACCEPTED FOR SOLAR ESS INSTALLATION WORK · <span>ผ่านเกณฑ์รับงานติดตั้งกับ Solar ESS</span></div>':'')+'</div>'
  +seal(T,c.level)
- +'<div class="meta"><div>SCORE · <i>คะแนน</i><b>'+c.score+' / '+c.total+' ('+c.pct+'%)</b></div><div>DATE OF ISSUE · <i>วันที่ออก</i><b>'+esc(de)+'</b><i>'+esc(dt)+'</i></div><div>CERTIFICATE NO. · <i>เลขที่</i><b>'+esc(c.id)+'</b></div></div>'
+ +'<div class="meta"><div>SCORE · <i>คะแนน</i><b>'+c.score+' / '+c.total+' ('+c.pct+'%)</b></div><div>VALID FROM – TO · <i>มีอายุตั้งแต่ – ถึง</i><b>'+esc(fmt(c.validFrom,'en-GB'))+' – '+esc(fmt(c.validUntil,'en-GB'))+'</b><i>'+esc(fmt(c.validFrom,'th-TH'))+' – '+esc(fmt(c.validUntil,'th-TH'))+'</i></div><div>CERTIFICATE NO. · <i>เลขที่</i><b>'+esc(c.id)+'</b></div></div>'
  +'<div class="iss"><div class="ln"></div>Issued by · ออกโดย<br><b>Solar ESS Co. Ltd. · Solar ESS Working Group</b></div>'
  +'<div class="qr"><div class="box">'+qr(url)+'</div><b>Scan to verify · สแกนเพื่อตรวจสอบ</b></div>'
- +'</div></div></div>';
+ +(c.valid===false?'<div class="exp">EXPIRED · หมดอายุ</div>':'')+'</div></div></div>';
  fit();addEventListener('resize',fit)}).catch(bad);
 addEventListener('beforeprint',function(){var el=document.querySelector('.cert');if(el)el.style.zoom=''});addEventListener('afterprint',fit)})();
 </script>

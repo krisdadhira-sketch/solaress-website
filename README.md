@@ -71,3 +71,7 @@ Search box under the region chips of Project Based Jobs: province / district / p
 
 - Projects dropdown (all pages, EN/TH/ZH): Solar Package (Quotation indented), EV Charger, Preventive Maintenance, Consultation (FAQ indented), Solar ESS Care. Set by `python3 tools/projects_menu.py` (idempotent).
 - Pages `package.html`, `maintenance.html` (+ `th/`) are built by `python3 tools/service_pages.py` from the quotation page shell. No prices on them (sent on request). After building: `tools/projects_menu.py`, then `tools/analytics_tag.py`.
+
+## All Risks insurance (profile + menu badge)
+
+`python3 tools/insurance.py` (idempotent): profile pages (EN/TH/ZH) get the "Insured · All Risks cover" section (`#insurance`, EAR open cover, Dhipaya Insurance, 16 Oct 2026 – 16 Oct 2027); every page gets a blinking shield on the top "Solar ESS" menu link and an "All Risks Insured" dropdown item. Never publish the policy PDF or policy number (certificate furnished on request). Update the policy period in the script at renewal.

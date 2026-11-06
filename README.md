@@ -50,7 +50,7 @@ Page text: `tools/feedback_page.py`, then `tools/analytics_tag.py`. Data: Blobs 
 - Level 1 is open to anyone. Levels 2–5 need a TSIA or installer-partner registration (individual, team or company) with the same phone (members store, any status except rejected/hidden), plus the level below passed.
 - Name, phone, email and company/team are required (checked on the page and in the API).
 - Questions: `tools/itest/questions_a.py`, `questions_bcd.py` (levels 1–4, assigned in `build_bank.py`), `questions_brands.py` (brand questions in levels 2–3), `questions_e.py` (level 5 fault cases) → `python3 tools/itest/build_bank.py` → `netlify/functions/itest/bank.json` (answer key stays server-side).
-- Pages: `python3 tools/itest/page.py`, `python3 tools/itest/cert_page.py`, `python3 tools/test_menu.py` (the "Solar Test" nav dropdown on every page), then `tools/analytics_tag.py`.
+- Pages: `python3 tools/itest/page.py`, `python3 tools/itest/cert_page.py`, `python3 tools/test_menu.py` (Solar Test levels 1–5 + vocabulary test at the end of the Solar ESS dropdown on every page), then `tools/analytics_tag.py`.
 - API `netlify/functions/itest/itest.mjs` at `/api/itest`: `status`, `start`, `submit`, `cert` (public); `list`, `attempt`, `delete` (admin). Blobs store `itest`: `att/<id>`, `cert/<SESS-Ln-XXXXXXXX>`.
 - Certificate: `/certificate.html?id=…`, A4 landscape, metal tier per level (Bronze, Silver, Gold, Platinum, Diamond), QR to the verify link; Level 3+ shows "Accepted for Solar ESS installation work". No phone number is shown.
 - Results: **/itest-admin.html** (same admin password): filter by level, certificate numbers, wrong answers with the key and explanation, CSV.

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-"""Add the "Solar Test" dropdown (Level 1–5 installer test + vocabulary test) to the main nav of every page
-that has the Solar ESS dropdown (<span class="dd end">), and take the vocabulary link out of the Solar ESS menu.
+"""Add "Solar Test" (Level 1–5 installer test) and the vocabulary test to the end of the Solar ESS dropdown
+(<span class="dd end">) on every page, replacing the old standalone vocabulary link.
 Idempotent (markers <!--tmenu-->...<!--/tmenu-->). Run from the repo root:  python3 tools/test_menu.py"""
 import re
 from pathlib import Path
@@ -15,10 +15,11 @@ VOC = re.compile(r'<a href="/vocabulary\.html">(?:Solar ESS Test|แบบทด
 
 
 def menu(lang):
+    """Items appended to the Solar ESS dropdown: Solar Test, its 5 levels (indented), vocabulary test."""
     t = L[lang]
-    items = "".join(f'<a href="{t["page"]}?level={i}">{t["lv"]} {i} · {(th if lang == "th" else en)}</a>' for i, (en, th) in enumerate(LV, 1))
-    return (f'<!--tmenu--><span class="dd"><a href="{t["page"]}">{t["top"]}</a><span class="ddm">{items}'
-            f'<a href="{t["page"]}#it-who">{t["mine"]}</a><a href="/vocabulary.html">{t["voc"]}</a></span></span><!--/tmenu-->')
+    items = "".join(f'<a href="{t["page"]}?level={i}" style="padding-left:30px;font-size:.92em">{t["lv"]} {i} · {(th if lang == "th" else en)}</a>' for i, (en, th) in enumerate(LV, 1))
+    return (f'<!--tmenu--><a href="{t["page"]}" style="border-top:1px solid rgba(255,255,255,.15)">{t["top"]} ▸</a>{items}'
+            f'<a href="/vocabulary.html">{t["voc"]}</a><!--/tmenu-->')
 
 
 n = 0
@@ -31,7 +32,9 @@ for f in sorted(ROOT.rglob("*.html")):
     lang = lang if lang in L else "en"
     new = re.sub(r"<!--tmenu-->.*?<!--/tmenu-->", "", s, flags=re.S)
     new = VOC.sub("", new)
-    new = new.replace('<span class="dd end">', menu(lang) + '<span class="dd end">', 1)
+    i = new.index('<span class="dd end">')
+    j = new.index("</span></span>", i)          # end of the Solar ESS dropdown list
+    new = new[:j] + menu(lang) + new[j:]
     if new != s:
         f.write_text(new, encoding="utf-8"); n += 1
 print("updated", n, "pages")

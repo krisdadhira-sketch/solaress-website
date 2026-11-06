@@ -213,7 +213,8 @@ details .a{margin-top:10px;max-width:74ch;color:var(--ink)}
 <style id="itest-css">
 .itw{max-width:860px}
 .itw label{display:grid;gap:5px;font-size:14px;font-weight:600;color:var(--navy)}
-.itw input:not([type=radio]){font:inherit;font-size:15px;font-weight:400;border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;width:100%;box-sizing:border-box;background:#fff}
+.itw [hidden]{display:none!important}
+.itw input:not([type=radio]){font:inherit;font-size:15px;font-weight:400;color:#0A0E2E;-webkit-text-fill-color:#0A0E2E;caret-color:#2563EB;border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;width:100%;box-sizing:border-box;background:#fff}
 .itw .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .itbox{background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:18px 20px;display:grid;gap:14px;margin-top:18px}
 .itlad{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-top:12px}
@@ -233,7 +234,7 @@ details .a{margin-top:10px;max-width:74ch;color:var(--ink)}
 .itq .op{display:flex;gap:10px;align-items:flex-start;padding:8px 10px;border:1px solid var(--line);border-radius:10px;margin-top:6px;cursor:pointer;font-weight:400}
 .itq .op:hover{background:var(--paper)}.itq .op input{margin-top:4px;flex:none;accent-color:var(--blue)}
 .itq .op span{display:grid;gap:1px}.itq .op small{color:var(--mute);font-size:13px}
-.itbar{position:sticky;bottom:0;z-index:5;background:rgba(250,252,255,.96);border-top:1px solid var(--line);padding:10px 0;margin-top:20px;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.itbar[hidden]{display:none!important}.itbar{position:sticky;bottom:0;z-index:5;background:rgba(250,252,255,.96);border-top:1px solid var(--line);padding:10px 0;margin-top:20px;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
 .itlvh{margin-top:18px;padding:12px 16px;background:var(--navy);color:#fff;border-radius:12px;font-weight:700}
 body.it-on .fab{display:none!important}
 .itres{background:#fff;border:2px solid var(--line);border-radius:16px;padding:20px;margin-top:18px}

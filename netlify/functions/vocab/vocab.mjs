@@ -64,6 +64,9 @@ async function readToken(s, req) {
 function isAdmin(req) {
   const pw = req.headers.get("x-admin-password") || "";
   if (!pw) return false;
+  // One sign-in for www.solaress.org/admin: the main admin password (MEMBERS_ADMIN_PASSWORD) also opens the vocabulary results.
+  const mp = String(process.env.MEMBERS_ADMIN_PASSWORD || "").trim();
+  if (mp) { const a = Buffer.from(pw.trim()), b = Buffer.from(mp); if (a.length === b.length && crypto.timingSafeEqual(a, b)) return true; }
   if (process.env.VOCAB_ADMIN_PASSWORD) {
     const a = Buffer.from(pw), b = Buffer.from(process.env.VOCAB_ADMIN_PASSWORD);
     return a.length === b.length && crypto.timingSafeEqual(a, b);

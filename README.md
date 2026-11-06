@@ -38,6 +38,12 @@ Every public page carries the GA4 tag for stream "solaress.org" (`G-46HG0JWSZV`,
 
 Page text: `tools/feedback_page.py`, then `tools/analytics_tag.py`. Data: Blobs store `feedback` (`job/`, `code/`, `fb/`, `file/`).
 
+## Admin hub (/admin)
+
+- **www.solaress.org/admin**: one sign-in (MEMBERS_ADMIN_PASSWORD) with a menu: Jobs & payment release, TSIA & partner applications, Installer test & certificates, Vocabulary test results, plus links to public pages. Overview shows counts.
+- Each admin page opens inside the hub without asking again (shared sessionStorage `members-admin-pw`); opened on its own it shows an "Admin home" button.
+- Build: `python3 tools/admin_hub.py` (also re-adds the bridge script to the 4 admin pages; run it after `tools/vocab_page.py`). The vocabulary API also accepts the main admin password.
+
 ## Installer test (/installer-test, /certificate.html, /itest-admin.html)
 
 - 5 levels × 25 questions (Thai + English): 1 Solar Enterer, 2 Solar Enthusiast, 3 Solar in Practice, 4 Solar Professional, 5 Solar Expert. Pass = 100% (25/25); only a pass gives a certificate and unlocks the next level. Solar ESS accepts installation work from Level 3.

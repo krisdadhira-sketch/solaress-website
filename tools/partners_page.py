@@ -94,7 +94,9 @@ T = {
     yrs="years’ experience", team="installers", elec="certified electricians", proj="projects", kwp="kWp installed",
     brands_l="Inverters", tools_l="Tools", vat="Can issue tax invoice", ins="Insured", langs_l="Languages",
     req_btn="Request this team",
-    reg_eyebrow="Register your team", reg_h="Become a Solar ESS installer partner",
+    reg_eyebrow="Join TSIA · Register your team", reg_h="Become a TSIA Installer Partner",
+    tsia_note="Installer Partners are members of TSIA, the Thailand Solar Installer Alliance. Registering here is your TSIA membership application: you agree to the TSIA Statement of Purpose and member commitments, and once approved you are listed both as a TSIA member and as an installer partner in your region.",
+    tsia_link="Read the TSIA Statement of Purpose", test_btn="Take the Solar Test: Level 3 or higher is accepted for installation work",
     reg_lede="Installers, electricians and installation companies anywhere in Thailand can register. Approved teams are listed in their region and receive subcontract work from Solar ESS and from partners who outsource through us.",
     get_h="What partners get", get=["A public profile in your region, seen by homeowners, businesses and other installers looking to outsource", "Subcontract jobs from Solar ESS, with clear scope, materials list and fair, agreed prices", "Payment secured by Solar ESS before work starts and paid on completion", "Technical support, material supply in some cases, and help if a dispute arises"],
     rule_h="What we expect", rule=["Work done or supervised by a qualified electrician with a certificate", "Premium materials: copper cable, IMC/EMT conduit runs, well-matched breakers and cables", "Clear quotes: labour only, and labour & materials", "All jobs from the directory are contracted through Solar ESS"],
@@ -117,7 +119,7 @@ T = {
     a_true="I confirm the information is true, and Solar ESS may verify it, visit a site or contact past customers.",
     quick="Takes about 2 minutes. Only the fields marked * are needed; we call you to fill in the rest.",
     more_h="More about your team (optional): helps us approve you faster", docs_h="Documents and photos (optional)",
-    a_all="I agree that Solar ESS may publish my team profile (never my contact details or documents), that jobs from this directory are contracted through Solar ESS as main contractor with premium materials and a qualified electrician, and that Solar ESS may verify what I send.",
+    a_all="I apply to join TSIA as an Installer Partner and accept the TSIA Statement of Purpose. I agree that Solar ESS may publish my team profile (never my contact details or documents), that jobs from this directory are contracted through Solar ESS as main contractor with premium materials and a qualified electrician, and that Solar ESS may verify what I send.",
     reg_btn="Send registration",
     reg_after="We review every registration and call you back to complete your profile. Approved profiles appear in the directory, usually within 7 days.",
     req_eyebrow="Request an installer", req_h="Tell us about your job",
@@ -148,7 +150,9 @@ T = {
     yrs="ปีประสบการณ์", team="ช่าง", elec="ช่างไฟฟ้ามีใบรับรอง", proj="โครงการ", kwp="kWp ที่ติดตั้ง",
     brands_l="อินเวอร์เตอร์", tools_l="เครื่องมือ", vat="ออกใบกำกับภาษีได้", ins="มีประกัน", langs_l="ภาษา",
     req_btn="ขอใช้บริการทีมนี้",
-    reg_eyebrow="ลงทะเบียนทีมของคุณ", reg_h="ร่วมเป็นทีมช่างพันธมิตรของ Solar ESS",
+    reg_eyebrow="สมัคร TSIA · ลงทะเบียนทีมของคุณ", reg_h="สมัครเป็นช่างพันธมิตร TSIA (Installer Partner)",
+    tsia_note="ช่างพันธมิตร (Installer Partner) เป็นสมาชิกของ TSIA เครือข่ายผู้ติดตั้งโซลาร์เซลล์ประเทศไทย การลงทะเบียนที่นี่คือการสมัครสมาชิก TSIA ผู้สมัครยอมรับแถลงการณ์วัตถุประสงค์และข้อตกลงของสมาชิก TSIA เมื่อได้รับอนุมัติจะแสดงทั้งในรายชื่อสมาชิก TSIA และในรายชื่อช่างพันธมิตรตามภูมิภาค",
+    tsia_link="อ่านแถลงการณ์วัตถุประสงค์ของ TSIA", test_btn="ทำแบบทดสอบโซลาร์: ผ่านระดับ 3 ขึ้นไปรับงานติดตั้งได้",
     reg_lede="ช่างติดตั้ง ช่างไฟฟ้า และบริษัทติดตั้งทั่วประเทศลงทะเบียนได้ ทีมที่ผ่านการอนุมัติจะแสดงในภูมิภาคของตน และได้รับงานช่วงจาก Solar ESS และจากพันธมิตรที่จ้างงานผ่านเรา",
     get_h="สิ่งที่พันธมิตรได้รับ", get=["โปรไฟล์สาธารณะในภูมิภาคของคุณ ให้เจ้าของบ้าน ธุรกิจ และผู้ติดตั้งรายอื่นที่ต้องการจ้างงานเห็น", "งานช่วงจาก Solar ESS พร้อมขอบเขตงาน รายการวัสดุ และราคาที่ตกลงกันอย่างเป็นธรรม", "Solar ESS รับเงินค่างานไว้ก่อนเริ่มงาน และจ่ายเมื่องานเสร็จ", "การสนับสนุนด้านเทคนิค วัสดุในบางกรณี และความช่วยเหลือเมื่อมีข้อพิพาท"],
     rule_h="สิ่งที่เราคาดหวัง", rule=["งานทำหรือควบคุมโดยช่างไฟฟ้าที่มีใบรับรอง", "ใช้วัสดุคุณภาพ: สายทองแดง ท่อ IMC/EMT เบรกเกอร์และสายไฟที่เหมาะสมกัน", "เสนอราคาชัดเจน: ค่าแรงอย่างเดียว และค่าแรงพร้อมวัสดุ", "งานทุกงานจากหน้านี้ทำสัญญาผ่าน Solar ESS"],
@@ -171,7 +175,7 @@ T = {
     a_true="ข้าพเจ้ายืนยันว่าข้อมูลเป็นความจริง และยินยอมให้ Solar ESS ตรวจสอบ เยี่ยมชมหน้างาน หรือติดต่อลูกค้าเก่า",
     quick="ใช้เวลาประมาณ 2 นาที กรอกเฉพาะช่องที่มีเครื่องหมาย * ส่วนที่เหลือเราจะโทรสอบถามเพิ่มเติม",
     more_h="ข้อมูลเพิ่มเติมของทีม (ไม่บังคับ): ช่วยให้อนุมัติได้เร็วขึ้น", docs_h="เอกสารและรูปภาพ (ไม่บังคับ)",
-    a_all="ข้าพเจ้ายินยอมให้ Solar ESS เผยแพร่โปรไฟล์ทีม (ไม่เผยแพร่ข้อมูลติดต่อและเอกสาร) ยอมรับว่างานจากหน้านี้ทำสัญญาผ่าน Solar ESS ในฐานะผู้รับเหมาหลัก โดยใช้วัสดุคุณภาพและช่างไฟฟ้าที่มีใบรับรอง และยินยอมให้ Solar ESS ตรวจสอบข้อมูลที่ส่งมา",
+    a_all="ข้าพเจ้าสมัครเป็นสมาชิก TSIA ประเภทช่างพันธมิตร และยอมรับแถลงการณ์วัตถุประสงค์ของ TSIA ข้าพเจ้ายินยอมให้ Solar ESS เผยแพร่โปรไฟล์ทีม (ไม่เผยแพร่ข้อมูลติดต่อและเอกสาร) ยอมรับว่างานจากหน้านี้ทำสัญญาผ่าน Solar ESS ในฐานะผู้รับเหมาหลัก โดยใช้วัสดุคุณภาพและช่างไฟฟ้าที่มีใบรับรอง และยินยอมให้ Solar ESS ตรวจสอบข้อมูลที่ส่งมา",
     reg_btn="ส่งใบลงทะเบียน",
     reg_after="เราตรวจสอบทุกใบลงทะเบียนและโทรกลับเพื่อกรอกโปรไฟล์ให้ครบ โปรไฟล์ที่ผ่านการอนุมัติจะแสดงในหน้านี้ โดยปกติภายใน 7 วัน",
     req_eyebrow="ขอใช้บริการทีมช่าง", req_h="บอกรายละเอียดงานของคุณ",
@@ -322,12 +326,12 @@ def build(lang):
     yn = [("yes", t["yes"]), ("no", t["no"])]
     reg = (f'<section class="band dark pform" id="register" style="padding-block:64px;border-top:1px solid rgba(255,255,255,.12)"><div class="wrap apply">'
            f'<div><p class="eyebrow">{esc(t["reg_eyebrow"])}</p><h2>{esc(t["reg_h"])}</h2><p class="lede" style="margin-top:18px">{esc(t["reg_lede"])}</p>'
+           f'<div class="mediate" style="border-color:#A5B4FC;margin-top:22px"><h3>TSIA</h3><p>{esc(t["tsia_note"])}</p><p><a href="{t["pre"]}/team.html#network" style="color:#C7D2FE">{esc(t["tsia_link"])} →</a></p></div>'
            f'<div class="mediate"><h3>{esc(t["get_h"])}</h3><ul>{get}</ul></div>'
            f'<div class="mediate"><h3>{esc(t["rule_h"])}</h3><ul>{rule}</ul></div>'
            f'<div class="mediate"><h3>{esc(t["priv_h"])}</h3><p>{esc(t["priv"])}</p></div>'
            f'<p class="fine" style="margin-top:18px">{esc(t["reg_after"])}</p>'
-           + (f'<p style="margin-top:14px"><a class="btn ghost" href="/th/installer-test.html">ทำแบบทดสอบช่างติดตั้ง 100 ข้อ (ช่วยให้อนุมัติได้เร็วขึ้น)</a></p></div>' if th else
-              f'<p style="margin-top:14px"><a class="btn ghost" href="/installer-test.html">Take the 100-question installer test (speeds up approval)</a></p></div>')
+           + f'<p style="margin-top:14px"><a class="btn ghost" href="{t["pre"]}/installer-test.html">{esc(t["test_btn"])}</a></p></div>'
            +
            f'<form name="installer-partner" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" action="{t["pre"]}/thanks.html">'
            f'<input type="hidden" name="form-name" value="installer-partner"><input type="hidden" name="language" value="{"Thai" if th else "English"}"><p hidden><label>Leave empty <input name="bot-field"></label></p>'
@@ -385,7 +389,7 @@ def build(lang):
            f'</div></details>'
            # one agreement (covers publish, terms and verification)
            f'<label class="chk"><input type="checkbox" name="agree-terms" value="yes" required><span>{esc(t["a_all"])} <span class="req">*</span></span></label>'
-           f'<input type="hidden" name="agree-publish" value="yes"><input type="hidden" name="agree-verification" value="yes">'
+           f'<input type="hidden" name="agree-publish" value="yes"><input type="hidden" name="agree-verification" value="yes"><input type="hidden" name="joins-tsia" value="yes">'
            f'<button class="btn" type="submit">{esc(t["reg_btn"])}</button></form></div></section>\n')
 
     labels = {k: t[k] for k in ["empty", "empty_cta", "verified", "base", "serves", "max", "yrs", "team", "elec", "proj", "kwp", "brands_l", "tools_l", "vat", "ins", "langs_l", "req_btn", "eng_l", "safety_l", "wah_l"]}

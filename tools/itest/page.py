@@ -13,35 +13,35 @@ T = {
 "en": dict(pre="", title="Solar Installer Test: 5 Levels with Certificates | Solar ESS",
     desc="Practical solar installation test in 5 levels, from Solar Enterer to Solar Expert. 25 questions per level in Thai and English; score 100% for each level's certificate.",
     eyebrow="Solar Test · แบบทดสอบโซลาร์", h1="Practical Solar Installation Test",
-    lede="Five levels, 25 questions each, in Thai and English. Level 1 is open to everyone. From Level 2 you need to register as an individual, team or company. Score 100% (25/25) to get the level's certificate (valid for 1 year) and unlock the next level. After an attempt, the same level can be taken again after 30 days. Solar ESS accepts installation work from Level 3 (Solar in Practice) upward.",
+    lede="Five levels, 25 questions each, in Thai and English. Level 1 is open to everyone. From Level 2 you need to be a TSIA member (Installer Partner or company member). Score 100% (25/25) to get the level's certificate (valid for 1 year) and unlock the next level. After an attempt, the same level can be taken again after 30 days. Solar ESS accepts installation work from Level 3 (Solar in Practice) upward.",
     work="Accepted for Solar ESS installation work", work_s="✓ Installation work",
     ladder="The five levels", s1="Your details", name="Full name", phone="Phone (the one you registered with)", email="Email", prov="Province (optional)",
     team="Company or team name", check="Show my levels",
     req="Please fill in name, phone, email and company or team name.", bademail="Please enter a valid email.",
-    nreg_h="Level 1 is open to you", nreg="To take Levels 2–5 and receive their certificates, register first (free) as an individual, team or company, using this same phone number.",
-    nreg_t="Join TSIA (company)", nreg_p="Register as installer partner (individual, team or company)", reg_ok="Registered", reg_need="Register first (individual, team or company)",
+    nreg_h="Level 1 is open to you", nreg="To take Levels 2–5 and receive their certificates, join TSIA first (free) using this same phone number: as an Installer Partner (individual, team or company) or as a company member.",
+    nreg_t="TSIA company member", nreg_p="Register as TSIA Installer Partner", reg_ok="TSIA member", reg_need="Join TSIA first (Installer Partner or company member)",
     st_pass="Passed", st_open="Open", st_lock="Locked", lock_need="Pass Level {n} first", start="Start Level {n}", retake="Retake", cert="View certificate", wait="Retake from {d}", expired="Certificate expired · renew by taking this level again", valid="Valid until {d}", r_valid="Valid from {a} to {b} (1 year).", e_wait="You attempted this level recently. You can take it again from {d}.", e_passed="You have already passed this level.", e_expired="This test session has expired (3 hours). Please start the level again.",
     qof="Question", answered="answered", submit="Submit my answers", sending="Checking your answers…",
     unanswered="You have {n} unanswered questions. Submit anyway?", fail="Sending failed. Please try again.",
     r_h="Your result", r_pass="Passed", r_fail="Not passed yet", next="Go to Level {n}",
-    r_cert="Your certificate number is {id}.", r_retry="A certificate needs 100% (25/25). Study the topics; you can take this level again from {d}.", r_work="This level is accepted for Solar ESS installation work.", r_reg="To take Level 2, register as an individual, team or company with this phone number.",
+    r_cert="Your certificate number is {id}.", r_retry="A certificate needs 100% (25/25). Study the topics; you can take this level again from {d}.", r_work="This level is accepted for Solar ESS installation work.", r_reg="To take Level 2, join TSIA as an Installer Partner (individual, team or company) with this phone number.",
     back="Back to my levels", loading="Loading…", e_prereq="Please pass Level {n} first.", e_reg="Please register as TSIA member or installer partner first.",
     q_s="questions", lv="Level"),
 "th": dict(pre="/th", title="แบบทดสอบช่างโซลาร์ 5 ระดับ พร้อมใบประกาศ | Solar ESS",
     desc="แบบทดสอบการติดตั้งโซลาร์ภาคปฏิบัติ 5 ระดับ ตั้งแต่ Solar Enterer ถึง Solar Expert ระดับละ 25 ข้อ ภาษาไทยและอังกฤษ ได้ 100% รับใบประกาศของแต่ละระดับ",
     eyebrow="แบบทดสอบโซลาร์ · Solar Test", h1="แบบทดสอบการติดตั้งโซลาร์ภาคปฏิบัติ",
-    lede="5 ระดับ ระดับละ 25 ข้อ ภาษาไทยและอังกฤษ ระดับ 1 เปิดให้ทุกคน ตั้งแต่ระดับ 2 ต้องลงทะเบียนเป็นบุคคล ทีม หรือบริษัท ต้องได้คะแนน 100% (25/25) จึงได้ใบประกาศของระดับนั้น (อายุ 1 ปี) และปลดล็อกระดับถัดไป หากสอบไม่ผ่าน สอบระดับเดิมใหม่ได้หลัง 30 วัน Solar ESS รับงานติดตั้งจากผู้ที่ผ่านระดับ 3 (Solar in Practice) ขึ้นไป",
+    lede="5 ระดับ ระดับละ 25 ข้อ ภาษาไทยและอังกฤษ ระดับ 1 เปิดให้ทุกคน ตั้งแต่ระดับ 2 ต้องเป็นสมาชิก TSIA (ช่างพันธมิตรหรือสมาชิกบริษัท) ต้องได้คะแนน 100% (25/25) จึงได้ใบประกาศของระดับนั้น (อายุ 1 ปี) และปลดล็อกระดับถัดไป หากสอบไม่ผ่าน สอบระดับเดิมใหม่ได้หลัง 30 วัน Solar ESS รับงานติดตั้งจากผู้ที่ผ่านระดับ 3 (Solar in Practice) ขึ้นไป",
     work="ผ่านเกณฑ์รับงานติดตั้งกับ Solar ESS", work_s="✓ รับงานติดตั้งได้",
     ladder="5 ระดับ", s1="ข้อมูลของคุณ", name="ชื่อ-นามสกุล", phone="เบอร์โทร (เบอร์เดียวกับที่ลงทะเบียน)", email="อีเมล", prov="จังหวัด (ไม่บังคับ)",
     team="ชื่อบริษัทหรือทีม", check="ดูระดับของฉัน",
     req="กรุณากรอกชื่อ เบอร์โทร อีเมล และชื่อบริษัทหรือทีม", bademail="กรุณากรอกอีเมลให้ถูกต้อง",
-    nreg_h="ระดับ 1 เปิดให้คุณทำได้เลย", nreg="หากต้องการสอบระดับ 2–5 และรับใบประกาศ กรุณาลงทะเบียน (ฟรี) เป็นบุคคล ทีม หรือบริษัท ด้วยเบอร์โทรเดียวกันนี้",
-    nreg_t="สมัครสมาชิก TSIA (บริษัท)", nreg_p="ลงทะเบียนช่างพันธมิตร (บุคคล ทีม หรือบริษัท)", reg_ok="ลงทะเบียนแล้ว", reg_need="ต้องลงทะเบียนก่อน (บุคคล ทีม หรือบริษัท)",
+    nreg_h="ระดับ 1 เปิดให้คุณทำได้เลย", nreg="หากต้องการสอบระดับ 2–5 และรับใบประกาศ กรุณาสมัคร TSIA ก่อน (ฟรี) ด้วยเบอร์โทรเดียวกันนี้ ในฐานะช่างพันธมิตร (บุคคล ทีม หรือบริษัท) หรือสมาชิกประเภทบริษัท",
+    nreg_t="สมาชิก TSIA ประเภทบริษัท", nreg_p="สมัครเป็นช่างพันธมิตร TSIA", reg_ok="สมาชิก TSIA", reg_need="ต้องสมัคร TSIA ก่อน (ช่างพันธมิตรหรือสมาชิกบริษัท)",
     st_pass="ผ่านแล้ว", st_open="เปิดสอบ", st_lock="ล็อกอยู่", lock_need="ต้องผ่านระดับ {n} ก่อน", start="เริ่มระดับ {n}", retake="สอบอีกครั้ง", cert="ดูใบประกาศ", wait="สอบใหม่ได้ตั้งแต่ {d}", expired="ใบประกาศหมดอายุ · สอบระดับนี้อีกครั้งเพื่อต่ออายุ", valid="ใช้ได้ถึง {d}", r_valid="มีอายุตั้งแต่ {a} ถึง {b} (1 ปี)", e_wait="คุณเพิ่งสอบระดับนี้ไป สอบใหม่ได้ตั้งแต่ {d}", e_passed="คุณสอบผ่านระดับนี้แล้ว", e_expired="การสอบนี้หมดเวลาแล้ว (3 ชั่วโมง) กรุณาเริ่มระดับนี้ใหม่",
     qof="ข้อ", answered="ตอบแล้ว", submit="ส่งคำตอบ", sending="กำลังตรวจคำตอบ…",
     unanswered="ยังไม่ได้ตอบ {n} ข้อ ต้องการส่งเลยหรือไม่", fail="ส่งไม่สำเร็จ กรุณาลองอีกครั้ง",
     r_h="ผลการทดสอบ", r_pass="ผ่าน", r_fail="ยังไม่ผ่าน", next="ไประดับ {n}",
-    r_cert="เลขที่ใบประกาศของคุณ: {id}", r_retry="ต้องได้ 100% (25/25) จึงจะได้ใบประกาศ ทบทวนเนื้อหาแล้วสอบระดับนี้ใหม่ได้ตั้งแต่ {d}", r_work="ระดับนี้ผ่านเกณฑ์รับงานติดตั้งกับ Solar ESS", r_reg="หากต้องการสอบระดับ 2 กรุณาลงทะเบียนเป็นบุคคล ทีม หรือบริษัท ด้วยเบอร์นี้",
+    r_cert="เลขที่ใบประกาศของคุณ: {id}", r_retry="ต้องได้ 100% (25/25) จึงจะได้ใบประกาศ ทบทวนเนื้อหาแล้วสอบระดับนี้ใหม่ได้ตั้งแต่ {d}", r_work="ระดับนี้ผ่านเกณฑ์รับงานติดตั้งกับ Solar ESS", r_reg="หากต้องการสอบระดับ 2 กรุณาสมัครเป็นช่างพันธมิตร TSIA (บุคคล ทีม หรือบริษัท) ด้วยเบอร์นี้",
     back="กลับไปหน้าระดับของฉัน", loading="กำลังโหลด…", e_prereq="กรุณาสอบผ่านระดับ {n} ก่อน", e_reg="กรุณาลงทะเบียนสมาชิก TSIA หรือทีมช่างพันธมิตรก่อน",
     q_s="ข้อ", lv="ระดับ"),
 }
@@ -118,7 +118,7 @@ def build(lang):
         f'<label>{esc(t["prov"])}<input id="it-prov"></label>'
         f'<div><button class="btn" type="submit" id="it-check">{esc(t["check"])}</button> <span id="it-req" class="fine" style="color:#B42318"></span></div></form>'
         f'<div id="it-nreg" class="itnreg" hidden><h3 style="margin:0 0 6px">{esc(t["nreg_h"])}</h3><p style="margin:0 0 12px">{esc(t["nreg"])}</p>'
-        f'<a class="btn" href="{t["pre"]}/team.html#join-tsia">{esc(t["nreg_t"])}</a> <a class="btn" href="{t["pre"]}/partners.html#register">{esc(t["nreg_p"])}</a></div>'
+        f'<a class="btn" href="{t["pre"]}/partners.html#register">{esc(t["nreg_p"])}</a> <a class="btn ghost" href="{t["pre"]}/team.html#join-tsia">{esc(t["nreg_t"])}</a></div>'
         f'<div id="it-lv" class="itlv" hidden></div>'
         f'<div id="it-qs" hidden></div>'
         f'<div class="itbar" id="it-bar" hidden><span id="it-count"></span><button class="btn" id="it-send" type="button">{esc(t["submit"])}</button></div>'

@@ -14,7 +14,7 @@ LOGO = re.search(r'<header class="nav">.*?<img src="(data:image/[^"]+)"', idx, r
 
 PAGES = [  # id, file, label, description
     ("jobs", "/feedback-admin.html", "Jobs & payment release", "Job posts, installer reports, customer feedback, close jobs and release payment."),
-    ("applications", "/members-admin.html", "TSIA & partner applications", "Approve, reject or hide TSIA members and installer partners."),
+    ("applications", "/members-admin.html", "TSIA applications", "Approve, reject or hide TSIA company members and Installer Partners (every partner is a TSIA member)."),
     ("test", "/itest-admin.html", "Installer test & certificates", "Level 1–5 results, wrong answers, certificate numbers, CSV."),
     ("vocab", "/vocab-admin.html", "Vocabulary test results", "Students, scores per test and progress."),
 ]

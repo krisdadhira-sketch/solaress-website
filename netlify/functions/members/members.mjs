@@ -69,6 +69,13 @@ function publicPartner(s) {
   };
 }
 
+function partnerAsTsia(s) {
+  const p = publicPartner(s);
+  return { id: s.id, name: p.name, type: p.type, province: p.province, regions: p.region ? [p.region] : [], services: p.services,
+    year: "", team: p.team, electricians: p.electricians, projects: p.projects, kwp: p.kwp, brands: p.brands.join(", "),
+    intro: p.intro, photo: p.logo || p.photo, verified: p.verified, category: "partner" };
+}
+
 async function all(s) {
   const { blobs } = await s.list({ prefix: "sub/" });
   const out = [];
@@ -83,7 +90,12 @@ export default async (req) => {
   if (a === "public") {
     const type = u.searchParams.get("type");
     if (!["tsia", "partner"].includes(type)) return json({ error: "type" }, 400);
-    const items = (await all(s)).filter((x) => x.type === type && x.status === "approved").map(type === "tsia" ? publicTsia : publicPartner);
+    // Installer Partners are TSIA members: the TSIA list includes approved partners (category "partner").
+    const ok = (await all(s)).filter((x) => x.status === "approved");
+    const items = type === "tsia"
+      ? ok.filter((x) => x.type === "tsia").map((x) => ({ ...publicTsia(x), category: "company" }))
+          .concat(ok.filter((x) => x.type === "partner").map(partnerAsTsia))
+      : ok.filter((x) => x.type === "partner").map(publicPartner);
     return json({ items }, 200, "public, max-age=60");
   }
 

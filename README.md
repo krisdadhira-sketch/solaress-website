@@ -38,6 +38,12 @@ Every public page carries the GA4 tag for stream "solaress.org" (`G-46HG0JWSZV`,
 
 Page text: `tools/feedback_page.py`, then `tools/analytics_tag.py`. Data: Blobs store `feedback` (`job/`, `code/`, `fb/`, `file/`).
 
+## TSIA and Installer Partners (one category)
+
+- Every Installer Partner is a TSIA member. TSIA has two kinds of member: Installer Partner (individual, team or company; form `installer-partner` on /partners.html, which now says it is a TSIA application and carries `joins-tsia=yes`) and company member (form `tsia-membership` on /team.html#join-tsia).
+- `/api/members?a=public&type=tsia` lists approved company members and approved partners (`category`), shown by `tsia.js` on the team page.
+- `python3 tools/tsia_partner.py` (run after `tools/job_links.py` and `tools/partners_page.py`): "Two ways to join TSIA" box on the team pages, Solar Test button texts, and the Solar ESS dropdown order (TSIA, then Installer Partners (TSIA) indented).
+
 ## Admin hub (/admin)
 
 - **www.solaress.org/admin**: one sign-in (MEMBERS_ADMIN_PASSWORD) with a menu: Jobs & payment release, TSIA & partner applications, Installer test & certificates, Vocabulary test results, plus links to public pages. Overview shows counts.

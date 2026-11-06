@@ -19,7 +19,7 @@
 //   POST /api/feedback?a=jobdel {id}                            delete a job, its codes, files and feedback
 //   POST /api/feedback?a=delete {id}                            delete one feedback (the customer code works again)
 //   GET  /api/feedback?a=file&id=..&f=..                        a file from a job report
-//   POST /api/feedback?a=post {post, state: open|closed|hidden, job}   job post status on the Jobs page (also public GET a=posts)
+//   POST /api/feedback?a=post {post, state: open|hold|closed|hidden, job}   job post status on the Jobs page (also public GET a=posts)
 // Releasing payment also closes the job's post automatically.
 import { getStore } from "@netlify/blobs";
 import crypto from "node:crypto";
@@ -94,7 +94,7 @@ export default async (req) => {
   // Setup check: does the server see the admin password variables? (never returns the values)
   if (a === "status") return json({ members_admin_password_set: !!String(process.env.MEMBERS_ADMIN_PASSWORD || "").trim(), vocab_admin_password_set: !!String(process.env.VOCAB_ADMIN_PASSWORD || "").trim() });
 
-  // Job post status on the Jobs page (open / closed / hidden), keyed by the post's id on job.html.
+  // Job post status on the Jobs page (open / hold = on hold, waiting for the customer to confirm / closed / hidden), keyed by the post's id on job.html.
   if (a === "posts") {
     const st = (await s.get("posts/status", { type: "json" })) || {};
     return new Response(JSON.stringify({ posts: st }), { headers: { "content-type": "application/json", "cache-control": "public, max-age=30" } });
@@ -139,8 +139,8 @@ export default async (req) => {
     if (!id) return json({ error: "post id needed" }, 400);
     const st = (await s.get("posts/status", { type: "json" })) || {};
     if (b.state === "open") delete st[id];
-    else if (b.state === "closed" || b.state === "hidden") st[id] = { state: b.state, at: new Date().toISOString(), job: txt(b.job) };
-    else return json({ error: "state must be open, closed or hidden" }, 400);
+    else if (b.state === "closed" || b.state === "hidden" || b.state === "hold") st[id] = { state: b.state, at: new Date().toISOString(), job: txt(b.job) };
+    else return json({ error: "state must be open, hold, closed or hidden" }, 400);
     await s.setJSON("posts/status", st);
     return json({ ok: true, posts: st });
   }

@@ -44,6 +44,7 @@ tr.sel td{background:#EEF2FF}#teams tr{cursor:pointer}
 
 
 
+
 <!--adminbridge--><script>(function(){var inHub=false;try{inHub=window.self!==window.top&&window.top.location.pathname.replace(/\.html$/,'')==='/admin'}catch(e){}
 var st=document.createElement('style');
 if(inHub){st.textContent='body>header,header.nav,footer,.fab,.mnav-btn,.share{display:none!important}main{padding-top:14px!important}';}
@@ -66,8 +67,8 @@ document.head.appendChild(st)})();</script><!--/adminbridge-->
 
   <div class="card hi" id="postcard" hidden><h2>Job post on the Jobs page</h2>
     <p class="meta" id="postinfo"></p>
-    <div class="acts" style="margin-top:8px"><button class="sm ok" data-ps="open">Reopen for maintenance / service</button><button class="sm" data-ps="closed">Close: show as finished (grey)</button><button class="sm no" data-ps="hidden">Hide from the Jobs page</button></div>
-    <p class="meta" style="margin-top:8px">Closing greys and blurs the post with a "Job closed" badge and removes it from the application list; the ⚙ Admin icon stays usable. When the job or plant needs maintenance or service, reopen the post here and issue new codes below. Releasing payment closes the post automatically.</p>
+    <div class="acts" style="margin-top:8px"><button class="sm ok" data-ps="open">Open for quotes / reopen</button><button class="sm" data-ps="hold" style="border-color:#B45309;color:#B45309">On hold: waiting for customer confirmation</button><button class="sm" data-ps="closed">Close: show as finished (grey)</button><button class="sm no" data-ps="hidden">Hide from the Jobs page</button></div>
+    <p class="meta" style="margin-top:8px">Closing greys and blurs the post with a "Job closed" badge and removes it from the application list; the ⚙ Admin icon stays usable. <b>On hold</b> keeps the post readable with an amber "On hold" badge and a note that it is waiting for the customer to confirm; the Apply button and the application-list entry are removed until you open it for quotes. When the job or plant needs maintenance or service, reopen the post here and issue new codes below. Releasing payment closes the post automatically.</p>
   </div>
   <div class="card" id="issue"><h2>Issue the job report and customer feedback forms</h2>
     <p class="meta">Creates two one-time codes for this job: one for the installer team (job report) and one for the customer (feedback). Copy each message and send it by LINE.</p>
@@ -182,7 +183,7 @@ document.head.appendChild(st)})();</script><!--/adminbridge-->
     $('count').textContent = jobs.length + ' jobs · ' + ready + ' ready to release payment · ' + data.items.length + ' customer responses';
     renderIssued(); renderJobs(); renderTeams();
   }
-  var PSL = {open:'Open (active)', closed:'Closed – shown as finished', hidden:'Hidden from the Jobs page'};
+  var PSL = {open:'Open (active)', hold:'On hold – waiting for customer confirmation (no quotes)', closed:'Closed – shown as finished', hidden:'Hidden from the Jobs page'};
   function loadPosts(){ return fetch('/api/feedback?a=posts&t=' + Date.now(), {cache:'no-store'}).then(function(r){ return r.json(); }).then(function(d){ POSTS = d.posts || {}; renderPost(); renderJobs(); }).catch(function(){}); }
   function pstate(id){ return id && POSTS[id] ? POSTS[id].state : 'open'; }
   function renderPost(){ if (!FORPOST) return; $('postcard').hidden = false;

@@ -36,7 +36,7 @@ Every public page carries the GA4 tag for stream "solaress.org" (`G-46HG0JWSZV`,
 3. **Customer** opens `/feedback.html?c=<code>` (EN/TH) and rates once: 10 questions 5 / 4 / 2 / 1 (no middle score) + NPS 0–10, checked by `/api/feedback` (`netlify/functions/feedback/feedback.mjs`).
 4. **Release payment**: possible only when both are in; the admin checks both and clicks *Release payment*. Team record = customer feedback on issued jobs only.
 
-Page text: `tools/feedback_page.py`, then `tools/analytics_tag.py`. Data: Blobs store `feedback` (`job/`, `code/`, `fb/`, `file/`).
+Post status from the ⚙ Admin icon: Open for quotes, On hold (waiting for customer confirmation: amber badge, no Apply button), Close (grey), Hide. Page text: `tools/feedback_page.py`, then `tools/analytics_tag.py`. Data: Blobs store `feedback` (`job/`, `code/`, `fb/`, `file/`).
 
 ## TSIA and Installer Partners (one category)
 

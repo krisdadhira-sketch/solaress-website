@@ -47,6 +47,7 @@ h1{font-family:Cinzel,serif;font-size:50px;line-height:1.05;margin:8px 0 0;color
 .ttl{font-family:Cinzel,serif;font-weight:800;font-size:34px;letter-spacing:.08em;color:var(--ink);margin-top:6px}
 .ttlt{font-family:'Noto Serif Thai',serif;font-size:18px;font-weight:600;color:var(--ink)}
 .tier{display:inline-block;margin-top:8px;font-family:Cinzel,serif;font-size:12px;letter-spacing:.32em;font-weight:700;color:var(--navy);padding:5px 16px;border-radius:99px;background:linear-gradient(90deg,var(--m3),var(--m2),var(--m1),var(--m2),var(--m3))}
+.work{margin-top:8px;font-family:Cinzel,serif;font-weight:700;font-size:12.5px;letter-spacing:.12em;color:#166534}.work span{font-family:'Noto Serif Thai',serif;letter-spacing:0;font-size:13px}
 .seal{position:absolute;left:52px;bottom:40px;width:190px;height:232px}
 .qr{position:absolute;right:40px;bottom:44px;text-align:center;font-family:Inter,sans-serif;font-size:9.5px;color:var(--mute);width:190px}
 .qr .box{background:#fff;border:1.5px solid var(--m1);padding:6px;display:inline-block;border-radius:6px}.qr svg{display:block;width:104px;height:104px}
@@ -112,13 +113,13 @@ fetch('/api/itest?a=cert&id='+encodeURIComponent(id)).then(function(r){return r.
  document.getElementById('okv').hidden=false;
  document.getElementById('c').innerHTML='<div class="cert" style="--m1:'+T[1]+';--m2:'+T[2]+';--m3:'+T[3]+'">'+frame(T)
  +'<div class="paper">'+bg(T)+'<img class="wm" src="'+LOGO+'" alt=""><div class="in">'
- +'<div class="top"><img src="'+LOGO+'" alt="Solar ESS"><div class="addr"><b>Solar ESS Co. Ltd.</b><br>53 Moo 2, Nang Lae, Mueang Chiang Rai<br>Chiang Rai 57100, Thailand<br>www.solaress.org · www.solar-ess.org</div></div>'
+ +'<div class="top"><img src="'+LOGO+'" alt="Solar ESS"><div class="addr"><b>Solar ESS Co. Ltd.</b><br>53 Moo 2, Nang Lae, Mueang Chiang Rai<br>Chiang Rai 57100, Thailand<br>www.solaress.org · www.โซลาร์เอสส์.com</div></div>'
  +'<div class="mid"><div class="k">CERTIFICATE OF ACHIEVEMENT</div><h1>Practical Solar Installation</h1><div class="h1t">ใบประกาศนียบัตร การติดตั้งระบบโซลาร์ภาคปฏิบัติ</div>'
  +'<svg class="rule" viewBox="0 0 420 12"><path d="M0 6H180M240 6H420" stroke="'+T[1]+'" stroke-width="1"/><path d="M210 0 216 6 210 12 204 6Z" fill="'+T[1]+'"/><circle cx="192" cy="6" r="2" fill="'+T[1]+'"/><circle cx="228" cy="6" r="2" fill="'+T[1]+'"/></svg>'
  +'<div class="cer">This is to certify that <span>· ขอมอบใบประกาศนียบัตรนี้เพื่อแสดงว่า</span></div><div class="nm">'+esc(c.name)+'</div>'
  +'<div class="has">has successfully passed the Solar ESS installer examination at <span>· ได้สอบผ่านการทดสอบช่างติดตั้งโซลาร์ ระดับ</span></div>'
  +'<div class="ttl">LEVEL '+c.level+' · '+esc(c.title_en.toUpperCase())+'</div><div class="ttlt">ระดับ '+c.level+' · '+esc(c.title_th)+'</div>'
- +'<div class="tier">'+T[0]+' TIER</div></div>'
+ +'<div class="tier">'+T[0]+' TIER</div>'+(c.work?'<div class="work">✓ ACCEPTED FOR SOLAR ESS INSTALLATION WORK · <span>ผ่านเกณฑ์รับงานติดตั้งกับ Solar ESS</span></div>':'')+'</div>'
  +seal(T,c.level)
  +'<div class="meta"><div>SCORE · <i>คะแนน</i><b>'+c.score+' / '+c.total+' ('+c.pct+'%)</b></div><div>DATE OF ISSUE · <i>วันที่ออก</i><b>'+esc(de)+'</b><i>'+esc(dt)+'</i></div><div>CERTIFICATE NO. · <i>เลขที่</i><b>'+esc(c.id)+'</b></div></div>'
  +'<div class="iss"><div class="ln"></div>Issued by · ออกโดย<br><b>Solar ESS Co. Ltd. · Solar ESS Working Group</b></div>'

@@ -30,7 +30,7 @@ assert len(used) == len(set(used)), "no question twice"
 assert all(len(ASSIGN[l]) + len(EXTRA.get(l, [])) == 25 for l in ASSIGN), "25 per level"
 assert len(E) == 25
 rnd = random.Random(20261106)
-out = {"pass_pct": 70,
+out = {"pass_pct": 100, "work_level": 3,
        "sections": [{"id": s, "th": th, "en": en} for s, th, en in SECTIONS],
        "levels": [{"n": n, "en": en, "th": th, "count": 25} for n, en, th in LEVELS],
        "questions": []}

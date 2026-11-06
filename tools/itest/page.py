@@ -11,35 +11,37 @@ ROOT = Path(__file__).resolve().parents[2]
 
 T = {
 "en": dict(pre="", title="Solar Installer Test: 5 Levels with Certificates | Solar ESS",
-    desc="Practical solar installation test in 5 levels, from Solar Enterer to Solar Expert. 25 questions per level in Thai and English, with a certificate for each level you pass.",
+    desc="Practical solar installation test in 5 levels, from Solar Enterer to Solar Expert. 25 questions per level in Thai and English; score 100% for each level's certificate.",
     eyebrow="Solar Test · แบบทดสอบโซลาร์", h1="Practical Solar Installation Test",
-    lede="Five levels, 25 questions each, in Thai and English. Pass a level (70%) to get its certificate and unlock the next one. Level 1 is open to registered TSIA members and installer partners.",
+    lede="Five levels, 25 questions each, in Thai and English. Level 1 is open to everyone. From Level 2 you need to register as an individual, team or company. Score 100% (25/25) to get the level's certificate and unlock the next level. Solar ESS accepts installation work from Level 3 (Solar in Practice) upward.",
+    work="Accepted for Solar ESS installation work", work_s="✓ Installation work",
     ladder="The five levels", s1="Your details", name="Full name", phone="Phone (the one you registered with)", email="Email", prov="Province (optional)",
     team="Company or team name", check="Show my levels",
     req="Please fill in name, phone, email and company or team name.", bademail="Please enter a valid email.",
-    nreg_h="Register first", nreg="We could not find a TSIA or installer-partner registration with this phone number. Register first (it is free), then come back with the same phone number.",
-    nreg_t="Join TSIA", nreg_p="Register as installer partner", reg_ok="Registered",
+    nreg_h="Level 1 is open to you", nreg="To take Levels 2–5 and receive their certificates, register first (free) as an individual, team or company, using this same phone number.",
+    nreg_t="Join TSIA (company)", nreg_p="Register as installer partner (individual, team or company)", reg_ok="Registered", reg_need="Register first (individual, team or company)",
     st_pass="Passed", st_open="Open", st_lock="Locked", lock_need="Pass Level {n} first", start="Start Level {n}", retake="Retake", cert="View certificate",
     qof="Question", answered="answered", submit="Submit my answers", sending="Checking your answers…",
     unanswered="You have {n} unanswered questions. Submit anyway?", fail="Sending failed. Please try again.",
     r_h="Your result", r_pass="Passed", r_fail="Not passed yet", next="Go to Level {n}",
-    r_cert="Your certificate number is {id}.", r_retry="You need 70% to pass. Study the topics and try again; every attempt is recorded.",
+    r_cert="Your certificate number is {id}.", r_retry="A certificate needs 100% (25/25). Study the topics and try again; every attempt is recorded.", r_work="This level is accepted for Solar ESS installation work.", r_reg="To take Level 2, register as an individual, team or company with this phone number.",
     back="Back to my levels", loading="Loading…", e_prereq="Please pass Level {n} first.", e_reg="Please register as TSIA member or installer partner first.",
     q_s="questions", lv="Level"),
 "th": dict(pre="/th", title="แบบทดสอบช่างโซลาร์ 5 ระดับ พร้อมใบประกาศ | Solar ESS",
-    desc="แบบทดสอบการติดตั้งโซลาร์ภาคปฏิบัติ 5 ระดับ ตั้งแต่ Solar Enterer ถึง Solar Expert ระดับละ 25 ข้อ ภาษาไทยและอังกฤษ ได้ใบประกาศทุกระดับที่สอบผ่าน",
+    desc="แบบทดสอบการติดตั้งโซลาร์ภาคปฏิบัติ 5 ระดับ ตั้งแต่ Solar Enterer ถึง Solar Expert ระดับละ 25 ข้อ ภาษาไทยและอังกฤษ ได้ 100% รับใบประกาศของแต่ละระดับ",
     eyebrow="แบบทดสอบโซลาร์ · Solar Test", h1="แบบทดสอบการติดตั้งโซลาร์ภาคปฏิบัติ",
-    lede="5 ระดับ ระดับละ 25 ข้อ ภาษาไทยและอังกฤษ สอบผ่าน 70% ได้ใบประกาศของระดับนั้นและปลดล็อกระดับถัดไป ระดับ 1 เปิดให้สมาชิก TSIA และทีมช่างพันธมิตรที่ลงทะเบียนแล้ว",
+    lede="5 ระดับ ระดับละ 25 ข้อ ภาษาไทยและอังกฤษ ระดับ 1 เปิดให้ทุกคน ตั้งแต่ระดับ 2 ต้องลงทะเบียนเป็นบุคคล ทีม หรือบริษัท ต้องได้คะแนน 100% (25/25) จึงได้ใบประกาศของระดับนั้นและปลดล็อกระดับถัดไป Solar ESS รับงานติดตั้งจากผู้ที่ผ่านระดับ 3 (Solar in Practice) ขึ้นไป",
+    work="ผ่านเกณฑ์รับงานติดตั้งกับ Solar ESS", work_s="✓ รับงานติดตั้งได้",
     ladder="5 ระดับ", s1="ข้อมูลของคุณ", name="ชื่อ-นามสกุล", phone="เบอร์โทร (เบอร์เดียวกับที่ลงทะเบียน)", email="อีเมล", prov="จังหวัด (ไม่บังคับ)",
     team="ชื่อบริษัทหรือทีม", check="ดูระดับของฉัน",
     req="กรุณากรอกชื่อ เบอร์โทร อีเมล และชื่อบริษัทหรือทีม", bademail="กรุณากรอกอีเมลให้ถูกต้อง",
-    nreg_h="กรุณาลงทะเบียนก่อน", nreg="ไม่พบการลงทะเบียนสมาชิก TSIA หรือทีมช่างพันธมิตรด้วยเบอร์นี้ ลงทะเบียนก่อน (ฟรี) แล้วกลับมาด้วยเบอร์เดิม",
-    nreg_t="สมัครสมาชิก TSIA", nreg_p="ลงทะเบียนทีมช่างพันธมิตร", reg_ok="ลงทะเบียนแล้ว",
+    nreg_h="ระดับ 1 เปิดให้คุณทำได้เลย", nreg="หากต้องการสอบระดับ 2–5 และรับใบประกาศ กรุณาลงทะเบียน (ฟรี) เป็นบุคคล ทีม หรือบริษัท ด้วยเบอร์โทรเดียวกันนี้",
+    nreg_t="สมัครสมาชิก TSIA (บริษัท)", nreg_p="ลงทะเบียนช่างพันธมิตร (บุคคล ทีม หรือบริษัท)", reg_ok="ลงทะเบียนแล้ว", reg_need="ต้องลงทะเบียนก่อน (บุคคล ทีม หรือบริษัท)",
     st_pass="ผ่านแล้ว", st_open="เปิดสอบ", st_lock="ล็อกอยู่", lock_need="ต้องผ่านระดับ {n} ก่อน", start="เริ่มระดับ {n}", retake="สอบอีกครั้ง", cert="ดูใบประกาศ",
     qof="ข้อ", answered="ตอบแล้ว", submit="ส่งคำตอบ", sending="กำลังตรวจคำตอบ…",
     unanswered="ยังไม่ได้ตอบ {n} ข้อ ต้องการส่งเลยหรือไม่", fail="ส่งไม่สำเร็จ กรุณาลองอีกครั้ง",
     r_h="ผลการทดสอบ", r_pass="ผ่าน", r_fail="ยังไม่ผ่าน", next="ไประดับ {n}",
-    r_cert="เลขที่ใบประกาศของคุณ: {id}", r_retry="ต้องได้ 70% จึงจะผ่าน ทบทวนเนื้อหาแล้วสอบใหม่ได้ ทุกครั้งจะถูกบันทึกไว้",
+    r_cert="เลขที่ใบประกาศของคุณ: {id}", r_retry="ต้องได้ 100% (25/25) จึงจะได้ใบประกาศ ทบทวนเนื้อหาแล้วสอบใหม่ได้ ทุกครั้งจะถูกบันทึกไว้", r_work="ระดับนี้ผ่านเกณฑ์รับงานติดตั้งกับ Solar ESS", r_reg="หากต้องการสอบระดับ 2 กรุณาลงทะเบียนเป็นบุคคล ทีม หรือบริษัท ด้วยเบอร์นี้",
     back="กลับไปหน้าระดับของฉัน", loading="กำลังโหลด…", e_prereq="กรุณาสอบผ่านระดับ {n} ก่อน", e_reg="กรุณาลงทะเบียนสมาชิก TSIA หรือทีมช่างพันธมิตรก่อน",
     q_s="ข้อ", lv="ระดับ"),
 }
@@ -52,7 +54,7 @@ CSS = """<style id="itest-css">
 .itbox{background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:18px 20px;display:grid;gap:14px;margin-top:18px}
 .itlad{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-top:12px}
 .itlad div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px;font-size:13px;line-height:1.35}
-.itlad b{display:block;color:var(--navy);font-size:14px}.itlad span{font-family:var(--mono);font-size:11px;color:var(--mute)}
+.itlad b{display:block;color:var(--navy);font-size:14px}.itlad em,.itcard em{display:inline-block;font-style:normal;font-size:11px;font-weight:700;color:#15803D;margin-top:4px}.itlad span{font-family:var(--mono);font-size:11px;color:var(--mute)}
 .itlv{display:grid;gap:10px;margin-top:18px}
 .itcard{display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:14px 16px}
 .itcard.pass{border-color:#86EFAC;background:#F0FDF4}.itcard.lock{opacity:.6;background:var(--paper)}.itcard.focus{box-shadow:0 0 0 3px #A5B4FC}
@@ -102,7 +104,8 @@ def build(lang):
                   '<a href="/th/installer-test.html" lang="th" style="font-family:var(--thai)"' + (' aria-current="true"' if th else '') + '>ไทย</a></span>',
                   head, count=1, flags=re.S)
     head = head.replace("</head>", CSS + "\n</head>", 1)
-    lad = "".join(f'<div><span>{esc(t["lv"])} {l["n"]}</span><b>{esc(l["en"])}</b>{esc(l["th"])}</div>' for l in bank["levels"])
+    wl = bank.get("work_level", 3)
+    lad = "".join(f'<div><span>{esc(t["lv"])} {l["n"]}</span><b>{esc(l["en"])}</b>{esc(l["th"])}' + (f'<br><em>{esc(t["work_s"])}</em>' if l["n"] >= wl else "") + '</div>' for l in bank["levels"])
     body = (
         f'<section class="dark band" style="padding-block:64px"><div class="wrap"><p class="eyebrow">{esc(t["eyebrow"])}</p>'
         f'<h1 style="font-size:clamp(34px,5.5vw,60px)">{esc(t["h1"])}</h1><p class="lede" style="margin-top:18px">{esc(t["lede"])}</p></div></section>\n'
@@ -121,7 +124,7 @@ def build(lang):
         f'<div id="it-res" hidden></div>'
         f'</div></section>\n')
     keys = ["req", "bademail", "reg_ok", "st_pass", "st_open", "st_lock", "lock_need", "start", "retake", "cert", "qof", "answered", "submit",
-            "sending", "unanswered", "fail", "r_h", "r_pass", "r_fail", "next", "r_cert", "r_retry", "back", "loading", "e_prereq", "e_reg", "q_s", "lv"]
+            "sending", "unanswered", "fail", "r_h", "r_pass", "r_fail", "next", "r_cert", "r_retry", "back", "loading", "e_prereq", "e_reg", "q_s", "lv", "work", "work_s", "reg_need", "r_work", "r_reg"]
     L = {k: t[k] for k in keys}
     L["lang"] = "Thai" if th else "English"
     L["th"] = th
@@ -134,15 +137,15 @@ function go(el){window.scrollTo({top:el.getBoundingClientRect().top+window.scrol
 function post(a,b){return fetch('/api/itest?a='+a,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(b)}).then(function(r){return r.json().then(function(d){d._s=r.status;return d})})}
 function lvName(l){return T.th?l.th+' · '+l.en:l.en+' · '+l.th}
 try{var sv=JSON.parse(localStorage.getItem('itest-who')||'null');if(sv){['name','phone','email','team','prov'].forEach(function(k){if(sv[k])$('it-'+k).value=sv[k]})}}catch(x){}
-function cards(){var h='';st.levels.forEach(function(l){var c=st.passed[l.n],open=!c&&(l.n===1||st.passed[l.n-1]),cls=c?'pass':open?'':'lock';
-  h+='<div class="itcard '+cls+(want===l.n?' focus':'')+'" id="lv'+l.n+'"><div class="t"><span class="tag">'+esc(T.lv+' '+l.n)+'</span><b>'+esc(lvName(l))+'</b><small>25 '+esc(T.q_s)+' · '+(c?esc(T.st_pass):open?esc(T.st_open):esc(f(T.lock_need,{n:l.n-1})))+'</small></div><div class="act">'
+function cards(){var h='';st.levels.forEach(function(l){var c=st.passed[l.n],open=!c&&(l.n===1||(st.registered&&st.passed[l.n-1])),cls=c?'pass':open?'':'lock',why=(l.n>1&&!st.registered)?T.reg_need:f(T.lock_need,{n:l.n-1});
+  h+='<div class="itcard '+cls+(want===l.n?' focus':'')+'" id="lv'+l.n+'"><div class="t"><span class="tag">'+esc(T.lv+' '+l.n)+'</span><b>'+esc(lvName(l))+'</b><small>25 '+esc(T.q_s)+' · '+(c?esc(T.st_pass):open?esc(T.st_open):esc(why))+'</small>'+(l.n>=(st.workLevel||3)?'<em>'+esc(T.work_s)+'</em>':'')+'</div><div class="act">'
   +(c?'<a class="btn ghost" href="/certificate.html?id='+encodeURIComponent(c)+'">'+esc(T.cert)+'</a><button class="btn ghost" data-go="'+l.n+'" type="button">'+esc(T.retake)+'</button>'
     :open?'<button class="btn" data-go="'+l.n+'" type="button">'+esc(f(T.start,{n:l.n}))+'</button>':'')+'</div></div>'});
- $('it-lv').innerHTML='<p class="fine" style="margin:0">✓ '+esc(T.reg_ok)+(st.regName?' · '+esc(st.regName):'')+'</p>'+h;$('it-lv').hidden=false;
- var tgt=$('lv'+(want||st.next||1));if(tgt)go(tgt)}
+ $('it-lv').innerHTML=(st.registered?'<p class="fine" style="margin:0">✓ '+esc(T.reg_ok)+(st.regName?' · '+esc(st.regName):'')+'</p>':'')+h;$('it-lv').hidden=false;
+ var tgt=$('lv'+(want||st.next||1));if(!st.registered&&want>1)tgt=$('it-nreg');if(tgt)go(tgt)}
 function status(){var b=$('it-check');b.disabled=true;
  return post('status',{phone:who.phone}).then(function(d){b.disabled=false;st=d;$('it-nreg').hidden=!!d.registered;
-  if(!d.registered){$('it-lv').hidden=true;go($('it-nreg'));return}cards()}).catch(function(){b.disabled=false;$('it-req').textContent=T.fail})}
+  cards()}).catch(function(){b.disabled=false;$('it-req').textContent=T.fail})}
 $('it-who').addEventListener('submit',function(e){e.preventDefault();
  who={name:$('it-name').value.trim(),phone:$('it-phone').value.trim(),email:$('it-email').value.trim(),province:$('it-prov').value.trim(),team:$('it-team').value.trim()};
  if(!who.name||!who.email||!who.team||who.phone.replace(/\D/g,'').length<9){$('it-req').textContent=T.req;return}
@@ -168,10 +171,10 @@ $('it-send').addEventListener('click',function(){var miss=ans.filter(function(v)
   try{gtag('event','installer_test_sent',{level:cur,score:r.pct,pass:r.pass})}catch(x){}
   var rows=S.map(function(s){var x=r.sections[s.id];if(!x)return '';return '<tr><td>'+esc(s.id+'. '+s.th+' / '+s.en)+'</td><td style="text-align:right;white-space:nowrap"><b>'+x.correct+' / '+x.total+'</b></td></tr>'}).join('');
   if(r.pass)st.passed[cur]=r.cert;
-  var acts='';if(r.pass){acts+='<a class="btn" href="/certificate.html?id='+encodeURIComponent(r.cert)+'">'+esc(T.cert)+'</a> ';if(cur<5)acts+='<button class="btn ghost" type="button" data-next="'+(cur+1)+'">'+esc(f(T.next,{n:cur+1}))+'</button> '}
+  var acts='';if(r.pass){acts+='<a class="btn" href="/certificate.html?id='+encodeURIComponent(r.cert)+'">'+esc(T.cert)+'</a> ';if(cur<5&&(cur>1||st.registered))acts+='<button class="btn ghost" type="button" data-next="'+(cur+1)+'">'+esc(f(T.next,{n:cur+1}))+'</button> '}
   acts+='<button class="btn ghost" type="button" data-next="0">'+esc(T.back)+'</button>';
   $('it-qs').hidden=true;$('it-bar').hidden=true;document.body.classList.remove('it-on');$('it-res').hidden=false;
-  $('it-res').innerHTML='<div class="itres"><h3 style="margin:0">'+esc(T.r_h+' · '+T.lv+' '+cur+' '+lvName(r.level))+'</h3><div class="big">'+r.score+' / '+r.total+' <span class="'+(r.pass?'ok':'no')+'" style="font-size:24px">('+r.pct+'% · '+esc(r.pass?T.r_pass:T.r_fail)+')</span></div><table>'+rows+'</table><p style="margin-top:12px">'+esc(r.pass?f(T.r_cert,{id:r.cert}):T.r_retry)+'</p><div class="act" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">'+acts+'</div></div>';
+  $('it-res').innerHTML='<div class="itres"><h3 style="margin:0">'+esc(T.r_h+' · '+T.lv+' '+cur+' '+lvName(r.level))+'</h3><div class="big">'+r.score+' / '+r.total+' <span class="'+(r.pass?'ok':'no')+'" style="font-size:24px">('+r.pct+'% · '+esc(r.pass?T.r_pass:T.r_fail)+')</span></div><table>'+rows+'</table><p style="margin-top:12px">'+esc(r.pass?f(T.r_cert,{id:r.cert}):T.r_retry)+'</p>'+(r.pass&&cur>=(st.workLevel||3)?'<p style="color:#15803D;font-weight:700">✓ '+esc(T.r_work)+'</p>':'')+(r.pass&&cur===1&&!st.registered?'<p>'+esc(T.r_reg)+'</p><p><a class="btn" href="'+(T.th?'/th':'')+'/partners.html#register">'+esc(T.reg_need)+'</a></p>':'')+'<div class="act" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">'+acts+'</div></div>';
   go($('it-res'))}).catch(function(){b.disabled=false;b.textContent=T.submit;alert(T.fail)})});
 $('it-res').addEventListener('click',function(e){var b=e.target.closest('[data-next]');if(!b)return;want=+b.getAttribute('data-next');$('it-res').hidden=true;$('it-who').hidden=false;cards()});
 })();

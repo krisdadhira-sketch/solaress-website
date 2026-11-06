@@ -1,8 +1,9 @@
 // Solar ESS installer test (www.solaress.org/installer-test): 5 levels x 25 questions, Thai + English.
 //   Level 1 Solar Enterer · 2 Solar Enthusiast · 3 Solar in Practice · 4 Solar Professional · 5 Solar Expert
-// Rules: Level 1 needs a TSIA membership or Installer Partner registration with the same phone number
-// (store "members", any status except rejected/hidden). Level n needs a pass at level n−1 with that phone.
-// Pass mark 70% (18/25). Each pass issues a certificate anyone can verify at /certificate.html?id=...
+// Rules: Level 1 is open to anyone. Levels 2-5 need a TSIA membership or Installer Partner registration
+// (individual, team or company) with the same phone number (store "members", any status except rejected/hidden),
+// and a pass at level n-1 with that phone. Pass = 100% (25/25); only a pass issues a certificate, verifiable at
+// /certificate.html?id=... Solar ESS accepts installation work from Level 3 (work: true on the certificate).
 // The answer key lives only here (bank.json).
 //
 // Public:
@@ -17,7 +18,8 @@ import { getStore } from "@netlify/blobs";
 import crypto from "node:crypto";
 import bank from "./bank.json" with { type: "json" };
 
-const PASS_PCT = bank.pass_pct || 70;
+const PASS_PCT = bank.pass_pct || 100;   // certificate and next level only at this score
+const WORK_LEVEL = bank.work_level || 3;  // Solar ESS accepts installation work from this level
 const VOCAB_ADMIN_HASH = "162cdaefe4e9558d229a4846cd021775:5c036e020b55e8727a91b98d8e554c7456200d65599147cff4efea07459dc0fd";
 const json = (b, s = 200) => new Response(JSON.stringify(b), { status: s, headers: { "content-type": "application/json", "cache-control": "no-store" } });
 function eq(a, b) { a = Buffer.from(String(a)); b = Buffer.from(String(b)); return a.length === b.length && crypto.timingSafeEqual(a, b); }
@@ -67,10 +69,12 @@ async function passedLevels(s, phone) {
   for (const a of await list(s, "att/")) if (a.phone === phone && a.pass && !passed[a.level]) passed[a.level] = a.cert;
   return passed;
 }
+// Level 1 is open to anyone. Levels 2-5 need a TSIA or installer-partner registration (individual, team or company)
+// with the same phone, and the level below passed (100%).
 async function eligibility(s, phone, level) {
   if (!phone) return { ok: false, reason: "phone" };
   const reg = await registration(phone);
-  if (!reg) return { ok: false, reason: "not-registered" };
+  if (!reg && level > 1) return { ok: false, reason: "not-registered" };
   const passed = await passedLevels(s, phone);
   if (level > 1 && !passed[level - 1]) return { ok: false, reason: "prerequisite", need: level - 1, reg, passed };
   return { ok: true, reg, passed };
@@ -88,10 +92,10 @@ export default async (req) => {
     const phone = normPhone(b.phone);
     if (!phone) return json({ error: "phone" }, 400);
     const reg = await registration(phone);
-    const passed = reg ? await passedLevels(s, phone) : {};
+    const passed = await passedLevels(s, phone);
     let next = 1; while (passed[next] && next < 5) next++;
     if (passed[5]) next = null;
-    return json({ registered: !!reg, regType: reg && reg.type, regName: reg ? reg.name : "", passed, next, levels: LEVELS, pass: PASS_PCT });
+    return json({ registered: !!reg, regType: reg && reg.type, regName: reg ? reg.name : "", passed, next, levels: LEVELS, pass: PASS_PCT, workLevel: WORK_LEVEL });
   }
 
   if (a === "start" && req.method === "POST") {
@@ -129,7 +133,7 @@ export default async (req) => {
       await s.setJSON("cert/" + cert, { id: cert, name, level, pct, score, total, date: created, attempt: id });
     }
     await s.setJSON("att/" + id, { id, created, level, name, phone, email, province: txt(b.province), team,
-      regType: el.reg.type, language: txt(b.language, 20), seconds: Math.max(0, Math.min(36000, parseInt(b.seconds, 10) || 0)),
+      regType: el.reg ? el.reg.type : "", language: txt(b.language, 20), seconds: Math.max(0, Math.min(36000, parseInt(b.seconds, 10) || 0)),
       answers: given, score, total, pct, pass, sections, cert });
     return json({ score, total, pct, pass, passMark: PASS_PCT, sections, cert, level: levelInfo(level) });
   }
@@ -138,7 +142,7 @@ export default async (req) => {
     const c = await s.get("cert/" + cleanId(u.searchParams.get("id")).toUpperCase(), { type: "json" });
     if (!c) return json({ error: "not-found" }, 404);
     const l = levelInfo(c.level);
-    return json({ id: c.id, name: c.name, level: c.level, title_en: l.en, title_th: l.th, pct: c.pct, score: c.score, total: c.total, date: c.date });
+    return json({ id: c.id, name: c.name, level: c.level, title_en: l.en, title_th: l.th, pct: c.pct, score: c.score, total: c.total, date: c.date, work: c.level >= WORK_LEVEL });
   }
 
   if (!isAdmin(req)) return json({ error: "Admin password is not right." }, 401);

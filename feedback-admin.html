@@ -45,6 +45,7 @@ tr.sel td{background:#EEF2FF}#teams tr{cursor:pointer}
 
 
 
+
 <!--adminbridge--><script>(function(){var inHub=false;try{inHub=window.self!==window.top&&window.top.location.pathname.replace(/\.html$/,'')==='/admin'}catch(e){}
 var st=document.createElement('style');
 if(inHub){st.textContent='body>header,header.nav,footer,.fab,.mnav-btn,.share{display:none!important}main{padding-top:14px!important}';}
@@ -70,6 +71,15 @@ document.head.appendChild(st)})();</script><!--/adminbridge-->
     <div class="acts" style="margin-top:8px"><button class="sm ok" data-ps="open">Open for quotes / reopen</button><button class="sm" data-ps="hold" style="border-color:#B45309;color:#B45309">On hold: waiting for customer confirmation</button><button class="sm" data-ps="closed">Close: show as finished (grey)</button><button class="sm no" data-ps="hidden">Hide from the Jobs page</button></div>
     <p class="meta" style="margin-top:8px">Closing greys and blurs the post with a "Job closed" badge and removes it from the application list; the ⚙ Admin icon stays usable. <b>On hold</b> keeps the post readable with an amber "On hold" badge and a note that it is waiting for the customer to confirm; the Apply button and the application-list entry are removed until you open it for quotes. When the job or plant needs maintenance or service, reopen the post here and issue new codes below. Releasing payment closes the post automatically.</p>
   </div>
+  <!--plist--><div class="card" id="plist"><h2>Job posts on the Jobs page</h2>
+    <p class="meta">Every job post on www.solaress.org/job.html. Click <b>✎</b> on a job to change its status: <b>Open for quotes</b>, <b>On hold</b> (waiting for the customer or employer to confirm; installers can read it but cannot apply), <b>Close</b> (shown as finished) or <b>Hide</b>. Changes show on the Jobs page within about a minute.</p>
+    <div class="bar" style="margin:10px 0 0"><select id="pf"><option value="">All statuses</option><option value="open">Open</option><option value="hold">On hold</option><option value="closed">Closed</option><option value="hidden">Hidden</option></select>
+      <input id="pq" placeholder="Search job, province or district" style="padding:7px 10px;border:1.5px solid var(--line);border-radius:10px;min-width:260px"><span class="meta" id="pn"></span></div>
+    <table><thead><tr><th>Job</th><th>Location</th><th>Status</th><th style="width:60px">Edit</th></tr></thead><tbody id="posts"><tr><td colspan="4" class="meta">Loading job posts…</td></tr></tbody></table>
+  </div><!--/plist-->
+  <style>.p-open{background:var(--ok)}.p-hold{background:#B45309}.p-closed{background:#64748B}.p-hidden{background:#0F172A}
+  .pedit{border:1.5px solid var(--line);background:#fff;border-radius:10px;width:36px;height:34px;font-size:16px;cursor:pointer;color:var(--ink)}.pedit:hover,.pedit[aria-expanded=true]{border-color:var(--blue);color:var(--blue)}
+  tr.pe td{background:var(--paper)}</style>
   <div class="card" id="issue"><h2>Issue the job report and customer feedback forms</h2>
     <p class="meta">Creates two one-time codes for this job: one for the installer team (job report) and one for the customer (feedback). Copy each message and send it by LINE.</p>
     <div class="grid f">
@@ -184,12 +194,46 @@ document.head.appendChild(st)})();</script><!--/adminbridge-->
     renderIssued(); renderJobs(); renderTeams();
   }
   var PSL = {open:'Open (active)', hold:'On hold – waiting for customer confirmation (no quotes)', closed:'Closed – shown as finished', hidden:'Hidden from the Jobs page'};
-  function loadPosts(){ return fetch('/api/feedback?a=posts&t=' + Date.now(), {cache:'no-store'}).then(function(r){ return r.json(); }).then(function(d){ POSTS = d.posts || {}; renderPost(); renderJobs(); }).catch(function(){}); }
+  function loadPosts(){ return fetch('/api/feedback?a=posts&t=' + Date.now(), {cache:'no-store'}).then(function(r){ return r.json(); }).then(function(d){ POSTS = d.posts || {}; renderPost(); renderJobs(); renderPostList(); }).catch(function(){}); }
   function pstate(id){ return id && POSTS[id] ? POSTS[id].state : 'open'; }
   function renderPost(){ if (!FORPOST) return; $('postcard').hidden = false;
     $('postinfo').innerHTML = esc(FORJOB) + ' · status: <b>' + PSL[pstate(FORPOST)] + '</b>'; }
-  function setPost(id, state, job){ return post('post', {post:id, state:state, job:job}).then(function(r){ POSTS = r.posts || {}; renderPost(); renderJobs(); }).catch(function(e){ alert(e.message); }); }
-  function load(){ return api('a=list').then(function(j){ data = j; render(); loadPosts(); }); }
+  function setPost(id, state, job){ return post('post', {post:id, state:state, job:job}).then(function(r){ POSTS = r.posts || {}; renderPost(); renderJobs(); renderPostList(); }).catch(function(e){ alert(e.message); }); }
+
+  // ---- every job post, with an edit icon (status: open / hold / closed / hidden)
+  var PL = [], POPEN = null, PSHORT = {open:'Open', hold:'On hold', closed:'Closed', hidden:'Hidden'};
+  function loadPostList(){ fetch('/job.html?t=' + Date.now(), {cache:'no-store'}).then(function(r){ return r.text(); }).then(function(h){
+      var doc = new DOMParser().parseFromString(h, 'text/html');
+      PL = [].map.call(doc.querySelectorAll('article.card.p[id]'), function(a){ var w = a.querySelector('.where span'), h3 = a.querySelector('h3'), go = a.querySelector('.go a[data-job]');
+        return {id: a.id, title: h3 ? h3.textContent.trim() : a.id, job: go ? go.getAttribute('data-job') : (h3 ? h3.textContent.trim() : a.id),
+          where: w ? w.textContent.split('·')[0].trim() : '', done: !!a.querySelector('.go .closed')}; });
+      renderPostList(); }).catch(function(){ $('posts').innerHTML = '<tr><td colspan="4" class="err">Could not load the Jobs page.</td></tr>'; }); }
+  function pst(p){ var st = pstate(p.id); return (st === 'open' && p.done) ? 'closed' : st; }
+  function renderPostList(){ if (!PL.length || !$('posts')) return;
+    var f = $('pf').value, q = $('pq').value.trim().toLowerCase(), n = 0, h = '';
+    PL.forEach(function(p){ var st = pst(p);
+      if (f && st !== f) return; if (q && (p.title + ' ' + p.job + ' ' + p.where).toLowerCase().indexOf(q) < 0) return; n++;
+      var o = POPEN === p.id;
+      h += '<tr><td><b>' + esc(p.title) + '</b><br><span class="meta">' + esc(p.id) + '</span></td><td>' + esc(p.where) + '</td>'
+        + '<td><span class="pill p-' + st + '">' + PSHORT[st] + '</span>' + (POSTS[p.id] && POSTS[p.id].at ? '<br><span class="meta">since ' + day(POSTS[p.id].at) + '</span>' : (p.done && st === 'closed' ? '<br><span class="meta">completed (in page)</span>' : '')) + '</td>'
+        + '<td><button type="button" class="pedit" data-pe="' + esc(p.id) + '" aria-expanded="' + o + '" title="Change status of this job" aria-label="Edit ' + esc(p.title) + '">✎</button></td></tr>';
+      if (o) h += '<tr class="pe"><td colspan="4"><div class="acts">'
+        + '<button class="sm ok" data-pset="open" data-pid="' + esc(p.id) + '">Open for quotes</button>'
+        + '<button class="sm" style="background:#B45309" data-pset="hold" data-pid="' + esc(p.id) + '">On hold: waiting for customer confirmation</button>'
+        + '<button class="sm" style="background:#64748B" data-pset="closed" data-pid="' + esc(p.id) + '">Close: show as finished</button>'
+        + '<button class="sm no" data-pset="hidden" data-pid="' + esc(p.id) + '">Hide from the Jobs page</button>'
+        + '<a class="sm" style="padding:4px 10px;font-size:13px;border:1.5px solid var(--line);border-radius:10px;text-decoration:none;color:var(--ink)" href="?job=' + encodeURIComponent(p.job) + '&post=' + encodeURIComponent(p.id) + '">Issue report &amp; feedback codes →</a>'
+        + '<a class="sm" style="padding:4px 10px;font-size:13px;text-decoration:none" href="/job.html#' + encodeURIComponent(p.id) + '" target="_blank" rel="noopener">View post ↗</a>'
+        + (p.done ? '<span class="meta">This job is marked completed in the page itself; "Open for quotes" only removes the admin status.</span>' : '')
+        + '</div></td></tr>'; });
+    $('posts').innerHTML = h || '<tr><td colspan="4" class="meta">No job post matches.</td></tr>';
+    $('pn').textContent = n + ' of ' + PL.length + ' posts'; }
+  document.addEventListener('click', function(e){ var t = e.target.closest('[data-pe],[data-pset]'); if (!t || !$('plist').contains(t)) return;
+    if (t.hasAttribute('data-pe')) { var id = t.getAttribute('data-pe'); POPEN = POPEN === id ? null : id; return renderPostList(); }
+    var pid = t.getAttribute('data-pid'), p = PL.filter(function(x){ return x.id === pid; })[0];
+    t.disabled = true; setPost(pid, t.getAttribute('data-pset'), p ? p.job : ''); });
+  ['pf','pq'].forEach(function(i){ $(i).addEventListener('input', renderPostList); });
+  function load(){ return api('a=list').then(function(j){ data = j; render(); loadPosts(); if (!PL.length) loadPostList(); }); }
   function fillLists(){
     fetch('/job.html').then(function(r){ return r.text(); }).then(function(h){
       var doc = new DOMParser().parseFromString(h, 'text/html'), seen = {};
@@ -209,7 +253,7 @@ document.head.appendChild(st)})();</script><!--/adminbridge-->
   function signin(){
     PW = ($('pw').value || PW).trim();
     api('a=list').then(function(j){ try { sessionStorage.setItem('members-admin-pw', PW); } catch(e) {}
-      $('login').hidden = true; $('app').hidden = false; data = j; render(); fillLists(); loadPosts();
+      $('login').hidden = true; $('app').hidden = false; data = j; render(); fillLists(); loadPosts(); loadPostList();
       if (FORJOB) { $('i-job').value = FORJOB; $('issue').classList.add('hi'); $('jq').value = FORJOB; renderJobs(); $('i-team').focus(); }
     }).catch(function(e){ $('lerr').textContent = e.message; });
   }

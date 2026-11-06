@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Add "Solar Test" (Level 1–5 installer test) and the vocabulary test to the end of the Solar ESS dropdown
+"""Add "Solar Test" (Level 1–5 installer test) to the end of the Solar ESS dropdown
 (<span class="dd end">) on every page, replacing the old standalone vocabulary link.
 Idempotent (markers <!--tmenu-->...<!--/tmenu-->). Run from the repo root:  python3 tools/test_menu.py"""
 import re
@@ -15,11 +15,11 @@ VOC = re.compile(r'<a href="/vocabulary\.html">(?:Solar ESS Test|แบบทด
 
 
 def menu(lang):
-    """Items appended to the Solar ESS dropdown: Solar Test, its 5 levels (indented), vocabulary test."""
+    """Items appended to the Solar ESS dropdown: Solar Test and its 5 levels (indented). The vocabulary test is not in the menu (Nov 2026); share www.solaress.org/vocabulary.html directly."""
     t = L[lang]
     items = "".join(f'<a href="{t["page"]}?level={i}" style="padding-left:30px;font-size:.92em">{t["lv"]} {i} · {(th if lang == "th" else en)}</a>' for i, (en, th) in enumerate(LV, 1))
     return (f'<!--tmenu--><a href="{t["page"]}" style="border-top:1px solid rgba(255,255,255,.15)">{t["top"]} ▸</a>{items}'
-            f'<a href="/vocabulary.html">{t["voc"]}</a><!--/tmenu-->')
+            f'<!--/tmenu-->')
 
 
 n = 0

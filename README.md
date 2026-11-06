@@ -4,7 +4,7 @@ Static site for www.solaress.org. `index.html` is the home page; `thanks.html` i
 
 ## Vocabulary tests (/vocabulary)
 
-100 English synonym tests x 20 questions (test 1 easiest, test 100 hardest).
+100 English synonym tests x 20 questions (test 1 easiest, test 100 hardest), plus 10 solar electrical vocabulary tests (S1–S10, stored as tests 101–110): terms in `tools/vocab/solar_terms.py`, build with `python3 tools/vocab/build_solar.py`. Direct link: www.solaress.org/vocabulary.html?track=solar (the tests are no longer in the menu).
 - Pages: `vocabulary.html` (students: register, log in, take tests, see scores) and `vocab-admin.html` (teacher dashboard, noindex). Both are built from `tools/vocab/*.html` with `python3 tools/vocab_page.py`.
 - Backend: `netlify/functions/vocab/vocab.mjs` at `/api/vocab`. Accounts, attempts and scores are stored in Netlify Blobs (store `vocab`). The answer key is `netlify/functions/vocab/bank.json` and is only sent to students after they submit.
 - Email: every finished test is also posted to the Netlify form `vocab-results`. Add a form notification for that form in Netlify (Forms > Form notifications > Email) to receive results by email.

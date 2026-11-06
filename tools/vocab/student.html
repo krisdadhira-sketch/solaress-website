@@ -26,6 +26,13 @@
 .vgrid b{font-size:18px;font-weight:800}.vgrid span{font-family:var(--mono);font-size:11px;color:var(--mute)}
 .vgrid .done{background:var(--sky);border-color:#b8c8f5}
 .vgrid .pass{background:#e3f6ea;border-color:#9bd3ae}
+.vsolar{margin-top:36px;border:1.5px solid var(--blue);background:var(--white);padding:22px 20px 20px}
+.vsolar .vgrid{grid-template-columns:repeat(5,minmax(0,1fr))}
+.vsolar .vgrid button{min-height:86px;padding:10px 6px}
+.vsolar .vgrid small{font-size:12px;line-height:1.25;color:var(--ink)}
+.vqlist.wide .vopts{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:700px){.vqlist.wide .vopts{grid-template-columns:1fr}}
+.vqlist.wide .vopts label{font-size:16px}
 .vgrid .next{border-color:var(--hot);box-shadow:inset 0 0 0 1px var(--hot)}
 .vlegend{display:flex;gap:18px;flex-wrap:wrap;margin-top:20px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
 .vlegend i{display:inline-block;width:12px;height:12px;border:1.5px solid var(--line);vertical-align:-1px;margin-right:6px}
@@ -64,7 +71,7 @@
 <div><p class="eyebrow">English vocabulary · คำศัพท์ภาษาอังกฤษ</p>
 <h1 style="font-size:clamp(36px,6vw,64px)">100 synonym<br>tests.</h1>
 <p class="lede" style="margin-top:18px">Twenty questions per test. Pick the word that means the same as the word shown. Test 1 starts with everyday words; test 100 ends with words most native speakers find hard.</p>
-<ul class="steps"><li>10 levels · 10 tests each · 2,000 words</li><li>Your score is saved after every test</li><li>Retake any test to beat your best</li></ul></div>
+<ul class="steps"><li>10 levels · 10 tests each · 2,000 words</li><li>Your score is saved after every test</li><li>Retake any test to beat your best</li><li>New: 10 solar electrical vocabulary tests · คำศัพท์ไฟฟ้าโซลาร์</li></ul></div>
 <div>
 <div class="vtabs" role="tablist"><button type="button" role="tab" id="t-login" aria-selected="true">Log in</button><button type="button" role="tab" id="t-reg" aria-selected="false">New student</button></div>
 <form class="vform" id="f-login" novalidate>
@@ -97,7 +104,7 @@
 <!-- 3. a test -->
 <section id="v-test" class="band light" style="padding-top:40px" hidden><div class="wrap">
 <p class="eyebrow" id="q-eyebrow">Test</p><h2 id="q-title" style="font-size:clamp(28px,4vw,44px)">Test</h2>
-<p class="lede" style="margin-top:10px;opacity:1">Choose the word closest in meaning to the word in bold.</p>
+<p class="lede" id="q-hint" style="margin-top:10px;opacity:1">Choose the word closest in meaning to the word in bold.</p>
 <div class="vprog"><div class="track"><div class="fill" id="q-fill"></div></div><span id="q-count">0 / 20 answered</span></div>
 <form id="q-form" novalidate><div class="vqlist" id="q-list"></div>
 <div class="vactions"><button class="btn" type="submit" id="q-send">Submit answers</button><button class="btn dark-ghost" type="button" id="q-back">Back to tests</button></div>
@@ -117,7 +124,10 @@
 
 <script>
 (function(){
-var API='/api/vocab',TK='vocabToken',LV=['Starter','Elementary','Pre-intermediate','Intermediate','Upper-intermediate','Advanced','Proficient','Expert','Scholar','Master'];
+var API='/api/vocab',TK='vocabToken',LV=['Starter','Elementary','Pre-intermediate','Intermediate','Upper-intermediate','Advanced','Proficient','Expert','Scholar','Master','Solar Electrical'];
+var ST=[['Electricity basics','พื้นฐานไฟฟ้า'],['Solar PV basics','พื้นฐานโซลาร์เซลล์'],['Cables & wiring','สายไฟและการเดินสาย'],['Protection devices','อุปกรณ์ป้องกัน'],['Panel datasheet','ดาต้าชีทแผงโซลาร์'],['Inverters','อินเวอร์เตอร์'],['Batteries & storage','แบตเตอรี่และระบบกักเก็บพลังงาน'],['Design & performance','การออกแบบและประสิทธิภาพ'],['Mounting & structure','โครงสร้างและการยึดติดตั้ง'],['Testing, grid & commissioning','การทดสอบ สายส่ง และส่งมอบงาน']];
+function isS(n){return n>100}
+function tName(n){return isS(n)?'Solar Electrical '+(n-100)+' of 10 · '+ST[n-101][0]:'Test '+n+' of 100'}
 var $=function(id){return document.getElementById(id)};
 var token=null;try{token=localStorage.getItem(TK)}catch(e){}
 var state={tests:[],user:null,cur:null,started:0};
@@ -139,7 +149,7 @@ $('f-login').onsubmit=async function(e){e.preventDefault();var f=this;msg(f,'Log
 $('f-reg').onsubmit=async function(e){e.preventDefault();var f=this;msg(f,'Creating your account…');
  try{var d=await api('register',{body:{name:$('r-name').value,email:$('r-email').value,school:$('r-school').value,password:$('r-pw').value}});setTok(d.token);msg(f,'');await home()}catch(x){msg(f,x.message,true)}};
 $('v-out').onclick=logout;
-function nextTest(){var t=state.tests.find(function(t){return !(t.best>=16)});return t?t.n:100}
+function nextTest(){var t=state.tests.find(function(t){return t.n<=100&&!(t.best>=16)});return t?t.n:100}
 async function home(){
  var d=await api('tests');state.tests=d.tests;state.user=d.user;
  $('v-hello').textContent='Hello, '+d.user.name;
@@ -147,17 +157,22 @@ async function home(){
  $('s-done').textContent=taken.length;$('s-pass').textContent=pass.length;
  $('s-avg').textContent=taken.length?(taken.reduce(function(a,t){return a+t.best},0)/taken.length).toFixed(1)+'/20':'–';
  var nx=nextTest();$('s-level').textContent=Math.ceil(nx/10);
- var h='';for(var L=1;L<=10;L++){h+='<div class="vlevel"><h3>Level '+L+' <span style="font-weight:500">'+LV[L-1]+'</span><small>Tests '+((L-1)*10+1)+'–'+(L*10)+'</small></h3><div class="vgrid">';
+ var h='<div class="vsolar" id="v-solar"><h3 style="margin:0">Solar electrical vocabulary <span style="font-weight:500;font-family:var(--thai)">คำศัพท์ไฟฟ้าโซลาร์</span></h3><p style="margin:8px 0 0;font-size:15px;color:var(--mute)">10 tests · 20 terms each, from basic electricity to testing and commissioning. Pick the meaning of each term.</p><div class="vgrid">';
+ for(var k=101;k<=110;k++){var st=d.tests[k-1];if(!st)continue;var sc=st.best>=16?'pass':st.attempts?'done':'';
+  h+='<button type="button" class="'+sc+'" data-n="'+k+'" aria-label="Solar test '+(k-100)+', '+ST[k-101][0]+(st.attempts?', best '+st.best+' of 20':', not taken')+'"><b>S'+(k-100)+'</b><small>'+esc(ST[k-101][0])+'</small><span>'+(st.attempts?st.best+'/20':'—')+'</span></button>'}
+ h+='</div></div>';
+ for(var L=1;L<=10;L++){h+='<div class="vlevel"><h3>Level '+L+' <span style="font-weight:500">'+LV[L-1]+'</span><small>Tests '+((L-1)*10+1)+'–'+(L*10)+'</small></h3><div class="vgrid">';
   for(var n=(L-1)*10+1;n<=L*10;n++){var t=d.tests[n-1],c=t.best>=16?'pass':t.attempts?'done':'';if(n===nx)c+=' next';
    h+='<button type="button" class="'+c+'" data-n="'+n+'" aria-label="Test '+n+(t.attempts?', best '+t.best+' of 20':', not taken')+'"><b>'+n+'</b><span>'+(t.attempts?t.best+'/20':'—')+'</span></button>'}
   h+='</div></div>'}
- $('v-levels').innerHTML=h;show('v-home')}
+ $('v-levels').innerHTML=h;show('v-home');
+ if(/[?&]track=solar/.test(location.search)||location.hash==='#solar'){var sv=$('v-solar');if(sv)sv.scrollIntoView({block:'start'})}}
 $('v-levels').onclick=function(e){var b=e.target.closest('button[data-n]');if(b)openTest(+b.dataset.n)};
 $('v-next').onclick=function(){openTest(nextTest())};
 async function openTest(n){
  try{var d=await api('test',{},'&n='+n)}catch(x){alertMsg(x.message);return}
  state.cur=d;state.started=Date.now();
- $('q-eyebrow').textContent='Level '+d.level+' · '+d.levelName;$('q-title').textContent='Test '+n+' of 100';
+ $('q-eyebrow').textContent='Level '+d.level+' · '+d.levelName;$('q-title').textContent=tName(n);$('q-hint').textContent=isS(n)?'Choose the correct meaning of the term in bold.':'Choose the word closest in meaning to the word in bold.';$('q-list').className='vqlist'+(isS(n)?' wide':'');
  $('q-list').innerHTML=d.questions.map(function(q){return '<fieldset class="vqi"><legend><small>'+(q.i+1)+'</small><b>'+esc(q.word)+'</b><em>'+esc(q.pos)+'</em></legend><div class="vopts">'+
   q.options.map(function(o){return '<label><input type="radio" name="q'+q.i+'" value="'+esc(o)+'">'+esc(o)+'</label>'}).join('')+'</div></fieldset>'}).join('');
  $('q-msg').textContent='';$('q-send').disabled=false;count();show('v-test')}
@@ -177,13 +192,13 @@ $('q-form').onsubmit=async function(e){e.preventDefault();var a=answers(),miss=a
 function mmss(s){return Math.floor(s/60)+' min '+(s%60)+' s'}
 function sendMail(r){var u=r.user,pct=Math.round(r.score/r.total*100);
  var lines=r.review.map(function(x,i){return (i+1)+'. '+x.word+' → '+(x.chosen||'(none)')+(x.correct?'  ✓':'  ✗ correct: '+x.answer)}).join('\n');
- var f={'form-name':'vocab-results',subject:'Vocabulary test '+r.n+': '+u.name+' scored '+r.score+'/'+r.total,student:u.name,email:u.email,school:u.school||'-',test:'Test '+r.n+' of 100',level:'Level '+r.level+' · '+LV[r.level-1],score:r.score+' / '+r.total,percent:pct+'%',time:mmss(r.seconds),attempt:String(r.attempts),best:r.best+' / 20',submitted:new Date(r.ts).toLocaleString('en-GB',{timeZone:'Asia/Bangkok'})+' (Bangkok)',answers:lines};
+ var f={'form-name':'vocab-results',subject:(isS(r.n)?'Solar vocabulary S'+(r.n-100):'Vocabulary test '+r.n)+': '+u.name+' scored '+r.score+'/'+r.total,student:u.name,email:u.email,school:u.school||'-',test:tName(r.n),level:'Level '+r.level+' · '+LV[r.level-1],score:r.score+' / '+r.total,percent:pct+'%',time:mmss(r.seconds),attempt:String(r.attempts),best:r.best+' / 20',submitted:new Date(r.ts).toLocaleString('en-GB',{timeZone:'Asia/Bangkok'})+' (Bangkok)',answers:lines};
  fetch('/',{method:'POST',headers:{'content-type':'application/x-www-form-urlencoded'},body:new URLSearchParams(f).toString()}).catch(function(){})}
 function result(r){
- $('r-eyebrow').textContent='Test '+r.n+' · Level '+r.level+' · '+LV[r.level-1];$('r-score').textContent=r.score;
+ $('r-eyebrow').textContent=isS(r.n)?tName(r.n):'Test '+r.n+' · Level '+r.level+' · '+LV[r.level-1];$('r-list').className='vqlist'+(isS(r.n)?' wide':'');$('r-score').textContent=r.score;
  var note=r.score>=18?'Excellent work.':r.score>=16?'Passed. Well done.':r.score>=12?'Good effort. Score 16 or more to pass.':'Keep practising. Review the answers below, then try again.';
  $('r-note').textContent=note+' Time: '+mmss(r.seconds)+'. Best score on this test: '+r.best+'/20 (attempt '+r.attempts+').';
- $('r-next').hidden=r.n>=100;$('r-next').onclick=function(){openTest(r.n+1)};$('r-again').onclick=function(){openTest(r.n)};
+ $('r-next').hidden=r.n===100||r.n>=110;$('r-next').onclick=function(){openTest(r.n+1)};$('r-again').onclick=function(){openTest(r.n)};
  $('r-list').innerHTML=r.review.map(function(x,i){return '<div class="vqi '+(x.correct?'r-ok':'r-bad')+'"><legend style="float:none"><small>'+(i+1)+'</small><b>'+esc(x.word)+'</b><em>'+esc(x.pos)+'</em></legend><div class="vopts">'+
   '<label class="is-ans">✓ '+esc(x.answer)+'</label>'+(x.correct?'':'<label class="is-wrong">'+esc(x.chosen||'no answer')+'</label>')+'</div></div>'}).join('');
  show('v-res')}

@@ -58,7 +58,7 @@ function when(ts){return ts?new Date(ts).toLocaleString('en-GB',{timeZone:'Asia/
 async function get(a,q){var r=await fetch(API+'?a='+a+(q||''),{headers:{'x-admin-password':pw}});var d={};try{d=await r.json()}catch(e){}if(!r.ok)throw new Error(d.error||'Could not load results.');return d}
 function sum(s){var ns=Object.keys(s.tests).map(Number),taken=ns.length,best=ns.map(function(n){return s.tests[n].best}),last=0,att=0;
  ns.forEach(function(n){s.tests[n].attempts.forEach(function(a){att++;if(a.ts>last)last=a.ts})});
- return{taken:taken,attempts:att,passed:best.filter(function(b){return b>=16}).length,avg:taken?best.reduce(function(a,b){return a+b},0)/taken:-1,highest:taken?Math.max.apply(null,ns):0,lastTs:last}}
+ return{taken:taken,attempts:att,passed:best.filter(function(b){return b>=16}).length,avg:taken?best.reduce(function(a,b){return a+b},0)/taken:-1,highest:Math.max.apply(null,[0].concat(ns.filter(function(n){return n<=100}))),lastTs:last}}
 async function load(){data=await get('admin');data.students.forEach(function(s){Object.assign(s,sum(s))});draw();$('a-login').hidden=true;$('a-main').hidden=false}
 $('a-form').onsubmit=async function(e){e.preventDefault();var m=this.querySelector('.vmsg');pw=$('a-pw').value;m.textContent='Opening…';m.className='vmsg';
  try{await load();try{sessionStorage.setItem('vocabAdmin',pw)}catch(x){}m.textContent=''}catch(x){m.textContent=x.message;m.className='vmsg err'}};
@@ -66,17 +66,18 @@ $('a-out').onclick=function(){pw='';try{sessionStorage.removeItem('vocabAdmin')}
 $('a-ref').onclick=function(){load().catch(function(x){alert(x.message)})};
 $('a-q').oninput=draw;
 document.querySelector('#a-tbl thead').onclick=function(e){var th=e.target.closest('th');if(!th)return;var k=th.dataset.k;sortD=sortK===k?-sortD:(k==='name'||k==='school'?1:-1);sortK=k;draw()};
-function draw(){var S=data.students,att=0,tot=0,cnt=0,wk=Date.now()-7*864e5,act=0,per=[];for(var i=0;i<100;i++)per.push([]);
+function draw(){var S=data.students,att=0,tot=0,cnt=0,wk=Date.now()-7*864e5,act=0,per=[];for(var i=0;i<110;i++)per.push([]);
  S.forEach(function(s){att+=s.attempts;if(s.lastTs>wk)act++;Object.keys(s.tests).forEach(function(n){s.tests[n].attempts.forEach(function(a){tot+=a.score;cnt++});per[n-1].push(s.tests[n].best)})});
  $('k-st').textContent=S.length;$('k-at').textContent=att;$('k-avg').textContent=cnt?(tot/cnt).toFixed(1)+'/20':'–';$('k-act').textContent=act;
- $('a-heat').innerHTML=per.map(function(p,i){if(!p.length)return '<div title="Test '+(i+1)+': not taken" style="background:#eef1f6;color:#9aa6c2">'+(i+1)+'</div>';
+ $('a-heat').innerHTML=per.map(function(p,i){if(!p.length)return '<div title="Test '+lab(i+1)+': not taken" style="background:#eef1f6;color:#9aa6c2">'+lab(i+1)+'</div>';
   var av=p.reduce(function(a,b){return a+b},0)/p.length,t=av/20,bg='hsl(145,'+(35+30*t)+'%,'+(92-50*t)+'%)';
-  return '<div title="Test '+(i+1)+': '+p.length+' student(s), average best '+av.toFixed(1)+'/20" style="background:'+bg+';color:'+(t>.6?'#fff':'#0A0E2E')+'">'+(i+1)+'</div>'}).join('');
+  return '<div title="Test '+lab(i+1)+': '+p.length+' student(s), average best '+av.toFixed(1)+'/20" style="background:'+bg+';color:'+(t>.6?'#fff':'#0A0E2E')+'">'+lab(i+1)+'</div>'}).join('');
  var q=$('a-q').value.trim().toLowerCase(),rows=S.filter(function(s){return !q||(s.name+' '+s.email+' '+s.school).toLowerCase().indexOf(q)>=0});
  rows.sort(function(a,b){var x=a[sortK],y=b[sortK];return (typeof x==='string'?x.localeCompare(y):x-y)*sortD});
  var h=rows.map(function(s){var o=open===s.email;return '<tr class="st" data-e="'+esc(s.email)+'"><td><b>'+esc(s.name)+'</b><br><span style="font-size:13px;color:var(--mute)">'+esc(s.email)+'</span></td><td>'+esc(s.school||'–')+'</td><td class="num">'+s.taken+'</td><td class="num">'+s.passed+'</td><td class="num">'+(s.avg<0?'–':s.avg.toFixed(1))+'</td><td class="num">'+(s.highest||'–')+'</td><td class="num">'+when(s.lastTs)+'</td></tr>'+(o?'<tr><td colspan="7">'+detail(s)+'</td></tr>':'')}).join('');
  document.querySelector('#a-tbl tbody').innerHTML=h||'<tr><td colspan="7" style="color:var(--mute)">No students yet. Share www.solaress.org/vocabulary with your students.</td></tr>'}
-function detail(s){var b='';for(var n=1;n<=100;n++){var t=s.tests[n];b+='<button type="button" data-n="'+n+'" '+(t?'':'disabled')+' title="Test '+n+(t?': best '+t.best+'/20, '+t.attempts.length+' attempt(s)':'')+'" style="'+(t?(t.best>=16?'background:#e3f6ea':'background:#DCE6FD'):'')+'">'+n+(t?'<br><b>'+t.best+'</b>':'')+'</button>'}
+function lab(n){return n>100?'S'+(n-100):String(n)}
+function detail(s){var b='';for(var n=1;n<=110;n++){var t=s.tests[n];b+='<button type="button" data-n="'+n+'" '+(t?'':'disabled')+' title="Test '+lab(n)+(t?': best '+t.best+'/20, '+t.attempts.length+' attempt(s)':'')+'" style="'+(t?(t.best>=16?'background:#e3f6ea':'background:#DCE6FD'):'')+'">'+lab(n)+(t?'<br><b>'+t.best+'</b>':'')+'</button>'}
  return '<div class="detail" data-e="'+esc(s.email)+'"><b>'+esc(s.name)+'</b> · joined '+when(Date.parse(s.created))+' · '+s.attempts+' attempts<div class="tests">'+b+'</div><div class="attempts"></div>'+
  '<p style="margin-top:14px;font-size:13px"><a href="#" class="reset">Set a new password for this student</a></p></div>'}
 document.querySelector('#a-tbl tbody').onclick=async function(e){
@@ -85,11 +86,11 @@ document.querySelector('#a-tbl tbody').onclick=async function(e){
  if(e.target.closest('.reset')){e.preventDefault();var np=prompt('New password for '+s.name+' (at least 6 characters):');if(!np)return;
   try{var r=await fetch(API+'?a=reset',{method:'POST',headers:{'x-admin-password':pw,'content-type':'application/json'},body:JSON.stringify({email:s.email,password:np})});var j=await r.json();alert(r.ok?'Password changed. Tell the student their new password.':j.error)}catch(x){alert('Could not change the password.')}return}
  var b=e.target.closest('button[data-n]');if(!b)return;var n=+b.dataset.n,t=s.tests[n],box=d.querySelector('.attempts');
- box.innerHTML='<b>Test '+n+'</b> — '+t.attempts.map(function(a,i){return '<a href="#" data-ts="'+a.ts+'">#'+(i+1)+': '+a.score+'/20 · '+Math.round(a.seconds/60)+' min · '+when(a.ts)+'</a>'}).join(' &nbsp;|&nbsp; ')+'<div class="ans"></div>';
+ box.innerHTML='<b>Test '+lab(n)+'</b> — '+t.attempts.map(function(a,i){return '<a href="#" data-ts="'+a.ts+'">#'+(i+1)+': '+a.score+'/20 · '+Math.round(a.seconds/60)+' min · '+when(a.ts)+'</a>'}).join(' &nbsp;|&nbsp; ')+'<div class="ans"></div>';
  box.onclick=async function(ev){var a=ev.target.closest('a[data-ts]');if(!a)return;ev.preventDefault();var out=box.querySelector('.ans');out.textContent='Loading…';
   try{var r=await get('attempt','&email='+encodeURIComponent(s.email)+'&n='+n+'&ts='+a.dataset.ts);out.innerHTML='<pre>'+esc(r.review.map(function(x,i){return (i+1)+'. '+x.word+' → '+(x.chosen||'(none)')+(x.correct?'  ✓':'  ✗  correct: '+x.answer)}).join('\n'))+'</pre>'}catch(x){out.textContent=x.message}}};
 $('a-csv').onclick=function(){var L=[['Name','Email','School','Test','Level','Attempt','Score','Out of','Minutes','Date (Bangkok)']];
- data.students.forEach(function(s){Object.keys(s.tests).map(Number).sort(function(a,b){return a-b}).forEach(function(n){s.tests[n].attempts.forEach(function(a,i){L.push([s.name,s.email,s.school,n,Math.ceil(n/10),i+1,a.score,20,(a.seconds/60).toFixed(1),when(a.ts)])})})});
+ data.students.forEach(function(s){Object.keys(s.tests).map(Number).sort(function(a,b){return a-b}).forEach(function(n){s.tests[n].attempts.forEach(function(a,i){L.push([s.name,s.email,s.school,n>100?'Solar S'+(n-100):n,n>100?'Solar Electrical':Math.ceil(n/10),i+1,a.score,20,(a.seconds/60).toFixed(1),when(a.ts)])})})});
  var csv='﻿'+L.map(function(r){return r.map(function(c){c=String(c);return /[",\n]/.test(c)?'"'+c.replace(/"/g,'""')+'"':c}).join(',')}).join('\r\n');
  var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));var d=new Date();a.download='Vocabulary_Results_'+d.getFullYear()+String(d.getMonth()+1).padStart(2,'0')+String(d.getDate()).padStart(2,'0')+'.csv';a.click()};
 if(pw)load().catch(function(){pw=''});

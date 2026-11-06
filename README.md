@@ -42,7 +42,7 @@ Page text: `tools/feedback_page.py`, then `tools/analytics_tag.py`. Data: Blobs 
 
 - Every Installer Partner is a TSIA member. TSIA has two kinds of member: Installer Partner (individual, team or company; form `installer-partner` on /partners.html, which now says it is a TSIA application and carries `joins-tsia=yes`) and company member (form `tsia-membership` on /team.html#join-tsia).
 - `/api/members?a=public&type=tsia` lists approved company members and approved partners (`category`), shown by `tsia.js` on the team page.
-- `python3 tools/tsia_partner.py` (run after `tools/job_links.py` and `tools/partners_page.py`): "Two ways to join TSIA" box on the team pages, Solar Test button texts, and the Solar ESS dropdown order (TSIA, then Installer Partners (TSIA) indented).
+- `python3 tools/tsia_partner.py` (run after `tools/job_links.py` and `tools/partners_page.py`): "Two ways to join TSIA" box on the team pages, Solar Test button texts, the single "TSIA & Partners" menu item (no separate partners link), the "Who is TSIA, and who can be a partner?" block (domestic / global partners) and the partner-type select on the TSIA form.
 
 ## Admin hub (/admin)
 

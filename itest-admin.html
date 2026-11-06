@@ -29,14 +29,16 @@ th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute
 <div class="login" id="login"><h2 style="margin-top:0">Admin sign-in</h2><p class="meta">Same password as the job admin and applications pages.</p>
 <input type="password" id="pw" placeholder="Admin password" autocomplete="current-password"><button id="go">Sign in</button> <span id="lerr" class="err"></span></div>
 <div id="app" hidden>
-  <div class="bar"><button class="ghost" id="reload">Refresh</button><button class="ghost" id="csv">Download results (CSV)</button><input class="q" id="q" placeholder="Search name, phone, province or team" style="max-width:320px;margin:0"><span class="meta" id="count"></span></div>
-  <div class="card"><table><thead><tr><th>Date</th><th>Candidate</th><th>Province / team</th><th>Score</th><th id="sh"></th><th>Time</th><th></th></tr></thead><tbody id="rows"></tbody></table></div>
+  <div class="bar"><button class="ghost" id="reload">Refresh</button><button class="ghost" id="csv">Download results (CSV)</button><select id="lvf" style="font:inherit;padding:8px 10px;border-radius:10px;border:1.5px solid var(--line)"><option value="">All levels</option></select><input class="q" id="q" placeholder="Search name, phone, province, team or certificate" style="max-width:320px;margin:0"><span class="meta" id="count"></span></div>
+  <div class="card"><table><thead><tr><th>Date</th><th>Level</th><th>Candidate</th><th>Province / team</th><th>Score</th><th id="sh"></th><th>Time</th><th></th></tr></thead><tbody id="rows"></tbody></table></div>
   <div class="card" id="detail" hidden></div>
 </div>
 </main>
 <script>
 (function(){
-  var PW = '', D = {attempts:[], sections:[]};
+  var PW = '', D = {attempts:[], sections:[], levels:[]};
+  function lvName(n){ var l = (D.levels||[]).filter(function(x){ return x.n === n; })[0]; return l ? l.en : ''; }
+  function fillLv(){ var f = $('lvf'), v = f.value; f.innerHTML = '<option value="">All levels</option>' + (D.levels||[]).map(function(l){ return '<option value="'+l.n+'">Level '+l.n+' · '+esc(l.en)+'</option>'; }).join(''); f.value = v; }
   try { PW = sessionStorage.getItem('members-admin-pw') || ''; } catch(e) {}
   var $ = function(id){ return document.getElementById(id); };
   function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
@@ -45,27 +47,28 @@ th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute
   function mins(s){ return s ? Math.round(s / 60) + ' min' : ''; }
   function render(){
     var q = $('q').value.trim().toLowerCase();
-    var list = D.attempts.filter(function(a){ return !q || [a.name, a.phone, a.province, a.team, a.email].join(' ').toLowerCase().indexOf(q) >= 0; });
-    $('count').textContent = list.length + ' attempts · pass mark ' + D.pass + '%';
+    var lv = +$('lvf').value || 0;
+    var list = D.attempts.filter(function(a){ return (!lv || a.level === lv) && (!q || [a.name, a.phone, a.province, a.team, a.email, a.cert].join(' ').toLowerCase().indexOf(q) >= 0); });
+    $('count').textContent = list.length + ' attempts · ' + list.filter(function(a){ return a.pass; }).length + ' certificates · pass mark ' + D.pass + '%';
     $('sh').textContent = D.sections.map(function(s){ return s.id; }).join(' · ');
     $('rows').innerHTML = list.length ? list.map(function(a){
-      return '<tr><td>'+esc(new Date(a.created).toLocaleString('en-GB'))+'</td><td><b>'+esc(a.name)+'</b><br><span class="meta">'+esc(a.phone)+(a.email ? ' · '+esc(a.email) : '')+'</span></td><td>'+esc(a.province)+'<br><span class="meta">'+esc(a.team)+'</span></td>'
-        + '<td><span class="sc">'+a.score+'/'+a.total+'</span> ('+a.pct+'%)<br><span class="pill '+(a.pass?'p':'f')+'">'+(a.pass?'Passed':'Not passed')+'</span></td>'
-        + '<td>'+D.sections.map(function(s){ var x = a.sections[s.id] || {}; return s.id+' '+x.correct+'/'+x.total; }).join('<br>')+'</td><td>'+mins(a.seconds)+'</td>'
+      return '<tr><td>'+esc(new Date(a.created).toLocaleString('en-GB'))+'</td><td><b>L'+(a.level||'')+'</b><br><span class="meta">'+esc(lvName(a.level))+'</span></td><td><b>'+esc(a.name)+'</b><br><span class="meta">'+esc(a.phone)+(a.email ? ' · '+esc(a.email) : '')+'</span></td><td>'+esc(a.province)+'<br><span class="meta">'+esc(a.team)+'</span></td>'
+        + '<td><span class="sc">'+a.score+'/'+a.total+'</span> ('+a.pct+'%)<br><span class="pill '+(a.pass?'p':'f')+'">'+(a.pass?'Passed':'Not passed')+'</span>'+(a.cert ? '<br><a class="meta" target="_blank" href="/certificate.html?id='+encodeURIComponent(a.cert)+'">'+esc(a.cert)+'</a>' : '')+'</td>'
+        + '<td>'+D.sections.filter(function(s){ return a.sections[s.id]; }).map(function(s){ var x = a.sections[s.id]; return s.id+' '+x.correct+'/'+x.total; }).join('<br>')+'</td><td>'+mins(a.seconds)+'</td>'
         + '<td><button class="sm ghost" data-v="'+esc(a.id)+'">Answers</button> <button class="sm ghost" data-d="'+esc(a.id)+'">Delete</button></td></tr>';
-    }).join('') : '<tr><td colspan="7" class="meta" style="text-align:center;padding:30px">No attempts yet. Share www.solaress.org/installer-test.html with installers.</td></tr>';
+    }).join('') : '<tr><td colspan="8" class="meta" style="text-align:center;padding:30px">No attempts yet. Share www.solaress.org/installer-test.html with installers.</td></tr>';
   }
-  function load(){ return api('a=list').then(function(j){ D = j; render(); }); }
+  function load(){ return api('a=list').then(function(j){ D = j; fillLv(); render(); }); }
   function signin(){ PW = ($('pw').value || PW).trim();
-    api('a=list').then(function(j){ try { sessionStorage.setItem('members-admin-pw', PW); } catch(e) {} $('login').hidden = true; $('app').hidden = false; D = j; render(); })
+    api('a=list').then(function(j){ try { sessionStorage.setItem('members-admin-pw', PW); } catch(e) {} $('login').hidden = true; $('app').hidden = false; D = j; fillLv(); render(); })
     .catch(function(e){ $('lerr').textContent = e.message; }); }
   $('go').onclick = signin; $('pw').addEventListener('keydown', function(e){ if (e.key === 'Enter') signin(); });
-  $('reload').onclick = load; $('q').oninput = render;
+  $('reload').onclick = load; $('q').oninput = render; $('lvf').onchange = render;
   $('rows').addEventListener('click', function(e){ var id;
     if ((id = e.target.getAttribute('data-v'))) return api('a=attempt&id=' + encodeURIComponent(id)).then(function(j){
       var w = j.items.filter(function(x){ return !x.correct; }), a = j.attempt;
       $('detail').hidden = false;
-      $('detail').innerHTML = '<h2 style="margin-top:0">'+esc(a.name)+' · '+a.score+'/'+a.total+' ('+a.pct+'%)</h2><p class="meta">'+w.length+' wrong or unanswered</p>'
+      $('detail').innerHTML = '<h2 style="margin-top:0">'+esc(a.name)+' · Level '+a.level+' '+esc(lvName(a.level))+' · '+a.score+'/'+a.total+' ('+a.pct+'%)</h2><p class="meta">'+w.length+' wrong or unanswered</p>'
         + w.map(function(x){ var g = x.given == null ? 'No answer' : (x.options[x.given].th + ' / ' + x.options[x.given].en), c = x.options[x.answer];
           return '<div class="wrong"><b>'+(x.i+1)+' ('+x.sec+'). '+esc(x.th)+'</b><br><small>'+esc(x.en)+'</small><br>Answered: '+esc(g)+'<br>Correct: <b>'+esc(c.th+' / '+c.en)+'</b><br><small>'+esc(x.explain)+'</small></div>'; }).join('');
       $('detail').scrollIntoView({behavior:'smooth'}); });
@@ -73,8 +76,8 @@ th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute
       return api('a=delete', {method:'POST', body: JSON.stringify({id:id})}).then(load); }
   });
   $('csv').onclick = function(){
-    var cols = ['created','name','phone','email','province','team','score','total','pct','pass'].concat(D.sections.map(function(s){ return s.id; })).concat(['minutes']);
-    var rows = [cols.join(',')].concat(D.attempts.map(function(a){ var r = Object.assign({}, a, {minutes: Math.round((a.seconds||0)/60)}); D.sections.forEach(function(s){ r[s.id] = (a.sections[s.id]||{}).correct; });
+    var cols = ['created','level','level_title','name','phone','email','province','team','score','total','pct','pass','certificate'].concat(D.sections.map(function(s){ return s.id; })).concat(['minutes']);
+    var rows = [cols.join(',')].concat(D.attempts.map(function(a){ var r = Object.assign({}, a, {minutes: Math.round((a.seconds||0)/60), level_title: lvName(a.level), certificate: a.cert || ''}); D.sections.forEach(function(s){ var x = a.sections[s.id]; r[s.id] = x ? x.correct + '/' + x.total : ''; });
       return cols.map(function(c){ return '"' + String(r[c] == null ? '' : r[c]).replace(/"/g, '""') + '"'; }).join(','); }));
     var l = document.createElement('a'); l.href = URL.createObjectURL(new Blob(['﻿' + rows.join('\n')], {type:'text/csv'})); l.download = 'solar-ess-installer-test_' + new Date().toISOString().slice(0,10).replace(/-/g,'') + '.csv'; l.click();
   };

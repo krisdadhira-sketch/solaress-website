@@ -1,344 +1,66 @@
 {
+"pass_pct": 70,
 "sections": [
 {
 "id": "A",
 "th": "ไฟฟ้าในระบบโซลาร์: สาย เบรกเกอร์ อินเวอร์เตอร์ แผง อนุกรม/ขนาน",
-"en": "Solar electrical: cables, breakers, inverters, panels, series/parallel",
-"count": 50
+"en": "Solar electrical: cables, breakers, inverters, panels, series/parallel"
 },
 {
 "id": "B",
 "th": "การเดินสายและชนิดสายไฟ",
-"en": "Wiring methods and cable types",
-"count": 20
+"en": "Wiring methods and cable types"
 },
 {
 "id": "C",
 "th": "โครงสร้าง แรงลม และการติดตั้งแผง",
-"en": "Mounting, wind load and panel installation",
-"count": 20
+"en": "Mounting, wind load and panel installation"
 },
 {
 "id": "D",
 "th": "ความต้องการและความพึงพอใจของลูกค้า",
-"en": "Customer needs and satisfaction",
-"count": 10
+"en": "Customer needs and satisfaction"
+}
+],
+"levels": [
+{
+"n": 1,
+"en": "Solar Enterer",
+"th": "ผู้เริ่มต้นเข้าสู่โซลาร์",
+"count": 25
+},
+{
+"n": 2,
+"en": "Solar Enthusiast",
+"th": "ผู้สนใจโซลาร์",
+"count": 25
+},
+{
+"n": 3,
+"en": "Solar in Practice",
+"th": "ผู้ปฏิบัติงานโซลาร์",
+"count": 25
+},
+{
+"n": 4,
+"en": "Solar Professional",
+"th": "มืออาชีพด้านโซลาร์",
+"count": 25
+},
+{
+"n": 5,
+"en": "Solar Expert",
+"th": "ผู้เชี่ยวชาญด้านโซลาร์",
+"count": 25
 }
 ],
 "questions": [
 {
-"sec": "A",
-"th": "ต่อแผงโซลาร์ 10 แผงแบบอนุกรม แผงละ Voc 50 V และ Isc 13 A แรงดันวงจรเปิดของสตริงที่ STC เท่าไร",
-"en": "Ten panels (Voc 50 V, Isc 13 A each) are connected in series. What is the string open-circuit voltage at STC?",
-"options": [
-{
-"th": "50 V",
-"en": "50 V"
-},
-{
-"th": "130 V",
-"en": "130 V"
-},
-{
-"th": "650 V",
-"en": "650 V"
-},
-{
-"th": "500 V",
-"en": "500 V"
-}
-],
-"answer": 3,
-"explain": "Series connection adds voltages: 10 x 50 V = 500 V; current stays 13 A."
-},
-{
-"sec": "A",
-"th": "ต่อแผงแบบอนุกรม ค่าใดเพิ่มขึ้น",
-"en": "When panels are connected in series, which value increases?",
-"options": [
-{
-"th": "ทั้งแรงดันและกระแส",
-"en": "Both voltage and current"
-},
-{
-"th": "ไม่มีค่าใดเพิ่มขึ้น",
-"en": "Neither"
-},
-{
-"th": "แรงดัน (V)",
-"en": "Voltage"
-},
-{
-"th": "กระแส (A)",
-"en": "Current"
-}
-],
-"answer": 2,
-"explain": "In series the voltages add and the current stays the same as one panel."
-},
-{
-"sec": "A",
-"th": "สตริง 2 สตริงต่อขนานกัน สตริงละ Isc 13 A กระแสลัดวงจรรวมเข้าอินเวอร์เตอร์เท่าไร",
-"en": "Two strings (Isc 13 A each) are connected in parallel. What is the total short-circuit current into the inverter?",
-"options": [
-{
-"th": "6.5 A",
-"en": "6.5 A"
-},
-{
-"th": "26 A",
-"en": "26 A"
-},
-{
-"th": "13 A",
-"en": "13 A"
-},
-{
-"th": "52 A",
-"en": "52 A"
-}
-],
-"answer": 1,
-"explain": "Parallel connection adds currents: 2 x 13 A = 26 A."
-},
-{
-"sec": "A",
-"th": "เมื่อ อุณหภูมิเซลล์ลดลง (เช้าที่อากาศเย็น) แรงดัน Voc ของแผงจะเป็นอย่างไร",
-"en": "When cell temperature drops (a cold morning), what happens to the panel's Voc?",
-"options": [
-{
-"th": "ลดลง",
-"en": "It falls"
-},
-{
-"th": "ไม่เปลี่ยน",
-"en": "It does not change"
-},
-{
-"th": "เป็นศูนย์",
-"en": "It becomes zero"
-},
-{
-"th": "สูงขึ้น",
-"en": "It rises"
-}
-],
-"answer": 3,
-"explain": "Voc has a negative temperature coefficient, so it rises when the cells are colder. Size strings for the coldest morning."
-},
-{
-"sec": "A",
-"th": "แผงมี Voc 50 V ค่าสัมประสิทธิ์ Voc −0.25 %/°C อุณหภูมิต่ำสุดที่หน้างาน 5 °C อินเวอร์เตอร์รับแรงดัน DC สูงสุด 550 V ต่อแผงอนุกรมได้มากที่สุดกี่แผง",
-"en": "Panel Voc 50 V, Voc coefficient −0.25 %/°C, lowest site temperature 5 °C, inverter max DC input 550 V. What is the most panels in series?",
-"options": [
-{
-"th": "11",
-"en": "11"
-},
-{
-"th": "9",
-"en": "9"
-},
-{
-"th": "10",
-"en": "10"
-},
-{
-"th": "12",
-"en": "12"
-}
-],
-"answer": 2,
-"explain": "Voc at 5 °C = 50 x (1 + 0.0025 x 20) = 52.5 V. 10 x 52.5 = 525 V (OK); 11 x 52.5 = 577.5 V exceeds 550 V."
-},
-{
-"sec": "A",
-"th": "ทำไมต้องตรวจว่าแรงดัน Vmp ของสตริงยังอยู่ในช่วง MPPT เมื่อแผงร้อนจัด",
-"en": "Why check that the string Vmp stays inside the MPPT range when the panels are very hot?",
-"options": [
-{
-"th": "เพราะแรงดันเพิ่มขึ้นเมื่อร้อน",
-"en": "Voltage rises when hot"
-},
-{
-"th": "เพราะแรงดันลดลงเมื่อร้อน อาจต่ำกว่าช่วง MPPT ทำให้ผลิตไฟได้น้อยลง",
-"en": "Voltage falls when hot and may drop below the MPPT range, losing production"
-},
-{
-"th": "ไม่จำเป็นต้องตรวจ",
-"en": "It does not need checking"
-},
-{
-"th": "เพราะกระแสจะเป็นศูนย์",
-"en": "Current becomes zero"
-}
-],
-"answer": 1,
-"explain": "High cell temperature lowers Vmp; a short string can fall below the MPPT minimum on hot afternoons."
-},
-{
-"sec": "A",
-"th": "สตริงที่ต่อขนานเข้า MPPT เดียวกัน ควรเป็นอย่างไร",
-"en": "Strings connected in parallel on the same MPPT should be:",
-"options": [
-{
-"th": "จำนวนแผงต่างกันได้",
-"en": "Different numbers of panels are fine"
-},
-{
-"th": "จำนวนแผง รุ่น ทิศ และมุมเอียงเท่ากัน",
-"en": "The same number and model of panels, facing the same direction and tilt"
-},
-{
-"th": "ใช้แผงต่างรุ่นได้",
-"en": "Any mix of panel models"
-},
-{
-"th": "หันคนละทิศเพื่อผลิตไฟทั้งวัน",
-"en": "Facing different directions to spread production"
-}
-],
-"answer": 1,
-"explain": "Parallel strings share one voltage; mismatched strings pull each other off their maximum power point."
-},
-{
-"sec": "A",
-"th": "แผงหนึ่งในสตริงถูกเงาบัง กระแสของทั้งสตริงจะเป็นอย่างไร (ไม่มี optimizer)",
-"en": "One panel in a string is shaded. Without optimisers, what happens to the string current?",
-"options": [
-{
-"th": "แผงอื่นชดเชยให้เต็ม",
-"en": "The other panels make up the difference"
-},
-{
-"th": "ถูกจำกัดโดยแผงที่ผลิตกระแสได้น้อยที่สุด จนกว่าไดโอดบายพาสจะทำงาน",
-"en": "It is limited by the weakest panel until its bypass diodes conduct"
-},
-{
-"th": "เพิ่มขึ้น",
-"en": "It increases"
-},
-{
-"th": "ไม่เปลี่ยนแปลง",
-"en": "It does not change"
-}
-],
-"answer": 1,
-"explain": "In series the same current flows through every panel, so the weakest panel limits it; bypass diodes reduce the loss."
-},
-{
-"sec": "A",
-"th": "หน้าที่ของไดโอดบายพาส (bypass diode) ในกล่องรวมสายของแผงคืออะไร",
-"en": "What does the bypass diode in a panel junction box do?",
-"options": [
-{
-"th": "กันไฟย้อนจากแบตเตอรี่",
-"en": "Blocks reverse current from the battery"
-},
-{
-"th": "กันฟ้าผ่า",
-"en": "Protects against lightning"
-},
-{
-"th": "เพิ่มแรงดันของแผง",
-"en": "Raises the panel voltage"
-},
-{
-"th": "ให้กระแสผ่านข้ามกลุ่มเซลล์ที่ถูกบัง ลดการสูญเสียและจุดร้อน",
-"en": "Lets current pass around a shaded cell group, reducing loss and hot spots"
-}
-],
-"answer": 3,
-"explain": "Bypass diodes skip a shaded or damaged cell group so the rest of the panel and string keep working."
-},
-{
-"sec": "A",
-"th": "กำลังไฟฟ้าบนป้ายแผง (เช่น 650 W) วัดที่สภาวะใด",
-"en": "A panel's nameplate power (e.g. 650 W) is measured at:",
-"options": [
-{
-"th": "แสง 800 W/m²",
-"en": "800 W/m² irradiance"
-},
-{
-"th": "STC: แสง 1000 W/m² อุณหภูมิเซลล์ 25 °C AM1.5",
-"en": "STC: 1000 W/m² irradiance, 25 °C cell temperature, AM1.5"
-},
-{
-"th": "อุณหภูมิเซลล์ 45 °C",
-"en": "45 °C cell temperature"
-},
-{
-"th": "แดดเที่ยงวันในประเทศไทย",
-"en": "Midday sun in Thailand"
-}
-],
-"answer": 1,
-"explain": "STC is the standard test condition. Real output in Thailand is usually lower because cells run hotter than 25 °C."
-},
-{
-"sec": "A",
-"th": "แผงมีค่าสัมประสิทธิ์กำลัง −0.30 %/°C เมื่อเซลล์ร้อน 65 °C กำลังลดลงประมาณเท่าไรจาก STC",
-"en": "A panel's power coefficient is −0.30 %/°C. With cells at 65 °C, how much power is lost compared with STC?",
-"options": [
-{
-"th": "0%",
-"en": "0%"
-},
-{
-"th": "30%",
-"en": "30%"
-},
-{
-"th": "3%",
-"en": "3%"
-},
-{
-"th": "12%",
-"en": "12%"
-}
-],
-"answer": 3,
-"explain": "65 − 25 = 40 °C above STC; 40 x 0.30% = 12% less power."
-},
-{
-"sec": "A",
-"th": "แผงสองหน้า (bifacial) ผลิตไฟเพิ่มได้มากขึ้นเมื่อใด",
-"en": "A bifacial panel gains the most extra energy when:",
-"options": [
-{
-"th": "ติดแนบชิดหลังคา",
-"en": "It is mounted flat against the roof"
-},
-{
-"th": "ติดตั้งสูงจากพื้นและพื้นด้านล่างสีอ่อนสะท้อนแสงดี",
-"en": "It is mounted high above a light-coloured, reflective surface"
-},
-{
-"th": "พื้นด้านล่างสีดำ",
-"en": "The ground below is black"
-},
-{
-"th": "หันด้านหลังเข้าหาแดด",
-"en": "Its back faces the sun"
-}
-],
-"answer": 1,
-"explain": "The rear side collects reflected light; height and a bright surface (albedo) increase the gain."
-},
-{
+"level": 1,
 "sec": "A",
 "th": "ก่อนเสียบขั้วสตริงเข้าอินเวอร์เตอร์ ต้องตรวจอะไรเสมอ",
 "en": "Before plugging a string into the inverter, what must you always check?",
 "options": [
-{
-"th": "สีของแผง",
-"en": "The panel colour"
-},
-{
-"th": "ขั้วบวก/ลบถูกต้อง และแรงดันตรงกับค่าที่คำนวณ",
-"en": "Correct polarity, and voltage matching the calculated value"
-},
 {
 "th": "ไม่ต้องตรวจ เสียบได้เลย",
 "en": "Nothing, just plug it in"
@@ -346,12 +68,21 @@
 {
 "th": "ยี่ห้อของสาย",
 "en": "The cable brand"
+},
+{
+"th": "สีของแผง",
+"en": "The panel colour"
+},
+{
+"th": "ขั้วบวก/ลบถูกต้อง และแรงดันตรงกับค่าที่คำนวณ",
+"en": "Correct polarity, and voltage matching the calculated value"
 }
 ],
-"answer": 1,
+"answer": 3,
 "explain": "Reverse polarity or an over-voltage string can destroy the inverter input. Measure Voc and polarity first."
 },
 {
+"level": 1,
 "sec": "A",
 "th": "ทำไมห้ามถอดขั้วต่อ MC4 ขณะสตริงจ่ายกระแสอยู่",
 "en": "Why must MC4 connectors never be pulled apart while the string is carrying current?",
@@ -361,847 +92,23 @@
 "en": "The panel stops working forever"
 },
 {
-"th": "ขั้วต่อจะเสียรูปเท่านั้น",
-"en": "It only bends the connector"
-},
-{
 "th": "เกิดอาร์ก DC ที่ดับยาก อาจไหม้และเป็นอันตราย",
 "en": "A DC arc forms that does not self-extinguish and can burn"
 },
 {
 "th": "ไม่มีอันตรายใด ๆ",
 "en": "There is no danger"
+},
+{
+"th": "ขั้วต่อจะเสียรูปเท่านั้น",
+"en": "It only bends the connector"
 }
 ],
-"answer": 2,
+"answer": 1,
 "explain": "DC has no zero crossing, so arcs persist. Switch off at the DC isolator or inverter first."
 },
 {
-"sec": "A",
-"th": "ควรต่อขั้วต่อ MC4 ต่างยี่ห้อเข้าด้วยกันหรือไม่",
-"en": "Should MC4 connectors of different brands be mated together?",
-"options": [
-{
-"th": "ได้ ถ้าพันเทป",
-"en": "Yes, if taped"
-},
-{
-"th": "ได้ ถ้าเสียบเข้ากันได้",
-"en": "Yes, if they click together"
-},
-{
-"th": "ไม่ควร ใช้ยี่ห้อ/รุ่นเดียวกันทั้งคู่ เพื่อกันขั้วต่อร้อนและไหม้",
-"en": "No, use a matched pair of the same make to avoid hot, burnt joints"
-},
-{
-"th": "ได้ทุกกรณี",
-"en": "Always fine"
-}
-],
-"answer": 2,
-"explain": "Cross-mated connectors are a leading cause of DC fires; tolerances and contact materials differ."
-},
-{
-"sec": "A",
-"th": "อัตราส่วน DC/AC (กำลังแผงต่อกำลังอินเวอร์เตอร์) ที่นิยมสำหรับระบบออนกริดในไทยประมาณเท่าไร",
-"en": "What DC/AC ratio (panel kWp to inverter kW) is common for on-grid systems in Thailand?",
-"options": [
-{
-"th": "2.0–2.5",
-"en": "2.0–2.5"
-},
-{
-"th": "1.1–1.3",
-"en": "1.1–1.3"
-},
-{
-"th": "Exactly 1.0 only",
-"en": "Exactly 1.0 only"
-},
-{
-"th": "0.5–0.7",
-"en": "0.5–0.7"
-}
-],
-"answer": 1,
-"explain": "A small oversize (about 1.1–1.3) uses the inverter better, because panels rarely reach nameplate power."
-},
-{
-"sec": "A",
-"th": "อินเวอร์เตอร์ออนกริดตัดการทำงานบ่อยตอนเที่ยงด้วยแจ้งเตือน 'Grid over-voltage' สาเหตุที่พบบ่อยคืออะไร",
-"en": "An on-grid inverter often trips around noon with 'grid over-voltage'. A common cause is:",
-"options": [
-{
-"th": "แบตเตอรี่เต็ม",
-"en": "A full battery"
-},
-{
-"th": "แสงแดดน้อย",
-"en": "Low sunlight"
-},
-{
-"th": "สาย AC เล็กหรือยาวเกินไป ทำให้แรงดันที่ขั้วอินเวอร์เตอร์สูงขึ้นเมื่อจ่ายไฟออก",
-"en": "An undersized or long AC cable raising the voltage at the inverter terminals when exporting"
-},
-{
-"th": "แผงสกปรก",
-"en": "Dirty panels"
-}
-],
-"answer": 2,
-"explain": "When exporting, voltage rises along the cable; a bigger or shorter AC cable reduces the rise."
-},
-{
-"sec": "A",
-"th": "ระบบกันไฟย้อน (zero export) ต้องติดตั้ง CT หรือมิเตอร์ที่ใด",
-"en": "For zero export, where must the CT or smart meter be installed?",
-"options": [
-{
-"th": "ที่สายของแผงโซลาร์",
-"en": "On the panel cables"
-},
-{
-"th": "ที่ปลั๊กไฟในบ้าน",
-"en": "On a house socket"
-},
-{
-"th": "ที่สายแบตเตอรี่",
-"en": "On the battery cable"
-},
-{
-"th": "ที่สายเมนขาเข้าจากการไฟฟ้า หลังมิเตอร์ ก่อนแยกโหลด ทิศลูกศรตามคู่มือ",
-"en": "On the main incoming supply after the utility meter, before any load, arrow as per the manual"
-}
-],
-"answer": 3,
-"explain": "The CT must see all power to and from the grid; a wrong place or reversed arrow makes the inverter export or limit wrongly."
-},
-{
-"sec": "A",
-"th": "โหลดที่ต่อกับช่อง Backup/EPS ของอินเวอร์เตอร์ไฮบริดต้องเป็นอย่างไร",
-"en": "Loads on a hybrid inverter's Backup/EPS port must be:",
-"options": [
-{
-"th": "รวมกันไม่เกินพิกัดกำลังและกระแสกระชากของช่อง Backup",
-"en": "Within the backup port's continuous and surge rating"
-},
-{
-"th": "ต้องเป็นโหลด DC เท่านั้น",
-"en": "DC loads only"
-},
-{
-"th": "ต้องต่อขนานกับกริด",
-"en": "Paralleled with the grid"
-},
-{
-"th": "ต่อได้ทุกโหลดในบ้าน",
-"en": "Every load in the house"
-}
-],
-"answer": 0,
-"explain": "Motors, pumps and air conditioners have high start currents; put only essential loads within the backup rating."
-},
-{
-"sec": "A",
-"th": "อินเวอร์เตอร์ควรติดตั้งในตำแหน่งแบบใด",
-"en": "Where should an inverter be mounted?",
-"options": [
-{
-"th": "ติดชิดกันหลายเครื่องโดยไม่เว้นระยะ",
-"en": "Several units touching each other"
-},
-{
-"th": "กลางแดดเพื่อให้ใกล้แผง",
-"en": "In full sun to be close to the panels"
-},
-{
-"th": "ในตู้ปิดสนิทเพื่อกันฝุ่น",
-"en": "In a sealed cabinet to keep dust out"
-},
-{
-"th": "ที่ร่ม ระบายอากาศดี เว้นระยะรอบตัวตามคู่มือ ไม่โดนแดดและฝนโดยตรง",
-"en": "In shade with good airflow and the manual's clearances, out of direct sun and rain"
-}
-],
-"answer": 3,
-"explain": "Heat makes inverters derate and age early; clearances let the heatsink work."
-},
-{
-"sec": "A",
-"th": "อินเวอร์เตอร์ 1 เฟส 5 kW ที่ 230 V จ่ายกระแสต่อเนื่องสูงสุดประมาณเท่าไร",
-"en": "A 5 kW single-phase inverter at 230 V delivers a maximum continuous current of about:",
-"options": [
-{
-"th": "100 A",
-"en": "100 A"
-},
-{
-"th": "22 A",
-"en": "22 A"
-},
-{
-"th": "50 A",
-"en": "50 A"
-},
-{
-"th": "5 A",
-"en": "5 A"
-}
-],
-"answer": 1,
-"explain": "I = P / V = 5000 / 230 ≈ 21.7 A."
-},
-{
-"sec": "A",
-"th": "อินเวอร์เตอร์ 3 เฟส 15 kW ที่ 400 V จ่ายกระแสต่อเฟสประมาณเท่าไร",
-"en": "A 15 kW three-phase inverter at 400 V delivers about how much current per phase?",
-"options": [
-{
-"th": "65 A",
-"en": "65 A"
-},
-{
-"th": "38 A",
-"en": "38 A"
-},
-{
-"th": "22 A",
-"en": "22 A"
-},
-{
-"th": "15 A",
-"en": "15 A"
-}
-],
-"answer": 2,
-"explain": "I = P / (√3 x V) = 15000 / (1.732 x 400) ≈ 21.7 A."
-},
-{
-"sec": "A",
-"th": "ระบบที่ใช้อินเวอร์เตอร์ 1 เฟสหลายเครื่องบนไฟ 3 เฟส ควรต่ออย่างไร",
-"en": "Several single-phase inverters on a three-phase supply should be connected:",
-"options": [
-{
-"th": "ต่อเข้าสายนิวทรัลเท่านั้น",
-"en": "To the neutral only"
-},
-{
-"th": "กระจายให้แต่ละเฟสใกล้เคียงกัน",
-"en": "Spread evenly across the three phases"
-},
-{
-"th": "ต่อเฟสเดียวทั้งหมด",
-"en": "All on one phase"
-},
-{
-"th": "ต่อระหว่างเฟสกับเฟส",
-"en": "Between two phases"
-}
-],
-"answer": 1,
-"explain": "Putting them all on one phase unbalances the supply and raises voltage on that phase."
-},
-{
-"sec": "A",
-"th": "แบตเตอรี่ลิเทียมฟอสเฟต (LiFePO4) แรงดันต่ำ 16 เซลล์อนุกรม มีแรงดันระบุเท่าไร",
-"en": "A low-voltage LiFePO4 battery with 16 cells in series has a nominal voltage of:",
-"options": [
-{
-"th": "12.8 V",
-"en": "12.8 V"
-},
-{
-"th": "57.6 V",
-"en": "57.6 V"
-},
-{
-"th": "51.2 V",
-"en": "51.2 V"
-},
-{
-"th": "48 V exactly",
-"en": "48 V exactly"
-}
-],
-"answer": 2,
-"explain": "LiFePO4 is 3.2 V per cell: 16 x 3.2 = 51.2 V."
-},
-{
-"sec": "A",
-"th": "อินเวอร์เตอร์ 5 kW ดึงไฟจากแบตเตอรี่ 51.2 V เต็มกำลัง กระแสแบตเตอรี่ประมาณเท่าไร",
-"en": "A 5 kW inverter at full power from a 51.2 V battery draws about:",
-"options": [
-{
-"th": "25 A",
-"en": "25 A"
-},
-{
-"th": "100 A",
-"en": "100 A"
-},
-{
-"th": "500 A",
-"en": "500 A"
-},
-{
-"th": "10 A",
-"en": "10 A"
-}
-],
-"answer": 1,
-"explain": "I = P / V ≈ 5000 / 51.2 ≈ 98 A (more with losses). Low voltage means large current and thick cables."
-},
-{
-"sec": "A",
-"th": "ทำไมสายแบตเตอรี่ระบบ 48 V ต้องใหญ่กว่าสาย DC ของแผงมาก",
-"en": "Why are 48 V battery cables much bigger than PV string cables?",
-"options": [
-{
-"th": "แรงดันต่ำ กำลังเท่ากันจึงมีกระแสสูงมาก",
-"en": "At low voltage the same power means a much higher current"
-},
-{
-"th": "เพื่อความสวยงาม",
-"en": "For appearance"
-},
-{
-"th": "เพราะแบตเตอรี่ร้อน",
-"en": "Because batteries are hot"
-},
-{
-"th": "เพราะเป็นไฟ AC",
-"en": "Because it is AC"
-}
-],
-"answer": 0,
-"explain": "Power = V x I. At ~50 V instead of ~500 V, current is about 10 times higher."
-},
-{
-"sec": "A",
-"th": "ต่อแบตเตอรี่หลายก้อนแบบขนาน วิธีใดช่วยให้แต่ละก้อนชาร์จ/จ่ายเท่ากัน",
-"en": "With several batteries in parallel, what helps them share charge and discharge equally?",
-"options": [
-{
-"th": "ใช้บัสบาร์ หรือสายแต่ละก้อนยาวเท่ากันและขนาดเท่ากัน",
-"en": "A busbar, or equal-length, equal-size cables to each battery"
-},
-{
-"th": "ต่อพ่วงก้อนต่อก้อนแล้วต่อเข้าอินเวอร์เตอร์ที่ก้อนแรก",
-"en": "Daisy-chain and take the inverter leads from the first battery"
-},
-{
-"th": "ไม่ต้องสนใจ",
-"en": "It does not matter"
-},
-{
-"th": "ใช้สายคนละขนาด",
-"en": "Use different cable sizes"
-}
-],
-"answer": 0,
-"explain": "Unequal resistance makes the nearest battery work hardest and age first."
-},
-{
-"sec": "A",
-"th": "การสื่อสารระหว่าง BMS แบตเตอรี่ลิเทียมกับอินเวอร์เตอร์ (CAN/RS485) มีไว้ทำอะไร",
-"en": "What is the BMS-to-inverter communication (CAN/RS485) for?",
-"options": [
-{
-"th": "ไม่มีประโยชน์",
-"en": "It has no use"
-},
-{
-"th": "ให้อินเวอร์เตอร์ชาร์จ/จ่ายตามค่าที่ BMS อนุญาต และรู้ SOC จริง",
-"en": "So the inverter charges and discharges within the BMS limits and knows the real SOC"
-},
-{
-"th": "เพื่อเปิดไฟ LED",
-"en": "To light the LEDs"
-},
-{
-"th": "เพื่อกันฟ้าผ่า",
-"en": "Lightning protection"
-}
-],
-"answer": 1,
-"explain": "Closed-loop communication protects the battery and gives accurate state of charge."
-},
-{
-"sec": "A",
-"th": "ระบบออฟกริดใช้ไฟ 10 kWh/วัน แบตเตอรี่ใช้ได้ (DoD) 90% ประสิทธิภาพ 95% ต้องการแบตเตอรี่อย่างน้อยกี่ kWh สำหรับ 1 วัน",
-"en": "An off-grid home uses 10 kWh/day. With 90% usable depth of discharge and 95% efficiency, what minimum battery capacity covers one day?",
-"options": [
-{
-"th": "10.0 kWh",
-"en": "10.0 kWh"
-},
-{
-"th": "11.7 kWh",
-"en": "11.7 kWh"
-},
-{
-"th": "9.0 kWh",
-"en": "9.0 kWh"
-},
-{
-"th": "8.5 kWh",
-"en": "8.5 kWh"
-}
-],
-"answer": 1,
-"explain": "10 / (0.90 x 0.95) ≈ 11.7 kWh."
-},
-{
-"sec": "A",
-"th": "บ้านใช้ไฟกลางวัน 20 kWh/วัน ชั่วโมงแดดเต็ม 5 ชม. ค่าสูญเสียรวม 20% ควรติดแผงประมาณกี่ kWp",
-"en": "A home uses 20 kWh in daytime. With 5 peak sun hours and 20% total losses, about how many kWp of panels are needed?",
-"options": [
-{
-"th": "2.5 kWp",
-"en": "2.5 kWp"
-},
-{
-"th": "4 kWp",
-"en": "4 kWp"
-},
-{
-"th": "10 kWp",
-"en": "10 kWp"
-},
-{
-"th": "5 kWp",
-"en": "5 kWp"
-}
-],
-"answer": 3,
-"explain": "20 / (5 x 0.8) = 5 kWp."
-},
-{
-"sec": "A",
-"th": "ตามหลักทั่วไป (IEC 62548) สาย DC ของสตริงต้องทนกระแสได้อย่างน้อยเท่าไร",
-"en": "As a general rule (IEC 62548), a PV string cable must carry at least:",
-"options": [
-{
-"th": "1.25 x Isc",
-"en": "1.25 x Isc"
-},
-{
-"th": "1.0 x Imp",
-"en": "1.0 x Imp"
-},
-{
-"th": "2 x Voc",
-"en": "2 x Voc"
-},
-{
-"th": "0.8 x Isc",
-"en": "0.8 x Isc"
-}
-],
-"answer": 0,
-"explain": "String cables are sized for at least 1.25 x Isc(STC) to allow for strong sunlight."
-},
-{
-"sec": "A",
-"th": "หลักการเลือกเบรกเกอร์กับสาย ข้อใดถูกต้อง",
-"en": "Which rule for breakers and cables is correct?",
-"options": [
-{
-"th": "กระแสโหลด ≤ พิกัดเบรกเกอร์ ≤ ความสามารถนำกระแสของสาย",
-"en": "Load current ≤ breaker rating ≤ cable current capacity"
-},
-{
-"th": "เบรกเกอร์ใหญ่กว่าสายได้เสมอ",
-"en": "The breaker may always be bigger than the cable"
-},
-{
-"th": "พิกัดเบรกเกอร์ไม่เกี่ยวกับสาย",
-"en": "Breaker rating is unrelated to the cable"
-},
-{
-"th": "ใช้สายเล็กที่สุดที่หาได้",
-"en": "Use the smallest cable available"
-}
-],
-"answer": 0,
-"explain": "The breaker protects the cable, so the cable must carry at least the breaker rating."
-},
-{
-"sec": "A",
-"th": "สายทองแดง 4 mm² ยาว 30 m (ทางเดียว) วงจร DC กระแส 10 A แรงดันตกประมาณเท่าไร (ρ = 0.0175 Ω·mm²/m)",
-"en": "A 4 mm² copper cable, 30 m one way, carries 10 A DC. What is the voltage drop? (ρ = 0.0175 Ω·mm²/m)",
-"options": [
-{
-"th": "1.3 V",
-"en": "1.3 V"
-},
-{
-"th": "0.26 V",
-"en": "0.26 V"
-},
-{
-"th": "2.6 V",
-"en": "2.6 V"
-},
-{
-"th": "26 V",
-"en": "26 V"
-}
-],
-"answer": 2,
-"explain": "R = 0.0175 x 60 / 4 = 0.2625 Ω (out and back); VD = 10 x 0.2625 ≈ 2.6 V."
-},
-{
-"sec": "A",
-"th": "แรงดันตกในสาย DC ของระบบโซลาร์ ควรออกแบบให้ไม่เกินประมาณเท่าไร",
-"en": "Voltage drop in PV DC cabling should usually be designed below about:",
-"options": [
-{
-"th": "1–3%",
-"en": "1–3%"
-},
-{
-"th": "10%",
-"en": "10%"
-},
-{
-"th": "15%",
-"en": "15%"
-},
-{
-"th": "No limit",
-"en": "No limit"
-}
-],
-"answer": 0,
-"explain": "Keeping the drop around 1–3% limits energy loss and heating."
-},
-{
-"sec": "A",
-"th": "ถ้าแรงดันตกในสายมากเกินไป ควรแก้อย่างไร",
-"en": "If cable voltage drop is too high, the fix is to:",
-"options": [
-{
-"th": "เพิ่มจำนวนแผง",
-"en": "Add more panels"
-},
-{
-"th": "ใช้เบรกเกอร์ใหญ่ขึ้น",
-"en": "Fit a bigger breaker"
-},
-{
-"th": "ใช้สายเล็กลง",
-"en": "Use a smaller cable"
-},
-{
-"th": "เพิ่มขนาดสาย หรือลดระยะสาย",
-"en": "Use a bigger cable or a shorter route"
-}
-],
-"answer": 3,
-"explain": "Resistance falls as cross-section rises and length falls."
-},
-{
-"sec": "A",
-"th": "ปัจจัยใดทำให้ต้องลดพิกัดกระแสของสาย (derating)",
-"en": "Which conditions require derating a cable's current capacity?",
-"options": [
-{
-"th": "ยี่ห้อของสาย",
-"en": "Cable brand"
-},
-{
-"th": "อุณหภูมิแวดล้อมสูง และสายหลายเส้นรวมในท่อเดียวกัน",
-"en": "High ambient temperature and many cables grouped in one conduit"
-},
-{
-"th": "ความยาวสายสั้น",
-"en": "Short length"
-},
-{
-"th": "สีของฉนวน",
-"en": "Insulation colour"
-}
-],
-"answer": 1,
-"explain": "Heat and grouping reduce how much current a cable can carry safely."
-},
-{
-"sec": "A",
-"th": "อินเวอร์เตอร์ 1 เฟส 5 kW (กระแสสูงสุด ~22 A) ควรใช้เบรกเกอร์ AC ขนาดใดที่เหมาะสม",
-"en": "For a 5 kW single-phase inverter (max ~22 A), which AC breaker size is suitable?",
-"options": [
-{
-"th": "100 A",
-"en": "100 A"
-},
-{
-"th": "10 A",
-"en": "10 A"
-},
-{
-"th": "16 A",
-"en": "16 A"
-},
-{
-"th": "32 A",
-"en": "32 A"
-}
-],
-"answer": 3,
-"explain": "About 1.25 x 22 A ≈ 27.5 A, so the next standard size, 32 A, with a cable rated for at least 32 A."
-},
-{
-"sec": "A",
-"th": "แบตเตอรี่จ่ายกระแสสูงสุด 100 A ฟิวส์/เบรกเกอร์ DC ของแบตเตอรี่ควรมีขนาดประมาณเท่าไร",
-"en": "A battery supplies up to 100 A. A suitable DC fuse or breaker size is about:",
-"options": [
-{
-"th": "125 A",
-"en": "125 A"
-},
-{
-"th": "400 A",
-"en": "400 A"
-},
-{
-"th": "63 A",
-"en": "63 A"
-},
-{
-"th": "100 A exactly with a 25 mm² cable",
-"en": "100 A exactly with a 25 mm² cable"
-}
-],
-"answer": 0,
-"explain": "About 1.25 x 100 A = 125 A, with a battery cable rated above 125 A."
-},
-{
-"sec": "A",
-"th": "ทำไมห้ามใช้เบรกเกอร์ AC แทนเบรกเกอร์ DC ฝั่งแผง",
-"en": "Why must an AC breaker never be used instead of a DC breaker on the PV side?",
-"options": [
-{
-"th": "AC เบรกเกอร์ดับอาร์ก DC ไม่ได้ อาจไหม้",
-"en": "An AC breaker cannot break a DC arc and may burn"
-},
-{
-"th": "ราคาแพงกว่า",
-"en": "It costs more"
-},
-{
-"th": "ใหญ่เกินไป",
-"en": "It is too big"
-},
-{
-"th": "ใช้แทนกันได้",
-"en": "They are interchangeable"
-}
-],
-"answer": 0,
-"explain": "DC current never passes through zero, so breaking it needs a breaker designed and rated for DC voltage."
-},
-{
-"sec": "A",
-"th": "เบรกเกอร์ DC บางรุ่นมีขั้ว (polarized) ถ้าต่อกลับขั้วจะเกิดอะไร",
-"en": "Some DC breakers are polarised. If wired with reverse polarity:",
-"options": [
-{
-"th": "อาจดับอาร์กไม่ได้และไหม้เมื่อตัดวงจร",
-"en": "It may fail to break the arc and burn when it trips"
-},
-{
-"th": "ทำงานเหมือนเดิม",
-"en": "It works the same"
-},
-{
-"th": "ตัดเร็วขึ้น",
-"en": "It trips faster"
-},
-{
-"th": "กระแสเพิ่มขึ้น",
-"en": "Current increases"
-}
-],
-"answer": 0,
-"explain": "Polarised breakers use magnets to push the arc into the chute; reversed current pushes it the wrong way."
-},
-{
-"sec": "A",
-"th": "พิกัดแรงดันของเบรกเกอร์/สวิตช์ตัดตอน DC ต้องเป็นอย่างไร",
-"en": "The voltage rating of a DC breaker or isolator must be:",
-"options": [
-{
-"th": "เท่ากับแรงดันแบตเตอรี่เสมอ",
-"en": "Always equal to the battery voltage"
-},
-{
-"th": "ไม่น้อยกว่า Voc สูงสุดของสตริง (ที่อุณหภูมิต่ำสุด)",
-"en": "At least the string's maximum Voc (at the lowest temperature)"
-},
-{
-"th": "230 V",
-"en": "230 V"
-},
-{
-"th": "ไม่สำคัญ",
-"en": "Not important"
-}
-],
-"answer": 1,
-"explain": "The device must interrupt the highest voltage the string can produce."
-},
-{
-"sec": "A",
-"th": "เมื่อใดต้องติดฟิวส์สตริง (string fuse)",
-"en": "When are string fuses required?",
-"options": [
-{
-"th": "ไม่เคยต้องใช้",
-"en": "Never"
-},
-{
-"th": "เมื่อมีสตริงขนานกันตั้งแต่ 3 สตริงขึ้นไป",
-"en": "When three or more strings are connected in parallel"
-},
-{
-"th": "เฉพาะระบบ AC",
-"en": "Only on AC systems"
-},
-{
-"th": "ทุกระบบที่มีสตริงเดียว",
-"en": "On every single-string system"
-}
-],
-"answer": 1,
-"explain": "With 3+ parallel strings, a faulty string can receive reverse current from the others above the panel's fuse rating."
-},
-{
-"sec": "A",
-"th": "อุปกรณ์ป้องกันไฟกระชาก (SPD) ฝั่ง DC ควรมีแรงดันใช้งานต่อเนื่อง (Ucpv) อย่างไร",
-"en": "A DC-side surge protective device (SPD) should have a continuous operating voltage (Ucpv) of:",
-"options": [
-{
-"th": "ไม่น้อยกว่าประมาณ 1.2 เท่าของ Voc ของสตริง",
-"en": "At least about 1.2 x the string Voc"
-},
-{
-"th": "ต่ำกว่า Voc",
-"en": "Below Voc"
-},
-{
-"th": "230 V AC",
-"en": "230 V AC"
-},
-{
-"th": "ไม่ต้องคำนึง",
-"en": "It does not matter"
-}
-],
-"answer": 0,
-"explain": "If Ucpv is too low the SPD conducts on cold mornings and fails."
-},
-{
-"sec": "A",
-"th": "ค่าความต้านทานดินของหลักดินโดยทั่วไป (ตามมาตรฐาน วสท.) ไม่ควรเกินเท่าไร",
-"en": "Earth electrode resistance (EIT standard, general case) should not exceed:",
-"options": [
-{
-"th": "500 Ω",
-"en": "500 Ω"
-},
-{
-"th": "50 Ω",
-"en": "50 Ω"
-},
-{
-"th": "5 Ω",
-"en": "5 Ω"
-},
-{
-"th": "1 MΩ",
-"en": "1 MΩ"
-}
-],
-"answer": 2,
-"explain": "A low earth resistance lets fault current flow so protection operates quickly."
-},
-{
-"sec": "A",
-"th": "โครงแผงและรางยึดแผงต้องทำอย่างไรเรื่องสายดิน",
-"en": "What must be done with panel frames and mounting rails for earthing?",
-"options": [
-{
-"th": "ต่อเข้าขั้วลบของสตริง",
-"en": "Connect them to string negative"
-},
-{
-"th": "ต่อประสานถึงกันและต่อลงดินด้วยอุปกรณ์/สายที่เหมาะสม",
-"en": "Bond them together and to earth with suitable clips or cable"
-},
-{
-"th": "ต่อเข้าสายนิวทรัล",
-"en": "Connect them to neutral"
-},
-{
-"th": "ไม่ต้องต่อสายดิน",
-"en": "Nothing, no earthing needed"
-}
-],
-"answer": 1,
-"explain": "Bonding prevents frames becoming live in a fault and helps surge protection."
-},
-{
-"sec": "A",
-"th": "ค่าความต้านทานฉนวน (insulation test) ของสาย DC ที่ทดสอบด้วย 1000 V ควรได้อย่างน้อยเท่าไร",
-"en": "When insulation-testing PV DC cabling at 1000 V, the resistance should be at least:",
-"options": [
-{
-"th": "1 Ω",
-"en": "1 Ω"
-},
-{
-"th": "10 kΩ",
-"en": "10 kΩ"
-},
-{
-"th": "1 MΩ",
-"en": "1 MΩ"
-},
-{
-"th": "100 Ω",
-"en": "100 Ω"
-}
-],
-"answer": 2,
-"explain": "IEC 62446 commissioning tests expect at least 1 MΩ for systems tested at 1000 V."
-},
-{
-"sec": "A",
-"th": "RCD/RCBO สำหรับป้องกันคนจากไฟดูดควรมีพิกัดกระแสรั่วเท่าไร",
-"en": "An RCD/RCBO for protecting people against electric shock should be rated at:",
-"options": [
-{
-"th": "30 A",
-"en": "30 A"
-},
-{
-"th": "300 mA",
-"en": "300 mA"
-},
-{
-"th": "3 A",
-"en": "3 A"
-},
-{
-"th": "30 mA",
-"en": "30 mA"
-}
-],
-"answer": 3,
-"explain": "30 mA is the personal-protection rating; higher ratings protect only against fire."
-},
-{
+"level": 1,
 "sec": "A",
 "th": "ขั้วต่อสายที่ขันไม่แน่น (แรงบิดไม่ถึง) ทำให้เกิดอะไร",
 "en": "What does an under-torqued terminal cause?",
@@ -1215,97 +122,27 @@
 "en": "More power"
 },
 {
-"th": "ความต้านทานสูง เกิดความร้อน และอาจไหม้",
-"en": "High resistance, heat and possible fire"
-},
-{
 "th": "ไม่มีผลอะไร",
 "en": "Nothing"
-}
-],
-"answer": 2,
-"explain": "Tighten to the manufacturer's torque with a torque screwdriver and re-check during maintenance."
 },
 {
-"sec": "A",
-"th": "กล้องถ่ายภาพความร้อนช่วยตรวจอะไรในระบบโซลาร์",
-"en": "In a solar system, a thermal camera helps you find:",
-"options": [
-{
-"th": "ความชื้นในอากาศ",
-"en": "Air humidity"
-},
-{
-"th": "ปริมาณแสงแดด",
-"en": "The amount of sunlight"
-},
-{
-"th": "ค่าไฟของเดือนหน้า",
-"en": "Next month's bill"
-},
-{
-"th": "จุดร้อนบนแผง และจุดต่อสายที่หลวมหรือร้อนผิดปกติ",
-"en": "Hot spots on panels and loose or overheating connections"
+"th": "ความต้านทานสูง เกิดความร้อน และอาจไหม้",
+"en": "High resistance, heat and possible fire"
 }
 ],
 "answer": 3,
-"explain": "Heat shows resistance: cracked cells, failed bypass diodes, loose terminals."
+"explain": "Tighten to the manufacturer's torque with a torque screwdriver and re-check during maintenance."
 },
 {
-"sec": "A",
-"th": "อุปกรณ์ป้องกันฟ้าผ่า/ไฟกระชาก (SPD) ควรติดตั้งที่ใด",
-"en": "Where should surge protective devices (SPD) be installed?",
-"options": [
-{
-"th": "ทั้งฝั่ง DC และฝั่ง AC ใกล้อินเวอร์เตอร์/ตู้ไฟ พร้อมสายดินที่สั้นที่สุด",
-"en": "On both DC and AC sides near the inverter or board, with the shortest earth lead"
-},
-{
-"th": "ในบ้านที่ปลั๊กเท่านั้น",
-"en": "Only at house sockets"
-},
-{
-"th": "เฉพาะที่แผงตัวแรก",
-"en": "Only at the first panel"
-},
-{
-"th": "ไม่จำเป็นในประเทศไทย",
-"en": "Not needed in Thailand"
-}
-],
-"answer": 0,
-"explain": "Surges reach the inverter from both sides; long SPD earth leads make protection ineffective."
-},
-{
-"sec": "B",
-"th": "สาย THW ตาม มอก. 11 (60227 IEC 01) เหมาะกับการเดินสายแบบใด",
-"en": "THW cable (TIS 11, 60227 IEC 01) is suitable for:",
-"options": [
-{
-"th": "ใช้เป็นสาย DC ของแผงโดยตรง",
-"en": "PV string cable"
-},
-{
-"th": "ฝังดินโดยตรงไม่มีท่อ",
-"en": "Direct burial without conduit"
-},
-{
-"th": "เดินร้อยในท่อ ภายในอาคาร",
-"en": "Running inside conduit, indoors"
-},
-{
-"th": "เดินกลางแดดโดยไม่มีท่อ",
-"en": "Exposed in sunlight without conduit"
-}
-],
-"answer": 2,
-"explain": "THW is single-core PVC wire without a sheath; it must be protected in conduit or trunking."
-},
-{
+"level": 1,
 "sec": "B",
 "th": "สาย VAF (สายแบนสองแกน) เหมาะกับงานใด",
 "en": "VAF flat twin cable is meant for:",
 "options": [
+{
+"th": "ฝังดิน",
+"en": "Burial in the ground"
+},
 {
 "th": "เดินเกาะผนังภายในอาคารด้วยเข็มขัดรัดสาย",
 "en": "Clipping on walls inside buildings"
@@ -1315,147 +152,23 @@
 "en": "Outdoor trays in full sun"
 },
 {
-"th": "ฝังดิน",
-"en": "Burial in the ground"
-},
-{
 "th": "สายแบตเตอรี่กระแสสูง",
 "en": "High-current battery leads"
 }
 ],
-"answer": 0,
+"answer": 1,
 "explain": "VAF is a light sheathed indoor cable; it is not for burial, sunlight or high currents."
 },
 {
-"sec": "B",
-"th": "สายชนิดใดเหมาะสำหรับฝังดินโดยตรงหรือเดินภายนอกอาคาร",
-"en": "Which cable is suitable for direct burial or outdoor runs?",
-"options": [
-{
-"th": "VCT",
-"en": "VCT"
-},
-{
-"th": "THW",
-"en": "THW"
-},
-{
-"th": "NYY",
-"en": "NYY"
-},
-{
-"th": "VAF",
-"en": "VAF"
-}
-],
-"answer": 2,
-"explain": "NYY (0.6/1 kV) has a tough PVC sheath for burial and outdoor use."
-},
-{
-"sec": "B",
-"th": "สาย NYY ฝังดินโดยตรง ควรฝังลึกอย่างน้อยประมาณเท่าไร",
-"en": "NYY cable buried directly in the ground should be at least about how deep?",
-"options": [
-{
-"th": "10 cm",
-"en": "10 cm"
-},
-{
-"th": "60 cm",
-"en": "60 cm"
-},
-{
-"th": "20 cm",
-"en": "20 cm"
-},
-{
-"th": "3 m",
-"en": "3 m"
-}
-],
-"answer": 1,
-"explain": "About 0.6 m in normal ground (deeper under roads or driveways), with a warning tape above."
-},
-{
-"sec": "B",
-"th": "สาย DC ของแผงโซลาร์ (PV1-F / H1Z2Z2-K) ต่างจากสายไฟบ้านทั่วไปอย่างไร",
-"en": "How does PV DC cable (PV1-F / H1Z2Z2-K) differ from ordinary house wire?",
-"options": [
-{
-"th": "ทนรังสี UV ความร้อน และแรงดัน DC สูง สายฝอยอ่อน ฉนวนสองชั้น",
-"en": "UV, heat and high-DC-voltage rated, fine-stranded and double insulated"
-},
-{
-"th": "ใช้ได้เฉพาะไฟ AC",
-"en": "It is for AC only"
-},
-{
-"th": "ราคาถูกกว่าเท่านั้น",
-"en": "It is only cheaper"
-},
-{
-"th": "ไม่มีความแตกต่าง",
-"en": "No difference"
-}
-],
-"answer": 0,
-"explain": "Solar cable is built for decades on the roof at up to 1500 V DC."
-},
-{
-"sec": "B",
-"th": "สาย VCT เหมาะกับงานแบบใด",
-"en": "VCT cable is best used for:",
-"options": [
-{
-"th": "สายดินหลักของอาคาร",
-"en": "Main building earth"
-},
-{
-"th": "งานที่ต้องการสายอ่อน เช่น ต่อเครื่องใช้ไฟฟ้า หรือจุดที่มีการเคลื่อนไหว",
-"en": "Flexible connections, e.g. to appliances or moving equipment"
-},
-{
-"th": "ฝังดินระยะยาวโดยไม่มีท่อ",
-"en": "Long direct burial"
-},
-{
-"th": "สาย DC บนหลังคา",
-"en": "DC cable on the roof"
-}
-],
-"answer": 1,
-"explain": "VCT is a flexible sheathed cord; for fixed outdoor or buried runs use NYY or conduit."
-},
-{
-"sec": "B",
-"th": "สีสายไฟตามมาตรฐานใหม่ของไทย ระบบ 3 เฟส สาย L1 L2 L3 N และ PE ใช้สีอะไร",
-"en": "In Thailand's new colour code, L1, L2, L3, N and PE are:",
-"options": [
-{
-"th": "น้ำตาล ดำ เทา ฟ้า เขียวแถบเหลือง",
-"en": "Brown, black, grey, blue, green/yellow"
-},
-{
-"th": "แดง เหลือง น้ำเงิน ดำ เขียว",
-"en": "Red, yellow, blue, black, green"
-},
-{
-"th": "ทุกเส้นสีเดียวกัน",
-"en": "All the same colour"
-},
-{
-"th": "ดำ แดง น้ำเงิน ขาว เขียว",
-"en": "Black, red, blue, white, green"
-}
-],
-"answer": 0,
-"explain": "Brown, black and grey for phases, blue for neutral, green/yellow for protective earth."
-},
-{
+"level": 1,
 "sec": "B",
 "th": "สาย DC ขั้วบวกและขั้วลบ นิยมใช้สีหรือเครื่องหมายอย่างไร",
 "en": "How are DC positive and negative usually identified?",
 "options": [
+{
+"th": "บวกสีเขียวแถบเหลือง",
+"en": "Positive green/yellow"
+},
 {
 "th": "บวกสีแดง ลบสีดำ หรือทำเครื่องหมาย +/− ที่ปลายสาย",
 "en": "Positive red, negative black, or +/− markers at the ends"
@@ -1465,476 +178,19 @@
 "en": "Negative blue only"
 },
 {
-"th": "บวกสีเขียวแถบเหลือง",
-"en": "Positive green/yellow"
-},
-{
 "th": "ไม่ต้องแยกสี",
 "en": "No identification needed"
 }
 ],
-"answer": 0,
+"answer": 1,
 "explain": "Clear polarity marking prevents reverse connection; green/yellow is reserved for earth only."
 },
 {
-"sec": "B",
-"th": "ท่อ IMC เหมาะกับการใช้งานแบบใดเมื่อเทียบกับท่อ EMT",
-"en": "Compared with EMT, IMC conduit is suited to:",
-"options": [
-{
-"th": "งานภายนอกอาคารหรือที่อาจโดนกระแทก เพราะผนังหนาและเป็นเกลียว",
-"en": "Outdoor or impact-prone runs, as it is thicker and threaded"
-},
-{
-"th": "ใช้แทนสายดิน",
-"en": "Replacing the earth cable"
-},
-{
-"th": "งานในฝ้าเพดานเท่านั้น",
-"en": "Only inside ceilings"
-},
-{
-"th": "ฝังในคอนกรีตห้ามใช้",
-"en": "It may never be used in concrete"
-}
-],
-"answer": 0,
-"explain": "EMT is thin-wall for indoor dry locations; IMC/RSC is heavy wall for outdoor and exposed areas."
-},
-{
-"sec": "B",
-"th": "จำนวนสายในท่อร้อยสายควรมีพื้นที่หน้าตัดรวมไม่เกินประมาณเท่าไรของพื้นที่ท่อ (สายมากกว่า 2 เส้น)",
-"en": "With more than two cables in a conduit, total cable area should not exceed about:",
-"options": [
-{
-"th": "100%",
-"en": "100%"
-},
-{
-"th": "10%",
-"en": "10%"
-},
-{
-"th": "80%",
-"en": "80%"
-},
-{
-"th": "40%",
-"en": "40%"
-}
-],
-"answer": 3,
-"explain": "Around 40% fill leaves room to pull cables and lets heat escape."
-},
-{
-"sec": "B",
-"th": "ต่อเข้ากับอินเวอร์เตอร์หรือมอเตอร์ที่สั่น ควรใช้ท่อแบบใดช่วงสุดท้าย",
-"en": "For the last section into vibrating equipment, which conduit is used?",
-"options": [
-{
-"th": "เทปพันสาย",
-"en": "Insulating tape"
-},
-{
-"th": "ท่อแข็งยึดตรง",
-"en": "Rigid conduit fixed directly"
-},
-{
-"th": "ท่ออ่อน (flexible) พร้อมข้อต่อกันน้ำ",
-"en": "Flexible conduit with liquid-tight fittings"
-},
-{
-"th": "ไม่ใช้ท่อ",
-"en": "No conduit"
-}
-],
-"answer": 2,
-"explain": "Flexible conduit absorbs movement and keeps water out at the entry."
-},
-{
-"sec": "B",
-"th": "ปลายสายฝอย (stranded) ที่จะขันเข้าขั้วสกรู ควรทำอย่างไร",
-"en": "Fine-stranded cable going into a screw terminal should be:",
-"options": [
-{
-"th": "ย้ำหางปลาหรือปลอก ferrule ด้วยคีมย้ำที่ถูกต้อง",
-"en": "Fitted with a crimped lug or ferrule using the right crimp tool"
-},
-{
-"th": "พับครึ่ง",
-"en": "Folded in half"
-},
-{
-"th": "บัดกรีให้แข็ง",
-"en": "Soldered solid"
-},
-{
-"th": "บิดเกลียวแล้วขันเลย",
-"en": "Twisted and screwed in directly"
-}
-],
-"answer": 0,
-"explain": "Loose strands spread under the screw and loosen; soldered ends creep and loosen with heat."
-},
-{
-"sec": "B",
-"th": "การย้ำขั้ว MC4 ที่ถูกต้องต้องใช้อะไร",
-"en": "Crimping MC4 contacts correctly requires:",
-"options": [
-{
-"th": "คีมปากจิ้งจก",
-"en": "Ordinary pliers"
-},
-{
-"th": "คีมย้ำเฉพาะสำหรับ MC4 และหน้าสัมผัสที่ตรงขนาดสาย",
-"en": "The dedicated MC4 crimp tool and contacts matching the cable size"
-},
-{
-"th": "ค้อนตอก",
-"en": "A hammer"
-},
-{
-"th": "บัดกรีแทนการย้ำ",
-"en": "Soldering instead"
-}
-],
-"answer": 1,
-"explain": "A poor crimp is high resistance and can cause a DC fire."
-},
-{
-"sec": "B",
-"th": "การเดินสาย AC และสาย DC ควรทำอย่างไร",
-"en": "How should AC and DC cables be run?",
-"options": [
-{
-"th": "รวมท่อเดียวโดยไม่ระบุ",
-"en": "Mixed in one unlabelled conduit"
-},
-{
-"th": "แยกท่อหรือแยกช่อง และติดป้ายชัดเจน",
-"en": "In separate conduits or compartments, clearly labelled"
-},
-{
-"th": "ไม่ต้องระบุอะไร",
-"en": "No labelling needed"
-},
-{
-"th": "พันรวมกันด้วยเทป",
-"en": "Taped together"
-}
-],
-"answer": 1,
-"explain": "Separation and labels make faults less likely and keep maintenance safe."
-},
-{
-"sec": "B",
-"th": "สายที่ลอดเข้ากล่องหรือตู้ไฟกลางแจ้งต้องใช้อะไร",
-"en": "A cable entering an outdoor box or enclosure needs:",
-"options": [
-{
-"th": "ไม่ต้องใช้อะไร",
-"en": "Nothing"
-},
-{
-"th": "ซิลิโคนอย่างเดียว",
-"en": "Silicone only"
-},
-{
-"th": "เคเบิลแกลนด์ที่ตรงขนาดสายและพิกัด IP ตามตู้",
-"en": "A cable gland sized to the cable, matching the enclosure's IP rating"
-},
-{
-"th": "เจาะรูแล้วยัดสายเข้าไป",
-"en": "A drilled hole with the cable pushed through"
-}
-],
-"answer": 2,
-"explain": "Glands keep water and insects out and stop the cable being pulled."
-},
-{
-"sec": "B",
-"th": "สายที่เดินลงจากด้านบนเข้าขั้วด้านล่างของตู้ ควรทำ 'drip loop' เพื่ออะไร",
-"en": "Why make a drip loop where a cable comes down into a box?",
-"options": [
-{
-"th": "ให้น้ำหยดออกที่ส่วนโค้ง ไม่ไหลตามสายเข้าตู้",
-"en": "So water drips off the loop instead of running into the box"
-},
-{
-"th": "ให้ดูสวย",
-"en": "For looks"
-},
-{
-"th": "ให้สายยาวขึ้น",
-"en": "To lengthen the cable"
-},
-{
-"th": "เพื่อลดแรงดัน",
-"en": "To reduce voltage"
-}
-],
-"answer": 0,
-"explain": "Water follows the cable; a low loop sheds it before the entry."
-},
-{
-"sec": "B",
-"th": "สาย DC บนหลังคาควรยึดอย่างไร",
-"en": "How should DC cables be fixed on the roof?",
-"options": [
-{
-"th": "ไม่ต้องยึด",
-"en": "No fixing needed"
-},
-{
-"th": "ใช้เคเบิลไทร์สีขาวธรรมดา",
-"en": "Ordinary white cable ties"
-},
-{
-"th": "ยึดกับรางด้วยคลิปสแตนเลสหรือเคเบิลไทร์ทน UV ไม่ให้สายวางบนหลังคาหรือห้อยแกว่ง",
-"en": "Clipped to the rails with stainless clips or UV-rated ties, never lying on the roof or hanging loose"
-},
-{
-"th": "วางบนแผ่นหลังคาได้",
-"en": "Lying on the roof sheet"
-}
-],
-"answer": 2,
-"explain": "Loose cables chafe and hold water; ordinary ties crack in sunlight within a year or two."
-},
-{
-"sec": "B",
-"th": "การดัดโค้งสายใหญ่ควรระวังอะไร",
-"en": "What must you watch when bending a large cable?",
-"options": [
-{
-"th": "ดัดให้แคบที่สุด",
-"en": "Bend it as tight as possible"
-},
-{
-"th": "ไม่มีข้อกำหนด",
-"en": "There is no limit"
-},
-{
-"th": "ไม่ดัดโค้งแคบกว่ารัศมีที่ผู้ผลิตกำหนด",
-"en": "Not bending tighter than the manufacturer's minimum radius"
-},
-{
-"th": "พับเป็นมุมฉาก",
-"en": "Fold it at a right angle"
-}
-],
-"answer": 2,
-"explain": "Too tight a bend damages insulation and conductors."
-},
-{
-"sec": "B",
-"th": "สายดินของระบบโซลาร์และอินเวอร์เตอร์ ควรต่อเข้ากับอะไร",
-"en": "The earth conductors of the PV system and inverter should connect to:",
-"options": [
-{
-"th": "ไม่ต้องต่อ",
-"en": "Nothing"
-},
-{
-"th": "สายนิวทรัลที่ปลั๊ก",
-"en": "Neutral at a socket"
-},
-{
-"th": "บาร์กราวด์หลักของตู้ไฟ ที่ต่อกับหลักดิน",
-"en": "The main earth bar of the board, connected to the earth electrode"
-},
-{
-"th": "ท่อประปาพลาสติก",
-"en": "A plastic water pipe"
-}
-],
-"answer": 2,
-"explain": "One common earthing system keeps all metal parts at the same potential."
-},
-{
-"sec": "B",
-"th": "เมื่อเดินสายผ่านรูเจาะในโครงเหล็กหรือแผ่นโลหะ ต้องทำอย่างไร",
-"en": "When a cable passes through a hole in steel or sheet metal you must:",
-"options": [
-{
-"th": "ทำให้รูเล็กพอดีสาย",
-"en": "Make the hole tight on the cable"
-},
-{
-"th": "ใช้เทปพันสายตรงนั้น",
-"en": "Tape the cable there"
-},
-{
-"th": "ไม่ต้องทำอะไร",
-"en": "Nothing"
-},
-{
-"th": "ลบคมรูและใส่บุชหรือยางกันบาด",
-"en": "Deburr the hole and fit a bush or grommet"
-}
-],
-"answer": 3,
-"explain": "Sharp edges cut insulation over time and cause earth faults."
-},
-{
-"sec": "C",
-"th": "แรงลมยก (uplift) บนแผงหลังคามักสูงที่สุดบริเวณใด",
-"en": "Wind uplift on roof-mounted panels is usually highest:",
-"options": [
-{
-"th": "กลางหลังคา",
-"en": "In the middle of the roof"
-},
-{
-"th": "เท่ากันทุกจุด",
-"en": "The same everywhere"
-},
-{
-"th": "ขอบและมุมของหลังคา",
-"en": "At the roof edges and corners"
-},
-{
-"th": "ใต้แผง",
-"en": "Under the panels"
-}
-],
-"answer": 2,
-"explain": "Wind accelerates around edges and corners; keep arrays back from edges or add fixings there."
-},
-{
-"sec": "C",
-"th": "การยึดขายึด (L-foot) บนหลังคาเมทัลชีท ควรยึดเข้ากับอะไร",
-"en": "On a metal-sheet roof, L-feet should be fixed into:",
-"options": [
-{
-"th": "ลวดผูก",
-"en": "Tie wire"
-},
-{
-"th": "แผ่นเมทัลชีทอย่างเดียว",
-"en": "The metal sheet only"
-},
-{
-"th": "กาวติด",
-"en": "Glue"
-},
-{
-"th": "แปหรือโครงหลังคา ด้วยสกรูพร้อมแหวนยาง EPDM",
-"en": "The purlins (roof frame) with screws and EPDM washers"
-}
-],
-"answer": 3,
-"explain": "Sheet metal alone cannot hold uplift; fix into the purlins and seal every hole."
-},
-{
-"sec": "C",
-"th": "ก่อนติดตั้งแผงบนหลังคาเก่า สิ่งที่ต้องตรวจก่อนคืออะไร",
-"en": "Before installing on an old roof, what must be checked first?",
-"options": [
-{
-"th": "สีของหลังคา",
-"en": "The roof colour"
-},
-{
-"th": "ยี่ห้อกระเบื้อง",
-"en": "The tile brand"
-},
-{
-"th": "สภาพแป จันทัน สนิม และระยะห่างโครง ว่ารับน้ำหนักและแรงลมได้",
-"en": "Purlins, rafters, rust and spans, to confirm they can carry the load and wind"
-},
-{
-"th": "ไม่ต้องตรวจ",
-"en": "Nothing"
-}
-],
-"answer": 2,
-"explain": "Rusted or widely spaced purlins can fail under panel weight or wind."
-},
-{
-"sec": "C",
-"th": "น้ำหนักแผงพร้อมรางยึดโดยประมาณต่อพื้นที่หลังคาเท่าไร",
-"en": "Panels plus rails weigh roughly how much per square metre of roof?",
-"options": [
-{
-"th": "100 kg/m²",
-"en": "100 kg/m²"
-},
-{
-"th": "12–15 kg/m²",
-"en": "12–15 kg/m²"
-},
-{
-"th": "500 kg/m²",
-"en": "500 kg/m²"
-},
-{
-"th": "1–2 kg/m²",
-"en": "1–2 kg/m²"
-}
-],
-"answer": 1,
-"explain": "A typical panel is about 11–12 kg/m², plus rails and clamps."
-},
-{
-"sec": "C",
-"th": "ตัวยึดแผง (clamp) ควรจับแผงที่ตำแหน่งใด",
-"en": "Where should clamps hold a panel?",
-"options": [
-{
-"th": "กลางแผงด้านกระจก",
-"en": "On the glass in the middle"
-},
-{
-"th": "ที่มุมแผงสุดขอบ",
-"en": "At the very corners"
-},
-{
-"th": "ในช่วงจับยึดที่ผู้ผลิตแผงกำหนด (clamping zone)",
-"en": "Inside the panel maker's specified clamping zone"
-},
-{
-"th": "ตรงไหนก็ได้",
-"en": "Anywhere"
-}
-],
-"answer": 2,
-"explain": "Clamping outside the zone voids the warranty and can crack cells or let panels lift."
-},
-{
-"sec": "C",
-"th": "ระยะห่างระหว่างแผง (mid clamp) มีไว้เพื่ออะไร",
-"en": "Why leave a small gap between panels at the mid clamps?",
-"options": [
-{
-"th": "รองรับการขยายตัวจากความร้อนและให้น้ำ/อากาศผ่าน",
-"en": "For thermal expansion and to let water and air through"
-},
-{
-"th": "เพื่อให้ใส่แผงได้มากขึ้น",
-"en": "To fit more panels"
-},
-{
-"th": "เพื่อกันขโมย",
-"en": "Against theft"
-},
-{
-"th": "ไม่จำเป็น",
-"en": "Not needed"
-}
-],
-"answer": 0,
-"explain": "Aluminium frames and rails expand in the heat; gaps prevent stress and help cooling."
-},
-{
+"level": 1,
 "sec": "C",
 "th": "ในประเทศไทย ทิศและมุมเอียงของแผงที่ผลิตไฟรายปีได้ดีที่สุดโดยทั่วไปคือ",
 "en": "In Thailand, the orientation and tilt that usually give the best yearly output is:",
 "options": [
-{
-"th": "หันทิศใต้ เอียงประมาณ 10–20°",
-"en": "Facing south, tilted about 10–20°"
-},
 {
 "th": "หันทิศตะวันออกแบนราบ 0°",
 "en": "Flat 0°, facing east"
@@ -1944,347 +200,101 @@
 "en": "Facing north, tilted 45°"
 },
 {
+"th": "หันทิศใต้ เอียงประมาณ 10–20°",
+"en": "Facing south, tilted about 10–20°"
+},
+{
 "th": "ตั้งฉาก 90°",
 "en": "Vertical, 90°"
 }
 ],
-"answer": 0,
+"answer": 2,
 "explain": "Thailand is about 6–20° N, so a south-facing tilt near the latitude works best."
 },
 {
-"sec": "C",
-"th": "ทำไมไม่ควรติดแผงแบนราบ 0° แม้หลังคาจะแบน",
-"en": "Why not mount panels completely flat (0°), even on a flat roof?",
+"level": 1,
+"sec": "D",
+"th": "ระหว่างทำงานที่บ้านลูกค้า ข้อใดช่วยสร้างความพึงพอใจมากที่สุด",
+"en": "While working at a customer's home, what builds satisfaction most?",
 "options": [
 {
-"th": "น้ำฝนไม่ชะล้าง ฝุ่นและน้ำขังทำให้ผลิตไฟลดลง",
-"en": "Rain does not wash them; dust and standing water reduce output"
+"th": "ทิ้งเศษวัสดุไว้ให้ลูกค้าเก็บ",
+"en": "Leaving waste for the customer"
 },
 {
-"th": "แผงจะร้อนน้อยลง",
-"en": "Panels run cooler"
+"th": "ทำงานเงียบ ๆ ไม่บอกอะไร",
+"en": "Working silently with no updates"
 },
 {
-"th": "ไม่มีผล",
-"en": "No effect"
+"th": "แจ้งความคืบหน้าทุกวัน ตรงเวลา และเก็บกวาดหน้างานทุกครั้ง",
+"en": "Daily progress updates, punctuality and cleaning up every time"
 },
 {
-"th": "ผิดกฎหมาย",
-"en": "It is illegal"
-}
-],
-"answer": 0,
-"explain": "A tilt of at least about 10° helps panels self-clean and drain."
-},
-{
-"sec": "C",
-"th": "ระบบติดตั้งบนหลังคาคอนกรีตแบนที่ไม่เจาะหลังคา (ballast) ต้องคำนวณอะไร",
-"en": "A ballasted (non-penetrating) system on a flat concrete roof must be designed for:",
-"options": [
-{
-"th": "ไม่ต้องคำนวณ",
-"en": "Nothing"
-},
-{
-"th": "สีของบล็อกถ่วง",
-"en": "The colour of the ballast blocks"
-},
-{
-"th": "น้ำหนักถ่วงพอต้านแรงลม และหลังคารับน้ำหนักรวมได้",
-"en": "Enough ballast to resist wind, and a roof that can carry the total weight"
-},
-{
-"th": "จำนวนสายไฟ",
-"en": "The number of cables"
+"th": "มาสายแต่ทำงานเร็ว",
+"en": "Arriving late but working fast"
 }
 ],
 "answer": 2,
-"explain": "Too little ballast and the array slides or lifts; too much and the slab is overloaded."
+"explain": "Communication, punctuality and a clean site are what customers remember."
 },
 {
-"sec": "C",
-"th": "ยิ่งเอียงแผงชันมากบนหลังคาแบน แรงลมจะเป็นอย่างไร",
-"en": "On a flat roof, as the panel tilt increases, wind load:",
+"level": 1,
+"sec": "B",
+"th": "สายชนิดใดเหมาะสำหรับฝังดินโดยตรงหรือเดินภายนอกอาคาร",
+"en": "Which cable is suitable for direct burial or outdoor runs?",
 "options": [
 {
-"th": "เพิ่มขึ้น ต้องยึดหรือถ่วงมากขึ้น",
-"en": "Increases, so more fixing or ballast is needed"
+"th": "VAF",
+"en": "VAF"
 },
 {
-"th": "ไม่เปลี่ยน",
-"en": "Does not change"
+"th": "NYY",
+"en": "NYY"
 },
 {
-"th": "เป็นศูนย์",
-"en": "Becomes zero"
+"th": "VCT",
+"en": "VCT"
 },
 {
-"th": "ลดลง",
-"en": "Decreases"
-}
-],
-"answer": 0,
-"explain": "A steeper panel presents more area to the wind, like a sail."
-},
-{
-"sec": "C",
-"th": "การใช้อลูมิเนียมสัมผัสกับเหล็กชุบสังกะสีหรือทองแดงโดยตรง เสี่ยงต่ออะไร",
-"en": "Direct contact between aluminium and galvanised steel or copper risks:",
-"options": [
-{
-"th": "ไม่มีความเสี่ยง",
-"en": "No risk"
-},
-{
-"th": "การกัดกร่อนแบบกัลวานิก ต้องใช้วัสดุคั่นหรือสแตนเลส",
-"en": "Galvanic corrosion; use separators or stainless fasteners"
-},
-{
-"th": "แผงร้อนเกิน",
-"en": "Overheated panels"
-},
-{
-"th": "ไฟฟ้าลัดวงจร",
-"en": "A short circuit"
+"th": "THW",
+"en": "THW"
 }
 ],
 "answer": 1,
-"explain": "Dissimilar metals with moisture corrode; isolate them and use stainless steel hardware."
+"explain": "NYY (0.6/1 kV) has a tough PVC sheath for burial and outdoor use."
 },
 {
-"sec": "C",
-"th": "หลังคากระเบื้อง ควรติดตั้งขายึดอย่างไร",
-"en": "On a tiled roof, mounting hooks should be installed:",
+"level": 1,
+"sec": "A",
+"th": "ทำไมสายแบตเตอรี่ระบบ 48 V ต้องใหญ่กว่าสาย DC ของแผงมาก",
+"en": "Why are 48 V battery cables much bigger than PV string cables?",
 "options": [
 {
-"th": "ใช้ตะขอยึดเข้ากับแป/จันทัน ใต้กระเบื้อง แล้ววางกระเบื้องกลับไม่ให้ตะขอกดกระเบื้องแตก",
-"en": "Hooks fixed to the battens/rafters under the tiles, with tiles refitted so the hook does not press on them"
+"th": "เพราะแบตเตอรี่ร้อน",
+"en": "Because batteries are hot"
 },
 {
-"th": "กาวติดบนกระเบื้อง",
-"en": "Glued on top of the tile"
+"th": "เพราะเป็นไฟ AC",
+"en": "Because it is AC"
 },
 {
-"th": "วางบนกระเบื้องเฉย ๆ",
-"en": "Just resting on the tiles"
+"th": "แรงดันต่ำ กำลังเท่ากันจึงมีกระแสสูงมาก",
+"en": "At low voltage the same power means a much higher current"
 },
 {
-"th": "ยึดสกรูทะลุกระเบื้องตรง ๆ",
-"en": "Screwed straight through the tile"
-}
-],
-"answer": 0,
-"explain": "Load must go into the structure, never into the tile, or tiles crack and leak."
-},
-{
-"sec": "C",
-"th": "ทุกรูที่เจาะบนหลังคาต้องทำอย่างไร",
-"en": "Every hole drilled in the roof must be:",
-"options": [
-{
-"th": "ซีลกันน้ำด้วยแหวนยาง/บิวทิล/ซีลแลนต์ที่ทน UV",
-"en": "Sealed with an EPDM washer, butyl or UV-resistant sealant"
-},
-{
-"th": "ใช้เทปใส",
-"en": "Covered with clear tape"
-},
-{
-"th": "ปล่อยไว้",
-"en": "Left open"
-},
-{
-"th": "อุดด้วยกระดาษ",
-"en": "Plugged with paper"
-}
-],
-"answer": 0,
-"explain": "Roof leaks are the most common complaint after an installation."
-},
-{
-"sec": "C",
-"th": "งานโครงเหล็กติดตั้งแผงบนพื้นดิน ควรใช้เหล็กแบบใด",
-"en": "A ground-mount steel structure should use:",
-"options": [
-{
-"th": "ไม้",
-"en": "Timber"
-},
-{
-"th": "เหล็กชุบกัลวาไนซ์แบบจุ่มร้อน (HDG) และน็อตชุบ/สแตนเลส",
-"en": "Hot-dip galvanised (HDG) steel with galvanised or stainless bolts"
-},
-{
-"th": "เหล็กดำทาสีครั้งเดียว",
-"en": "Black steel with one coat of paint"
-},
-{
-"th": "ท่อ PVC",
-"en": "PVC pipe"
-}
-],
-"answer": 1,
-"explain": "HDG resists corrosion for decades outdoors; painted black steel rusts quickly."
-},
-{
-"sec": "C",
-"th": "การเดินบนแผงโซลาร์ระหว่างติดตั้ง",
-"en": "Walking on solar panels during installation is:",
-"options": [
-{
-"th": "ห้าม เพราะทำให้เซลล์แตกร้าว (micro-crack)",
-"en": "Not allowed, it causes micro-cracks in the cells"
-},
-{
-"th": "ทำได้ถ้าใส่รองเท้านุ่ม",
-"en": "Fine in soft shoes"
-},
-{
-"th": "ทำได้ตอนเช้า",
-"en": "Fine in the morning"
-},
-{
-"th": "ทำได้ตลอด",
-"en": "Always fine"
-}
-],
-"answer": 0,
-"explain": "Micro-cracks may not show at first but grow into hot spots and power loss."
-},
-{
-"sec": "C",
-"th": "ระยะห่างจากแนวเงา เช่น ราวกันตก เสา หรือแผงแถวหน้า ควรพิจารณาช่วงเวลาใด",
-"en": "When spacing rows or keeping away from parapets and posts, check shading at:",
-"options": [
-{
-"th": "ตอนกลางคืน",
-"en": "At night"
-},
-{
-"th": "ไม่ต้องพิจารณา",
-"en": "No need to check"
-},
-{
-"th": "ช่วงประมาณ 9:00–15:00 ในวันที่ดวงอาทิตย์ต่ำที่สุดของปี (ธันวาคม)",
-"en": "About 9:00–15:00 on the lowest-sun day of the year (December)"
-},
-{
-"th": "เที่ยงวันในเดือนเมษายนเท่านั้น",
-"en": "Only at noon in April"
+"th": "เพื่อความสวยงาม",
+"en": "For appearance"
 }
 ],
 "answer": 2,
-"explain": "Winter shadows are the longest; design so the main production hours stay shade-free."
+"explain": "Power = V x I. At ~50 V instead of ~500 V, current is about 10 times higher."
 },
 {
-"sec": "C",
-"th": "ควรเว้นทางเดินหรือช่องว่างในแถวแผงขนาดใหญ่เพื่ออะไร",
-"en": "Why leave walkways or gaps in large arrays?",
-"options": [
-{
-"th": "เพื่อประหยัดราง",
-"en": "To save rail"
-},
-{
-"th": "เพื่อให้แผงร้อนขึ้น",
-"en": "To heat the panels"
-},
-{
-"th": "ไม่มีประโยชน์",
-"en": "No reason"
-},
-{
-"th": "เพื่อเข้าทำความสะอาด ตรวจซ่อม และดับเพลิงได้อย่างปลอดภัย",
-"en": "Safe access for cleaning, maintenance and fire-fighting"
-}
-],
-"answer": 3,
-"explain": "Without access, panels get walked on and faults go unfixed."
-},
-{
-"sec": "C",
-"th": "หลังติดตั้งเสร็จ ควรตรวจความแน่นของน็อตโครงสร้างอย่างไร",
-"en": "After installation, how should structural bolts be checked?",
-"options": [
-{
-"th": "ขันให้แน่นที่สุด",
-"en": "As tight as possible"
-},
-{
-"th": "ใช้มือหมุน",
-"en": "Hand-tight"
-},
-{
-"th": "ไม่ต้องตรวจ",
-"en": "No check needed"
-},
-{
-"th": "ขันด้วยประแจทอร์กตามค่าที่ผู้ผลิตกำหนด และทำเครื่องหมาย",
-"en": "Torque them to the maker's value with a torque wrench and mark them"
-}
-],
-"answer": 3,
-"explain": "Over-tightening strips aluminium; under-tightening lets clamps slip in the wind. Torque marks show if a bolt has moved."
-},
-{
-"sec": "C",
-"th": "พื้นที่ชายทะเลหรือที่โล่งกว้าง เทียบกับในเมือง ต้องออกแบบโครงสร้างอย่างไร",
-"en": "On the coast or in open land, compared with a city, the structure must be designed for:",
-"options": [
-{
-"th": "แรงลมที่สูงกว่า และการกัดกร่อนจากไอเค็ม",
-"en": "Higher wind and salt corrosion"
-},
-{
-"th": "แรงลมที่ต่ำกว่า",
-"en": "Lower wind"
-},
-{
-"th": "ไม่มีความแตกต่าง",
-"en": "No difference"
-},
-{
-"th": "น้ำหนักแผงที่ลดลง",
-"en": "Lighter panels"
-}
-],
-"answer": 0,
-"explain": "Open terrain gives stronger wind; salt air needs better corrosion protection (stainless, heavier galvanising)."
-},
-{
-"sec": "C",
-"th": "แนวแผงที่ติดตั้งได้ดีควรมีลักษณะอย่างไร",
-"en": "A well-installed array should look:",
-"options": [
-{
-"th": "ไม่สำคัญ",
-"en": "It does not matter"
-},
-{
-"th": "สายห้อยให้เห็นชัด",
-"en": "Cables hanging visibly"
-},
-{
-"th": "แผงสูงต่ำไม่เท่ากัน",
-"en": "Panels at different heights"
-},
-{
-"th": "แนวตรง ระดับเท่ากัน ช่องว่างสม่ำเสมอ สายเก็บเรียบร้อยใต้แผง",
-"en": "Straight, level, evenly gapped, with cables tidied under the panels"
-}
-],
-"answer": 3,
-"explain": "Neat alignment shows the rails are true and loads are shared evenly, and customers judge quality by it."
-},
-{
+"level": 1,
 "sec": "D",
 "th": "ก่อนเสนอขนาดระบบให้ลูกค้า ข้อมูลใดสำคัญที่สุด",
 "en": "Before proposing a system size, what customer information matters most?",
 "options": [
-{
-"th": "ยี่ห้อรถ",
-"en": "Car brand"
-},
 {
 "th": "สีบ้าน",
 "en": "House colour"
@@ -2292,6 +302,10 @@
 {
 "th": "จำนวนห้องน้ำ",
 "en": "Number of bathrooms"
+},
+{
+"th": "ยี่ห้อรถ",
+"en": "Car brand"
 },
 {
 "th": "บิลค่าไฟย้อนหลังและช่วงเวลาที่ใช้ไฟ (กลางวัน/กลางคืน)",
@@ -2302,6 +316,59 @@
 "explain": "Bills and the load profile decide on-grid vs hybrid, panel size and battery size."
 },
 {
+"level": 1,
+"sec": "C",
+"th": "แนวแผงที่ติดตั้งได้ดีควรมีลักษณะอย่างไร",
+"en": "A well-installed array should look:",
+"options": [
+{
+"th": "แนวตรง ระดับเท่ากัน ช่องว่างสม่ำเสมอ สายเก็บเรียบร้อยใต้แผง",
+"en": "Straight, level, evenly gapped, with cables tidied under the panels"
+},
+{
+"th": "สายห้อยให้เห็นชัด",
+"en": "Cables hanging visibly"
+},
+{
+"th": "ไม่สำคัญ",
+"en": "It does not matter"
+},
+{
+"th": "แผงสูงต่ำไม่เท่ากัน",
+"en": "Panels at different heights"
+}
+],
+"answer": 0,
+"explain": "Neat alignment shows the rails are true and loads are shared evenly, and customers judge quality by it."
+},
+{
+"level": 1,
+"sec": "A",
+"th": "เมื่อ อุณหภูมิเซลล์ลดลง (เช้าที่อากาศเย็น) แรงดัน Voc ของแผงจะเป็นอย่างไร",
+"en": "When cell temperature drops (a cold morning), what happens to the panel's Voc?",
+"options": [
+{
+"th": "เป็นศูนย์",
+"en": "It becomes zero"
+},
+{
+"th": "ไม่เปลี่ยน",
+"en": "It does not change"
+},
+{
+"th": "ลดลง",
+"en": "It falls"
+},
+{
+"th": "สูงขึ้น",
+"en": "It rises"
+}
+],
+"answer": 3,
+"explain": "Voc has a negative temperature coefficient, so it rises when the cells are colder. Size strings for the coldest morning."
+},
+{
+"level": 1,
 "sec": "D",
 "th": "ลูกค้าส่วนใหญ่กังวลเรื่องใดมากที่สุดเกี่ยวกับการติดแผงบนหลังคา",
 "en": "What do most customers worry about most with rooftop solar?",
@@ -2327,81 +394,761 @@
 "explain": "Address leaks, safety and real savings clearly in the proposal and at handover."
 },
 {
+"level": 1,
+"sec": "B",
+"th": "สีสายไฟตามมาตรฐานใหม่ของไทย ระบบ 3 เฟส สาย L1 L2 L3 N และ PE ใช้สีอะไร",
+"en": "In Thailand's new colour code, L1, L2, L3, N and PE are:",
+"options": [
+{
+"th": "ดำ แดง น้ำเงิน ขาว เขียว",
+"en": "Black, red, blue, white, green"
+},
+{
+"th": "แดง เหลือง น้ำเงิน ดำ เขียว",
+"en": "Red, yellow, blue, black, green"
+},
+{
+"th": "น้ำตาล ดำ เทา ฟ้า เขียวแถบเหลือง",
+"en": "Brown, black, grey, blue, green/yellow"
+},
+{
+"th": "ทุกเส้นสีเดียวกัน",
+"en": "All the same colour"
+}
+],
+"answer": 2,
+"explain": "Brown, black and grey for phases, blue for neutral, green/yellow for protective earth."
+},
+{
+"level": 1,
+"sec": "C",
+"th": "ทำไมไม่ควรติดแผงแบนราบ 0° แม้หลังคาจะแบน",
+"en": "Why not mount panels completely flat (0°), even on a flat roof?",
+"options": [
+{
+"th": "ไม่มีผล",
+"en": "No effect"
+},
+{
+"th": "น้ำฝนไม่ชะล้าง ฝุ่นและน้ำขังทำให้ผลิตไฟลดลง",
+"en": "Rain does not wash them; dust and standing water reduce output"
+},
+{
+"th": "ผิดกฎหมาย",
+"en": "It is illegal"
+},
+{
+"th": "แผงจะร้อนน้อยลง",
+"en": "Panels run cooler"
+}
+],
+"answer": 1,
+"explain": "A tilt of at least about 10° helps panels self-clean and drain."
+},
+{
+"level": 1,
+"sec": "C",
+"th": "ทุกรูที่เจาะบนหลังคาต้องทำอย่างไร",
+"en": "Every hole drilled in the roof must be:",
+"options": [
+{
+"th": "อุดด้วยกระดาษ",
+"en": "Plugged with paper"
+},
+{
+"th": "ใช้เทปใส",
+"en": "Covered with clear tape"
+},
+{
+"th": "ซีลกันน้ำด้วยแหวนยาง/บิวทิล/ซีลแลนต์ที่ทน UV",
+"en": "Sealed with an EPDM washer, butyl or UV-resistant sealant"
+},
+{
+"th": "ปล่อยไว้",
+"en": "Left open"
+}
+],
+"answer": 2,
+"explain": "Roof leaks are the most common complaint after an installation."
+},
+{
+"level": 1,
+"sec": "A",
+"th": "แบตเตอรี่ลิเทียมฟอสเฟต (LiFePO4) แรงดันต่ำ 16 เซลล์อนุกรม มีแรงดันระบุเท่าไร",
+"en": "A low-voltage LiFePO4 battery with 16 cells in series has a nominal voltage of:",
+"options": [
+{
+"th": "12.8 V",
+"en": "12.8 V"
+},
+{
+"th": "51.2 V",
+"en": "51.2 V"
+},
+{
+"th": "57.6 V",
+"en": "57.6 V"
+},
+{
+"th": "48 V exactly",
+"en": "48 V exactly"
+}
+],
+"answer": 1,
+"explain": "LiFePO4 is 3.2 V per cell: 16 x 3.2 = 51.2 V."
+},
+{
+"level": 1,
+"sec": "B",
+"th": "สาย THW ตาม มอก. 11 (60227 IEC 01) เหมาะกับการเดินสายแบบใด",
+"en": "THW cable (TIS 11, 60227 IEC 01) is suitable for:",
+"options": [
+{
+"th": "เดินร้อยในท่อ ภายในอาคาร",
+"en": "Running inside conduit, indoors"
+},
+{
+"th": "ฝังดินโดยตรงไม่มีท่อ",
+"en": "Direct burial without conduit"
+},
+{
+"th": "เดินกลางแดดโดยไม่มีท่อ",
+"en": "Exposed in sunlight without conduit"
+},
+{
+"th": "ใช้เป็นสาย DC ของแผงโดยตรง",
+"en": "PV string cable"
+}
+],
+"answer": 0,
+"explain": "THW is single-core PVC wire without a sheath; it must be protected in conduit or trunking."
+},
+{
+"level": 1,
+"sec": "A",
+"th": "RCD/RCBO สำหรับป้องกันคนจากไฟดูดควรมีพิกัดกระแสรั่วเท่าไร",
+"en": "An RCD/RCBO for protecting people against electric shock should be rated at:",
+"options": [
+{
+"th": "30 mA",
+"en": "30 mA"
+},
+{
+"th": "300 mA",
+"en": "300 mA"
+},
+{
+"th": "30 A",
+"en": "30 A"
+},
+{
+"th": "3 A",
+"en": "3 A"
+}
+],
+"answer": 0,
+"explain": "30 mA is the personal-protection rating; higher ratings protect only against fire."
+},
+{
+"level": 1,
+"sec": "A",
+"th": "ต่อแผงโซลาร์ 10 แผงแบบอนุกรม แผงละ Voc 50 V และ Isc 13 A แรงดันวงจรเปิดของสตริงที่ STC เท่าไร",
+"en": "Ten panels (Voc 50 V, Isc 13 A each) are connected in series. What is the string open-circuit voltage at STC?",
+"options": [
+{
+"th": "650 V",
+"en": "650 V"
+},
+{
+"th": "500 V",
+"en": "500 V"
+},
+{
+"th": "50 V",
+"en": "50 V"
+},
+{
+"th": "130 V",
+"en": "130 V"
+}
+],
+"answer": 1,
+"explain": "Series connection adds voltages: 10 x 50 V = 500 V; current stays 13 A."
+},
+{
+"level": 1,
+"sec": "A",
+"th": "อินเวอร์เตอร์ควรติดตั้งในตำแหน่งแบบใด",
+"en": "Where should an inverter be mounted?",
+"options": [
+{
+"th": "กลางแดดเพื่อให้ใกล้แผง",
+"en": "In full sun to be close to the panels"
+},
+{
+"th": "ที่ร่ม ระบายอากาศดี เว้นระยะรอบตัวตามคู่มือ ไม่โดนแดดและฝนโดยตรง",
+"en": "In shade with good airflow and the manual's clearances, out of direct sun and rain"
+},
+{
+"th": "ในตู้ปิดสนิทเพื่อกันฝุ่น",
+"en": "In a sealed cabinet to keep dust out"
+},
+{
+"th": "ติดชิดกันหลายเครื่องโดยไม่เว้นระยะ",
+"en": "Several units touching each other"
+}
+],
+"answer": 1,
+"explain": "Heat makes inverters derate and age early; clearances let the heatsink work."
+},
+{
+"level": 1,
+"sec": "A",
+"th": "กำลังไฟฟ้าบนป้ายแผง (เช่น 650 W) วัดที่สภาวะใด",
+"en": "A panel's nameplate power (e.g. 650 W) is measured at:",
+"options": [
+{
+"th": "แสง 800 W/m²",
+"en": "800 W/m² irradiance"
+},
+{
+"th": "แดดเที่ยงวันในประเทศไทย",
+"en": "Midday sun in Thailand"
+},
+{
+"th": "อุณหภูมิเซลล์ 45 °C",
+"en": "45 °C cell temperature"
+},
+{
+"th": "STC: แสง 1000 W/m² อุณหภูมิเซลล์ 25 °C AM1.5",
+"en": "STC: 1000 W/m² irradiance, 25 °C cell temperature, AM1.5"
+}
+],
+"answer": 3,
+"explain": "STC is the standard test condition. Real output in Thailand is usually lower because cells run hotter than 25 °C."
+},
+{
+"level": 1,
+"sec": "A",
+"th": "สตริง 2 สตริงต่อขนานกัน สตริงละ Isc 13 A กระแสลัดวงจรรวมเข้าอินเวอร์เตอร์เท่าไร",
+"en": "Two strings (Isc 13 A each) are connected in parallel. What is the total short-circuit current into the inverter?",
+"options": [
+{
+"th": "26 A",
+"en": "26 A"
+},
+{
+"th": "13 A",
+"en": "13 A"
+},
+{
+"th": "52 A",
+"en": "52 A"
+},
+{
+"th": "6.5 A",
+"en": "6.5 A"
+}
+],
+"answer": 0,
+"explain": "Parallel connection adds currents: 2 x 13 A = 26 A."
+},
+{
+"level": 1,
+"sec": "A",
+"th": "ต่อแผงแบบอนุกรม ค่าใดเพิ่มขึ้น",
+"en": "When panels are connected in series, which value increases?",
+"options": [
+{
+"th": "แรงดัน (V)",
+"en": "Voltage"
+},
+{
+"th": "กระแส (A)",
+"en": "Current"
+},
+{
+"th": "ไม่มีค่าใดเพิ่มขึ้น",
+"en": "Neither"
+},
+{
+"th": "ทั้งแรงดันและกระแส",
+"en": "Both voltage and current"
+}
+],
+"answer": 0,
+"explain": "In series the voltages add and the current stays the same as one panel."
+},
+{
+"level": 1,
+"sec": "C",
+"th": "การเดินบนแผงโซลาร์ระหว่างติดตั้ง",
+"en": "Walking on solar panels during installation is:",
+"options": [
+{
+"th": "ทำได้ตอนเช้า",
+"en": "Fine in the morning"
+},
+{
+"th": "ทำได้ถ้าใส่รองเท้านุ่ม",
+"en": "Fine in soft shoes"
+},
+{
+"th": "ห้าม เพราะทำให้เซลล์แตกร้าว (micro-crack)",
+"en": "Not allowed, it causes micro-cracks in the cells"
+},
+{
+"th": "ทำได้ตลอด",
+"en": "Always fine"
+}
+],
+"answer": 2,
+"explain": "Micro-cracks may not show at first but grow into hot spots and power loss."
+},
+{
+"level": 2,
+"sec": "C",
+"th": "แรงลมยก (uplift) บนแผงหลังคามักสูงที่สุดบริเวณใด",
+"en": "Wind uplift on roof-mounted panels is usually highest:",
+"options": [
+{
+"th": "เท่ากันทุกจุด",
+"en": "The same everywhere"
+},
+{
+"th": "ขอบและมุมของหลังคา",
+"en": "At the roof edges and corners"
+},
+{
+"th": "ใต้แผง",
+"en": "Under the panels"
+},
+{
+"th": "กลางหลังคา",
+"en": "In the middle of the roof"
+}
+],
+"answer": 1,
+"explain": "Wind accelerates around edges and corners; keep arrays back from edges or add fixings there."
+},
+{
+"level": 2,
+"sec": "A",
+"th": "แผงหนึ่งในสตริงถูกเงาบัง กระแสของทั้งสตริงจะเป็นอย่างไร (ไม่มี optimizer)",
+"en": "One panel in a string is shaded. Without optimisers, what happens to the string current?",
+"options": [
+{
+"th": "ถูกจำกัดโดยแผงที่ผลิตกระแสได้น้อยที่สุด จนกว่าไดโอดบายพาสจะทำงาน",
+"en": "It is limited by the weakest panel until its bypass diodes conduct"
+},
+{
+"th": "ไม่เปลี่ยนแปลง",
+"en": "It does not change"
+},
+{
+"th": "เพิ่มขึ้น",
+"en": "It increases"
+},
+{
+"th": "แผงอื่นชดเชยให้เต็ม",
+"en": "The other panels make up the difference"
+}
+],
+"answer": 0,
+"explain": "In series the same current flows through every panel, so the weakest panel limits it; bypass diodes reduce the loss."
+},
+{
+"level": 2,
+"sec": "A",
+"th": "ระบบ Enphase แตกต่างจากอินเวอร์เตอร์แบบสตริงอย่างไร",
+"en": "How does an Enphase system differ from a string inverter system?",
+"options": [
+{
+"th": "ต้องมีแบตเตอรี่เสมอจึงจะผลิตไฟได้",
+"en": "It always needs a battery to produce power"
+},
+{
+"th": "ใช้อินเวอร์เตอร์ตัวเดียวต่อสตริงยาว 1,000 V",
+"en": "It uses one inverter on a long 1,000 V string"
+},
+{
+"th": "ใช้ไมโครอินเวอร์เตอร์ 1 ตัวต่อแผง แปลงเป็นไฟ AC ที่แผงเลย ไม่มีสาย DC แรงดันสูงบนหลังคา และแผงหนึ่งเสียไม่ทำให้แผงอื่นหยุด",
+"en": "One microinverter per panel converts to AC at the panel: no high-voltage DC on the roof, and one faulty panel does not stop the others"
+},
+{
+"th": "ไม่มีระบบมอนิเตอร์รายแผง",
+"en": "It has no per-panel monitoring"
+}
+],
+"answer": 2,
+"explain": "Microinverters work panel by panel, so each panel has its own MPPT and monitoring, and roof wiring is low-voltage AC."
+},
+{
+"level": 2,
+"sec": "A",
+"th": "ฟังก์ชัน SafeDC ของ SolarEdge ทำอะไรเมื่อปิดอินเวอร์เตอร์หรือไฟ AC ดับ",
+"en": "What does SolarEdge's SafeDC function do when the inverter or AC supply is switched off?",
+"options": [
+{
+"th": "ตัดเฉพาะฝั่ง AC ฝั่ง DC ไม่เปลี่ยน",
+"en": "Only the AC side is cut; DC stays the same"
+},
+{
+"th": "ออปติไมเซอร์แต่ละตัวลดแรงดันออกเหลือประมาณ 1 V ต่อแผง สาย DC จึงปลอดภัยต่อการสัมผัส",
+"en": "Each optimiser drops its output to about 1 V per panel, so the DC cables become touch-safe"
+},
+{
+"th": "แผงจะลัดวงจรตัวเองจนฟิวส์ขาด",
+"en": "The panels short themselves until the fuse blows"
+},
+{
+"th": "แผงยังจ่ายแรงดันเต็มสตริงเหมือนเดิม",
+"en": "The panels still give full string voltage"
+}
+],
+"answer": 1,
+"explain": "With SafeDC, a 20-panel string falls to about 20 V instead of several hundred volts, which protects installers and firefighters. A normal string inverter cannot lower roof DC voltage when switched off."
+},
+{
+"level": 2,
+"sec": "B",
+"th": "สายที่เดินลงจากด้านบนเข้าขั้วด้านล่างของตู้ ควรทำ 'drip loop' เพื่ออะไร",
+"en": "Why make a drip loop where a cable comes down into a box?",
+"options": [
+{
+"th": "ให้สายยาวขึ้น",
+"en": "To lengthen the cable"
+},
+{
+"th": "เพื่อลดแรงดัน",
+"en": "To reduce voltage"
+},
+{
+"th": "ให้น้ำหยดออกที่ส่วนโค้ง ไม่ไหลตามสายเข้าตู้",
+"en": "So water drips off the loop instead of running into the box"
+},
+{
+"th": "ให้ดูสวย",
+"en": "For looks"
+}
+],
+"answer": 2,
+"explain": "Water follows the cable; a low loop sheds it before the entry."
+},
+{
+"level": 2,
+"sec": "A",
+"th": "แผง LONGi Hi-MO X10 ใช้เทคโนโลยี HPBC 2.0 จุดเด่นของเซลล์แบบนี้คืออะไร",
+"en": "LONGi Hi-MO X10 panels use HPBC 2.0 technology. What is special about this cell design?",
+"options": [
+{
+"th": "ใช้เซลล์ชนิด P-type PERC รุ่นเก่า",
+"en": "It uses older P-type PERC cells"
+},
+{
+"th": "เป็นแผงฟิล์มบางที่งอได้",
+"en": "It is a flexible thin-film panel"
+},
+{
+"th": "มีไมโครอินเวอร์เตอร์ติดมาในกล่องต่อสาย",
+"en": "It has a microinverter built into the junction box"
+},
+{
+"th": "ขั้วไฟฟ้าทั้งหมดอยู่ด้านหลังเซลล์ (back contact) ด้านหน้าไม่มีเส้นโลหะบังแสง ประสิทธิภาพสูงขึ้น",
+"en": "All electrical contacts are on the back of the cell (back contact), so no metal lines shade the front and efficiency is higher"
+}
+],
+"answer": 3,
+"explain": "HPBC = Hybrid Passivated Back Contact. With all contacts at the rear, the whole front surface collects light; Hi-MO X10 reaches about 24.8% module efficiency."
+},
+{
+"level": 2,
+"sec": "B",
+"th": "สายที่ลอดเข้ากล่องหรือตู้ไฟกลางแจ้งต้องใช้อะไร",
+"en": "A cable entering an outdoor box or enclosure needs:",
+"options": [
+{
+"th": "ไม่ต้องใช้อะไร",
+"en": "Nothing"
+},
+{
+"th": "ซิลิโคนอย่างเดียว",
+"en": "Silicone only"
+},
+{
+"th": "เคเบิลแกลนด์ที่ตรงขนาดสายและพิกัด IP ตามตู้",
+"en": "A cable gland sized to the cable, matching the enclosure's IP rating"
+},
+{
+"th": "เจาะรูแล้วยัดสายเข้าไป",
+"en": "A drilled hole with the cable pushed through"
+}
+],
+"answer": 2,
+"explain": "Glands keep water and insects out and stop the cable being pulled."
+},
+{
+"level": 2,
+"sec": "A",
+"th": "ทำไมห้ามใช้เบรกเกอร์ AC แทนเบรกเกอร์ DC ฝั่งแผง",
+"en": "Why must an AC breaker never be used instead of a DC breaker on the PV side?",
+"options": [
+{
+"th": "ใหญ่เกินไป",
+"en": "It is too big"
+},
+{
+"th": "ราคาแพงกว่า",
+"en": "It costs more"
+},
+{
+"th": "ใช้แทนกันได้",
+"en": "They are interchangeable"
+},
+{
+"th": "AC เบรกเกอร์ดับอาร์ก DC ไม่ได้ อาจไหม้",
+"en": "An AC breaker cannot break a DC arc and may burn"
+}
+],
+"answer": 3,
+"explain": "DC current never passes through zero, so breaking it needs a breaker designed and rated for DC voltage."
+},
+{
+"level": 2,
+"sec": "A",
+"th": "ถ้าแรงดันตกในสายมากเกินไป ควรแก้อย่างไร",
+"en": "If cable voltage drop is too high, the fix is to:",
+"options": [
+{
+"th": "เพิ่มขนาดสาย หรือลดระยะสาย",
+"en": "Use a bigger cable or a shorter route"
+},
+{
+"th": "เพิ่มจำนวนแผง",
+"en": "Add more panels"
+},
+{
+"th": "ใช้เบรกเกอร์ใหญ่ขึ้น",
+"en": "Fit a bigger breaker"
+},
+{
+"th": "ใช้สายเล็กลง",
+"en": "Use a smaller cable"
+}
+],
+"answer": 0,
+"explain": "Resistance falls as cross-section rises and length falls."
+},
+{
+"level": 2,
+"sec": "C",
+"th": "ตัวยึดแผง (clamp) ควรจับแผงที่ตำแหน่งใด",
+"en": "Where should clamps hold a panel?",
+"options": [
+{
+"th": "กลางแผงด้านกระจก",
+"en": "On the glass in the middle"
+},
+{
+"th": "ตรงไหนก็ได้",
+"en": "Anywhere"
+},
+{
+"th": "ในช่วงจับยึดที่ผู้ผลิตแผงกำหนด (clamping zone)",
+"en": "Inside the panel maker's specified clamping zone"
+},
+{
+"th": "ที่มุมแผงสุดขอบ",
+"en": "At the very corners"
+}
+],
+"answer": 2,
+"explain": "Clamping outside the zone voids the warranty and can crack cells or let panels lift."
+},
+{
+"level": 2,
+"sec": "A",
+"th": "หลักการเลือกเบรกเกอร์กับสาย ข้อใดถูกต้อง",
+"en": "Which rule for breakers and cables is correct?",
+"options": [
+{
+"th": "กระแสโหลด ≤ พิกัดเบรกเกอร์ ≤ ความสามารถนำกระแสของสาย",
+"en": "Load current ≤ breaker rating ≤ cable current capacity"
+},
+{
+"th": "ใช้สายเล็กที่สุดที่หาได้",
+"en": "Use the smallest cable available"
+},
+{
+"th": "เบรกเกอร์ใหญ่กว่าสายได้เสมอ",
+"en": "The breaker may always be bigger than the cable"
+},
+{
+"th": "พิกัดเบรกเกอร์ไม่เกี่ยวกับสาย",
+"en": "Breaker rating is unrelated to the cable"
+}
+],
+"answer": 0,
+"explain": "The breaker protects the cable, so the cable must carry at least the breaker rating."
+},
+{
+"level": 2,
 "sec": "D",
 "th": "ข้อใดมักเป็น 'deal breaker' ที่ทำให้ลูกค้ายกเลิกการจ้าง",
 "en": "Which is a common deal breaker that makes a customer walk away?",
 "options": [
 {
-"th": "ราคาไม่ชัดเจน มีค่าใช้จ่ายแอบแฝง หรือเปลี่ยนราคาภายหลัง",
-"en": "Unclear prices, hidden costs or prices changed later"
+"th": "อธิบายวิธีใช้งาน",
+"en": "Explaining how to use the system"
 },
 {
 "th": "ช่างแต่งกายสุภาพ",
 "en": "A neatly dressed team"
 },
 {
-"th": "อธิบายวิธีใช้งาน",
-"en": "Explaining how to use the system"
+"th": "ราคาไม่ชัดเจน มีค่าใช้จ่ายแอบแฝง หรือเปลี่ยนราคาภายหลัง",
+"en": "Unclear prices, hidden costs or prices changed later"
 },
 {
 "th": "ส่งใบเสนอราคาเร็ว",
 "en": "A fast quotation"
 }
 ],
-"answer": 0,
+"answer": 2,
 "explain": "Trust breaks fastest over money; give a clear, fixed scope and price."
 },
 {
-"sec": "D",
-"th": "ควรบอกลูกค้าเรื่องการประหยัดค่าไฟอย่างไร",
-"en": "How should you talk to a customer about bill savings?",
+"level": 2,
+"sec": "A",
+"th": "ระบบที่ใช้อินเวอร์เตอร์ 1 เฟสหลายเครื่องบนไฟ 3 เฟส ควรต่ออย่างไร",
+"en": "Several single-phase inverters on a three-phase supply should be connected:",
 "options": [
 {
-"th": "พูดให้สูงไว้ก่อน",
-"en": "Quote the highest number to win the job"
+"th": "ต่อเฟสเดียวทั้งหมด",
+"en": "All on one phase"
 },
 {
-"th": "ประเมินตามข้อมูลจริง บอกช่วงที่เป็นไปได้ และสิ่งที่ทำให้ประหยัดน้อยลง",
-"en": "Estimate from real data, give a realistic range and what reduces savings"
+"th": "กระจายให้แต่ละเฟสใกล้เคียงกัน",
+"en": "Spread evenly across the three phases"
 },
 {
-"th": "ไม่ต้องพูดเรื่องนี้",
-"en": "Avoid the topic"
+"th": "ต่อระหว่างเฟสกับเฟส",
+"en": "Between two phases"
 },
 {
-"th": "รับประกันว่าค่าไฟจะเป็นศูนย์",
-"en": "Promise a zero bill"
+"th": "ต่อเข้าสายนิวทรัลเท่านั้น",
+"en": "To the neutral only"
 }
 ],
 "answer": 1,
-"explain": "Over-promising is the main source of later disappointment and complaints."
+"explain": "Putting them all on one phase unbalances the supply and raises voltage on that phase."
 },
 {
-"sec": "D",
-"th": "สัญญาณใดบอกว่าลูกค้า 'ไม่พอใจ' แม้ไม่ได้พูดออกมา",
-"en": "Which sign shows a customer is unhappy even if they do not say so?",
+"level": 2,
+"sec": "A",
+"th": "ต่อแบตเตอรี่หลายก้อนแบบขนาน วิธีใดช่วยให้แต่ละก้อนชาร์จ/จ่ายเท่ากัน",
+"en": "With several batteries in parallel, what helps them share charge and discharge equally?",
 "options": [
 {
-"th": "ตอบช้าลง ถามซ้ำเรื่องเดิม ขอเอกสาร/หลักฐานเพิ่ม หรือเลื่อนการชำระเงิน",
-"en": "Slower replies, repeated questions, asking for more proof, or delaying payment"
+"th": "ใช้บัสบาร์ หรือสายแต่ละก้อนยาวเท่ากันและขนาดเท่ากัน",
+"en": "A busbar, or equal-length, equal-size cables to each battery"
 },
 {
-"th": "แนะนำเพื่อนให้",
-"en": "Referring friends"
+"th": "ใช้สายคนละขนาด",
+"en": "Use different cable sizes"
 },
 {
-"th": "รีวิวห้าดาว",
-"en": "A five-star review"
+"th": "ต่อพ่วงก้อนต่อก้อนแล้วต่อเข้าอินเวอร์เตอร์ที่ก้อนแรก",
+"en": "Daisy-chain and take the inverter leads from the first battery"
 },
 {
-"th": "ชมงาน",
-"en": "Praising the work"
+"th": "ไม่ต้องสนใจ",
+"en": "It does not matter"
 }
 ],
 "answer": 0,
-"explain": "Spot these early and call the customer to find the concern before it becomes a dispute."
+"explain": "Unequal resistance makes the nearest battery work hardest and age first."
 },
 {
+"level": 2,
+"sec": "A",
+"th": "โครงแผงและรางยึดแผงต้องทำอย่างไรเรื่องสายดิน",
+"en": "What must be done with panel frames and mounting rails for earthing?",
+"options": [
+{
+"th": "ต่อเข้าสายนิวทรัล",
+"en": "Connect them to neutral"
+},
+{
+"th": "ต่อประสานถึงกันและต่อลงดินด้วยอุปกรณ์/สายที่เหมาะสม",
+"en": "Bond them together and to earth with suitable clips or cable"
+},
+{
+"th": "ไม่ต้องต่อสายดิน",
+"en": "Nothing, no earthing needed"
+},
+{
+"th": "ต่อเข้าขั้วลบของสตริง",
+"en": "Connect them to string negative"
+}
+],
+"answer": 1,
+"explain": "Bonding prevents frames becoming live in a fault and helps surge protection."
+},
+{
+"level": 2,
+"sec": "A",
+"th": "หน้าที่ของไดโอดบายพาส (bypass diode) ในกล่องรวมสายของแผงคืออะไร",
+"en": "What does the bypass diode in a panel junction box do?",
+"options": [
+{
+"th": "ให้กระแสผ่านข้ามกลุ่มเซลล์ที่ถูกบัง ลดการสูญเสียและจุดร้อน",
+"en": "Lets current pass around a shaded cell group, reducing loss and hot spots"
+},
+{
+"th": "เพิ่มแรงดันของแผง",
+"en": "Raises the panel voltage"
+},
+{
+"th": "กันไฟย้อนจากแบตเตอรี่",
+"en": "Blocks reverse current from the battery"
+},
+{
+"th": "กันฟ้าผ่า",
+"en": "Protects against lightning"
+}
+],
+"answer": 0,
+"explain": "Bypass diodes skip a shaded or damaged cell group so the rest of the panel and string keep working."
+},
+{
+"level": 2,
+"sec": "A",
+"th": "ควรต่อขั้วต่อ MC4 ต่างยี่ห้อเข้าด้วยกันหรือไม่",
+"en": "Should MC4 connectors of different brands be mated together?",
+"options": [
+{
+"th": "ไม่ควร ใช้ยี่ห้อ/รุ่นเดียวกันทั้งคู่ เพื่อกันขั้วต่อร้อนและไหม้",
+"en": "No, use a matched pair of the same make to avoid hot, burnt joints"
+},
+{
+"th": "ได้ทุกกรณี",
+"en": "Always fine"
+},
+{
+"th": "ได้ ถ้าพันเทป",
+"en": "Yes, if taped"
+},
+{
+"th": "ได้ ถ้าเสียบเข้ากันได้",
+"en": "Yes, if they click together"
+}
+],
+"answer": 0,
+"explain": "Cross-mated connectors are a leading cause of DC fires; tolerances and contact materials differ."
+},
+{
+"level": 2,
 "sec": "D",
 "th": "สัญญาณใดแสดงว่าลูกค้า 'พอใจ' จริง",
 "en": "Which shows a customer is truly satisfied?",
@@ -2415,22 +1162,785 @@
 "en": "Complaining of a roof leak"
 },
 {
-"th": "ขอส่วนลดเพิ่มหลังงานเสร็จ",
-"en": "Asking for extra discount after the job"
-},
-{
 "th": "เงียบไม่ติดต่อ",
 "en": "Silence"
+},
+{
+"th": "ขอส่วนลดเพิ่มหลังงานเสร็จ",
+"en": "Asking for extra discount after the job"
 }
 ],
 "answer": 0,
 "explain": "Referrals and repeat work are the clearest proof of satisfaction."
 },
 {
+"level": 2,
+"sec": "A",
+"th": "แรงดันตกในสาย DC ของระบบโซลาร์ ควรออกแบบให้ไม่เกินประมาณเท่าไร",
+"en": "Voltage drop in PV DC cabling should usually be designed below about:",
+"options": [
+{
+"th": "15%",
+"en": "15%"
+},
+{
+"th": "No limit",
+"en": "No limit"
+},
+{
+"th": "10%",
+"en": "10%"
+},
+{
+"th": "1–3%",
+"en": "1–3%"
+}
+],
+"answer": 3,
+"explain": "Keeping the drop around 1–3% limits energy loss and heating."
+},
+{
+"level": 2,
+"sec": "A",
+"th": "แผง AIKO ซีรีส์ ABC (เช่น Neostar) มีจุดเด่นเรื่องใดเมื่อมีเงาบังบางส่วน",
+"en": "What is AIKO's ABC panel series (e.g. Neostar) known for when part of the panel is shaded?",
+"options": [
+{
+"th": "เงาไม่มีผลใดๆ เลย ผลิตไฟได้เต็ม 100%",
+"en": "Shade has no effect at all; it still gives 100% power"
+},
+{
+"th": "แผงจะตัดการทำงานทันทีเมื่อมีเงา",
+"en": "The panel switches itself off as soon as it is shaded"
+},
+{
+"th": "ออกแบบให้กำลังลดลงเฉพาะจุดที่ถูกบัง (partial shading optimisation) แผงที่เหลือยังผลิตไฟได้ดี",
+"en": "Partial-shading optimisation: the loss stays near the shaded cells and the rest of the panel keeps producing well"
+},
+{
+"th": "ต้องติดออปติไมเซอร์ทุกแผงจึงจะใช้งานได้",
+"en": "It only works with an optimiser on every panel"
+}
+],
+"answer": 2,
+"explain": "ABC = All Back Contact. AIKO's Gen 2 ABC panels add a partial-shading optimisation; a TÜV Nord test with one cell fully shaded showed about 30% more power than conventional panels. Shade still costs energy."
+},
+{
+"level": 2,
+"sec": "D",
+"th": "ตอนส่งมอบงาน สิ่งที่ควรทำให้ลูกค้าคืออะไร",
+"en": "At handover you should give the customer:",
+"options": [
+{
+"th": "สอนใช้แอปมอนิเตอร์ วิธีปิด-เปิดระบบอย่างปลอดภัย และมอบเอกสารรับประกัน/แบบ SLD",
+"en": "App training, safe shutdown steps, warranty documents and the single-line diagram"
+},
+{
+"th": "รหัสผ่าน Wi-Fi ของช่าง",
+"en": "The installer's Wi-Fi password"
+},
+{
+"th": "แค่ใบเสร็จ",
+"en": "Only the receipt"
+},
+{
+"th": "ไม่ต้องอธิบาย",
+"en": "No explanation"
+}
+],
+"answer": 0,
+"explain": "A customer who understands the system calls less and trusts you more."
+},
+{
+"level": 2,
+"sec": "A",
+"th": "อินเวอร์เตอร์ 1 เฟส 5 kW ที่ 230 V จ่ายกระแสต่อเนื่องสูงสุดประมาณเท่าไร",
+"en": "A 5 kW single-phase inverter at 230 V delivers a maximum continuous current of about:",
+"options": [
+{
+"th": "5 A",
+"en": "5 A"
+},
+{
+"th": "22 A",
+"en": "22 A"
+},
+{
+"th": "100 A",
+"en": "100 A"
+},
+{
+"th": "50 A",
+"en": "50 A"
+}
+],
+"answer": 1,
+"explain": "I = P / V = 5000 / 230 ≈ 21.7 A."
+},
+{
+"level": 2,
+"sec": "A",
+"th": "กล้องถ่ายภาพความร้อนช่วยตรวจอะไรในระบบโซลาร์",
+"en": "In a solar system, a thermal camera helps you find:",
+"options": [
+{
+"th": "ปริมาณแสงแดด",
+"en": "The amount of sunlight"
+},
+{
+"th": "จุดร้อนบนแผง และจุดต่อสายที่หลวมหรือร้อนผิดปกติ",
+"en": "Hot spots on panels and loose or overheating connections"
+},
+{
+"th": "ค่าไฟของเดือนหน้า",
+"en": "Next month's bill"
+},
+{
+"th": "ความชื้นในอากาศ",
+"en": "Air humidity"
+}
+],
+"answer": 1,
+"explain": "Heat shows resistance: cracked cells, failed bypass diodes, loose terminals."
+},
+{
+"level": 2,
+"sec": "C",
+"th": "การยึดขายึด (L-foot) บนหลังคาเมทัลชีท ควรยึดเข้ากับอะไร",
+"en": "On a metal-sheet roof, L-feet should be fixed into:",
+"options": [
+{
+"th": "ลวดผูก",
+"en": "Tie wire"
+},
+{
+"th": "กาวติด",
+"en": "Glue"
+},
+{
+"th": "แปหรือโครงหลังคา ด้วยสกรูพร้อมแหวนยาง EPDM",
+"en": "The purlins (roof frame) with screws and EPDM washers"
+},
+{
+"th": "แผ่นเมทัลชีทอย่างเดียว",
+"en": "The metal sheet only"
+}
+],
+"answer": 2,
+"explain": "Sheet metal alone cannot hold uplift; fix into the purlins and seal every hole."
+},
+{
+"level": 2,
+"sec": "B",
+"th": "สาย DC ของแผงโซลาร์ (PV1-F / H1Z2Z2-K) ต่างจากสายไฟบ้านทั่วไปอย่างไร",
+"en": "How does PV DC cable (PV1-F / H1Z2Z2-K) differ from ordinary house wire?",
+"options": [
+{
+"th": "ทนรังสี UV ความร้อน และแรงดัน DC สูง สายฝอยอ่อน ฉนวนสองชั้น",
+"en": "UV, heat and high-DC-voltage rated, fine-stranded and double insulated"
+},
+{
+"th": "ใช้ได้เฉพาะไฟ AC",
+"en": "It is for AC only"
+},
+{
+"th": "ราคาถูกกว่าเท่านั้น",
+"en": "It is only cheaper"
+},
+{
+"th": "ไม่มีความแตกต่าง",
+"en": "No difference"
+}
+],
+"answer": 0,
+"explain": "Solar cable is built for decades on the roof at up to 1500 V DC."
+},
+{
+"level": 3,
+"sec": "A",
+"th": "อุปกรณ์ป้องกันฟ้าผ่า/ไฟกระชาก (SPD) ควรติดตั้งที่ใด",
+"en": "Where should surge protective devices (SPD) be installed?",
+"options": [
+{
+"th": "ไม่จำเป็นในประเทศไทย",
+"en": "Not needed in Thailand"
+},
+{
+"th": "ทั้งฝั่ง DC และฝั่ง AC ใกล้อินเวอร์เตอร์/ตู้ไฟ พร้อมสายดินที่สั้นที่สุด",
+"en": "On both DC and AC sides near the inverter or board, with the shortest earth lead"
+},
+{
+"th": "ในบ้านที่ปลั๊กเท่านั้น",
+"en": "Only at house sockets"
+},
+{
+"th": "เฉพาะที่แผงตัวแรก",
+"en": "Only at the first panel"
+}
+],
+"answer": 1,
+"explain": "Surges reach the inverter from both sides; long SPD earth leads make protection ineffective."
+},
+{
+"level": 3,
+"sec": "C",
+"th": "ก่อนติดตั้งแผงบนหลังคาเก่า สิ่งที่ต้องตรวจก่อนคืออะไร",
+"en": "Before installing on an old roof, what must be checked first?",
+"options": [
+{
+"th": "ไม่ต้องตรวจ",
+"en": "Nothing"
+},
+{
+"th": "ยี่ห้อกระเบื้อง",
+"en": "The tile brand"
+},
+{
+"th": "สภาพแป จันทัน สนิม และระยะห่างโครง ว่ารับน้ำหนักและแรงลมได้",
+"en": "Purlins, rafters, rust and spans, to confirm they can carry the load and wind"
+},
+{
+"th": "สีของหลังคา",
+"en": "The roof colour"
+}
+],
+"answer": 2,
+"explain": "Rusted or widely spaced purlins can fail under panel weight or wind."
+},
+{
+"level": 3,
+"sec": "A",
+"th": "อินเวอร์เตอร์ 1 เฟส 5 kW (กระแสสูงสุด ~22 A) ควรใช้เบรกเกอร์ AC ขนาดใดที่เหมาะสม",
+"en": "For a 5 kW single-phase inverter (max ~22 A), which AC breaker size is suitable?",
+"options": [
+{
+"th": "32 A",
+"en": "32 A"
+},
+{
+"th": "10 A",
+"en": "10 A"
+},
+{
+"th": "100 A",
+"en": "100 A"
+},
+{
+"th": "16 A",
+"en": "16 A"
+}
+],
+"answer": 0,
+"explain": "About 1.25 x 22 A ≈ 27.5 A, so the next standard size, 32 A, with a cable rated for at least 32 A."
+},
+{
+"level": 3,
+"sec": "A",
+"th": "อินเวอร์เตอร์ Huawei SUN2000 มีฟังก์ชัน Smart I-V Curve Diagnosis ใช้ทำอะไร",
+"en": "Huawei SUN2000 inverters have Smart I-V Curve Diagnosis. What is it used for?",
+"options": [
+{
+"th": "สแกนเส้นโค้ง I-V ของทุกสตริงจากระยะไกล เพื่อหาสตริงหรือแผงที่ผิดปกติ เช่น เงา ไดโอดลัด สตริงไม่สมดุล โดยไม่ต้องขึ้นหลังคา",
+"en": "Remotely scans the I-V curve of every string to find faults such as shading, shorted diodes or mismatched strings, without climbing on the roof"
+},
+{
+"th": "ใช้วัดความต้านทานดิน",
+"en": "It measures earth resistance"
+},
+{
+"th": "ใช้ตั้งค่าแรงดันกริด",
+"en": "It sets the grid voltage"
+},
+{
+"th": "ใช้ชาร์จแบตเตอรี่จากเครื่องปั่นไฟ",
+"en": "It charges the battery from a generator"
+}
+],
+"answer": 0,
+"explain": "The scan takes under a second per string and compares curves across strings. Huawei also adds AI-based arc-fault protection (AFCI). The I-V scan is not available when optimisers are fitted."
+},
+{
+"level": 3,
+"sec": "B",
+"th": "สาย NYY ฝังดินโดยตรง ควรฝังลึกอย่างน้อยประมาณเท่าไร",
+"en": "NYY cable buried directly in the ground should be at least about how deep?",
+"options": [
+{
+"th": "60 cm",
+"en": "60 cm"
+},
+{
+"th": "20 cm",
+"en": "20 cm"
+},
+{
+"th": "3 m",
+"en": "3 m"
+},
+{
+"th": "10 cm",
+"en": "10 cm"
+}
+],
+"answer": 0,
+"explain": "About 0.6 m in normal ground (deeper under roads or driveways), with a warning tape above."
+},
+{
+"level": 3,
+"sec": "A",
+"th": "ระบบ Sigenergy SigenStor เรียกว่า '5-in-1' เพราะรวมอะไรไว้ในเครื่องเดียว",
+"en": "Sigenergy's SigenStor is called '5-in-1'. What does it combine in one system?",
+"options": [
+{
+"th": "มิเตอร์ 5 ตัวสำหรับ 5 เฟส",
+"en": "Five meters for five phases"
+},
+{
+"th": "แผงโซลาร์, ราง, น็อต, สายไฟ และเบรกเกอร์",
+"en": "Panels, rails, bolts, cables and breakers"
+},
+{
+"th": "อินเวอร์เตอร์โซลาร์, PCS แบตเตอรี่, แบตเตอรี่, เครื่องชาร์จรถ EV แบบ DC และระบบจัดการพลังงาน (EMS)",
+"en": "Solar inverter, battery PCS, battery, DC EV charger and energy management system (EMS)"
+},
+{
+"th": "อินเวอร์เตอร์ 5 ตัวต่อขนาน",
+"en": "Five inverters in parallel"
+}
+],
+"answer": 2,
+"explain": "Fewer separate boxes means a cleaner install. The battery modules stack, so capacity can be added later."
+},
+{
+"level": 3,
+"sec": "C",
+"th": "น้ำหนักแผงพร้อมรางยึดโดยประมาณต่อพื้นที่หลังคาเท่าไร",
+"en": "Panels plus rails weigh roughly how much per square metre of roof?",
+"options": [
+{
+"th": "12–15 kg/m²",
+"en": "12–15 kg/m²"
+},
+{
+"th": "100 kg/m²",
+"en": "100 kg/m²"
+},
+{
+"th": "500 kg/m²",
+"en": "500 kg/m²"
+},
+{
+"th": "1–2 kg/m²",
+"en": "1–2 kg/m²"
+}
+],
+"answer": 0,
+"explain": "A typical panel is about 11–12 kg/m², plus rails and clamps."
+},
+{
+"level": 3,
+"sec": "A",
+"th": "ตามหลักทั่วไป (IEC 62548) สาย DC ของสตริงต้องทนกระแสได้อย่างน้อยเท่าไร",
+"en": "As a general rule (IEC 62548), a PV string cable must carry at least:",
+"options": [
+{
+"th": "1.0 x Imp",
+"en": "1.0 x Imp"
+},
+{
+"th": "1.25 x Isc",
+"en": "1.25 x Isc"
+},
+{
+"th": "2 x Voc",
+"en": "2 x Voc"
+},
+{
+"th": "0.8 x Isc",
+"en": "0.8 x Isc"
+}
+],
+"answer": 1,
+"explain": "String cables are sized for at least 1.25 x Isc(STC) to allow for strong sunlight."
+},
+{
+"level": 3,
+"sec": "C",
+"th": "ยิ่งเอียงแผงชันมากบนหลังคาแบน แรงลมจะเป็นอย่างไร",
+"en": "On a flat roof, as the panel tilt increases, wind load:",
+"options": [
+{
+"th": "เพิ่มขึ้น ต้องยึดหรือถ่วงมากขึ้น",
+"en": "Increases, so more fixing or ballast is needed"
+},
+{
+"th": "ไม่เปลี่ยน",
+"en": "Does not change"
+},
+{
+"th": "เป็นศูนย์",
+"en": "Becomes zero"
+},
+{
+"th": "ลดลง",
+"en": "Decreases"
+}
+],
+"answer": 0,
+"explain": "A steeper panel presents more area to the wind, like a sail."
+},
+{
+"level": 3,
+"sec": "A",
+"th": "ค่าความต้านทานดินของหลักดินโดยทั่วไป (ตามมาตรฐาน วสท.) ไม่ควรเกินเท่าไร",
+"en": "Earth electrode resistance (EIT standard, general case) should not exceed:",
+"options": [
+{
+"th": "5 Ω",
+"en": "5 Ω"
+},
+{
+"th": "1 MΩ",
+"en": "1 MΩ"
+},
+{
+"th": "50 Ω",
+"en": "50 Ω"
+},
+{
+"th": "500 Ω",
+"en": "500 Ω"
+}
+],
+"answer": 0,
+"explain": "A low earth resistance lets fault current flow so protection operates quickly."
+},
+{
+"level": 3,
+"sec": "A",
+"th": "การสื่อสารระหว่าง BMS แบตเตอรี่ลิเทียมกับอินเวอร์เตอร์ (CAN/RS485) มีไว้ทำอะไร",
+"en": "What is the BMS-to-inverter communication (CAN/RS485) for?",
+"options": [
+{
+"th": "เพื่อกันฟ้าผ่า",
+"en": "Lightning protection"
+},
+{
+"th": "ให้อินเวอร์เตอร์ชาร์จ/จ่ายตามค่าที่ BMS อนุญาต และรู้ SOC จริง",
+"en": "So the inverter charges and discharges within the BMS limits and knows the real SOC"
+},
+{
+"th": "เพื่อเปิดไฟ LED",
+"en": "To light the LEDs"
+},
+{
+"th": "ไม่มีประโยชน์",
+"en": "It has no use"
+}
+],
+"answer": 1,
+"explain": "Closed-loop communication protects the battery and gives accurate state of charge."
+},
+{
+"level": 3,
+"sec": "A",
+"th": "อินเวอร์เตอร์ 5 kW ดึงไฟจากแบตเตอรี่ 51.2 V เต็มกำลัง กระแสแบตเตอรี่ประมาณเท่าไร",
+"en": "A 5 kW inverter at full power from a 51.2 V battery draws about:",
+"options": [
+{
+"th": "100 A",
+"en": "100 A"
+},
+{
+"th": "10 A",
+"en": "10 A"
+},
+{
+"th": "500 A",
+"en": "500 A"
+},
+{
+"th": "25 A",
+"en": "25 A"
+}
+],
+"answer": 0,
+"explain": "I = P / V ≈ 5000 / 51.2 ≈ 98 A (more with losses). Low voltage means large current and thick cables."
+},
+{
+"level": 3,
+"sec": "A",
+"th": "แผงสองหน้า (bifacial) ผลิตไฟเพิ่มได้มากขึ้นเมื่อใด",
+"en": "A bifacial panel gains the most extra energy when:",
+"options": [
+{
+"th": "พื้นด้านล่างสีดำ",
+"en": "The ground below is black"
+},
+{
+"th": "หันด้านหลังเข้าหาแดด",
+"en": "Its back faces the sun"
+},
+{
+"th": "ติดตั้งสูงจากพื้นและพื้นด้านล่างสีอ่อนสะท้อนแสงดี",
+"en": "It is mounted high above a light-coloured, reflective surface"
+},
+{
+"th": "ติดแนบชิดหลังคา",
+"en": "It is mounted flat against the roof"
+}
+],
+"answer": 2,
+"explain": "The rear side collects reflected light; height and a bright surface (albedo) increase the gain."
+},
+{
+"level": 3,
+"sec": "B",
+"th": "สาย DC บนหลังคาควรยึดอย่างไร",
+"en": "How should DC cables be fixed on the roof?",
+"options": [
+{
+"th": "ไม่ต้องยึด",
+"en": "No fixing needed"
+},
+{
+"th": "ใช้เคเบิลไทร์สีขาวธรรมดา",
+"en": "Ordinary white cable ties"
+},
+{
+"th": "วางบนแผ่นหลังคาได้",
+"en": "Lying on the roof sheet"
+},
+{
+"th": "ยึดกับรางด้วยคลิปสแตนเลสหรือเคเบิลไทร์ทน UV ไม่ให้สายวางบนหลังคาหรือห้อยแกว่ง",
+"en": "Clipped to the rails with stainless clips or UV-rated ties, never lying on the roof or hanging loose"
+}
+],
+"answer": 3,
+"explain": "Loose cables chafe and hold water; ordinary ties crack in sunlight within a year or two."
+},
+{
+"level": 3,
+"sec": "B",
+"th": "ปลายสายฝอย (stranded) ที่จะขันเข้าขั้วสกรู ควรทำอย่างไร",
+"en": "Fine-stranded cable going into a screw terminal should be:",
+"options": [
+{
+"th": "บัดกรีให้แข็ง",
+"en": "Soldered solid"
+},
+{
+"th": "พับครึ่ง",
+"en": "Folded in half"
+},
+{
+"th": "บิดเกลียวแล้วขันเลย",
+"en": "Twisted and screwed in directly"
+},
+{
+"th": "ย้ำหางปลาหรือปลอก ferrule ด้วยคีมย้ำที่ถูกต้อง",
+"en": "Fitted with a crimped lug or ferrule using the right crimp tool"
+}
+],
+"answer": 3,
+"explain": "Loose strands spread under the screw and loosen; soldered ends creep and loosen with heat."
+},
+{
+"level": 3,
+"sec": "A",
+"th": "บ้านใช้ไฟกลางวัน 20 kWh/วัน ชั่วโมงแดดเต็ม 5 ชม. ค่าสูญเสียรวม 20% ควรติดแผงประมาณกี่ kWp",
+"en": "A home uses 20 kWh in daytime. With 5 peak sun hours and 20% total losses, about how many kWp of panels are needed?",
+"options": [
+{
+"th": "5 kWp",
+"en": "5 kWp"
+},
+{
+"th": "4 kWp",
+"en": "4 kWp"
+},
+{
+"th": "10 kWp",
+"en": "10 kWp"
+},
+{
+"th": "2.5 kWp",
+"en": "2.5 kWp"
+}
+],
+"answer": 0,
+"explain": "20 / (5 x 0.8) = 5 kWp."
+},
+{
+"level": 3,
+"sec": "D",
+"th": "ควรบอกลูกค้าเรื่องการประหยัดค่าไฟอย่างไร",
+"en": "How should you talk to a customer about bill savings?",
+"options": [
+{
+"th": "ไม่ต้องพูดเรื่องนี้",
+"en": "Avoid the topic"
+},
+{
+"th": "พูดให้สูงไว้ก่อน",
+"en": "Quote the highest number to win the job"
+},
+{
+"th": "รับประกันว่าค่าไฟจะเป็นศูนย์",
+"en": "Promise a zero bill"
+},
+{
+"th": "ประเมินตามข้อมูลจริง บอกช่วงที่เป็นไปได้ และสิ่งที่ทำให้ประหยัดน้อยลง",
+"en": "Estimate from real data, give a realistic range and what reduces savings"
+}
+],
+"answer": 3,
+"explain": "Over-promising is the main source of later disappointment and complaints."
+},
+{
+"level": 3,
+"sec": "A",
+"th": "สตริงที่ต่อขนานเข้า MPPT เดียวกัน ควรเป็นอย่างไร",
+"en": "Strings connected in parallel on the same MPPT should be:",
+"options": [
+{
+"th": "หันคนละทิศเพื่อผลิตไฟทั้งวัน",
+"en": "Facing different directions to spread production"
+},
+{
+"th": "จำนวนแผงต่างกันได้",
+"en": "Different numbers of panels are fine"
+},
+{
+"th": "ใช้แผงต่างรุ่นได้",
+"en": "Any mix of panel models"
+},
+{
+"th": "จำนวนแผง รุ่น ทิศ และมุมเอียงเท่ากัน",
+"en": "The same number and model of panels, facing the same direction and tilt"
+}
+],
+"answer": 3,
+"explain": "Parallel strings share one voltage; mismatched strings pull each other off their maximum power point."
+},
+{
+"level": 3,
+"sec": "A",
+"th": "อัตราส่วน DC/AC (กำลังแผงต่อกำลังอินเวอร์เตอร์) ที่นิยมสำหรับระบบออนกริดในไทยประมาณเท่าไร",
+"en": "What DC/AC ratio (panel kWp to inverter kW) is common for on-grid systems in Thailand?",
+"options": [
+{
+"th": "Exactly 1.0 only",
+"en": "Exactly 1.0 only"
+},
+{
+"th": "1.1–1.3",
+"en": "1.1–1.3"
+},
+{
+"th": "2.0–2.5",
+"en": "2.0–2.5"
+},
+{
+"th": "0.5–0.7",
+"en": "0.5–0.7"
+}
+],
+"answer": 1,
+"explain": "A small oversize (about 1.1–1.3) uses the inverter better, because panels rarely reach nameplate power."
+},
+{
+"level": 3,
+"sec": "A",
+"th": "ปัจจัยใดทำให้ต้องลดพิกัดกระแสของสาย (derating)",
+"en": "Which conditions require derating a cable's current capacity?",
+"options": [
+{
+"th": "อุณหภูมิแวดล้อมสูง และสายหลายเส้นรวมในท่อเดียวกัน",
+"en": "High ambient temperature and many cables grouped in one conduit"
+},
+{
+"th": "สีของฉนวน",
+"en": "Insulation colour"
+},
+{
+"th": "ความยาวสายสั้น",
+"en": "Short length"
+},
+{
+"th": "ยี่ห้อของสาย",
+"en": "Cable brand"
+}
+],
+"answer": 0,
+"explain": "Heat and grouping reduce how much current a cable can carry safely."
+},
+{
+"level": 3,
+"sec": "A",
+"th": "ระบบกันไฟย้อน (zero export) ต้องติดตั้ง CT หรือมิเตอร์ที่ใด",
+"en": "For zero export, where must the CT or smart meter be installed?",
+"options": [
+{
+"th": "ที่สายแบตเตอรี่",
+"en": "On the battery cable"
+},
+{
+"th": "ที่สายเมนขาเข้าจากการไฟฟ้า หลังมิเตอร์ ก่อนแยกโหลด ทิศลูกศรตามคู่มือ",
+"en": "On the main incoming supply after the utility meter, before any load, arrow as per the manual"
+},
+{
+"th": "ที่ปลั๊กไฟในบ้าน",
+"en": "On a house socket"
+},
+{
+"th": "ที่สายของแผงโซลาร์",
+"en": "On the panel cables"
+}
+],
+"answer": 1,
+"explain": "The CT must see all power to and from the grid; a wrong place or reversed arrow makes the inverter export or limit wrongly."
+},
+{
+"level": 3,
+"sec": "A",
+"th": "อินเวอร์เตอร์ไฮบริด Deye มีพอร์ต GEN แยก พอร์ตนี้ใช้งานได้แบบใดบ้าง",
+"en": "Deye hybrid inverters have a separate GEN port. How can this port be used?",
+"options": [
+{
+"th": "ต่อเครื่องปั่นไฟเพื่อชาร์จแบต หรือตั้งเป็น Smart Load จ่ายโหลดที่เลือก หรือรับไฟจากไมโคร/สตริงอินเวอร์เตอร์ (AC coupling)",
+"en": "Connect a generator to charge the battery, set it as a Smart Load output, or take power from a micro or string inverter (AC coupling)"
+},
+{
+"th": "ใช้ต่อแผงโซลาร์เพิ่มได้โดยตรง",
+"en": "Connect extra solar panels directly"
+},
+{
+"th": "ใช้ต่อแบตเตอรี่ก้อนที่สอง",
+"en": "Connect a second battery"
+},
+{
+"th": "ใช้ต่อสายดินเท่านั้น",
+"en": "It is only for the earth wire"
+}
+],
+"answer": 0,
+"explain": "The GEN port is AC. Deye hybrids can also run up to 16 units in parallel, on-grid or off-grid."
+},
+{
+"level": 3,
 "sec": "D",
 "th": "เมื่อลูกค้าแจ้งว่าระบบผลิตไฟได้น้อย ควรทำอะไรก่อน",
 "en": "A customer says the system produces too little. What do you do first?",
 "options": [
+{
+"th": "ดูข้อมูลในแอปมอนิเตอร์ เทียบกับสภาพอากาศและค่าที่ควรได้ แล้วอธิบายหรือนัดตรวจ",
+"en": "Check the monitoring app against weather and expected output, then explain or book a visit"
+},
+{
+"th": "ไม่ตอบ",
+"en": "Ignore it"
+},
 {
 "th": "เปลี่ยนอินเวอร์เตอร์ทันที",
 "en": "Replace the inverter immediately"
@@ -2438,53 +1948,95 @@
 {
 "th": "บอกว่าเป็นเรื่องปกติโดยไม่ดูข้อมูล",
 "en": "Say it is normal without looking"
-},
-{
-"th": "ไม่ตอบ",
-"en": "Ignore it"
-},
-{
-"th": "ดูข้อมูลในแอปมอนิเตอร์ เทียบกับสภาพอากาศและค่าที่ควรได้ แล้วอธิบายหรือนัดตรวจ",
-"en": "Check the monitoring app against weather and expected output, then explain or book a visit"
 }
 ],
-"answer": 3,
+"answer": 0,
 "explain": "Data first: cloudy weeks, dirty panels or a tripped string look different in monitoring."
 },
 {
-"sec": "D",
-"th": "ตอนส่งมอบงาน สิ่งที่ควรทำให้ลูกค้าคืออะไร",
-"en": "At handover you should give the customer:",
+"level": 3,
+"sec": "A",
+"th": "Solar ESS เลือกอินเวอร์เตอร์ไฮบริด Solis สำหรับบ้าน เพราะรองรับแผงได้มากกว่ากำลังอินเวอร์เตอร์ (oversizing) สูงถึงประมาณเท่าใด",
+"en": "Solar ESS often picks Solis hybrid inverters for homes. Up to roughly what PV oversizing (panel kWp vs inverter kW) do they support?",
 "options": [
 {
-"th": "รหัสผ่าน Wi-Fi ของช่าง",
-"en": "The installer's Wi-Fi password"
+"th": "110%",
+"en": "110%"
 },
 {
-"th": "ไม่ต้องอธิบาย",
-"en": "No explanation"
+"th": "100% (ห้ามเกิน)",
+"en": "100% (no oversizing)"
 },
 {
-"th": "แค่ใบเสร็จ",
-"en": "Only the receipt"
+"th": "500%",
+"en": "500%"
 },
 {
-"th": "สอนใช้แอปมอนิเตอร์ วิธีปิด-เปิดระบบอย่างปลอดภัย และมอบเอกสารรับประกัน/แบบ SLD",
-"en": "App training, safe shutdown steps, warranty documents and the single-line diagram"
+"th": "200%",
+"en": "200%"
 }
 ],
 "answer": 3,
-"explain": "A customer who understands the system calls less and trusts you more."
+"explain": "Solis hybrids accept up to about 2x PV, so extra panels can charge the battery while the inverter's AC output is at its limit. Always check the model's datasheet for max DC input current and voltage."
 },
 {
+"level": 3,
+"sec": "A",
+"th": "โหลดที่ต่อกับช่อง Backup/EPS ของอินเวอร์เตอร์ไฮบริดต้องเป็นอย่างไร",
+"en": "Loads on a hybrid inverter's Backup/EPS port must be:",
+"options": [
+{
+"th": "ต้องต่อขนานกับกริด",
+"en": "Paralleled with the grid"
+},
+{
+"th": "ต้องเป็นโหลด DC เท่านั้น",
+"en": "DC loads only"
+},
+{
+"th": "ต่อได้ทุกโหลดในบ้าน",
+"en": "Every load in the house"
+},
+{
+"th": "รวมกันไม่เกินพิกัดกำลังและกระแสกระชากของช่อง Backup",
+"en": "Within the backup port's continuous and surge rating"
+}
+],
+"answer": 3,
+"explain": "Motors, pumps and air conditioners have high start currents; put only essential loads within the backup rating."
+},
+{
+"level": 4,
+"sec": "C",
+"th": "ระบบติดตั้งบนหลังคาคอนกรีตแบนที่ไม่เจาะหลังคา (ballast) ต้องคำนวณอะไร",
+"en": "A ballasted (non-penetrating) system on a flat concrete roof must be designed for:",
+"options": [
+{
+"th": "น้ำหนักถ่วงพอต้านแรงลม และหลังคารับน้ำหนักรวมได้",
+"en": "Enough ballast to resist wind, and a roof that can carry the total weight"
+},
+{
+"th": "จำนวนสายไฟ",
+"en": "The number of cables"
+},
+{
+"th": "สีของบล็อกถ่วง",
+"en": "The colour of the ballast blocks"
+},
+{
+"th": "ไม่ต้องคำนวณ",
+"en": "Nothing"
+}
+],
+"answer": 0,
+"explain": "Too little ballast and the array slides or lifts; too much and the slab is overloaded."
+},
+{
+"level": 4,
 "sec": "D",
 "th": "เมื่อลูกค้าไม่แน่ใจระหว่างระบบออนกริดกับไฮบริด ควรแนะนำอย่างไร",
 "en": "A customer cannot decide between on-grid and hybrid. How should you advise?",
 "options": [
-{
-"th": "ให้ลูกค้าเลือกเองโดยไม่อธิบาย",
-"en": "Let them guess"
-},
 {
 "th": "แนะนำตามสต๊อกที่มี",
 "en": "Recommend whatever is in stock"
@@ -2492,6 +2044,10 @@
 {
 "th": "แนะนำระบบที่แพงที่สุดเสมอ",
 "en": "Always push the most expensive"
+},
+{
+"th": "ให้ลูกค้าเลือกเองโดยไม่อธิบาย",
+"en": "Let them guess"
 },
 {
 "th": "ถามว่าใช้ไฟกลางคืนมากไหม ไฟดับบ่อยไหม และงบประมาณ แล้วเปรียบเทียบให้เห็นข้อดีข้อเสีย",
@@ -2502,29 +2058,1252 @@
 "explain": "Match the system to the need; batteries pay off mainly with high night use or frequent outages."
 },
 {
-"sec": "D",
-"th": "ระหว่างทำงานที่บ้านลูกค้า ข้อใดช่วยสร้างความพึงพอใจมากที่สุด",
-"en": "While working at a customer's home, what builds satisfaction most?",
+"level": 4,
+"sec": "A",
+"th": "พิกัดแรงดันของเบรกเกอร์/สวิตช์ตัดตอน DC ต้องเป็นอย่างไร",
+"en": "The voltage rating of a DC breaker or isolator must be:",
 "options": [
 {
-"th": "แจ้งความคืบหน้าทุกวัน ตรงเวลา และเก็บกวาดหน้างานทุกครั้ง",
-"en": "Daily progress updates, punctuality and cleaning up every time"
+"th": "230 V",
+"en": "230 V"
 },
 {
-"th": "ทำงานเงียบ ๆ ไม่บอกอะไร",
-"en": "Working silently with no updates"
+"th": "เท่ากับแรงดันแบตเตอรี่เสมอ",
+"en": "Always equal to the battery voltage"
 },
 {
-"th": "มาสายแต่ทำงานเร็ว",
-"en": "Arriving late but working fast"
+"th": "ไม่น้อยกว่า Voc สูงสุดของสตริง (ที่อุณหภูมิต่ำสุด)",
+"en": "At least the string's maximum Voc (at the lowest temperature)"
 },
 {
-"th": "ทิ้งเศษวัสดุไว้ให้ลูกค้าเก็บ",
-"en": "Leaving waste for the customer"
+"th": "ไม่สำคัญ",
+"en": "Not important"
+}
+],
+"answer": 2,
+"explain": "The device must interrupt the highest voltage the string can produce."
+},
+{
+"level": 4,
+"sec": "C",
+"th": "พื้นที่ชายทะเลหรือที่โล่งกว้าง เทียบกับในเมือง ต้องออกแบบโครงสร้างอย่างไร",
+"en": "On the coast or in open land, compared with a city, the structure must be designed for:",
+"options": [
+{
+"th": "น้ำหนักแผงที่ลดลง",
+"en": "Lighter panels"
+},
+{
+"th": "ไม่มีความแตกต่าง",
+"en": "No difference"
+},
+{
+"th": "แรงลมที่ต่ำกว่า",
+"en": "Lower wind"
+},
+{
+"th": "แรงลมที่สูงกว่า และการกัดกร่อนจากไอเค็ม",
+"en": "Higher wind and salt corrosion"
+}
+],
+"answer": 3,
+"explain": "Open terrain gives stronger wind; salt air needs better corrosion protection (stainless, heavier galvanising)."
+},
+{
+"level": 4,
+"sec": "A",
+"th": "อินเวอร์เตอร์ 3 เฟส 15 kW ที่ 400 V จ่ายกระแสต่อเฟสประมาณเท่าไร",
+"en": "A 15 kW three-phase inverter at 400 V delivers about how much current per phase?",
+"options": [
+{
+"th": "38 A",
+"en": "38 A"
+},
+{
+"th": "15 A",
+"en": "15 A"
+},
+{
+"th": "22 A",
+"en": "22 A"
+},
+{
+"th": "65 A",
+"en": "65 A"
+}
+],
+"answer": 2,
+"explain": "I = P / (√3 x V) = 15000 / (1.732 x 400) ≈ 21.7 A."
+},
+{
+"level": 4,
+"sec": "C",
+"th": "ระยะห่างจากแนวเงา เช่น ราวกันตก เสา หรือแผงแถวหน้า ควรพิจารณาช่วงเวลาใด",
+"en": "When spacing rows or keeping away from parapets and posts, check shading at:",
+"options": [
+{
+"th": "เที่ยงวันในเดือนเมษายนเท่านั้น",
+"en": "Only at noon in April"
+},
+{
+"th": "ไม่ต้องพิจารณา",
+"en": "No need to check"
+},
+{
+"th": "ช่วงประมาณ 9:00–15:00 ในวันที่ดวงอาทิตย์ต่ำที่สุดของปี (ธันวาคม)",
+"en": "About 9:00–15:00 on the lowest-sun day of the year (December)"
+},
+{
+"th": "ตอนกลางคืน",
+"en": "At night"
+}
+],
+"answer": 2,
+"explain": "Winter shadows are the longest; design so the main production hours stay shade-free."
+},
+{
+"level": 4,
+"sec": "A",
+"th": "ระบบออฟกริดใช้ไฟ 10 kWh/วัน แบตเตอรี่ใช้ได้ (DoD) 90% ประสิทธิภาพ 95% ต้องการแบตเตอรี่อย่างน้อยกี่ kWh สำหรับ 1 วัน",
+"en": "An off-grid home uses 10 kWh/day. With 90% usable depth of discharge and 95% efficiency, what minimum battery capacity covers one day?",
+"options": [
+{
+"th": "11.7 kWh",
+"en": "11.7 kWh"
+},
+{
+"th": "9.0 kWh",
+"en": "9.0 kWh"
+},
+{
+"th": "8.5 kWh",
+"en": "8.5 kWh"
+},
+{
+"th": "10.0 kWh",
+"en": "10.0 kWh"
 }
 ],
 "answer": 0,
-"explain": "Communication, punctuality and a clean site are what customers remember."
+"explain": "10 / (0.90 x 0.95) ≈ 11.7 kWh."
+},
+{
+"level": 4,
+"sec": "A",
+"th": "เมื่อใดต้องติดฟิวส์สตริง (string fuse)",
+"en": "When are string fuses required?",
+"options": [
+{
+"th": "ไม่เคยต้องใช้",
+"en": "Never"
+},
+{
+"th": "เมื่อมีสตริงขนานกันตั้งแต่ 3 สตริงขึ้นไป",
+"en": "When three or more strings are connected in parallel"
+},
+{
+"th": "ทุกระบบที่มีสตริงเดียว",
+"en": "On every single-string system"
+},
+{
+"th": "เฉพาะระบบ AC",
+"en": "Only on AC systems"
+}
+],
+"answer": 1,
+"explain": "With 3+ parallel strings, a faulty string can receive reverse current from the others above the panel's fuse rating."
+},
+{
+"level": 4,
+"sec": "A",
+"th": "แผงมี Voc 50 V ค่าสัมประสิทธิ์ Voc −0.25 %/°C อุณหภูมิต่ำสุดที่หน้างาน 5 °C อินเวอร์เตอร์รับแรงดัน DC สูงสุด 550 V ต่อแผงอนุกรมได้มากที่สุดกี่แผง",
+"en": "Panel Voc 50 V, Voc coefficient −0.25 %/°C, lowest site temperature 5 °C, inverter max DC input 550 V. What is the most panels in series?",
+"options": [
+{
+"th": "12",
+"en": "12"
+},
+{
+"th": "9",
+"en": "9"
+},
+{
+"th": "10",
+"en": "10"
+},
+{
+"th": "11",
+"en": "11"
+}
+],
+"answer": 2,
+"explain": "Voc at 5 °C = 50 x (1 + 0.0025 x 20) = 52.5 V. 10 x 52.5 = 525 V (OK); 11 x 52.5 = 577.5 V exceeds 550 V."
+},
+{
+"level": 4,
+"sec": "B",
+"th": "สายดินของระบบโซลาร์และอินเวอร์เตอร์ ควรต่อเข้ากับอะไร",
+"en": "The earth conductors of the PV system and inverter should connect to:",
+"options": [
+{
+"th": "สายนิวทรัลที่ปลั๊ก",
+"en": "Neutral at a socket"
+},
+{
+"th": "บาร์กราวด์หลักของตู้ไฟ ที่ต่อกับหลักดิน",
+"en": "The main earth bar of the board, connected to the earth electrode"
+},
+{
+"th": "ไม่ต้องต่อ",
+"en": "Nothing"
+},
+{
+"th": "ท่อประปาพลาสติก",
+"en": "A plastic water pipe"
+}
+],
+"answer": 1,
+"explain": "One common earthing system keeps all metal parts at the same potential."
+},
+{
+"level": 4,
+"sec": "B",
+"th": "การเดินสาย AC และสาย DC ควรทำอย่างไร",
+"en": "How should AC and DC cables be run?",
+"options": [
+{
+"th": "แยกท่อหรือแยกช่อง และติดป้ายชัดเจน",
+"en": "In separate conduits or compartments, clearly labelled"
+},
+{
+"th": "ไม่ต้องระบุอะไร",
+"en": "No labelling needed"
+},
+{
+"th": "รวมท่อเดียวโดยไม่ระบุ",
+"en": "Mixed in one unlabelled conduit"
+},
+{
+"th": "พันรวมกันด้วยเทป",
+"en": "Taped together"
+}
+],
+"answer": 0,
+"explain": "Separation and labels make faults less likely and keep maintenance safe."
+},
+{
+"level": 4,
+"sec": "B",
+"th": "การดัดโค้งสายใหญ่ควรระวังอะไร",
+"en": "What must you watch when bending a large cable?",
+"options": [
+{
+"th": "ไม่มีข้อกำหนด",
+"en": "There is no limit"
+},
+{
+"th": "ดัดให้แคบที่สุด",
+"en": "Bend it as tight as possible"
+},
+{
+"th": "พับเป็นมุมฉาก",
+"en": "Fold it at a right angle"
+},
+{
+"th": "ไม่ดัดโค้งแคบกว่ารัศมีที่ผู้ผลิตกำหนด",
+"en": "Not bending tighter than the manufacturer's minimum radius"
+}
+],
+"answer": 3,
+"explain": "Too tight a bend damages insulation and conductors."
+},
+{
+"level": 4,
+"sec": "A",
+"th": "แผงมีค่าสัมประสิทธิ์กำลัง −0.30 %/°C เมื่อเซลล์ร้อน 65 °C กำลังลดลงประมาณเท่าไรจาก STC",
+"en": "A panel's power coefficient is −0.30 %/°C. With cells at 65 °C, how much power is lost compared with STC?",
+"options": [
+{
+"th": "12%",
+"en": "12%"
+},
+{
+"th": "3%",
+"en": "3%"
+},
+{
+"th": "30%",
+"en": "30%"
+},
+{
+"th": "0%",
+"en": "0%"
+}
+],
+"answer": 0,
+"explain": "65 − 25 = 40 °C above STC; 40 x 0.30% = 12% less power."
+},
+{
+"level": 4,
+"sec": "A",
+"th": "ทำไมต้องตรวจว่าแรงดัน Vmp ของสตริงยังอยู่ในช่วง MPPT เมื่อแผงร้อนจัด",
+"en": "Why check that the string Vmp stays inside the MPPT range when the panels are very hot?",
+"options": [
+{
+"th": "ไม่จำเป็นต้องตรวจ",
+"en": "It does not need checking"
+},
+{
+"th": "เพราะแรงดันลดลงเมื่อร้อน อาจต่ำกว่าช่วง MPPT ทำให้ผลิตไฟได้น้อยลง",
+"en": "Voltage falls when hot and may drop below the MPPT range, losing production"
+},
+{
+"th": "เพราะแรงดันเพิ่มขึ้นเมื่อร้อน",
+"en": "Voltage rises when hot"
+},
+{
+"th": "เพราะกระแสจะเป็นศูนย์",
+"en": "Current becomes zero"
+}
+],
+"answer": 1,
+"explain": "High cell temperature lowers Vmp; a short string can fall below the MPPT minimum on hot afternoons."
+},
+{
+"level": 4,
+"sec": "B",
+"th": "เมื่อเดินสายผ่านรูเจาะในโครงเหล็กหรือแผ่นโลหะ ต้องทำอย่างไร",
+"en": "When a cable passes through a hole in steel or sheet metal you must:",
+"options": [
+{
+"th": "ลบคมรูและใส่บุชหรือยางกันบาด",
+"en": "Deburr the hole and fit a bush or grommet"
+},
+{
+"th": "ใช้เทปพันสายตรงนั้น",
+"en": "Tape the cable there"
+},
+{
+"th": "ไม่ต้องทำอะไร",
+"en": "Nothing"
+},
+{
+"th": "ทำให้รูเล็กพอดีสาย",
+"en": "Make the hole tight on the cable"
+}
+],
+"answer": 0,
+"explain": "Sharp edges cut insulation over time and cause earth faults."
+},
+{
+"level": 4,
+"sec": "A",
+"th": "ค่าความต้านทานฉนวน (insulation test) ของสาย DC ที่ทดสอบด้วย 1000 V ควรได้อย่างน้อยเท่าไร",
+"en": "When insulation-testing PV DC cabling at 1000 V, the resistance should be at least:",
+"options": [
+{
+"th": "1 Ω",
+"en": "1 Ω"
+},
+{
+"th": "10 kΩ",
+"en": "10 kΩ"
+},
+{
+"th": "1 MΩ",
+"en": "1 MΩ"
+},
+{
+"th": "100 Ω",
+"en": "100 Ω"
+}
+],
+"answer": 2,
+"explain": "IEC 62446 commissioning tests expect at least 1 MΩ for systems tested at 1000 V."
+},
+{
+"level": 4,
+"sec": "A",
+"th": "แบตเตอรี่จ่ายกระแสสูงสุด 100 A ฟิวส์/เบรกเกอร์ DC ของแบตเตอรี่ควรมีขนาดประมาณเท่าไร",
+"en": "A battery supplies up to 100 A. A suitable DC fuse or breaker size is about:",
+"options": [
+{
+"th": "125 A",
+"en": "125 A"
+},
+{
+"th": "100 A exactly with a 25 mm² cable",
+"en": "100 A exactly with a 25 mm² cable"
+},
+{
+"th": "400 A",
+"en": "400 A"
+},
+{
+"th": "63 A",
+"en": "63 A"
+}
+],
+"answer": 0,
+"explain": "About 1.25 x 100 A = 125 A, with a battery cable rated above 125 A."
+},
+{
+"level": 4,
+"sec": "D",
+"th": "สัญญาณใดบอกว่าลูกค้า 'ไม่พอใจ' แม้ไม่ได้พูดออกมา",
+"en": "Which sign shows a customer is unhappy even if they do not say so?",
+"options": [
+{
+"th": "แนะนำเพื่อนให้",
+"en": "Referring friends"
+},
+{
+"th": "ตอบช้าลง ถามซ้ำเรื่องเดิม ขอเอกสาร/หลักฐานเพิ่ม หรือเลื่อนการชำระเงิน",
+"en": "Slower replies, repeated questions, asking for more proof, or delaying payment"
+},
+{
+"th": "ชมงาน",
+"en": "Praising the work"
+},
+{
+"th": "รีวิวห้าดาว",
+"en": "A five-star review"
+}
+],
+"answer": 1,
+"explain": "Spot these early and call the customer to find the concern before it becomes a dispute."
+},
+{
+"level": 4,
+"sec": "A",
+"th": "เบรกเกอร์ DC บางรุ่นมีขั้ว (polarized) ถ้าต่อกลับขั้วจะเกิดอะไร",
+"en": "Some DC breakers are polarised. If wired with reverse polarity:",
+"options": [
+{
+"th": "ทำงานเหมือนเดิม",
+"en": "It works the same"
+},
+{
+"th": "ตัดเร็วขึ้น",
+"en": "It trips faster"
+},
+{
+"th": "กระแสเพิ่มขึ้น",
+"en": "Current increases"
+},
+{
+"th": "อาจดับอาร์กไม่ได้และไหม้เมื่อตัดวงจร",
+"en": "It may fail to break the arc and burn when it trips"
+}
+],
+"answer": 3,
+"explain": "Polarised breakers use magnets to push the arc into the chute; reversed current pushes it the wrong way."
+},
+{
+"level": 4,
+"sec": "C",
+"th": "หลังติดตั้งเสร็จ ควรตรวจความแน่นของน็อตโครงสร้างอย่างไร",
+"en": "After installation, how should structural bolts be checked?",
+"options": [
+{
+"th": "ขันด้วยประแจทอร์กตามค่าที่ผู้ผลิตกำหนด และทำเครื่องหมาย",
+"en": "Torque them to the maker's value with a torque wrench and mark them"
+},
+{
+"th": "ใช้มือหมุน",
+"en": "Hand-tight"
+},
+{
+"th": "ขันให้แน่นที่สุด",
+"en": "As tight as possible"
+},
+{
+"th": "ไม่ต้องตรวจ",
+"en": "No check needed"
+}
+],
+"answer": 0,
+"explain": "Over-tightening strips aluminium; under-tightening lets clamps slip in the wind. Torque marks show if a bolt has moved."
+},
+{
+"level": 4,
+"sec": "A",
+"th": "อุปกรณ์ป้องกันไฟกระชาก (SPD) ฝั่ง DC ควรมีแรงดันใช้งานต่อเนื่อง (Ucpv) อย่างไร",
+"en": "A DC-side surge protective device (SPD) should have a continuous operating voltage (Ucpv) of:",
+"options": [
+{
+"th": "230 V AC",
+"en": "230 V AC"
+},
+{
+"th": "ไม่ต้องคำนึง",
+"en": "It does not matter"
+},
+{
+"th": "ไม่น้อยกว่าประมาณ 1.2 เท่าของ Voc ของสตริง",
+"en": "At least about 1.2 x the string Voc"
+},
+{
+"th": "ต่ำกว่า Voc",
+"en": "Below Voc"
+}
+],
+"answer": 2,
+"explain": "If Ucpv is too low the SPD conducts on cold mornings and fails."
+},
+{
+"level": 4,
+"sec": "C",
+"th": "การใช้อลูมิเนียมสัมผัสกับเหล็กชุบสังกะสีหรือทองแดงโดยตรง เสี่ยงต่ออะไร",
+"en": "Direct contact between aluminium and galvanised steel or copper risks:",
+"options": [
+{
+"th": "ไม่มีความเสี่ยง",
+"en": "No risk"
+},
+{
+"th": "ไฟฟ้าลัดวงจร",
+"en": "A short circuit"
+},
+{
+"th": "แผงร้อนเกิน",
+"en": "Overheated panels"
+},
+{
+"th": "การกัดกร่อนแบบกัลวานิก ต้องใช้วัสดุคั่นหรือสแตนเลส",
+"en": "Galvanic corrosion; use separators or stainless fasteners"
+}
+],
+"answer": 3,
+"explain": "Dissimilar metals with moisture corrode; isolate them and use stainless steel hardware."
+},
+{
+"level": 4,
+"sec": "A",
+"th": "สายทองแดง 4 mm² ยาว 30 m (ทางเดียว) วงจร DC กระแส 10 A แรงดันตกประมาณเท่าไร (ρ = 0.0175 Ω·mm²/m)",
+"en": "A 4 mm² copper cable, 30 m one way, carries 10 A DC. What is the voltage drop? (ρ = 0.0175 Ω·mm²/m)",
+"options": [
+{
+"th": "0.26 V",
+"en": "0.26 V"
+},
+{
+"th": "2.6 V",
+"en": "2.6 V"
+},
+{
+"th": "1.3 V",
+"en": "1.3 V"
+},
+{
+"th": "26 V",
+"en": "26 V"
+}
+],
+"answer": 1,
+"explain": "R = 0.0175 x 60 / 4 = 0.2625 Ω (out and back); VD = 10 x 0.2625 ≈ 2.6 V."
+},
+{
+"level": 4,
+"sec": "B",
+"th": "การย้ำขั้ว MC4 ที่ถูกต้องต้องใช้อะไร",
+"en": "Crimping MC4 contacts correctly requires:",
+"options": [
+{
+"th": "ค้อนตอก",
+"en": "A hammer"
+},
+{
+"th": "คีมย้ำเฉพาะสำหรับ MC4 และหน้าสัมผัสที่ตรงขนาดสาย",
+"en": "The dedicated MC4 crimp tool and contacts matching the cable size"
+},
+{
+"th": "บัดกรีแทนการย้ำ",
+"en": "Soldering instead"
+},
+{
+"th": "คีมปากจิ้งจก",
+"en": "Ordinary pliers"
+}
+],
+"answer": 1,
+"explain": "A poor crimp is high resistance and can cause a DC fire."
+},
+{
+"level": 4,
+"sec": "A",
+"th": "อินเวอร์เตอร์ออนกริดตัดการทำงานบ่อยตอนเที่ยงด้วยแจ้งเตือน 'Grid over-voltage' สาเหตุที่พบบ่อยคืออะไร",
+"en": "An on-grid inverter often trips around noon with 'grid over-voltage'. A common cause is:",
+"options": [
+{
+"th": "สาย AC เล็กหรือยาวเกินไป ทำให้แรงดันที่ขั้วอินเวอร์เตอร์สูงขึ้นเมื่อจ่ายไฟออก",
+"en": "An undersized or long AC cable raising the voltage at the inverter terminals when exporting"
+},
+{
+"th": "แสงแดดน้อย",
+"en": "Low sunlight"
+},
+{
+"th": "แผงสกปรก",
+"en": "Dirty panels"
+},
+{
+"th": "แบตเตอรี่เต็ม",
+"en": "A full battery"
+}
+],
+"answer": 0,
+"explain": "When exporting, voltage rises along the cable; a bigger or shorter AC cable reduces the rise."
+},
+{
+"level": 5,
+"sec": "A",
+"th": "อินเวอร์เตอร์ดึงกระแสแบตเตอรี่สูงสุด 250 A แบตเตอรี่แต่ละก้อนจ่ายต่อเนื่องได้สูงสุด 100 A ต้องใช้แบตเตอรี่ขนานอย่างน้อยกี่ก้อน",
+"en": "The inverter can draw up to 250 A from the battery bank. Each battery may supply at most 100 A continuously. What is the fewest batteries in parallel?",
+"options": [
+{
+"th": "1",
+"en": "1"
+},
+{
+"th": "4",
+"en": "4"
+},
+{
+"th": "2",
+"en": "2"
+},
+{
+"th": "3",
+"en": "3"
+}
+],
+"answer": 3,
+"explain": "250 / 100 = 2.5, so 3 batteries, with a busbar so they share current evenly."
+},
+{
+"level": 5,
+"sec": "A",
+"th": "หลังติดตั้ง แอปแสดงว่าบ้าน 'ดึงไฟจากกริด' 3 kW ขณะที่อินเวอร์เตอร์จ่ายออก 3 kW และไม่มีโหลด สาเหตุที่เป็นไปได้มากที่สุดคือ",
+"en": "After commissioning, the app shows the house 'importing' 3 kW while the inverter exports 3 kW and nothing is switched on. The most likely cause is:",
+"options": [
+{
+"th": "CT หรือมิเตอร์ใส่กลับทิศ หรือคล้องผิดเฟส",
+"en": "The CT or meter is reversed or on the wrong phase"
+},
+{
+"th": "แบตเตอรี่เต็ม",
+"en": "A full battery"
+},
+{
+"th": "แผงเสีย",
+"en": "A failed panel"
+},
+{
+"th": "สาย DC เล็กไป",
+"en": "DC cable too small"
+}
+],
+"answer": 0,
+"explain": "A reversed or wrong-phase CT flips the measured grid direction; check its arrow and phase against the inverter's own phase."
+},
+{
+"level": 5,
+"sec": "B",
+"th": "สายเดินในฝ้าหลังคาที่ร้อนถึง 55–60 °C ควรทำอย่างไร",
+"en": "Cables run in a roof void that reaches 55–60 °C should be:",
+"options": [
+{
+"th": "ใช้สายขนาดเดิมตามตาราง 30 °C",
+"en": "Sized from the 30 °C table unchanged"
+},
+{
+"th": "พันด้วยเทปเพิ่ม",
+"en": "Wrapped in extra tape"
+},
+{
+"th": "ใช้สายเล็กลงเพราะสั้น",
+"en": "Made smaller because the run is short"
+},
+{
+"th": "ลดพิกัดตามอุณหภูมิ ใช้สายที่ทนอุณหภูมิสูง (เช่น XLPE 90 °C) หรือเพิ่มขนาดสาย",
+"en": "Derated for temperature, using high-temperature cable (e.g. XLPE 90 °C) or a bigger size"
+}
+],
+"answer": 3,
+"explain": "PVC 70 °C cable in a 60 °C void has very little capacity left."
+},
+{
+"level": 5,
+"sec": "B",
+"th": "ต่อสายอลูมิเนียมเข้ากับบัสบาร์ทองแดง ต้องทำอย่างไร",
+"en": "Connecting an aluminium cable to a copper busbar requires:",
+"options": [
+{
+"th": "หางปลาไบเมทัล (Al-Cu) ทาสารกันออกไซด์ และขันแรงบิดตามกำหนด",
+"en": "A bimetallic (Al-Cu) lug, anti-oxidant compound and the specified torque"
+},
+{
+"th": "บัดกรี",
+"en": "Soldering"
+},
+{
+"th": "หางปลาทองแดงธรรมดา",
+"en": "An ordinary copper lug"
+},
+{
+"th": "พันสายรอบบัสบาร์",
+"en": "Wrapping the cable round the bar"
+}
+],
+"answer": 0,
+"explain": "Direct Al–Cu contact corrodes and loosens, leading to overheating."
+},
+{
+"level": 5,
+"sec": "A",
+"th": "สตริง 4 สตริงต่อขนาน แผง Isc 13.9 A พิกัดฟิวส์อนุกรมสูงสุดของแผง 25 A ควรใช้ฟิวส์สตริงขนาดใด",
+"en": "Four strings in parallel, panel Isc 13.9 A, panel maximum series fuse 25 A. Which string fuse rating fits?",
+"options": [
+{
+"th": "40 A",
+"en": "40 A"
+},
+{
+"th": "63 A",
+"en": "63 A"
+},
+{
+"th": "25 A",
+"en": "25 A"
+},
+{
+"th": "15 A",
+"en": "15 A"
+}
+],
+"answer": 2,
+"explain": "Reverse current from the other strings could reach 3 x 13.9 = 41.7 A, above 25 A, so fuses are needed. The fuse must be at least about 1.5 x Isc (20.9 A) and no more than the panel's 25 A rating: 25 A."
+},
+{
+"level": 5,
+"sec": "B",
+"th": "สาย DC ของแผงที่ต้องเดินผ่านพื้นที่ที่คนเข้าถึงได้หรือในอาคาร ควรทำอย่างไร",
+"en": "PV DC cables passing through areas people can reach or inside a building should be:",
+"options": [
+{
+"th": "ซ่อนในฝ้าโดยไม่มีท่อ",
+"en": "Hidden in the ceiling without conduit"
+},
+{
+"th": "วางบนพื้น",
+"en": "Laid on the floor"
+},
+{
+"th": "พันกับสายแลน",
+"en": "Bundled with data cables"
+},
+{
+"th": "ร้อยในท่อโลหะหรือรางปิด ติดป้าย 'PV DC' และมีจุดตัดตอนที่เข้าถึงได้",
+"en": "Run in metal conduit or closed trunking, labelled 'PV DC', with an accessible isolator"
+}
+],
+"answer": 3,
+"explain": "DC stays live whenever there is light; protection and labelling keep people and firefighters safe."
+},
+{
+"level": 5,
+"sec": "A",
+"th": "หลังพายุฟ้าคะนอง อินเวอร์เตอร์ยังทำงาน แต่ MPPT หนึ่งแสดง 0 V ฟิวส์สตริงปกติ วัดที่ปลายสายจากหลังคาได้แรงดันปกติ แต่วัดที่ขั้วตู้ DC หลังอุปกรณ์ SPD ได้ประมาณ 0 V สาเหตุที่เป็นไปได้มากที่สุดคือ",
+"en": "After a thunderstorm the inverter still runs but one MPPT reads 0 V. String fuses are fine; the roof cable end shows normal voltage, but at the DC box after the SPD you read about 0 V. The most likely cause is:",
+"options": [
+{
+"th": "อินเวอร์เตอร์ต้องอัปเดตเฟิร์มแวร์",
+"en": "The inverter needs a firmware update"
+},
+{
+"th": "แผงทุกแผงเสียพร้อมกัน",
+"en": "Every panel failed at once"
+},
+{
+"th": "แบตเตอรี่หมด",
+"en": "The battery is flat"
+},
+{
+"th": "SPD ฝั่ง DC เสียแบบลัดวงจร ดึงแรงดันสตริงลง ตรวจหน้าต่างแสดงสถานะและเปลี่ยนตลับ SPD",
+"en": "The DC SPD has failed short and is pulling the string down: check its status window and replace the cartridge"
+}
+],
+"answer": 3,
+"explain": "A surge can drive an SPD's varistor to short. Voltage is present before it and collapses after it, so test across and after the SPD before blaming panels or the inverter."
+},
+{
+"level": 5,
+"sec": "A",
+"th": "ปั๊มน้ำ 1.5 kW กินกระแสตอนสตาร์ทประมาณ 5 เท่าของกำลังขณะทำงาน มีโหลดอื่นทำงานอยู่ 1 kW อินเวอร์เตอร์ออฟกริดต้องรับกำลังกระชาก (surge) อย่างน้อยเท่าไร",
+"en": "A 1.5 kW pump starts at about 5 times its running power, with 1 kW of other loads running. What minimum surge rating must the off-grid inverter have?",
+"options": [
+{
+"th": "≈ 15 kW",
+"en": "≈ 15 kW"
+},
+{
+"th": "≈ 8.5 kW",
+"en": "≈ 8.5 kW"
+},
+{
+"th": "≈ 5 kW",
+"en": "≈ 5 kW"
+},
+{
+"th": "≈ 2.5 kW",
+"en": "≈ 2.5 kW"
+}
+],
+"answer": 1,
+"explain": "Start surge 1.5 x 5 = 7.5 kW plus 1 kW running = 8.5 kW for the surge period."
+},
+{
+"level": 5,
+"sec": "B",
+"th": "เดินสาย AC จากอินเวอร์เตอร์ที่โรงปั๊มไปตู้หลักไกล 60 m ใต้ดิน วิธีใดถูกต้อง",
+"en": "An AC run goes 60 m underground from an inverter at a pump house to the main board. Which method is correct?",
+"options": [
+{
+"th": "สาย DC ของแผง",
+"en": "PV DC cable"
+},
+{
+"th": "สาย THW ฝังดินตรง ๆ",
+"en": "THW buried directly"
+},
+{
+"th": "สาย NYY ในท่อ HDPE/PVC ลึก ≥ 60 cm มีเทปเตือน และเลือกขนาดตามแรงดันตก",
+"en": "NYY in HDPE/PVC duct at least 60 cm deep with warning tape, sized for voltage drop"
+},
+{
+"th": "สาย VAF ในท่อพลาสติกบาง ลึก 10 cm",
+"en": "VAF in thin plastic pipe 10 cm deep"
+}
+],
+"answer": 2,
+"explain": "Use a sheathed cable for underground use, mechanical protection, depth, marking, and size it for the 60 m drop."
+},
+{
+"level": 5,
+"sec": "A",
+"th": "สายแบตเตอรี่ 48 V ยาว 3 m (ไป-กลับ 6 m) กระแส 70 A ยอมให้แรงดันตก 1% (≈ 0.51 V) ต้องใช้สายทองแดงขนาดเล็กที่สุดเท่าใด",
+"en": "A 48 V battery cable runs 3 m (6 m loop) at 70 A, allowing 1% drop (≈ 0.51 V). What is the smallest suitable copper size?",
+"options": [
+{
+"th": "6 mm²",
+"en": "6 mm²"
+},
+{
+"th": "16 mm²",
+"en": "16 mm²"
+},
+{
+"th": "2.5 mm²",
+"en": "2.5 mm²"
+},
+{
+"th": "10 mm²",
+"en": "10 mm²"
+}
+],
+"answer": 1,
+"explain": "R ≤ 0.51 / 70 = 0.0073 Ω; A ≥ 0.0175 x 6 / 0.0073 ≈ 14.4 mm², so the next standard size, 16 mm² (also check ampacity)."
+},
+{
+"level": 5,
+"sec": "A",
+"th": "อินเวอร์เตอร์แจ้ง 'PV isolation fault / ฉนวนต่ำ' ทุกเช้าหลังฝนตก แล้วหายตอนสาย ควรทำอะไรก่อน",
+"en": "The inverter shows 'PV isolation fault' every morning after rain, clearing later in the day. What should you do first?",
+"options": [
+{
+"th": "ล้างแผงทั้งหมด",
+"en": "Clean all the panels"
+},
+{
+"th": "วัดความต้านทานฉนวนทีละสตริงตอนชื้น หาขั้วต่อที่น้ำเข้า หรือสายที่ฉนวนเสียหาย",
+"en": "Insulation-test each string while damp to find a wet connector or damaged cable"
+},
+{
+"th": "ปิดการแจ้งเตือนในอินเวอร์เตอร์",
+"en": "Disable the alarm in the inverter"
+},
+{
+"th": "เปลี่ยนอินเวอร์เตอร์ทันที",
+"en": "Replace the inverter immediately"
+}
+],
+"answer": 1,
+"explain": "Moisture reaching a damaged insulation point causes a leakage path to earth; test string by string to locate it."
+},
+{
+"level": 5,
+"sec": "A",
+"th": "ระบบ 3 เฟส มีอินเวอร์เตอร์ 1 เฟส จ่ายกระแส L1 = 20 A, L2 = 20 A, L3 = 0 A (โหลดตัวต้านทาน) กระแสในสายนิวทรัลประมาณเท่าไร",
+"en": "On a three-phase supply, single-phase inverters give L1 = 20 A, L2 = 20 A, L3 = 0 A (resistive). What is the neutral current?",
+"options": [
+{
+"th": "40 A",
+"en": "40 A"
+},
+{
+"th": "0 A",
+"en": "0 A"
+},
+{
+"th": "≈ 10 A",
+"en": "≈ 10 A"
+},
+{
+"th": "≈ 20 A",
+"en": "≈ 20 A"
+}
+],
+"answer": 3,
+"explain": "Phase currents 120° apart: with two equal phases and one at zero, the neutral carries about 20 A. Balance phases to reduce it."
+},
+{
+"level": 5,
+"sec": "D",
+"th": "ตอนส่งมอบ พบว่าฝ่ายขายเคยบอกลูกค้าว่า 'ค่าไฟจะเป็นศูนย์' ซึ่งเป็นไปไม่ได้ ควรทำอย่างไร",
+"en": "At handover you learn a salesperson told the customer the bill 'will be zero', which is impossible. You should:",
+"options": [
+{
+"th": "ไม่พูดอะไร",
+"en": "Say nothing"
+},
+{
+"th": "สัญญาว่าจะเป็นศูนย์จริง",
+"en": "Confirm the zero-bill promise"
+},
+{
+"th": "อธิบายตามจริงด้วยข้อมูลการผลิตและการใช้ไฟ แจ้งผู้จัดการ และบันทึกความคาดหวังที่ถูกต้องเป็นลายลักษณ์อักษร",
+"en": "Explain honestly with production and usage data, inform your manager, and record the correct expectation in writing"
+},
+{
+"th": "โทษลูกค้า",
+"en": "Blame the customer"
+}
+],
+"answer": 2,
+"explain": "Resetting expectations early with data is far cheaper than a dispute later."
+},
+{
+"level": 5,
+"sec": "A",
+"th": "แผง Vmp 41.6 V ค่าสัมประสิทธิ์ −0.35 %/°C เซลล์ร้อนถึง 70 °C ช่วง MPPT ต่ำสุด 200 V ต้องต่ออนุกรมอย่างน้อยกี่แผง",
+"en": "Panel Vmp 41.6 V, coefficient −0.35 %/°C, cells reach 70 °C, MPPT minimum 200 V. What is the fewest panels in series?",
+"options": [
+{
+"th": "4",
+"en": "4"
+},
+{
+"th": "5",
+"en": "5"
+},
+{
+"th": "8",
+"en": "8"
+},
+{
+"th": "6",
+"en": "6"
+}
+],
+"answer": 3,
+"explain": "Vmp at 70 °C = 41.6 x (1 − 0.0035 x 45) ≈ 35.0 V. 200 / 35.0 = 5.7, so at least 6 panels."
+},
+{
+"level": 5,
+"sec": "C",
+"th": "ความเร็วลมออกแบบเพิ่มจาก 25 m/s เป็น 30 m/s แรงดันลมบนแผงเพิ่มขึ้นประมาณเท่าไร",
+"en": "Design wind speed rises from 25 m/s to 30 m/s. Wind pressure on the panels rises by about:",
+"options": [
+{
+"th": "44%",
+"en": "44%"
+},
+{
+"th": "100%",
+"en": "100%"
+},
+{
+"th": "5%",
+"en": "5%"
+},
+{
+"th": "20%",
+"en": "20%"
+}
+],
+"answer": 0,
+"explain": "Wind pressure is proportional to speed squared: (30/25)² = 1.44."
+},
+{
+"level": 5,
+"sec": "A",
+"th": "ทำไมเบรกเกอร์ทั่วไปจึงมักไม่ตัดเมื่อสตริงแผงลัดวงจร",
+"en": "Why does a normal breaker usually NOT trip when a PV string short-circuits?",
+"options": [
+{
+"th": "กระแสลัดวงจรของแผง (Isc) สูงกว่ากระแสใช้งานเพียงเล็กน้อย แผงเป็นแหล่งจำกัดกระแส",
+"en": "PV short-circuit current is only slightly above working current; panels are current-limited sources"
+},
+{
+"th": "เพราะเบรกเกอร์เสียทุกตัว",
+"en": "Because all breakers are faulty"
+},
+{
+"th": "เพราะ DC ไม่มีกระแส",
+"en": "Because DC carries no current"
+},
+{
+"th": "เพราะแรงดันต่ำ",
+"en": "Because the voltage is low"
+}
+],
+"answer": 0,
+"explain": "Isc is about 1.05–1.1 x Imp, so overcurrent devices cannot detect the fault; prevention, insulation and arc safety matter."
+},
+{
+"level": 5,
+"sec": "A",
+"th": "แรงดัน Voc ของสตริงหนึ่งต่ำกว่าสตริงอื่นที่เหมือนกันประมาณ 1/3 ของ Voc แผงหนึ่งแผง สาเหตุที่เป็นไปได้มากที่สุดคือ",
+"en": "One string's Voc is lower than identical strings by about one third of a single panel's Voc. The most likely cause is:",
+"options": [
+{
+"th": "สาย AC หลวม",
+"en": "A loose AC cable"
+},
+{
+"th": "ไดโอดบายพาสในแผงหนึ่งลัดวงจร",
+"en": "One bypass diode in a panel has failed short"
+},
+{
+"th": "แผงสกปรก",
+"en": "Dirty panels"
+},
+{
+"th": "อินเวอร์เตอร์เสีย",
+"en": "A faulty inverter"
+}
+],
+"answer": 1,
+"explain": "A panel usually has three bypass diodes, each across one third of the cells; a shorted diode removes that third's voltage."
+},
+{
+"level": 5,
+"sec": "A",
+"th": "ระบบ 3 เฟส 30 kW 400 V PF 1 สายทองแดง 25 mm² ยาว 80 m แรงดันตกประมาณกี่เปอร์เซ็นต์ (ρ = 0.0175 Ω·mm²/m)",
+"en": "A 30 kW three-phase system at 400 V, PF 1, runs 80 m of 25 mm² copper. About what percentage voltage drop? (ρ = 0.0175 Ω·mm²/m)",
+"options": [
+{
+"th": "≈ 1.0%",
+"en": "≈ 1.0%"
+},
+{
+"th": "≈ 4.2%",
+"en": "≈ 4.2%"
+},
+{
+"th": "≈ 0.5%",
+"en": "≈ 0.5%"
+},
+{
+"th": "≈ 2.1%",
+"en": "≈ 2.1%"
+}
+],
+"answer": 0,
+"explain": "I = 30000 / (1.732 x 400) ≈ 43.3 A; R = 0.0175 / 25 = 0.0007 Ω/m; VD = 1.732 x 43.3 x 80 x 0.0007 ≈ 4.2 V = 1.05% of 400 V."
+},
+{
+"level": 5,
+"sec": "A",
+"th": "ระบบออฟกริด 48 V อินเวอร์เตอร์ 5 kW กลางคืนเมื่อปั๊มน้ำ 1.1 kW เริ่มทำงาน อินเวอร์เตอร์ตัดด้วย 'แบตเตอรี่แรงดันต่ำ' ทั้งที่แบตเตอรี่เหลือ 30% และกลางวันเปิดปั๊มได้ปกติ สาเหตุที่เป็นไปได้มากที่สุดคือ",
+"en": "Off-grid 48 V, 5 kW inverter: at night, when a 1.1 kW pump starts, the inverter shuts down on 'battery under-voltage' although SOC is 30%; by day the pump starts fine. The most likely cause is:",
+"options": [
+{
+"th": "อินเวอร์เตอร์เล็กเกินไปมาก",
+"en": "The inverter is far too small"
+},
+{
+"th": "กระแสกระชากของมอเตอร์ทำให้แรงดันแบตเตอรี่ตกต่ำกว่าจุดตัด เมื่อ SOC ต่ำและสายแบตเตอรี่มีความต้านทาน ควรตรวจขนาด/ขั้วต่อสาย ตั้ง SOC สำรอง และใช้ soft starter",
+"en": "Motor inrush sags battery voltage below the cut-off at low SOC through the cable resistance: check cable size and joints, raise the reserve SOC, and fit a soft starter"
+},
+{
+"th": "แผงโซลาร์เสียตอนกลางคืน",
+"en": "The panels fail at night"
+},
+{
+"th": "ปั๊มต้องใช้ไฟ DC",
+"en": "The pump needs DC"
+}
+],
+"answer": 1,
+"explain": "By day PV supports the battery voltage; at night a low SOC battery plus cable drop cannot hold voltage during the inrush."
+},
+{
+"level": 5,
+"sec": "A",
+"th": "บ้านที่ติดอินเวอร์เตอร์ไม่มีหม้อแปลง (transformerless) สายแผงยาว RCD 30 mA Type AC ในตู้ทริปทุกเช้าตอนอินเวอร์เตอร์เริ่มเชื่อมต่อกริด ข้อใดเป็นแนวทางแก้ที่ถูกต้อง",
+"en": "A home with a transformerless inverter and long PV cables: the 30 mA Type AC RCD in the board trips every morning when the inverter connects to the grid. The right approach is:",
+"options": [
+{
+"th": "ต่อสายดินเข้านิวทรัล",
+"en": "Bond earth to neutral"
+},
+{
+"th": "ใช้เบรกเกอร์ใหญ่ขึ้น",
+"en": "Fit a bigger MCB"
+},
+{
+"th": "ถอด RCD ออกถาวร",
+"en": "Remove the RCD permanently"
+},
+{
+"th": "ตรวจค่าฉนวน แล้วใช้ RCD ชนิดและพิกัดตามที่คู่มืออินเวอร์เตอร์กำหนด (มักเป็น Type A หรือ B) บนวงจรของอินเวอร์เตอร์",
+"en": "Check insulation, then use the RCD type and rating the inverter manual requires (often Type A or B) on the inverter circuit"
+}
+],
+"answer": 3,
+"explain": "Leakage through panel capacitance at start-up plus smooth DC residual current can trip or blind a Type AC RCD; follow the inverter maker's RCD requirement and confirm insulation is healthy."
+},
+{
+"level": 5,
+"sec": "A",
+"th": "สายพิกัด 32 A ที่ 30 °C เดินในที่อุณหภูมิ 45 °C (ตัวคูณ 0.79) และรวมกลุ่มในท่อ (ตัวคูณ 0.80) สายรับกระแสได้จริงประมาณเท่าไร",
+"en": "A cable rated 32 A at 30 °C runs at 45 °C (factor 0.79) and grouped in conduit (factor 0.80). What is its real capacity?",
+"options": [
+{
+"th": "32 A",
+"en": "32 A"
+},
+{
+"th": "≈ 20 A",
+"en": "≈ 20 A"
+},
+{
+"th": "≈ 40 A",
+"en": "≈ 40 A"
+},
+{
+"th": "≈ 25 A",
+"en": "≈ 25 A"
+}
+],
+"answer": 1,
+"explain": "32 x 0.79 x 0.80 ≈ 20.2 A, so it cannot carry a 22 A inverter output; choose a bigger cable."
+},
+{
+"level": 5,
+"sec": "D",
+"th": "ลูกค้าไม่จ่ายงวดสุดท้าย อ้างว่าเดือนฝนตกประหยัดไฟได้น้อย ควรทำอย่างไร",
+"en": "A customer withholds the final payment, saying savings were low during the rainy month. You should:",
+"options": [
+{
+"th": "ลดราคาให้ทันทีโดยไม่ตรวจ",
+"en": "Give an instant discount without checking"
+},
+{
+"th": "ขู่ฟ้องทันที",
+"en": "Threaten to sue immediately"
+},
+{
+"th": "ใจเย็น แสดงข้อมูลมอนิเตอร์เทียบสภาพอากาศและเงื่อนไขในสัญญา เสนอตรวจระบบ และบันทึกข้อตกลงเป็นลายลักษณ์อักษร",
+"en": "Stay calm, show monitoring data against weather and the contract terms, offer a system check, and put the agreement in writing"
+},
+{
+"th": "ถอดแผงกลับ",
+"en": "Remove the panels"
+}
+],
+"answer": 2,
+"explain": "Facts and the contract resolve most disputes; a check shows good faith and protects both sides."
+},
+{
+"level": 5,
+"sec": "A",
+"th": "แผง Voc 49.5 V ค่าสัมประสิทธิ์ Voc −0.25 %/°C อุณหภูมิต่ำสุดหน้างาน 10 °C อินเวอร์เตอร์รับ DC สูงสุด 600 V ต่ออนุกรมได้มากที่สุดกี่แผง",
+"en": "Panel Voc 49.5 V, Voc coefficient −0.25 %/°C, coldest site temperature 10 °C, inverter max DC 600 V. What is the most panels in series?",
+"options": [
+{
+"th": "10",
+"en": "10"
+},
+{
+"th": "12",
+"en": "12"
+},
+{
+"th": "11",
+"en": "11"
+},
+{
+"th": "13",
+"en": "13"
+}
+],
+"answer": 2,
+"explain": "Voc at 10 °C = 49.5 x (1 + 0.0025 x 15) = 51.4 V. 11 x 51.4 = 565 V (OK); 12 x 51.4 = 617 V exceeds 600 V."
+},
+{
+"level": 5,
+"sec": "C",
+"th": "ก่อนติดแผงบนโครงหลังคาเหล็กเดิม พบรอยเชื่อมร้าว ฐานเป็นสนิมกินลึก และคานแอ่นตัว ควรทำอย่างไร",
+"en": "On an existing steel roof frame you find cracked welds, deep rust at the base plates and sagging beams. You should:",
+"options": [
+{
+"th": "ลดจำนวนแผงลงครึ่งหนึ่งแล้วติดตั้ง",
+"en": "Halve the panels and install"
+},
+{
+"th": "หยุดงาน บันทึกภาพ แจ้งลูกค้าเป็นหนังสือ และให้วิศวกรประเมิน/เสริมโครงก่อนติดตั้ง",
+"en": "Stop, photograph, inform the customer in writing and have an engineer assess or strengthen it first"
+},
+{
+"th": "ทาสีทับรอยสนิม",
+"en": "Paint over the rust"
+},
+{
+"th": "ติดตั้งไปก่อนแล้วค่อยดู",
+"en": "Install anyway and watch it"
+}
+],
+"answer": 1,
+"explain": "Adding 12–15 kg/m² plus wind to a failing structure risks collapse; the decision must be documented."
+},
+{
+"level": 5,
+"sec": "C",
+"th": "แผงรวม 62 m² รับแรงยกจากลม 1.0 kN/m² ยึดด้วยขายึด 48 จุด แต่ละจุดรับแรงยกเฉลี่ยประมาณเท่าไร",
+"en": "An array of 62 m² sees 1.0 kN/m² wind uplift and has 48 attachments. What is the average uplift per attachment?",
+"options": [
+{
+"th": "≈ 1.3 kN",
+"en": "≈ 1.3 kN"
+},
+{
+"th": "≈ 62 kN",
+"en": "≈ 62 kN"
+},
+{
+"th": "≈ 0.5 kN",
+"en": "≈ 0.5 kN"
+},
+{
+"th": "≈ 6.2 kN",
+"en": "≈ 6.2 kN"
+}
+],
+"answer": 0,
+"explain": "62 m² x 1.0 kN/m² = 62 kN; 62 / 48 ≈ 1.3 kN per attachment (edge points carry more)."
 }
 ]
 }

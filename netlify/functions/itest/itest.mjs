@@ -1,22 +1,25 @@
-// Practical Solar Installation test for installers (www.solaress.org/installer-test).
-// 100 multiple-choice questions, Thai + English: A electrical (50), B wiring (20), C mounting (20), D customer (10).
-// The answer key lives only here (bank.json); candidates get their score and section scores, never the answers.
+// Solar ESS installer test (www.solaress.org/installer-test): 5 levels x 25 questions, Thai + English.
+//   Level 1 Solar Enterer · 2 Solar Enthusiast · 3 Solar in Practice · 4 Solar Professional · 5 Solar Expert
+// Rules: Level 1 needs a TSIA membership or Installer Partner registration with the same phone number
+// (store "members", any status except rejected/hidden). Level n needs a pass at level n−1 with that phone.
+// Pass mark 70% (18/25). Each pass issues a certificate anyone can verify at /certificate.html?id=...
+// The answer key lives only here (bank.json).
 //
 // Public:
-//   GET  /api/itest?a=questions                         -> {sections, questions:[{i, sec, th, en, options:[{th,en}]}]}
-//   POST /api/itest?a=submit {name, phone, email, province, team, language, seconds, answers:[0-3 or null x100]}
-//        -> {score, total, pct, pass, sections:{A:{correct,total},...}}
-// Admin (header "x-admin-password", same password as /members-admin.html):
-//   GET  /api/itest?a=list                              -> {attempts:[summary...]}
-//   GET  /api/itest?a=attempt&id=..                     -> attempt with every question, the candidate's answer and the key
-//   POST /api/itest?a=delete {id}
+//   POST /api/itest?a=status {phone}                 -> {registered, regName, passed:{n:certId}, next}
+//   POST /api/itest?a=start  {phone, level}          -> {level, questions:[{i, sec, th, en, options}]} if eligible
+//   POST /api/itest?a=submit {phone, level, name, email, province, team, language, seconds, answers:[0-3|null x25]}
+//        -> {score, total, pct, pass, sections, cert}
+//   GET  /api/itest?a=cert&id=..                     -> {id, name, level, title_en, title_th, pct, date}
+// Admin (header "x-admin-password", same as /members-admin.html):
+//   GET  /api/itest?a=list ; GET /api/itest?a=attempt&id=.. ; POST /api/itest?a=delete {id}
 import { getStore } from "@netlify/blobs";
 import crypto from "node:crypto";
 import bank from "./bank.json" with { type: "json" };
 
-const PASS_PCT = 70;
+const PASS_PCT = bank.pass_pct || 70;
 const VOCAB_ADMIN_HASH = "162cdaefe4e9558d229a4846cd021775:5c036e020b55e8727a91b98d8e554c7456200d65599147cff4efea07459dc0fd";
-const json = (b, s = 200, cache = "no-store") => new Response(JSON.stringify(b), { status: s, headers: { "content-type": "application/json", "cache-control": cache } });
+const json = (b, s = 200) => new Response(JSON.stringify(b), { status: s, headers: { "content-type": "application/json", "cache-control": "no-store" } });
 function eq(a, b) { a = Buffer.from(String(a)); b = Buffer.from(String(b)); return a.length === b.length && crypto.timingSafeEqual(a, b); }
 function checkHash(pw, stored) {
   const [salt, h] = stored.split(":");
@@ -33,58 +36,122 @@ function isAdmin(req) {
 }
 const txt = (v, k = 120) => String(v == null ? "" : v).trim().slice(0, k);
 const cleanId = (v) => String(v || "").replace(/[^A-Za-z0-9_-]/g, "");
+function normPhone(v) {
+  let d = String(v || "").replace(/\D/g, "");
+  if (d.startsWith("66") && d.length >= 11) d = "0" + d.slice(2);
+  return d.length >= 9 ? d : "";
+}
 const store = () => getStore({ name: "itest", consistency: "strong" });
+const LEVELS = bank.levels;
+const levelInfo = (n) => LEVELS.find((l) => l.n === n);
+const qsOf = (n) => bank.questions.map((q, i) => ({ ...q, i })).filter((q) => q.level === n);
 
-async function all(s) {
-  const { blobs } = await s.list({ prefix: "att/" });
+async function list(s, prefix) {
+  const { blobs } = await s.list({ prefix });
   const out = [];
   for (const b of blobs) { const v = await s.get(b.key, { type: "json" }); if (v) out.push(v); }
   return out.sort((x, y) => String(y.created).localeCompare(String(x.created)));
 }
-const summary = (a) => ({ id: a.id, created: a.created, name: a.name, phone: a.phone, email: a.email, province: a.province, team: a.team,
-  language: a.language, seconds: a.seconds, score: a.score, total: a.total, pct: a.pct, pass: a.pass, sections: a.sections });
+// Registered as TSIA member or installer partner with this phone (not rejected or hidden)?
+async function registration(phone) {
+  const m = getStore({ name: "members", consistency: "strong" });
+  for (const sub of await list(m, "sub/")) {
+    if (["rejected", "hidden"].includes(sub.status)) continue;
+    const d = sub.data || {};
+    if (normPhone(d.phone) === phone) return { type: sub.type, status: sub.status, name: d["display-name"] || d.organisation || d["contact-name"] || "" };
+  }
+  return null;
+}
+async function passedLevels(s, phone) {
+  const passed = {};
+  for (const a of await list(s, "att/")) if (a.phone === phone && a.pass && !passed[a.level]) passed[a.level] = a.cert;
+  return passed;
+}
+async function eligibility(s, phone, level) {
+  if (!phone) return { ok: false, reason: "phone" };
+  const reg = await registration(phone);
+  if (!reg) return { ok: false, reason: "not-registered" };
+  const passed = await passedLevels(s, phone);
+  if (level > 1 && !passed[level - 1]) return { ok: false, reason: "prerequisite", need: level - 1, reg, passed };
+  return { ok: true, reg, passed };
+}
+const summary = (a) => ({ id: a.id, created: a.created, level: a.level, name: a.name, phone: a.phone, email: a.email, province: a.province, team: a.team,
+  language: a.language, seconds: a.seconds, score: a.score, total: a.total, pct: a.pct, pass: a.pass, sections: a.sections, cert: a.cert || null });
 
 export default async (req) => {
   const u = new URL(req.url), a = u.searchParams.get("a");
+  const s = store();
+  let b = {};
+  if (req.method === "POST") { try { b = await req.json(); } catch {} }
 
-  if (a === "questions") {
-    return json({ sections: bank.sections, pass: PASS_PCT,
-      questions: bank.questions.map((q, i) => ({ i, sec: q.sec, th: q.th, en: q.en, options: q.options })) }, 200, "public, max-age=300");
+  if (a === "status" && req.method === "POST") {
+    const phone = normPhone(b.phone);
+    if (!phone) return json({ error: "phone" }, 400);
+    const reg = await registration(phone);
+    const passed = reg ? await passedLevels(s, phone) : {};
+    let next = 1; while (passed[next] && next < 5) next++;
+    if (passed[5]) next = null;
+    return json({ registered: !!reg, regType: reg && reg.type, regName: reg ? reg.name : "", passed, next, levels: LEVELS, pass: PASS_PCT });
+  }
+
+  if (a === "start" && req.method === "POST") {
+    const phone = normPhone(b.phone), level = parseInt(b.level, 10);
+    if (!levelInfo(level)) return json({ error: "level" }, 400);
+    const el = await eligibility(s, phone, level);
+    if (!el.ok) return json({ error: el.reason, need: el.need }, 403);
+    return json({ level: levelInfo(level), sections: bank.sections, pass: PASS_PCT,
+      questions: qsOf(level).map((q, k) => ({ i: k, sec: q.sec, th: q.th, en: q.en, options: q.options })) });
   }
 
   if (a === "submit" && req.method === "POST") {
-    let b = {}; try { b = await req.json(); } catch {}
-    const name = txt(b.name), phone = txt(b.phone, 30);
-    if (!name || phone.replace(/\D/g, "").length < 9) return json({ error: "Name and phone are required." }, 400);
-    const answers = Array.isArray(b.answers) ? b.answers.slice(0, bank.questions.length) : [];
+    const phone = normPhone(b.phone), level = parseInt(b.level, 10), name = txt(b.name);
+    const email = txt(b.email), team = txt(b.team);
+    if (!levelInfo(level) || !name) return json({ error: "Name, phone and level are required." }, 400);
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return json({ error: "A valid email is required." }, 400);
+    if (!team) return json({ error: "Company / team name is required." }, 400);
+    const el = await eligibility(s, phone, level);
+    if (!el.ok) return json({ error: el.reason, need: el.need }, 403);
+    const qs = qsOf(level), answers = Array.isArray(b.answers) ? b.answers.slice(0, qs.length) : [];
     const sections = {};
-    for (const s of bank.sections) sections[s.id] = { correct: 0, total: s.count };
     let score = 0;
-    const given = bank.questions.map((q, i) => {
-      const v = answers[i] === null || answers[i] === undefined || answers[i] === "" ? null : parseInt(answers[i], 10);
-      const ok = v === q.answer;
-      if (ok) { score++; sections[q.sec].correct++; }
+    const given = qs.map((q, k) => {
+      const v = answers[k] === null || answers[k] === undefined || answers[k] === "" ? null : parseInt(answers[k], 10);
+      (sections[q.sec] ||= { correct: 0, total: 0 }).total++;
+      if (v === q.answer) { score++; sections[q.sec].correct++; }
       return v;
     });
-    const total = bank.questions.length, pct = Math.round((score / total) * 100), pass = pct >= PASS_PCT;
+    const total = qs.length, pct = Math.round((score / total) * 100), pass = pct >= PASS_PCT;
     const id = Date.now().toString(36) + crypto.randomBytes(4).toString("hex");
-    const att = { id, created: new Date().toISOString(), name, phone, email: txt(b.email), province: txt(b.province), team: txt(b.team),
-      language: txt(b.language, 20), seconds: Math.max(0, Math.min(36000, parseInt(b.seconds, 10) || 0)), answers: given, score, total, pct, pass, sections };
-    await store().setJSON("att/" + id, att);
-    return json({ score, total, pct, pass, passMark: PASS_PCT, sections });
+    const created = new Date().toISOString();
+    let cert = null;
+    if (pass) {
+      cert = "SESS-L" + level + "-" + crypto.randomBytes(4).toString("hex").toUpperCase();
+      await s.setJSON("cert/" + cert, { id: cert, name, level, pct, score, total, date: created, attempt: id });
+    }
+    await s.setJSON("att/" + id, { id, created, level, name, phone, email, province: txt(b.province), team,
+      regType: el.reg.type, language: txt(b.language, 20), seconds: Math.max(0, Math.min(36000, parseInt(b.seconds, 10) || 0)),
+      answers: given, score, total, pct, pass, sections, cert });
+    return json({ score, total, pct, pass, passMark: PASS_PCT, sections, cert, level: levelInfo(level) });
+  }
+
+  if (a === "cert") {
+    const c = await s.get("cert/" + cleanId(u.searchParams.get("id")).toUpperCase(), { type: "json" });
+    if (!c) return json({ error: "not-found" }, 404);
+    const l = levelInfo(c.level);
+    return json({ id: c.id, name: c.name, level: c.level, title_en: l.en, title_th: l.th, pct: c.pct, score: c.score, total: c.total, date: c.date });
   }
 
   if (!isAdmin(req)) return json({ error: "Admin password is not right." }, 401);
-  const s = store();
-  if (a === "list") return json({ attempts: (await all(s)).map(summary), sections: bank.sections, pass: PASS_PCT });
+  if (a === "list") return json({ attempts: (await list(s, "att/")).map(summary), sections: bank.sections, levels: LEVELS, pass: PASS_PCT });
   if (a === "attempt") {
     const att = await s.get("att/" + cleanId(u.searchParams.get("id")), { type: "json" });
     if (!att) return json({ error: "not found" }, 404);
-    return json({ attempt: summary(att), items: bank.questions.map((q, i) => ({ i, sec: q.sec, th: q.th, en: q.en, options: q.options,
-      answer: q.answer, given: att.answers[i], correct: att.answers[i] === q.answer, explain: q.explain })) });
+    return json({ attempt: summary(att), items: qsOf(att.level).map((q, k) => ({ i: k, sec: q.sec, th: q.th, en: q.en, options: q.options,
+      answer: q.answer, given: att.answers[k], correct: att.answers[k] === q.answer, explain: q.explain })) });
   }
   if (a === "delete" && req.method === "POST") {
-    let b = {}; try { b = await req.json(); } catch {}
+    const att = await s.get("att/" + cleanId(b.id), { type: "json" });
+    if (att && att.cert) await s.delete("cert/" + att.cert);
     await s.delete("att/" + cleanId(b.id));
     return json({ ok: true });
   }

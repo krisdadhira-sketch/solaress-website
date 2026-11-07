@@ -3,7 +3,7 @@
 // Rules (Nov 2026): anyone can take any level and see their score; only name and phone are required.
 // Pass = 100% (25/25); only a pass issues a certificate number. To open or download the certificate
 // (/certificate.html?id=...), the phone used for the test must be registered as TSIA member or Installer Partner
-// (store "members", any status except rejected/hidden). Certificates issued before this change (no needReg flag)
+// and that registration approved by Solar ESS (store "members", status "approved"). Certificates issued before this change (no needReg flag)
 // stay open. Solar ESS accepts installation work from Level 3 (work: true on the certificate).
 // Each start shuffles question and answer order (session ses/<id>, valid 3 h). After an attempt at a level, the same
 // phone or email must wait 30 days before taking that level again. Certificates are valid for 1 year; a level with a valid
@@ -169,7 +169,11 @@ export default async (req) => {
     if (!c) return json({ error: "not-found" }, 404);
     const l = levelInfo(c.level);
     // New certificates open only once the test phone is registered (TSIA member or Installer Partner).
-    if (c.needReg && !(await registration(c.phone))) return json({ error: "register", id: c.id, level: c.level, title_en: l.en, title_th: l.th, pct: c.pct }, 403);
+    // and Solar ESS has approved that registration (status "approved"; pending does not count).
+    if (c.needReg) {
+      const reg = await registration(c.phone);
+      if (!reg || reg.status !== "approved") return json({ error: reg ? "pending" : "register", id: c.id, level: c.level, title_en: l.en, title_th: l.th, pct: c.pct }, 403);
+    }
     return json({ id: c.id, name: c.name, level: c.level, title_en: l.en, title_th: l.th, pct: c.pct, score: c.score, total: c.total, date: c.date, validFrom: c.date, validUntil: validUntil(c.date), valid: isValid(c.date), work: c.level >= WORK_LEVEL });
   }
 

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
-"""Add "Solar Test" (Level 1–5 installer test) to the end of the Solar ESS dropdown
-(<span class="dd end">) on every page, replacing the old standalone vocabulary link.
+"""Add "Solar Test" (Level 1–5 installer test) to the end of the Services dropdown
+(the dropdown whose top link ends in "#projects") on every page, replacing the old standalone vocabulary link.
+Moved from the Solar ESS dropdown to Services in Nov 2026.
 Idempotent (markers <!--tmenu-->...<!--/tmenu-->). Run from the repo root:  python3 tools/test_menu.py"""
 import re
 from pathlib import Path
@@ -25,15 +26,16 @@ def menu(lang):
 n = 0
 for f in sorted(ROOT.rglob("*.html")):
     s = f.read_text(encoding="utf-8")
-    if '<span class="dd end">' not in s:
+    svc = re.search(r'<span class="dd"><a href="[^"]*#projects">[^<]*</a><span class="ddm">', s)
+    if not svc:
         continue
     m = re.search(r'<html[^>]*\blang="([a-zA-Z-]+)"', s)
     lang = (m.group(1) if m else "en").lower()[:2]
     lang = lang if lang in L else "en"
     new = re.sub(r"<!--tmenu-->.*?<!--/tmenu-->", "", s, flags=re.S)
     new = VOC.sub("", new)
-    i = new.index('<span class="dd end">')
-    j = new.index("</span></span>", i)          # end of the Solar ESS dropdown list
+    i = re.search(r'<span class="dd"><a href="[^"]*#projects">[^<]*</a><span class="ddm">', new).end()
+    j = new.index("</span></span>", i)          # end of the Services dropdown list
     new = new[:j] + menu(lang) + new[j:]
     if new != s:
         f.write_text(new, encoding="utf-8"); n += 1

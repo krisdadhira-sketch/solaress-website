@@ -3,7 +3,7 @@
 // Rules (Nov 2026): anyone can take any level and see their score; only name and phone are required.
 // Pass = 100% (25/25); only a pass issues a certificate number. To open or download the certificate
 // (/certificate.html?id=...), the phone used for the test must be registered as TSIA member or Installer Partner
-// and that registration approved by Solar ESS (store "members", status "approved"). Certificates issued before this change (no needReg flag)
+// (store "members", any status except rejected/hidden). /join.html registers in one step via a=register. Certificates issued before this change (no needReg flag)
 // stay open. Solar ESS accepts installation work from Level 3 (work: true on the certificate).
 // Each start shuffles question and answer order (session ses/<id>, valid 3 h). After an attempt at a level, the same
 // phone or email must wait 30 days before taking that level again. Certificates are valid for 1 year; a level with a valid
@@ -164,16 +164,31 @@ export default async (req) => {
     return json({ score, total, pct, pass, passMark: PASS_PCT, sections, cert, registered: !!el.reg, level: levelInfo(level), validFrom: pass ? created : null, validUntil: pass ? validUntil(created) : null });
   }
 
+  // One-click registration from /join.html: the certificate number and the phone used for the test must match.
+  // Saves a pending Installer Partner (TSIA) registration in store "members", reviewed by Kris at /members-admin.html.
+  if (a === "register" && req.method === "POST") {
+    const phone = normPhone(b.phone), name = txt(b.name, 80), certId = cleanId(b.cert).toUpperCase();
+    if (!phone || !name || !txt(b.province) || b.agree !== true) return json({ error: "Please fill in all fields and tick the box." }, 400);
+    const c = await s.get("cert/" + certId, { type: "json" });
+    if (!c || (c.phone && c.phone !== phone)) return json({ error: "cert" }, 404);
+    if (await registration(phone)) return json({ ok: true, already: true });
+    const m = getStore({ name: "members", consistency: "strong" });
+    const id = "st" + Date.now().toString(36) + crypto.randomBytes(3).toString("hex");
+    const region = ["north", "northeast", "central", "bangkok", "east", "west", "south"].includes(b.region) ? b.region : "";
+    await m.setJSON("sub/" + id, { id, type: "partner", form: "installer-partner", status: "pending", created: new Date().toISOString(), images: [],
+      data: { "display-name": name, "contact-name": name, phone, "base-province": txt(b.province, 60), region, "partner-type": txt(b.type, 60),
+        "agree-terms": "yes", "agree-publish": "yes", "agree-verification": "yes", "joins-tsia": "yes", language: txt(b.language, 20),
+        source: "Solar Test certificate " + certId } });
+    return json({ ok: true });
+  }
+
   if (a === "cert") {
     const c = await s.get("cert/" + cleanId(u.searchParams.get("id")).toUpperCase(), { type: "json" });
     if (!c) return json({ error: "not-found" }, 404);
     const l = levelInfo(c.level);
     // New certificates open only once the test phone is registered (TSIA member or Installer Partner).
-    // and Solar ESS has approved that registration (status "approved"; pending does not count).
-    if (c.needReg) {
-      const reg = await registration(c.phone);
-      if (!reg || reg.status !== "approved") return json({ error: reg ? "pending" : "register", id: c.id, level: c.level, title_en: l.en, title_th: l.th, pct: c.pct }, 403);
-    }
+    // (any status except rejected/hidden: registering on /join.html opens the certificate at once; Kris still approves the profile).
+    if (c.needReg && !(await registration(c.phone))) return json({ error: "register", id: c.id, level: c.level, title_en: l.en, title_th: l.th, pct: c.pct }, 403);
     return json({ id: c.id, name: c.name, level: c.level, title_en: l.en, title_th: l.th, pct: c.pct, score: c.score, total: c.total, date: c.date, validFrom: c.date, validUntil: validUntil(c.date), valid: isValid(c.date), work: c.level >= WORK_LEVEL });
   }
 

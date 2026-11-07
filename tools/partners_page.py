@@ -21,6 +21,17 @@ REGIONS = [  # (key, EN, TH)
     ("south", "Southern", "ภาคใต้"),
 ]
 
+PROVINCES = {  # region key -> [(EN, TH)]; province picker sets the region automatically
+ "north": [("Chiang Rai","เชียงราย"),("Chiang Mai","เชียงใหม่"),("Lampang","ลำปาง"),("Lamphun","ลำพูน"),("Mae Hong Son","แม่ฮ่องสอน"),("Nan","น่าน"),("Phayao","พะเยา"),("Phrae","แพร่"),("Uttaradit","อุตรดิตถ์"),("Phitsanulok","พิษณุโลก"),("Sukhothai","สุโขทัย"),("Phetchabun","เพชรบูรณ์"),("Phichit","พิจิตร"),("Kamphaeng Phet","กำแพงเพชร"),("Nakhon Sawan","นครสวรรค์"),("Uthai Thani","อุทัยธานี")],
+ "northeast": [("Nakhon Ratchasima","นครราชสีมา"),("Khon Kaen","ขอนแก่น"),("Udon Thani","อุดรธานี"),("Ubon Ratchathani","อุบลราชธานี"),("Buriram","บุรีรัมย์"),("Surin","สุรินทร์"),("Si Sa Ket","ศรีสะเกษ"),("Chaiyaphum","ชัยภูมิ"),("Kalasin","กาฬสินธุ์"),("Maha Sarakham","มหาสารคาม"),("Roi Et","ร้อยเอ็ด"),("Yasothon","ยโสธร"),("Amnat Charoen","อำนาจเจริญ"),("Mukdahan","มุกดาหาร"),("Nakhon Phanom","นครพนม"),("Sakon Nakhon","สกลนคร"),("Nong Khai","หนองคาย"),("Bueng Kan","บึงกาฬ"),("Nong Bua Lam Phu","หนองบัวลำภู"),("Loei","เลย")],
+ "central": [("Phra Nakhon Si Ayutthaya","พระนครศรีอยุธยา"),("Ang Thong","อ่างทอง"),("Lopburi","ลพบุรี"),("Sing Buri","สิงห์บุรี"),("Chai Nat","ชัยนาท"),("Saraburi","สระบุรี"),("Nakhon Nayok","นครนายก"),("Suphan Buri","สุพรรณบุรี"),("Samut Songkhram","สมุทรสงคราม")],
+ "bangkok": [("Bangkok","กรุงเทพมหานคร"),("Nonthaburi","นนทบุรี"),("Pathum Thani","ปทุมธานี"),("Samut Prakan","สมุทรปราการ"),("Samut Sakhon","สมุทรสาคร"),("Nakhon Pathom","นครปฐม")],
+ "east": [("Chonburi","ชลบุรี"),("Rayong","ระยอง"),("Chanthaburi","จันทบุรี"),("Trat","ตราด"),("Chachoengsao","ฉะเชิงเทรา"),("Prachinburi","ปราจีนบุรี"),("Sa Kaeo","สระแก้ว")],
+ "west": [("Tak","ตาก"),("Kanchanaburi","กาญจนบุรี"),("Ratchaburi","ราชบุรี"),("Phetchaburi","เพชรบุรี"),("Prachuap Khiri Khan","ประจวบคีรีขันธ์")],
+ "south": [("Chumphon","ชุมพร"),("Ranong","ระนอง"),("Surat Thani","สุราษฎร์ธานี"),("Phang Nga","พังงา"),("Phuket","ภูเก็ต"),("Krabi","กระบี่"),("Nakhon Si Thammarat","นครศรีธรรมราช"),("Trang","ตรัง"),("Phatthalung","พัทลุง"),("Satun","สตูล"),("Songkhla","สงขลา"),("Pattani","ปัตตานี"),("Yala","ยะลา"),("Narathiwat","นราธิวาส")],
+}
+assert sum(len(v) for v in PROVINCES.values()) == 77
+
 SERVICES = [  # (value, EN, TH)
     ("res-ongrid", "Residential rooftop on-grid", "ระบบออนกริดบนหลังคาบ้าน"),
     ("hybrid", "Hybrid with battery", "ระบบไฮบริดพร้อมแบตเตอรี่"),
@@ -117,7 +128,7 @@ T = {
     a_pub="I agree that Solar ESS may publish Sections 1 and 2 and the photos marked “published” on solaress.org. My contact details and documents stay private.",
     a_terms="I agree that jobs from this directory are contracted through Solar ESS as main contractor, and that I will use premium materials and have the work done by a qualified electrician.",
     a_true="I confirm the information is true, and Solar ESS may verify it, visit a site or contact past customers.",
-    quick="Takes about 2 minutes. Only the fields marked * are needed; we call you to fill in the rest.",
+    quick="Takes 1 minute: only 4 fields (type, name, phone, province). Everything else is optional.",
     more_h="More about your team (optional): helps us approve you faster", docs_h="Documents and photos (optional)",
     a_all="I apply to join TSIA as an Installer Partner and accept the TSIA Statement of Purpose. I agree that Solar ESS may publish my team profile (never my contact details or documents), that jobs from this directory are contracted through Solar ESS as main contractor with premium materials and a qualified electrician, and that Solar ESS may verify what I send.",
     reg_btn="Send registration",
@@ -173,7 +184,7 @@ T = {
     a_pub="ข้าพเจ้ายินยอมให้ Solar ESS เผยแพร่ข้อมูลส่วนที่ 1 และ 2 และรูปภาพที่ระบุว่า “เผยแพร่” บน solaress.org โดยข้อมูลติดต่อและเอกสารของข้าพเจ้าจะไม่ถูกเผยแพร่",
     a_terms="ข้าพเจ้ายอมรับว่างานจากหน้านี้ทำสัญญาผ่าน Solar ESS ในฐานะผู้รับเหมาหลัก และจะใช้วัสดุคุณภาพ โดยให้ช่างไฟฟ้าที่มีใบรับรองเป็นผู้ทำงาน",
     a_true="ข้าพเจ้ายืนยันว่าข้อมูลเป็นความจริง และยินยอมให้ Solar ESS ตรวจสอบ เยี่ยมชมหน้างาน หรือติดต่อลูกค้าเก่า",
-    quick="ใช้เวลาประมาณ 2 นาที กรอกเฉพาะช่องที่มีเครื่องหมาย * ส่วนที่เหลือเราจะโทรสอบถามเพิ่มเติม",
+    quick="ใช้เวลา 1 นาที กรอกเพียง 4 ช่อง (ประเภท ชื่อ เบอร์โทร จังหวัด) ที่เหลือไม่บังคับ",
     more_h="ข้อมูลเพิ่มเติมของทีม (ไม่บังคับ): ช่วยให้อนุมัติได้เร็วขึ้น", docs_h="เอกสารและรูปภาพ (ไม่บังคับ)",
     a_all="ข้าพเจ้าสมัครเป็นสมาชิก TSIA ประเภทช่างพันธมิตร และยอมรับแถลงการณ์วัตถุประสงค์ของ TSIA ข้าพเจ้ายินยอมให้ Solar ESS เผยแพร่โปรไฟล์ทีม (ไม่เผยแพร่ข้อมูลติดต่อและเอกสาร) ยอมรับว่างานจากหน้านี้ทำสัญญาผ่าน Solar ESS ในฐานะผู้รับเหมาหลัก โดยใช้วัสดุคุณภาพและช่างไฟฟ้าที่มีใบรับรอง และยินยอมให้ Solar ESS ตรวจสอบข้อมูลที่ส่งมา",
     reg_btn="ส่งใบลงทะเบียน",
@@ -323,6 +334,10 @@ def build(lang):
     brand_items = [(b, b) for b in BRANDS]
     lang_items = [(x, x) for x in t["langs"]]
     avail_items = [(x, x) for x in t["avails"]]
+    li2 = 1 if th else 0
+    prov_opts = f'<option value="">{esc(choose)}</option>' + "".join(
+        f'<optgroup label="{esc(dict(regions)[k])}">' + "".join(f'<option value="{esc(en)}" data-region="{k}">{esc((th_ if th else en))}</option>' for en, th_ in PROVINCES[k]) + '</optgroup>'
+        for k, _ in regions)
     yn = [("yes", t["yes"]), ("no", t["no"])]
     reg = (f'<section class="band dark pform" id="register" style="padding-block:64px;border-top:1px solid rgba(255,255,255,.12)"><div class="wrap apply">'
            f'<div><p class="eyebrow">{esc(t["reg_eyebrow"])}</p><h2>{esc(t["reg_h"])}</h2><p class="lede" style="margin-top:18px">{esc(t["reg_lede"])}</p>'
@@ -336,23 +351,23 @@ def build(lang):
            f'<form name="installer-partner" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" action="{t["pre"]}/thanks.html">'
            f'<input type="hidden" name="form-name" value="installer-partner"><input type="hidden" name="language" value="{"Thai" if th else "English"}"><p hidden><label>Leave empty <input name="bot-field"></label></p>'
            f'<p class="quick">{esc(t["quick"])}</p>'
-           # short required core
+           # the four fields everyone fills in (Nov 2026: made as short as possible)
+           f'<div><p class="grp">{esc(t["f_type"])} <span class="req">*</span></p>{radios("partner-type", types, required=True)}</div>'
            f'<label for="r-name"><span>{esc(t["f_name"])} <b class="req">*</b></span><input id="r-name" name="display-name" required maxlength="80"></label>'
-           f'<div class="two"><label for="r-region"><span>{esc(t["f_region"])} <b class="req">*</b></span><select id="r-region" name="region" required>{opts(regions, choose)}</select></label>'
-           f'<label for="r-prov"><span>{esc(t["f_prov"])} <b class="req">*</b></span><input id="r-prov" name="base-province" required></label></div>'
-           f'<div><p class="grp">{esc(t["f_svc"])} <span class="req">*</span></p>{chks("services", svcs, required_one=True)}</div>'
-           f'<div class="two"><label for="r-cname"><span>{esc(t["f_cname"])} <b class="req">*</b></span><input id="r-cname" name="contact-name" required autocomplete="name"></label>'
-           f'<label for="r-phone"><span>{esc(t["f_phone"])} <b class="req">*</b></span><input id="r-phone" name="phone" type="tel" required autocomplete="tel"></label></div>'
-           f'<div class="two"><label for="r-line">{esc(t["f_line"])}<input id="r-line" name="line-id"></label>'
-           f'<label for="r-email">{esc(t["f_email"])}<input id="r-email" name="email" type="email" autocomplete="email"></label></div>'
+           f'<div class="two"><label for="r-phone"><span>{esc(t["f_phone"])} <b class="req">*</b></span><input id="r-phone" name="phone" type="tel" required autocomplete="tel"></label>'
+           f'<label for="r-prov"><span>{esc(t["f_prov"])} <b class="req">*</b></span><select id="r-prov" name="base-province" required>{prov_opts}</select></label></div>'
+           f'<input type="hidden" id="r-region" name="region" value="">'
+           # optional details, folded
+           f'<details><summary>{esc(t["more_h"])}</summary><div>'
+           f'<div><p class="grp">{esc(t["f_svc"])}</p>{chks("services", svcs)}</div>'
+           f'<div class="two"><label for="r-cname">{esc(t["f_cname"])}<input id="r-cname" name="contact-name" autocomplete="name"></label>'
+           f'<label for="r-line">{esc(t["f_line"])}<input id="r-line" name="line-id"></label></div>'
+           f'<label for="r-email">{esc(t["f_email"])}<input id="r-email" name="email" type="email" autocomplete="email"></label>'
            f'<div class="two"><label for="r-years">{esc(t["f_years"])}<input id="r-years" name="years-experience" type="number" min="0" max="60"></label>'
            f'<label for="r-size">{esc(t["f_size"])}<select id="r-size" name="max-system-size">{opts(sizes, choose)}</select></label></div>'
            f'<div><p class="grp">{esc(t["f_eng_q"])}</p>{radios("engineer-availability", avail3, required=False)}</div>'
            f'<div><p class="grp">{esc(t["f_safety_q"])}</p>{radios("safety-officer-availability", avail3, required=False)}</div>'
            f'<div><p class="grp">{esc(t["f_wah_q"])}</p>{radios("work-at-height-availability", avail3, required=False)}</div>'
-           # optional details, folded
-           f'<details><summary>{esc(t["more_h"])}</summary><div>'
-           f'<div><p class="grp">{esc(t["f_type"])}</p>{radios("partner-type", types, required=False)}</div>'
            f'<div class="two"><label for="r-amphoe">{esc(t["f_amphoe"])}<input id="r-amphoe" name="base-district"></label>'
            f'<label for="r-serves">{esc(t["f_serves"])}<input id="r-serves" name="provinces-served"></label></div>'
            f'<label for="r-bio">{esc(t["f_bio"])}<textarea id="r-bio" name="introduction" rows="3" maxlength="400"></textarea></label><p class="cnt" data-count="r-bio">0 / 400</p>'
@@ -397,7 +412,10 @@ def build(lang):
     script = ("<script>window.PARTNER_I18N=" + json.dumps({
         "lang": lang, "t": labels,
         "regions": dict(regions), "services": dict(svcs), "tools": dict(tools), "sizes": dict(sizes), "eng": dict(eng), "safety": dict(safety), "avail": {"in-team": t["av_short"][0], "can-arrange": t["av_short"][1]},
-    }, ensure_ascii=False) + ";</script>\n<script src=\"/partners.js?v=6\" defer></script>\n")
+    }, ensure_ascii=False) + ";</script>\n<script src=\"/partners.js?v=6\" defer></script>\n"
+              "<script>(function(){var p=document.getElementById('r-prov'),r=document.getElementById('r-region'),n=document.getElementById('r-name'),c=document.getElementById('r-cname');"
+              "if(p&&r)p.addEventListener('change',function(){var o=p.options[p.selectedIndex];r.value=o?(o.getAttribute('data-region')||''):''});"
+              "var f=p&&p.form;if(f)f.addEventListener('submit',function(){var o=p.options[p.selectedIndex];if(o)r.value=o.getAttribute('data-region')||'';if(c&&!c.value&&n)c.value=n.value})})();</script>\n")
 
     page = head + hero + howsec + directory + request + reg + script + foot
     out = ROOT / ("th/partners.html" if th else "partners.html")

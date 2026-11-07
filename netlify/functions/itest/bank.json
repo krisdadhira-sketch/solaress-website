@@ -73,6 +73,39 @@
 "group_th": "แบบทดสอบแบรนด์และผลิตภัณฑ์"
 },
 {
+"n": 16,
+"key": "inverter-solis",
+"en": "Inverters · Solis",
+"th": "อินเวอร์เตอร์ · Solis",
+"sub_en": "Solis brand test: SolisCloud, EPM, S6-EH1P hybrids",
+"sub_th": "แบบทดสอบเฉพาะยี่ห้อ Solis: SolisCloud, EPM, ไฮบริด S6-EH1P",
+"count": 8,
+"group_en": "Brand & Product Test",
+"group_th": "แบบทดสอบแบรนด์และผลิตภัณฑ์"
+},
+{
+"n": 17,
+"key": "inverter-deye",
+"en": "Inverters · Deye",
+"th": "อินเวอร์เตอร์ · Deye",
+"sub_en": "Deye brand test: loggers, SG01LP1 hybrids, parallel, AC coupling",
+"sub_th": "แบบทดสอบเฉพาะยี่ห้อ Deye: logger, ไฮบริด SG01LP1, การต่อขนาน, AC coupling",
+"count": 8,
+"group_en": "Brand & Product Test",
+"group_th": "แบบทดสอบแบรนด์และผลิตภัณฑ์"
+},
+{
+"n": 18,
+"key": "inverter-goodwe",
+"en": "Inverters · GoodWe",
+"th": "อินเวอร์เตอร์ · GoodWe",
+"sub_en": "GoodWe brand test: SEMS, smart meters, ES/SDT/GT, Lynx battery",
+"sub_th": "แบบทดสอบเฉพาะยี่ห้อ GoodWe: SEMS, มิเตอร์, ES/SDT/GT, แบตเตอรี่ Lynx",
+"count": 8,
+"group_en": "Brand & Product Test",
+"group_th": "แบบทดสอบแบรนด์และผลิตภัณฑ์"
+},
+{
 "n": 12,
 "key": "pv",
 "en": "PV Modules",
@@ -3759,212 +3792,628 @@
 "explain": "The inverter limits its output using the meter reading (e.g. Huawei DTSU666-H, Eastron SDM). A CT installed in the wrong place or direction is the most common reason zero export fails."
 },
 {
-"level": 12,
+"level": 16,
 "sec": "P",
-"th": "ไดโอดบายพาส (Bypass diode) ในกล่องต่อสายของแผงทำหน้าที่อะไร",
-"en": "What do the bypass diodes in a panel's junction box do?",
+"th": "อินเวอร์เตอร์ยี่ห้อ Solis ผลิตโดยบริษัทใด",
+"en": "Which company makes Solis inverters?",
 "options": [
 {
-"th": "ข้ามส่วนของแผงที่โดนเงา ลดความร้อนจุดร้อน (hot spot) และลดการเสียกำลังทั้งสตริง",
-"en": "Bypass a shaded section of the panel, limiting hot spots and string power loss"
+"th": "Deye",
+"en": "Deye"
 },
 {
-"th": "ป้องกันฟ้าผ่า",
-"en": "Protect against lightning"
+"th": "GoodWe",
+"en": "GoodWe"
 },
 {
-"th": "ทำให้แผงชาร์จแบตเตอรี่ได้โดยตรง",
-"en": "Let the panel charge a battery directly"
+"th": "Huawei",
+"en": "Huawei"
 },
 {
-"th": "เพิ่มแรงดันของแผง",
-"en": "Increase panel voltage"
-}
-],
-"answer": 0,
-"explain": "Most panels have three bypass diodes. A shorted diode shows as a string about one third of a panel's voltage low."
-},
-{
-"level": 12,
-"sec": "P",
-"th": "ค่า 'Mechanical load 5,400 Pa ด้านหน้า / 2,400 Pa ด้านหลัง' ของแผงหมายถึงอะไร",
-"en": "What does 'Mechanical load 5,400 Pa front / 2,400 Pa rear' on a panel datasheet mean?",
-"options": [
-{
-"th": "แรงกดด้านหน้าและแรงยก (ลมดูด) ด้านหลังที่แผงทนได้ เมื่อยึดตามตำแหน่งที่คู่มือกำหนด",
-"en": "The pressure on the front and uplift (wind suction) on the back the panel can withstand when clamped in the zones the manual specifies"
-},
-{
-"th": "ความดันน้ำที่ใช้ล้างแผงได้",
-"en": "The water pressure allowed for cleaning"
-},
-{
-"th": "น้ำหนักของแผง",
-"en": "The panel's weight"
-},
-{
-"th": "แรงดันไฟฟ้าสูงสุด",
-"en": "The maximum voltage"
-}
-],
-"answer": 0,
-"explain": "In Thailand wind uplift matters most. Clamping outside the allowed zones lowers the rating and can void the warranty."
-},
-{
-"level": 12,
-"sec": "P",
-"th": "แผงมีสัมประสิทธิ์อุณหภูมิของกำลัง -0.29%/°C ถ้าเซลล์ร้อน 65 °C กำลังลดลงประมาณเท่าใดจากค่า STC",
-"en": "A panel's power temperature coefficient is -0.29 %/°C. At 65 °C cell temperature, about how much power is lost versus STC?",
-"options": [
-{
-"th": "ไม่ลดลง",
-"en": "No loss"
-},
-{
-"th": "ประมาณ 29%",
-"en": "About 29%"
-},
-{
-"th": "ประมาณ 2.9%",
-"en": "About 2.9%"
-},
-{
-"th": "ประมาณ 11.6%",
-"en": "About 11.6%"
+"th": "Ginlong Technologies (หนิงโป ประเทศจีน)",
+"en": "Ginlong Technologies (Ningbo, China)"
 }
 ],
 "answer": 3,
-"explain": "65 − 25 = 40 °C above STC; 40 × 0.29% ≈ 11.6%. A lower (smaller) coefficient means less loss in hot climates."
+"explain": "Solis is the inverter brand of Ginlong Technologies, based in Ningbo, China."
 },
 {
-"level": 12,
+"level": 16,
 "sec": "P",
-"th": "มาตรฐาน IEC 61215 และ IEC 61730 สำหรับแผงโซลาร์เกี่ยวกับเรื่องใด",
-"en": "What do IEC 61215 and IEC 61730 cover for solar panels?",
+"th": "EPM ของ Solis จำกัดกำลังอินเวอร์เตอร์ทั้งที่มีโหลดใช้ไฟมาก สาเหตุที่พบบ่อยที่สุดคืออะไร",
+"en": "A Solis EPM limits the inverters even when the site is clearly using power. What is the most common cause?",
 "options": [
 {
-"th": "เป็นมาตรฐานแบตเตอรี่",
-"en": "They are battery standards"
+"th": "ติด CT กลับทิศ",
+"en": "The CTs are installed the wrong way round"
 },
 {
-"th": "เป็นมาตรฐานอินเวอร์เตอร์",
-"en": "They are inverter standards"
+"th": "แผงสกปรก",
+"en": "Dirty panels"
 },
 {
-"th": "IEC 61215 ด้านการออกแบบและความทนทาน IEC 61730 ด้านความปลอดภัยทางไฟฟ้า",
-"en": "IEC 61215: design qualification and durability; IEC 61730: electrical safety"
+"th": "แบตเตอรี่เต็ม",
+"en": "Battery full"
 },
 {
-"th": "ทั้งสองเป็นมาตรฐานสายไฟ",
-"en": "Both are cable standards"
+"th": "สาย AC ใหญ่เกินไป",
+"en": "AC cable too large"
+}
+],
+"answer": 0,
+"explain": "Reversed CTs make import look like export, so the EPM throttles the inverters. Check the CT arrow direction and phase order."
+},
+{
+"level": 16,
+"sec": "P",
+"th": "อินเวอร์เตอร์ไฮบริด Solis S6-EH1P16K03-NV-YD-L ใช้กับแบตเตอรี่ชนิดใด",
+"en": "Which battery type works with the Solis S6-EH1P16K03-NV-YD-L hybrid?",
+"options": [
+{
+"th": "แบตเตอรี่แรงดันต่ำ 48 V (ช่วงประมาณ 40–60 V)",
+"en": "A low-voltage 48 V battery (about 40–60 V range)"
+},
+{
+"th": "แบตเตอรี่รถยนต์ 12 V",
+"en": "A 12 V car battery"
+},
+{
+"th": "ไม่รองรับแบตเตอรี่",
+"en": "No battery"
+},
+{
+"th": "แบตเตอรี่แรงดันสูง 400 V",
+"en": "A 400 V high-voltage battery"
+}
+],
+"answer": 0,
+"explain": "The 'L' models are for LV batteries. Use a battery on Solis's compatibility list with CAN communication."
+},
+{
+"level": 16,
+"sec": "P",
+"th": "Solis S6-EH1P16K03 สลับไปจ่ายไฟสำรองเมื่อไฟดับได้เร็วเท่าใดตามเอกสารข้อมูล",
+"en": "According to its datasheet, how fast does the Solis S6-EH1P16K03 switch to backup when the grid fails?",
+"options": [
+{
+"th": "น้อยกว่า 4 ms (ระดับ UPS)",
+"en": "Under 4 ms (UPS level)"
+},
+{
+"th": "ไม่สลับเอง ต้องกดปุ่ม",
+"en": "It does not switch by itself; a button must be pressed"
+},
+{
+"th": "ประมาณ 1 วินาที",
+"en": "About 1 second"
+},
+{
+"th": "ประมาณ 30 วินาที",
+"en": "About 30 seconds"
+}
+],
+"answer": 0,
+"explain": "Fast enough that most computers and routers keep running through an outage."
+},
+{
+"level": 16,
+"sec": "P",
+"th": "แพลตฟอร์มติดตามระบบ (Monitoring) ของ Solis ชื่ออะไร",
+"en": "What is Solis's monitoring platform called?",
+"options": [
+{
+"th": "mySolarEdge",
+"en": "mySolarEdge"
+},
+{
+"th": "SEMS Portal",
+"en": "SEMS Portal"
+},
+{
+"th": "FusionSolar",
+"en": "FusionSolar"
+},
+{
+"th": "SolisCloud",
+"en": "SolisCloud"
+}
+],
+"answer": 3,
+"explain": "FusionSolar is Huawei's and SEMS Portal is GoodWe's. Solis inverters connect to SolisCloud through a WiFi or 4G stick logger."
+},
+{
+"level": 16,
+"sec": "P",
+"th": "พอร์ต Generator ของ Solis S6-EH1P16K03 รับกำลังได้สูงสุดเท่าใด",
+"en": "What is the maximum generator input of the Solis S6-EH1P16K03?",
+"options": [
+{
+"th": "32 kW",
+"en": "32 kW"
+},
+{
+"th": "ไม่มีพอร์ต Generator",
+"en": "It has no generator port"
+},
+{
+"th": "16 kW (72.7 A)",
+"en": "16 kW (72.7 A)"
+},
+{
+"th": "5 kW",
+"en": "5 kW"
 }
 ],
 "answer": 2,
-"explain": "Ask for the certificates of the exact model. In Thailand, TIS (มอก.) requirements for panels also apply."
+"explain": "The same port can be used for AC coupling of grid-tie inverters, keeping the total within 16 kW."
 },
 {
-"level": 12,
+"level": 16,
 "sec": "P",
-"th": "แผงสองหน้า (Bifacial) ให้กำลังเพิ่มได้มากที่สุดเมื่อติดตั้งแบบใด",
-"en": "When does a bifacial panel give the most extra energy?",
+"th": "Solis S6-EH1P16K03 รับกระแสแผงต่อ MPPT ได้สูงสุดเท่าใด และมีประโยชน์อย่างไร",
+"en": "What is the maximum PV current per MPPT on the Solis S6-EH1P16K03, and why does it matter?",
 "options": [
 {
-"th": "หันด้านหลังขึ้นฟ้า",
-"en": "Mounted back side up"
+"th": "ไม่จำกัดกระแส",
+"en": "No current limit"
 },
 {
-"th": "ยกสูงจากพื้นผิวสีอ่อนหรือสะท้อนแสงดี เช่น โครงบนพื้นทรายขาวหรือหลังคาสีขาว",
-"en": "When raised above a light, reflective surface, such as a ground mount over white gravel or a white roof"
+"th": "40 A ต่อ MPPT ใช้กับแผงกระแสสูง 600–700 W ได้ และต่อขนาน 2 สตริงต่อ MPPT ได้",
+"en": "40 A per MPPT: works with high-current 600–700 W panels, even two strings in parallel per MPPT"
 },
 {
-"th": "ติดในที่ร่ม",
-"en": "Installed in shade"
+"th": "100 A ต่อ MPPT",
+"en": "100 A per MPPT"
 },
 {
-"th": "ติดแนบชิดหลังคาเมทัลชีทสีเข้ม",
-"en": "Mounted flush on a dark metal-sheet roof"
+"th": "13 A ต่อ MPPT",
+"en": "13 A per MPPT"
 }
 ],
 "answer": 1,
-"explain": "The rear side needs reflected light (albedo) and space below. Flush on a dark roof, the bifacial gain is close to zero."
+"explain": "Many older inverters allow only 13–16 A per input, which clips modern panels with Imp around 14–15 A."
 },
 {
-"level": 12,
+"level": 16,
 "sec": "P",
-"th": "ค่าในเอกสารข้อมูลแผงที่สภาวะ STC วัดที่เงื่อนไขใด",
-"en": "Panel datasheet values at STC are measured under which conditions?",
+"th": "ไซต์ที่มีอินเวอร์เตอร์ Solis หลายเครื่องต้องการไม่ส่งไฟย้อน ควรใช้อุปกรณ์ใด",
+"en": "A site with several Solis inverters needs zero export. Which device should be used?",
 "options": [
 {
-"th": "อุณหภูมิเซลล์ 65 °C",
-"en": "65 °C cell temperature"
+"th": "เบรกเกอร์ตัวใหญ่ขึ้น",
+"en": "A larger breaker"
 },
 {
-"th": "แสง 800 W/m² อากาศ 20 °C",
-"en": "800 W/m², 20 °C air"
+"th": "ติด CT แยกที่อินเวอร์เตอร์แต่ละเครื่อง",
+"en": "A separate CT on each inverter"
 },
 {
-"th": "แดดเที่ยงวันในประเทศไทย",
-"en": "Noon sun in Thailand"
+"th": "WiFi stick เพียงอย่างเดียว",
+"en": "A WiFi stick on its own"
 },
 {
-"th": "ความเข้มแสง 1,000 W/m² อุณหภูมิเซลล์ 25 °C AM1.5",
-"en": "1,000 W/m² irradiance, 25 °C cell temperature, AM1.5"
+"th": "Solis Export Power Manager (EPM) เช่น EPM3-5G-PRO ควบคุมหลายเครื่องจากจุดต่อการไฟฟ้าจุดเดียว",
+"en": "A Solis Export Power Manager (EPM), e.g. EPM3-5G-PRO, controlling all inverters from one grid connection point"
 }
 ],
 "answer": 3,
-"explain": "STC = Standard Test Conditions. On a Thai roof the cells often run at 55–70 °C, so real power is lower than the STC rating."
+"explain": "The EPM reads the CTs at the grid connection point and sends power limits to every inverter over RS485 (the EPM3-5G-PRO supports up to 80 inverters)."
 },
 {
-"level": 12,
+"level": 17,
 "sec": "P",
-"th": "การรับประกันประสิทธิภาพแบบเชิงเส้น (Linear performance warranty) เช่น ปีแรกเสื่อมไม่เกิน 1% ต่อจากนั้นไม่เกิน 0.4% ต่อปี หมายถึงอะไร",
-"en": "What does a linear performance warranty such as 'max 1% in year 1, then max 0.4% per year' mean?",
+"th": "เมื่อ AC coupling อินเวอร์เตอร์ออนกริดเข้าพอร์ต GEN ของไฮบริด ต้องตั้งค่าอะไรที่อินเวอร์เตอร์ออนกริด",
+"en": "When AC-coupling a grid-tie inverter to a hybrid's GEN port, what must be set on the grid-tie inverter?",
 "options": [
 {
-"th": "แผงจะเสียหายภายใน 1 ปี",
-"en": "The panel will fail within a year"
+"th": "ปิดการป้องกันทั้งหมด",
+"en": "Turn off all protections"
 },
 {
-"th": "ผู้ผลิตรับประกันว่ากำลังของแผงจะลดลงไม่เกินอัตรานี้ในแต่ละปี จนถึงปีสุดท้ายของการรับประกัน",
-"en": "The maker guarantees panel power will not fall faster than this each year until the end of the warranty"
+"th": "เปิดการลดกำลังตามความถี่ (P(f) / over-frequency derating) เพื่อให้ไฮบริดลดกำลังได้เมื่อแบตเตอรี่เต็ม",
+"en": "Frequency-based power reduction (P(f) / over-frequency derating), so the hybrid can curtail it when the battery is full"
 },
 {
-"th": "กำลังจะเพิ่มขึ้นทุกปี",
-"en": "Power will rise every year"
+"th": "ไม่ต้องตั้งค่าใดๆ",
+"en": "No settings needed"
 },
 {
-"th": "รับประกันเฉพาะกรอบแผง",
-"en": "Only the frame is guaranteed"
+"th": "ตั้งเป็นโหมดชาร์จแบตเตอรี่",
+"en": "Set it to battery-charging mode"
 }
 ],
 "answer": 1,
-"explain": "Product (materials) warranty and performance warranty are separate; read both."
+"explain": "Off-grid, the hybrid raises the frequency to make the grid-tie inverter reduce output. The coupled power must stay within the hybrid's GEN rating."
 },
 {
-"level": 12,
+"level": 17,
 "sec": "P",
-"th": "คำว่า 'Tier 1' ของผู้ผลิตแผง (ตาม BloombergNEF) หมายถึงอะไร",
-"en": "What does 'Tier 1' (BloombergNEF) mean for a panel maker?",
+"th": "อุปกรณ์ Deye รุ่น LSW-3 คืออะไร",
+"en": "What is the Deye LSW-3?",
 "options": [
 {
-"th": "แผงที่ผ่านการทดสอบคุณภาพสูงสุด",
-"en": "Panels that passed the highest quality test"
+"th": "Stick logger แบบ WiFi สำหรับส่งข้อมูลอินเวอร์เตอร์ขึ้นแอปติดตามระบบ",
+"en": "A WiFi stick logger that sends inverter data to the monitoring app"
 },
 {
-"th": "ผู้ผลิตที่โครงการขนาดใหญ่หลายโครงการได้รับสินเชื่อจากธนาคารโดยใช้แผงนั้น (ความน่าเชื่อถือทางการเงิน)",
-"en": "A maker whose panels have been used in many bank-financed large projects (financial bankability)"
+"th": "แบตเตอรี่ 3 kWh",
+"en": "A 3 kWh battery"
 },
 {
-"th": "แผงที่ผลิตในยุโรป",
-"en": "Panels made in Europe"
+"th": "มิเตอร์ 3 เฟส",
+"en": "A 3-phase meter"
 },
 {
-"th": "แผงที่มีประสิทธิภาพเกิน 25%",
-"en": "Panels above 25% efficiency"
+"th": "เบรกเกอร์ DC",
+"en": "A DC breaker"
+}
+],
+"answer": 0,
+"explain": "Deye also makes LAN (LSE-3) and 4G (LS4G-3) loggers. A logger that keeps dropping WiFi is a common cause of 'offline' plants."
+},
+{
+"level": 17,
+"sec": "P",
+"th": "อินเวอร์เตอร์ไฮบริด Deye รับโหลดกระชากในโหมดออฟกริดได้เท่าใด",
+"en": "What surge (peak) power can a Deye hybrid supply off-grid?",
+"options": [
+{
+"th": "ไม่รับโหลดกระชาก",
+"en": "No surge capacity"
+},
+{
+"th": "2 เท่าของกำลังพิกัด นาน 10 วินาที",
+"en": "Twice the rated power for 10 seconds"
+},
+{
+"th": "10 เท่า นาน 1 นาที",
+"en": "10 × for 1 minute"
+},
+{
+"th": "1.1 เท่า ต่อเนื่อง",
+"en": "1.1 × continuously"
 }
 ],
 "answer": 1,
-"explain": "Tier 1 is a bankability list, not a quality certificate. Check IEC 61215/61730 certificates and the warranty terms as well."
+"explain": "Motors, pumps and compressors draw several times their running current when starting."
+},
+{
+"level": 17,
+"sec": "P",
+"th": "Deye SUN-5K-G เป็นอินเวอร์เตอร์ชนิดใด",
+"en": "What type of inverter is the Deye SUN-5K-G?",
+"options": [
+{
+"th": "เครื่องชาร์จแบตเตอรี่",
+"en": "A battery charger"
+},
+{
+"th": "อินเวอร์เตอร์ออนกริด 1 เฟส 5 kW 2 MPPT ไม่มีพอร์ตแบตเตอรี่",
+"en": "A 5 kW single-phase on-grid inverter with 2 MPPTs and no battery port"
+},
+{
+"th": "อินเวอร์เตอร์ไฮบริด 3 เฟส",
+"en": "A 3-phase hybrid"
+},
+{
+"th": "ไมโครอินเวอร์เตอร์",
+"en": "A microinverter"
+}
+],
+"answer": 1,
+"explain": "It can be AC-coupled to a hybrid's GEN port to add solar capacity."
+},
+{
+"level": 17,
+"sec": "P",
+"th": "Deye SUN-16K-SG01LP1 จ่ายกำลัง AC ปรากฏ (apparent power) ต่อเนื่องสูงสุดเท่าใด",
+"en": "What is the maximum continuous AC apparent power of the Deye SUN-16K-SG01LP1?",
+"options": [
+{
+"th": "5 kVA",
+"en": "5 kVA"
+},
+{
+"th": "32 kVA",
+"en": "32 kVA"
+},
+{
+"th": "17.6 kVA (ประมาณ 80 A ที่ 220 V)",
+"en": "17.6 kVA (about 80 A at 220 V)"
+},
+{
+"th": "10 kVA",
+"en": "10 kVA"
+}
+],
+"answer": 2,
+"explain": "Rated active power is 16 kW; the extra headroom helps with motor and air-conditioner loads."
+},
+{
+"level": 17,
+"sec": "P",
+"th": "อินเวอร์เตอร์ไฮบริด Deye SUN-16K-SG01LP1 ชาร์จ-จ่ายแบตเตอรี่ได้กระแสสูงสุดเท่าใด",
+"en": "What is the maximum battery charge/discharge current of the Deye SUN-16K-SG01LP1 hybrid?",
+"options": [
+{
+"th": "100 A",
+"en": "100 A"
+},
+{
+"th": "290 A",
+"en": "290 A"
+},
+{
+"th": "1,000 A",
+"en": "1,000 A"
+},
+{
+"th": "50 A",
+"en": "50 A"
+}
+],
+"answer": 1,
+"explain": "290 A at 48 V is about 14 kW, so battery cables and the DC breaker must be sized for it."
+},
+{
+"level": 17,
+"sec": "P",
+"th": "อินเวอร์เตอร์ไฮบริด Deye ต่อขนานกันได้สูงสุดกี่เครื่อง",
+"en": "Up to how many Deye hybrid inverters can run in parallel?",
+"options": [
+{
+"th": "2 เครื่อง",
+"en": "2 units"
+},
+{
+"th": "100 เครื่อง",
+"en": "100 units"
+},
+{
+"th": "ต่อขนานไม่ได้",
+"en": "They cannot be paralleled"
+},
+{
+"th": "16 เครื่อง ทั้งออนกริดและออฟกริด",
+"en": "16 units, on-grid and off-grid"
+}
+],
+"answer": 3,
+"explain": "Paralleled units need the parallel communication cables and matching firmware and settings."
+},
+{
+"level": 17,
+"sec": "P",
+"th": "ในการตั้งค่า Time of Use ของอินเวอร์เตอร์ไฮบริด Deye กำหนดช่วงเวลาชาร์จ-จ่ายแบตเตอรี่ได้กี่ช่วง",
+"en": "How many battery charge/discharge time periods can be set in a Deye hybrid's Time of Use settings?",
+"options": [
+{
+"th": "ตั้งไม่ได้",
+"en": "None"
+},
+{
+"th": "1 ช่วง",
+"en": "1 period"
+},
+{
+"th": "24 ช่วง",
+"en": "24 periods"
+},
+{
+"th": "6 ช่วง",
+"en": "6 periods"
+}
+],
+"answer": 3,
+"explain": "Each period has its own SOC target and power, e.g. keep a higher SOC floor overnight for backup."
+},
+{
+"level": 18,
+"sec": "P",
+"th": "มิเตอร์อัจฉริยะของ GoodWe สำหรับระบบ 3 เฟสคือรุ่นใด",
+"en": "Which GoodWe smart meter is for three-phase systems?",
+"options": [
+{
+"th": "ACR10R",
+"en": "ACR10R"
+},
+{
+"th": "GM3000 (ส่วน GM1000 ใช้กับระบบ 1 เฟส)",
+"en": "GM3000 (GM1000 is for single-phase)"
+},
+{
+"th": "DTSU666-H",
+"en": "DTSU666-H"
+},
+{
+"th": "GM1000 เท่านั้น",
+"en": "GM1000 only"
+}
+],
+"answer": 1,
+"explain": "The GM3000 comes with three 120 A CTs and talks to the inverter over RS485."
+},
+{
+"level": 18,
+"sec": "P",
+"th": "แพลตฟอร์มติดตามระบบ (Monitoring) ของ GoodWe ชื่ออะไร",
+"en": "What is GoodWe's monitoring platform called?",
+"options": [
+{
+"th": "SolisCloud",
+"en": "SolisCloud"
+},
+{
+"th": "FusionSolar",
+"en": "FusionSolar"
+},
+{
+"th": "DeyeCloud",
+"en": "DeyeCloud"
+},
+{
+"th": "SEMS Portal",
+"en": "SEMS Portal"
+}
+],
+"answer": 3,
+"explain": "GoodWe inverters connect to SEMS through a WiFi/LAN or 4G module."
+},
+{
+"level": 18,
+"sec": "P",
+"th": "แบตเตอรี่ GoodWe Lynx A G4 ในรายการราคาของ Solar ESS เป็นแบบใด",
+"en": "What is the GoodWe Lynx A G4 battery in Solar ESS's price list?",
+"options": [
+{
+"th": "ซูเปอร์คาปาซิเตอร์",
+"en": "A supercapacitor"
+},
+{
+"th": "แบตเตอรี่แรงดันสูง 100 kWh",
+"en": "A 100 kWh high-voltage battery"
+},
+{
+"th": "แบตเตอรี่แรงดันต่ำ (LV) ความจุ 16.1 kWh",
+"en": "A 16.1 kWh low-voltage (LV) battery"
+},
+{
+"th": "แบตเตอรี่ตะกั่วกรด",
+"en": "A lead-acid battery"
+}
+],
+"answer": 2,
+"explain": "Match battery voltage class to the inverter: LV batteries for LV hybrids such as the ES series."
+},
+{
+"level": 18,
+"sec": "P",
+"th": "ในแพ็กเกจ GoodWe ของ Solar ESS ถ้าใช้อินเวอร์เตอร์คู่กับแบตเตอรี่ GoodWe ได้สิทธิ์ใดเพิ่ม",
+"en": "In Solar ESS GoodWe packages, what extra applies when the GoodWe inverter is paired with a GoodWe battery?",
+"options": [
+{
+"th": "ไม่ต้องติดตั้งเบรกเกอร์",
+"en": "No breaker is needed"
+},
+{
+"th": "ขายไฟได้ราคาสองเท่า",
+"en": "Power sells at twice the price"
+},
+{
+"th": "ไม่ต้องลงทะเบียนสินค้า",
+"en": "No product registration is needed"
+},
+{
+"th": "ประกันอินเวอร์เตอร์ 10 ปี โดยไม่มีค่าใช้จ่ายเพิ่ม",
+"en": "A 10-year inverter warranty at no extra cost"
+}
+],
+"answer": 3,
+"explain": "Register the system with GoodWe so the extended warranty is recorded."
+},
+{
+"level": 18,
+"sec": "P",
+"th": "การติด CT ของมิเตอร์ GoodWe ต้องหันทิศอย่างไร",
+"en": "Which way must the CTs of a GoodWe meter face?",
+"options": [
+{
+"th": "ทิศใดก็ได้",
+"en": "Either way"
+},
+{
+"th": "ไม่ต้องใช้ CT",
+"en": "No CT is used"
+},
+{
+"th": "ชี้เข้าหาอินเวอร์เตอร์เสมอ",
+"en": "Always towards the inverter"
+},
+{
+"th": "ลูกศรชี้จากฝั่งบ้านไปฝั่งการไฟฟ้า (House K → Grid L)",
+"en": "Arrow pointing from the house side to the grid side (House K → Grid L)"
+}
+],
+"answer": 3,
+"explain": "A wrong CT direction or phase order gives incorrect data, broken zero export and wrong consumption figures."
+},
+{
+"level": 18,
+"sec": "P",
+"th": "GoodWe ซีรีส์ SDT (เช่น GW10K-SDT-30) คืออะไร",
+"en": "What is the GoodWe SDT series (e.g. GW10K-SDT-30)?",
+"options": [
+{
+"th": "มิเตอร์อัจฉริยะ",
+"en": "A smart meter"
+},
+{
+"th": "แบตเตอรี่แรงดันสูง",
+"en": "A high-voltage battery"
+},
+{
+"th": "ไฮบริด 1 เฟส",
+"en": "A single-phase hybrid"
+},
+{
+"th": "อินเวอร์เตอร์ออนกริด 3 เฟส ไม่มีพอร์ตแบตเตอรี่",
+"en": "A 3-phase on-grid inverter without a battery port"
+}
+],
+"answer": 3,
+"explain": "Choose SDT for daytime-load sites that do not need backup."
+},
+{
+"level": 18,
+"sec": "P",
+"th": "GoodWe รุ่น GW10K-ES-C10 ในแพ็กเกจของ Solar ESS เป็นอินเวอร์เตอร์ชนิดใด",
+"en": "In Solar ESS packages, what type of inverter is the GoodWe GW10K-ES-C10?",
+"options": [
+{
+"th": "ไมโครอินเวอร์เตอร์",
+"en": "A microinverter"
+},
+{
+"th": "อินเวอร์เตอร์ออนกริด 3 เฟส",
+"en": "A 3-phase on-grid inverter"
+},
+{
+"th": "อินเวอร์เตอร์ไฮบริด 1 เฟส 10 kW",
+"en": "A 10 kW single-phase hybrid"
+},
+{
+"th": "เครื่องชาร์จรถ EV",
+"en": "An EV charger"
+}
+],
+"answer": 2,
+"explain": "Solar ESS pairs it with the GoodWe Lynx A G4 battery in single-phase hybrid packages."
+},
+{
+"level": 18,
+"sec": "P",
+"th": "GoodWe GW125K-GT เหมาะกับงานแบบใด",
+"en": "What is the GoodWe GW125K-GT suited for?",
+"options": [
+{
+"th": "บ้าน 1 เฟสขนาดเล็ก",
+"en": "Small single-phase homes"
+},
+{
+"th": "ชาร์จรถ EV",
+"en": "EV charging"
+},
+{
+"th": "ระบบออนกริด 3 เฟสขนาดใหญ่ 125 kW สำหรับอาคารพาณิชย์และโรงงาน",
+"en": "Large 125 kW three-phase on-grid systems for commercial buildings and factories"
+},
+{
+"th": "ระบบออฟกริดพร้อมแบตเตอรี่ 48 V",
+"en": "Off-grid systems with a 48 V battery"
+}
+],
+"answer": 2,
+"explain": "Solar ESS's 134 kWp C&I package pairs it with 200 panels."
 },
 {
 "level": 12,
@@ -3973,154 +4422,50 @@
 "en": "A panel datasheet says 'Maximum series fuse rating 25 A'. What does this mean?",
 "options": [
 {
-"th": "ต้องใช้ฟิวส์ 25 A ที่ฝั่ง AC",
-"en": "A 25 A fuse is needed on the AC side"
+"th": "ต่อขนานได้ 25 สตริง",
+"en": "25 strings can be paralleled"
 },
 {
 "th": "แผงจ่ายกระแสได้ 25 A",
 "en": "The panel delivers 25 A"
 },
 {
-"th": "ฟิวส์สตริงต้องไม่เกิน 25 A และแผงทนกระแสย้อนได้ไม่เกินค่านี้",
-"en": "String fuses must not exceed 25 A; it is the most reverse current the panel can withstand"
+"th": "ต้องใช้ฟิวส์ 25 A ที่ฝั่ง AC",
+"en": "A 25 A fuse is needed on the AC side"
 },
 {
-"th": "ต่อขนานได้ 25 สตริง",
-"en": "25 strings can be paralleled"
+"th": "ฟิวส์สตริงต้องไม่เกิน 25 A และแผงทนกระแสย้อนได้ไม่เกินค่านี้",
+"en": "String fuses must not exceed 25 A; it is the most reverse current the panel can withstand"
 }
 ],
-"answer": 2,
+"answer": 3,
 "explain": "With three or more strings in parallel, a faulty string can receive reverse current from the others; the fuse must open before this limit."
 },
 {
 "level": 12,
 "sec": "P",
-"th": "การต่อขั้วต่อ MC4 ของแผงยี่ห้อหนึ่งกับขั้วต่อ 'MC4 compatible' ต่างยี่ห้อ ถูกหรือผิด",
-"en": "Is it acceptable to mate a panel's MC4 connector with a different brand's 'MC4-compatible' connector?",
+"th": "คำว่า 'Tier 1' ของผู้ผลิตแผง (ตาม BloombergNEF) หมายถึงอะไร",
+"en": "What does 'Tier 1' (BloombergNEF) mean for a panel maker?",
 "options": [
 {
-"th": "ไม่ควร ขั้วต่อต่างยี่ห้ออาจเข้ากันไม่สนิท เกิดความร้อนและอาร์ก และผิดเงื่อนไขรับประกัน",
-"en": "No: different brands may not mate properly, can overheat and arc, and void the warranty"
+"th": "แผงที่มีประสิทธิภาพเกิน 25%",
+"en": "Panels above 25% efficiency"
 },
 {
-"th": "ได้ ถ้าพันเทปทับ",
-"en": "Fine if taped over"
+"th": "แผงที่ผลิตในยุโรป",
+"en": "Panels made in Europe"
 },
 {
-"th": "ได้ ถ้าใช้ฝั่ง AC",
-"en": "Fine on the AC side"
+"th": "ผู้ผลิตที่โครงการขนาดใหญ่หลายโครงการได้รับสินเชื่อจากธนาคารโดยใช้แผงนั้น (ความน่าเชื่อถือทางการเงิน)",
+"en": "A maker whose panels have been used in many bank-financed large projects (financial bankability)"
 },
 {
-"th": "ได้เสมอ เพราะชื่อเดียวกัน",
-"en": "Always fine because the name is the same"
-}
-],
-"answer": 0,
-"explain": "Use the same make and type on both sides, crimped with the correct tool. Mismatched connectors are a leading cause of rooftop arcs."
-},
-{
-"level": 12,
-"sec": "P",
-"th": "แผงแบบเซลล์ครึ่ง (Half-cut cell) มีข้อดีอย่างไร",
-"en": "What is the advantage of half-cut cell panels?",
-"options": [
-{
-"th": "แรงดันลดลงครึ่งหนึ่ง",
-"en": "Voltage is halved"
-},
-{
-"th": "ลดการสูญเสียจากความต้านทาน และทนเงาบางส่วนได้ดีขึ้นเพราะแบ่งแผงเป็นสองครึ่ง",
-"en": "Lower resistive losses, and better tolerance of partial shade because the panel works as two halves"
-},
-{
-"th": "ไม่ต้องมีกระจก",
-"en": "No glass is needed"
-},
-{
-"th": "ใช้แผงได้ครึ่งเดียว",
-"en": "Only half the panel works"
-}
-],
-"answer": 1,
-"explain": "Shade on the bottom half leaves the top half working; this is why landscape vs portrait mounting can matter."
-},
-{
-"level": 12,
-"sec": "P",
-"th": "แผง N-type TOPCon มีข้อดีอย่างไรเทียบกับ P-type PERC รุ่นเก่า",
-"en": "What is the advantage of N-type TOPCon panels over older P-type PERC panels?",
-"options": [
-{
-"th": "ผลิตไฟได้ตอนกลางคืน",
-"en": "It produces power at night"
-},
-{
-"th": "เสื่อมช้ากว่า สัมประสิทธิ์อุณหภูมิดีกว่า และไม่มีปัญหา LID แบบ P-type",
-"en": "Slower degradation, better temperature coefficient and no P-type light-induced degradation (LID)"
-},
-{
-"th": "น้ำหนักเบากว่าครึ่งหนึ่ง",
-"en": "Half the weight"
-},
-{
-"th": "ไม่ต้องใช้กรอบอะลูมิเนียม",
-"en": "No aluminium frame needed"
-}
-],
-"answer": 1,
-"explain": "Most Tier-1 makers (Jinko, JA, Trina, LONGi and others) moved to N-type cells: TOPCon, HJT or back contact."
-},
-{
-"level": 12,
-"sec": "P",
-"th": "แผง HJT (Heterojunction) มีจุดเด่นเรื่องใด",
-"en": "What is HJT (heterojunction) panel technology known for?",
-"options": [
-{
-"th": "ใช้ได้เฉพาะระบบออฟกริด",
-"en": "Only usable off-grid"
-},
-{
-"th": "ไม่ต้องมีไดโอดบายพาส",
-"en": "No bypass diodes needed"
-},
-{
-"th": "สัมประสิทธิ์อุณหภูมิต่ำมาก (ประมาณ -0.24 ถึง -0.26%/°C) จึงเสียกำลังน้อยในอากาศร้อน",
-"en": "A very low temperature coefficient (about -0.24 to -0.26 %/°C), so it loses little power in hot weather"
-},
-{
-"th": "ใช้เซลล์ฟิล์มบางที่งอได้",
-"en": "Flexible thin-film cells"
+"th": "แผงที่ผ่านการทดสอบคุณภาพสูงสุด",
+"en": "Panels that passed the highest quality test"
 }
 ],
 "answer": 2,
-"explain": "HJT adds thin amorphous-silicon layers on an N-type wafer. It suits hot climates like Thailand."
-},
-{
-"level": 12,
-"sec": "P",
-"th": "ค่า NOCT หรือ NMOT ในเอกสารข้อมูลแผงบอกอะไร",
-"en": "What does NOCT or NMOT on a panel datasheet tell you?",
-"options": [
-{
-"th": "อายุการรับประกัน",
-"en": "The warranty period"
-},
-{
-"th": "ประสิทธิภาพในสภาวะใช้งานที่ใกล้เคียงจริงกว่า (แสง 800 W/m² อากาศ 20 °C ลม 1 m/s)",
-"en": "Performance under more realistic operating conditions (800 W/m², 20 °C air, 1 m/s wind)"
-},
-{
-"th": "น้ำหนักของแผง",
-"en": "The panel weight"
-},
-{
-"th": "กำลังสูงสุดที่แผงทนได้",
-"en": "The maximum power the panel can survive"
-}
-],
-"answer": 1,
-"explain": "NOCT/NMOT power is typically about 75% of the STC rating, which is why real output is lower than the label."
+"explain": "Tier 1 is a bankability list, not a quality certificate. Check IEC 61215/61730 certificates and the warranty terms as well."
 },
 {
 "level": 12,
@@ -4149,11 +4494,431 @@
 "explain": "If panels must differ, put them on a separate MPPT or use optimisers."
 },
 {
+"level": 12,
+"sec": "P",
+"th": "ค่า 'Mechanical load 5,400 Pa ด้านหน้า / 2,400 Pa ด้านหลัง' ของแผงหมายถึงอะไร",
+"en": "What does 'Mechanical load 5,400 Pa front / 2,400 Pa rear' on a panel datasheet mean?",
+"options": [
+{
+"th": "แรงกดด้านหน้าและแรงยก (ลมดูด) ด้านหลังที่แผงทนได้ เมื่อยึดตามตำแหน่งที่คู่มือกำหนด",
+"en": "The pressure on the front and uplift (wind suction) on the back the panel can withstand when clamped in the zones the manual specifies"
+},
+{
+"th": "น้ำหนักของแผง",
+"en": "The panel's weight"
+},
+{
+"th": "แรงดันไฟฟ้าสูงสุด",
+"en": "The maximum voltage"
+},
+{
+"th": "ความดันน้ำที่ใช้ล้างแผงได้",
+"en": "The water pressure allowed for cleaning"
+}
+],
+"answer": 0,
+"explain": "In Thailand wind uplift matters most. Clamping outside the allowed zones lowers the rating and can void the warranty."
+},
+{
+"level": 12,
+"sec": "P",
+"th": "แผงแบบเซลล์ครึ่ง (Half-cut cell) มีข้อดีอย่างไร",
+"en": "What is the advantage of half-cut cell panels?",
+"options": [
+{
+"th": "ไม่ต้องมีกระจก",
+"en": "No glass is needed"
+},
+{
+"th": "ใช้แผงได้ครึ่งเดียว",
+"en": "Only half the panel works"
+},
+{
+"th": "แรงดันลดลงครึ่งหนึ่ง",
+"en": "Voltage is halved"
+},
+{
+"th": "ลดการสูญเสียจากความต้านทาน และทนเงาบางส่วนได้ดีขึ้นเพราะแบ่งแผงเป็นสองครึ่ง",
+"en": "Lower resistive losses, and better tolerance of partial shade because the panel works as two halves"
+}
+],
+"answer": 3,
+"explain": "Shade on the bottom half leaves the top half working; this is why landscape vs portrait mounting can matter."
+},
+{
+"level": 12,
+"sec": "P",
+"th": "แผง N-type TOPCon มีข้อดีอย่างไรเทียบกับ P-type PERC รุ่นเก่า",
+"en": "What is the advantage of N-type TOPCon panels over older P-type PERC panels?",
+"options": [
+{
+"th": "ไม่ต้องใช้กรอบอะลูมิเนียม",
+"en": "No aluminium frame needed"
+},
+{
+"th": "น้ำหนักเบากว่าครึ่งหนึ่ง",
+"en": "Half the weight"
+},
+{
+"th": "เสื่อมช้ากว่า สัมประสิทธิ์อุณหภูมิดีกว่า และไม่มีปัญหา LID แบบ P-type",
+"en": "Slower degradation, better temperature coefficient and no P-type light-induced degradation (LID)"
+},
+{
+"th": "ผลิตไฟได้ตอนกลางคืน",
+"en": "It produces power at night"
+}
+],
+"answer": 2,
+"explain": "Most Tier-1 makers (Jinko, JA, Trina, LONGi and others) moved to N-type cells: TOPCon, HJT or back contact."
+},
+{
+"level": 12,
+"sec": "P",
+"th": "ค่าในเอกสารข้อมูลแผงที่สภาวะ STC วัดที่เงื่อนไขใด",
+"en": "Panel datasheet values at STC are measured under which conditions?",
+"options": [
+{
+"th": "ความเข้มแสง 1,000 W/m² อุณหภูมิเซลล์ 25 °C AM1.5",
+"en": "1,000 W/m² irradiance, 25 °C cell temperature, AM1.5"
+},
+{
+"th": "แสง 800 W/m² อากาศ 20 °C",
+"en": "800 W/m², 20 °C air"
+},
+{
+"th": "แดดเที่ยงวันในประเทศไทย",
+"en": "Noon sun in Thailand"
+},
+{
+"th": "อุณหภูมิเซลล์ 65 °C",
+"en": "65 °C cell temperature"
+}
+],
+"answer": 0,
+"explain": "STC = Standard Test Conditions. On a Thai roof the cells often run at 55–70 °C, so real power is lower than the STC rating."
+},
+{
+"level": 12,
+"sec": "P",
+"th": "มาตรฐาน IEC 61215 และ IEC 61730 สำหรับแผงโซลาร์เกี่ยวกับเรื่องใด",
+"en": "What do IEC 61215 and IEC 61730 cover for solar panels?",
+"options": [
+{
+"th": "ทั้งสองเป็นมาตรฐานสายไฟ",
+"en": "Both are cable standards"
+},
+{
+"th": "IEC 61215 ด้านการออกแบบและความทนทาน IEC 61730 ด้านความปลอดภัยทางไฟฟ้า",
+"en": "IEC 61215: design qualification and durability; IEC 61730: electrical safety"
+},
+{
+"th": "เป็นมาตรฐานแบตเตอรี่",
+"en": "They are battery standards"
+},
+{
+"th": "เป็นมาตรฐานอินเวอร์เตอร์",
+"en": "They are inverter standards"
+}
+],
+"answer": 1,
+"explain": "Ask for the certificates of the exact model. In Thailand, TIS (มอก.) requirements for panels also apply."
+},
+{
+"level": 12,
+"sec": "P",
+"th": "แผง HJT (Heterojunction) มีจุดเด่นเรื่องใด",
+"en": "What is HJT (heterojunction) panel technology known for?",
+"options": [
+{
+"th": "ใช้ได้เฉพาะระบบออฟกริด",
+"en": "Only usable off-grid"
+},
+{
+"th": "สัมประสิทธิ์อุณหภูมิต่ำมาก (ประมาณ -0.24 ถึง -0.26%/°C) จึงเสียกำลังน้อยในอากาศร้อน",
+"en": "A very low temperature coefficient (about -0.24 to -0.26 %/°C), so it loses little power in hot weather"
+},
+{
+"th": "ไม่ต้องมีไดโอดบายพาส",
+"en": "No bypass diodes needed"
+},
+{
+"th": "ใช้เซลล์ฟิล์มบางที่งอได้",
+"en": "Flexible thin-film cells"
+}
+],
+"answer": 1,
+"explain": "HJT adds thin amorphous-silicon layers on an N-type wafer. It suits hot climates like Thailand."
+},
+{
+"level": 12,
+"sec": "P",
+"th": "แผงสองหน้า (Bifacial) ให้กำลังเพิ่มได้มากที่สุดเมื่อติดตั้งแบบใด",
+"en": "When does a bifacial panel give the most extra energy?",
+"options": [
+{
+"th": "หันด้านหลังขึ้นฟ้า",
+"en": "Mounted back side up"
+},
+{
+"th": "ติดในที่ร่ม",
+"en": "Installed in shade"
+},
+{
+"th": "ติดแนบชิดหลังคาเมทัลชีทสีเข้ม",
+"en": "Mounted flush on a dark metal-sheet roof"
+},
+{
+"th": "ยกสูงจากพื้นผิวสีอ่อนหรือสะท้อนแสงดี เช่น โครงบนพื้นทรายขาวหรือหลังคาสีขาว",
+"en": "When raised above a light, reflective surface, such as a ground mount over white gravel or a white roof"
+}
+],
+"answer": 3,
+"explain": "The rear side needs reflected light (albedo) and space below. Flush on a dark roof, the bifacial gain is close to zero."
+},
+{
+"level": 12,
+"sec": "P",
+"th": "ไดโอดบายพาส (Bypass diode) ในกล่องต่อสายของแผงทำหน้าที่อะไร",
+"en": "What do the bypass diodes in a panel's junction box do?",
+"options": [
+{
+"th": "ข้ามส่วนของแผงที่โดนเงา ลดความร้อนจุดร้อน (hot spot) และลดการเสียกำลังทั้งสตริง",
+"en": "Bypass a shaded section of the panel, limiting hot spots and string power loss"
+},
+{
+"th": "ป้องกันฟ้าผ่า",
+"en": "Protect against lightning"
+},
+{
+"th": "ทำให้แผงชาร์จแบตเตอรี่ได้โดยตรง",
+"en": "Let the panel charge a battery directly"
+},
+{
+"th": "เพิ่มแรงดันของแผง",
+"en": "Increase panel voltage"
+}
+],
+"answer": 0,
+"explain": "Most panels have three bypass diodes. A shorted diode shows as a string about one third of a panel's voltage low."
+},
+{
+"level": 12,
+"sec": "P",
+"th": "แผงมีสัมประสิทธิ์อุณหภูมิของกำลัง -0.29%/°C ถ้าเซลล์ร้อน 65 °C กำลังลดลงประมาณเท่าใดจากค่า STC",
+"en": "A panel's power temperature coefficient is -0.29 %/°C. At 65 °C cell temperature, about how much power is lost versus STC?",
+"options": [
+{
+"th": "ประมาณ 11.6%",
+"en": "About 11.6%"
+},
+{
+"th": "ประมาณ 2.9%",
+"en": "About 2.9%"
+},
+{
+"th": "ประมาณ 29%",
+"en": "About 29%"
+},
+{
+"th": "ไม่ลดลง",
+"en": "No loss"
+}
+],
+"answer": 0,
+"explain": "65 − 25 = 40 °C above STC; 40 × 0.29% ≈ 11.6%. A lower (smaller) coefficient means less loss in hot climates."
+},
+{
+"level": 12,
+"sec": "P",
+"th": "การต่อขั้วต่อ MC4 ของแผงยี่ห้อหนึ่งกับขั้วต่อ 'MC4 compatible' ต่างยี่ห้อ ถูกหรือผิด",
+"en": "Is it acceptable to mate a panel's MC4 connector with a different brand's 'MC4-compatible' connector?",
+"options": [
+{
+"th": "ได้ ถ้าพันเทปทับ",
+"en": "Fine if taped over"
+},
+{
+"th": "ได้เสมอ เพราะชื่อเดียวกัน",
+"en": "Always fine because the name is the same"
+},
+{
+"th": "ได้ ถ้าใช้ฝั่ง AC",
+"en": "Fine on the AC side"
+},
+{
+"th": "ไม่ควร ขั้วต่อต่างยี่ห้ออาจเข้ากันไม่สนิท เกิดความร้อนและอาร์ก และผิดเงื่อนไขรับประกัน",
+"en": "No: different brands may not mate properly, can overheat and arc, and void the warranty"
+}
+],
+"answer": 3,
+"explain": "Use the same make and type on both sides, crimped with the correct tool. Mismatched connectors are a leading cause of rooftop arcs."
+},
+{
+"level": 12,
+"sec": "P",
+"th": "ค่า NOCT หรือ NMOT ในเอกสารข้อมูลแผงบอกอะไร",
+"en": "What does NOCT or NMOT on a panel datasheet tell you?",
+"options": [
+{
+"th": "อายุการรับประกัน",
+"en": "The warranty period"
+},
+{
+"th": "ประสิทธิภาพในสภาวะใช้งานที่ใกล้เคียงจริงกว่า (แสง 800 W/m² อากาศ 20 °C ลม 1 m/s)",
+"en": "Performance under more realistic operating conditions (800 W/m², 20 °C air, 1 m/s wind)"
+},
+{
+"th": "กำลังสูงสุดที่แผงทนได้",
+"en": "The maximum power the panel can survive"
+},
+{
+"th": "น้ำหนักของแผง",
+"en": "The panel weight"
+}
+],
+"answer": 1,
+"explain": "NOCT/NMOT power is typically about 75% of the STC rating, which is why real output is lower than the label."
+},
+{
+"level": 12,
+"sec": "P",
+"th": "การรับประกันประสิทธิภาพแบบเชิงเส้น (Linear performance warranty) เช่น ปีแรกเสื่อมไม่เกิน 1% ต่อจากนั้นไม่เกิน 0.4% ต่อปี หมายถึงอะไร",
+"en": "What does a linear performance warranty such as 'max 1% in year 1, then max 0.4% per year' mean?",
+"options": [
+{
+"th": "รับประกันเฉพาะกรอบแผง",
+"en": "Only the frame is guaranteed"
+},
+{
+"th": "กำลังจะเพิ่มขึ้นทุกปี",
+"en": "Power will rise every year"
+},
+{
+"th": "ผู้ผลิตรับประกันว่ากำลังของแผงจะลดลงไม่เกินอัตรานี้ในแต่ละปี จนถึงปีสุดท้ายของการรับประกัน",
+"en": "The maker guarantees panel power will not fall faster than this each year until the end of the warranty"
+},
+{
+"th": "แผงจะเสียหายภายใน 1 ปี",
+"en": "The panel will fail within a year"
+}
+],
+"answer": 2,
+"explain": "Product (materials) warranty and performance warranty are separate; read both."
+},
+{
+"level": 13,
+"sec": "P",
+"th": "การตั้งค่า SOC ขั้นต่ำ (เช่น 20–30%) สำหรับไฟสำรองมีไว้เพื่ออะไร",
+"en": "Why set a minimum SOC (e.g. 20–30%) for backup?",
+"options": [
+{
+"th": "ให้ขายไฟได้มากขึ้น",
+"en": "To sell more power"
+},
+{
+"th": "ให้แบตเตอรี่เต็มเร็วขึ้น",
+"en": "To fill the battery faster"
+},
+{
+"th": "เก็บพลังงานส่วนหนึ่งไว้ใช้เมื่อไฟดับ และไม่ให้แบตเตอรี่จ่ายจนหมด",
+"en": "To keep some energy for outages and stop the battery being drained completely"
+},
+{
+"th": "ไม่มีผลใดๆ",
+"en": "It has no effect"
+}
+],
+"answer": 2,
+"explain": "A higher reserve gives longer backup but less daily saving; agree the setting with the customer."
+},
+{
+"level": 13,
+"sec": "P",
+"th": "ทำไมต้องมีเบรกเกอร์ DC หรือฟิวส์ใกล้แบตเตอรี่",
+"en": "Why is a DC breaker or fuse needed close to the battery?",
+"options": [
+{
+"th": "เพื่อเพิ่มความจุ",
+"en": "To increase capacity"
+},
+{
+"th": "แบตเตอรี่จ่ายกระแสลัดวงจรได้หลายพันแอมป์ ต้องตัดวงจรป้องกันสายไหม้",
+"en": "A battery can deliver thousands of amps into a short circuit; the protection must cut it to stop the cable burning"
+},
+{
+"th": "เพื่อให้ชาร์จเร็วขึ้น",
+"en": "To charge faster"
+},
+{
+"th": "ไม่จำเป็นถ้ามี BMS",
+"en": "It is not needed if there is a BMS"
+}
+],
+"answer": 1,
+"explain": "Use a DC-rated breaker or fuse with enough breaking capacity, sized for the battery cable."
+},
+{
+"level": 13,
+"sec": "P",
+"th": "การรับประกันแบตเตอรี่มักกำหนดเงื่อนไขแบบใด",
+"en": "How are battery warranties usually limited?",
+"options": [
+{
+"th": "ไม่มีเงื่อนไขใดๆ",
+"en": "No limits at all"
+},
+{
+"th": "เฉพาะกรณีติดตั้งกลางแดด",
+"en": "Only if installed in the sun"
+},
+{
+"th": "จำนวนปี หรือปริมาณพลังงานที่จ่ายรวม (MWh throughput) แล้วแต่อย่างใดถึงก่อน",
+"en": "By years or by total energy delivered (MWh throughput), whichever comes first"
+},
+{
+"th": "ตามจำนวนครั้งที่ไฟดับ",
+"en": "By the number of outages"
+}
+],
+"answer": 2,
+"explain": "Read the throughput and end-of-life capacity in the warranty, and register the product with the maker."
+},
+{
+"level": 13,
+"sec": "P",
+"th": "แบตเตอรี่ระบุ '6,000 cycles' หมายความว่าอย่างไร",
+"en": "A battery is rated '6,000 cycles'. What does this mean?",
+"options": [
+{
+"th": "ใช้ได้ 6,000 วันเท่านั้น",
+"en": "It lasts only 6,000 days"
+},
+{
+"th": "ชาร์จ-จ่ายเต็มรอบได้ประมาณ 6,000 รอบ ก่อนความจุลดลงถึงระดับที่ผู้ผลิตกำหนด (เช่น 70–80%)",
+"en": "About 6,000 full charge-discharge cycles before capacity falls to the maker's end-of-life level (e.g. 70–80%)"
+},
+{
+"th": "แบตเตอรี่จะหยุดทำงานทันทีที่รอบที่ 6,000",
+"en": "It stops working exactly at cycle 6,000"
+},
+{
+"th": "ชาร์จได้ 6,000 ครั้งต่อวัน",
+"en": "It can charge 6,000 times a day"
+}
+],
+"answer": 1,
+"explain": "Check the test conditions (DoD and temperature) behind the cycle number; at one cycle a day, 6,000 cycles is about 16 years."
+},
+{
 "level": 13,
 "sec": "P",
 "th": "เมื่อ BMS ของแบตเตอรี่แจ้งเตือนอุณหภูมิสูงหรือเซลล์ไม่สมดุลซ้ำๆ ช่างควรทำอย่างไรก่อน",
 "en": "The battery BMS keeps reporting high temperature or cell imbalance. What should the technician do first?",
 "options": [
+{
+"th": "ถอด BMS ออก",
+"en": "Remove the BMS"
+},
 {
 "th": "ต่อแบตเตอรี่ก้อนอื่นเพิ่ม",
 "en": "Add another battery"
@@ -4165,40 +4930,114 @@
 {
 "th": "ปิดสัญญาณเตือนแล้วใช้ต่อ",
 "en": "Silence the alarm and carry on"
-},
-{
-"th": "ถอด BMS ออก",
-"en": "Remove the BMS"
 }
 ],
-"answer": 1,
+"answer": 2,
 "explain": "Loose terminals heat up; repeated imbalance can mean a weak cell that needs warranty service."
 },
 {
 "level": 13,
 "sec": "P",
-"th": "ทำไมแบตเตอรี่สำหรับบ้านส่วนใหญ่ใช้ชนิด LiFePO4 (LFP) แทน NMC",
-"en": "Why do most home batteries use LiFePO4 (LFP) rather than NMC?",
+"th": "ทำไมต้องต่อสายสื่อสาร BMS (CAN หรือ RS485) ระหว่างแบตเตอรี่กับอินเวอร์เตอร์",
+"en": "Why must the BMS communication cable (CAN or RS485) be connected between battery and inverter?",
 "options": [
 {
-"th": "ราคาแพงกว่าและอายุสั้นกว่า",
-"en": "More expensive and shorter-lived"
+"th": "ให้อินเวอร์เตอร์รู้ SOC และขีดจำกัดการชาร์จ-จ่ายจาก BMS ชาร์จได้ถูกต้องและปลอดภัย",
+"en": "So the inverter knows the SOC and the charge/discharge limits from the BMS and charges correctly and safely"
 },
 {
-"th": "ชาร์จได้เฉพาะจากเครื่องปั่นไฟ",
-"en": "It can only be charged by a generator"
+"th": "ไม่จำเป็น ต่อสายไฟก็พอ",
+"en": "It is not needed; power cables are enough"
 },
 {
-"th": "ไม่ต้องมี BMS",
-"en": "It needs no BMS"
+"th": "เพื่อให้ไฟแรงขึ้น",
+"en": "To give more power"
 },
 {
-"th": "ทนความร้อนดีกว่า ปลอดภัยกว่า และรอบการใช้งานยาวกว่า แม้พลังงานต่อน้ำหนักต่ำกว่า",
-"en": "Better thermal stability, safer and longer cycle life, even though energy per kilogram is lower"
+"th": "ใช้แทนสายดิน",
+"en": "It replaces the earth wire"
 }
 ],
-"answer": 3,
-"explain": "Weight matters in cars, not on a wall at home. LFP's stability is why it dominates home storage."
+"answer": 0,
+"explain": "Use a battery on the inverter maker's compatibility list and the correct protocol setting; otherwise warranties may not apply."
+},
+{
+"level": 13,
+"sec": "P",
+"th": "เมื่อต่อแบตเตอรี่ LV หลายก้อนขนานกัน ข้อใดถูกต้อง",
+"en": "When paralleling several LV batteries, which is correct?",
+"options": [
+{
+"th": "ต่อทันทีโดยไม่ต้องดู SOC",
+"en": "Connect at once without checking SOC"
+},
+{
+"th": "ใช้รุ่นและเฟิร์มแวร์เดียวกัน ปรับ SOC ใกล้กันก่อนต่อ และใช้สายยาวเท่ากันเข้าบัสบาร์",
+"en": "Use the same model and firmware, bring them to a similar SOC first, and use equal-length cables to the busbar"
+},
+{
+"th": "ใช้สายสั้นยาวต่างกันได้",
+"en": "Cable lengths can differ freely"
+},
+{
+"th": "ผสมยี่ห้อใดก็ได้",
+"en": "Any brands can be mixed"
+}
+],
+"answer": 1,
+"explain": "Unequal cables make one battery do more work and age faster; very different SOCs cause large balancing currents."
+},
+{
+"level": 13,
+"sec": "P",
+"th": "ถ้าต้องเก็บแบตเตอรี่ลิเธียมไว้นานก่อนติดตั้ง ควรทำอย่างไร",
+"en": "How should a lithium battery be stored for a long time before installation?",
+"options": [
+{
+"th": "จ่ายจนหมด 0% แล้วเก็บ",
+"en": "Discharge to 0% and store"
+},
+{
+"th": "ชาร์จเต็ม 100% แล้วเก็บกลางแดด",
+"en": "Charge to 100% and keep it in the sun"
+},
+{
+"th": "เก็บที่ SOC ประมาณ 30–50% ในที่แห้งและเย็น ไม่ปล่อยให้แบตเตอรี่หมดเกลี้ยงนาน",
+"en": "Store at about 30–50% SOC in a dry, cool place; never leave it completely flat for long"
+},
+{
+"th": "แช่ในตู้เย็น",
+"en": "Keep it in a refrigerator"
+}
+],
+"answer": 2,
+"explain": "A deeply discharged battery may lock its BMS and need maker service to recover."
+},
+{
+"level": 13,
+"sec": "P",
+"th": "แบตเตอรี่ 16 kWh ระบุ DoD 90% ใช้พลังงานได้จริงประมาณเท่าใด",
+"en": "A 16 kWh battery has 90% DoD. About how much energy is actually usable?",
+"options": [
+{
+"th": "ประมาณ 1.6 kWh",
+"en": "About 1.6 kWh"
+},
+{
+"th": "ประมาณ 14.4 kWh",
+"en": "About 14.4 kWh"
+},
+{
+"th": "ประมาณ 9 kWh",
+"en": "About 9 kWh"
+},
+{
+"th": "16 kWh เต็ม",
+"en": "The full 16 kWh"
+}
+],
+"answer": 1,
+"explain": "Usable energy = nominal × DoD = 16 × 0.9 = 14.4 kWh, before inverter losses."
 },
 {
 "level": 13,
@@ -4229,240 +5068,6 @@
 {
 "level": 13,
 "sec": "P",
-"th": "แบตเตอรี่ 100 Ah ระบุกระแสต่อเนื่องสูงสุด 0.5C จ่ายกระแสต่อเนื่องได้เท่าใด",
-"en": "A 100 Ah battery allows a maximum continuous rate of 0.5C. What continuous current can it deliver?",
-"options": [
-{
-"th": "100 A",
-"en": "100 A"
-},
-{
-"th": "200 A",
-"en": "200 A"
-},
-{
-"th": "5 A",
-"en": "5 A"
-},
-{
-"th": "50 A",
-"en": "50 A"
-}
-],
-"answer": 3,
-"explain": "0.5C × 100 Ah = 50 A. With a 48 V battery that is about 2.5 kW, so a 10 kW inverter needs several modules to use its full battery power."
-},
-{
-"level": 13,
-"sec": "P",
-"th": "แบตเตอรี่ระบุ '6,000 cycles' หมายความว่าอย่างไร",
-"en": "A battery is rated '6,000 cycles'. What does this mean?",
-"options": [
-{
-"th": "แบตเตอรี่จะหยุดทำงานทันทีที่รอบที่ 6,000",
-"en": "It stops working exactly at cycle 6,000"
-},
-{
-"th": "ใช้ได้ 6,000 วันเท่านั้น",
-"en": "It lasts only 6,000 days"
-},
-{
-"th": "ชาร์จได้ 6,000 ครั้งต่อวัน",
-"en": "It can charge 6,000 times a day"
-},
-{
-"th": "ชาร์จ-จ่ายเต็มรอบได้ประมาณ 6,000 รอบ ก่อนความจุลดลงถึงระดับที่ผู้ผลิตกำหนด (เช่น 70–80%)",
-"en": "About 6,000 full charge-discharge cycles before capacity falls to the maker's end-of-life level (e.g. 70–80%)"
-}
-],
-"answer": 3,
-"explain": "Check the test conditions (DoD and temperature) behind the cycle number; at one cycle a day, 6,000 cycles is about 16 years."
-},
-{
-"level": 13,
-"sec": "P",
-"th": "ทำไมต้องต่อสายสื่อสาร BMS (CAN หรือ RS485) ระหว่างแบตเตอรี่กับอินเวอร์เตอร์",
-"en": "Why must the BMS communication cable (CAN or RS485) be connected between battery and inverter?",
-"options": [
-{
-"th": "ไม่จำเป็น ต่อสายไฟก็พอ",
-"en": "It is not needed; power cables are enough"
-},
-{
-"th": "ใช้แทนสายดิน",
-"en": "It replaces the earth wire"
-},
-{
-"th": "เพื่อให้ไฟแรงขึ้น",
-"en": "To give more power"
-},
-{
-"th": "ให้อินเวอร์เตอร์รู้ SOC และขีดจำกัดการชาร์จ-จ่ายจาก BMS ชาร์จได้ถูกต้องและปลอดภัย",
-"en": "So the inverter knows the SOC and the charge/discharge limits from the BMS and charges correctly and safely"
-}
-],
-"answer": 3,
-"explain": "Use a battery on the inverter maker's compatibility list and the correct protocol setting; otherwise warranties may not apply."
-},
-{
-"level": 13,
-"sec": "P",
-"th": "ประสิทธิภาพไป-กลับ (Round-trip efficiency) 90–95% ของแบตเตอรี่หมายถึงอะไร",
-"en": "What does a battery round-trip efficiency of 90–95% mean?",
-"options": [
-{
-"th": "อายุ 90–95 ปี",
-"en": "A life of 90–95 years"
-},
-{
-"th": "แบตเตอรี่เต็มได้แค่ 90%",
-"en": "The battery can only fill to 90%"
-},
-{
-"th": "พลังงานที่ได้คืนจากการจ่าย เทียบกับพลังงานที่ใช้ชาร์จ ส่วนที่หายไปคือความสูญเสีย",
-"en": "The energy you get back on discharge compared with the energy used to charge; the rest is losses"
-},
-{
-"th": "ใช้ได้ 90–95% ของวัน",
-"en": "Usable 90–95% of the day"
-}
-],
-"answer": 2,
-"explain": "Store 10 kWh and get back about 9–9.5 kWh; include this in savings calculations."
-},
-{
-"level": 13,
-"sec": "P",
-"th": "การรับประกันแบตเตอรี่มักกำหนดเงื่อนไขแบบใด",
-"en": "How are battery warranties usually limited?",
-"options": [
-{
-"th": "ไม่มีเงื่อนไขใดๆ",
-"en": "No limits at all"
-},
-{
-"th": "ตามจำนวนครั้งที่ไฟดับ",
-"en": "By the number of outages"
-},
-{
-"th": "จำนวนปี หรือปริมาณพลังงานที่จ่ายรวม (MWh throughput) แล้วแต่อย่างใดถึงก่อน",
-"en": "By years or by total energy delivered (MWh throughput), whichever comes first"
-},
-{
-"th": "เฉพาะกรณีติดตั้งกลางแดด",
-"en": "Only if installed in the sun"
-}
-],
-"answer": 2,
-"explain": "Read the throughput and end-of-life capacity in the warranty, and register the product with the maker."
-},
-{
-"level": 13,
-"sec": "P",
-"th": "ทำไมต้องมีเบรกเกอร์ DC หรือฟิวส์ใกล้แบตเตอรี่",
-"en": "Why is a DC breaker or fuse needed close to the battery?",
-"options": [
-{
-"th": "ไม่จำเป็นถ้ามี BMS",
-"en": "It is not needed if there is a BMS"
-},
-{
-"th": "แบตเตอรี่จ่ายกระแสลัดวงจรได้หลายพันแอมป์ ต้องตัดวงจรป้องกันสายไหม้",
-"en": "A battery can deliver thousands of amps into a short circuit; the protection must cut it to stop the cable burning"
-},
-{
-"th": "เพื่อให้ชาร์จเร็วขึ้น",
-"en": "To charge faster"
-},
-{
-"th": "เพื่อเพิ่มความจุ",
-"en": "To increase capacity"
-}
-],
-"answer": 1,
-"explain": "Use a DC-rated breaker or fuse with enough breaking capacity, sized for the battery cable."
-},
-{
-"level": 13,
-"sec": "P",
-"th": "แบตเตอรี่ 51.2 V 314 Ah มีความจุพลังงานประมาณเท่าใด",
-"en": "A 51.2 V, 314 Ah battery holds about how much energy?",
-"options": [
-{
-"th": "ประมาณ 314 kWh",
-"en": "About 314 kWh"
-},
-{
-"th": "ประมาณ 5 kWh",
-"en": "About 5 kWh"
-},
-{
-"th": "ประมาณ 16 kWh",
-"en": "About 16 kWh"
-},
-{
-"th": "ประมาณ 1.6 kWh",
-"en": "About 1.6 kWh"
-}
-],
-"answer": 2,
-"explain": "Energy = voltage × capacity = 51.2 V × 314 Ah ≈ 16,077 Wh ≈ 16 kWh, the size of many 16 kWh home battery models."
-},
-{
-"level": 13,
-"sec": "P",
-"th": "ถ้าต้องเก็บแบตเตอรี่ลิเธียมไว้นานก่อนติดตั้ง ควรทำอย่างไร",
-"en": "How should a lithium battery be stored for a long time before installation?",
-"options": [
-{
-"th": "จ่ายจนหมด 0% แล้วเก็บ",
-"en": "Discharge to 0% and store"
-},
-{
-"th": "แช่ในตู้เย็น",
-"en": "Keep it in a refrigerator"
-},
-{
-"th": "เก็บที่ SOC ประมาณ 30–50% ในที่แห้งและเย็น ไม่ปล่อยให้แบตเตอรี่หมดเกลี้ยงนาน",
-"en": "Store at about 30–50% SOC in a dry, cool place; never leave it completely flat for long"
-},
-{
-"th": "ชาร์จเต็ม 100% แล้วเก็บกลางแดด",
-"en": "Charge to 100% and keep it in the sun"
-}
-],
-"answer": 2,
-"explain": "A deeply discharged battery may lock its BMS and need maker service to recover."
-},
-{
-"level": 13,
-"sec": "P",
-"th": "เมื่อต่อแบตเตอรี่ LV หลายก้อนขนานกัน ข้อใดถูกต้อง",
-"en": "When paralleling several LV batteries, which is correct?",
-"options": [
-{
-"th": "ใช้สายสั้นยาวต่างกันได้",
-"en": "Cable lengths can differ freely"
-},
-{
-"th": "ต่อทันทีโดยไม่ต้องดู SOC",
-"en": "Connect at once without checking SOC"
-},
-{
-"th": "ผสมยี่ห้อใดก็ได้",
-"en": "Any brands can be mixed"
-},
-{
-"th": "ใช้รุ่นและเฟิร์มแวร์เดียวกัน ปรับ SOC ใกล้กันก่อนต่อ และใช้สายยาวเท่ากันเข้าบัสบาร์",
-"en": "Use the same model and firmware, bring them to a similar SOC first, and use equal-length cables to the busbar"
-}
-],
-"answer": 3,
-"explain": "Unequal cables make one battery do more work and age faster; very different SOCs cause large balancing currents."
-},
-{
-"level": 13,
-"sec": "P",
 "th": "ควรติดตั้งแบตเตอรี่ลิเธียมในสภาพแวดล้อมแบบใดเพื่อยืดอายุ",
 "en": "Where should a lithium battery be installed to last longest?",
 "options": [
@@ -4471,12 +5076,12 @@
 "en": "Under a very hot metal-sheet roof"
 },
 {
-"th": "กลางแดดเพื่อให้อุ่น",
-"en": "In the sun to keep it warm"
-},
-{
 "th": "ในห้องปิดสนิทข้างเครื่องทำน้ำร้อน",
 "en": "In a sealed room next to a water heater"
+},
+{
+"th": "กลางแดดเพื่อให้อุ่น",
+"en": "In the sun to keep it warm"
 },
 {
 "th": "ในที่ร่ม อากาศถ่ายเท ไม่โดนแดดโดยตรง อุณหภูมิไม่สูงเกินไป",
@@ -4489,54 +5094,106 @@
 {
 "level": 13,
 "sec": "P",
-"th": "แบตเตอรี่ 16 kWh ระบุ DoD 90% ใช้พลังงานได้จริงประมาณเท่าใด",
-"en": "A 16 kWh battery has 90% DoD. About how much energy is actually usable?",
+"th": "แบตเตอรี่ 51.2 V 314 Ah มีความจุพลังงานประมาณเท่าใด",
+"en": "A 51.2 V, 314 Ah battery holds about how much energy?",
 "options": [
-{
-"th": "ประมาณ 9 kWh",
-"en": "About 9 kWh"
-},
 {
 "th": "ประมาณ 1.6 kWh",
 "en": "About 1.6 kWh"
 },
 {
-"th": "ประมาณ 14.4 kWh",
-"en": "About 14.4 kWh"
+"th": "ประมาณ 16 kWh",
+"en": "About 16 kWh"
 },
 {
-"th": "16 kWh เต็ม",
-"en": "The full 16 kWh"
+"th": "ประมาณ 314 kWh",
+"en": "About 314 kWh"
+},
+{
+"th": "ประมาณ 5 kWh",
+"en": "About 5 kWh"
 }
 ],
-"answer": 2,
-"explain": "Usable energy = nominal × DoD = 16 × 0.9 = 14.4 kWh, before inverter losses."
+"answer": 1,
+"explain": "Energy = voltage × capacity = 51.2 V × 314 Ah ≈ 16,077 Wh ≈ 16 kWh, the size of many 16 kWh home battery models."
 },
 {
 "level": 13,
 "sec": "P",
-"th": "การตั้งค่า SOC ขั้นต่ำ (เช่น 20–30%) สำหรับไฟสำรองมีไว้เพื่ออะไร",
-"en": "Why set a minimum SOC (e.g. 20–30%) for backup?",
+"th": "แบตเตอรี่ 100 Ah ระบุกระแสต่อเนื่องสูงสุด 0.5C จ่ายกระแสต่อเนื่องได้เท่าใด",
+"en": "A 100 Ah battery allows a maximum continuous rate of 0.5C. What continuous current can it deliver?",
 "options": [
 {
-"th": "ให้แบตเตอรี่เต็มเร็วขึ้น",
-"en": "To fill the battery faster"
+"th": "5 A",
+"en": "5 A"
 },
 {
-"th": "ไม่มีผลใดๆ",
-"en": "It has no effect"
+"th": "50 A",
+"en": "50 A"
 },
 {
-"th": "ให้ขายไฟได้มากขึ้น",
-"en": "To sell more power"
+"th": "200 A",
+"en": "200 A"
 },
 {
-"th": "เก็บพลังงานส่วนหนึ่งไว้ใช้เมื่อไฟดับ และไม่ให้แบตเตอรี่จ่ายจนหมด",
-"en": "To keep some energy for outages and stop the battery being drained completely"
+"th": "100 A",
+"en": "100 A"
+}
+],
+"answer": 1,
+"explain": "0.5C × 100 Ah = 50 A. With a 48 V battery that is about 2.5 kW, so a 10 kW inverter needs several modules to use its full battery power."
+},
+{
+"level": 13,
+"sec": "P",
+"th": "ทำไมแบตเตอรี่สำหรับบ้านส่วนใหญ่ใช้ชนิด LiFePO4 (LFP) แทน NMC",
+"en": "Why do most home batteries use LiFePO4 (LFP) rather than NMC?",
+"options": [
+{
+"th": "ไม่ต้องมี BMS",
+"en": "It needs no BMS"
+},
+{
+"th": "ชาร์จได้เฉพาะจากเครื่องปั่นไฟ",
+"en": "It can only be charged by a generator"
+},
+{
+"th": "ราคาแพงกว่าและอายุสั้นกว่า",
+"en": "More expensive and shorter-lived"
+},
+{
+"th": "ทนความร้อนดีกว่า ปลอดภัยกว่า และรอบการใช้งานยาวกว่า แม้พลังงานต่อน้ำหนักต่ำกว่า",
+"en": "Better thermal stability, safer and longer cycle life, even though energy per kilogram is lower"
 }
 ],
 "answer": 3,
-"explain": "A higher reserve gives longer backup but less daily saving; agree the setting with the customer."
+"explain": "Weight matters in cars, not on a wall at home. LFP's stability is why it dominates home storage."
+},
+{
+"level": 13,
+"sec": "P",
+"th": "ประสิทธิภาพไป-กลับ (Round-trip efficiency) 90–95% ของแบตเตอรี่หมายถึงอะไร",
+"en": "What does a battery round-trip efficiency of 90–95% mean?",
+"options": [
+{
+"th": "ใช้ได้ 90–95% ของวัน",
+"en": "Usable 90–95% of the day"
+},
+{
+"th": "พลังงานที่ได้คืนจากการจ่าย เทียบกับพลังงานที่ใช้ชาร์จ ส่วนที่หายไปคือความสูญเสีย",
+"en": "The energy you get back on discharge compared with the energy used to charge; the rest is losses"
+},
+{
+"th": "แบตเตอรี่เต็มได้แค่ 90%",
+"en": "The battery can only fill to 90%"
+},
+{
+"th": "อายุ 90–95 ปี",
+"en": "A life of 90–95 years"
+}
+],
+"answer": 1,
+"explain": "Store 10 kWh and get back about 9–9.5 kWh; include this in savings calculations."
 },
 {
 "level": 14,
@@ -4549,46 +5206,20 @@
 "en": "No difference"
 },
 {
-"th": "4P ตัดทั้งสามเฟสและสายนิวทรัล ใช้เมื่อต้องแยกนิวทรัล เช่น ระบบสลับแหล่งจ่ายหรือตามที่ผู้ผลิตอินเวอร์เตอร์กำหนด",
-"en": "A 4P breaker also disconnects the neutral, used where the neutral must be isolated, such as source transfer or where the inverter maker requires it"
-},
-{
 "th": "4P ใช้กับระบบ 1 เฟสเท่านั้น",
 "en": "4P is single-phase only"
+},
+{
+"th": "4P ตัดทั้งสามเฟสและสายนิวทรัล ใช้เมื่อต้องแยกนิวทรัล เช่น ระบบสลับแหล่งจ่ายหรือตามที่ผู้ผลิตอินเวอร์เตอร์กำหนด",
+"en": "A 4P breaker also disconnects the neutral, used where the neutral must be isolated, such as source transfer or where the inverter maker requires it"
 },
 {
 "th": "4P ทนกระแสได้มากกว่าเสมอ",
 "en": "A 4P always carries more current"
 }
 ],
-"answer": 1,
+"answer": 2,
 "explain": "Check the earthing system and the inverter or ATS manual before choosing 3P or 4P."
-},
-{
-"level": 14,
-"sec": "P",
-"th": "ATS ในตู้ MDB & ATS ของระบบไฮบริดทำหน้าที่อะไร",
-"en": "What does the ATS in a hybrid system's MDB & ATS board do?",
-"options": [
-{
-"th": "วัดค่าไฟ",
-"en": "Measures the electricity bill"
-},
-{
-"th": "ชาร์จแบตเตอรี่",
-"en": "Charges the battery"
-},
-{
-"th": "เพิ่มกำลังอินเวอร์เตอร์",
-"en": "Increases inverter power"
-},
-{
-"th": "สลับแหล่งจ่ายไฟของบ้านโดยอัตโนมัติ เช่น กลับไปรับไฟการไฟฟ้าเมื่ออินเวอร์เตอร์หยุดทำงาน และป้องกันการต่อสองแหล่งพร้อมกัน",
-"en": "Switches the house supply automatically, e.g. back to the grid when the inverter stops, and prevents both sources connecting at once"
-}
-],
-"answer": 3,
-"explain": "Use ATS units with mechanical and electrical interlock (e.g. CSQ, Geya, Suntree ranges)."
 },
 {
 "level": 14,
@@ -4596,6 +5227,10 @@
 "th": "เมื่อใดจึงต้องติดฟิวส์สตริงในระบบโซลาร์",
 "en": "When are string fuses required in a PV system?",
 "options": [
+{
+"th": "ไม่เคยต้องใช้",
+"en": "Never"
+},
 {
 "th": "เมื่อมีสตริงขนานกันตั้งแต่ 3 สตริงขึ้นไปในอินพุตเดียว ซึ่งกระแสย้อนอาจเกินพิกัดของแผง",
 "en": "When three or more strings are in parallel on one input, where reverse current could exceed the panel rating"
@@ -4605,198 +5240,12 @@
 "en": "Only on the AC side"
 },
 {
-"th": "ไม่เคยต้องใช้",
-"en": "Never"
-},
-{
 "th": "ทุกสตริงเสมอแม้มีสตริงเดียว",
 "en": "Always, even with one string"
 }
 ],
-"answer": 0,
-"explain": "With one or two strings per MPPT, the reverse current cannot exceed one string's current, so fuses are usually not needed (check IEC 62548 and the maker's manual)."
-},
-{
-"level": 14,
-"sec": "P",
-"th": "RCBO หรือ RCCB 30 mA มีไว้เพื่ออะไร",
-"en": "What is a 30 mA RCBO or RCCB for?",
-"options": [
-{
-"th": "ตัดไฟเมื่อมีกระแสรั่วลงดิน ป้องกันคนถูกไฟดูด",
-"en": "Cuts the supply when current leaks to earth, protecting people from electric shock"
-},
-{
-"th": "ป้องกันฟ้าผ่า",
-"en": "Protecting against lightning"
-},
-{
-"th": "เพิ่มแรงดัน",
-"en": "Raising the voltage"
-},
-{
-"th": "ใช้แทนเบรกเกอร์หลัก",
-"en": "Replacing the main breaker"
-}
-],
-"answer": 0,
-"explain": "An RCBO adds overcurrent protection to the residual-current function in one device."
-},
-{
-"level": 14,
-"sec": "P",
-"th": "ค่าพิกัดตัดกระแสลัดวงจร (Breaking capacity เช่น 6 kA, 10 kA, 25 kA) ของเบรกเกอร์หมายถึงอะไร",
-"en": "What does a breaker's breaking capacity (e.g. 6 kA, 10 kA, 25 kA) mean?",
-"options": [
-{
-"th": "แรงดันสูงสุด",
-"en": "The maximum voltage"
-},
-{
-"th": "กระแสใช้งานปกติ",
-"en": "The normal working current"
-},
-{
-"th": "อายุการใช้งาน",
-"en": "The service life"
-},
-{
-"th": "กระแสลัดวงจรสูงสุดที่เบรกเกอร์ตัดได้อย่างปลอดภัย ต้องมากกว่ากระแสลัดวงจรที่จุดติดตั้ง",
-"en": "The highest fault current it can safely interrupt; it must exceed the prospective fault current where it is installed"
-}
-],
-"answer": 3,
-"explain": "Near a large transformer the fault current is high; a 6 kA MCB may explode instead of breaking."
-},
-{
-"level": 14,
-"sec": "P",
-"th": "MCB กับ MCCB ต่างกันอย่างไร",
-"en": "What is the difference between an MCB and an MCCB?",
-"options": [
-{
-"th": "MCB ใช้กับ DC เท่านั้น",
-"en": "MCBs are DC only"
-},
-{
-"th": "MCCB รองรับกระแสและพิกัดตัดกระแสลัดวงจรสูงกว่า บางรุ่นปรับค่าตัดได้ MCB ใช้กับวงจรย่อยขนาดเล็ก",
-"en": "An MCCB handles higher currents and fault levels, and some are adjustable; an MCB is for smaller final circuits"
-},
-{
-"th": "เหมือนกันทุกอย่าง",
-"en": "They are identical"
-},
-{
-"th": "MCCB ใช้แทนสายดิน",
-"en": "An MCCB replaces earthing"
-}
-],
 "answer": 1,
-"explain": "Example: CHINT NXM-125S 100 A MCCB for a main or inverter feeder; MCBs up to 63 A for branch circuits."
-},
-{
-"level": 14,
-"sec": "P",
-"th": "DC Isolator (สวิตช์ตัดตอน DC) ต่างจากเบรกเกอร์ DC อย่างไร",
-"en": "How does a DC isolator differ from a DC breaker?",
-"options": [
-{
-"th": "เหมือนกันทุกอย่าง",
-"en": "They are identical"
-},
-{
-"th": "Isolator ใช้กับ AC เท่านั้น",
-"en": "Isolators are AC only"
-},
-{
-"th": "Isolator ใช้ตัดตอนเพื่อซ่อมบำรุง แต่ไม่ตัดเองเมื่อกระแสเกินหรือลัดวงจร",
-"en": "An isolator disconnects for maintenance but does not trip by itself on overcurrent or short circuit"
-},
-{
-"th": "Isolator ตัดกระแสลัดวงจรได้ดีกว่า",
-"en": "An isolator breaks short circuits better"
-}
-],
-"answer": 2,
-"explain": "Example: Suntree SISO-40 DC isolator 1,000 V. Operate it with the inverter off, following the shutdown order in the manual."
-},
-{
-"level": 14,
-"sec": "P",
-"th": "เลือกเบรกเกอร์ฝั่ง AC ของอินเวอร์เตอร์อย่างไร",
-"en": "How is the AC breaker for an inverter output chosen?",
-"options": [
-{
-"th": "ยิ่งใหญ่ยิ่งดี",
-"en": "The bigger the better"
-},
-{
-"th": "เท่ากับกระแสพิกัดพอดี",
-"en": "Exactly the rated current"
-},
-{
-"th": "ใช้เบรกเกอร์ DC แทน",
-"en": "Use a DC breaker instead"
-},
-{
-"th": "พิกัดไม่น้อยกว่าประมาณ 1.25 เท่าของกระแส AC สูงสุดของอินเวอร์เตอร์ และไม่เกินพิกัดของสาย",
-"en": "Rated at least about 1.25 × the inverter's maximum AC current and no higher than the cable rating"
-}
-],
-"answer": 3,
-"explain": "Also follow any maximum breaker size stated in the inverter manual."
-},
-{
-"level": 14,
-"sec": "P",
-"th": "เบรกเกอร์ Curve C เหมาะกับโหลดแบบใด",
-"en": "Which loads suit a Curve C breaker?",
-"options": [
-{
-"th": "มอเตอร์ใหญ่และหม้อแปลงที่กระแสกระชากสูงมากเท่านั้น",
-"en": "Only large motors and transformers with very high inrush"
-},
-{
-"th": "ใช้กับ DC เท่านั้น",
-"en": "DC only"
-},
-{
-"th": "ใช้แทน RCD",
-"en": "As a replacement for an RCD"
-},
-{
-"th": "โหลดทั่วไปที่มีกระแสกระชากปานกลาง เช่น เครื่องปรับอากาศขนาดเล็ก ไฟแสงสว่าง ปลั๊ก",
-"en": "General loads with moderate inrush, such as small air-conditioners, lighting and sockets"
-}
-],
-"answer": 3,
-"explain": "Curve B trips at 3–5 × In, C at 5–10 × In, D at 10–20 × In."
-},
-{
-"level": 14,
-"sec": "P",
-"th": "เบรกเกอร์ DC แบบมีขั้ว (Polarity-sensitive) ต้องต่ออย่างไร",
-"en": "How must a polarity-sensitive DC breaker be wired?",
-"options": [
-{
-"th": "ต่อทางใดก็ได้",
-"en": "Either way round"
-},
-{
-"th": "ต่อขนานกับแผง",
-"en": "In parallel with the panels"
-},
-{
-"th": "ต่อตามเครื่องหมาย + และ − ที่ตัวเบรกเกอร์ ถ้าต่อกลับจะดับอาร์กไม่ได้",
-"en": "Following the + and − marks on the breaker; reversed, it cannot extinguish the arc"
-},
-{
-"th": "ต่อเฉพาะขั้วลบ",
-"en": "On the negative only"
-}
-],
-"answer": 2,
-"explain": "Non-polarity DC MCBs (e.g. Suntree SL7N-63 non-polarity types) can be wired either way; check the marking."
+"explain": "With one or two strings per MPPT, the reverse current cannot exceed one string's current, so fuses are usually not needed (check IEC 62548 and the maker's manual)."
 },
 {
 "level": 14,
@@ -4805,50 +5254,50 @@
 "en": "Why must an AC breaker not be used to switch PV DC circuits?",
 "options": [
 {
-"th": "เพราะเบรกเกอร์ AC ใหญ่เกินไป",
-"en": "Because AC breakers are too big"
+"th": "ไฟ DC ไม่มีจุดผ่านศูนย์ อาร์กดับยาก เบรกเกอร์ AC อาจตัดไม่ได้และไหม้",
+"en": "DC has no zero crossing, so the arc is hard to extinguish; an AC breaker may fail to break and burn"
 },
 {
 "th": "เพราะเบรกเกอร์ AC แพงกว่า",
 "en": "Because AC breakers cost more"
 },
 {
-"th": "ไฟ DC ไม่มีจุดผ่านศูนย์ อาร์กดับยาก เบรกเกอร์ AC อาจตัดไม่ได้และไหม้",
-"en": "DC has no zero crossing, so the arc is hard to extinguish; an AC breaker may fail to break and burn"
+"th": "เพราะเบรกเกอร์ AC ใหญ่เกินไป",
+"en": "Because AC breakers are too big"
 },
 {
 "th": "ใช้ได้ ไม่มีปัญหา",
 "en": "It is fine, no problem"
 }
 ],
-"answer": 2,
+"answer": 0,
 "explain": "Use breakers and isolators rated for the string DC voltage and current (e.g. 600–1,000 V DC)."
 },
 {
 "level": 14,
 "sec": "P",
-"th": "อุปกรณ์ป้องกันไฟกระชาก (SPD) Type 1 กับ Type 2 ต่างกันอย่างไร",
-"en": "What is the difference between Type 1 and Type 2 surge protective devices (SPD)?",
+"th": "เมื่อใดจึงต้องใช้ RCD ชนิด Type B แทน Type A",
+"en": "When is a Type B RCD needed instead of Type A?",
 "options": [
 {
-"th": "เหมือนกัน",
-"en": "They are the same"
+"th": "เมื่ออุปกรณ์อาจทำให้เกิดกระแสรั่วแบบ DC เรียบ เช่น เครื่องชาร์จรถ EV บางรุ่น หรืออินเวอร์เตอร์ที่ผู้ผลิตกำหนด",
+"en": "Where equipment can cause smooth DC leakage current, such as some EV chargers or inverters where the maker requires it"
 },
 {
-"th": "Type 1 รับกระแสฟ้าผ่าโดยตรง (อาคารมีระบบล่อฟ้า) Type 2 ป้องกันไฟกระชากเหนี่ยวนำ ใช้ทั่วไปในระบบโซลาร์",
-"en": "Type 1 handles direct lightning current (buildings with a lightning protection system); Type 2 protects against induced surges and is the usual choice in solar systems"
+"th": "ทุกวงจรไฟแสงสว่าง",
+"en": "On every lighting circuit"
 },
 {
-"th": "Type 2 ใช้กับ DC เท่านั้น",
-"en": "Type 2 is DC only"
+"th": "ไม่เคยต้องใช้",
+"en": "Never"
 },
 {
-"th": "Type 1 ใช้แทนสายดิน",
-"en": "Type 1 replaces earthing"
+"th": "เฉพาะวงจร DC แผง",
+"en": "Only on PV DC circuits"
 }
 ],
-"answer": 1,
-"explain": "Use AC SPDs on the AC side and DC SPDs rated for the string voltage on the DC side, with short, straight earth connections."
+"answer": 0,
+"explain": "Smooth DC leakage can blind a Type A RCD. Many EV chargers include 6 mA DC detection so a Type A RCD can be used; follow the maker's manual."
 },
 {
 "level": 14,
@@ -4857,23 +5306,23 @@
 "en": "What is a gPV fuse for, and how is its rating chosen?",
 "options": [
 {
-"th": "ฟิวส์สำหรับวงจรไฟแสงสว่าง",
-"en": "A fuse for lighting circuits"
-},
-{
-"th": "ฟิวส์ AC ทั่วไปใช้แทนได้",
-"en": "Any AC fuse can replace it"
-},
-{
 "th": "ฟิวส์สำหรับวงจร DC ของแผงโดยเฉพาะ พิกัดไม่น้อยกว่าประมาณ 1.5 เท่าของ Isc และไม่เกินค่า Maximum series fuse ของแผง",
 "en": "A fuse made for PV DC circuits; rated at least about 1.5 × Isc and no more than the panel's maximum series fuse rating"
 },
 {
+"th": "ฟิวส์สำหรับวงจรไฟแสงสว่าง",
+"en": "A fuse for lighting circuits"
+},
+{
 "th": "เลือกพิกัดใดก็ได้",
 "en": "Any rating will do"
+},
+{
+"th": "ฟิวส์ AC ทั่วไปใช้แทนได้",
+"en": "Any AC fuse can replace it"
 }
 ],
-"answer": 2,
+"answer": 0,
 "explain": "Example: Isc 15.35 A × 1.5 ≈ 23 A → 25 A gPV, matching a 25 A maximum series fuse rating."
 },
 {
@@ -4891,12 +5340,12 @@
 "en": "Tighten to the maker's torque and re-check after use, because loose terminals overheat and burn"
 },
 {
-"th": "ขันให้แน่นที่สุดเท่าที่ทำได้",
-"en": "As tight as possible"
-},
-{
 "th": "ขันพอให้สายไม่หลุด",
 "en": "Just enough so the wire does not fall out"
+},
+{
+"th": "ขันให้แน่นที่สุดเท่าที่ทำได้",
+"en": "As tight as possible"
 }
 ],
 "answer": 1,
@@ -4905,132 +5354,236 @@
 {
 "level": 14,
 "sec": "P",
-"th": "เมื่อใดจึงต้องใช้ RCD ชนิด Type B แทน Type A",
-"en": "When is a Type B RCD needed instead of Type A?",
+"th": "เบรกเกอร์ DC แบบมีขั้ว (Polarity-sensitive) ต้องต่ออย่างไร",
+"en": "How must a polarity-sensitive DC breaker be wired?",
 "options": [
 {
-"th": "ทุกวงจรไฟแสงสว่าง",
-"en": "On every lighting circuit"
+"th": "ต่อทางใดก็ได้",
+"en": "Either way round"
 },
 {
-"th": "ไม่เคยต้องใช้",
-"en": "Never"
+"th": "ต่อตามเครื่องหมาย + และ − ที่ตัวเบรกเกอร์ ถ้าต่อกลับจะดับอาร์กไม่ได้",
+"en": "Following the + and − marks on the breaker; reversed, it cannot extinguish the arc"
 },
 {
-"th": "เมื่ออุปกรณ์อาจทำให้เกิดกระแสรั่วแบบ DC เรียบ เช่น เครื่องชาร์จรถ EV บางรุ่น หรืออินเวอร์เตอร์ที่ผู้ผลิตกำหนด",
-"en": "Where equipment can cause smooth DC leakage current, such as some EV chargers or inverters where the maker requires it"
+"th": "ต่อขนานกับแผง",
+"en": "In parallel with the panels"
 },
 {
-"th": "เฉพาะวงจร DC แผง",
-"en": "Only on PV DC circuits"
-}
-],
-"answer": 2,
-"explain": "Smooth DC leakage can blind a Type A RCD. Many EV chargers include 6 mA DC detection so a Type A RCD can be used; follow the maker's manual."
-},
-{
-"level": 15,
-"sec": "P",
-"th": "สายไฟชนิด LSZH (Low Smoke Zero Halogen) เหมาะกับพื้นที่แบบใด",
-"en": "Where is LSZH (low smoke zero halogen) cable a good choice?",
-"options": [
-{
-"th": "ใช้แทนสายดินเท่านั้น",
-"en": "Only as earth wire"
-},
-{
-"th": "ใต้น้ำ",
-"en": "Under water"
-},
-{
-"th": "ใช้ได้เฉพาะฝั่ง DC",
-"en": "Only on the DC side"
-},
-{
-"th": "ในอาคารและเส้นทางหนีไฟ เพราะเมื่อไหม้มีควันน้อยและไม่มีก๊าซฮาโลเจนที่เป็นพิษ",
-"en": "Inside buildings and escape routes, because it gives little smoke and no toxic halogen gas when burning"
-}
-],
-"answer": 3,
-"explain": "Hospitals, offices, hotels and data centres often require LSZH cables."
-},
-{
-"level": 15,
-"sec": "P",
-"th": "สายไฟ DC สำหรับแผงโซลาร์ชนิด PV1-F หรือ H1Z2Z2-K มีคุณสมบัติตามมาตรฐานใด",
-"en": "PV1-F or H1Z2Z2-K solar DC cable meets which properties?",
-"options": [
-{
-"th": "สายโทรศัพท์",
-"en": "Telephone cable"
-},
-{
-"th": "สาย PVC ชั้นเดียวสำหรับใช้ในบ้าน",
-"en": "Single-layer PVC cable for indoor wiring"
-},
-{
-"th": "สายอะลูมิเนียมเปลือย",
-"en": "Bare aluminium cable"
-},
-{
-"th": "ทองแดงชุบดีบุก ฉนวนสองชั้นทน UV และโอโซน ทนแรงดัน DC 1.5 kV ตาม EN 50618 / IEC 62930",
-"en": "Tinned copper, double insulation resistant to UV and ozone, rated 1.5 kV DC to EN 50618 / IEC 62930"
-}
-],
-"answer": 3,
-"explain": "Brands such as LINK, Phelps Dodge and HELUKABEL make EN 50618 cables; check the print on the sheath."
-},
-{
-"level": 15,
-"sec": "P",
-"th": "สายดินตามมาตรฐานต้องใช้ฉนวนสีใด",
-"en": "Which insulation colour must an earth (protective) conductor have?",
-"options": [
-{
-"th": "ฟ้า",
-"en": "Blue"
-},
-{
-"th": "ดำ",
-"en": "Black"
-},
-{
-"th": "แดง",
-"en": "Red"
-},
-{
-"th": "เขียวแถบเหลือง (หรือสีเขียว)",
-"en": "Green/yellow (or green)"
-}
-],
-"answer": 3,
-"explain": "Never use green/yellow for anything except earth. Blue is the neutral colour in current Thai practice."
-},
-{
-"level": 15,
-"sec": "P",
-"th": "ทำไมต้องใส่ยางกันบาด (grommet) หรือบุชชิ่งที่รูเจาะผ่านผนังหรือตู้ไฟ",
-"en": "Why fit a grommet or bushing where cables pass through a hole in a wall or enclosure?",
-"options": [
-{
-"th": "ไม่จำเป็นต้องใส่",
-"en": "It is not necessary"
-},
-{
-"th": "ป้องกันฉนวนสายถูกขอบคมบาด และช่วยกันน้ำ ฝุ่น และแมลงเข้าตู้",
-"en": "To stop sharp edges cutting the insulation and to keep water, dust and insects out of the enclosure"
-},
-{
-"th": "เพื่อเพิ่มแรงดัน",
-"en": "To raise the voltage"
-},
-{
-"th": "เพื่อให้สายร้อนเร็วขึ้น",
-"en": "To make the cable heat up faster"
+"th": "ต่อเฉพาะขั้วลบ",
+"en": "On the negative only"
 }
 ],
 "answer": 1,
-"explain": "Seal wall crossings with sleeves and silicone or fire-stop, and keep the enclosure's IP rating after drilling."
+"explain": "Non-polarity DC MCBs (e.g. Suntree SL7N-63 non-polarity types) can be wired either way; check the marking."
+},
+{
+"level": 14,
+"sec": "P",
+"th": "ค่าพิกัดตัดกระแสลัดวงจร (Breaking capacity เช่น 6 kA, 10 kA, 25 kA) ของเบรกเกอร์หมายถึงอะไร",
+"en": "What does a breaker's breaking capacity (e.g. 6 kA, 10 kA, 25 kA) mean?",
+"options": [
+{
+"th": "กระแสลัดวงจรสูงสุดที่เบรกเกอร์ตัดได้อย่างปลอดภัย ต้องมากกว่ากระแสลัดวงจรที่จุดติดตั้ง",
+"en": "The highest fault current it can safely interrupt; it must exceed the prospective fault current where it is installed"
+},
+{
+"th": "อายุการใช้งาน",
+"en": "The service life"
+},
+{
+"th": "แรงดันสูงสุด",
+"en": "The maximum voltage"
+},
+{
+"th": "กระแสใช้งานปกติ",
+"en": "The normal working current"
+}
+],
+"answer": 0,
+"explain": "Near a large transformer the fault current is high; a 6 kA MCB may explode instead of breaking."
+},
+{
+"level": 14,
+"sec": "P",
+"th": "RCBO หรือ RCCB 30 mA มีไว้เพื่ออะไร",
+"en": "What is a 30 mA RCBO or RCCB for?",
+"options": [
+{
+"th": "ตัดไฟเมื่อมีกระแสรั่วลงดิน ป้องกันคนถูกไฟดูด",
+"en": "Cuts the supply when current leaks to earth, protecting people from electric shock"
+},
+{
+"th": "เพิ่มแรงดัน",
+"en": "Raising the voltage"
+},
+{
+"th": "ป้องกันฟ้าผ่า",
+"en": "Protecting against lightning"
+},
+{
+"th": "ใช้แทนเบรกเกอร์หลัก",
+"en": "Replacing the main breaker"
+}
+],
+"answer": 0,
+"explain": "An RCBO adds overcurrent protection to the residual-current function in one device."
+},
+{
+"level": 14,
+"sec": "P",
+"th": "DC Isolator (สวิตช์ตัดตอน DC) ต่างจากเบรกเกอร์ DC อย่างไร",
+"en": "How does a DC isolator differ from a DC breaker?",
+"options": [
+{
+"th": "Isolator ใช้กับ AC เท่านั้น",
+"en": "Isolators are AC only"
+},
+{
+"th": "เหมือนกันทุกอย่าง",
+"en": "They are identical"
+},
+{
+"th": "Isolator ตัดกระแสลัดวงจรได้ดีกว่า",
+"en": "An isolator breaks short circuits better"
+},
+{
+"th": "Isolator ใช้ตัดตอนเพื่อซ่อมบำรุง แต่ไม่ตัดเองเมื่อกระแสเกินหรือลัดวงจร",
+"en": "An isolator disconnects for maintenance but does not trip by itself on overcurrent or short circuit"
+}
+],
+"answer": 3,
+"explain": "Example: Suntree SISO-40 DC isolator 1,000 V. Operate it with the inverter off, following the shutdown order in the manual."
+},
+{
+"level": 14,
+"sec": "P",
+"th": "เบรกเกอร์ Curve C เหมาะกับโหลดแบบใด",
+"en": "Which loads suit a Curve C breaker?",
+"options": [
+{
+"th": "โหลดทั่วไปที่มีกระแสกระชากปานกลาง เช่น เครื่องปรับอากาศขนาดเล็ก ไฟแสงสว่าง ปลั๊ก",
+"en": "General loads with moderate inrush, such as small air-conditioners, lighting and sockets"
+},
+{
+"th": "มอเตอร์ใหญ่และหม้อแปลงที่กระแสกระชากสูงมากเท่านั้น",
+"en": "Only large motors and transformers with very high inrush"
+},
+{
+"th": "ใช้แทน RCD",
+"en": "As a replacement for an RCD"
+},
+{
+"th": "ใช้กับ DC เท่านั้น",
+"en": "DC only"
+}
+],
+"answer": 0,
+"explain": "Curve B trips at 3–5 × In, C at 5–10 × In, D at 10–20 × In."
+},
+{
+"level": 14,
+"sec": "P",
+"th": "ATS ในตู้ MDB & ATS ของระบบไฮบริดทำหน้าที่อะไร",
+"en": "What does the ATS in a hybrid system's MDB & ATS board do?",
+"options": [
+{
+"th": "เพิ่มกำลังอินเวอร์เตอร์",
+"en": "Increases inverter power"
+},
+{
+"th": "วัดค่าไฟ",
+"en": "Measures the electricity bill"
+},
+{
+"th": "ชาร์จแบตเตอรี่",
+"en": "Charges the battery"
+},
+{
+"th": "สลับแหล่งจ่ายไฟของบ้านโดยอัตโนมัติ เช่น กลับไปรับไฟการไฟฟ้าเมื่ออินเวอร์เตอร์หยุดทำงาน และป้องกันการต่อสองแหล่งพร้อมกัน",
+"en": "Switches the house supply automatically, e.g. back to the grid when the inverter stops, and prevents both sources connecting at once"
+}
+],
+"answer": 3,
+"explain": "Use ATS units with mechanical and electrical interlock (e.g. CSQ, Geya, Suntree ranges)."
+},
+{
+"level": 14,
+"sec": "P",
+"th": "เลือกเบรกเกอร์ฝั่ง AC ของอินเวอร์เตอร์อย่างไร",
+"en": "How is the AC breaker for an inverter output chosen?",
+"options": [
+{
+"th": "ยิ่งใหญ่ยิ่งดี",
+"en": "The bigger the better"
+},
+{
+"th": "เท่ากับกระแสพิกัดพอดี",
+"en": "Exactly the rated current"
+},
+{
+"th": "พิกัดไม่น้อยกว่าประมาณ 1.25 เท่าของกระแส AC สูงสุดของอินเวอร์เตอร์ และไม่เกินพิกัดของสาย",
+"en": "Rated at least about 1.25 × the inverter's maximum AC current and no higher than the cable rating"
+},
+{
+"th": "ใช้เบรกเกอร์ DC แทน",
+"en": "Use a DC breaker instead"
+}
+],
+"answer": 2,
+"explain": "Also follow any maximum breaker size stated in the inverter manual."
+},
+{
+"level": 14,
+"sec": "P",
+"th": "MCB กับ MCCB ต่างกันอย่างไร",
+"en": "What is the difference between an MCB and an MCCB?",
+"options": [
+{
+"th": "เหมือนกันทุกอย่าง",
+"en": "They are identical"
+},
+{
+"th": "MCCB ใช้แทนสายดิน",
+"en": "An MCCB replaces earthing"
+},
+{
+"th": "MCB ใช้กับ DC เท่านั้น",
+"en": "MCBs are DC only"
+},
+{
+"th": "MCCB รองรับกระแสและพิกัดตัดกระแสลัดวงจรสูงกว่า บางรุ่นปรับค่าตัดได้ MCB ใช้กับวงจรย่อยขนาดเล็ก",
+"en": "An MCCB handles higher currents and fault levels, and some are adjustable; an MCB is for smaller final circuits"
+}
+],
+"answer": 3,
+"explain": "Example: CHINT NXM-125S 100 A MCCB for a main or inverter feeder; MCBs up to 63 A for branch circuits."
+},
+{
+"level": 14,
+"sec": "P",
+"th": "อุปกรณ์ป้องกันไฟกระชาก (SPD) Type 1 กับ Type 2 ต่างกันอย่างไร",
+"en": "What is the difference between Type 1 and Type 2 surge protective devices (SPD)?",
+"options": [
+{
+"th": "Type 2 ใช้กับ DC เท่านั้น",
+"en": "Type 2 is DC only"
+},
+{
+"th": "Type 1 ใช้แทนสายดิน",
+"en": "Type 1 replaces earthing"
+},
+{
+"th": "เหมือนกัน",
+"en": "They are the same"
+},
+{
+"th": "Type 1 รับกระแสฟ้าผ่าโดยตรง (อาคารมีระบบล่อฟ้า) Type 2 ป้องกันไฟกระชากเหนี่ยวนำ ใช้ทั่วไปในระบบโซลาร์",
+"en": "Type 1 handles direct lightning current (buildings with a lightning protection system); Type 2 protects against induced surges and is the usual choice in solar systems"
+}
+],
+"answer": 3,
+"explain": "Use AC SPDs on the AC side and DC SPDs rated for the string voltage on the DC side, with short, straight earth connections."
 },
 {
 "level": 15,
@@ -5039,8 +5592,8 @@
 "en": "Which rule for choosing cable and breaker sizes is correct?",
 "options": [
 {
-"th": "ขนาดสายไม่เกี่ยวกับเบรกเกอร์",
-"en": "Cable size has nothing to do with the breaker"
+"th": "เบรกเกอร์ใหญ่กว่าพิกัดสายได้เสมอ",
+"en": "The breaker may always be larger than the cable rating"
 },
 {
 "th": "กระแสโหลด ≤ พิกัดเบรกเกอร์ ≤ พิกัดกระแสของสายตามวิธีการติดตั้ง",
@@ -5051,8 +5604,8 @@
 "en": "Use the smallest cable that fits the conduit"
 },
 {
-"th": "เบรกเกอร์ใหญ่กว่าพิกัดสายได้เสมอ",
-"en": "The breaker may always be larger than the cable rating"
+"th": "ขนาดสายไม่เกี่ยวกับเบรกเกอร์",
+"en": "Cable size has nothing to do with the breaker"
 }
 ],
 "answer": 1,
@@ -5065,8 +5618,8 @@
 "en": "Why should THW cable not be used for DC string wiring run in the open on a roof?",
 "options": [
 {
-"th": "เพราะ THW ใช้ได้เฉพาะสายดิน",
-"en": "Because THW is only for earthing"
+"th": "ฉนวน PVC ชั้นเดียวไม่ทน UV และไม่ได้ออกแบบสำหรับแรงดัน DC สูงของสตริง",
+"en": "Its single PVC insulation is not UV-resistant and is not designed for high string DC voltage"
 },
 {
 "th": "เพราะ THW ไม่มีทองแดง",
@@ -5077,64 +5630,12 @@
 "en": "Because THW is more expensive than PV cable"
 },
 {
-"th": "ฉนวน PVC ชั้นเดียวไม่ทน UV และไม่ได้ออกแบบสำหรับแรงดัน DC สูงของสตริง",
-"en": "Its single PVC insulation is not UV-resistant and is not designed for high string DC voltage"
+"th": "เพราะ THW ใช้ได้เฉพาะสายดิน",
+"en": "Because THW is only for earthing"
 }
 ],
-"answer": 3,
+"answer": 0,
 "explain": "THW (60227 IEC 01) is for indoor use inside conduit at up to 450/750 V AC."
-},
-{
-"level": 15,
-"sec": "P",
-"th": "เมื่อเปลี่ยนจากสายทองแดงเป็นสายอะลูมิเนียมสำหรับโหลดเดียวกัน ต้องทำอย่างไร",
-"en": "When using aluminium instead of copper cable for the same load, what must change?",
-"options": [
-{
-"th": "ไม่ต้องใช้หางปลา",
-"en": "No lugs are needed"
-},
-{
-"th": "ใช้หน้าตัดใหญ่ขึ้น (ประมาณ 1.6 เท่า) และใช้หางปลาแบบไบเมทัลที่จุดต่อทองแดง",
-"en": "Use a larger cross-section (about 1.6 times) and bimetal lugs where it joins copper"
-},
-{
-"th": "ใช้ขนาดเท่าเดิมได้เลย",
-"en": "Keep the same size"
-},
-{
-"th": "ใช้ขนาดเล็กลง",
-"en": "Use a smaller size"
-}
-],
-"answer": 1,
-"explain": "Aluminium conducts about 61% as well as copper and corrodes when joined directly to copper."
-},
-{
-"level": 15,
-"sec": "P",
-"th": "การเพิ่มขนาดสาย DC จาก 4 เป็น 6 ตร.มม. สำหรับระยะเดินสาย 40 เมตร ให้ผลหลักอย่างไร",
-"en": "Increasing DC cable from 4 to 6 mm² on a 40 m run mainly does what?",
-"options": [
-{
-"th": "ทำให้ไม่ต้องใช้ฟิวส์",
-"en": "Removes the need for fuses"
-},
-{
-"th": "เพิ่มแรงดันของแผง",
-"en": "Raises panel voltage"
-},
-{
-"th": "ลดแรงดันตกและการสูญเสียพลังงานในสาย",
-"en": "Reduces voltage drop and energy loss in the cable"
-},
-{
-"th": "ไม่มีผลใดๆ",
-"en": "Has no effect"
-}
-],
-"answer": 2,
-"explain": "Resistance falls in proportion to cross-section: 6 mm² has about two-thirds the resistance of 4 mm². Solar ESS keeps total voltage drop within 3%."
 },
 {
 "level": 15,
@@ -5143,23 +5644,23 @@
 "en": "Which DC cable colours are commonly used to tell polarity apart?",
 "options": [
 {
-"th": "แดงเป็นบวก (+) ดำเป็นลบ (−) และติดป้ายชัดเจน",
-"en": "Red for positive (+), black for negative (−), with clear labels"
+"th": "สีใดก็ได้ไม่ต้องติดป้าย",
+"en": "Any colour, no labels"
 },
 {
 "th": "ฟ้าเป็นบวก แดงเป็นลบ",
 "en": "Blue positive, red negative"
 },
 {
-"th": "เขียวเหลืองเป็นบวก",
-"en": "Green/yellow for positive"
+"th": "แดงเป็นบวก (+) ดำเป็นลบ (−) และติดป้ายชัดเจน",
+"en": "Red for positive (+), black for negative (−), with clear labels"
 },
 {
-"th": "สีใดก็ได้ไม่ต้องติดป้าย",
-"en": "Any colour, no labels"
+"th": "เขียวเหลืองเป็นบวก",
+"en": "Green/yellow for positive"
 }
 ],
-"answer": 0,
+"answer": 2,
 "explain": "Reverse polarity on an inverter input or battery can cause serious damage; label both ends."
 },
 {
@@ -5191,6 +5692,32 @@
 {
 "level": 15,
 "sec": "P",
+"th": "ทำไมต้องใส่ยางกันบาด (grommet) หรือบุชชิ่งที่รูเจาะผ่านผนังหรือตู้ไฟ",
+"en": "Why fit a grommet or bushing where cables pass through a hole in a wall or enclosure?",
+"options": [
+{
+"th": "เพื่อให้สายร้อนเร็วขึ้น",
+"en": "To make the cable heat up faster"
+},
+{
+"th": "ป้องกันฉนวนสายถูกขอบคมบาด และช่วยกันน้ำ ฝุ่น และแมลงเข้าตู้",
+"en": "To stop sharp edges cutting the insulation and to keep water, dust and insects out of the enclosure"
+},
+{
+"th": "ไม่จำเป็นต้องใส่",
+"en": "It is not necessary"
+},
+{
+"th": "เพื่อเพิ่มแรงดัน",
+"en": "To raise the voltage"
+}
+],
+"answer": 1,
+"explain": "Seal wall crossings with sleeves and silicone or fire-stop, and keep the enclosure's IP rating after drilling."
+},
+{
+"level": 15,
+"sec": "P",
 "th": "สาย PV บนหลังคาควรเดินอย่างไร",
 "en": "How should PV cables be run on a roof?",
 "options": [
@@ -5199,20 +5726,150 @@
 "en": "Left lying on the metal sheet"
 },
 {
-"th": "ฝังใต้แผ่นหลังคา",
-"en": "Buried under the roof sheet"
-},
-{
 "th": "รัดด้วยคลิปทน UV ไปตามราง ไม่วางบนแผ่นหลังคา และไม่พาดผ่านขอบคม",
 "en": "Clipped along the rails with UV-rated clips, not lying on the roof sheet and away from sharp edges"
 },
 {
 "th": "มัดด้วยลวดเหล็ก",
 "en": "Tied with steel wire"
+},
+{
+"th": "ฝังใต้แผ่นหลังคา",
+"en": "Buried under the roof sheet"
 }
 ],
-"answer": 2,
+"answer": 1,
 "explain": "Cables lying on hot metal sheets age fast and get cut by sheet edges; use edge protection where they pass over metal."
+},
+{
+"level": 15,
+"sec": "P",
+"th": "สายไฟ DC สำหรับแผงโซลาร์ชนิด PV1-F หรือ H1Z2Z2-K มีคุณสมบัติตามมาตรฐานใด",
+"en": "PV1-F or H1Z2Z2-K solar DC cable meets which properties?",
+"options": [
+{
+"th": "สาย PVC ชั้นเดียวสำหรับใช้ในบ้าน",
+"en": "Single-layer PVC cable for indoor wiring"
+},
+{
+"th": "สายอะลูมิเนียมเปลือย",
+"en": "Bare aluminium cable"
+},
+{
+"th": "สายโทรศัพท์",
+"en": "Telephone cable"
+},
+{
+"th": "ทองแดงชุบดีบุก ฉนวนสองชั้นทน UV และโอโซน ทนแรงดัน DC 1.5 kV ตาม EN 50618 / IEC 62930",
+"en": "Tinned copper, double insulation resistant to UV and ozone, rated 1.5 kV DC to EN 50618 / IEC 62930"
+}
+],
+"answer": 3,
+"explain": "Brands such as LINK, Phelps Dodge and HELUKABEL make EN 50618 cables; check the print on the sheath."
+},
+{
+"level": 15,
+"sec": "P",
+"th": "เมื่อเปลี่ยนจากสายทองแดงเป็นสายอะลูมิเนียมสำหรับโหลดเดียวกัน ต้องทำอย่างไร",
+"en": "When using aluminium instead of copper cable for the same load, what must change?",
+"options": [
+{
+"th": "ใช้ขนาดเท่าเดิมได้เลย",
+"en": "Keep the same size"
+},
+{
+"th": "ใช้หน้าตัดใหญ่ขึ้น (ประมาณ 1.6 เท่า) และใช้หางปลาแบบไบเมทัลที่จุดต่อทองแดง",
+"en": "Use a larger cross-section (about 1.6 times) and bimetal lugs where it joins copper"
+},
+{
+"th": "ไม่ต้องใช้หางปลา",
+"en": "No lugs are needed"
+},
+{
+"th": "ใช้ขนาดเล็กลง",
+"en": "Use a smaller size"
+}
+],
+"answer": 1,
+"explain": "Aluminium conducts about 61% as well as copper and corrodes when joined directly to copper."
+},
+{
+"level": 15,
+"sec": "P",
+"th": "ท่อร้อยสายที่มีสายมากกว่า 2 เส้น ไม่ควรมีพื้นที่สายรวมเกินกี่เปอร์เซ็นต์ของพื้นที่หน้าตัดท่อ",
+"en": "In a conduit with more than two cables, the cables should fill no more than about what share of the conduit area?",
+"options": [
+{
+"th": "ประมาณ 40%",
+"en": "About 40%"
+},
+{
+"th": "100%",
+"en": "100%"
+},
+{
+"th": "ประมาณ 80%",
+"en": "About 80%"
+},
+{
+"th": "ประมาณ 10%",
+"en": "About 10%"
+}
+],
+"answer": 0,
+"explain": "Overfilled conduit makes cables hard to pull, damages insulation and runs hotter."
+},
+{
+"level": 15,
+"sec": "P",
+"th": "สายดินตามมาตรฐานต้องใช้ฉนวนสีใด",
+"en": "Which insulation colour must an earth (protective) conductor have?",
+"options": [
+{
+"th": "เขียวแถบเหลือง (หรือสีเขียว)",
+"en": "Green/yellow (or green)"
+},
+{
+"th": "แดง",
+"en": "Red"
+},
+{
+"th": "ฟ้า",
+"en": "Blue"
+},
+{
+"th": "ดำ",
+"en": "Black"
+}
+],
+"answer": 0,
+"explain": "Never use green/yellow for anything except earth. Blue is the neutral colour in current Thai practice."
+},
+{
+"level": 15,
+"sec": "P",
+"th": "การย้ำขั้วต่อ MC4 ที่ถูกต้องคือข้อใด",
+"en": "Which is correct when crimping MC4 connectors?",
+"options": [
+{
+"th": "บัดกรีแทนการย้ำ",
+"en": "Solder instead of crimping"
+},
+{
+"th": "พันเทปแทนการขันฝา",
+"en": "Tape instead of tightening the nut"
+},
+{
+"th": "ใช้คีมธรรมดาบีบ",
+"en": "Squeeze with ordinary pliers"
+},
+{
+"th": "ใช้คีมย้ำที่ผู้ผลิตกำหนด ขั้วต่อยี่ห้อเดียวกัน ขันฝาตามแรงที่กำหนด แล้วทดสอบดึง",
+"en": "Use the maker's crimp tool and matching connectors, tighten the nut to the specified torque, then pull-test"
+}
+],
+"answer": 3,
+"explain": "A poor crimp has high resistance, heats up and can start an arc fault."
 },
 {
 "level": 15,
@@ -5221,8 +5878,8 @@
 "en": "A 3-phase 30 kW inverter (max 47.9 A) feeds the board. How are breaker and cable chosen?",
 "options": [
 {
-"th": "เบรกเกอร์ 32 A สาย 4 ตร.มม.",
-"en": "A 32 A breaker and 4 mm² cable"
+"th": "เบรกเกอร์ประมาณ 1.25 เท่าของกระแสสูงสุด (63 A) และสายที่ทนกระแสได้เกินพิกัดเบรกเกอร์ตามวิธีติดตั้ง",
+"en": "A breaker of about 1.25 × max current (63 A), and cable rated above the breaker for its installation method"
 },
 {
 "th": "ไม่ต้องใช้เบรกเกอร์",
@@ -5233,38 +5890,12 @@
 "en": "A 250 A breaker and 2.5 mm² cable"
 },
 {
-"th": "เบรกเกอร์ประมาณ 1.25 เท่าของกระแสสูงสุด (63 A) และสายที่ทนกระแสได้เกินพิกัดเบรกเกอร์ตามวิธีติดตั้ง",
-"en": "A breaker of about 1.25 × max current (63 A), and cable rated above the breaker for its installation method"
+"th": "เบรกเกอร์ 32 A สาย 4 ตร.มม.",
+"en": "A 32 A breaker and 4 mm² cable"
 }
 ],
-"answer": 3,
+"answer": 0,
 "explain": "47.9 × 1.25 ≈ 60 A → 63 A. Check voltage drop on long runs too."
-},
-{
-"level": 15,
-"sec": "P",
-"th": "ท่อร้อยสายที่มีสายมากกว่า 2 เส้น ไม่ควรมีพื้นที่สายรวมเกินกี่เปอร์เซ็นต์ของพื้นที่หน้าตัดท่อ",
-"en": "In a conduit with more than two cables, the cables should fill no more than about what share of the conduit area?",
-"options": [
-{
-"th": "ประมาณ 10%",
-"en": "About 10%"
-},
-{
-"th": "100%",
-"en": "100%"
-},
-{
-"th": "ประมาณ 40%",
-"en": "About 40%"
-},
-{
-"th": "ประมาณ 80%",
-"en": "About 80%"
-}
-],
-"answer": 2,
-"explain": "Overfilled conduit makes cables hard to pull, damages insulation and runs hotter."
 },
 {
 "level": 15,
@@ -5273,50 +5904,76 @@
 "en": "Which cable type is suitable for direct burial?",
 "options": [
 {
-"th": "สายที่ออกแบบให้ฝังดินได้ เช่น NYY หรือ CV ตาม IEC 60502 หรือใช้ท่อร้อยสายฝังดิน",
-"en": "A cable designed for burial, such as NYY or CV to IEC 60502, or cables in a buried conduit"
+"th": "สาย VAF ฝังดิน",
+"en": "VAF cable buried directly"
 },
 {
 "th": "สาย THW เปลือยฝังดิน",
 "en": "Bare THW buried directly"
 },
 {
-"th": "สาย VAF ฝังดิน",
-"en": "VAF cable buried directly"
+"th": "สายที่ออกแบบให้ฝังดินได้ เช่น NYY หรือ CV ตาม IEC 60502 หรือใช้ท่อร้อยสายฝังดิน",
+"en": "A cable designed for burial, such as NYY or CV to IEC 60502, or cables in a buried conduit"
 },
 {
 "th": "สายโทรศัพท์",
 "en": "Telephone cable"
 }
 ],
-"answer": 0,
+"answer": 2,
 "explain": "Mark the route and bury at the depth required by the standard, with warning tape above."
 },
 {
 "level": 15,
 "sec": "P",
-"th": "การย้ำขั้วต่อ MC4 ที่ถูกต้องคือข้อใด",
-"en": "Which is correct when crimping MC4 connectors?",
+"th": "การเพิ่มขนาดสาย DC จาก 4 เป็น 6 ตร.มม. สำหรับระยะเดินสาย 40 เมตร ให้ผลหลักอย่างไร",
+"en": "Increasing DC cable from 4 to 6 mm² on a 40 m run mainly does what?",
 "options": [
 {
-"th": "ใช้คีมย้ำที่ผู้ผลิตกำหนด ขั้วต่อยี่ห้อเดียวกัน ขันฝาตามแรงที่กำหนด แล้วทดสอบดึง",
-"en": "Use the maker's crimp tool and matching connectors, tighten the nut to the specified torque, then pull-test"
+"th": "ลดแรงดันตกและการสูญเสียพลังงานในสาย",
+"en": "Reduces voltage drop and energy loss in the cable"
 },
 {
-"th": "ใช้คีมธรรมดาบีบ",
-"en": "Squeeze with ordinary pliers"
+"th": "ทำให้ไม่ต้องใช้ฟิวส์",
+"en": "Removes the need for fuses"
 },
 {
-"th": "พันเทปแทนการขันฝา",
-"en": "Tape instead of tightening the nut"
+"th": "ไม่มีผลใดๆ",
+"en": "Has no effect"
 },
 {
-"th": "บัดกรีแทนการย้ำ",
-"en": "Solder instead of crimping"
+"th": "เพิ่มแรงดันของแผง",
+"en": "Raises panel voltage"
 }
 ],
 "answer": 0,
-"explain": "A poor crimp has high resistance, heats up and can start an arc fault."
+"explain": "Resistance falls in proportion to cross-section: 6 mm² has about two-thirds the resistance of 4 mm². Solar ESS keeps total voltage drop within 3%."
+},
+{
+"level": 15,
+"sec": "P",
+"th": "สายไฟชนิด LSZH (Low Smoke Zero Halogen) เหมาะกับพื้นที่แบบใด",
+"en": "Where is LSZH (low smoke zero halogen) cable a good choice?",
+"options": [
+{
+"th": "ในอาคารและเส้นทางหนีไฟ เพราะเมื่อไหม้มีควันน้อยและไม่มีก๊าซฮาโลเจนที่เป็นพิษ",
+"en": "Inside buildings and escape routes, because it gives little smoke and no toxic halogen gas when burning"
+},
+{
+"th": "ใต้น้ำ",
+"en": "Under water"
+},
+{
+"th": "ใช้แทนสายดินเท่านั้น",
+"en": "Only as earth wire"
+},
+{
+"th": "ใช้ได้เฉพาะฝั่ง DC",
+"en": "Only on the DC side"
+}
+],
+"answer": 0,
+"explain": "Hospitals, offices, hotels and data centres often require LSZH cables."
 }
 ]
 }

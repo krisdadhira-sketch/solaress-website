@@ -709,28 +709,28 @@
 {
 "level": 2,
 "sec": "D",
-"th": "ตอนส่งมอบงาน สิ่งที่ควรทำให้ลูกค้าคืออะไร",
-"en": "At handover you should give the customer:",
+"th": "สัญญาณใดแสดงว่าลูกค้า 'พอใจ' จริง",
+"en": "Which shows a customer is truly satisfied?",
 "options": [
 {
-"th": "รหัสผ่าน Wi-Fi ของช่าง",
-"en": "The installer's Wi-Fi password"
+"th": "ร้องเรียนเรื่องหลังคารั่ว",
+"en": "Complaining of a roof leak"
 },
 {
-"th": "สอนใช้แอปมอนิเตอร์ วิธีปิด-เปิดระบบอย่างปลอดภัย และมอบเอกสารรับประกัน/แบบ SLD",
-"en": "App training, safe shutdown steps, warranty documents and the single-line diagram"
+"th": "ชำระเงินตรงเวลา แนะนำคนอื่น และให้รีวิวหรือมีงานเพิ่ม",
+"en": "Pays on time, refers others, leaves a review or gives more work"
 },
 {
-"th": "ไม่ต้องอธิบาย",
-"en": "No explanation"
+"th": "ขอส่วนลดเพิ่มหลังงานเสร็จ",
+"en": "Asking for extra discount after the job"
 },
 {
-"th": "แค่ใบเสร็จ",
-"en": "Only the receipt"
+"th": "เงียบไม่ติดต่อ",
+"en": "Silence"
 }
 ],
 "answer": 1,
-"explain": "A customer who understands the system calls less and trusts you more."
+"explain": "Referrals and repeat work are the clearest proof of satisfaction."
 },
 {
 "level": 2,
@@ -813,28 +813,28 @@
 {
 "level": 2,
 "sec": "D",
-"th": "สัญญาณใดแสดงว่าลูกค้า 'พอใจ' จริง",
-"en": "Which shows a customer is truly satisfied?",
+"th": "ข้อใดมักเป็น 'deal breaker' ที่ทำให้ลูกค้ายกเลิกการจ้าง",
+"en": "Which is a common deal breaker that makes a customer walk away?",
 "options": [
 {
-"th": "เงียบไม่ติดต่อ",
-"en": "Silence"
+"th": "ช่างแต่งกายสุภาพ",
+"en": "A neatly dressed team"
 },
 {
-"th": "ร้องเรียนเรื่องหลังคารั่ว",
-"en": "Complaining of a roof leak"
+"th": "อธิบายวิธีใช้งาน",
+"en": "Explaining how to use the system"
 },
 {
-"th": "ชำระเงินตรงเวลา แนะนำคนอื่น และให้รีวิวหรือมีงานเพิ่ม",
-"en": "Pays on time, refers others, leaves a review or gives more work"
+"th": "ราคาไม่ชัดเจน มีค่าใช้จ่ายแอบแฝง หรือเปลี่ยนราคาภายหลัง",
+"en": "Unclear prices, hidden costs or prices changed later"
 },
 {
-"th": "ขอส่วนลดเพิ่มหลังงานเสร็จ",
-"en": "Asking for extra discount after the job"
+"th": "ส่งใบเสนอราคาเร็ว",
+"en": "A fast quotation"
 }
 ],
 "answer": 2,
-"explain": "Referrals and repeat work are the clearest proof of satisfaction."
+"explain": "Trust breaks fastest over money; give a clear, fixed scope and price."
 },
 {
 "level": 2,
@@ -864,55 +864,55 @@
 },
 {
 "level": 2,
-"sec": "D",
-"th": "ข้อใดมักเป็น 'deal breaker' ที่ทำให้ลูกค้ายกเลิกการจ้าง",
-"en": "Which is a common deal breaker that makes a customer walk away?",
+"sec": "C",
+"th": "ตัวยึดแผง (clamp) ควรจับแผงที่ตำแหน่งใด",
+"en": "Where should clamps hold a panel?",
 "options": [
 {
-"th": "อธิบายวิธีใช้งาน",
-"en": "Explaining how to use the system"
+"th": "กลางแผงด้านกระจก",
+"en": "On the glass in the middle"
 },
 {
-"th": "ส่งใบเสนอราคาเร็ว",
-"en": "A fast quotation"
+"th": "ที่มุมแผงสุดขอบ",
+"en": "At the very corners"
 },
 {
-"th": "ราคาไม่ชัดเจน มีค่าใช้จ่ายแอบแฝง หรือเปลี่ยนราคาภายหลัง",
-"en": "Unclear prices, hidden costs or prices changed later"
+"th": "ในช่วงจับยึดที่ผู้ผลิตแผงกำหนด (clamping zone)",
+"en": "Inside the panel maker's specified clamping zone"
 },
 {
-"th": "ช่างแต่งกายสุภาพ",
-"en": "A neatly dressed team"
+"th": "ตรงไหนก็ได้",
+"en": "Anywhere"
 }
 ],
 "answer": 2,
-"explain": "Trust breaks fastest over money; give a clear, fixed scope and price."
+"explain": "Clamping outside the zone voids the warranty and can crack cells or let panels lift."
 },
 {
 "level": 2,
 "sec": "B",
-"th": "สายที่ลอดเข้ากล่องหรือตู้ไฟกลางแจ้งต้องใช้อะไร",
-"en": "A cable entering an outdoor box or enclosure needs:",
+"th": "ท่อ IMC เหมาะกับการใช้งานแบบใดเมื่อเทียบกับท่อ EMT",
+"en": "Compared with EMT, IMC conduit is suited to:",
 "options": [
 {
-"th": "ซิลิโคนอย่างเดียว",
-"en": "Silicone only"
+"th": "ฝังในคอนกรีตห้ามใช้",
+"en": "It may never be used in concrete"
 },
 {
-"th": "เจาะรูแล้วยัดสายเข้าไป",
-"en": "A drilled hole with the cable pushed through"
+"th": "งานในฝ้าเพดานเท่านั้น",
+"en": "Only inside ceilings"
 },
 {
-"th": "ไม่ต้องใช้อะไร",
-"en": "Nothing"
+"th": "ใช้แทนสายดิน",
+"en": "Replacing the earth cable"
 },
 {
-"th": "เคเบิลแกลนด์ที่ตรงขนาดสายและพิกัด IP ตามตู้",
-"en": "A cable gland sized to the cable, matching the enclosure's IP rating"
+"th": "งานภายนอกอาคารหรือที่อาจโดนกระแทก เพราะผนังหนาและเป็นเกลียว",
+"en": "Outdoor or impact-prone runs, as it is thicker and threaded"
 }
 ],
 "answer": 3,
-"explain": "Glands keep water and insects out and stop the cable being pulled."
+"explain": "EMT is thin-wall for indoor dry locations; IMC/RSC is heavy wall for outdoor and exposed areas."
 },
 {
 "level": 2,
@@ -943,28 +943,28 @@
 {
 "level": 2,
 "sec": "A",
-"th": "แผง AIKO ซีรีส์ ABC (เช่น Neostar) มีจุดเด่นเรื่องใดเมื่อมีเงาบังบางส่วน",
-"en": "What is AIKO's ABC panel series (e.g. Neostar) known for when part of the panel is shaded?",
+"th": "แผง LONGi Hi-MO X10 ใช้เทคโนโลยี HPBC 2.0 จุดเด่นของเซลล์แบบนี้คืออะไร",
+"en": "LONGi Hi-MO X10 panels use HPBC 2.0 technology. What is special about this cell design?",
 "options": [
 {
-"th": "เงาไม่มีผลใดๆ เลย ผลิตไฟได้เต็ม 100%",
-"en": "Shade has no effect at all; it still gives 100% power"
+"th": "ใช้เซลล์ชนิด P-type PERC รุ่นเก่า",
+"en": "It uses older P-type PERC cells"
 },
 {
-"th": "แผงจะตัดการทำงานทันทีเมื่อมีเงา",
-"en": "The panel switches itself off as soon as it is shaded"
+"th": "เป็นแผงฟิล์มบางที่งอได้",
+"en": "It is a flexible thin-film panel"
 },
 {
-"th": "ออกแบบให้กำลังลดลงเฉพาะจุดที่ถูกบัง (partial shading optimisation) แผงที่เหลือยังผลิตไฟได้ดี",
-"en": "Partial-shading optimisation: the loss stays near the shaded cells and the rest of the panel keeps producing well"
+"th": "ขั้วไฟฟ้าทั้งหมดอยู่ด้านหลังเซลล์ (back contact) ด้านหน้าไม่มีเส้นโลหะบังแสง ประสิทธิภาพสูงขึ้น",
+"en": "All electrical contacts are on the back of the cell (back contact), so no metal lines shade the front and efficiency is higher"
 },
 {
-"th": "ต้องติดออปติไมเซอร์ทุกแผงจึงจะใช้งานได้",
-"en": "It only works with an optimiser on every panel"
+"th": "มีไมโครอินเวอร์เตอร์ติดมาในกล่องต่อสาย",
+"en": "It has a microinverter built into the junction box"
 }
 ],
 "answer": 2,
-"explain": "ABC = All Back Contact. AIKO's Gen 2 ABC panels add a partial-shading optimisation; a TÜV Nord test with one cell fully shaded showed about 30% more power than conventional panels. Shade still costs energy."
+"explain": "HPBC = Hybrid Passivated Back Contact. With all contacts at the rear, the whole front surface collects light; Hi-MO X10 reaches about 24.8% module efficiency."
 },
 {
 "level": 2,
@@ -995,28 +995,28 @@
 {
 "level": 2,
 "sec": "A",
-"th": "ระบบ Enphase แตกต่างจากอินเวอร์เตอร์แบบสตริงอย่างไร",
-"en": "How does an Enphase system differ from a string inverter system?",
+"th": "แผง AIKO ซีรีส์ ABC (เช่น Neostar) มีจุดเด่นเรื่องใดเมื่อมีเงาบังบางส่วน",
+"en": "What is AIKO's ABC panel series (e.g. Neostar) known for when part of the panel is shaded?",
 "options": [
 {
-"th": "ไม่มีระบบมอนิเตอร์รายแผง",
-"en": "It has no per-panel monitoring"
+"th": "เงาไม่มีผลใดๆ เลย ผลิตไฟได้เต็ม 100%",
+"en": "Shade has no effect at all; it still gives 100% power"
 },
 {
-"th": "ใช้อินเวอร์เตอร์ตัวเดียวต่อสตริงยาว 1,000 V",
-"en": "It uses one inverter on a long 1,000 V string"
+"th": "แผงจะตัดการทำงานทันทีเมื่อมีเงา",
+"en": "The panel switches itself off as soon as it is shaded"
 },
 {
-"th": "ใช้ไมโครอินเวอร์เตอร์ 1 ตัวต่อแผง แปลงเป็นไฟ AC ที่แผงเลย ไม่มีสาย DC แรงดันสูงบนหลังคา และแผงหนึ่งเสียไม่ทำให้แผงอื่นหยุด",
-"en": "One microinverter per panel converts to AC at the panel: no high-voltage DC on the roof, and one faulty panel does not stop the others"
+"th": "ออกแบบให้กำลังลดลงเฉพาะจุดที่ถูกบัง (partial shading optimisation) แผงที่เหลือยังผลิตไฟได้ดี",
+"en": "Partial-shading optimisation: the loss stays near the shaded cells and the rest of the panel keeps producing well"
 },
 {
-"th": "ต้องมีแบตเตอรี่เสมอจึงจะผลิตไฟได้",
-"en": "It always needs a battery to produce power"
+"th": "ต้องติดออปติไมเซอร์ทุกแผงจึงจะใช้งานได้",
+"en": "It only works with an optimiser on every panel"
 }
 ],
 "answer": 2,
-"explain": "Microinverters work panel by panel, so each panel has its own MPPT and monitoring, and roof wiring is low-voltage AC."
+"explain": "ABC = All Back Contact. AIKO's Gen 2 ABC panels add a partial-shading optimisation; a TÜV Nord test with one cell fully shaded showed about 30% more power than conventional panels. Shade still costs energy."
 },
 {
 "level": 2,
@@ -1072,29 +1072,29 @@
 },
 {
 "level": 2,
-"sec": "C",
-"th": "แรงลมยก (uplift) บนแผงหลังคามักสูงที่สุดบริเวณใด",
-"en": "Wind uplift on roof-mounted panels is usually highest:",
+"sec": "B",
+"th": "สายที่ลอดเข้ากล่องหรือตู้ไฟกลางแจ้งต้องใช้อะไร",
+"en": "A cable entering an outdoor box or enclosure needs:",
 "options": [
 {
-"th": "เท่ากันทุกจุด",
-"en": "The same everywhere"
+"th": "ไม่ต้องใช้อะไร",
+"en": "Nothing"
 },
 {
-"th": "ขอบและมุมของหลังคา",
-"en": "At the roof edges and corners"
+"th": "เคเบิลแกลนด์ที่ตรงขนาดสายและพิกัด IP ตามตู้",
+"en": "A cable gland sized to the cable, matching the enclosure's IP rating"
 },
 {
-"th": "กลางหลังคา",
-"en": "In the middle of the roof"
+"th": "เจาะรูแล้วยัดสายเข้าไป",
+"en": "A drilled hole with the cable pushed through"
 },
 {
-"th": "ใต้แผง",
-"en": "Under the panels"
+"th": "ซิลิโคนอย่างเดียว",
+"en": "Silicone only"
 }
 ],
 "answer": 1,
-"explain": "Wind accelerates around edges and corners; keep arrays back from edges or add fixings there."
+"explain": "Glands keep water and insects out and stop the cable being pulled."
 },
 {
 "level": 2,
@@ -1151,28 +1151,28 @@
 {
 "level": 2,
 "sec": "A",
-"th": "ฟังก์ชัน SafeDC ของ SolarEdge ทำอะไรเมื่อปิดอินเวอร์เตอร์หรือไฟ AC ดับ",
-"en": "What does SolarEdge's SafeDC function do when the inverter or AC supply is switched off?",
+"th": "ระบบ Enphase แตกต่างจากอินเวอร์เตอร์แบบสตริงอย่างไร",
+"en": "How does an Enphase system differ from a string inverter system?",
 "options": [
 {
-"th": "ออปติไมเซอร์แต่ละตัวลดแรงดันออกเหลือประมาณ 1 V ต่อแผง สาย DC จึงปลอดภัยต่อการสัมผัส",
-"en": "Each optimiser drops its output to about 1 V per panel, so the DC cables become touch-safe"
+"th": "ใช้ไมโครอินเวอร์เตอร์ 1 ตัวต่อแผง แปลงเป็นไฟ AC ที่แผงเลย ไม่มีสาย DC แรงดันสูงบนหลังคา และแผงหนึ่งเสียไม่ทำให้แผงอื่นหยุด",
+"en": "One microinverter per panel converts to AC at the panel: no high-voltage DC on the roof, and one faulty panel does not stop the others"
 },
 {
-"th": "แผงจะลัดวงจรตัวเองจนฟิวส์ขาด",
-"en": "The panels short themselves until the fuse blows"
+"th": "ไม่มีระบบมอนิเตอร์รายแผง",
+"en": "It has no per-panel monitoring"
 },
 {
-"th": "แผงยังจ่ายแรงดันเต็มสตริงเหมือนเดิม",
-"en": "The panels still give full string voltage"
+"th": "ใช้อินเวอร์เตอร์ตัวเดียวต่อสตริงยาว 1,000 V",
+"en": "It uses one inverter on a long 1,000 V string"
 },
 {
-"th": "ตัดเฉพาะฝั่ง AC ฝั่ง DC ไม่เปลี่ยน",
-"en": "Only the AC side is cut; DC stays the same"
+"th": "ต้องมีแบตเตอรี่เสมอจึงจะผลิตไฟได้",
+"en": "It always needs a battery to produce power"
 }
 ],
 "answer": 0,
-"explain": "With SafeDC, a 20-panel string falls to about 20 V instead of several hundred volts, which protects installers and firefighters. A normal string inverter cannot lower roof DC voltage when switched off."
+"explain": "Microinverters work panel by panel, so each panel has its own MPPT and monitoring, and roof wiring is low-voltage AC."
 },
 {
 "level": 2,
@@ -1229,28 +1229,28 @@
 {
 "level": 2,
 "sec": "A",
-"th": "ระบบ Sigenergy SigenStor เรียกว่า '5-in-1' เพราะรวมอะไรไว้ในเครื่องเดียว",
-"en": "Sigenergy's SigenStor is called '5-in-1'. What does it combine in one system?",
+"th": "ฟังก์ชัน SafeDC ของ SolarEdge ทำอะไรเมื่อปิดอินเวอร์เตอร์หรือไฟ AC ดับ",
+"en": "What does SolarEdge's SafeDC function do when the inverter or AC supply is switched off?",
 "options": [
 {
-"th": "อินเวอร์เตอร์โซลาร์, PCS แบตเตอรี่, แบตเตอรี่, เครื่องชาร์จรถ EV แบบ DC และระบบจัดการพลังงาน (EMS)",
-"en": "Solar inverter, battery PCS, battery, DC EV charger and energy management system (EMS)"
+"th": "ออปติไมเซอร์แต่ละตัวลดแรงดันออกเหลือประมาณ 1 V ต่อแผง สาย DC จึงปลอดภัยต่อการสัมผัส",
+"en": "Each optimiser drops its output to about 1 V per panel, so the DC cables become touch-safe"
 },
 {
-"th": "อินเวอร์เตอร์ 5 ตัวต่อขนาน",
-"en": "Five inverters in parallel"
+"th": "แผงจะลัดวงจรตัวเองจนฟิวส์ขาด",
+"en": "The panels short themselves until the fuse blows"
 },
 {
-"th": "แผงโซลาร์, ราง, น็อต, สายไฟ และเบรกเกอร์",
-"en": "Panels, rails, bolts, cables and breakers"
+"th": "แผงยังจ่ายแรงดันเต็มสตริงเหมือนเดิม",
+"en": "The panels still give full string voltage"
 },
 {
-"th": "มิเตอร์ 5 ตัวสำหรับ 5 เฟส",
-"en": "Five meters for five phases"
+"th": "ตัดเฉพาะฝั่ง AC ฝั่ง DC ไม่เปลี่ยน",
+"en": "Only the AC side is cut; DC stays the same"
 }
 ],
 "answer": 0,
-"explain": "Fewer separate boxes means a cleaner install. The battery modules stack, so capacity can be added later."
+"explain": "With SafeDC, a 20-panel string falls to about 20 V instead of several hundred volts, which protects installers and firefighters. A normal string inverter cannot lower roof DC voltage when switched off."
 },
 {
 "level": 2,
@@ -1281,80 +1281,80 @@
 {
 "level": 2,
 "sec": "C",
+"th": "แรงลมยก (uplift) บนแผงหลังคามักสูงที่สุดบริเวณใด",
+"en": "Wind uplift on roof-mounted panels is usually highest:",
+"options": [
+{
+"th": "กลางหลังคา",
+"en": "In the middle of the roof"
+},
+{
+"th": "ขอบและมุมของหลังคา",
+"en": "At the roof edges and corners"
+},
+{
+"th": "เท่ากันทุกจุด",
+"en": "The same everywhere"
+},
+{
+"th": "ใต้แผง",
+"en": "Under the panels"
+}
+],
+"answer": 1,
+"explain": "Wind accelerates around edges and corners; keep arrays back from edges or add fixings there."
+},
+{
+"level": 2,
+"sec": "D",
+"th": "ตอนส่งมอบงาน สิ่งที่ควรทำให้ลูกค้าคืออะไร",
+"en": "At handover you should give the customer:",
+"options": [
+{
+"th": "รหัสผ่าน Wi-Fi ของช่าง",
+"en": "The installer's Wi-Fi password"
+},
+{
+"th": "ไม่ต้องอธิบาย",
+"en": "No explanation"
+},
+{
+"th": "สอนใช้แอปมอนิเตอร์ วิธีปิด-เปิดระบบอย่างปลอดภัย และมอบเอกสารรับประกัน/แบบ SLD",
+"en": "App training, safe shutdown steps, warranty documents and the single-line diagram"
+},
+{
+"th": "แค่ใบเสร็จ",
+"en": "Only the receipt"
+}
+],
+"answer": 2,
+"explain": "A customer who understands the system calls less and trusts you more."
+},
+{
+"level": 2,
+"sec": "C",
 "th": "การยึดขายึด (L-foot) บนหลังคาเมทัลชีท ควรยึดเข้ากับอะไร",
 "en": "On a metal-sheet roof, L-feet should be fixed into:",
 "options": [
-{
-"th": "แผ่นเมทัลชีทอย่างเดียว",
-"en": "The metal sheet only"
-},
 {
 "th": "แปหรือโครงหลังคา ด้วยสกรูพร้อมแหวนยาง EPDM",
 "en": "The purlins (roof frame) with screws and EPDM washers"
 },
 {
-"th": "ลวดผูก",
-"en": "Tie wire"
-},
-{
 "th": "กาวติด",
 "en": "Glue"
-}
-],
-"answer": 1,
-"explain": "Sheet metal alone cannot hold uplift; fix into the purlins and seal every hole."
 },
 {
-"level": 2,
-"sec": "A",
-"th": "แผง LONGi Hi-MO X10 ใช้เทคโนโลยี HPBC 2.0 จุดเด่นของเซลล์แบบนี้คืออะไร",
-"en": "LONGi Hi-MO X10 panels use HPBC 2.0 technology. What is special about this cell design?",
-"options": [
-{
-"th": "ใช้เซลล์ชนิด P-type PERC รุ่นเก่า",
-"en": "It uses older P-type PERC cells"
+"th": "แผ่นเมทัลชีทอย่างเดียว",
+"en": "The metal sheet only"
 },
 {
-"th": "มีไมโครอินเวอร์เตอร์ติดมาในกล่องต่อสาย",
-"en": "It has a microinverter built into the junction box"
-},
-{
-"th": "ขั้วไฟฟ้าทั้งหมดอยู่ด้านหลังเซลล์ (back contact) ด้านหน้าไม่มีเส้นโลหะบังแสง ประสิทธิภาพสูงขึ้น",
-"en": "All electrical contacts are on the back of the cell (back contact), so no metal lines shade the front and efficiency is higher"
-},
-{
-"th": "เป็นแผงฟิล์มบางที่งอได้",
-"en": "It is a flexible thin-film panel"
-}
-],
-"answer": 2,
-"explain": "HPBC = Hybrid Passivated Back Contact. With all contacts at the rear, the whole front surface collects light; Hi-MO X10 reaches about 24.8% module efficiency."
-},
-{
-"level": 2,
-"sec": "C",
-"th": "ตัวยึดแผง (clamp) ควรจับแผงที่ตำแหน่งใด",
-"en": "Where should clamps hold a panel?",
-"options": [
-{
-"th": "ในช่วงจับยึดที่ผู้ผลิตแผงกำหนด (clamping zone)",
-"en": "Inside the panel maker's specified clamping zone"
-},
-{
-"th": "ที่มุมแผงสุดขอบ",
-"en": "At the very corners"
-},
-{
-"th": "ตรงไหนก็ได้",
-"en": "Anywhere"
-},
-{
-"th": "กลางแผงด้านกระจก",
-"en": "On the glass in the middle"
+"th": "ลวดผูก",
+"en": "Tie wire"
 }
 ],
 "answer": 0,
-"explain": "Clamping outside the zone voids the warranty and can crack cells or let panels lift."
+"explain": "Sheet metal alone cannot hold uplift; fix into the purlins and seal every hole."
 },
 {
 "level": 3,

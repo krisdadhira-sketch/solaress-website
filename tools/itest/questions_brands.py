@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """Brand questions: what makes each panel / inverter brand Solar ESS installs different.
-BRANDS2 (6, product knowledge) go into Level 2, BRANDS3 (2, used in diagnosis and wiring) into Level 3. Same format as questions_e.py: (section, th, en, [correct, wrong x3], explanation).
+BRANDS2 (5, product knowledge) go into Level 2, BRANDS3 (2, used in diagnosis and wiring) into Level 3. Same format as questions_e.py: (section, th, en, [correct, wrong x3], explanation).
 Facts checked against maker datasheets and press releases (Nov 2026). Never name the equipment supplier here."""
 
 BRANDS2 = [
@@ -36,14 +36,6 @@ BRANDS2 = [
   ("ตัดเฉพาะฝั่ง AC ฝั่ง DC ไม่เปลี่ยน", "Only the AC side is cut; DC stays the same"),
   ("แผงจะลัดวงจรตัวเองจนฟิวส์ขาด", "The panels short themselves until the fuse blows")],
  "With SafeDC, a 20-panel string falls to about 20 V instead of several hundred volts, which protects installers and firefighters. A normal string inverter cannot lower roof DC voltage when switched off."),
-("A", "ระบบ Sigenergy SigenStor เรียกว่า '5-in-1' เพราะรวมอะไรไว้ในเครื่องเดียว",
- "Sigenergy's SigenStor is called '5-in-1'. What does it combine in one system?",
- [("อินเวอร์เตอร์โซลาร์, PCS แบตเตอรี่, แบตเตอรี่, เครื่องชาร์จรถ EV แบบ DC และระบบจัดการพลังงาน (EMS)",
-   "Solar inverter, battery PCS, battery, DC EV charger and energy management system (EMS)"),
-  ("แผงโซลาร์, ราง, น็อต, สายไฟ และเบรกเกอร์", "Panels, rails, bolts, cables and breakers"),
-  ("มิเตอร์ 5 ตัวสำหรับ 5 เฟส", "Five meters for five phases"),
-  ("อินเวอร์เตอร์ 5 ตัวต่อขนาน", "Five inverters in parallel")],
- "Fewer separate boxes means a cleaner install. The battery modules stack, so capacity can be added later."),
 ("A", "Solar ESS เลือกอินเวอร์เตอร์ไฮบริด Solis สำหรับบ้าน เพราะรองรับแผงได้มากกว่ากำลังอินเวอร์เตอร์ (oversizing) สูงถึงประมาณเท่าใด",
  "Solar ESS often picks Solis hybrid inverters for homes. Up to roughly what PV oversizing (panel kWp vs inverter kW) do they support?",
  [("200%", "200%"), ("100% (ห้ามเกิน)", "100% (no oversizing)"), ("110%", "110%"), ("500%", "500%")],
@@ -67,4 +59,16 @@ BRANDS3 = [
   ("ใช้ต่อสายดินเท่านั้น", "It is only for the earth wire"),
   ("ใช้ต่อแบตเตอรี่ก้อนที่สอง", "Connect a second battery")],
  "The GEN port is AC. Deye hybrids can also run up to 16 units in parallel, on-grid or off-grid."),
+]
+
+# Brand-specific question sets, kept out of the five levels (Nov 2026). Ready for a brand test of their own.
+SIGENERGY = [
+("A", "ระบบ Sigenergy SigenStor เรียกว่า '5-in-1' เพราะรวมอะไรไว้ในเครื่องเดียว",
+ "Sigenergy's SigenStor is called '5-in-1'. What does it combine in one system?",
+ [("อินเวอร์เตอร์โซลาร์, PCS แบตเตอรี่, แบตเตอรี่, เครื่องชาร์จรถ EV แบบ DC และระบบจัดการพลังงาน (EMS)",
+   "Solar inverter, battery PCS, battery, DC EV charger and energy management system (EMS)"),
+  ("แผงโซลาร์, ราง, น็อต, สายไฟ และเบรกเกอร์", "Panels, rails, bolts, cables and breakers"),
+  ("มิเตอร์ 5 ตัวสำหรับ 5 เฟส", "Five meters for five phases"),
+  ("อินเวอร์เตอร์ 5 ตัวต่อขนาน", "Five inverters in parallel")],
+ "Fewer separate boxes means a cleaner install. The battery modules stack, so capacity can be added later."),
 ]

@@ -14,9 +14,9 @@ PR = [("inverter", "Inverters", "อินเวอร์เตอร์", "逆�
       ("pv", "PV Modules", "แผงโซลาร์เซลล์", "光伏组件"), ("battery", "Battery", "แบตเตอรี่", "电池"),
       ("breaker", "Breakers & Protection", "เบรกเกอร์และอุปกรณ์ป้องกัน", "断路器与保护"), ("cable", "Cables & Wiring", "สายไฟและการเดินสาย", "电缆与布线")]
 PH = {"en": "Brand & Product Test", "th": "แบบทดสอบแบรนด์และผลิตภัณฑ์", "zh": "品牌与产品测试"}
-L = {"en": dict(top="Solar Test", lv="Level", mine="My levels & certificates", voc="Vocabulary test", page="/installer-test.html"),
-     "th": dict(top="แบบทดสอบโซลาร์", lv="ระดับ", mine="ระดับและใบประกาศของฉัน", voc="แบบทดสอบคำศัพท์", page="/th/installer-test.html"),
-     "zh": dict(top="太阳能测试", lv="等级", mine="我的等级与证书", voc="词汇测试", page="/installer-test.html")}
+L = {"en": dict(top="Test", lv="Level", mine="My levels & certificates", voc="Vocabulary test", page="/installer-test.html"),
+     "th": dict(top="แบบทดสอบ", lv="ระดับ", mine="ระดับและใบประกาศของฉัน", voc="แบบทดสอบคำศัพท์", page="/th/installer-test.html"),
+     "zh": dict(top="测试", lv="等级", mine="我的等级与证书", voc="词汇测试", page="/installer-test.html")}
 VOC = re.compile(r'<a href="/vocabulary\.html">(?:Solar ESS Test|แบบทดสอบ Solar ESS|Solar ESS 测试)</a>')
 
 
@@ -26,9 +26,8 @@ def menu(lang):
     items = "".join(f'<a href="{t["page"]}?level={i}">{t["lv"]} {i} · {(th if lang == "th" else en)}</a>' for i, (en, th) in enumerate(LV, 1))
     col = {"en": 1, "th": 2, "zh": 3}[lang]
     prod = "".join(f'<a href="{t["page"]}?test={p[0]}">{p[col]}</a>' for p in PR)
-    return (f'<!--tmenu--><a href="{t["page"]}">{t["top"]}</a>{items}'
-            f'<a href="{t["page"]}?test=inverter">{PH[lang]}</a>{prod}'
-            f'<!--/tmenu-->')
+    # Nov 2026: one "Test" item only; levels and brand/product tests are picked on the test page itself.
+    return f'<!--tmenu--><a href="{t["page"]}">{t["top"]}</a><!--/tmenu-->'
 
 
 n = 0

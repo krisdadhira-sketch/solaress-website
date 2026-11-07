@@ -27,7 +27,7 @@ Regional directory of approved subcontract installers, a registration form (`ins
 
 ## Google Analytics (GA4)
 
-Every public page carries the GA4 tag for stream "solaress.org" (`G-46HG0JWSZV`, property "Solar ESS Co. Ltd."), between `<!--ga4-->` markers. **After adding or regenerating any page, run `python3 tools/analytics_tag.py`** (idempotent). Custom events: `book_consultation_click`, `phone_click`, `line_click`, `facebook_click`, `form_sent` (with `form_name`) and `generate_lead` (consultation / installer-request forms). Mark `generate_lead` as a Key event in GA (Admin > Data display > Events).
+Every public page carries the GA4 tag for stream "solaress.org" (`G-46HG0JWSZV`, property "Solar ESS Co. Ltd."), between `<!--ga4-->` markers. **After adding or regenerating any page, run `python3 tools/analytics_tag.py`** (idempotent), then `python3 tools/form_ink.py` (white form boxes with black text on every page that has a form). Custom events: `book_consultation_click`, `phone_click`, `line_click`, `facebook_click`, `form_sent` (with `form_name`) and `generate_lead` (consultation / installer-request forms). Mark `generate_lead` as a Key event in GA (Admin > Data display > Events).
 
 ## Job admin: installer report, customer feedback, payment release & team record (/feedback-admin.html)
 

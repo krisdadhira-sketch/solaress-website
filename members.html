@@ -209,7 +209,7 @@ addEventListener('resize',function(){if(innerWidth>900&&h.classList.contains('mo
 <label for="mpw">Member password<input id="mpw" type="password" autocomplete="current-password" required></label>
 <button class="btn" type="submit" id="mbtn">Download price list</button>
 <div id="mmsg" role="status"></div>
-<a id="msave" class="btn ghost" hidden download="Solar-ESS-Member-Price-List.pdf">Save the PDF</a>
+<a id="msave" class="btn ghost" hidden download="Solar-ESS-Our-Picks-Price-List.pdf">Save the PDF</a>
 </form>
 </div></section>
 <section class="band light" style="padding-block:56px"><div class="wrap"><h2 style="font-size:clamp(24px,3.2vw,36px)">Not a member yet?</h2><p class="lede" style="margin-top:12px;opacity:1">Installers, electricians and owners who buy materials from us can ask for a password. Send us a request through the consultation form and we will reply within two business days.</p><div style="margin-top:22px"><a class="btn" href="/community.html" style="margin-right:10px">Register as a Solar Enthusiast</a><a class="btn ghost" href="/#consult">Request a password</a></div><p class="contact" style="color:var(--ink)">kris@solar-ess.org<br>063 151 6694 · 089 632 5829</p></div></section>
@@ -223,7 +223,7 @@ if(!pw){say('Enter your member password.',true);return}
 if(!window.crypto||!crypto.subtle){say('This browser cannot open the list. Please use a current browser on a secure (https) connection.',true);return}
 btn.disabled=true;say('Checking the password…');save.hidden=true;
 try{
-const res=await fetch('/members/price-list.bin',{cache:'no-store'});if(!res.ok)throw new Error('file');
+const res=await fetch('/members/our-picks-price-list.bin',{cache:'no-store'});if(!res.ok)throw new Error('file');
 const buf=new Uint8Array(await res.arrayBuffer());
 const salt=buf.slice(0,16),iv=buf.slice(16,28),data=buf.slice(28);
 const base=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']);

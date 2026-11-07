@@ -272,3 +272,6 @@
 
 # Company profile PDF replaced (address corrected)
 /downloads/Solar-ESS-Company-Profile-2026_Rev07_20261030.pdf  /downloads/Solar-ESS-Company-Profile-2026_Rev08_20261107.pdf  301
+
+# Function source (keys, question banks) is never served as a static file.
+/netlify/*         /404.html                 404!

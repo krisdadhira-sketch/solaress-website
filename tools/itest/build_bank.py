@@ -20,7 +20,7 @@ LEVELS = [(1, "Solar Enterer", "ผู้เริ่มต้นเข้าส
           (4, "Solar Professional", "มืออาชีพด้านโซลาร์"), (5, "Solar Expert", "ผู้เชี่ยวชาญด้านโซลาร์")]
 # index in the 100-question list (A 0–49, B 50–69, C 70–89, D 90–99) -> level 1–4
 ASSIGN = {1: [0, 1, 2, 3, 9, 12, 13, 19, 23, 25, 46, 47, 50, 51, 52, 56, 57, 76, 77, 82, 84, 89, 90, 91, 99],
-          2: [7, 8, 14, 31, 33, 38, 44, 48, 54, 58, 64, 70, 71, 74, 92, 95, 97],
+          2: [7, 8, 14, 31, 33, 38, 44, 48, 54, 58, 60, 64, 70, 71, 74, 92, 95, 97],
           3: [4, 6, 17, 18, 24, 27, 35, 36, 39, 40, 43, 45, 49, 61, 62, 63, 72, 93, 96],
           4: [5, 10, 16, 21, 22, 26, 28, 29, 32, 37, 41, 42, 68, 69, 78, 80, 85, 87, 88, 94, 98]}
 base = [("A",) + q for q in A] + [("B",) + q for q in B] + [("C",) + q for q in C] + [("D",) + q for q in D]
@@ -28,6 +28,7 @@ base = [("A",) + q for q in A] + [("B",) + q for q in B] + [("C",) + q for q in 
 # (22, 26) moved 2 -> 4; Sigenergy and Solis brand questions moved 3 -> 2.
 # Datasheet/site questions (questions_ds.py) replaced 20, 34, 65 (L2), 30, 53, 66, 79 (L3), 11, 15, 67, 73 (L4).
 # Nov 2026: the Sigenergy '5-in-1' question left Level 2 for the Sigenergy brand set (questions_brands.SIGENERGY); 58 came back in its place.
+# Nov 2026: the Enphase microinverter question left Level 2 for the Enphase brand set (questions_brands.ENPHASE); 60 came back in its place.
 # 55, 58, 59, 60, 75, 81, 83, 86 were retired to make room for the brand questions (levels 2–3)
 EXTRA = {2: BRANDS2 + DS2, 3: BRANDS3 + DS3, 4: DS4}
 used = sum(ASSIGN.values(), [])

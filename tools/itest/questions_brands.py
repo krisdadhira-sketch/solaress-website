@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """Brand questions: what makes each panel / inverter brand Solar ESS installs different.
-BRANDS2 (5, product knowledge) go into Level 2, BRANDS3 (2, used in diagnosis and wiring) into Level 3. Same format as questions_e.py: (section, th, en, [correct, wrong x3], explanation).
+BRANDS2 (4, product knowledge) go into Level 2, BRANDS3 (2, used in diagnosis and wiring) into Level 3. Same format as questions_e.py: (section, th, en, [correct, wrong x3], explanation).
 Facts checked against maker datasheets and press releases (Nov 2026). Never name the equipment supplier here."""
 
 BRANDS2 = [
@@ -20,14 +20,6 @@ BRANDS2 = [
   ("ต้องติดออปติไมเซอร์ทุกแผงจึงจะใช้งานได้", "It only works with an optimiser on every panel"),
   ("เงาไม่มีผลใดๆ เลย ผลิตไฟได้เต็ม 100%", "Shade has no effect at all; it still gives 100% power")],
  "ABC = All Back Contact. AIKO's Gen 2 ABC panels add a partial-shading optimisation; a TÜV Nord test with one cell fully shaded showed about 30% more power than conventional panels. Shade still costs energy."),
-("A", "ระบบ Enphase แตกต่างจากอินเวอร์เตอร์แบบสตริงอย่างไร",
- "How does an Enphase system differ from a string inverter system?",
- [("ใช้ไมโครอินเวอร์เตอร์ 1 ตัวต่อแผง แปลงเป็นไฟ AC ที่แผงเลย ไม่มีสาย DC แรงดันสูงบนหลังคา และแผงหนึ่งเสียไม่ทำให้แผงอื่นหยุด",
-   "One microinverter per panel converts to AC at the panel: no high-voltage DC on the roof, and one faulty panel does not stop the others"),
-  ("ใช้อินเวอร์เตอร์ตัวเดียวต่อสตริงยาว 1,000 V", "It uses one inverter on a long 1,000 V string"),
-  ("ต้องมีแบตเตอรี่เสมอจึงจะผลิตไฟได้", "It always needs a battery to produce power"),
-  ("ไม่มีระบบมอนิเตอร์รายแผง", "It has no per-panel monitoring")],
- "Microinverters work panel by panel, so each panel has its own MPPT and monitoring, and roof wiring is low-voltage AC."),
 ("A", "ฟังก์ชัน SafeDC ของ SolarEdge ทำอะไรเมื่อปิดอินเวอร์เตอร์หรือไฟ AC ดับ",
  "What does SolarEdge's SafeDC function do when the inverter or AC supply is switched off?",
  [("ออปติไมเซอร์แต่ละตัวลดแรงดันออกเหลือประมาณ 1 V ต่อแผง สาย DC จึงปลอดภัยต่อการสัมผัส",
@@ -71,4 +63,15 @@ SIGENERGY = [
   ("มิเตอร์ 5 ตัวสำหรับ 5 เฟส", "Five meters for five phases"),
   ("อินเวอร์เตอร์ 5 ตัวต่อขนาน", "Five inverters in parallel")],
  "Fewer separate boxes means a cleaner install. The battery modules stack, so capacity can be added later."),
+]
+
+ENPHASE = [
+("A", "ระบบ Enphase แตกต่างจากอินเวอร์เตอร์แบบสตริงอย่างไร",
+ "How does an Enphase system differ from a string inverter system?",
+ [("ใช้ไมโครอินเวอร์เตอร์ 1 ตัวต่อแผง แปลงเป็นไฟ AC ที่แผงเลย ไม่มีสาย DC แรงดันสูงบนหลังคา และแผงหนึ่งเสียไม่ทำให้แผงอื่นหยุด",
+   "One microinverter per panel converts to AC at the panel: no high-voltage DC on the roof, and one faulty panel does not stop the others"),
+  ("ใช้อินเวอร์เตอร์ตัวเดียวต่อสตริงยาว 1,000 V", "It uses one inverter on a long 1,000 V string"),
+  ("ต้องมีแบตเตอรี่เสมอจึงจะผลิตไฟได้", "It always needs a battery to produce power"),
+  ("ไม่มีระบบมอนิเตอร์รายแผง", "It has no per-panel monitoring")],
+ "Microinverters work panel by panel, so each panel has its own MPPT and monitoring, and roof wiring is low-voltage AC."),
 ]

@@ -11,11 +11,13 @@ from questions_bcd import B, C, D
 from questions_e import E
 from questions_brands import BRANDS2, BRANDS3
 from questions_ds import DS2, DS3, DS4
+from questions_products import PRODUCTS
 
 SECTIONS = [("A", "ไฟฟ้าในระบบโซลาร์: สาย เบรกเกอร์ อินเวอร์เตอร์ แผง อนุกรม/ขนาน", "Solar electrical: cables, breakers, inverters, panels, series/parallel"),
             ("B", "การเดินสายและชนิดสายไฟ", "Wiring methods and cable types"),
             ("C", "โครงสร้าง แรงลม และการติดตั้งแผง", "Mounting, wind load and panel installation"),
-            ("D", "ความต้องการและความพึงพอใจของลูกค้า", "Customer needs and satisfaction")]
+            ("D", "ความต้องการและความพึงพอใจของลูกค้า", "Customer needs and satisfaction"),
+            ("P", "แบรนด์และผลิตภัณฑ์", "Brands and products")]
 LEVELS = [(1, "Solar Enterer", "ผู้เริ่มต้นเข้าสู่โซลาร์"), (2, "Solar Enthusiast", "ผู้สนใจโซลาร์"), (3, "Solar in Practice", "ผู้ปฏิบัติงานโซลาร์"),
           (4, "Solar Professional", "มืออาชีพด้านโซลาร์"), (5, "Solar Expert", "ผู้เชี่ยวชาญด้านโซลาร์")]
 # index in the 100-question list (A 0–49, B 50–69, C 70–89, D 90–99) -> level 1–4
@@ -39,6 +41,8 @@ rnd = random.Random(20261106)
 out = {"pass_pct": 100, "work_level": 3,
        "sections": [{"id": s, "th": th, "en": en} for s, th, en in SECTIONS],
        "levels": [{"n": n, "en": en, "th": th, "count": 25} for n, en, th in LEVELS],
+       # Brand & Product Test (Nov 2026): tests 11-15, outside the level ladder
+       "products": [{"n": n, "key": k, "en": en, "th": th, "sub_en": se, "sub_th": st, "count": len(q), "group_en": "Brand & Product Test", "group_th": "แบบทดสอบแบรนด์และผลิตภัณฑ์"} for n, k, en, th, q, se, st in PRODUCTS],
        "questions": []}
 
 def add(level, sec, th, en, opts, expl):
@@ -56,6 +60,10 @@ for lv in (1, 2, 3, 4):
 e = E[:]; rnd.shuffle(e)
 for q in e:
     add(5, *q)
+for n, k, en, th, qs, *_ in PRODUCTS:
+    qs = qs[:]; rnd.shuffle(qs)
+    for q in qs:
+        add(n, *q)
 Path("netlify/functions/itest/bank.json").write_text(json.dumps(out, ensure_ascii=False, indent=0), encoding="utf-8")
 from collections import Counter
 print(len(out["questions"]), "questions", Counter(q["level"] for q in out["questions"]), Counter((q["level"], q["sec"]) for q in out["questions"]))

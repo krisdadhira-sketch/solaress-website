@@ -73,7 +73,7 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
 var TIERS={1:['BRONZE','#B9773A','#F2C9A0','#6E3F16'],2:['SILVER','#9AA3B2','#F1F4F8','#4E5666'],3:['GOLD','#C9A227','#F6E7A8','#7E5F0E'],
  4:['PLATINUM','#8E9BB8','#EEF2FB','#3D4A6B'],5:['DIAMOND','#6D5BD0','#E3DEFF','#2E2580']};
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
-function needReg(d){document.getElementById('c').innerHTML='<div class="msg"><h2>One step left: get your certificate</h2><p>Level '+d.level+' · '+esc(d.title_en)+' · '+d.pct+'% · '+esc(d.id)+'</p><p>You scored 100%. Register free in one minute and your certificate opens straight away.</p><p>คุณได้คะแนน 100% ลงทะเบียนฟรีใน 1 นาที แล้วใบประกาศจะเปิดทันที</p><p><a class="rb" href="/join.html?cert='+encodeURIComponent(d.id)+'">Get my certificate</a> <a class="rb g" href="/th/join.html?cert='+encodeURIComponent(d.id)+'">รับใบประกาศ (ภาษาไทย)</a></p></div>'}
+function needReg(d){document.getElementById('c').innerHTML='<div class="msg"><h2>One step left: get your certificate</h2><p>'+(d.product?'':'Level '+d.level+' · ')+esc(d.title_en)+' · '+d.pct+'% · '+esc(d.id)+'</p><p>You scored 100%. Register free in one minute and your certificate opens straight away.</p><p>คุณได้คะแนน 100% ลงทะเบียนฟรีใน 1 นาที แล้วใบประกาศจะเปิดทันที</p><p><a class="rb" href="/join.html?cert='+encodeURIComponent(d.id)+'">Get my certificate</a> <a class="rb g" href="/th/join.html?cert='+encodeURIComponent(d.id)+'">รับใบประกาศ (ภาษาไทย)</a></p></div>'}
 function bad(r){if(r==='reg')return;document.getElementById('c').innerHTML='<div class="msg"><h2>Certificate not found</h2><p>ไม่พบใบประกาศเลขที่นี้</p><p>'+esc(id)+'</p></div>'}
 // guilloche: spirograph-style closed curve
 function rose(cx,cy,R,r,d,turns,steps){var p='';for(var i=0;i<=steps;i++){var t=i/steps*Math.PI*2*turns,x=cx+(R-r)*Math.cos(t)+d*Math.cos((R-r)/r*t),y=cy+(R-r)*Math.sin(t)-d*Math.sin((R-r)/r*t);p+=(i?'L':'M')+x.toFixed(1)+' '+y.toFixed(1)}return p}
@@ -111,9 +111,9 @@ function fmt(iso,loc){return new Date(iso).toLocaleDateString(loc,{day:'numeric'
 function fit(){var el=document.querySelector('.cert');if(el)el.style.zoom=Math.min(1,(innerWidth-32)/1123)}
 if(!id){bad();return}
 fetch('/api/itest?a=cert&id='+encodeURIComponent(id)).then(function(r){return r.json().then(function(d){if(r.status===403&&d.error==='register'){needReg(d);return Promise.reject('reg')}return r.ok?d:Promise.reject()})}).then(function(c){
- var T=TIERS[c.level]||TIERS[1],url='https://solaress.org/certificate.html?id='+c.id;
+ var T=TIERS[c.product?3:c.level]||TIERS[1],url='https://solaress.org/certificate.html?id='+c.id;
  if(!c.validFrom){c.validFrom=c.date;var u=new Date(c.date);u.setFullYear(u.getFullYear()+1);u.setDate(u.getDate()-1);c.validUntil=u.toISOString()}
- document.title=c.name+' · Level '+c.level+' '+c.title_en+' | Solar ESS Certificate';
+ var LV=c.product?'':'Level '+c.level+' · ',LVT=c.product?'':'ระดับ '+c.level+' · ';document.title=c.name+' · '+LV+c.title_en+' | Solar ESS Certificate';
  var ok=document.getElementById('okv');ok.hidden=false;if(c.valid===false){ok.style.color='#B42318';ok.textContent='✕ Expired on '+fmt(c.validUntil,'en-GB')+' · หมดอายุแล้ว'}else{ok.textContent='✓ Verified by Solar ESS · valid until '+fmt(c.validUntil,'en-GB')+' · ตรวจสอบแล้ว'}
  document.getElementById('c').innerHTML='<div class="cert" style="--m1:'+T[1]+';--m2:'+T[2]+';--m3:'+T[3]+'">'+frame(T)
  +'<div class="paper">'+bg(T)+'<img class="wm" src="'+LOGO+'" alt=""><div class="in">'
@@ -121,10 +121,10 @@ fetch('/api/itest?a=cert&id='+encodeURIComponent(id)).then(function(r){return r.
  +'<div class="mid"><div class="k">CERTIFICATE OF ACHIEVEMENT</div><h1>Practical Solar Installation</h1><div class="h1t">ใบประกาศนียบัตร การติดตั้งระบบโซลาร์ภาคปฏิบัติ</div>'
  +'<svg class="rule" viewBox="0 0 420 12"><path d="M0 6H180M240 6H420" stroke="'+T[1]+'" stroke-width="1"/><path d="M210 0 216 6 210 12 204 6Z" fill="'+T[1]+'"/><circle cx="192" cy="6" r="2" fill="'+T[1]+'"/><circle cx="228" cy="6" r="2" fill="'+T[1]+'"/></svg>'
  +'<div class="cer">This is to certify that <span>· ขอมอบใบประกาศนียบัตรนี้เพื่อแสดงว่า</span></div><div class="nm">'+esc(c.name)+'</div>'
- +'<div class="has">has successfully passed the Solar ESS installer examination at <span>· ได้สอบผ่านการทดสอบช่างติดตั้งโซลาร์ ระดับ</span></div>'
- +'<div class="ttl">LEVEL '+c.level+' · '+esc(c.title_en.toUpperCase())+'</div><div class="ttlt">ระดับ '+c.level+' · '+esc(c.title_th)+'</div>'
- +'<div class="tier">'+T[0]+' TIER</div>'+(c.work?'<div class="work">✓ ACCEPTED FOR SOLAR ESS INSTALLATION WORK · <span>ผ่านเกณฑ์รับงานติดตั้งกับ Solar ESS</span></div>':'')+'</div>'
- +seal(T,c.level)
+ +'<div class="has">has successfully passed the Solar ESS '+(c.product?'examination':'installer examination at')+' <span>· '+(c.product?'ได้สอบผ่านการทดสอบของ Solar ESS':'ได้สอบผ่านการทดสอบช่างติดตั้งโซลาร์ ระดับ')+'</span></div>'
+ +'<div class="ttl">'+LV.toUpperCase()+esc(c.title_en.toUpperCase())+'</div><div class="ttlt">'+LVT+esc(c.title_th)+'</div>'
+ +(c.product?'':'<div class="tier">'+T[0]+' TIER</div>')+(c.work?'<div class="work">✓ ACCEPTED FOR SOLAR ESS INSTALLATION WORK · <span>ผ่านเกณฑ์รับงานติดตั้งกับ Solar ESS</span></div>':'')+'</div>'
+ +seal(T,c.product?3:c.level)
  +'<div class="meta"><div>SCORE · <i>คะแนน</i><b>'+c.score+' / '+c.total+' ('+c.pct+'%)</b></div><div>VALID FROM – TO · <i>มีอายุตั้งแต่ – ถึง</i><b>'+esc(fmt(c.validFrom,'en-GB'))+' – '+esc(fmt(c.validUntil,'en-GB'))+'</b><i>'+esc(fmt(c.validFrom,'th-TH'))+' – '+esc(fmt(c.validUntil,'th-TH'))+'</i></div><div>CERTIFICATE NO. · <i>เลขที่</i><b>'+esc(c.id)+'</b></div></div>'
  +'<div class="iss"><div class="ln"></div>Issued by · ออกโดย<br><b>Solar ESS Co. Ltd. · Solar ESS Working Group</b></div>'
  +'<div class="qr"><div class="box">'+qr(url)+'</div><b>Scan to verify · สแกนเพื่อตรวจสอบ</b></div>'

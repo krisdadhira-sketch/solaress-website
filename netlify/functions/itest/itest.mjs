@@ -1,4 +1,5 @@
-// Solar ESS installer test (www.solaress.org/installer-test): 5 levels x 25 questions, Thai + English.
+// Solar ESS installer test (www.solaress.org/installer-test): 5 levels x 25 questions, Thai + English,
+// plus the Brand & Product Test (tests 11-15: Inverter, PV Modules, Battery, Cable, Breakers; 15 questions each).
 //   Level 1 Solar Enterer · 2 Solar Enthusiast · 3 Solar in Practice · 4 Solar Professional · 5 Solar Expert
 // Rules (Nov 2026): anyone can take any level and see their score; only name and phone are required.
 // Pass = 100% (25/25); only a pass issues a certificate number. To open or download the certificate
@@ -54,7 +55,13 @@ function normPhone(v) {
 }
 const store = () => getStore({ name: "itest", consistency: "strong" });
 const LEVELS = bank.levels;
-const levelInfo = (n) => LEVELS.find((l) => l.n === n);
+const PRODUCTS = bank.products || [];          // Brand & Product Test (tests 11-15), outside the level ladder
+const ALL = LEVELS.concat(PRODUCTS);
+const levelInfo = (n) => ALL.find((l) => l.n === n);
+const isProduct = (n) => PRODUCTS.some((p) => p.n === n);
+// Certificate titles: levels "Solar in Practice"; product tests "Brand & Product Test · Inverter"
+const titleEn = (l) => isProduct(l.n) ? `${l.group_en} · ${l.en}` : l.en;
+const titleTh = (l) => isProduct(l.n) ? `${l.group_th} · ${l.th}` : l.th;
 const qsOf = (n) => bank.questions.map((q, i) => ({ ...q, i })).filter((q) => q.level === n);
 
 async function list(s, prefix) {
@@ -113,7 +120,7 @@ export default async (req) => {
     const { passed, ever, expired, wait } = await history(s, phone, normEmail(b.email));
     let next = 1; while (ever[next] && next < 5) next++;
     if (ever[5]) next = null;
-    return json({ registered: !!reg, regType: reg && reg.type, regName: reg ? reg.name : "", passed, ever, expired, wait, retakeDays: RETAKE_DAYS, next, levels: LEVELS, pass: PASS_PCT, workLevel: WORK_LEVEL });
+    return json({ registered: !!reg, regType: reg && reg.type, regName: reg ? reg.name : "", passed, ever, expired, wait, retakeDays: RETAKE_DAYS, next, levels: LEVELS, products: PRODUCTS, pass: PASS_PCT, workLevel: WORK_LEVEL });
   }
 
   if (a === "start" && req.method === "POST") {
@@ -155,7 +162,7 @@ export default async (req) => {
     const created = new Date().toISOString();
     let cert = null;
     if (pass) {
-      cert = "SESS-L" + level + "-" + crypto.randomBytes(4).toString("hex").toUpperCase();
+      cert = (isProduct(level) ? "SESS-P" : "SESS-L") + level + "-" + crypto.randomBytes(4).toString("hex").toUpperCase();
       await s.setJSON("cert/" + cert, { id: cert, name, level, pct, score, total, date: created, attempt: id, phone, needReg: true });
     }
     await s.setJSON("att/" + id, { id, created, level, name, phone, email, province: txt(b.province), team,
@@ -188,12 +195,12 @@ export default async (req) => {
     const l = levelInfo(c.level);
     // New certificates open only once the test phone is registered (TSIA member or Installer Partner).
     // (any status except rejected/hidden: registering on /join.html opens the certificate at once; Kris still approves the profile).
-    if (c.needReg && !(await registration(c.phone))) return json({ error: "register", id: c.id, level: c.level, title_en: l.en, title_th: l.th, pct: c.pct }, 403);
-    return json({ id: c.id, name: c.name, level: c.level, title_en: l.en, title_th: l.th, pct: c.pct, score: c.score, total: c.total, date: c.date, validFrom: c.date, validUntil: validUntil(c.date), valid: isValid(c.date), work: c.level >= WORK_LEVEL });
+    if (c.needReg && !(await registration(c.phone))) return json({ error: "register", id: c.id, level: c.level, product: isProduct(c.level), title_en: titleEn(l), title_th: titleTh(l), pct: c.pct }, 403);
+    return json({ id: c.id, name: c.name, level: c.level, product: isProduct(c.level), title_en: titleEn(l), title_th: titleTh(l), pct: c.pct, score: c.score, total: c.total, date: c.date, validFrom: c.date, validUntil: validUntil(c.date), valid: isValid(c.date), work: !isProduct(c.level) && c.level >= WORK_LEVEL });
   }
 
   if (!isAdmin(req)) return json({ error: "Admin password is not right." }, 401);
-  if (a === "list") return json({ attempts: (await list(s, "att/")).map(summary), sections: bank.sections, levels: LEVELS, pass: PASS_PCT });
+  if (a === "list") return json({ attempts: (await list(s, "att/")).map(summary), sections: bank.sections, levels: ALL, pass: PASS_PCT });
   if (a === "attempt") {
     const att = await s.get("att/" + cleanId(u.searchParams.get("id")), { type: "json" });
     if (!att) return json({ error: "not found" }, 404);

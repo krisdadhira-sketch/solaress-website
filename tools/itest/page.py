@@ -24,9 +24,10 @@ T = {
     qof="Question", answered="answered", submit="Submit my answers", sending="Checking your answers…",
     unanswered="You have {n} unanswered questions. Submit anyway?", fail="Sending failed. Please try again.",
     r_h="Your result", r_pass="Passed", r_fail="Not passed yet", next="Go to Level {n}",
-    r_cert="Your certificate number is {id}.", r_retry="A certificate needs 100% (25/25). Study the topics; you can take this level again from {d}.", r_work="This level is accepted for Solar ESS installation work.", r_reg="One step left: register free in one minute and your certificate opens straight away.",
+    r_cert="Your certificate number is {id}.", r_retry="A certificate needs 100% ({t}/{t}). Study the topics; you can take this test again from {d}.", r_work="This level is accepted for Solar ESS installation work.", r_reg="One step left: register free in one minute and your certificate opens straight away.",
     back="Back to my levels", loading="Loading…", e_prereq="Please pass Level {n} first.", e_reg="Please register as TSIA member or installer partner first.",
-    q_s="questions", lv="Level"),
+    q_s="questions", lv="Level",
+    p_h="Brand & Product Test", p_lede="Product knowledge tests on what we install: inverters, PV modules, batteries, cables and breakers. 15 questions each, open to everyone, same rules: 100% for a certificate valid 1 year.", start_p="Start test"),
 "th": dict(pre="/th", title="แบบทดสอบช่างโซลาร์ 5 ระดับ พร้อมใบประกาศ | Solar ESS",
     desc="แบบทดสอบการติดตั้งโซลาร์ภาคปฏิบัติ 5 ระดับ ตั้งแต่ Solar Enterer ถึง Solar Expert ระดับละ 25 ข้อ ภาษาไทยและอังกฤษ ได้ 100% รับใบประกาศของแต่ละระดับ",
     eyebrow="แบบทดสอบโซลาร์ · Solar Test", h1="แบบทดสอบการติดตั้งโซลาร์ภาคปฏิบัติ",
@@ -41,9 +42,10 @@ T = {
     qof="ข้อ", answered="ตอบแล้ว", submit="ส่งคำตอบ", sending="กำลังตรวจคำตอบ…",
     unanswered="ยังไม่ได้ตอบ {n} ข้อ ต้องการส่งเลยหรือไม่", fail="ส่งไม่สำเร็จ กรุณาลองอีกครั้ง",
     r_h="ผลการทดสอบ", r_pass="ผ่าน", r_fail="ยังไม่ผ่าน", next="ไประดับ {n}",
-    r_cert="เลขที่ใบประกาศของคุณ: {id}", r_retry="ต้องได้ 100% (25/25) จึงจะได้ใบประกาศ ทบทวนเนื้อหาแล้วสอบระดับนี้ใหม่ได้ตั้งแต่ {d}", r_work="ระดับนี้ผ่านเกณฑ์รับงานติดตั้งกับ Solar ESS", r_reg="อีกขั้นเดียว: ลงทะเบียนฟรีใน 1 นาที แล้วใบประกาศจะเปิดทันที",
+    r_cert="เลขที่ใบประกาศของคุณ: {id}", r_retry="ต้องได้ 100% ({t}/{t}) จึงจะได้ใบประกาศ ทบทวนเนื้อหาแล้วสอบใหม่ได้ตั้งแต่ {d}", r_work="ระดับนี้ผ่านเกณฑ์รับงานติดตั้งกับ Solar ESS", r_reg="อีกขั้นเดียว: ลงทะเบียนฟรีใน 1 นาที แล้วใบประกาศจะเปิดทันที",
     back="กลับไปหน้าระดับของฉัน", loading="กำลังโหลด…", e_prereq="กรุณาสอบผ่านระดับ {n} ก่อน", e_reg="กรุณาลงทะเบียนสมาชิก TSIA หรือทีมช่างพันธมิตรก่อน",
-    q_s="ข้อ", lv="ระดับ"),
+    q_s="ข้อ", lv="ระดับ",
+    p_h="แบบทดสอบแบรนด์และผลิตภัณฑ์", p_lede="แบบทดสอบความรู้ผลิตภัณฑ์ที่เราติดตั้ง ได้แก่ อินเวอร์เตอร์ แผงโซลาร์เซลล์ แบตเตอรี่ สายไฟ และเบรกเกอร์ ชุดละ 15 ข้อ ทุกคนทำได้ ใช้กติกาเดียวกัน คือได้ 100% รับใบประกาศอายุ 1 ปี", start_p="เริ่มทำแบบทดสอบ"),
 }
 
 CSS = """<style id="itest-css">
@@ -107,11 +109,13 @@ def build(lang):
     head = head.replace("</head>", CSS + "\n</head>", 1)
     wl = bank.get("work_level", 3)
     lad = "".join(f'<div><span>{esc(t["lv"])} {l["n"]}</span><b>{esc(l["en"])}</b>{esc(l["th"])}' + (f'<br><em>{esc(t["work_s"])}</em>' if l["n"] >= wl else "") + '</div>' for l in bank["levels"])
+    prod = "".join(f'<div><span>{esc(t["p_h"])}</span><b>{esc(p["th"] if th else p["en"])}</b>{esc(p["sub_th"] if th else p["sub_en"])}<br><em style="color:var(--mute)">{p["count"]} {esc(t["q_s"])}</em></div>' for p in bank.get("products", []))
     body = (
         f'<section class="dark band" style="padding-block:64px"><div class="wrap"><p class="eyebrow">{esc(t["eyebrow"])}</p>'
         f'<h1 style="font-size:clamp(34px,5.5vw,60px)">{esc(t["h1"])}</h1><p class="lede" style="margin-top:18px">{esc(t["lede"])}</p></div></section>\n'
         f'<section class="band light" style="padding-block:40px"><div class="wrap itw">'
         f'<h3>{esc(t["ladder"])}</h3><div class="itlad">{lad}</div>'
+        f'<h3 style="margin-top:22px">{esc(t["p_h"])}</h3><p class="fine" style="margin:4px 0 0">{esc(t["p_lede"])}</p><div class="itlad">{prod}</div>'
         f'<form id="it-who" class="itbox" novalidate><h3 style="margin:0">{esc(t["s1"])}</h3>'
         f'<div class="two"><label>{esc(t["name"])} *<input id="it-name" required autocomplete="name"></label><label>{esc(t["phone"])} *<input id="it-phone" type="tel" required autocomplete="tel"></label></div>'
         f'<div class="two"><label>{esc(t["email"])}<input id="it-email" type="email" autocomplete="email"></label><label>{esc(t["team"])}<input id="it-team" autocomplete="organization"></label></div>'
@@ -125,24 +129,29 @@ def build(lang):
         f'<div id="it-res" hidden></div>'
         f'</div></section>\n')
     keys = ["req", "bademail", "reg_ok", "st_pass", "st_open", "st_lock", "lock_need", "start", "retake", "cert", "qof", "answered", "submit",
-            "sending", "unanswered", "fail", "r_h", "r_pass", "r_fail", "next", "r_cert", "r_retry", "back", "loading", "e_prereq", "e_reg", "q_s", "lv", "work", "work_s", "reg_need", "r_work", "r_reg", "wait", "e_wait", "e_passed", "e_expired", "expired", "valid", "r_valid"]
+            "sending", "unanswered", "fail", "r_h", "r_pass", "r_fail", "next", "r_cert", "r_retry", "back", "loading", "e_prereq", "e_reg", "q_s", "lv", "work", "work_s", "reg_need", "r_work", "r_reg", "wait", "e_wait", "e_passed", "e_expired", "expired", "valid", "r_valid", "p_h", "p_lede", "start_p"]
     L = {k: t[k] for k in keys}
     L["lang"] = "Thai" if th else "English"
     L["th"] = th
     script = "<script>window.IT_T=" + json.dumps(L, ensure_ascii=False) + ";</script>\n" + r"""<script>
 (function(){var T=window.IT_T,$=function(i){return document.getElementById(i)},sid='',Q=[],S=[],ans=[],t0=0,who={},st=null,cur=0;
-var want=parseInt(new URLSearchParams(location.search).get('level'),10)||0;
+var qp=new URLSearchParams(location.search),want=parseInt(qp.get('level'),10)||0,wantKey=qp.get('test')||'';
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 function f(s,o){return s.replace(/\{(\w+)\}/g,function(m,k){return o[k]})}
 function go(el){window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-90,behavior:'smooth'})}
 function post(a,b){return fetch('/api/itest?a='+a,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(b)}).then(function(r){return r.json().then(function(d){d._s=r.status;return d})})}
 function dt(iso){try{return new Date(iso).toLocaleDateString(T.th?'th-TH':'en-GB',{day:'numeric',month:'long',year:'numeric'})}catch(x){return iso}}
 function lvName(l){return T.th?l.th+' · '+l.en:l.en+' · '+l.th}
+function isP(l){return !!(l&&l.key)}
+function lvTag(l){return isP(l)?T.p_h:T.lv+' '+l.n}
 try{var sv=JSON.parse(localStorage.getItem('itest-who')||'null');if(sv){['name','phone','email','team','prov'].forEach(function(k){if(sv[k])$('it-'+k).value=sv[k]})}}catch(x){}
-function cards(){var h='';st.levels.forEach(function(l){var E=st.ever||st.passed,c=st.passed[l.n],x=(st.expired||{})[l.n],w=(st.wait||{})[l.n],open=!c,why='';if(open&&w){open=false;why=f(T.wait,{d:dt(w)})}var cls=c?'pass':open?'':'lock',stt=c?T.st_pass:open?(x?T.expired:T.st_open):why;
-  h+='<div class="itcard '+cls+(want===l.n?' focus':'')+'" id="lv'+l.n+'"><div class="t"><span class="tag">'+esc(T.lv+' '+l.n)+'</span><b>'+esc(lvName(l))+'</b><small>25 '+esc(T.q_s)+' · '+esc(stt)+'</small>'+(l.n>=(st.workLevel||3)?'<em>'+esc(T.work_s)+'</em>':'')+'</div><div class="act">'
+function card(l){var h='';var E=st.ever||st.passed,c=st.passed[l.n],x=(st.expired||{})[l.n],w=(st.wait||{})[l.n],open=!c,why='';if(open&&w){open=false;why=f(T.wait,{d:dt(w)})}var cls=c?'pass':open?'':'lock',stt=c?T.st_pass:open?(x?T.expired:T.st_open):why;
+  h+='<div class="itcard '+cls+(want===l.n?' focus':'')+'" id="lv'+l.n+'"><div class="t"><span class="tag">'+esc(lvTag(l))+'</span><b>'+esc(lvName(l))+'</b><small>'+(isP(l)?esc(T.th?l.sub_th:l.sub_en)+'<br>':'')+(l.count||25)+' '+esc(T.q_s)+' · '+esc(stt)+'</small>'+(!isP(l)&&l.n>=(st.workLevel||3)?'<em>'+esc(T.work_s)+'</em>':'')+'</div><div class="act">'
   +((c||x)&&!open?'<a class="btn ghost" href="/certificate.html?id='+encodeURIComponent(c||x)+'">'+esc(T.cert)+'</a>':'')+(c?''
-    :open?'<button class="btn" data-go="'+l.n+'" type="button">'+esc(f(T.start,{n:l.n}))+'</button>':'')+'</div></div>'});
+    :open?'<button class="btn" data-go="'+l.n+'" type="button">'+esc(isP(l)?T.start_p:f(T.start,{n:l.n}))+'</button>':'')+'</div></div>';return h}
+function cards(){if(wantKey&&st.products){st.products.forEach(function(p){if(p.key===wantKey)want=p.n})}
+ var h='';st.levels.forEach(function(l){h+=card(l)});
+ if(st.products&&st.products.length){h+='<h3 style="margin:22px 0 0">'+esc(T.p_h)+'</h3><p class="fine" style="margin:0">'+esc(T.p_lede)+'</p>';st.products.forEach(function(p){h+=card(p)})}
  $('it-lv').innerHTML=(st.registered?'<p class="fine" style="margin:0">✓ '+esc(T.reg_ok)+(st.regName?' · '+esc(st.regName):'')+'</p>':'')+h;$('it-lv').hidden=false;
  var tgt=$('lv'+(want||st.next||1));if(tgt)go(tgt)}
 function status(){var b=$('it-check');b.disabled=true;
@@ -155,7 +164,7 @@ $('it-who').addEventListener('submit',function(e){e.preventDefault();
  $('it-req').textContent='';try{localStorage.setItem('itest-who',JSON.stringify({name:who.name,phone:who.phone,email:who.email,team:who.team,prov:who.province}))}catch(x){}
  status()});
 function count(){var n=ans.filter(function(v){return v!==null}).length;$('it-count').textContent=n+' / '+Q.length+' '+T.answered}
-function render(lvl){var h='<div class="itlvh">'+esc(T.lv+' '+lvl.n+' · '+lvName(lvl))+'</div>';Q.forEach(function(q){
+function render(lvl){var h='<div class="itlvh">'+esc(lvTag(lvl)+' · '+lvName(lvl))+'</div>';Q.forEach(function(q){
  h+='<div class="itq" id="q'+q.i+'"><div class="n">'+esc(T.qof+' '+(q.i+1)+' / '+Q.length)+'</div><p class="th">'+esc(q.th)+'</p><p class="en">'+esc(q.en)+'</p>'
  +q.options.map(function(o,k){return '<label class="op"><input type="radio" name="q'+q.i+'" value="'+k+'"><span>'+esc(o.th)+(o.en!==o.th?'<small>'+esc(o.en)+'</small>':'')+'</span></label>'}).join('')+'</div>'});
  $('it-qs').innerHTML=h;$('it-qs').hidden=false;$('it-bar').hidden=false;document.body.classList.add('it-on');count()}
@@ -176,7 +185,7 @@ $('it-send').addEventListener('click',function(){var miss=ans.filter(function(v)
   var acts='';if(r.pass){acts+='<a class="btn" href="/certificate.html?id='+encodeURIComponent(r.cert)+'">'+esc(T.cert)+'</a> ';if(cur<5&&!st.passed[cur+1])acts+='<button class="btn ghost" type="button" data-next="'+(cur+1)+'">'+esc(f(T.next,{n:cur+1}))+'</button> '}
   acts+='<button class="btn ghost" type="button" data-next="0">'+esc(T.back)+'</button>';
   $('it-qs').hidden=true;$('it-bar').hidden=true;document.body.classList.remove('it-on');$('it-res').hidden=false;
-  $('it-res').innerHTML='<div class="itres"><h3 style="margin:0">'+esc(T.r_h+' · '+T.lv+' '+cur+' '+lvName(r.level))+'</h3><div class="big">'+r.score+' / '+r.total+' <span class="'+(r.pass?'ok':'no')+'" style="font-size:24px">('+r.pct+'% · '+esc(r.pass?T.r_pass:T.r_fail)+')</span></div><table>'+rows+'</table><p style="margin-top:12px">'+esc(r.pass?f(T.r_cert,{id:r.cert})+' '+f(T.r_valid,{a:dt(r.validFrom),b:dt(r.validUntil)}):f(T.r_retry,{d:dt(st.wait[cur])}))+'</p>'+(r.pass&&cur>=(st.workLevel||3)?'<p style="color:#15803D;font-weight:700">✓ '+esc(T.r_work)+'</p>':'')+(r.pass&&!r.registered?'<p>'+esc(T.r_reg)+'</p><p><a class="btn" href="'+(T.th?'/th':'')+'/join.html?cert='+encodeURIComponent(r.cert)+'&phone='+encodeURIComponent(who.phone)+'&name='+encodeURIComponent(who.team||who.name)+'">'+esc(T.reg_need)+'</a></p>':'')+'<div class="act" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">'+acts+'</div></div>';
+  $('it-res').innerHTML='<div class="itres"><h3 style="margin:0">'+esc(T.r_h+' · '+lvTag(r.level)+' · '+lvName(r.level))+'</h3><div class="big">'+r.score+' / '+r.total+' <span class="'+(r.pass?'ok':'no')+'" style="font-size:24px">('+r.pct+'% · '+esc(r.pass?T.r_pass:T.r_fail)+')</span></div><table>'+rows+'</table><p style="margin-top:12px">'+esc(r.pass?f(T.r_cert,{id:r.cert})+' '+f(T.r_valid,{a:dt(r.validFrom),b:dt(r.validUntil)}):f(T.r_retry,{d:dt(st.wait[cur]),t:r.total}))+'</p>'+(r.pass&&!isP(r.level)&&cur>=(st.workLevel||3)?'<p style="color:#15803D;font-weight:700">✓ '+esc(T.r_work)+'</p>':'')+(r.pass&&!r.registered?'<p>'+esc(T.r_reg)+'</p><p><a class="btn" href="'+(T.th?'/th':'')+'/join.html?cert='+encodeURIComponent(r.cert)+'&phone='+encodeURIComponent(who.phone)+'&name='+encodeURIComponent(who.team||who.name)+'">'+esc(T.reg_need)+'</a></p>':'')+'<div class="act" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">'+acts+'</div></div>';
   go($('it-res'))}).catch(function(){b.disabled=false;b.textContent=T.submit;alert(T.fail)})});
 $('it-res').addEventListener('click',function(e){var b=e.target.closest('[data-next]');if(!b)return;want=+b.getAttribute('data-next');$('it-res').hidden=true;$('it-who').hidden=false;cards()});
 })();

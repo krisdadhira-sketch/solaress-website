@@ -29,6 +29,7 @@ HTML = r"""<!DOCTYPE html>
 .bar{max-width:1123px;margin:18px auto 0;padding:0 16px;display:flex;gap:10px;justify-content:space-between;align-items:center;flex-wrap:wrap;font-size:14px}
 .bar a,.bar button{font:inherit;font-weight:600;border:1.5px solid var(--navy);color:var(--navy);background:#fff;border-radius:99px;padding:8px 16px;cursor:pointer;text-decoration:none}
 .bar button{background:var(--navy);color:#fff}
+.rb{display:inline-block;margin:6px 4px 0 0;font-weight:600;border:1.5px solid var(--navy);border-radius:99px;padding:9px 18px;text-decoration:none;background:var(--navy);color:#fff}.rb.g{background:#fff;color:var(--navy)}
 .ok{display:inline-flex;align-items:center;gap:8px;color:#166534;font-weight:600}
 .wrapc{padding:16px;overflow:hidden}
 .cert{width:1123px;height:794px;margin:0 auto;position:relative;background:var(--navy);box-shadow:0 18px 50px rgba(10,18,48,.28);overflow:hidden;font-family:'Cormorant Garamond','Noto Serif Thai',serif}
@@ -73,7 +74,8 @@ h1{font-family:Cinzel,serif;font-size:50px;line-height:1.05;margin:8px 0 0;color
 var TIERS={1:['BRONZE','#B9773A','#F2C9A0','#6E3F16'],2:['SILVER','#9AA3B2','#F1F4F8','#4E5666'],3:['GOLD','#C9A227','#F6E7A8','#7E5F0E'],
  4:['PLATINUM','#8E9BB8','#EEF2FB','#3D4A6B'],5:['DIAMOND','#6D5BD0','#E3DEFF','#2E2580']};
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
-function bad(){document.getElementById('c').innerHTML='<div class="msg"><h2>Certificate not found</h2><p>ไม่พบใบประกาศเลขที่นี้</p><p>'+esc(id)+'</p></div>'}
+function needReg(d){document.getElementById('c').innerHTML='<div class="msg"><h2>Register to download your certificate</h2><p>Level '+d.level+' · '+esc(d.title_en)+' · '+d.pct+'% · '+esc(d.id)+'</p><p>You scored 100%. To open and download this certificate, register (free) as a TSIA Installer Partner or company member with the same phone number you used for the test, then open this link again.</p><h2 style="margin-top:22px">ลงทะเบียนเพื่อดาวน์โหลดใบประกาศ</h2><p>คุณได้คะแนน 100% หากต้องการเปิดและดาวน์โหลดใบประกาศนี้ กรุณาลงทะเบียน (ฟรี) เป็นช่างพันธมิตรหรือสมาชิกบริษัท TSIA ด้วยเบอร์โทรเดียวกับที่ใช้ทำแบบทดสอบ แล้วเปิดลิงก์นี้อีกครั้ง</p><p><a class="rb" href="/partners.html#register">Register as Installer Partner · สมัครช่างพันธมิตร</a> <a class="rb g" href="/team.html#join-tsia">TSIA company member · สมาชิกบริษัท</a></p></div>'}
+function bad(r){if(r==='reg')return;document.getElementById('c').innerHTML='<div class="msg"><h2>Certificate not found</h2><p>ไม่พบใบประกาศเลขที่นี้</p><p>'+esc(id)+'</p></div>'}
 // guilloche: spirograph-style closed curve
 function rose(cx,cy,R,r,d,turns,steps){var p='';for(var i=0;i<=steps;i++){var t=i/steps*Math.PI*2*turns,x=cx+(R-r)*Math.cos(t)+d*Math.cos((R-r)/r*t),y=cy+(R-r)*Math.sin(t)-d*Math.sin((R-r)/r*t);p+=(i?'L':'M')+x.toFixed(1)+' '+y.toFixed(1)}return p}
 // wavy line running round a rectangle (frame engraving)
@@ -109,7 +111,7 @@ function qr(text){try{var q=qrcode(0,'M');q.addData(text);q.make();return q.crea
 function fmt(iso,loc){return new Date(iso).toLocaleDateString(loc,{day:'numeric',month:'short',year:'numeric'})}
 function fit(){var el=document.querySelector('.cert');if(el)el.style.zoom=Math.min(1,(innerWidth-32)/1123)}
 if(!id){bad();return}
-fetch('/api/itest?a=cert&id='+encodeURIComponent(id)).then(function(r){return r.ok?r.json():Promise.reject()}).then(function(c){
+fetch('/api/itest?a=cert&id='+encodeURIComponent(id)).then(function(r){return r.json().then(function(d){if(r.status===403&&d.error==='register'){needReg(d);return Promise.reject('reg')}return r.ok?d:Promise.reject()})}).then(function(c){
  var T=TIERS[c.level]||TIERS[1],url='https://solaress.org/certificate.html?id='+c.id;
  if(!c.validFrom){c.validFrom=c.date;var u=new Date(c.date);u.setFullYear(u.getFullYear()+1);u.setDate(u.getDate()-1);c.validUntil=u.toISOString()}
  document.title=c.name+' · Level '+c.level+' '+c.title_en+' | Solar ESS Certificate';

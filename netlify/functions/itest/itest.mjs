@@ -1,9 +1,10 @@
 // Solar ESS installer test (www.solaress.org/installer-test): 5 levels x 25 questions, Thai + English.
 //   Level 1 Solar Enterer · 2 Solar Enthusiast · 3 Solar in Practice · 4 Solar Professional · 5 Solar Expert
-// Rules: Level 1 is open to anyone. Levels 2-5 need a TSIA membership or Installer Partner registration
-// (individual, team or company) with the same phone number (store "members", any status except rejected/hidden),
-// and a pass at level n-1 with that phone. Pass = 100% (25/25); only a pass issues a certificate, verifiable at
-// /certificate.html?id=... Solar ESS accepts installation work from Level 3 (work: true on the certificate).
+// Rules (Nov 2026): anyone can take any level and see their score; only name and phone are required.
+// Pass = 100% (25/25); only a pass issues a certificate number. To open or download the certificate
+// (/certificate.html?id=...), the phone used for the test must be registered as TSIA member or Installer Partner
+// (store "members", any status except rejected/hidden). Certificates issued before this change (no needReg flag)
+// stay open. Solar ESS accepts installation work from Level 3 (work: true on the certificate).
 // Each start shuffles question and answer order (session ses/<id>, valid 3 h). After an attempt at a level, the same
 // phone or email must wait 30 days before taking that level again. Certificates are valid for 1 year; a level with a valid
 // certificate cannot be retaken, an expired one can (renewal). Any pass, even expired, counts as the prerequisite.
@@ -87,14 +88,11 @@ async function history(s, phone, email) {
   for (const l in passed) delete expired[l];
   return { passed, ever, expired, wait };
 }
-// Level 1 is open to anyone. Levels 2-5 need a TSIA or installer-partner registration (individual, team or company)
-// with the same phone, and the level below passed (100%).
+// Every level is open to anyone with a phone number; registration is only needed to open the certificate.
 async function eligibility(s, phone, level, email) {
   if (!phone) return { ok: false, reason: "phone" };
   const reg = await registration(phone);
-  if (!reg && level > 1) return { ok: false, reason: "not-registered" };
-  const { passed, ever, wait } = await history(s, phone, normEmail(email));
-  if (level > 1 && !ever[level - 1]) return { ok: false, reason: "prerequisite", need: level - 1, reg, passed };
+  const { passed, wait } = await history(s, phone, normEmail(email));
   if (passed[level]) return { ok: false, reason: "passed", cert: passed[level] };
   if (wait[level]) return { ok: false, reason: "wait", until: wait[level] };
   return { ok: true, reg, passed };
@@ -133,9 +131,8 @@ export default async (req) => {
   if (a === "submit" && req.method === "POST") {
     const phone = normPhone(b.phone), level = parseInt(b.level, 10), name = txt(b.name);
     const email = txt(b.email), team = txt(b.team);
-    if (!levelInfo(level) || !name) return json({ error: "Name, phone and level are required." }, 400);
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return json({ error: "A valid email is required." }, 400);
-    if (!team) return json({ error: "Company / team name is required." }, 400);
+    if (!levelInfo(level) || !name || !phone) return json({ error: "Name, phone and level are required." }, 400);
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return json({ error: "Please enter a valid email." }, 400);
     const ses = await s.get("ses/" + cleanId(b.session), { type: "json" });
     if (!ses || ses.phone !== phone || ses.level !== level) return json({ error: "session" }, 400);
     if (Date.now() - ses.created > SESSION_MS) { await s.delete("ses/" + ses.id); return json({ error: "expired" }, 400); }
@@ -159,18 +156,20 @@ export default async (req) => {
     let cert = null;
     if (pass) {
       cert = "SESS-L" + level + "-" + crypto.randomBytes(4).toString("hex").toUpperCase();
-      await s.setJSON("cert/" + cert, { id: cert, name, level, pct, score, total, date: created, attempt: id });
+      await s.setJSON("cert/" + cert, { id: cert, name, level, pct, score, total, date: created, attempt: id, phone, needReg: true });
     }
     await s.setJSON("att/" + id, { id, created, level, name, phone, email, province: txt(b.province), team,
       regType: el.reg ? el.reg.type : "", language: txt(b.language, 20), seconds: Math.max(0, Math.min(36000, parseInt(b.seconds, 10) || 0)),
       answers: given, score, total, pct, pass, sections, cert });
-    return json({ score, total, pct, pass, passMark: PASS_PCT, sections, cert, level: levelInfo(level), validFrom: pass ? created : null, validUntil: pass ? validUntil(created) : null });
+    return json({ score, total, pct, pass, passMark: PASS_PCT, sections, cert, registered: !!el.reg, level: levelInfo(level), validFrom: pass ? created : null, validUntil: pass ? validUntil(created) : null });
   }
 
   if (a === "cert") {
     const c = await s.get("cert/" + cleanId(u.searchParams.get("id")).toUpperCase(), { type: "json" });
     if (!c) return json({ error: "not-found" }, 404);
     const l = levelInfo(c.level);
+    // New certificates open only once the test phone is registered (TSIA member or Installer Partner).
+    if (c.needReg && !(await registration(c.phone))) return json({ error: "register", id: c.id, level: c.level, title_en: l.en, title_th: l.th, pct: c.pct }, 403);
     return json({ id: c.id, name: c.name, level: c.level, title_en: l.en, title_th: l.th, pct: c.pct, score: c.score, total: c.total, date: c.date, validFrom: c.date, validUntil: validUntil(c.date), valid: isValid(c.date), work: c.level >= WORK_LEVEL });
   }
 

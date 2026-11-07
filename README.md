@@ -53,8 +53,7 @@ Post status from the ⚙ Admin icon: Open for quotes, On hold (waiting for custo
 ## Installer test (/installer-test, /certificate.html, /itest-admin.html)
 
 - 5 levels × 25 questions (Thai + English): 1 Solar Enterer, 2 Solar Enthusiast, 3 Solar in Practice, 4 Solar Professional, 5 Solar Expert. Pass = 100% (25/25); only a pass gives a certificate and unlocks the next level. Solar ESS accepts installation work from Level 3.
-- Level 1 is open to anyone. Levels 2–5 need a TSIA or installer-partner registration (individual, team or company) with the same phone (members store, any status except rejected/hidden), plus the level below passed.
-- Name, phone, email and company/team are required (checked on the page and in the API).
+- Open to everyone (Nov 2026): any level can be taken without registration and the score is shown at once; only name and phone are required (email, team and province optional). A certificate number is issued only for 100%. Opening or downloading the certificate needs a TSIA or installer-partner registration with the same phone (members store, any status except rejected/hidden); until then /certificate.html shows a "register to download" message. Certificates issued before this change stay open.
 - Every start shuffles question and answer order (server session `ses/<id>`, valid 3 h). After an attempt the same phone or email waits 30 days for that level. Certificates are valid 1 year; an expired level can be renewed, and any pass counts as the prerequisite.
 - Datasheet and site-measurement questions: `tools/itest/questions_ds.py` (levels 2–4).
 - Questions: `tools/itest/questions_a.py`, `questions_bcd.py` (levels 1–4, assigned in `build_bank.py`), `questions_brands.py` (brand questions in levels 2–3), `questions_e.py` (level 5 fault cases) → `python3 tools/itest/build_bank.py` → `netlify/functions/itest/bank.json` (answer key stays server-side).

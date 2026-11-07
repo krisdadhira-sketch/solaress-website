@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Installer test pages: /installer-test.html (EN chrome) and /th/installer-test.html (TH chrome).
-Five levels of 25 questions. Level 1 needs a TSIA or installer-partner registration (same phone);
-each higher level needs the level below passed. Questions are shown in Thai and English and load from
+Five levels of 25 questions, open to everyone (name + phone). A certificate needs 100%, and opening or
+downloading it needs a TSIA or installer-partner registration with the same phone. Questions are shown in Thai and English and load from
 /api/itest (answers never reach the page). A pass issues a certificate at /certificate.html?id=...
 Run from the repo root:  python3 tools/itest/page.py   (then python3 tools/analytics_tag.py)"""
 import json, re
@@ -13,35 +13,35 @@ T = {
 "en": dict(pre="", title="Solar Installer Test: 5 Levels with Certificates | Solar ESS",
     desc="Practical solar installation test in 5 levels, from Solar Enterer to Solar Expert. 25 questions per level in Thai and English; score 100% for each level's certificate.",
     eyebrow="Solar Test · แบบทดสอบโซลาร์", h1="Practical Solar Installation Test",
-    lede="Five levels, 25 questions each, in Thai and English. Level 1 is open to everyone. From Level 2 you need to be a TSIA member (Installer Partner or company member). Score 100% (25/25) to get the level's certificate (valid for 1 year) and unlock the next level. After an attempt, the same level can be taken again after 30 days. Solar ESS accepts installation work from Level 3 (Solar in Practice) upward.",
+    lede="Five levels, 25 questions each, in Thai and English. Everyone can take every level and see their score straight away. A certificate (valid for 1 year) is given only for 100% (25/25). To download your certificate, register (free) as a TSIA Installer Partner or company member with the same phone number. After an attempt, the same level can be taken again after 30 days. Solar ESS accepts installation work from Level 3 (Solar in Practice) upward.",
     work="Accepted for Solar ESS installation work", work_s="✓ Installation work",
-    ladder="The five levels", s1="Your details", name="Full name", phone="Phone (the one you registered with)", email="Email", prov="Province (optional)",
-    team="Company or team name", check="Show my levels",
-    req="Please fill in name, phone, email and company or team name.", bademail="Please enter a valid email.",
-    nreg_h="Level 1 is open to you", nreg="To take Levels 2–5 and receive their certificates, join TSIA first (free) using this same phone number: as an Installer Partner (individual, team or company) or as a company member.",
-    nreg_t="TSIA company member", nreg_p="Register as TSIA Installer Partner", reg_ok="TSIA member", reg_need="Join TSIA first (Installer Partner or company member)",
+    ladder="The five levels", s1="Your details", name="Full name", phone="Phone", email="Email (optional)", prov="Province (optional)",
+    team="Company or team name (optional)", check="Show my levels",
+    req="Please fill in your name and phone number.", bademail="Please enter a valid email.",
+    nreg_h="All five levels are open to you", nreg="You can take any level and see your score now. To download a certificate after scoring 100%, register (free) with this same phone number: as a TSIA Installer Partner (individual, team or company) or as a company member.",
+    nreg_t="TSIA company member", nreg_p="Register as TSIA Installer Partner", reg_ok="TSIA member", reg_need="Register to download your certificate",
     st_pass="Passed", st_open="Open", st_lock="Locked", lock_need="Pass Level {n} first", start="Start Level {n}", retake="Retake", cert="View certificate", wait="Retake from {d}", expired="Certificate expired · renew by taking this level again", valid="Valid until {d}", r_valid="Valid from {a} to {b} (1 year).", e_wait="You attempted this level recently. You can take it again from {d}.", e_passed="You have already passed this level.", e_expired="This test session has expired (3 hours). Please start the level again.",
     qof="Question", answered="answered", submit="Submit my answers", sending="Checking your answers…",
     unanswered="You have {n} unanswered questions. Submit anyway?", fail="Sending failed. Please try again.",
     r_h="Your result", r_pass="Passed", r_fail="Not passed yet", next="Go to Level {n}",
-    r_cert="Your certificate number is {id}.", r_retry="A certificate needs 100% (25/25). Study the topics; you can take this level again from {d}.", r_work="This level is accepted for Solar ESS installation work.", r_reg="To take Level 2, join TSIA as an Installer Partner (individual, team or company) with this phone number.",
+    r_cert="Your certificate number is {id}.", r_retry="A certificate needs 100% (25/25). Study the topics; you can take this level again from {d}.", r_work="This level is accepted for Solar ESS installation work.", r_reg="To download this certificate, register (free) as a TSIA Installer Partner or company member with this phone number. Once registered, open “View certificate” again.",
     back="Back to my levels", loading="Loading…", e_prereq="Please pass Level {n} first.", e_reg="Please register as TSIA member or installer partner first.",
     q_s="questions", lv="Level"),
 "th": dict(pre="/th", title="แบบทดสอบช่างโซลาร์ 5 ระดับ พร้อมใบประกาศ | Solar ESS",
     desc="แบบทดสอบการติดตั้งโซลาร์ภาคปฏิบัติ 5 ระดับ ตั้งแต่ Solar Enterer ถึง Solar Expert ระดับละ 25 ข้อ ภาษาไทยและอังกฤษ ได้ 100% รับใบประกาศของแต่ละระดับ",
     eyebrow="แบบทดสอบโซลาร์ · Solar Test", h1="แบบทดสอบการติดตั้งโซลาร์ภาคปฏิบัติ",
-    lede="5 ระดับ ระดับละ 25 ข้อ ภาษาไทยและอังกฤษ ระดับ 1 เปิดให้ทุกคน ตั้งแต่ระดับ 2 ต้องเป็นสมาชิก TSIA (ช่างพันธมิตรหรือสมาชิกบริษัท) ต้องได้คะแนน 100% (25/25) จึงได้ใบประกาศของระดับนั้น (อายุ 1 ปี) และปลดล็อกระดับถัดไป หากสอบไม่ผ่าน สอบระดับเดิมใหม่ได้หลัง 30 วัน Solar ESS รับงานติดตั้งจากผู้ที่ผ่านระดับ 3 (Solar in Practice) ขึ้นไป",
+    lede="5 ระดับ ระดับละ 25 ข้อ ภาษาไทยและอังกฤษ ทุกคนทำแบบทดสอบได้ทุกระดับ และเห็นคะแนนทันที ใบประกาศ (อายุ 1 ปี) ให้เฉพาะผู้ที่ได้ 100% (25/25) หากต้องการดาวน์โหลดใบประกาศ กรุณาลงทะเบียน (ฟรี) เป็นช่างพันธมิตรหรือสมาชิกบริษัท TSIA ด้วยเบอร์โทรเดียวกัน หลังสอบแล้ว สอบระดับเดิมใหม่ได้หลัง 30 วัน Solar ESS รับงานติดตั้งจากผู้ที่ผ่านระดับ 3 (Solar in Practice) ขึ้นไป",
     work="ผ่านเกณฑ์รับงานติดตั้งกับ Solar ESS", work_s="✓ รับงานติดตั้งได้",
-    ladder="5 ระดับ", s1="ข้อมูลของคุณ", name="ชื่อ-นามสกุล", phone="เบอร์โทร (เบอร์เดียวกับที่ลงทะเบียน)", email="อีเมล", prov="จังหวัด (ไม่บังคับ)",
-    team="ชื่อบริษัทหรือทีม", check="ดูระดับของฉัน",
-    req="กรุณากรอกชื่อ เบอร์โทร อีเมล และชื่อบริษัทหรือทีม", bademail="กรุณากรอกอีเมลให้ถูกต้อง",
-    nreg_h="ระดับ 1 เปิดให้คุณทำได้เลย", nreg="หากต้องการสอบระดับ 2–5 และรับใบประกาศ กรุณาสมัคร TSIA ก่อน (ฟรี) ด้วยเบอร์โทรเดียวกันนี้ ในฐานะช่างพันธมิตร (บุคคล ทีม หรือบริษัท) หรือสมาชิกประเภทบริษัท",
-    nreg_t="สมาชิก TSIA ประเภทบริษัท", nreg_p="สมัครเป็นช่างพันธมิตร TSIA", reg_ok="สมาชิก TSIA", reg_need="ต้องสมัคร TSIA ก่อน (ช่างพันธมิตรหรือสมาชิกบริษัท)",
+    ladder="5 ระดับ", s1="ข้อมูลของคุณ", name="ชื่อ-นามสกุล", phone="เบอร์โทร", email="อีเมล (ไม่บังคับ)", prov="จังหวัด (ไม่บังคับ)",
+    team="ชื่อบริษัทหรือทีม (ไม่บังคับ)", check="ดูระดับของฉัน",
+    req="กรุณากรอกชื่อและเบอร์โทร", bademail="กรุณากรอกอีเมลให้ถูกต้อง",
+    nreg_h="ทำแบบทดสอบได้ทั้ง 5 ระดับ", nreg="คุณทำแบบทดสอบระดับใดก็ได้และเห็นคะแนนทันที หากได้ 100% และต้องการดาวน์โหลดใบประกาศ กรุณาลงทะเบียน (ฟรี) ด้วยเบอร์โทรเดียวกันนี้ ในฐานะช่างพันธมิตร TSIA (บุคคล ทีม หรือบริษัท) หรือสมาชิกประเภทบริษัท",
+    nreg_t="สมาชิก TSIA ประเภทบริษัท", nreg_p="สมัครเป็นช่างพันธมิตร TSIA", reg_ok="สมาชิก TSIA", reg_need="ลงทะเบียนเพื่อดาวน์โหลดใบประกาศ",
     st_pass="ผ่านแล้ว", st_open="เปิดสอบ", st_lock="ล็อกอยู่", lock_need="ต้องผ่านระดับ {n} ก่อน", start="เริ่มระดับ {n}", retake="สอบอีกครั้ง", cert="ดูใบประกาศ", wait="สอบใหม่ได้ตั้งแต่ {d}", expired="ใบประกาศหมดอายุ · สอบระดับนี้อีกครั้งเพื่อต่ออายุ", valid="ใช้ได้ถึง {d}", r_valid="มีอายุตั้งแต่ {a} ถึง {b} (1 ปี)", e_wait="คุณเพิ่งสอบระดับนี้ไป สอบใหม่ได้ตั้งแต่ {d}", e_passed="คุณสอบผ่านระดับนี้แล้ว", e_expired="การสอบนี้หมดเวลาแล้ว (3 ชั่วโมง) กรุณาเริ่มระดับนี้ใหม่",
     qof="ข้อ", answered="ตอบแล้ว", submit="ส่งคำตอบ", sending="กำลังตรวจคำตอบ…",
     unanswered="ยังไม่ได้ตอบ {n} ข้อ ต้องการส่งเลยหรือไม่", fail="ส่งไม่สำเร็จ กรุณาลองอีกครั้ง",
     r_h="ผลการทดสอบ", r_pass="ผ่าน", r_fail="ยังไม่ผ่าน", next="ไประดับ {n}",
-    r_cert="เลขที่ใบประกาศของคุณ: {id}", r_retry="ต้องได้ 100% (25/25) จึงจะได้ใบประกาศ ทบทวนเนื้อหาแล้วสอบระดับนี้ใหม่ได้ตั้งแต่ {d}", r_work="ระดับนี้ผ่านเกณฑ์รับงานติดตั้งกับ Solar ESS", r_reg="หากต้องการสอบระดับ 2 กรุณาสมัครเป็นช่างพันธมิตร TSIA (บุคคล ทีม หรือบริษัท) ด้วยเบอร์นี้",
+    r_cert="เลขที่ใบประกาศของคุณ: {id}", r_retry="ต้องได้ 100% (25/25) จึงจะได้ใบประกาศ ทบทวนเนื้อหาแล้วสอบระดับนี้ใหม่ได้ตั้งแต่ {d}", r_work="ระดับนี้ผ่านเกณฑ์รับงานติดตั้งกับ Solar ESS", r_reg="หากต้องการดาวน์โหลดใบประกาศนี้ กรุณาลงทะเบียน (ฟรี) เป็นช่างพันธมิตรหรือสมาชิกบริษัท TSIA ด้วยเบอร์นี้ เมื่อลงทะเบียนแล้ว กด “ดูใบประกาศ” อีกครั้ง",
     back="กลับไปหน้าระดับของฉัน", loading="กำลังโหลด…", e_prereq="กรุณาสอบผ่านระดับ {n} ก่อน", e_reg="กรุณาลงทะเบียนสมาชิก TSIA หรือทีมช่างพันธมิตรก่อน",
     q_s="ข้อ", lv="ระดับ"),
 }
@@ -114,7 +114,7 @@ def build(lang):
         f'<h3>{esc(t["ladder"])}</h3><div class="itlad">{lad}</div>'
         f'<form id="it-who" class="itbox" novalidate><h3 style="margin:0">{esc(t["s1"])}</h3>'
         f'<div class="two"><label>{esc(t["name"])} *<input id="it-name" required autocomplete="name"></label><label>{esc(t["phone"])} *<input id="it-phone" type="tel" required autocomplete="tel"></label></div>'
-        f'<div class="two"><label>{esc(t["email"])} *<input id="it-email" type="email" required autocomplete="email"></label><label>{esc(t["team"])} *<input id="it-team" required autocomplete="organization"></label></div>'
+        f'<div class="two"><label>{esc(t["email"])}<input id="it-email" type="email" autocomplete="email"></label><label>{esc(t["team"])}<input id="it-team" autocomplete="organization"></label></div>'
         f'<label>{esc(t["prov"])}<input id="it-prov"></label>'
         f'<div><button class="btn" type="submit" id="it-check">{esc(t["check"])}</button> <span id="it-req" class="fine" style="color:#B42318"></span></div></form>'
         f'<div id="it-nreg" class="itnreg" hidden><h3 style="margin:0 0 6px">{esc(t["nreg_h"])}</h3><p style="margin:0 0 12px">{esc(t["nreg"])}</p>'
@@ -139,19 +139,19 @@ function post(a,b){return fetch('/api/itest?a='+a,{method:'POST',headers:{'conte
 function dt(iso){try{return new Date(iso).toLocaleDateString(T.th?'th-TH':'en-GB',{day:'numeric',month:'long',year:'numeric'})}catch(x){return iso}}
 function lvName(l){return T.th?l.th+' · '+l.en:l.en+' · '+l.th}
 try{var sv=JSON.parse(localStorage.getItem('itest-who')||'null');if(sv){['name','phone','email','team','prov'].forEach(function(k){if(sv[k])$('it-'+k).value=sv[k]})}}catch(x){}
-function cards(){var h='';st.levels.forEach(function(l){var E=st.ever||st.passed,c=st.passed[l.n],x=(st.expired||{})[l.n],w=(st.wait||{})[l.n],open=!c&&(l.n===1||(st.registered&&E[l.n-1])),why=(l.n>1&&!st.registered)?T.reg_need:f(T.lock_need,{n:l.n-1});if(open&&w){open=false;why=f(T.wait,{d:dt(w)})}var cls=c?'pass':open?'':'lock',stt=c?T.st_pass:open?(x?T.expired:T.st_open):why;
+function cards(){var h='';st.levels.forEach(function(l){var E=st.ever||st.passed,c=st.passed[l.n],x=(st.expired||{})[l.n],w=(st.wait||{})[l.n],open=!c,why='';if(open&&w){open=false;why=f(T.wait,{d:dt(w)})}var cls=c?'pass':open?'':'lock',stt=c?T.st_pass:open?(x?T.expired:T.st_open):why;
   h+='<div class="itcard '+cls+(want===l.n?' focus':'')+'" id="lv'+l.n+'"><div class="t"><span class="tag">'+esc(T.lv+' '+l.n)+'</span><b>'+esc(lvName(l))+'</b><small>25 '+esc(T.q_s)+' · '+esc(stt)+'</small>'+(l.n>=(st.workLevel||3)?'<em>'+esc(T.work_s)+'</em>':'')+'</div><div class="act">'
   +((c||x)&&!open?'<a class="btn ghost" href="/certificate.html?id='+encodeURIComponent(c||x)+'">'+esc(T.cert)+'</a>':'')+(c?''
     :open?'<button class="btn" data-go="'+l.n+'" type="button">'+esc(f(T.start,{n:l.n}))+'</button>':'')+'</div></div>'});
  $('it-lv').innerHTML=(st.registered?'<p class="fine" style="margin:0">✓ '+esc(T.reg_ok)+(st.regName?' · '+esc(st.regName):'')+'</p>':'')+h;$('it-lv').hidden=false;
- var tgt=$('lv'+(want||st.next||1));if(!st.registered&&want>1)tgt=$('it-nreg');if(tgt)go(tgt)}
+ var tgt=$('lv'+(want||st.next||1));if(tgt)go(tgt)}
 function status(){var b=$('it-check');b.disabled=true;
  return post('status',{phone:who.phone,email:who.email}).then(function(d){b.disabled=false;st=d;$('it-nreg').hidden=!!d.registered;
   cards()}).catch(function(){b.disabled=false;$('it-req').textContent=T.fail})}
 $('it-who').addEventListener('submit',function(e){e.preventDefault();
  who={name:$('it-name').value.trim(),phone:$('it-phone').value.trim(),email:$('it-email').value.trim(),province:$('it-prov').value.trim(),team:$('it-team').value.trim()};
- if(!who.name||!who.email||!who.team||who.phone.replace(/\D/g,'').length<9){$('it-req').textContent=T.req;return}
- if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(who.email)){$('it-req').textContent=T.bademail;return}
+ if(!who.name||who.phone.replace(/\D/g,'').length<9){$('it-req').textContent=T.req;return}
+ if(who.email&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(who.email)){$('it-req').textContent=T.bademail;return}
  $('it-req').textContent='';try{localStorage.setItem('itest-who',JSON.stringify({name:who.name,phone:who.phone,email:who.email,team:who.team,prov:who.province}))}catch(x){}
  status()});
 function count(){var n=ans.filter(function(v){return v!==null}).length;$('it-count').textContent=n+' / '+Q.length+' '+T.answered}
@@ -173,10 +173,10 @@ $('it-send').addEventListener('click',function(){var miss=ans.filter(function(v)
   try{gtag('event','installer_test_sent',{level:cur,score:r.pct,pass:r.pass})}catch(x){}
   var rows=S.map(function(s){var x=r.sections[s.id];if(!x)return '';return '<tr><td>'+esc(s.id+'. '+s.th+' / '+s.en)+'</td><td style="text-align:right;white-space:nowrap"><b>'+x.correct+' / '+x.total+'</b></td></tr>'}).join('');
   if(r.pass){st.passed[cur]=r.cert;st.ever=st.ever||{};st.ever[cur]=r.cert;if(st.expired)delete st.expired[cur]}else{st.wait=st.wait||{};st.wait[cur]=new Date(Date.now()+(st.retakeDays||30)*864e5).toISOString()}
-  var acts='';if(r.pass){acts+='<a class="btn" href="/certificate.html?id='+encodeURIComponent(r.cert)+'">'+esc(T.cert)+'</a> ';if(cur<5&&(cur>1||st.registered)&&!st.passed[cur+1])acts+='<button class="btn ghost" type="button" data-next="'+(cur+1)+'">'+esc(f(T.next,{n:cur+1}))+'</button> '}
+  var acts='';if(r.pass){acts+='<a class="btn" href="/certificate.html?id='+encodeURIComponent(r.cert)+'">'+esc(T.cert)+'</a> ';if(cur<5&&!st.passed[cur+1])acts+='<button class="btn ghost" type="button" data-next="'+(cur+1)+'">'+esc(f(T.next,{n:cur+1}))+'</button> '}
   acts+='<button class="btn ghost" type="button" data-next="0">'+esc(T.back)+'</button>';
   $('it-qs').hidden=true;$('it-bar').hidden=true;document.body.classList.remove('it-on');$('it-res').hidden=false;
-  $('it-res').innerHTML='<div class="itres"><h3 style="margin:0">'+esc(T.r_h+' · '+T.lv+' '+cur+' '+lvName(r.level))+'</h3><div class="big">'+r.score+' / '+r.total+' <span class="'+(r.pass?'ok':'no')+'" style="font-size:24px">('+r.pct+'% · '+esc(r.pass?T.r_pass:T.r_fail)+')</span></div><table>'+rows+'</table><p style="margin-top:12px">'+esc(r.pass?f(T.r_cert,{id:r.cert})+' '+f(T.r_valid,{a:dt(r.validFrom),b:dt(r.validUntil)}):f(T.r_retry,{d:dt(st.wait[cur])}))+'</p>'+(r.pass&&cur>=(st.workLevel||3)?'<p style="color:#15803D;font-weight:700">✓ '+esc(T.r_work)+'</p>':'')+(r.pass&&cur===1&&!st.registered?'<p>'+esc(T.r_reg)+'</p><p><a class="btn" href="'+(T.th?'/th':'')+'/partners.html#register">'+esc(T.reg_need)+'</a></p>':'')+'<div class="act" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">'+acts+'</div></div>';
+  $('it-res').innerHTML='<div class="itres"><h3 style="margin:0">'+esc(T.r_h+' · '+T.lv+' '+cur+' '+lvName(r.level))+'</h3><div class="big">'+r.score+' / '+r.total+' <span class="'+(r.pass?'ok':'no')+'" style="font-size:24px">('+r.pct+'% · '+esc(r.pass?T.r_pass:T.r_fail)+')</span></div><table>'+rows+'</table><p style="margin-top:12px">'+esc(r.pass?f(T.r_cert,{id:r.cert})+' '+f(T.r_valid,{a:dt(r.validFrom),b:dt(r.validUntil)}):f(T.r_retry,{d:dt(st.wait[cur])}))+'</p>'+(r.pass&&cur>=(st.workLevel||3)?'<p style="color:#15803D;font-weight:700">✓ '+esc(T.r_work)+'</p>':'')+(r.pass&&!r.registered?'<p>'+esc(T.r_reg)+'</p><p><a class="btn" href="'+(T.th?'/th':'')+'/partners.html#register">'+esc(T.reg_need)+'</a></p>':'')+'<div class="act" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">'+acts+'</div></div>';
   go($('it-res'))}).catch(function(){b.disabled=false;b.textContent=T.submit;alert(T.fail)})});
 $('it-res').addEventListener('click',function(e){var b=e.target.closest('[data-next]');if(!b)return;want=+b.getAttribute('data-next');$('it-res').hidden=true;$('it-who').hidden=false;cards()});
 })();

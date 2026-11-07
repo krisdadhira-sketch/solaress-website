@@ -4,11 +4,20 @@
 // Public (no password) — only approved entries, only public fields, never contact details:
 //   GET /api/members?a=public&type=tsia|partner        -> {items:[...]}
 //   GET /api/members?a=img&id=..&f=..                  -> photo of an approved entry
+// Solar Enthusiast community (public, no password):
+//   POST /api/members?a=enthusiast {name, phone, email, province, region, interests, language, agree}
+//        -> saves a "pending" registration (type "enthusiast"); nothing about members is ever published
+//   POST /api/members?a=ask {phone, topic, question, language}
+//        -> only an APPROVED enthusiast (matched by phone) can ask; the question waits for Solar ESS to answer
+//   GET  /api/members?a=qa                             -> answered + published questions (first name only)
 // Admin (header "x-admin-password"):
 //   GET  /api/members?a=list                           -> every submission with all fields
 //   POST /api/members?a=set {id, status}               -> status: approved | rejected | pending | hidden
 //   POST /api/members?a=delete {id}                     -> permanently remove a rejected/hidden entry and its photos
 //   GET  /api/members?a=img&id=..&f=..                 -> any photo (preview before approval)
+//   GET  /api/members?a=qalist                         -> every question with the member's contact
+//   POST /api/members?a=qaset {id, answer?, status?}   -> status: pending | published | hidden
+//   POST /api/members?a=qadel {id}                     -> permanently delete a question
 //
 // Admin password: MEMBERS_ADMIN_PASSWORD environment variable in Netlify; if not set, the same
 // password as the vocabulary teacher dashboard (VOCAB_ADMIN_PASSWORD or its built-in default).
@@ -83,6 +92,17 @@ async function all(s) {
   return out.sort((a, b) => String(b.created).localeCompare(String(a.created)));
 }
 
+
+const digits = (v) => String(v || "").replace(/\D/g, "").replace(/^66/, "0");
+const firstName = (v) => txt(v, 80).split(/\s+/)[0] || "";
+async function allQa(s) {
+  const { blobs } = await s.list({ prefix: "qa/" });
+  const out = [];
+  for (const b of blobs) { const v = await s.get(b.key, { type: "json" }); if (v) out.push(v); }
+  return out.sort((a, b) => String(b.created).localeCompare(String(a.created)));
+}
+async function body(req) { try { return await req.json(); } catch { return {}; } }
+
 export default async (req) => {
   const u = new URL(req.url), a = u.searchParams.get("a");
   const s = store();
@@ -99,6 +119,45 @@ export default async (req) => {
     return json({ items }, 200, "public, max-age=60");
   }
 
+
+  if (a === "enthusiast" && req.method === "POST") {
+    const b = await body(req);
+    if (String(b["bot-field"] || "")) return json({ ok: true });
+    const name = txt(b.name, 80), phone = digits(b.phone);
+    if (!name || phone.length < 9 || phone.length > 10) return json({ error: "fields" }, 400);
+    if (!b.agree) return json({ error: "agree" }, 400);
+    const existing = (await all(s)).find((x) => x.type === "enthusiast" && digits(x.data.phone) === phone && !["rejected"].includes(x.status));
+    if (existing) return json({ ok: true, status: existing.status, existing: true });
+    const id = "en-" + Date.now().toString(36) + crypto.randomBytes(3).toString("hex");
+    const sub = { id, type: "enthusiast", status: "pending", created: new Date().toISOString(), images: [],
+      data: { name, phone, email: txt(b.email, 120), province: txt(b.province, 60), region: txt(b.region, 20),
+        interests: list(b.interests).slice(0, 12).join(", "), about: txt(b.about, 300), language: txt(b.language, 5) } };
+    await s.setJSON("sub/" + id, sub);
+    return json({ ok: true, status: "pending" });
+  }
+
+  if (a === "ask" && req.method === "POST") {
+    const b = await body(req);
+    if (String(b["bot-field"] || "")) return json({ ok: true });
+    const phone = digits(b.phone), question = txt(b.question, 1500);
+    if (phone.length < 9 || question.length < 10) return json({ error: "fields" }, 400);
+    const m = (await all(s)).find((x) => x.type === "enthusiast" && digits(x.data.phone) === phone);
+    if (!m) return json({ error: "register" }, 403);
+    if (m.status !== "approved") return json({ error: "waiting" }, 403);
+    const mine = (await allQa(s)).filter((q) => q.member === m.id && q.status === "pending");
+    if (mine.length >= 5) return json({ error: "limit" }, 429);
+    const id = "q-" + Date.now().toString(36) + crypto.randomBytes(3).toString("hex");
+    await s.setJSON("qa/" + id, { id, member: m.id, name: firstName(m.data.name), phone: m.data.phone, province: m.data.province,
+      topic: txt(b.topic, 40), question, answer: "", status: "pending", created: new Date().toISOString(), language: txt(b.language, 5) });
+    return json({ ok: true });
+  }
+
+  if (a === "qa") {
+    const items = (await allQa(s)).filter((q) => q.status === "published" && q.answer)
+      .map((q) => ({ id: q.id, name: q.name, province: q.province, topic: q.topic, question: q.question, answer: q.answer, answered: q.answered, language: q.language }));
+    return json({ items }, 200, "public, max-age=60");
+  }
+
   if (a === "img") {
     const id = u.searchParams.get("id") || "", f = u.searchParams.get("f") || "";
     const sub = await s.get("sub/" + id, { type: "json" });
@@ -112,6 +171,31 @@ export default async (req) => {
   if (!isAdmin(req)) return json({ error: "Admin password is not right." }, 401);
 
   if (a === "list") return json({ items: await all(s) });
+
+  if (a === "qalist") return json({ items: await allQa(s) });
+
+  if (a === "qaset" && req.method === "POST") {
+    const b = await body(req);
+    const key = "qa/" + String(b.id || "");
+    const q = await s.get(key, { type: "json" });
+    if (!q) return json({ error: "not found" }, 404);
+    if (typeof b.answer === "string") { q.answer = txt(b.answer, 4000); if (q.answer) q.answered = new Date().toISOString(); }
+    if (b.status) {
+      if (!["pending", "published", "hidden"].includes(b.status)) return json({ error: "status" }, 400);
+      if (b.status === "published" && !q.answer) return json({ error: "Write an answer before publishing." }, 400);
+      q.status = b.status;
+    }
+    if (typeof b.question === "string" && b.question.trim()) q.question = txt(b.question, 1500);
+    await s.setJSON(key, q);
+    return json({ ok: true, item: q });
+  }
+
+  if (a === "qadel" && req.method === "POST") {
+    const b = await body(req);
+    await s.delete("qa/" + String(b.id || ""));
+    return json({ ok: true });
+  }
+
 
   if (a === "set" && req.method === "POST") {
     let b = {};

@@ -74,3 +74,10 @@ Search box under the region chips of Project Based Jobs: province / district / p
 ## All Risks insurance (profile + menu badge)
 
 `python3 tools/insurance.py` (idempotent): profile pages (EN/TH/ZH) get the "Insured · All Risks cover" section (`#insurance`, EAR open cover, Dhipaya Insurance, 16 Oct 2026 – 16 Oct 2027); every page gets a blinking shield on the top "Solar ESS" menu link and an "All Risks Insured" dropdown item. Never publish the policy PDF or policy number (certificate furnished on request). Update the policy period in the script at renewal.
+
+
+## Solar Enthusiast community (/community.html, /th/community.html)
+- Built by `python3 tools/community_page.py` (then `python3 tools/form_ink.py`), using members.html as the page shell.
+- Anyone registers free (`/api/members?a=enthusiast`, saved as type "enthusiast", status pending).
+- Approve members in /members-admin.html, tab "Solar Enthusiasts". Approved members then get the member price-list password from Solar ESS (by LINE or phone).
+- Approved members ask questions (`a=ask`, matched by phone). Questions appear in the admin tab "Questions"; write the answer and click "Save & publish". Only answered + published questions show on the page (`a=qa`), with the member's first name and province only.

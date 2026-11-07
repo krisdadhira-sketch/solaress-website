@@ -9,7 +9,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 LV = [("Solar Enterer", "ผู้เริ่มต้นเข้าสู่โซลาร์"), ("Solar Enthusiast", "ผู้สนใจโซลาร์"), ("Solar in Practice", "ผู้ปฏิบัติงานโซลาร์"),
       ("Solar Professional", "มืออาชีพด้านโซลาร์"), ("Solar Expert", "ผู้เชี่ยวชาญด้านโซลาร์")]
-PR = [("inverter", "Inverters", "อินเวอร์เตอร์", "逆变器"), ("pv", "PV Modules", "แผงโซลาร์เซลล์", "光伏组件"), ("battery", "Battery", "แบตเตอรี่", "电池"),
+PR = [("inverter", "Inverters", "อินเวอร์เตอร์", "逆变器"), ("inverter-solis", "Inverters · Solis", "อินเวอร์เตอร์ · Solis", "逆变器 · Solis"),
+      ("inverter-deye", "Inverters · Deye", "อินเวอร์เตอร์ · Deye", "逆变器 · Deye"), ("inverter-goodwe", "Inverters · GoodWe", "อินเวอร์เตอร์ · GoodWe", "逆变器 · GoodWe"),
+      ("pv", "PV Modules", "แผงโซลาร์เซลล์", "光伏组件"), ("battery", "Battery", "แบตเตอรี่", "电池"),
       ("breaker", "Breakers & Protection", "เบรกเกอร์และอุปกรณ์ป้องกัน", "断路器与保护"), ("cable", "Cables & Wiring", "สายไฟและการเดินสาย", "电缆与布线")]
 PH = {"en": "Brand & Product Test", "th": "แบบทดสอบแบรนด์และผลิตภัณฑ์", "zh": "品牌与产品测试"}
 L = {"en": dict(top="Solar Test", lv="Level", mine="My levels & certificates", voc="Vocabulary test", page="/installer-test.html"),

@@ -17,6 +17,7 @@ PAGES = [  # id, file, label, description
     ("applications", "/members-admin.html", "TSIA applications", "Approve, reject or hide TSIA company members and Installer Partners (every partner is a TSIA member)."),
     ("test", "/itest-admin.html", "Installer test & certificates", "Level 1–5 results, wrong answers, certificate numbers, CSV."),
     ("vocab", "/vocab-admin.html", "Vocabulary test results", "Students, scores per test and progress."),
+    ("nps", "/nps-admin.html", "Reader NPS", "Home-page scores 1–10 (one per IP per month): NPS by month, comments, CSV."),
 ]
 PUBLIC = [("/job.html", "Job board"), ("/installer-test.html", "Installer test"), ("/partners.html", "Installer partners"),
           ("/members.html", "Members"), ("/team.html#join-tsia", "TSIA registration"), ("/vocabulary.html", "Vocabulary test"), ("/", "Home page")]
@@ -78,6 +79,7 @@ function counts(){{
  api('/api/members?a=list').then(function(j){{var it=j.items||[],p=it.filter(function(x){{return x.status==='pending'}}).length;$('n-applications').textContent=p+' pending · '+it.filter(function(x){{return x.status==='approved'}}).length+' approved'}}).catch(function(){{$('n-applications').textContent=''}});
  api('/api/feedback?a=list').then(function(j){{$('n-jobs').textContent=(j.jobs||[]).length+' jobs · '+(j.items||[]).length+' reports & feedback'}}).catch(function(){{$('n-jobs').textContent=''}});
  api('/api/itest?a=list').then(function(j){{var a=j.attempts||[];$('n-test').textContent=a.length+' attempts · '+a.filter(function(x){{return x.pass}}).length+' certificates'}}).catch(function(){{$('n-test').textContent=''}});
+ api('/api/nps?a=list').then(function(j){{var t=j.total||{{}};$('n-nps').textContent=t.n?('NPS '+(t.nps>0?'+':'')+t.nps+' · '+t.n+' scores'):'No scores yet'}}).catch(function(){{$('n-nps').textContent=''}});
  api('/api/vocab?a=admin').then(function(j){{$('n-vocab').textContent=(j.students||[]).length+' students'}}).catch(function(){{$('n-vocab').textContent=''}});
 }}
 function show(){{var id=(location.hash||'#home').slice(1);if(id!=='home'&&!P[id])id='home';

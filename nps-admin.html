@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow"><title>Reader NPS | Solar ESS Admin</title>
+<style>
+:root{--navy:#0A1230;--blue:#2563EB;--violet:#4338CA;--ink:#0A0E2E;--mute:#3E548E;--line:#DEE3ED;--paper:#F6F8FC}
+*{box-sizing:border-box}body{margin:0;font:15px/1.5 "IBM Plex Sans Thai","Inter",system-ui,sans-serif;color:var(--ink);background:var(--paper)}
+main{max-width:1100px;margin:0 auto;padding:24px 20px 60px}
+h1{font-size:24px;margin:0 0 4px}.meta{color:var(--mute);font-size:13.5px}
+.login{max-width:380px;margin:12vh auto;background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px}
+input,select{font:inherit;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;background:#fff;color:var(--ink)}
+.login input{width:100%;margin:12px 0}
+button{font:inherit;border:0;border-radius:10px;padding:9px 16px;font-weight:600;cursor:pointer;background:var(--blue);color:#fff}
+button.ghost{background:#fff;color:#B42318;border:1px solid #F1C0BA;padding:5px 10px;font-size:13px}
+.err{color:#B42318;min-height:20px;font-size:14px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;margin:18px 0}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.kpi b{display:block;font-size:30px;color:var(--navy);line-height:1.1}.kpi span{font-size:13px;color:var(--mute)}
+.kpi.main{background:var(--navy);color:#fff;border:0}.kpi.main b{color:#fff}.kpi.main span{color:#C7D2FE}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:10px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);font-size:14px;vertical-align:top}
+th{background:#EEF2FF;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.sc{display:inline-block;min-width:30px;text-align:center;font-weight:700;border-radius:8px;padding:2px 6px}
+.promoter{background:#DCFCE7;color:#166534}.passive{background:#FEF9C3;color:#854D0E}.detractor{background:#FEE2E2;color:#991B1B}
+h2{font-size:18px;margin:28px 0 4px}.bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:10px}
+</style><!--adminbridge--><script>(function(){var inHub=false;try{inHub=window.self!==window.top&&window.top.location.pathname.replace(/\.html$/,'')==='/admin'}catch(e){}
+var st=document.createElement('style');
+if(inHub){st.textContent='body>header,header.nav,footer,.fab,.mnav-btn,.share{display:none!important}main{padding-top:14px!important}';}
+else{st.textContent='.adm-home{position:fixed;left:14px;bottom:14px;z-index:99;background:#0A1230;color:#fff;border-radius:99px;padding:9px 16px;font:600 14px system-ui,sans-serif;text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.25)}';
+ addEventListener('DOMContentLoaded',function(){var a=document.createElement('a');a.className='adm-home';a.href='/admin';a.textContent='\u2699 Admin home';document.body.appendChild(a)})}
+document.head.appendChild(st)})();</script><!--/adminbridge-->
+</head><body>
+<div class="login" id="login"><h1>Reader NPS</h1><p class="meta">Admin password (same as the other admin pages).</p>
+<form id="lf"><input type="password" id="pw" autocomplete="current-password"><button style="width:100%">Sign in</button></form><p class="err" id="lerr"></p></div>
+<main id="app" hidden>
+<h1>Reader NPS</h1>
+<p class="meta">Scores from the home pages (EN / TH / 中文): "How likely are you to recommend Solar ESS to a friend or colleague?" 1–10. One score per internet connection (IP) per month, Bangkok time. NPS = % promoters (9–10) − % detractors (1–6), from −100 to +100.</p>
+<div class="bar"><label>Month <select id="mo"><option value="">All months</option></select></label><button type="button" id="csv">Download CSV</button></div>
+<div class="kpis" id="kpis"></div>
+<h2>By month</h2><table><thead><tr><th>Month</th><th>NPS</th><th>Scores</th><th>Promoters</th><th>Passives</th><th>Detractors</th><th>Average</th></tr></thead><tbody id="months"></tbody></table>
+<h2>Scores and comments</h2><table><thead><tr><th>Date</th><th>Score</th><th>Comment</th><th>Lang</th><th></th></tr></thead><tbody id="rows"></tbody></table>
+</main>
+<script>
+(function(){var $=function(i){return document.getElementById(i)},PW='',DATA=null;
+try{PW=sessionStorage.getItem('members-admin-pw')||''}catch(e){}
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function api(u,o){o=o||{};o.headers=Object.assign({'x-admin-password':PW,'content-type':'application/json'},o.headers||{});
+ return fetch(u,o).then(function(r){return r.json().then(function(j){if(!r.ok)throw new Error(j.error||r.status);return j})})}
+function stats(l){var n=l.length,p=l.filter(function(x){return x.score>=9}).length,d=l.filter(function(x){return x.score<=6}).length;
+ return{n:n,p:p,pa:n-p-d,d:d,nps:n?Math.round((p-d)/n*100):null,avg:n?Math.round(l.reduce(function(a,x){return a+x.score},0)/n*10)/10:null}}
+function pct(a,n){return n?Math.round(a/n*100)+'%':'–'}
+function draw(){var m=$('mo').value,items=DATA.items.filter(function(x){return!m||x.month===m}),s=stats(items);
+ $('kpis').innerHTML='<div class="kpi main"><b>'+(s.nps==null?'–':(s.nps>0?'+':'')+s.nps)+'</b><span>NPS '+(m||'all months')+'</span></div>'+
+  '<div class="kpi"><b>'+s.n+'</b><span>Scores</span></div><div class="kpi"><b>'+pct(s.p,s.n)+'</b><span>Promoters (9–10) · '+s.p+'</span></div>'+
+  '<div class="kpi"><b>'+pct(s.pa,s.n)+'</b><span>Passives (7–8) · '+s.pa+'</span></div><div class="kpi"><b>'+pct(s.d,s.n)+'</b><span>Detractors (1–6) · '+s.d+'</span></div>'+
+  '<div class="kpi"><b>'+(s.avg==null?'–':s.avg)+'</b><span>Average score</span></div>';
+ $('months').innerHTML=DATA.months.map(function(x){return'<tr><td>'+x.month+'</td><td><b>'+(x.nps>0?'+':'')+x.nps+'</b></td><td>'+x.n+'</td><td>'+x.promoters+'</td><td>'+x.passives+'</td><td>'+x.detractors+'</td><td>'+x.avg+'</td></tr>'}).join('')||'<tr><td colspan="7">No scores yet.</td></tr>';
+ $('rows').innerHTML=items.map(function(x){return'<tr><td>'+esc(x.at.slice(0,16).replace('T',' '))+' UTC</td><td><span class="sc '+x.group+'">'+x.score+'</span></td><td>'+esc(x.comment||'')+'</td><td>'+esc(x.lang)+'</td><td><button class="ghost" data-k="'+esc(x.key)+'">Delete</button></td></tr>'}).join('')||'<tr><td colspan="5">No scores yet.</td></tr>'}
+function load(){return api('/api/nps?a=list').then(function(j){DATA=j;var cur=$('mo').value;
+ $('mo').innerHTML='<option value="">All months</option>'+j.months.map(function(x){return'<option>'+x.month+'</option>'}).join('');$('mo').value=cur;draw()})}
+$('mo').onchange=draw;
+$('rows').addEventListener('click',function(e){var b=e.target.closest('button[data-k]');if(!b)return;
+ if(b.dataset.c!=='1'){b.dataset.c='1';b.textContent='Click again to delete';return}
+ api('/api/nps?a=delete',{method:'POST',body:JSON.stringify({key:b.dataset.k})}).then(load)});
+$('csv').onclick=function(){var m=$('mo').value,rows=[['date_utc','month','score','group','comment','lang','page']].concat(DATA.items.filter(function(x){return!m||x.month===m}).map(function(x){return[x.at,x.month,x.score,x.group,x.comment,x.lang,x.page]}));
+ var csv='﻿'+rows.map(function(r){return r.map(function(c){return'"'+String(c==null?'':c).replace(/"/g,'""')+'"'}).join(',')}).join('\n');
+ var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download='solaress-nps'+(m?'-'+m:'')+'.csv';a.click()};
+function enter(){try{sessionStorage.setItem('members-admin-pw',PW)}catch(e){}$('login').hidden=true;$('app').hidden=false}
+$('lf').addEventListener('submit',function(e){e.preventDefault();PW=$('pw').value.trim();$('lerr').textContent='Checking…';
+ load().then(function(){$('lerr').textContent='';enter()}).catch(function(x){$('lerr').textContent=x.message==='401'?'Password is not right.':x.message})});
+if(PW)load().then(enter).catch(function(){PW=''});
+})();
+</script>
+</body></html>

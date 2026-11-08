@@ -81,3 +81,11 @@ Search box under the region chips of Project Based Jobs: province / district / p
 - Anyone registers free (`/api/members?a=enthusiast`, saved as type "enthusiast", status pending).
 - Approve members in /members-admin.html, tab "Solar Enthusiasts". Approved members then get the member price-list password from Solar ESS (by LINE or phone).
 - Approved members ask questions (`a=ask`, matched by phone). Questions appear in the admin tab "Questions"; write the answer and click "Save & publish". Only answered + published questions show on the page (`a=qa`), with the member's first name and province only.
+
+## Site search (home pages) and reader NPS (Nov 2026)
+
+- **Search box** in the hero of `/`, `/th/`, `/zh/` (`js/site-search.js`): searches every public page, each section/card with an id and heading (news, jobs, technical notes, FAQ…) and every linked PDF. Own language first; if nothing is found, the other languages. `?q=` pre-fills it, e.g. `/?q=battery`. GA event `search`.
+- Index: `data/search-en.json`, `search-th.json`, `search-zh.json`, built by **`python3 tools/site_search.py`**. Pages with `noindex` are left out. **Re-run it after adding or editing any page or job**, or new content will not be found.
+- **Reader NPS** band above the footer of the three home pages (`js/nps-widget.js`): "How likely are you to recommend Solar ESS…?" 1–10 + optional reason. One score per IP per calendar month (Bangkok time); the IP is stored only as a salted hash. API `netlify/functions/nps/nps.mjs` at `/api/nps`, Blobs store `nps`. GA event `nps_score`.
+- Results: **/nps-admin.html** (also in the admin hub as "Reader NPS"): NPS = % promoters (9–10) − % detractors (1–6), by month, comments, delete, CSV.
+- Markup and texts (EN/TH/ZH): `python3 tools/home_search_nps.py` (idempotent), then `tools/site_search.py`.

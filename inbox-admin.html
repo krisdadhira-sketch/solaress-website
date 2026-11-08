@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Form inbox | Solar ESS Admin</title>
+<style>
+:root{--navy:#0A1230;--blue:#2563EB;--violet:#4A55D6;--ink:#0A0E2E;--mute:#3E548E;--line:#DEE3ED;--paper:#F6F8FC;--no:#B42318}
+*{box-sizing:border-box}body{margin:0;font:15px/1.6 "IBM Plex Sans Thai","Inter",system-ui,sans-serif;color:var(--ink);background:var(--paper)}
+header{background:var(--navy);color:#fff;padding:12px 20px;display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+header img{height:46px;background:#fff;border-radius:6px;padding:2px}header .addr{font-size:12px;line-height:1.45;text-align:right;opacity:.9}
+main{max-width:1000px;margin:0 auto;padding:22px}
+.login{max-width:420px;margin:60px auto;background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px}
+input,button{font:inherit}input[type=password]{width:100%;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;margin:10px 0}
+button,.btn{border:0;border-radius:10px;padding:9px 16px;font-weight:600;cursor:pointer;background:var(--blue);color:#fff;text-decoration:none;display:inline-block}
+.err{color:var(--no)}.meta{color:var(--mute);font-size:13px}
+.bar{display:flex;gap:10px;justify-content:flex-end;margin-bottom:14px;flex-wrap:wrap}
+.hero{background:var(--navy);color:#fff;border-radius:16px;padding:24px;margin-bottom:16px}
+.hero h1{margin:4px 0 8px;font-size:28px;line-height:1.2}.hero p{margin:0;opacity:.92}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#C7D2FE;margin:0}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:18px}
+.kpis div{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:12px}
+.kpis small{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.75}.kpis b{display:block;font-size:17px;margin:2px 0}.kpis span{font-size:12px;opacity:.8}
+.card{background:#fff;border:1px solid var(--line);border-left:5px solid var(--violet);border-radius:14px;padding:18px 22px;margin-bottom:14px}
+.card.warn{border-left-color:var(--blue);background:#EEF2FF}
+.card h2{font-size:19px;margin:0 0 10px}.card h2 .th{font-size:13px;font-weight:500;color:var(--mute);margin-left:8px}
+.card ul,.card ol{margin:0;padding-left:22px}.card li{margin:5px 0}
+.cols{columns:2;column-gap:28px}.cols li{break-inside:avoid}
+table{border-collapse:collapse;width:100%}td,th{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}th{background:var(--paper);font-size:13px}td:first-child{width:36%;font-weight:600}
+.foot{margin-top:18px}
+@media(max-width:760px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.cols{columns:1}td:first-child{width:auto}header .addr{text-align:left}}
+@media print{.bar,header button{display:none}body{background:#fff}.card,.hero{break-inside:avoid}}
+
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 10px}.tabs button{background:#fff;color:var(--ink);border:1.5px solid var(--line);padding:6px 12px;font-size:13px}
+.tabs button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.tools{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}.tools input,.tools select{font:inherit;padding:8px 10px;border:1.5px solid var(--line);border-radius:10px;background:#fff;color:#000}
+.tools input{flex:1;min-width:200px}
+.it{background:#fff;border:1px solid var(--line);border-left:5px solid var(--violet);border-radius:12px;margin-bottom:10px}
+.it.st-new{border-left-color:var(--blue)}.it.st-done,.it.st-archived{opacity:.75;border-left-color:#9AA3B5}
+.it summary{list-style:none;cursor:pointer;padding:12px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.it summary::-webkit-details-marker{display:none}
+.it .who{font-weight:600;flex:1;min-width:180px}.it .who small{display:block;font-weight:400;color:var(--mute)}
+.pill{font-size:11px;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:3px 9px;background:#E7EBFF;color:#2E3AA8;white-space:nowrap}
+.pill.s{background:#EEF0F4;color:#3E548E}.pill.s.new{background:#2563EB;color:#fff}
+.body{padding:0 16px 16px}.body table{border-collapse:collapse;width:100%;margin:6px 0 12px}.body td{border-bottom:1px solid var(--line);padding:6px 8px;vertical-align:top;font-size:14px;word-break:break-word}
+.body td:first-child{width:32%;color:var(--mute);font-weight:600}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:8px}.row select,.row textarea{font:inherit;padding:8px;border:1.5px solid var(--line);border-radius:10px;color:#000;background:#fff}
+.row textarea{width:100%;min-height:60px}.ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line)}.del{background:#fff;color:var(--no);border:1.5px solid #F2C4C0}
+.files a{display:inline-block;margin:0 8px 6px 0}.quick a{margin-right:10px;font-size:14px}
+.empty{padding:30px;text-align:center;color:var(--mute);background:#fff;border-radius:12px;border:1px dashed var(--line)}
+.count{font-size:12px;opacity:.8;margin-left:4px}
+</style>
+</head>
+<body>
+<header><img src="/images/solar-ess-report-logo.jpg" alt="Solar ESS"><div class="addr"><b>Solar ESS Co. Ltd.</b><br>53 Moo 2, Tambon Nanglae, Amphoe Muang, Chiang Rai 57100<br>Tel 063 151 6694 · www.solaress.org · www.โซลาร์เอสส์.com</div></header>
+<main>
+<div class="login" id="login" hidden><h2 style="margin-top:0">Solar ESS Admin</h2><p class="meta">Same password as all admin pages.</p><form id="lf"><input type="password" id="pw" placeholder="Admin password" autocomplete="current-password"><button type="submit" style="width:100%">Sign in</button></form><p class="err" id="lerr"></p></div>
+<div id="app" hidden>
+<h1 style="margin:0 0 4px;font-size:24px">Form inbox</h1>
+<p class="meta" style="margin:0 0 14px">Every form sent from www.solaress.org lands here. Open one to see all answers and files, set its status and keep notes.</p>
+<div class="tabs" id="tabs"></div>
+<div class="tools"><input id="q" placeholder="Search name, phone, email, any answer…"><select id="sf"><option value="">All statuses</option><option value="open" selected>Open (not done/archived)</option><option value="new">New</option><option value="contacted">Contacted</option><option value="in-progress">In progress</option><option value="done">Done</option><option value="archived">Archived</option></select><button type="button" class="ghost" id="rf">Refresh</button><button type="button" class="ghost" id="csv">Export CSV</button></div>
+<div id="list"></div>
+</div>
+</main>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)},PW='',ITEMS=[],TAB='';
+try{PW=sessionStorage.getItem('members-admin-pw')||''}catch(e){}
+var NAMES={'consultation':'Consultation','internship-application':'Internship','job-application':'Job application','post-a-job':'Posted job','installer-request':'Installer request','tsia-membership':'TSIA membership','installer-partner':'Installer partner','job-report':'Job report','enthusiast':'Enthusiast'};
+var ST={'new':'New','contacted':'Contacted','in-progress':'In progress','done':'Done','archived':'Archived'};
+function nm(f){return NAMES[f]||f.replace(/-/g,' ')}
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function api(a,body){return fetch('/api/inbox?a='+a,{method:body?'POST':'GET',headers:Object.assign({'x-admin-password':PW},body?{'content-type':'application/json'}:{}),body:body?JSON.stringify(body):undefined}).then(function(r){if(r.status===401)throw new Error('401');if(!r.ok)throw new Error('Error '+r.status);return r})}
+function pick(d,keys){for(var i=0;i<keys.length;i++){for(var k in d){if(k.toLowerCase().indexOf(keys[i])>-1&&d[k])return String(d[k])}}return ''}
+function title(d){return pick(d,['name','company','employer'])||'(no name)'}
+function when(s){try{return new Date(s).toLocaleString('en-GB',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',timeZone:'Asia/Bangkok'})}catch(e){return s}}
+function label(k){return k.replace(/[-_]/g,' ').replace(/^./,function(c){return c.toUpperCase()})}
+function val(v){if(v&&typeof v==='object')return v.url?'<a href="'+esc(v.url)+'" target="_blank" rel="noopener">'+esc(v.filename||'file')+'</a>':esc(JSON.stringify(v));var t=esc(v);return /^https?:\/\//.test(v)?'<a href="'+t+'" target="_blank" rel="noopener">'+t+'</a>':t.replace(/\n/g,'<br>')}
+function tabs(){var c={};ITEMS.forEach(function(i){c[i.form]=(c[i.form]||0)+1});var h='<button type="button" data-t="" class="'+(TAB?'':'on')+'">All<span class="count">'+ITEMS.length+'</span></button>';Object.keys(c).sort().forEach(function(f){h+='<button type="button" data-t="'+esc(f)+'" class="'+(TAB===f?'on':'')+'">'+esc(nm(f))+'<span class="count">'+c[f]+'</span></button>'});$('tabs').innerHTML=h}
+function shown(){var q=$('q').value.trim().toLowerCase(),sf=$('sf').value;return ITEMS.filter(function(i){if(TAB&&i.form!==TAB)return false;if(sf==='open'&&(i.status==='done'||i.status==='archived'))return false;if(sf&&sf!=='open'&&i.status!==sf)return false;if(q&&JSON.stringify(i).toLowerCase().indexOf(q)<0)return false;return true})}
+function render(){tabs();var L=shown();if(!L.length){$('list').innerHTML='<div class="empty">Nothing here yet. New submissions appear as soon as a form is sent.</div>';return}
+$('list').innerHTML=L.map(function(i){var d=i.data||{},ph=pick(d,['phone','tel','mobile']),em=pick(d,['email']),line=pick(d,['line']);
+var rows=Object.keys(d).map(function(k){return '<tr><td>'+esc(label(k))+'</td><td>'+val(d[k])+'</td></tr>'}).join('');
+var files=(i.files||[]).map(function(f){return '<a href="#" class="dlf" data-id="'+esc(i.id)+'" data-f="'+esc(f.field)+'" data-n="'+esc(f.name)+'">⬇ '+esc(label(f.field))+': '+esc(f.name)+'</a>'}).join('');
+var opts=Object.keys(ST).map(function(s){return '<option value="'+s+'"'+(i.status===s?' selected':'')+'>'+ST[s]+'</option>'}).join('');
+return '<details class="it st-'+esc(i.status)+'" data-id="'+esc(i.id)+'"><summary><span class="pill">'+esc(nm(i.form))+'</span><span class="who">'+esc(title(d))+'<small>'+esc([ph,em].filter(Boolean).join(' · '))+'</small></span><span class="meta">'+esc(when(i.created))+'</span><span class="pill s '+esc(i.status)+'">'+esc(ST[i.status]||i.status)+'</span></summary><div class="body">'+
+'<div class="quick">'+(ph?'<a href="tel:'+esc(ph.replace(/[^0-9+]/g,''))+'">📞 Call</a>':'')+(em?'<a href="mailto:'+esc(em)+'">✉ Email</a>':'')+(line?'<span class="meta">LINE: '+esc(line)+'</span>':'')+'</div>'+
+'<table>'+rows+'</table>'+(files?'<div class="files"><b>Files</b><br>'+files+'</div>':'')+
+'<div class="row"><select class="st">'+opts+'</select><button type="button" class="ghost sv">Save</button><button type="button" class="del">Delete</button><span class="meta msg"></span></div>'+
+'<div class="row"><textarea class="nt" placeholder="Notes (only admins see this)">'+esc(i.note||'')+'</textarea></div></div></details>'}).join('')}
+function load(){api('list').then(function(r){return r.json()}).then(function(j){try{sessionStorage.setItem('members-admin-pw',PW)}catch(e){}ITEMS=j.items||[];$('login').hidden=true;$('app').hidden=false;render()}).catch(function(x){if(x.message==='401'){PW='';$('app').hidden=true;$('login').hidden=false;$('lerr').textContent=$('pw').value?'Password is not right.':''}else{$('lerr').textContent=x.message}})}
+$('lf').addEventListener('submit',function(e){e.preventDefault();PW=$('pw').value.trim();if(PW){$('lerr').textContent='Checking…';load()}});
+$('tabs').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;TAB=b.dataset.t;render()});
+$('q').addEventListener('input',render);$('sf').addEventListener('change',render);$('rf').onclick=load;
+$('list').addEventListener('click',function(e){var t=e.target,box=t.closest('details');if(!box)return;var id=box.dataset.id,msg=box.querySelector('.msg');
+if(t.classList.contains('dlf')){e.preventDefault();api('file&id='+encodeURIComponent(t.dataset.id)+'&f='+encodeURIComponent(t.dataset.f)).then(function(r){return r.blob()}).then(function(bl){var a=document.createElement('a');a.href=URL.createObjectURL(bl);a.download=t.dataset.n||'file';document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},2000)}).catch(function(x){alert('Download failed: '+x.message)})}
+if(t.classList.contains('sv')){msg.textContent='Saving…';api('set',{id:id,status:box.querySelector('.st').value,note:box.querySelector('.nt').value}).then(function(r){return r.json()}).then(function(j){ITEMS=ITEMS.map(function(i){return i.id===id?j.item:i});msg.textContent='Saved ✓';box.className='it st-'+j.item.status;box.querySelector('.pill.s').textContent=ST[j.item.status];box.querySelector('.pill.s').className='pill s '+j.item.status}).catch(function(x){msg.textContent='Not saved: '+x.message})}
+if(t.classList.contains('del')){if(!confirm('Delete this submission and its files? This cannot be undone.'))return;api('delete',{id:id}).then(function(){ITEMS=ITEMS.filter(function(i){return i.id!==id});render()}).catch(function(x){msg.textContent='Not deleted: '+x.message})}});
+$('csv').onclick=function(){var L=shown(),keys=[];L.forEach(function(i){Object.keys(i.data||{}).forEach(function(k){if(keys.indexOf(k)<0)keys.push(k)})});
+var q=function(v){v=v&&typeof v==='object'?(v.url||JSON.stringify(v)):(v==null?'':String(v));return '"'+v.replace(/"/g,'""')+'"'};
+var out=[['form','received','status','note'].concat(keys).map(q).join(',')].concat(L.map(function(i){return [nm(i.form),when(i.created),ST[i.status]||i.status,i.note||''].concat(keys.map(function(k){return (i.data||{})[k]})).map(q).join(',')}));
+var a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\ufeff'+out.join('\n')],{type:'text/csv'}));a.download='Solar_ESS_Form_Inbox_'+new Date().toISOString().slice(0,10).replace(/-/g,'')+'.csv';document.body.appendChild(a);a.click();a.remove()};
+if(PW)load();else $('login').hidden=false;
+})();
+</script>
+</body>
+</html>

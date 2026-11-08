@@ -17,6 +17,7 @@ export default async (req) => {
   try { body = await req.json(); } catch { return new Response("bad body", { status: 400 }); }
   const p = body && body.payload;
   if (p && p.form_name === "job-report") return saveReport(p);
+  if (p && p.form_name) { try { await saveInbox(p); } catch { /* inbox copy is best-effort */ } }
   const cfg = p && FORMS[p.form_name];
   if (!cfg) return new Response("ignored");
 
@@ -92,4 +93,39 @@ async function saveReport(p) {
   job.report = { created: p.created_at || new Date().toISOString(), data, files };
   await store.setJSON("job/" + job.id, job);
   return new Response("saved");
+}
+
+// Form inbox: every website form submission (except vocab results, which have their own admin)
+// is also copied to store "inbox" so Kris can read and manage it at /inbox-admin.html.
+// Uploaded files are copied now because Netlify's file links expire.
+const INBOX_SKIP = new Set(["vocab-results"]);
+const INBOX_MAX_FILE = 8 * 1024 * 1024;
+async function saveInbox(p) {
+  if (INBOX_SKIP.has(p.form_name)) return;
+  const store = getStore({ name: "inbox", consistency: "strong" });
+  const id = String(p.id || p.number || Date.now()).replace(/[^A-Za-z0-9_-]/g, "");
+  if (await store.get("sub/" + id)) return;
+  const data = {}, files = [];
+  for (const [k, v] of Object.entries(p.data || {})) {
+    if (["bot-field", "form-name", "ip", "user_agent", "referrer"].includes(k)) continue;
+    const url = fileUrl(v);
+    if (url && (typeof v === "object" || /netlify|amazonaws|cloudfront/.test(url))) {
+      try {
+        const r = await fetch(url);
+        const type = r.headers.get("content-type") || "application/octet-stream";
+        const buf = r.ok ? await r.arrayBuffer() : null;
+        if (buf && buf.byteLength <= INBOX_MAX_FILE) {
+          const name = (typeof v === "object" && v.filename) || url.split("?")[0].split("/").pop() || k;
+          await store.set(`file/${id}/${k}`, buf, { metadata: { type, name } });
+          files.push({ field: k, name, type, size: buf.byteLength });
+          continue;
+        }
+      } catch { /* fall through and keep the link */ }
+    }
+    data[k] = v;
+  }
+  await store.setJSON("sub/" + id, {
+    id, form: p.form_name, status: "new", note: "",
+    created: p.created_at || new Date().toISOString(), data, files,
+  });
 }

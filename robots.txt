@@ -9,5 +9,6 @@ Disallow: /feedback-admin.html
 Disallow: /itest-admin.html
 Disallow: /vocab-admin.html
 Disallow: /insurance-admin.html
+Disallow: /inbox-admin.html
 
 Sitemap: https://solaress.org/sitemap.xml

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>CAR Insurance | Solar ESS Admin</title>
+<style>
+:root{--navy:#0A1230;--blue:#2563EB;--violet:#4A55D6;--ink:#0A0E2E;--mute:#3E548E;--line:#DEE3ED;--paper:#F6F8FC;--no:#B42318}
+*{box-sizing:border-box}body{margin:0;font:15px/1.6 "IBM Plex Sans Thai","Inter",system-ui,sans-serif;color:var(--ink);background:var(--paper)}
+header{background:var(--navy);color:#fff;padding:12px 20px;display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+header img{height:46px;background:#fff;border-radius:6px;padding:2px}header .addr{font-size:12px;line-height:1.45;text-align:right;opacity:.9}
+main{max-width:1000px;margin:0 auto;padding:22px}
+.login{max-width:420px;margin:60px auto;background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px}
+input,button{font:inherit}input[type=password]{width:100%;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;margin:10px 0}
+button,.btn{border:0;border-radius:10px;padding:9px 16px;font-weight:600;cursor:pointer;background:var(--blue);color:#fff;text-decoration:none;display:inline-block}
+.err{color:var(--no)}.meta{color:var(--mute);font-size:13px}
+.bar{display:flex;gap:10px;justify-content:flex-end;margin-bottom:14px;flex-wrap:wrap}
+.hero{background:var(--navy);color:#fff;border-radius:16px;padding:24px;margin-bottom:16px}
+.hero h1{margin:4px 0 8px;font-size:28px;line-height:1.2}.hero p{margin:0;opacity:.92}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#C7D2FE;margin:0}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:18px}
+.kpis div{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:12px}
+.kpis small{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.75}.kpis b{display:block;font-size:17px;margin:2px 0}.kpis span{font-size:12px;opacity:.8}
+.card{background:#fff;border:1px solid var(--line);border-left:5px solid var(--violet);border-radius:14px;padding:18px 22px;margin-bottom:14px}
+.card.warn{border-left-color:var(--blue);background:#EEF2FF}
+.card h2{font-size:19px;margin:0 0 10px}.card h2 .th{font-size:13px;font-weight:500;color:var(--mute);margin-left:8px}
+.card ul,.card ol{margin:0;padding-left:22px}.card li{margin:5px 0}
+.cols{columns:2;column-gap:28px}.cols li{break-inside:avoid}
+table{border-collapse:collapse;width:100%}td,th{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}th{background:var(--paper);font-size:13px}td:first-child{width:36%;font-weight:600}
+.foot{margin-top:18px}
+@media(max-width:760px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.cols{columns:1}td:first-child{width:auto}header .addr{text-align:left}}
+@media print{.bar,header button{display:none}body{background:#fff}.card,.hero{break-inside:avoid}}
+</style>
+</head>
+<body>
+<header><img src="/images/solar-ess-report-logo.jpg" alt="Solar ESS"><div class="addr"><b>Solar ESS Co. Ltd.</b><br>53 Moo 2, Tambon Nanglae, Amphoe Muang, Chiang Rai 57100<br>Tel 063 151 6694 · www.solaress.org · www.โซลาร์เอสส์.com</div></header>
+<main>
+<div class="login" id="login" hidden><h2 style="margin-top:0">Solar ESS Admin</h2><p class="meta">Same password as all admin pages.</p><form id="lf"><input type="password" id="pw" placeholder="Admin password" autocomplete="current-password"><button type="submit" style="width:100%">Sign in</button></form><p class="err" id="lerr"></p></div>
+<div id="app" hidden><div class="bar"><button type="button" id="dl">Download original policy (PDF)</button><button type="button" id="pr" style="background:#fff;color:var(--ink);border:1.5px solid var(--line)">Print</button></div><div id="doc"></div></div>
+</main>
+<script>
+(function(){var $=function(i){return document.getElementById(i)},PW='';try{PW=sessionStorage.getItem('members-admin-pw')||''}catch(e){}
+function get(a){return fetch('/api/docs?a='+a,{headers:{'x-admin-password':PW}}).then(function(r){if(r.status===401)throw new Error('401');if(!r.ok)throw new Error(r.status);return r})}
+function load(){get('insurance').then(function(r){return r.json()}).then(function(j){try{sessionStorage.setItem('members-admin-pw',PW)}catch(e){}$('doc').innerHTML=j.html;$('dl').dataset.name=j.pdf;$('login').hidden=true;$('app').hidden=false}).catch(function(x){PW='';$('app').hidden=true;$('login').hidden=false;$('lerr').textContent=x.message==='401'?($('pw').value?'Password is not right.':''):x.message})}
+$('lf').addEventListener('submit',function(e){e.preventDefault();PW=$('pw').value.trim();if(PW){$('lerr').textContent='Checking…';load()}});
+$('dl').onclick=function(){var b=this;b.textContent='Preparing…';get('insurance-pdf').then(function(r){return r.blob()}).then(function(bl){var a=document.createElement('a');a.href=URL.createObjectURL(bl);a.download=b.dataset.name||'policy.pdf';document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},2000);b.textContent='Download original policy (PDF)'}).catch(function(x){b.textContent='Download failed: '+x.message})};
+$('pr').onclick=function(){print()};
+if(PW)load();else $('login').hidden=false;
+})();
+</script>
+</body>
+</html>

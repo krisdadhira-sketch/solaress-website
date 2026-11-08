@@ -23,7 +23,7 @@ TOPICS = {
  'datacenter': ['electrification-who-pays-teaser', 'data-centre-impacts-guide', 'data-centres-power-water', 'data-centres-thailand-power', 'global-energy-review-2025'],
  'innovation': ['icfo-boltzmann-loss-solar-cavity', 'fraunhofer-silicon-anode-cells', 'tongwei-93-bifaciality', 'risen-anti-glare', 'mova-lumegret-s5000',
                 'solis-s6-eh3p50k-v38-vs-21a', 'thailand-solar-battery-recycling-estate'],
- 'adoption': ['global-energy-review-2025', 'china-solar-down-rest-up', 'module-prices-october-2026', 'nz-solar-complaints-surge',
+ 'adoption': ['us-solar-market-q2-2026', 'global-energy-review-2025', 'china-solar-down-rest-up', 'module-prices-october-2026', 'nz-solar-complaints-surge',
               'thai-rooftop-solar-policy'],
  'consumption': ['data-centre-impacts-guide', 'data-centres-power-water', 'global-energy-review-2025', 'data-centres-thailand-power', 'tni-state-of-power-2024', 'ucs-solar-environmental-impacts'],
 }

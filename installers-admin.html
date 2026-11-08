@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Installers near a job | Solar ESS Admin</title>
+<style>
+:root{--navy:#0A1230;--blue:#2563EB;--violet:#4A55D6;--ink:#0A0E2E;--mute:#3E548E;--line:#DEE3ED;--paper:#F6F8FC;--no:#B42318}
+*{box-sizing:border-box}body{margin:0;font:15px/1.6 "IBM Plex Sans Thai","Inter",system-ui,sans-serif;color:var(--ink);background:var(--paper)}
+header{background:var(--navy);color:#fff;padding:12px 20px;display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+header img{height:46px;background:#fff;border-radius:6px;padding:2px}header .addr{font-size:12px;line-height:1.45;text-align:right;opacity:.9}
+main{max-width:1000px;margin:0 auto;padding:22px}
+.login{max-width:420px;margin:60px auto;background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px}
+input,button{font:inherit}input[type=password]{width:100%;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;margin:10px 0}
+button,.btn{border:0;border-radius:10px;padding:9px 16px;font-weight:600;cursor:pointer;background:var(--blue);color:#fff;text-decoration:none;display:inline-block}
+.err{color:var(--no)}.meta{color:var(--mute);font-size:13px}
+.bar{display:flex;gap:10px;justify-content:flex-end;margin-bottom:14px;flex-wrap:wrap}
+.hero{background:var(--navy);color:#fff;border-radius:16px;padding:24px;margin-bottom:16px}
+.hero h1{margin:4px 0 8px;font-size:28px;line-height:1.2}.hero p{margin:0;opacity:.92}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#C7D2FE;margin:0}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:18px}
+.kpis div{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:12px}
+.kpis small{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.75}.kpis b{display:block;font-size:17px;margin:2px 0}.kpis span{font-size:12px;opacity:.8}
+.card{background:#fff;border:1px solid var(--line);border-left:5px solid var(--violet);border-radius:14px;padding:18px 22px;margin-bottom:14px}
+.card.warn{border-left-color:var(--blue);background:#EEF2FF}
+.card h2{font-size:19px;margin:0 0 10px}.card h2 .th{font-size:13px;font-weight:500;color:var(--mute);margin-left:8px}
+.card ul,.card ol{margin:0;padding-left:22px}.card li{margin:5px 0}
+.cols{columns:2;column-gap:28px}.cols li{break-inside:avoid}
+table{border-collapse:collapse;width:100%}td,th{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}th{background:var(--paper);font-size:13px}td:first-child{width:36%;font-weight:600}
+.foot{margin-top:18px}
+@media(max-width:760px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.cols{columns:1}td:first-child{width:auto}header .addr{text-align:left}}
+@media print{.bar,header button{display:none}body{background:#fff}.card,.hero{break-inside:avoid}}
+
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 10px}.tabs button{background:#fff;color:var(--ink);border:1.5px solid var(--line);padding:6px 12px;font-size:13px}
+.tabs button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.tools{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}.tools input,.tools select{font:inherit;padding:8px 10px;border:1.5px solid var(--line);border-radius:10px;background:#fff;color:#000}
+.tools input{flex:1;min-width:200px}
+.it{background:#fff;border:1px solid var(--line);border-left:5px solid var(--violet);border-radius:12px;margin-bottom:10px}
+.it.st-new{border-left-color:var(--blue)}.it.st-done,.it.st-archived{opacity:.75;border-left-color:#9AA3B5}
+.it summary{list-style:none;cursor:pointer;padding:12px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.it summary::-webkit-details-marker{display:none}
+.it .who{font-weight:600;flex:1;min-width:180px}.it .who small{display:block;font-weight:400;color:var(--mute)}
+.pill{font-size:11px;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:3px 9px;background:#E7EBFF;color:#2E3AA8;white-space:nowrap}
+.pill.s{background:#EEF0F4;color:#3E548E}.pill.s.new{background:#2563EB;color:#fff}
+.body{padding:0 16px 16px}.body table{border-collapse:collapse;width:100%;margin:6px 0 12px}.body td{border-bottom:1px solid var(--line);padding:6px 8px;vertical-align:top;font-size:14px;word-break:break-word}
+.body td:first-child{width:32%;color:var(--mute);font-weight:600}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:8px}.row select,.row textarea{font:inherit;padding:8px;border:1.5px solid var(--line);border-radius:10px;color:#000;background:#fff}
+.row textarea{width:100%;min-height:60px}.ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line)}.del{background:#fff;color:var(--no);border:1.5px solid #F2C4C0}
+.files a{display:inline-block;margin:0 8px 6px 0}.quick a{margin-right:10px;font-size:14px}
+.empty{padding:30px;text-align:center;color:var(--mute);background:#fff;border-radius:12px;border:1px dashed var(--line)}
+.count{font-size:12px;opacity:.8;margin-left:4px}
+
+.jobbox{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px}
+.jobbox .g{display:grid;grid-template-columns:1.2fr 1fr 1fr .7fr;gap:10px}@media(max-width:760px){.jobbox .g{grid-template-columns:1fr 1fr}}
+.jobbox label{font-size:13px;font-weight:600;color:var(--mute)}.jobbox input,.jobbox select,.jobbox textarea{display:block;width:100%;font:inherit;padding:8px 10px;border:1.5px solid var(--line);border-radius:10px;margin-top:3px;color:#000;background:#fff}
+.jobbox textarea{min-height:70px}
+table.t{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.t th,.t td{padding:8px 10px;border-bottom:1px solid var(--line);font-size:14px;text-align:left;vertical-align:top}.t th{background:#EEF2FF;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:#2E3AA8}
+.t .km{font-weight:700;white-space:nowrap}.t .near{color:#067647}.t .far{color:#9AA3B5}.t .act a,.t .act button{font-size:13px;padding:5px 9px;margin:0 4px 4px 0;border-radius:8px}
+.tag{font-size:11px;background:#EEF0F4;color:#3E548E;border-radius:999px;padding:2px 8px;margin-right:4px;white-space:nowrap}.off{opacity:.5}
+.stale{color:#B54708;font-size:12px}
+</style></head>
+<body>
+<header><img src="/images/solar-ess-report-logo.jpg" alt="Solar ESS"><div class="addr"><b>Solar ESS Co. Ltd.</b><br>53 Moo 2, Tambon Nanglae, Amphoe Muang, Chiang Rai 57100<br>Tel 063 151 6694 · www.solaress.org · www.โซลาร์เอสส์.com</div></header>
+<main>
+<div class="login" id="login" hidden><h2 style="margin-top:0">Solar ESS Admin</h2><p class="meta">Same password as all admin pages.</p><form id="lf"><input type="password" id="pw" placeholder="Admin password" autocomplete="current-password"><button type="submit" style="width:100%">Sign in</button></form><p class="err" id="lerr"></p></div>
+<div id="app" hidden>
+<h1 style="margin:0 0 4px;font-size:24px">Installers near a job</h1>
+<p class="meta" style="margin:0 0 14px">Every installer who registered (TSIA, Installer Partner, job application) or updated their base at <a href="/location.html" target="_blank">solaress.org/location.html</a>. Enter the job location to sort them by distance, then contact them by LINE, phone or email with the job message.</p>
+<div class="jobbox"><div class="g">
+<label>Job province<select id="jp"><option value="">Any (show all)</option></select></label>
+<label>Job GPS (lat, lng)<input id="jg" placeholder="e.g. 7.0070, 100.4740"></label>
+<label>Max distance<select id="jr"><option value="50">50 km</option><option value="100" selected>100 km</option><option value="200">200 km</option><option value="99999">Any</option></select></label>
+<label>Search<input id="q" placeholder="name, district…"></label></div>
+<label style="display:block;margin-top:10px">Job message (sent with LINE / email / copy)<textarea id="jm">Solar ESS has an installation job near you. Details: https://www.solaress.org/job.html
+Requirements: pass at least 1 Solar ESS test and be a TSIA member. Please reply if you are available.</textarea></label>
+<p class="meta" style="margin:8px 0 0">Tip: paste the job's coordinates from Google Maps for exact distance. Without GPS, distance uses the province town.</p></div>
+<div class="bar"><span class="meta" id="cnt" style="margin-right:auto"></span><button type="button" class="ghost" id="copyall">Copy phones of shown</button><button type="button" class="ghost" id="csv">Export CSV</button><button type="button" class="ghost" id="rf">Refresh</button></div>
+<div id="list"></div>
+</div>
+</main>
+<script src="/js/th-provinces.js"></script>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)},PW='',ITEMS=[],SHOWN=[];
+try{PW=sessionStorage.getItem('members-admin-pw')||''}catch(e){}
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function api(a,body){return fetch('/api/installers?a='+a,{method:body?'POST':'GET',headers:Object.assign({'x-admin-password':PW},body?{'content-type':'application/json'}:{}),body:body?JSON.stringify(body):undefined}).then(function(r){if(r.status===401)throw new Error('401');if(!r.ok)throw new Error('Error '+r.status);return r.json()})}
+TH_PROV.slice().sort(function(a,b){return a[0].localeCompare(b[0])}).forEach(function(p){var o=document.createElement('option');o.value=p[0];o.textContent=p[0]+' · '+p[1];$('jp').appendChild(o)});
+function km(a,b,c,d){var R=6371,r=Math.PI/180,x=Math.sin((c-a)*r/2),y=Math.sin((d-b)*r/2),h=x*x+Math.cos(a*r)*Math.cos(c*r)*y*y;return 2*R*Math.asin(Math.sqrt(h))}
+function pos(i){if(i.lat!=null&&i.lng!=null)return{lat:i.lat,lng:i.lng,exact:true};var p=TH_PROV_FIND(i.province)||TH_PROV_FIND(i.district);return p?{lat:p[2],lng:p[3],exact:false}:null}
+function jobPos(){var g=$('jg').value.match(/(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)/);if(g)return{lat:+g[1],lng:+g[2],exact:true};var p=TH_PROV_FIND($('jp').value);return p?{lat:p[2],lng:p[3],exact:false}:null}
+var SRC={'tsia-membership':'TSIA','installer-partner':'Partner','job-application':'Job applicant','location-page':'Self-updated'};
+function age(s){var d=(Date.now()-new Date(s))/864e5;return d<1?'today':d<2?'yesterday':Math.floor(d)+' days ago'}
+function lineUrl(id){id=String(id||'').trim();if(!id)return'';if(/^https?:/.test(id))return id;return 'https://line.me/R/ti/p/'+encodeURIComponent(id.charAt(0)==='@'?id:'~'+id)}
+function render(){var J=jobPos(),max=+$('jr').value,q=$('q').value.toLowerCase().trim();
+SHOWN=ITEMS.map(function(i){var p=pos(i);i._d=(J&&p)?km(J.lat,J.lng,p.lat,p.lng):null;i._exact=p&&p.exact&&J&&J.exact;return i})
+.filter(function(i){if(q&&JSON.stringify(i).toLowerCase().indexOf(q)<0)return false;if(J&&i._d!=null&&i._d>max)return false;if(J&&i._d==null)return false;return true})
+.sort(function(a,b){if(a.active===false&&b.active!==false)return 1;if(b.active===false&&a.active!==false)return -1;if(a._d==null&&b._d==null)return String(b.updated).localeCompare(String(a.updated));return (a._d==null?1e9:a._d)-(b._d==null?1e9:b._d)});
+$('cnt').textContent=SHOWN.length+' of '+ITEMS.length+' installers'+(J?' within '+(max>9999?'any distance':max+' km'):'');
+if(!SHOWN.length){$('list').innerHTML='<div class="empty">No installers found'+(J?' within this distance. Try a larger distance.':' yet. They appear here when someone registers or updates their location.')+'</div>';return}
+var msg=$('jm').value;
+$('list').innerHTML='<table class="t"><thead><tr><th>Distance</th><th>Installer</th><th>Base location</th><th>Contact</th></tr></thead><tbody>'+SHOWN.map(function(i,n){
+var d=i._d==null?'–':(i._exact?'':'≈')+Math.round(i._d)+' km',cls=i._d==null?'':i._d<=(i.radius||50)?'near':'';
+var loc=[i.subdistrict,i.district,i.province].filter(Boolean).map(esc).join(', ')||'<span class="meta">not given</span>';
+var tags=(i.sources||[]).map(function(s){return '<span class="tag">'+esc(SRC[s]||s)+'</span>'}).join('');
+var stale=(Date.now()-new Date(i.updated))/864e5>90?' <span class="stale">· location may be old</span>':'';
+var tel=String(i.phone||'').replace(/[^0-9+]/g,''),act='';
+if(tel)act+='<a class="btn ghost" href="tel:'+esc(tel)+'">Call</a>';
+if(i.line)act+='<a class="btn ghost" target="_blank" rel="noopener" href="'+esc(lineUrl(i.line))+'">LINE</a>';
+if(i.email)act+='<a class="btn ghost" href="mailto:'+esc(i.email)+'?subject='+encodeURIComponent('Solar ESS job near you')+'&body='+encodeURIComponent(msg)+'">Email</a>';
+if(tel)act+='<a class="btn ghost" href="sms:'+esc(tel)+'?body='+encodeURIComponent(msg)+'">SMS</a>';
+act+='<button class="ghost" data-copy="'+n+'">Copy msg</button><button class="ghost" data-act="'+n+'">'+(i.active===false?'Activate':'Pause')+'</button><button class="del" data-del="'+n+'">Delete</button>';
+return '<tr class="'+(i.active===false?'off':'')+'"><td class="km '+cls+'">'+d+(i.radius?'<br><span class="meta" style="font-weight:400">wants ≤'+(i.radius>=1000?'any':i.radius+' km')+'</span>':'')+'</td><td><b>'+esc(i.name||'(no name)')+'</b><br>'+tags+(i.note?'<br><span class="meta">'+esc(i.note)+'</span>':'')+'</td><td>'+loc+(i.lat!=null?'<br><a class="meta" target="_blank" rel="noopener" href="https://maps.google.com/?q='+i.lat+','+i.lng+'">map</a>':'')+'<br><span class="meta">updated '+age(i.updated)+'</span>'+stale+'</td><td class="act">'+esc(i.phone||'')+(i.contact?' <span class="tag">prefers '+esc(i.contact)+'</span>':'')+'<br>'+act+'</td></tr>'}).join('')+'</tbody></table>'}
+$('list').onclick=function(e){var t=e.target,i;
+if(t.dataset.copy!=null){i=SHOWN[+t.dataset.copy];navigator.clipboard.writeText((i.name?('Hi '+i.name+', '):'')+$('jm').value).then(function(){t.textContent='Copied ✓'})}
+else if(t.dataset.act!=null){i=SHOWN[+t.dataset.act];api('set',{key:i.key,active:i.active===false}).then(load)}
+else if(t.dataset.del!=null){i=SHOWN[+t.dataset.del];if(confirm('Delete '+(i.name||i.phone)+' from the installer location list?'))api('delete',{key:i.key}).then(load)}};
+['jp','jg','jr','q','jm'].forEach(function(id){$(id).addEventListener('input',render)});
+$('rf').onclick=load;
+$('copyall').onclick=function(){navigator.clipboard.writeText(SHOWN.filter(function(i){return i.active!==false}).map(function(i){return i.phone}).join('\n')).then(function(){$('copyall').textContent='Copied ✓'})};
+$('csv').onclick=function(){var cols=['name','phone','line','email','contact','subdistrict','district','province','lat','lng','radius','updated'];var rows=[cols.concat(['distance_km','sources'])].concat(SHOWN.map(function(i){return cols.map(function(c){return i[c]==null?'':i[c]}).concat([i._d==null?'':Math.round(i._d),(i.sources||[]).join(' ')])}));
+var b=new Blob(['\ufeff'+rows.map(function(r){return r.map(function(v){return '"'+String(v).replace(/"/g,'""')+'"'}).join(',')}).join('\n')],{type:'text/csv'});var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='solar-ess-installers.csv';a.click()};
+function load(){api('list').then(function(r){ITEMS=r.items||[];$('login').hidden=true;$('app').hidden=false;render()}).catch(function(e){if(String(e.message)==='401'){$('app').hidden=true;$('login').hidden=false;$('lerr').textContent=PW?'Wrong password.':''}else $('list').innerHTML='<div class="empty">'+esc(e.message)+'</div>'})}
+$('lf').onsubmit=function(e){e.preventDefault();PW=$('pw').value.trim();try{sessionStorage.setItem('members-admin-pw',PW)}catch(x){}load()};
+if(PW)load();else $('login').hidden=false;
+})();
+</script>
+</body></html>

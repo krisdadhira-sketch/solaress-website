@@ -1,0 +1,49 @@
+<!doctype html><html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>อัปเดตตำแหน่งของฉัน | ช่างติดตั้ง Solar ESS</title><meta name="description" content="แจ้งพื้นที่ที่ท่านทำงานอยู่ เมื่อ Solar ESS มีงานใกล้ท่าน เราจะติดต่อท่านก่อน ย้ายไปทำงานพื้นที่อื่นเมื่อไร อัปเดตได้ทันที ใช้เวลาเพียง 30 วินาที"><link rel="canonical" href="https://www.solaress.org/th/location.html"><link rel="alternate" hreflang="en" href="https://www.solaress.org/location.html"><link rel="alternate" hreflang="th" href="https://www.solaress.org/th/location.html">
+<style>
+:root{--navy:#0A1230;--blue:#2563EB;--violet:#4A55D6;--ink:#0A0E2E;--mute:#3E548E;--line:#DEE3ED;--paper:#F6F8FC;--ok:#067647;--no:#B42318}
+*{box-sizing:border-box}body{margin:0;font:16px/1.6 "IBM Plex Sans Thai","Inter",system-ui,sans-serif;color:var(--ink);background:var(--paper)}
+header{background:var(--navy);color:#fff;padding:12px 20px;display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+header img{height:46px;background:#fff;border-radius:6px;padding:2px}header .addr{font-size:12px;line-height:1.45;text-align:right;opacity:.9}header a{color:#C7D2FE}
+main{max-width:620px;margin:0 auto;padding:26px 18px 50px}h1{font-size:28px;margin:0 0 6px}.lede{color:var(--mute);margin:0 0 18px}
+form{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px}label{display:block;font-weight:600;font-size:14px;margin:0 0 12px}
+input,select{display:block;width:100%;font:inherit;font-weight:400;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;margin-top:4px;background:#fff;color:#000}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:520px){.two{grid-template-columns:1fr}}
+small{color:var(--mute);font-weight:400}.req{color:var(--no)}
+.btn{border:0;border-radius:10px;padding:12px 18px;font:inherit;font-weight:600;cursor:pointer;background:var(--blue);color:#fff;width:100%}
+.gps{border:1.5px solid var(--blue);background:#fff;color:var(--blue);border-radius:10px;padding:9px 14px;font:inherit;font-size:14px;cursor:pointer}
+.chk{display:flex;gap:10px;font-weight:400;align-items:flex-start}.chk input{width:auto;margin-top:5px}.radios{display:flex;gap:14px;flex-wrap:wrap;font-weight:400}.radios label{display:flex;gap:6px;align-items:center;font-weight:400;margin:0}.radios input{width:auto;margin:0}
+.msg{margin-top:12px;font-weight:600}.box{background:#EEF2FF;border-left:4px solid var(--violet);border-radius:10px;padding:12px 14px;margin:18px 0;font-size:14px}.box a{color:var(--violet)}
+footer{text-align:center;font-size:13px;color:var(--mute);padding:20px}footer a{color:var(--mute)}
+</style></head><body>
+<header><a href="/th/"><img src="/images/solar-ess-report-logo.jpg" alt="Solar ESS"></a><div class="addr"><b>Solar ESS Co. Ltd.</b><br>53 Moo 2, Tambon Nanglae, Amphoe Muang, Chiang Rai 57100<br>Tel 063 151 6694 · www.solaress.org · www.โซลาร์เอสส์.com<br><a href="/location.html">English</a></div></header>
+<main><h1>อัปเดตตำแหน่งของฉัน</h1><p class="lede">แจ้งพื้นที่ที่ท่านทำงานอยู่ เมื่อ Solar ESS มีงานใกล้ท่าน เราจะติดต่อท่านก่อน ย้ายไปทำงานพื้นที่อื่นเมื่อไร อัปเดตได้ทันที ใช้เวลาเพียง 30 วินาที</p>
+<form id="lf" novalidate><p hidden><label>Website <input name="website" tabindex="-1" autocomplete="off"></label></p>
+<label>เบอร์โทรศัพท์ <b class="req">*</b><input name="phone" type="tel" required autocomplete="tel" inputmode="tel"><small>ใช้เป็นรหัสของท่าน กรุณาใช้เบอร์เดียวกับที่ลงทะเบียนไว้</small></label>
+<label>ชื่อ หรือชื่อทีม<input name="name" autocomplete="name"></label>
+<p style="margin:0 0 12px"><button type="button" class="gps" id="gps">📍 ใช้ตำแหน่งปัจจุบันของฉัน (GPS)</button> <span id="gmsg" style="font-size:13px"></span></p>
+<input type="hidden" name="lat"><input type="hidden" name="lng">
+<label>จังหวัด <b class="req">*</b><select name="province" required><option value="">เลือกจังหวัด</option></select></label>
+<div class="two"><label>อำเภอ <b class="req">*</b><input name="district" required></label><label>ตำบล<input name="subdistrict"></label></div>
+<label>รับงานในระยะ<select name="radius"><option value="25">25 กม. จากฉัน</option><option value="50" selected>50 กม. จากฉัน</option><option value="100">100 กม. จากฉัน</option><option value="200">200 กม. จากฉัน</option><option value="1000">ทั่วประเทศ</option></select></label>
+<p style="font-weight:600;font-size:14px;margin:0 0 6px">แจ้งงานทาง</p><div class="radios" style="margin-bottom:12px"><label><input type="radio" name="contact" value="line" checked> LINE</label><label><input type="radio" name="contact" value="phone"> โทรศัพท์</label><label><input type="radio" name="contact" value="email"> อีเมล</label></div>
+<div class="two"><label>LINE ID<input name="line"></label><label>อีเมล<input name="email" type="email" autocomplete="email"></label></div>
+<label class="chk"><input type="checkbox" name="consent" value="yes" required><span>ข้าพเจ้ายินยอมให้ Solar ESS เก็บตำแหน่งและช่องทางติดต่อนี้ไว้เพื่อเสนองานติดตั้งใกล้บ้าน ข้อมูลนี้จะไม่ถูกเผยแพร่</span></label>
+<button class="btn" type="submit">บันทึกตำแหน่งของฉัน</button><p class="msg" id="msg" aria-live="polite"></p></form>
+<div class="box"><b>ใครควรลงทะเบียน</b><br>ช่างทุกท่านที่ต้องการรับงานกับ Solar ESS: ผ่าน<a href="/th/installer-test.html">แบบทดสอบ Solar ESS</a>อย่างน้อย 1 ชุด เป็นสมาชิก <a href="/th/team.html#network">TSIA</a> และอัปเดตตำแหน่งที่นี่อยู่เสมอ</div>
+<p style="text-align:center"><a href="/th/job.html" style="color:var(--blue);font-weight:600">ดูงานที่เปิดรับ →</a></p></main>
+<footer>Solar ESS Co. Ltd. · <a href="/th/job.html">งาน</a> · www.solaress.org · www.solar-ess.org</footer>
+<script src="/js/th-provinces.js"></script>
+<script>(function(){var f=document.getElementById('lf'),TH=true,K='sess-installer-loc',sel=f.province;
+TH_PROV.slice().sort(function(a,b){return (TH?a[1]:a[0]).localeCompare(TH?b[1]:b[0],TH?'th':'en')}).forEach(function(p){var o=document.createElement('option');o.value=p[0];o.textContent=TH?p[1]+' ('+p[0]+')':p[0];sel.appendChild(o)});
+var q=new URLSearchParams(location.search),saved={};try{saved=JSON.parse(localStorage.getItem(K)||'{}')}catch(e){}
+['phone','name','province','district','subdistrict','radius','line','email','contact'].forEach(function(n){var v=q.get(n)||saved[n];if(!v)return;var el=f.elements[n];if(!el)return;if(el.length&&el[0]&&el[0].type==='radio'){for(var i=0;i<el.length;i++)el[i].checked=el[i].value===v}else el.value=v});
+function near(lat,lng){var b=null,d=1e9;TH_PROV.forEach(function(p){var x=(p[2]-lat)*(p[2]-lat)+(p[3]-lng)*(p[3]-lng);if(x<d){d=x;b=p}});return b}
+document.getElementById('gps').onclick=function(){var m=document.getElementById('gmsg');if(!navigator.geolocation){m.textContent='ไม่สามารถอ่านตำแหน่งได้ กรุณาเลือกจังหวัดและอำเภอ';return}m.textContent='…';
+navigator.geolocation.getCurrentPosition(function(p){var la=p.coords.latitude,ln=p.coords.longitude;f.lat.value=la.toFixed(5);f.lng.value=ln.toFixed(5);var n=near(la,ln);if(n&&!sel.value)sel.value=n[0];m.textContent='✓ '+'พบตำแหน่งแล้ว'+' ('+la.toFixed(3)+', '+ln.toFixed(3)+')'},function(){m.textContent='ไม่สามารถอ่านตำแหน่งได้ กรุณาเลือกจังหวัดและอำเภอ'},{timeout:12000})};
+f.onsubmit=function(e){e.preventDefault();var m=document.getElementById('msg');if(!f.reportValidity())return;var d={};['website','phone','name','lat','lng','province','district','subdistrict','radius','line','email'].forEach(function(n){d[n]=f.elements[n].value});
+d.contact=(f.querySelector('input[name=contact]:checked')||{}).value||'';d.consent=f.consent.checked;m.style.color='';m.textContent='…';
+fetch('/api/installers?a=update',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(d)}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(){
+try{var s={};['phone','name','province','district','subdistrict','radius','line','email','contact'].forEach(function(n){s[n]=d[n]});localStorage.setItem(K,JSON.stringify(s))}catch(x){}
+m.style.color='var(--ok)';m.textContent='✓ บันทึกแล้ว เราจะติดต่อท่านเมื่อมีงานใกล้'+' '+[d.subdistrict,d.district,d.province].filter(Boolean).join(', ')+'.'}).catch(function(){m.style.color='var(--no)';m.textContent='บันทึกไม่สำเร็จ กรุณาตรวจเบอร์โทรและตำแหน่ง หรือโทร 063 151 6694'})};})();</script>
+</body></html>

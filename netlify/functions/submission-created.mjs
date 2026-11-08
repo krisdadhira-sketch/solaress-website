@@ -3,10 +3,17 @@
 // (store "members") so Kris can review them at /members-admin.html. Nothing is published until
 // he approves it there. Uploaded photos are copied now, because Netlify's file links expire.
 import { getStore } from "@netlify/blobs";
+import { upsertInstaller } from "./installers/installers.mjs";
 
 const FORMS = {
   "tsia-membership": { type: "tsia", images: ["photo-1", "photo-2", "photo-3"] },
   "installer-partner": { type: "partner", images: ["profile-photo", "project-photo-1", "project-photo-2", "project-photo-3"] },
+};
+// Installer base locations (store "installers") so Kris can find and notify installers near a job.
+const LOC_FORMS = {
+  "tsia-membership": (d) => ({ phone: d.phone, name: d["contact-name"] || d.organisation, province: d.province, district: d["base-district"], subdistrict: d["base-subdistrict"], lat: d["base-lat"], lng: d["base-lng"], line: d["line-id"], email: d.email }),
+  "installer-partner": (d) => ({ phone: d.phone, name: d["display-name"] || d["contact-name"], province: d["base-province"], district: d["base-district"], lat: d["base-lat"], lng: d["base-lng"], line: d["line-id"], email: d.email }),
+  "job-application": (d) => ({ phone: d.phone, name: d.name, province: d.province, email: d.email }),
 };
 const MAX_IMG = 4 * 1024 * 1024;
 
@@ -18,6 +25,7 @@ export default async (req) => {
   const p = body && body.payload;
   if (p && p.form_name === "job-report") return saveReport(p);
   if (p && p.form_name) { try { await saveInbox(p); } catch { /* inbox copy is best-effort */ } }
+  if (p && LOC_FORMS[p.form_name]) { try { await upsertInstaller(LOC_FORMS[p.form_name](p.data || {}), p.form_name); } catch { /* best-effort */ } }
   const cfg = p && FORMS[p.form_name];
   if (!cfg) return new Response("ignored");
 

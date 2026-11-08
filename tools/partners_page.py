@@ -226,7 +226,7 @@ CSS = """<style id="partners-css">
 .pform .chks{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px 14px}.pform .chk{display:flex!important;gap:10px;align-items:flex-start;font-family:inherit!important;font-size:14px!important;letter-spacing:0!important;text-transform:none!important;line-height:1.45;opacity:.95!important}.pform .chk input{width:auto!important;margin-top:3px;border:0;flex:none;accent-color:var(--blue)}
 .pform .grp{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.8;margin:0 0 8px}
 .pform .chks3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px 14px}
-.pform details{border:1px solid rgba(255,255,255,.22);border-radius:14px;padding:4px 16px;margin:6px 0}.pform details[open]{padding-bottom:16px}.pform summary{cursor:pointer;padding:12px 0;font-weight:600;font-size:15px}.pform details>div{display:grid;gap:16px}.pform .req{color:var(--hot,#FF2D55)}.pform .quick{font-size:14px;opacity:.85;margin:0 0 6px}
+.pform details{border:1px solid rgba(255,255,255,.22);border-radius:14px;padding:4px 16px;margin:6px 0}.pform details[open]{padding-bottom:16px}.pform summary{cursor:pointer;padding:12px 0;font-weight:600;font-size:15px}.pform details>div{display:grid;gap:16px}.pform .req{color:var(--hot,#5B5BD6)}.pform .quick{font-size:14px;opacity:.85;margin:0 0 6px}
 .pform .cnt{font-size:12px;opacity:.7;text-align:right}
 @media (max-width:860px){.how{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.pform .apply,.pform .two,.pform .chks,.pform .chks3{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:520px){.how{grid-template-columns:minmax(0,1fr)}}

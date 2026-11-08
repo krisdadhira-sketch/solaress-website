@@ -5,9 +5,9 @@ import glob, re
 L = {"en": ("/#consult", "Book consultation", "Book"),
      "th": ("/th/#consult", "ขอคำปรึกษา", "ปรึกษา"),
      "zh": ("/zh/#consult", "预约咨询", "咨询")}
-CSS = ('<style id="hcta-css">.hcta{display:inline-flex;align-items:center;margin-left:4px;padding:10px 16px;background:var(--hot,#FF2D55);'
+CSS = ('<style id="hcta-css">.hcta{display:inline-flex;align-items:center;margin-left:4px;padding:10px 16px;background:var(--hot,#5B5BD6);'
        'color:#fff!important;font-family:var(--mono,monospace);font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;'
-       'white-space:nowrap;border:1.5px solid var(--hot,#FF2D55)}.hcta:hover{background:transparent}.hcta .s{display:none}'
+       'white-space:nowrap;border:1.5px solid var(--hot,#5B5BD6)}.hcta:hover{background:transparent}.hcta .s{display:none}'
        '@media (max-width:900px){.hcta{order:3;margin-left:0;height:44px;padding:0 14px;border-radius:10px;font-size:13px}.mnav-btn{order:2}.hcta .l{display:none}.hcta .s{display:inline}}'
        '</style>')
 n = 0

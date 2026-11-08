@@ -24,7 +24,7 @@ if(/\/thanks\.html$/.test(location.pathname)){var n=null;try{n=sessionStorage.ge
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Thai:wght@400;600&display=swap">
 <style>
 /* Layout: alternating navy and white bands, wide display type, mono labels, one red-pink accent. Single committed look, taken from solar-ess.org. */
-:root{--navy:#0A1230;--navy2:#111c47;--blue:#2563EB;--sky:#DCE6FD;--paper:#FAFCFF;--white:#fff;--ink:#0A0E2E;--mute:#3E548E;--line:#DEE3ED;--hot:#FF2D55;
+:root{--navy:#0A1230;--navy2:#111c47;--blue:#2563EB;--sky:#DCE6FD;--paper:#FAFCFF;--white:#fff;--ink:#0A0E2E;--mute:#3E548E;--line:#DEE3ED;--hot:#5B5BD6;
 --display:"Inter Tight",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace;--thai:"IBM Plex Sans Thai","Inter Tight",sans-serif;color-scheme:light}
 *{box-sizing:border-box}
 body{background:var(--paper);color:var(--ink);font-family:var(--display);font-size:16px;line-height:1.55;margin:0}
@@ -61,7 +61,7 @@ p{margin:0}
 .hero{position:relative;overflow:hidden;padding-block:72px 0}
 .hero .cells{position:absolute;inset:auto -10% -30% -10%;height:70%;transform:perspective(900px) rotateX(62deg);transform-origin:bottom;
  background:linear-gradient(rgba(10,18,48,0) 0%,rgba(10,18,48,.0) 40%),repeating-linear-gradient(90deg,rgba(220,230,253,.22) 0 2px,transparent 2px 64px),repeating-linear-gradient(0deg,rgba(220,230,253,.22) 0 2px,transparent 2px 64px),linear-gradient(180deg,#13235e,#2563EB);opacity:.55}
-.hero .sun{position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(255,45,85,.55),rgba(255,45,85,0) 68%)}
+.hero .sun{position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(91,91,214,.55),rgba(91,91,214,0) 68%)}
 .hero .wrap{position:relative}
 .hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
 .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:rgba(255,255,255,.16);margin-top:64px;border-top:1px solid rgba(255,255,255,.16)}
@@ -111,7 +111,7 @@ input[type=range]{width:100%;accent-color:var(--hot);margin:14px 0 6px}
 .tiers li{border:1px solid rgba(255,255,255,.18);padding:8px 10px;font-size:13px;line-height:1.3;transition:background .15s,border-color .15s}
 .tiers li b{display:block;font-size:16px}
 .tiers li i{font-style:normal;color:#7CF29A;font-family:var(--mono);font-size:11px}
-.tiers li.on{background:rgba(255,45,85,.18);border-color:var(--hot)}
+.tiers li.on{background:rgba(91,91,214,.18);border-color:var(--hot)}
 .note{font-size:13px;opacity:.7;margin-top:16px;max-width:52ch}
 .out{background:var(--navy2);border:1px solid rgba(255,255,255,.14);padding:26px}
 .out .big{font-size:52px;font-weight:800;color:var(--hot);font-variant-numeric:tabular-nums;line-height:1.1}
@@ -173,7 +173,7 @@ footer .wrap{display:flex;gap:24px;flex-wrap:wrap;justify-content:space-between;
 @media(max-width:520px){.gal{grid-template-columns:minmax(0,1fr)}}
 .langsw{display:inline-flex;gap:10px;margin-left:14px;font-size:12px;letter-spacing:0;text-transform:none}.langsw a{opacity:.7}.langsw a[aria-current]{opacity:1;font-weight:700}[hidden]{display:none!important}@media(hover:hover) and (min-width:761px){.nav nav .ddm a{white-space:nowrap}}@media(hover:none),(max-width:760px){.nav nav .ddm{flex-wrap:wrap;row-gap:8px}}
 .taxnote{margin-top:34px;padding:18px 22px;border:1px solid rgba(255,255,255,.22);border-left:4px solid var(--hot);max-width:980px;line-height:1.6}.taxnote b{color:var(--white)}.feat{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:0;margin:40px 0 6px;border:1.5px solid var(--navy);max-width:1100px}.feat img{width:100%;height:100%;min-height:220px;object-fit:cover;display:block}.feat>div{padding:24px 26px;display:flex;flex-direction:column;gap:10px;justify-content:center}.feat .cap{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}.feat h3{margin:0;font-size:clamp(22px,2.6vw,30px);line-height:1.15}.feat p{margin:0}.feat ul{margin:6px 0 0;padding-left:18px;line-height:1.6}.feat a{font-weight:600}@media(max-width:760px){.feat{grid-template-columns:minmax(0,1fr)}}.revlink{margin-top:22px}.revlink a{font-weight:600}.contact a{color:inherit}
-.fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:30;display:flex;gap:8px}.fab a{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:999px;background:var(--hot,#FF2D55);color:#fff;font:600 14px/1 var(--sans,system-ui),sans-serif;text-decoration:none;box-shadow:0 6px 18px rgba(10,18,48,.3)}.fab svg{width:18px;height:18px;fill:currentColor}@media print{.fab{display:none}}@media(max-width:380px){.fab a{padding:12px;font-size:0;gap:0}.fab svg{width:20px;height:20px}}
+.fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:30;display:flex;gap:8px}.fab a{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:999px;background:var(--hot,#5B5BD6);color:#fff;font:600 14px/1 var(--sans,system-ui),sans-serif;text-decoration:none;box-shadow:0 6px 18px rgba(10,18,48,.3)}.fab svg{width:18px;height:18px;fill:currentColor}@media print{.fab{display:none}}@media(max-width:380px){.fab a{padding:12px;font-size:0;gap:0}.fab svg{width:20px;height:20px}}
 .bills{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:28px}.bill1{border:1.5px solid var(--navy);padding:18px;background:var(--white)}.bill1 .t{font-weight:700;font-size:17px}.bill1 .s{font-family:var(--mono);font-size:12px;color:var(--mute);margin-top:4px}.bill1 .bar{display:grid;grid-template-columns:76px minmax(0,1fr) 78px;align-items:center;gap:8px;margin-top:10px;font-size:13px}.bill1 .bar i{display:block;height:12px;background:var(--line)}.bill1 .bar.a i{background:var(--hot)}.bill1 .bar b{text-align:right;font-weight:600}.bill1 .pct{margin-top:12px;font-size:22px;font-weight:800;color:var(--hot)}.bill1 .pct span{font-size:13px;font-weight:600;color:var(--mute);margin-left:6px}.billhead{display:flex;gap:18px;align-items:baseline;flex-wrap:wrap;margin-top:18px}.billhead b{font-size:44px;color:var(--hot);line-height:1}@media(max-width:900px){.bills{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:560px){.bills{grid-template-columns:minmax(0,1fr)}}
 </style><script type="application/ld+json">{"@context": "https://schema.org", "@type": "LocalBusiness", "name": "Solar ESS", "legalName": "Solar ESS Co. Ltd.", "alternateName": "บริษัท โซลาร์ เอสส์ จำกัด", "slogan": "Solar Energy for Sustainable Solution", "url": "https://solaress.org/", "image": "https://solaress.org/images/home-aerial-share.jpg", "email": "kris@solar-ess.org", "telephone": ["+66631516694", "+66896325829"], "taxID": "0575566002051", "address": {"@type": "PostalAddress", "streetAddress": "53 Moo 2, Tambon Nanglae", "addressLocality": "Amphoe Muang, Chiang Rai", "addressRegion": "Chiang Rai", "postalCode": "57100", "addressCountry": "TH"}, "areaServed": ["Chiang Rai", "Northern Thailand", "Thailand", "Laos", "Myanmar"], "sameAs": ["https://www.facebook.com/profile.php?id=100066770846002", "https://www.solar-ess.org/", "https://line.me/ti/p/~solaress1", "https://www.xn--c3c2cfvaq7azin8he.com/"], "knowsAbout": ["Solar panel installation", "Hybrid solar inverters", "Battery storage", "Off-grid solar", "Solar panel cleaning and maintenance", "Solar rooftop for homes, resorts and factories", "Chiang Rai solar installation"], "contactPoint": {"@type": "ContactPoint", "contactType": "customer service", "telephone": "+66631516694", "availableLanguage": ["Thai", "English"], "url": "https://line.me/ti/p/~solaress1"}}</script>
 <link rel="canonical" href="https://solaress.org/">
@@ -181,7 +181,7 @@ footer .wrap{display:flex;gap:24px;flex-wrap:wrap;justify-content:space-between;
 <link rel="alternate" hreflang="th" href="https://solaress.org/th/">
 <link rel="alternate" hreflang="zh-Hans" href="https://solaress.org/zh/">
 <link rel="alternate" hreflang="x-default" href="https://solaress.org/">
-<style id="hcta-css">.hcta{display:inline-flex;align-items:center;margin-left:4px;padding:10px 16px;background:var(--hot,#FF2D55);color:#fff!important;font-family:var(--mono,monospace);font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;white-space:nowrap;border:1.5px solid var(--hot,#FF2D55)}.hcta:hover{background:transparent}.hcta .s{display:none}@media (max-width:900px){.hcta{order:3;margin-left:0;height:44px;padding:0 14px;border-radius:10px;font-size:13px}.mnav-btn{order:2}.hcta .l{display:none}.hcta .s{display:inline}}</style>
+<style id="hcta-css">.hcta{display:inline-flex;align-items:center;margin-left:4px;padding:10px 16px;background:var(--hot,#5B5BD6);color:#fff!important;font-family:var(--mono,monospace);font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;white-space:nowrap;border:1.5px solid var(--hot,#5B5BD6)}.hcta:hover{background:transparent}.hcta .s{display:none}@media (max-width:900px){.hcta{order:3;margin-left:0;height:44px;padding:0 14px;border-radius:10px;font-size:13px}.mnav-btn{order:2}.hcta .l{display:none}.hcta .s{display:inline}}</style>
 <style id="ins-css">@keyframes insblink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.25;transform:scale(.8)}}.ins-dot{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;margin-left:5px;vertical-align:-3px;animation:insblink 1.2s ease-in-out infinite}.ins-dot svg{width:16px;height:16px}.ddm a.ins-m{display:flex!important;align-items:center;gap:6px;color:#FDE68A!important;font-weight:700}.ddm a.ins-m .ins-dot{margin-left:0}@media (prefers-reduced-motion:reduce){.ins-dot{animation:none}}.ins-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:28px}@media(max-width:860px){.ins-grid{grid-template-columns:1fr}}.ins-card{border:1px solid var(--line);background:var(--white);padding:20px;display:flex;gap:14px}.ins-card h3{margin:0 0 6px;font-size:17px}.ins-card p{margin:0;font-size:14.5px;line-height:1.55;opacity:.88}.ins-ic{flex:none;width:44px;height:44px;border-radius:12px;background:var(--navy);display:flex;align-items:center;justify-content:center}.ins-hero{display:flex;gap:20px;align-items:center;flex-wrap:wrap}.ins-shield{flex:none;width:84px;height:84px;border-radius:20px;background:linear-gradient(135deg,#0A1230,#4F46E5);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(79,70,229,.35)}.ins-why{margin-top:26px;background:var(--navy);color:#fff;padding:22px 24px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}@media(max-width:860px){.ins-why{grid-template-columns:1fr}}.ins-why h3{margin:0 0 6px;font-size:18px;color:#C7D2FE}.ins-why p{margin:0;font-size:15px;line-height:1.55}.ins-note{margin-top:16px;font-size:13.5px;color:var(--mute)}</style><style id="ss-css">
 #sitesearch{margin-top:30px;max-width:720px}
 #sitesearch label{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#C7D2FE;margin-bottom:8px}
@@ -221,8 +221,31 @@ footer .wrap{display:flex;gap:24px;flex-wrap:wrap;justify-content:space-between;
 .nps-note{font-size:13px;color:#C7D2FE;margin:0}
 .nps-msg{margin-top:6px;font-size:18px;font-weight:600;color:#fff}
 @media(max-width:620px){.nps-s{grid-template-columns:repeat(5,minmax(0,1fr))}}
-</style><style id="form-ink">form input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=hidden]):not([type=file]),form select,form textarea{background:#FFFFFF!important;color:#0A0E2E!important;-webkit-text-fill-color:#0A0E2E!important;caret-color:#2563EB}form input::placeholder,form textarea::placeholder{color:#6B7280!important;-webkit-text-fill-color:#6B7280!important;opacity:1}form select option,form select optgroup{color:#0A0E2E;background:#FFFFFF}form input:-webkit-autofill{-webkit-box-shadow:0 0 0 1000px #FFFFFF inset!important;-webkit-text-fill-color:#0A0E2E!important}</style></head>
-<body>
+</style><style id="form-ink">form input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=hidden]):not([type=file]),form select,form textarea{background:#FFFFFF!important;color:#0A0E2E!important;-webkit-text-fill-color:#0A0E2E!important;caret-color:#2563EB}form input::placeholder,form textarea::placeholder{color:#6B7280!important;-webkit-text-fill-color:#6B7280!important;opacity:1}form select option,form select optgroup{color:#0A0E2E;background:#FFFFFF}form input:-webkit-autofill{-webkit-box-shadow:0 0 0 1000px #FFFFFF inset!important;-webkit-text-fill-color:#0A0E2E!important}</style>
+<!--a11y--><style id="a11y-css">
+.skip{position:absolute;left:12px;top:-60px;z-index:1000;background:#fff;color:#0A1230;padding:10px 16px;border-radius:8px;font:600 15px system-ui,sans-serif;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.3)}
+.skip:focus{top:12px;outline:3px solid #5B5BD6;outline-offset:2px}
+main#main:focus{outline:0}
+:focus-visible{outline:3px solid #5B5BD6;outline-offset:3px}
+.dark :focus-visible,.nav :focus-visible,footer :focus-visible{outline-color:#A5B4FC}
+.dark .eyebrow,.dark .k,.dark legend,.nav nav a:hover,footer a:hover,.dark [style*="color:var(--hot)"],.dark [style*="color:#5B5BD6"]{color:#A5B4FC!important}
+.about .eyebrow,[style*="background:var(--sky)"] .eyebrow{color:#4338CA}
+.ssh a[aria-label*="LINE"],.fab a[href*="line.me"]{background:#0B7A3E!important}
+.ssh a[aria-label*="WhatsApp"]{background:#0B7A3E!important}
+.ssh a[aria-label*="Facebook"],.fab a[href*="facebook.com"]{background:#1460C8!important}
+.jl a,.facts .fact,.card details li,.card .fit,#bills .note{color:#4B5A85!important;opacity:1!important}
+.pf-num,.about .eyebrow{color:#4338CA!important}
+.dark .pf-num{color:#A5B4FC!important}
+.dark .hint,.evpromo .eyebrow,.alliance .eyebrow,[style*="background:var(--navy)"] .eyebrow,[style*="background:#0A1230"] .eyebrow{color:#A5B4FC!important}
+.langsw .ml-sel{font:inherit;font-size:11px;letter-spacing:.06em;background:transparent;color:inherit;border:1px solid rgba(255,255,255,.35);border-radius:6px;padding:3px 4px;max-width:150px;cursor:pointer}
+.langsw .ml-sel option{color:#0A0E2E;background:#fff;text-transform:none}
+.lang-sug{position:fixed;left:50%;transform:translateX(-50%);bottom:84px;z-index:60;display:flex;gap:12px;align-items:center;flex-wrap:wrap;max-width:min(560px,calc(100vw - 24px));background:#0A1230;color:#fff;border:1px solid #5B5BD6;border-radius:14px;padding:12px 14px 12px 18px;box-shadow:0 10px 30px rgba(0,0,0,.35);font:15px/1.4 system-ui,sans-serif}
+.lang-sug a{color:#C7D2FE;font-weight:700}
+.lang-sug button{margin-left:auto;background:transparent;border:0;color:#fff;font-size:22px;line-height:1;cursor:pointer;padding:2px 6px}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+</style><script src="/js/a11y.js?v=1" defer></script><!--/a11y-->
+</head>
+<body><!--skip--><a class="skip" href="#main">Skip to content</a><!--/skip-->
 
 
 <header class="nav"><div class="wrap">
@@ -273,7 +296,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&h.classList
 addEventListener('resize',function(){if(innerWidth>900&&h.classList.contains('mopen'))set(false);else if(h.classList.contains('mopen'))top()});
 })();</script><!--/mnav-->
 
-<section class="dark hero" id="top">
+<main id="main" tabindex="-1"><!--main--><section class="dark hero" id="top">
 <div class="photo"></div><div class="sun"></div>
 <div class="wrap">
 <p class="eyebrow">Consult · Design · Install · Maintain · Nationwide, Mae Sai to Narathiwat</p>
@@ -423,6 +446,7 @@ addEventListener('resize',function(){if(innerWidth>900&&h.classList.contains('mo
 
 
 <!--nps--><section class="band dark" id="nps"><div class="wrap"><p class="eyebrow">Your opinion</p><h2>How likely are you to recommend Solar ESS to a friend or colleague?</h2><div id="npsbox" data-lang="en" data-t="{&quot;thanks&quot;: &quot;Thank you! Your score has been recorded.&quot;, &quot;done&quot;: &quot;You have already given us a score this month. Thank you, and see you again next month.&quot;, &quot;err&quot;: &quot;Sorry, it could not be sent. Please try again.&quot;, &quot;sending&quot;: &quot;Sending…&quot;, &quot;send&quot;: &quot;Send my score&quot;}"><form novalidate><div class="nps-s" role="group" aria-label="How likely are you to recommend Solar ESS to a friend or colleague?"><button type="button" value="1" aria-pressed="false" aria-label="1 / 10">1</button><button type="button" value="2" aria-pressed="false" aria-label="2 / 10">2</button><button type="button" value="3" aria-pressed="false" aria-label="3 / 10">3</button><button type="button" value="4" aria-pressed="false" aria-label="4 / 10">4</button><button type="button" value="5" aria-pressed="false" aria-label="5 / 10">5</button><button type="button" value="6" aria-pressed="false" aria-label="6 / 10">6</button><button type="button" value="7" aria-pressed="false" aria-label="7 / 10">7</button><button type="button" value="8" aria-pressed="false" aria-label="8 / 10">8</button><button type="button" value="9" aria-pressed="false" aria-label="9 / 10">9</button><button type="button" value="10" aria-pressed="false" aria-label="10 / 10">10</button></div><div class="nps-ends"><span>1 = Not at all likely</span><span>10 = Extremely likely</span></div><div class="nps-more" hidden><label for="nps-c">What is the main reason for your score? (optional)</label><textarea id="nps-c" name="comment" maxlength="600"></textarea></div><input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px"><div class="nps-act"><button class="nps-send" type="submit" disabled>Send my score</button><p class="nps-note">One score per month from each internet connection. Your IP address is never stored.</p></div></form><p class="nps-msg" role="status" hidden></p></div></div></section><script src="/js/nps-widget.js?v=1" defer></script><!--/nps-->
+<!--/main--></main>
 <footer><div class="wrap"><span>Solar ESS Co. Ltd. · Solar Energy for Sustainable Solution</span><span><a href="/job.html">Jobs</a> · <a href="/members.html">Members</a> · www.solar-ess.org · www.solaress.org</span></div></footer>
 
 <script>

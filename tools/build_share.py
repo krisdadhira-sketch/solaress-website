@@ -122,11 +122,11 @@ for f in glob.glob('images/og/*.jpg'):
 if cards:
     from playwright.sync_api import sync_playwright
     CSS = '''*{margin:0;box-sizing:border-box}body{width:1200px;height:630px;background:#0A1230;color:#fff;font-family:"Inter","Sarabun","Noto Sans CJK SC","Noto Sans CJK TC",sans-serif;position:relative;overflow:hidden}
-    .bar{position:absolute;left:0;top:0;bottom:0;width:14px;background:#FF2D55}.lg{position:absolute;left:64px;top:52px;height:84px;border-radius:10px;background:#fff;padding:6px}
-    .lg img{height:72px;display:block}.in{position:absolute;left:64px;right:64px;top:180px}.k{color:#FF2D55;font:600 24px/1.2 "IBM Plex Mono","Inter","Sarabun","Noto Sans CJK SC",monospace;letter-spacing:.08em;text-transform:uppercase}
-    h1{font-size:60px;line-height:1.18;font-weight:700;margin-top:18px;max-height:216px;overflow:hidden}.w{font-size:34px;margin-top:22px;opacity:.95}.w:before{content:"";display:inline-block;width:18px;height:18px;border-radius:50%;background:#FF2D55;margin-right:14px}
+    .bar{position:absolute;left:0;top:0;bottom:0;width:14px;background:#5B5BD6}.lg{position:absolute;left:64px;top:52px;height:84px;border-radius:10px;background:#fff;padding:6px}
+    .lg img{height:72px;display:block}.in{position:absolute;left:64px;right:64px;top:180px}.k{color:#5B5BD6;font:600 24px/1.2 "IBM Plex Mono","Inter","Sarabun","Noto Sans CJK SC",monospace;letter-spacing:.08em;text-transform:uppercase}
+    h1{font-size:60px;line-height:1.18;font-weight:700;margin-top:18px;max-height:216px;overflow:hidden}.w{font-size:34px;margin-top:22px;opacity:.95}.w:before{content:"";display:inline-block;width:18px;height:18px;border-radius:50%;background:#5B5BD6;margin-right:14px}
     .f{display:flex;gap:16px;margin-top:26px}.f div{border:2px solid rgba(255,255,255,.35);border-radius:12px;padding:10px 18px;font-size:26px}.f b{font-size:30px;margin-right:8px}
-    .d{font-size:28px;line-height:1.45;margin-top:22px;opacity:.85;max-height:122px;overflow:hidden}.s{margin-top:24px;padding-left:0;list-style:none;font-size:25px;line-height:1.4;opacity:.9}.s li:before{content:"✓  ";color:#FF2D55;font-weight:700}.s li{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:1040px}.u{position:absolute;right:64px;bottom:44px;font-size:26px;opacity:.75;letter-spacing:.04em}'''
+    .d{font-size:28px;line-height:1.45;margin-top:22px;opacity:.85;max-height:122px;overflow:hidden}.s{margin-top:24px;padding-left:0;list-style:none;font-size:25px;line-height:1.4;opacity:.9}.s li:before{content:"✓  ";color:#5B5BD6;font-weight:700}.s li{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:1040px}.u{position:absolute;right:64px;bottom:44px;font-size:26px;opacity:.75;letter-spacing:.04em}'''
     with sync_playwright() as p:
         b = p.chromium.launch(); pg = b.new_page(viewport={'width': 1200, 'height': 630})
         for fn, c in cards:

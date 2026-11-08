@@ -24,7 +24,7 @@
     'font:600 12.5px/1 var(--sans,inherit);color:#fff;text-decoration:none;white-space:nowrap}' +
     '.ssh a:hover,.ssh button:hover{filter:brightness(1.08)}' +
     '.ssh .cp{background:#fff;color:var(--navy,#0A1230);border:1.5px solid var(--navy,#0A1230)}' +
-    '.ssh .nv{background:var(--hot,#FF2D55)}' +
+    '.ssh .nv{background:var(--hot,#5B5BD6)}' +
     '.ssh-page{border-top:1px solid var(--line,#DEE3ED);padding-top:18px;margin-top:40px}' +
     '.ssh-wrap{max-width:1080px;margin:0 auto;padding:0 24px}' +
     '.ssh-topic{margin-top:14px}.ssh-topic a,.ssh-topic button{height:28px;padding:0 10px;font-size:12px}' +

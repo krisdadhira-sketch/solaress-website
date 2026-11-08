@@ -89,3 +89,11 @@ Search box under the region chips of Project Based Jobs: province / district / p
 - **Reader NPS** band above the footer of the three home pages (`js/nps-widget.js`): "How likely are you to recommend Solar ESS…?" 1–10 + optional reason. One score per IP per calendar month (Bangkok time); the IP is stored only as a salted hash. API `netlify/functions/nps/nps.mjs` at `/api/nps`, Blobs store `nps`. GA event `nps_score`.
 - Results: **/nps-admin.html** (also in the admin hub as "Reader NPS"): NPS = % promoters (9–10) − % detractors (1–6), by month, comments, delete, CSV.
 - Markup and texts (EN/TH/ZH): `python3 tools/home_search_nps.py` (idempotent), then `tools/site_search.py`.
+
+## Accessibility and reach (Nov 2026)
+
+`python3 tools/accessibility.py` (idempotent; **re-run after adding or regenerating any page**) adds to every page:
+- a "Skip to content" link and a `<main id="main">` landmark; clearer keyboard focus; "reduce motion" respected;
+- WCAG AA contrast fixes. The site accent is now violet-blue **#5B5BD6** (the red-pink #FF2D55 was replaced everywhere, including in `tools/`); on dark bands accent text uses #A5B4FC (CSS + a runtime check in `js/a11y.js`). LINE / WhatsApp / Facebook buttons use darker brand shades so white text is readable;
+- `js/a11y.js`: **🌐 More languages** in the language switcher (Google machine translation of the same page: Lao, Burmese, Khmer, Vietnamese, Malay, Indonesian, Japanese, Korean, Hindi, French, German, Spanish, Russian, Arabic), and a one-time suggestion bar offering the visitor's own language (EN / TH / 中文) when that version exists.
+Audit: axe-core (WCAG 2 A/AA) on 14 key pages went from about 2,400 contrast failures to 40 (the remaining ones are the deliberately faded "job closed" cards).

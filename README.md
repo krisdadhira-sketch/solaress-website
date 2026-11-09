@@ -103,3 +103,7 @@ Audit: axe-core (WCAG 2 A/AA) on 14 key pages went from about 2,400 contrast fai
 `python3 tools/job_apply_box.py` (idempotent) on `/job.html` and `/th/job.html`, script `js/job-apply.js`:
 - **Job picker**: filter box + list built live from the open job posts on the page (closed jobs left out, on-hold jobs shown but not selectable), grouped Project jobs / Permanent roles / Open application, with a count of open jobs. The chosen job's title, location and a link back to the post are shown; hidden field `job-id` = post id. "Quote for this job →" buttons pre-select it. New job posts appear in the list automatically.
 - **Job proposal** box (project jobs only; hidden and not required for permanent roles): `price-labour-only`, `price-labour-materials`, `proposal`, `start-date`, `days-needed`. Hidden `quoted-price` is filled on submit ("Labour only: … / Labour + materials: …") so the inbox keeps working.
+
+## Ongoing projects page (Nov 2026)
+
+`python3 tools/ongoing_page.py` builds `/ongoing.html` and `/th/ongoing.html` (project overview from the News article `#upcoming-projects-nov2026` + the My Park CAR section, whose original is kept in `data/ongoing-mypark-{en,th}.html`). It puts "Ongoing Projects" first in the **News** dropdown on every page (EN/TH/ZH), removes it from the Solar ESS dropdown, repoints links to `profile#ongoing`, leaves a short pointer band on the profile page and adds the pages to `sitemap.xml`. To update the projects, edit the News article, then re-run it.

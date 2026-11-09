@@ -464,4 +464,18 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://solaress.org/intern"/>
     <xhtml:link rel="alternate" hreflang="th" href="https://solaress.org/th/intern"/>
   </url>
+  <url>
+    <loc>https://solaress.org/ongoing</loc>
+    <lastmod>2026-11-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://solaress.org/ongoing"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://solaress.org/th/ongoing"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://solaress.org/ongoing"/>
+  </url>
+  <url>
+    <loc>https://solaress.org/th/ongoing</loc>
+    <lastmod>2026-11-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://solaress.org/ongoing"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://solaress.org/th/ongoing"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://solaress.org/ongoing"/>
+  </url>
 </urlset>

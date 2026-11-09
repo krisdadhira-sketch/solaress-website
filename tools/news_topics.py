@@ -23,9 +23,9 @@ TOPICS = {
  'datacenter': ['electrification-who-pays-teaser', 'data-centre-impacts-guide', 'data-centres-power-water', 'data-centres-thailand-power', 'global-energy-review-2025'],
  'innovation': ['icfo-boltzmann-loss-solar-cavity', 'fraunhofer-silicon-anode-cells', 'tongwei-93-bifaciality', 'risen-anti-glare', 'mova-lumegret-s5000',
                 'solis-s6-eh3p50k-v38-vs-21a', 'thailand-solar-battery-recycling-estate'],
- 'adoption': ['us-solar-market-q2-2026', 'global-energy-review-2025', 'china-solar-down-rest-up', 'module-prices-october-2026', 'nz-solar-complaints-surge',
+ 'adoption': ['singapore-4gwp-solar-2035', 'vinenergo-rooftop-bess-vietnam', 'dnv-eto-2026-solar-largest-2031', 'us-solar-market-q2-2026', 'global-energy-review-2025', 'china-solar-down-rest-up', 'module-prices-october-2026', 'nz-solar-complaints-surge',
               'thai-rooftop-solar-policy'],
- 'consumption': ['data-centre-impacts-guide', 'data-centres-power-water', 'global-energy-review-2025', 'data-centres-thailand-power', 'tni-state-of-power-2024', 'ucs-solar-environmental-impacts'],
+ 'consumption': ['dnv-eto-2026-solar-largest-2031', 'data-centre-impacts-guide', 'data-centres-power-water', 'global-energy-review-2025', 'data-centres-thailand-power', 'tni-state-of-power-2024', 'ucs-solar-environmental-impacts'],
 }
 GUIDE = {
  'en': ('Full guide: Thailand\'s 50,000-baht solar subsidy', 'Who qualifies, when to register, what you still pay, loans and sell-back – updated as rules are announced.', '/solar-subsidy-50000.html', 'Read the guide →'),
@@ -240,6 +240,8 @@ def poll_html(lang, pid):
 def nav_dd(lang):
     url, name = NEWS[lang]
     items = ''.join(f'<a href="{u or url + "#topic-" + k}">{lab}</a>' for k, lab, u in LABELS[lang])
+    og = {'en': ('/ongoing.html', 'Ongoing Projects'), 'th': ('/th/ongoing.html', 'โครงการที่กำลังดำเนินการ'), 'zh': ('/ongoing.html', '在建项目')}[lang]
+    items = f'<!--ogm--><a href="{og[0]}">{og[1]}</a><!--/ogm-->' + items  # Ongoing Projects first (see tools/ongoing_page.py)
     return f'<span class="dd"><a href="{url}">{name}</a><span class="ddm">{items}</span></span>'
 
 # 1. nav on every page

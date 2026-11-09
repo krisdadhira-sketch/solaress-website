@@ -1,4 +1,18 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<!doctype html><html lang="en"><head>
+<!--ga4--><script async src="https://www.googletagmanager.com/gtag/js?id=G-46HG0JWSZV"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-46HG0JWSZV');
+(function(){var LEAD={'consultation':1,'installer-request':1};
+function ev(n,p){try{gtag('event',n,p||{})}catch(e){}}
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href]');if(!a)return;var h=a.getAttribute('href')||'';
+ if(/#consult$/.test(h))ev('book_consultation_click',{link_text:(a.textContent||'').trim().slice(0,60),page_path:location.pathname});
+ else if(/^tel:/i.test(h))ev('phone_click',{link_url:h.slice(4),page_path:location.pathname});
+ else if(/line\.me/i.test(h))ev('line_click',{page_path:location.pathname});
+ else if(/facebook\.com/i.test(h))ev('facebook_click',{page_path:location.pathname});},true);
+document.addEventListener('submit',function(e){var f=e.target;try{sessionStorage.setItem('ga_form',f.getAttribute('name')||f.id||'form')}catch(x){}},true);
+if(/\/thanks\.html$/.test(location.pathname)){var n=null;try{n=sessionStorage.getItem('ga_form');sessionStorage.removeItem('ga_form')}catch(x){}
+ if(n){ev('form_sent',{form_name:n});if(LEAD[n])ev('generate_lead',{form_name:n})}}
+})();</script><!--/ga4-->
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Update my location | Solar ESS installers</title><meta name="description" content="Tell us where you are working from. When Solar ESS has a job near you, we contact you first. Update it any time you move to another area: it takes 30 seconds."><link rel="canonical" href="https://www.solaress.org/location.html"><link rel="alternate" hreflang="en" href="https://www.solaress.org/location.html"><link rel="alternate" hreflang="th" href="https://www.solaress.org/th/location.html">
 <style>
 :root{--navy:#0A1230;--blue:#2563EB;--violet:#4A55D6;--ink:#0A0E2E;--mute:#3E548E;--line:#DEE3ED;--paper:#F6F8FC;--ok:#067647;--no:#B42318}
@@ -16,28 +30,6 @@ small{color:var(--mute);font-weight:400}.req{color:var(--no)}
 .msg{margin-top:12px;font-weight:600}.box{background:#EEF2FF;border-left:4px solid var(--violet);border-radius:10px;padding:12px 14px;margin:18px 0;font-size:14px}.box a{color:var(--violet)}
 footer{text-align:center;font-size:13px;color:var(--mute);padding:20px}footer a{color:var(--mute)}
 </style>
-<!--a11y--><style id="a11y-css">
-.skip{position:absolute;left:12px;top:-60px;z-index:1000;background:#fff;color:#0A1230;padding:10px 16px;border-radius:8px;font:600 15px system-ui,sans-serif;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.3)}
-.skip:focus{top:12px;outline:3px solid #5B5BD6;outline-offset:2px}
-main#main:focus{outline:0}
-:focus-visible{outline:3px solid #5B5BD6;outline-offset:3px}
-.dark :focus-visible,.nav :focus-visible,footer :focus-visible{outline-color:#A5B4FC}
-.dark .eyebrow,.dark .k,.dark legend,.nav nav a:hover,footer a:hover,.dark [style*="color:var(--hot)"],.dark [style*="color:#5B5BD6"]{color:#A5B4FC!important}
-.about .eyebrow,[style*="background:var(--sky)"] .eyebrow{color:#4338CA}
-.ssh a[aria-label*="LINE"],.fab a[href*="line.me"]{background:#0B7A3E!important}
-.ssh a[aria-label*="WhatsApp"]{background:#0B7A3E!important}
-.ssh a[aria-label*="Facebook"],.fab a[href*="facebook.com"]{background:#1460C8!important}
-.jl a,.facts .fact,.card details li,.card .fit,#bills .note{color:#4B5A85!important;opacity:1!important}
-.pf-num,.about .eyebrow{color:#4338CA!important}
-.dark .pf-num{color:#A5B4FC!important}
-.dark .hint,.evpromo .eyebrow,.alliance .eyebrow,[style*="background:var(--navy)"] .eyebrow,[style*="background:#0A1230"] .eyebrow{color:#A5B4FC!important}
-.langsw .ml-sel{font:inherit;font-size:11px;letter-spacing:.06em;background:transparent;color:inherit;border:1px solid rgba(255,255,255,.35);border-radius:6px;padding:3px 4px;max-width:150px;cursor:pointer}
-.langsw .ml-sel option{color:#0A0E2E;background:#fff;text-transform:none}
-.lang-sug{position:fixed;left:50%;transform:translateX(-50%);bottom:84px;z-index:60;display:flex;gap:12px;align-items:center;flex-wrap:wrap;max-width:min(560px,calc(100vw - 24px));background:#0A1230;color:#fff;border:1px solid #5B5BD6;border-radius:14px;padding:12px 14px 12px 18px;box-shadow:0 10px 30px rgba(0,0,0,.35);font:15px/1.4 system-ui,sans-serif}
-.lang-sug a{color:#C7D2FE;font-weight:700}
-.lang-sug button{margin-left:auto;background:transparent;border:0;color:#fff;font-size:22px;line-height:1;cursor:pointer;padding:2px 6px}
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
-</style><script src="/js/a11y.js?v=1" defer></script><!--/a11y-->
 <style id="nps-css">
 #npsscore{display:inline-flex;align-items:center;gap:12px;margin-top:22px;padding:10px 18px 10px 14px;border-radius:999px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.28);color:#fff;text-decoration:none;max-width:100%}
 #npsscore:hover{background:rgba(255,255,255,.16)}
@@ -65,7 +57,29 @@ main#main:focus{outline:0}
 .nps-note{font-size:13px;color:#C7D2FE;margin:0}
 .nps-msg{margin-top:6px;font-size:18px;font-weight:600;color:#fff}
 @media(max-width:620px){.nps-s{grid-template-columns:repeat(5,minmax(0,1fr))}}
-</style></head><body><!--skip--><a class="skip" href="#main">Skip to content</a><!--/skip-->
+</style><style id="form-ink">form input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=hidden]):not([type=file]),form select,form textarea{background:#FFFFFF!important;color:#0A0E2E!important;-webkit-text-fill-color:#0A0E2E!important;caret-color:#2563EB}form input::placeholder,form textarea::placeholder{color:#6B7280!important;-webkit-text-fill-color:#6B7280!important;opacity:1}form select option,form select optgroup{color:#0A0E2E;background:#FFFFFF}form input:-webkit-autofill{-webkit-box-shadow:0 0 0 1000px #FFFFFF inset!important;-webkit-text-fill-color:#0A0E2E!important}</style><!--a11y--><style id="a11y-css">
+.skip{position:absolute;left:12px;top:-60px;z-index:1000;background:#fff;color:#0A1230;padding:10px 16px;border-radius:8px;font:600 15px system-ui,sans-serif;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.3)}
+.skip:focus{top:12px;outline:3px solid #5B5BD6;outline-offset:2px}
+main#main:focus{outline:0}
+:focus-visible{outline:3px solid #5B5BD6;outline-offset:3px}
+.dark :focus-visible,.nav :focus-visible,footer :focus-visible{outline-color:#A5B4FC}
+.dark .eyebrow,.dark .k,.dark legend,.nav nav a:hover,footer a:hover,.dark [style*="color:var(--hot)"],.dark [style*="color:#5B5BD6"]{color:#A5B4FC!important}
+.about .eyebrow,[style*="background:var(--sky)"] .eyebrow{color:#4338CA}
+.ssh a[aria-label*="LINE"],.fab a[href*="line.me"]{background:#0B7A3E!important}
+.ssh a[aria-label*="WhatsApp"]{background:#0B7A3E!important}
+.ssh a[aria-label*="Facebook"],.fab a[href*="facebook.com"]{background:#1460C8!important}
+.jl a,.facts .fact,.card details li,.card .fit,#bills .note{color:#4B5A85!important;opacity:1!important}
+.pf-num,.about .eyebrow{color:#4338CA!important}
+.dark .pf-num{color:#A5B4FC!important}
+.dark .hint,.evpromo .eyebrow,.alliance .eyebrow,[style*="background:var(--navy)"] .eyebrow,[style*="background:#0A1230"] .eyebrow{color:#A5B4FC!important}
+.langsw .ml-sel{font:inherit;font-size:11px;letter-spacing:.06em;background:transparent;color:inherit;border:1px solid rgba(255,255,255,.35);border-radius:6px;padding:3px 4px;max-width:150px;cursor:pointer}
+.langsw .ml-sel option{color:#0A0E2E;background:#fff;text-transform:none}
+.lang-sug{position:fixed;left:50%;transform:translateX(-50%);bottom:84px;z-index:60;display:flex;gap:12px;align-items:center;flex-wrap:wrap;max-width:min(560px,calc(100vw - 24px));background:#0A1230;color:#fff;border:1px solid #5B5BD6;border-radius:14px;padding:12px 14px 12px 18px;box-shadow:0 10px 30px rgba(0,0,0,.35);font:15px/1.4 system-ui,sans-serif}
+.lang-sug a{color:#C7D2FE;font-weight:700}
+.lang-sug button{margin-left:auto;background:transparent;border:0;color:#fff;font-size:22px;line-height:1;cursor:pointer;padding:2px 6px}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+</style><script src="/js/a11y.js?v=1" defer></script><!--/a11y-->
+</head><body><!--skip--><a class="skip" href="#main">Skip to content</a><!--/skip-->
 <header><a href="/"><img src="/images/solar-ess-report-logo.jpg" alt="Solar ESS"></a><div class="addr"><b>Solar ESS Co. Ltd.</b><br>53 Moo 2, Tambon Nanglae, Amphoe Muang, Chiang Rai 57100<br>Tel 063 151 6694 · www.solaress.org · www.โซลาร์เอสส์.com<br><a href="/th/location.html">ภาษาไทย</a></div></header>
 <main id="main"><h1>Update my location</h1><p class="lede">Tell us where you are working from. When Solar ESS has a job near you, we contact you first. Update it any time you move to another area: it takes 30 seconds.</p>
 <form id="lf" novalidate><p hidden><label>Website <input name="website" tabindex="-1" autocomplete="off"></label></p>

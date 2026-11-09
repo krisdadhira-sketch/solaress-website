@@ -110,3 +110,9 @@ Audit: axe-core (WCAG 2 A/AA) on 14 key pages went from about 2,400 contrast fai
 ## Ongoing projects page (Nov 2026)
 
 `python3 tools/ongoing_page.py` builds `/ongoing.html` and `/th/ongoing.html` (project overview from the News article `#upcoming-projects-nov2026` + the My Park CAR section, whose original is kept in `data/ongoing-mypark-{en,th}.html`). It puts "Ongoing Projects" first in the **News** dropdown on every page (EN/TH/ZH), removes it from the Solar ESS dropdown, repoints links to `profile#ongoing`, leaves a short pointer band on the profile page and adds the pages to `sitemap.xml`. To update the projects, edit the News article, then re-run it.
+
+## Free System Check (Nov 2026)
+
+- `/system-check.html`, `/th/system-check.html`: free remote check for any solar system (any brand, any installer). Netlify form `system-check` (name, phone, LINE, province, kWp, inverter brand, monitoring app, battery, installer, concern, 3 optional screenshots, optional monitoring access, consent); copied to the admin inbox as "Free system check". Reply target: within 3 working days.
+- Green "FREE" promo band under the hero of `/` and `/th/`; first item of the Services menu (EN/TH/ZH).
+- Build: `python3 tools/system_check_page.py` (then the post-processors listed in its docstring).

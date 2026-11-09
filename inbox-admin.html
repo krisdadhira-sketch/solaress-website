@@ -1,6 +1,20 @@
 <!doctype html>
 <html lang="en">
 <head>
+<!--ga4--><script async src="https://www.googletagmanager.com/gtag/js?id=G-46HG0JWSZV"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-46HG0JWSZV');
+(function(){var LEAD={'consultation':1,'installer-request':1};
+function ev(n,p){try{gtag('event',n,p||{})}catch(e){}}
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href]');if(!a)return;var h=a.getAttribute('href')||'';
+ if(/#consult$/.test(h))ev('book_consultation_click',{link_text:(a.textContent||'').trim().slice(0,60),page_path:location.pathname});
+ else if(/^tel:/i.test(h))ev('phone_click',{link_url:h.slice(4),page_path:location.pathname});
+ else if(/line\.me/i.test(h))ev('line_click',{page_path:location.pathname});
+ else if(/facebook\.com/i.test(h))ev('facebook_click',{page_path:location.pathname});},true);
+document.addEventListener('submit',function(e){var f=e.target;try{sessionStorage.setItem('ga_form',f.getAttribute('name')||f.id||'form')}catch(x){}},true);
+if(/\/thanks\.html$/.test(location.pathname)){var n=null;try{n=sessionStorage.getItem('ga_form');sessionStorage.removeItem('ga_form')}catch(x){}
+ if(n){ev('form_sent',{form_name:n});if(LEAD[n])ev('generate_lead',{form_name:n})}}
+})();</script><!--/ga4-->
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
@@ -52,7 +66,7 @@ table{border-collapse:collapse;width:100%}td,th{border-bottom:1px solid var(--li
 .count{font-size:12px;opacity:.8;margin-left:4px}
 </style>
 
-<!--a11y--><style id="a11y-css">
+<style id="form-ink">form input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=hidden]):not([type=file]),form select,form textarea{background:#FFFFFF!important;color:#0A0E2E!important;-webkit-text-fill-color:#0A0E2E!important;caret-color:#2563EB}form input::placeholder,form textarea::placeholder{color:#6B7280!important;-webkit-text-fill-color:#6B7280!important;opacity:1}form select option,form select optgroup{color:#0A0E2E;background:#FFFFFF}form input:-webkit-autofill{-webkit-box-shadow:0 0 0 1000px #FFFFFF inset!important;-webkit-text-fill-color:#0A0E2E!important}</style><!--a11y--><style id="a11y-css">
 .skip{position:absolute;left:12px;top:-60px;z-index:1000;background:#fff;color:#0A1230;padding:10px 16px;border-radius:8px;font:600 15px system-ui,sans-serif;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.3)}
 .skip:focus{top:12px;outline:3px solid #5B5BD6;outline-offset:2px}
 main#main:focus{outline:0}
@@ -91,7 +105,7 @@ main#main:focus{outline:0}
 (function(){
 var $=function(i){return document.getElementById(i)},PW='',ITEMS=[],TAB='';
 try{PW=sessionStorage.getItem('members-admin-pw')||''}catch(e){}
-var NAMES={'consultation':'Consultation','internship-application':'Internship','job-application':'Job application','post-a-job':'Posted job','installer-request':'Installer request','tsia-membership':'TSIA membership','installer-partner':'Installer partner','job-report':'Job report','enthusiast':'Enthusiast'};
+var NAMES={'consultation':'Consultation','system-check':'Free system check','internship-application':'Internship','job-application':'Job application','post-a-job':'Posted job','installer-request':'Installer request','tsia-membership':'TSIA membership','installer-partner':'Installer partner','job-report':'Job report','enthusiast':'Enthusiast'};
 var ST={'new':'New','contacted':'Contacted','in-progress':'In progress','done':'Done','archived':'Archived'};
 function nm(f){return NAMES[f]||f.replace(/-/g,' ')}
 function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}

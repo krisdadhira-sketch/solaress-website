@@ -26,7 +26,9 @@ import bank from "./bank.json" with { type: "json" };
 const PASS_PCT = bank.pass_pct || 100;   // certificate and next level only at this score
 const WORK_LEVEL = bank.work_level || 3;  // Solar ESS accepts installation work from this level
 const RETAKE_DAYS = 30, SESSION_MS = 3 * 3600 * 1000, VALID_DAYS = 365;
-const TEST_MS = 10 * 60 * 1000, GRACE_MS = 2 * 60 * 1000;   // 10 minutes per test; 2-minute grace for the auto-submit to arrive   // certificates are valid for 1 year
+const GRACE_MS = 2 * 60 * 1000;   // 2-minute grace for the auto-submit to arrive
+// Time limit per test (minutes): harder levels get longer; brand & product tests 10 minutes.
+const LEVEL_MINUTES = { 1: 10, 2: 10, 3: 12, 4: 15, 5: 15 }, PRODUCT_MINUTES = 10;   // certificates are valid for 1 year
 const validUntil = (iso) => { const d = new Date(iso); d.setFullYear(d.getFullYear() + 1); d.setDate(d.getDate() - 1); return d.toISOString(); };
 const isValid = (iso) => Date.now() <= Date.parse(validUntil(iso)) + 864e5;
 const normEmail = (v) => String(v || "").trim().toLowerCase();
@@ -60,6 +62,9 @@ const PRODUCTS = bank.products || [];          // Brand & Product Test (tests 11
 const ALL = LEVELS.concat(PRODUCTS);
 const levelInfo = (n) => ALL.find((l) => l.n === n);
 const isProduct = (n) => PRODUCTS.some((p) => p.n === n);
+const minutesOf = (n) => isProduct(n) ? PRODUCT_MINUTES : (LEVEL_MINUTES[n] || 10);
+const limitMs = (n) => minutesOf(n) * 60 * 1000;
+ALL.forEach((l) => { l.minutes = minutesOf(l.n); });
 // Certificate titles: levels "Solar in Practice"; product tests "Brand & Product Test · Inverter"
 const titleEn = (l) => isProduct(l.n) ? `${l.group_en} · ${l.en}` : l.en;
 const titleTh = (l) => isProduct(l.n) ? `${l.group_th} · ${l.th}` : l.th;
@@ -132,7 +137,7 @@ export default async (req) => {
     const qs = qsOf(level), order = shuffled(qs.length), perms = order.map((k) => shuffled(qs[k].options.length));
     const sid = Date.now().toString(36) + crypto.randomBytes(8).toString("hex");
     await s.setJSON("ses/" + sid, { id: sid, phone, level, order, perms, created: Date.now() });
-    return json({ session: sid, expires: new Date(Date.now() + SESSION_MS).toISOString(), limit: TEST_MS / 1000, deadline: new Date(Date.now() + TEST_MS).toISOString(), level: levelInfo(level), sections: bank.sections, pass: PASS_PCT,
+    return json({ session: sid, expires: new Date(Date.now() + SESSION_MS).toISOString(), limit: limitMs(level) / 1000, deadline: new Date(Date.now() + limitMs(level)).toISOString(), level: levelInfo(level), sections: bank.sections, pass: PASS_PCT,
       questions: order.map((k, n) => ({ i: n, sec: qs[k].sec, th: qs[k].th, en: qs[k].en, options: perms[n].map((o) => qs[k].options[o]) })) });
   }
 
@@ -147,7 +152,7 @@ export default async (req) => {
     const el = await eligibility(s, phone, level, email);
     if (!el.ok) return json({ error: el.reason, need: el.need, until: el.until }, 403);
     await s.delete("ses/" + ses.id);
-    const used = Date.now() - ses.created, late = used > TEST_MS + GRACE_MS;
+    const TEST_MS = limitMs(level), used = Date.now() - ses.created, late = used > TEST_MS + GRACE_MS;
     // Over the time limit and the auto-submit never arrived: nothing can be shown to be answered in time, so nothing is scored.
     const qs = qsOf(level), shown = late ? [] : (Array.isArray(b.answers) ? b.answers.slice(0, qs.length) : []);
     const answers = Array(qs.length).fill(null);        // back to bank order and bank option numbers

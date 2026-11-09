@@ -27,7 +27,7 @@ T = {
     r_cert="Your certificate number is {id}.", r_retry="A certificate needs 100% ({t}/{t}). Study the topics; you can take this test again from {d}.", r_work="This level is accepted for Solar ESS installation work.", r_reg="One step left: register free in one minute and your certificate opens straight away.",
     back="Back to my levels", loading="Loading…", e_prereq="Please pass Level {n} first.", e_reg="Please register as TSIA member or installer partner first.",
     q_s="questions", lv="Level",
-    p_h="Brand & Product Test", p_lede="Product knowledge tests on what we install: inverters, PV modules, batteries, cables and breakers. 15 questions each, open to everyone, same rules: 100% for a certificate valid 1 year.", start_p="Start test", time_l="Time left", time_rule="10 minutes per test. The clock starts when you press Start; at 10:00 the test closes and sends itself, and only the answers you gave in time are scored.", timeup="Time is up (10 minutes). Your answers have been sent automatically – only questions answered in time are scored."),
+    p_h="Brand & Product Test", p_lede="Product knowledge tests on what we install: inverters, PV modules, batteries, cables and breakers. 15 questions each, open to everyone, same rules: 100% for a certificate valid 1 year.", start_p="Start test", time_l="Time left", time_rule="Time limit: Levels 1–2 and brand tests 10 minutes, Level 3 12 minutes, Levels 4–5 15 minutes. The clock starts when you press Start; when time runs out the test closes and sends itself, and only the answers you gave in time are scored.", mins="min", timeup="Time is up. Your answers have been sent automatically – only questions answered in time are scored."),
 "th": dict(pre="/th", title="แบบทดสอบช่างโซลาร์ 5 ระดับ พร้อมใบประกาศ | Solar ESS",
     desc="แบบทดสอบการติดตั้งโซลาร์ภาคปฏิบัติ 5 ระดับ ตั้งแต่ Solar Enterer ถึง Solar Expert ระดับละ 25 ข้อ ภาษาไทยและอังกฤษ ได้ 100% รับใบประกาศของแต่ละระดับ",
     eyebrow="แบบทดสอบโซลาร์ · Solar Test", h1="แบบทดสอบการติดตั้งโซลาร์ภาคปฏิบัติ",
@@ -45,7 +45,7 @@ T = {
     r_cert="เลขที่ใบประกาศของคุณ: {id}", r_retry="ต้องได้ 100% ({t}/{t}) จึงจะได้ใบประกาศ ทบทวนเนื้อหาแล้วสอบใหม่ได้ตั้งแต่ {d}", r_work="ระดับนี้ผ่านเกณฑ์รับงานติดตั้งกับ Solar ESS", r_reg="อีกขั้นเดียว: ลงทะเบียนฟรีใน 1 นาที แล้วใบประกาศจะเปิดทันที",
     back="กลับไปหน้าระดับของฉัน", loading="กำลังโหลด…", e_prereq="กรุณาสอบผ่านระดับ {n} ก่อน", e_reg="กรุณาลงทะเบียนสมาชิก TSIA หรือทีมช่างพันธมิตรก่อน",
     q_s="ข้อ", lv="ระดับ",
-    p_h="แบบทดสอบแบรนด์และผลิตภัณฑ์", p_lede="แบบทดสอบความรู้ผลิตภัณฑ์ที่เราติดตั้ง ได้แก่ อินเวอร์เตอร์ แผงโซลาร์เซลล์ แบตเตอรี่ สายไฟ และเบรกเกอร์ ชุดละ 15 ข้อ ทุกคนทำได้ ใช้กติกาเดียวกัน คือได้ 100% รับใบประกาศอายุ 1 ปี", start_p="เริ่มทำแบบทดสอบ", time_l="เวลาที่เหลือ", time_rule="มีเวลาทำแบบทดสอบชุดละ 10 นาที เริ่มนับเมื่อกดเริ่ม เมื่อครบ 10 นาที ระบบจะปิดแบบทดสอบและส่งคำตอบให้อัตโนมัติ โดยนับคะแนนเฉพาะข้อที่ตอบทันเวลาเท่านั้น", timeup="หมดเวลา 10 นาที ระบบส่งคำตอบให้อัตโนมัติแล้ว นับคะแนนเฉพาะข้อที่ตอบทันเวลา"),
+    p_h="แบบทดสอบแบรนด์และผลิตภัณฑ์", p_lede="แบบทดสอบความรู้ผลิตภัณฑ์ที่เราติดตั้ง ได้แก่ อินเวอร์เตอร์ แผงโซลาร์เซลล์ แบตเตอรี่ สายไฟ และเบรกเกอร์ ชุดละ 15 ข้อ ทุกคนทำได้ ใช้กติกาเดียวกัน คือได้ 100% รับใบประกาศอายุ 1 ปี", start_p="เริ่มทำแบบทดสอบ", time_l="เวลาที่เหลือ", time_rule="เวลาทำแบบทดสอบ: ระดับ 1–2 และแบบทดสอบผลิตภัณฑ์ 10 นาที ระดับ 3 12 นาที ระดับ 4–5 15 นาที เริ่มนับเมื่อกดเริ่ม เมื่อหมดเวลา ระบบจะปิดแบบทดสอบและส่งคำตอบให้อัตโนมัติ โดยนับคะแนนเฉพาะข้อที่ตอบทันเวลาเท่านั้น", mins="นาที", timeup="หมดเวลา ระบบส่งคำตอบให้อัตโนมัติแล้ว นับคะแนนเฉพาะข้อที่ตอบทันเวลา"),
 }
 
 CSS = """<style id="itest-css">
@@ -129,7 +129,7 @@ def build(lang):
         f'<div id="it-res" hidden></div>'
         f'</div></section>\n')
     keys = ["req", "bademail", "reg_ok", "st_pass", "st_open", "st_lock", "lock_need", "start", "retake", "cert", "qof", "answered", "submit",
-            "sending", "unanswered", "fail", "r_h", "r_pass", "r_fail", "next", "r_cert", "r_retry", "back", "loading", "e_prereq", "e_reg", "q_s", "lv", "work", "work_s", "reg_need", "r_work", "r_reg", "wait", "e_wait", "e_passed", "e_expired", "expired", "valid", "r_valid", "p_h", "p_lede", "start_p", "time_l", "timeup"]
+            "sending", "unanswered", "fail", "r_h", "r_pass", "r_fail", "next", "r_cert", "r_retry", "back", "loading", "e_prereq", "e_reg", "q_s", "lv", "work", "work_s", "reg_need", "r_work", "r_reg", "wait", "e_wait", "e_passed", "e_expired", "expired", "valid", "r_valid", "p_h", "p_lede", "start_p", "time_l", "timeup", "mins"]
     L = {k: t[k] for k in keys}
     L["lang"] = "Thai" if th else "English"
     L["th"] = th
@@ -146,7 +146,7 @@ function isP(l){return !!(l&&l.key)}
 function lvTag(l){return isP(l)?T.p_h:T.lv+' '+l.n}
 try{var sv=JSON.parse(localStorage.getItem('itest-who')||'null');if(sv){['name','phone','email','team','prov'].forEach(function(k){if(sv[k])$('it-'+k).value=sv[k]})}}catch(x){}
 function card(l){var h='';var E=st.ever||st.passed,c=st.passed[l.n],x=(st.expired||{})[l.n],w=(st.wait||{})[l.n],open=!c,why='';if(open&&w){open=false;why=f(T.wait,{d:dt(w)})}var cls=c?'pass':open?'':'lock',stt=c?T.st_pass:open?(x?T.expired:T.st_open):why;
-  h+='<div class="itcard '+cls+(want===l.n?' focus':'')+'" id="lv'+l.n+'"><div class="t"><span class="tag">'+esc(lvTag(l))+'</span><b>'+esc(lvName(l))+'</b><small>'+(isP(l)?esc(T.th?l.sub_th:l.sub_en)+'<br>':'')+(l.count||25)+' '+esc(T.q_s)+' · '+esc(stt)+'</small>'+(!isP(l)&&l.n>=(st.workLevel||3)?'<em>'+esc(T.work_s)+'</em>':'')+'</div><div class="act">'
+  h+='<div class="itcard '+cls+(want===l.n?' focus':'')+'" id="lv'+l.n+'"><div class="t"><span class="tag">'+esc(lvTag(l))+'</span><b>'+esc(lvName(l))+'</b><small>'+(isP(l)?esc(T.th?l.sub_th:l.sub_en)+'<br>':'')+(l.count||25)+' '+esc(T.q_s)+' · ⏱ '+(l.minutes||10)+' '+esc(T.mins)+' · '+esc(stt)+'</small>'+(!isP(l)&&l.n>=(st.workLevel||3)?'<em>'+esc(T.work_s)+'</em>':'')+'</div><div class="act">'
   +((c||x)&&!open?'<a class="btn ghost" href="/certificate.html?id='+encodeURIComponent(c||x)+'">'+esc(T.cert)+'</a>':'')+(c?''
     :open?'<button class="btn" data-go="'+l.n+'" type="button">'+esc(isP(l)?T.start_p:f(T.start,{n:l.n}))+'</button>':'')+'</div></div>';return h}
 function cards(){if(wantKey&&st.products){st.products.forEach(function(p){if(p.key===wantKey)want=p.n})}

@@ -21,7 +21,7 @@ TOPICS = {
  'subsidy': ['installer-rules-50000-subsidy', 'electrification-who-pays-teaser', 'public-reaction-50000-subsidy', 'thailand-50000-baht-solar-subsidy', 'thai-rooftop-solar-policy', 'thailand-mandatory-panel-standard',
              'thailand-ocpb-faulty-solar', 'solar-disadvantages-honest'],
  'datacenter': ['electrification-who-pays-teaser', 'data-centre-impacts-guide', 'data-centres-power-water', 'data-centres-thailand-power', 'global-energy-review-2025'],
- 'innovation': ['icfo-boltzmann-loss-solar-cavity', 'fraunhofer-silicon-anode-cells', 'tongwei-93-bifaciality', 'risen-anti-glare', 'mova-lumegret-s5000',
+ 'innovation': ['module-failures-2026-what-we-check', 'inverter-cybersecurity-home-solar', 'tandem-modules-907w-certified', 'icfo-boltzmann-loss-solar-cavity', 'fraunhofer-silicon-anode-cells', 'tongwei-93-bifaciality', 'risen-anti-glare', 'mova-lumegret-s5000',
                 'solis-s6-eh3p50k-v38-vs-21a', 'thailand-solar-battery-recycling-estate'],
  'adoption': ['singapore-4gwp-solar-2035', 'vinenergo-rooftop-bess-vietnam', 'dnv-eto-2026-solar-largest-2031', 'us-solar-market-q2-2026', 'global-energy-review-2025', 'china-solar-down-rest-up', 'module-prices-october-2026', 'nz-solar-complaints-surge',
               'thai-rooftop-solar-policy'],

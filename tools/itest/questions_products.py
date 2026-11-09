@@ -5,6 +5,7 @@ Facts follow maker datasheets and IEC/TIS practice; never name the equipment sup
 Built into netlify/functions/itest/bank.json by build_bank.py as tests 11-15."""
 from questions_brands import SIGENERGY, ENPHASE
 from questions_home import HOME
+from questions_protect import RCBO, MCCB, BIDIR, CABLESIZE, ACCABLE, ISSUES
 
 P = "P"
 
@@ -605,7 +606,9 @@ GOODWE = [
  "Solar ESS's 134 kWp C&I package pairs it with 200 panels."),
 ]
 
-PRODUCTS = [  # (test number, key, EN, TH, questions, subtitle EN, subtitle TH)
+PRODUCTS = [  # (test number, key, EN, TH, questions, subtitle EN, subtitle TH) — display order on the test page
+    (19, "home-electrician", "Self-Appointed Electrician", "ช่างไฟประจำบ้าน", HOME, "For homeowners: RCBO, earthing, EV circuits, meters, CT, solar safety", "สำหรับเจ้าของบ้าน: เบรกเกอร์กันดูด สายดิน วงจร EV มิเตอร์ CT ความปลอดภัยโซลาร์"),
+    (25, "solar-issues", "Solar Issues & Troubleshooting", "ปัญหาระบบโซลาร์และการแก้ไข", ISSUES, "Insulation faults, CT and meter errors, reverse power, battery settings, low yield", "ฉนวนรั่ว CT และมิเตอร์ผิด ไฟไหลย้อน ค่าตั้งแบตเตอรี่ ผลผลิตต่ำ"),
     (11, "inverter", "Inverters", "อินเวอร์เตอร์", INVERTER, "All brands and specific brands: Huawei, Solis, SolarEdge, Sigenergy, Enphase and more", "ทุกยี่ห้อและยี่ห้อเฉพาะ เช่น Huawei, Solis, SolarEdge, Sigenergy, Enphase"),
     (16, "inverter-solis", "Inverters · Solis", "อินเวอร์เตอร์ · Solis", SOLIS, "Solis brand test: SolisCloud, EPM, S6-EH1P hybrids", "แบบทดสอบเฉพาะยี่ห้อ Solis: SolisCloud, EPM, ไฮบริด S6-EH1P"),
     (17, "inverter-deye", "Inverters · Deye", "อินเวอร์เตอร์ · Deye", DEYE, "Deye brand test: loggers, SG01LP1 hybrids, parallel, AC coupling", "แบบทดสอบเฉพาะยี่ห้อ Deye: logger, ไฮบริด SG01LP1, การต่อขนาน, AC coupling"),
@@ -613,8 +616,12 @@ PRODUCTS = [  # (test number, key, EN, TH, questions, subtitle EN, subtitle TH)
     (12, "pv", "PV Modules", "แผงโซลาร์เซลล์", PV, "Datasheets, cell types, warranties, installation", "เอกสารข้อมูลแผง ชนิดเซลล์ การรับประกัน การติดตั้ง"),
     (13, "battery", "Battery", "แบตเตอรี่", BATTERY, "LFP, capacity, BMS, LV/HV, installation and care", "LFP ความจุ BMS ระบบ LV/HV การติดตั้งและดูแล"),
     (14, "breaker", "Breakers & Protection", "เบรกเกอร์และอุปกรณ์ป้องกัน", BREAKER, "MCB, MCCB, SPD, RCBO, fuses, isolators, ATS", "MCB, MCCB, SPD, RCBO, ฟิวส์, Isolator, ATS"),
-    (19, "home-electrician", "Self-Appointed Electrician", "ช่างไฟประจำบ้าน", HOME, "For homeowners: RCBO, earthing, EV circuits, meters, CT, solar safety", "สำหรับเจ้าของบ้าน: เบรกเกอร์กันดูด สายดิน วงจร EV มิเตอร์ CT ความปลอดภัยโซลาร์"),
+    (20, "rcbo", "Breakers · RCBO & Earth Leakage", "เบรกเกอร์ · RCBO และกันไฟรั่ว", RCBO, "RCBO vs RCCB, 30 mA, sizing, earthing, changeover boards", "RCBO เทียบ RCCB, 30 mA, การเลือกขนาด, สายดิน, ตู้สลับแหล่งจ่าย"),
+    (21, "mccb", "Breakers · MCCB & Main Boards", "เบรกเกอร์ · MCCB และตู้เมน", MCCB, "MCCB, breaking capacity, changeover and bypass, 4-pole, labelling", "MCCB, ค่าตัดกระแสลัดวงจร, ตู้สลับแหล่งจ่ายและบายพาส, 4 ขั้ว, ป้ายกำกับ"),
+    (22, "bidirectional", "Breakers · One-way or Two-way", "เบรกเกอร์ · ทางเดียวหรือสองทาง", BIDIR, "Unidirectional vs bidirectional RCBO with solar, battery, generator", "RCBO ทางเดียวเทียบสองทาง เมื่อมีโซลาร์ แบตเตอรี่ เครื่องปั่นไฟ"),
     (15, "cable", "Cables & Wiring", "สายไฟและการเดินสาย", CABLE, "AC and DC cables, types, sizes, wiring methods", "สาย AC และ DC ชนิด ขนาด และวิธีเดินสาย"),
+    (24, "ac-cable", "Cables · AC Cable", "สายไฟ · สาย AC", ACCABLE, "THW IEC 01, phase colours, sizing for output and length, voltage rise, terminals", "THW IEC 01 สีสาย ขนาดตามกำลังและระยะ แรงดันสูงขึ้น ขั้วต่อ"),
+    (23, "cable-size", "Cables · Cable Sizing", "สายไฟ · การเลือกขนาดสาย", CABLESIZE, "1.25 × FLC, conduit derating, voltage drop, EV and earth cables", "1.25 × FLC, ลดพิกัดในท่อ, แรงดันตก, สาย EV และสายดิน"),
 ]
 for _n, _k, _e, _t, _q, *_ in PRODUCTS:
-    assert len(_q) == (15 if _n <= 15 or _k == "home-electrician" else 8), (_k, len(_q))
+    assert len(_q) >= 8, (_k, len(_q))

@@ -121,3 +121,8 @@ Audit: axe-core (WCAG 2 A/AA) on 14 key pages went from about 2,400 contrast fai
 
 - Test 19, key `home-electrician` (`tools/itest/questions_home.py`, 15 questions, section H "Home electrics for owners"), group "Homeowner Test", 10 minutes, certificate at 100%. Shown first on the test page under "For homeowners". Direct link: `/th/installer-test.html?test=home-electrician`.
 - Rule (Nov 2026): every new test question is based on what solaress.org already publishes (FAQ, Our Picks, service pages, Technical notes); each explanation names the page it comes from.
+
+## More topic tests (Nov 2026)
+
+- Tests 20–25 (`tools/itest/questions_protect.py`), all from solaress.org content: 20 RCBO & Earth Leakage (10), 21 MCCB & Main Boards (10), 22 One-way or Two-way breakers (8), 23 Cable Sizing (10), 24 AC Cable (8), 25 Solar Issues & Troubleshooting (15).
+- Display order = `PRODUCTS` in `questions_products.py`; the page groups product tests under Troubleshooting, Inverters, Solar panels, Battery, Breakers & protection, Cables. Build/shuffle order is fixed (`LEGACY` in `build_bank.py`) so existing tests never change when tests are added or reordered.

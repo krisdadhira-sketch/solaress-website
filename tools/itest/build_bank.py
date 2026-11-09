@@ -61,7 +61,9 @@ for lv in (1, 2, 3, 4):
 e = E[:]; rnd.shuffle(e)
 for q in e:
     add(5, *q)
-for n, k, en, th, qs, *_ in PRODUCTS:
+# Build (shuffle) order stays fixed so existing tests keep their question and option order even when the display order changes:
+LEGACY = [11, 16, 17, 18, 12, 13, 14, 15]
+for n, k, en, th, qs, *_ in sorted(PRODUCTS, key=lambda p: (LEGACY.index(p[0]) if p[0] in LEGACY else 100 + p[0])):
     qs = qs[:]; rnd.shuffle(qs)
     for q in qs:
         add(n, *q)

@@ -24,11 +24,11 @@
     }
     return null;
   }
-  window.solGeoFill = function (f, lat, lng, lang, done) {
+  window.solGeoFill = function (f, lat, lng, lang, done, _retry) {
     var url = 'https://nominatim.openstreetmap.org/reverse?format=jsonv2&zoom=16&addressdetails=1&lat=' +
       lat + '&lon=' + lng + '&accept-language=' + (lang === 'th' ? 'th' : 'en');
     fetch(url, { headers: { 'Accept': 'application/json' } })
-      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (r) { if (!r.ok) throw new Error('http ' + r.status); return r.json(); })
       .then(function (j) {
         var a = (j && j.address) || {};
         if (a.country_code && a.country_code !== 'th') { done && done(false); return; }
@@ -46,6 +46,9 @@
         });
         done && done(got, { province: p ? (lang === 'th' ? p[1] : p[0]) : prov, district: dist, subdistrict: sub });
       })
-      .catch(function () { done && done(false); });
+      .catch(function () {
+        if (!_retry) setTimeout(function () { window.solGeoFill(f, lat, lng, lang, done, true); }, 1500);
+        else done && done(false);
+      });
   };
 })();

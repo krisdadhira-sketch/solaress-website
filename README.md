@@ -126,3 +126,8 @@ Audit: axe-core (WCAG 2 A/AA) on 14 key pages went from about 2,400 contrast fai
 
 - Tests 20–25 (`tools/itest/questions_protect.py`), all from solaress.org content: 20 RCBO & Earth Leakage (10), 21 MCCB & Main Boards (10), 22 One-way or Two-way breakers (8), 23 Cable Sizing (10), 24 AC Cable (8), 25 Solar Issues & Troubleshooting (15).
 - Display order = `PRODUCTS` in `questions_products.py`; the page groups product tests under Troubleshooting, Inverters, Solar panels, Battery, Breakers & protection, Cables. Build/shuffle order is fixed (`LEGACY` in `build_bank.py`) so existing tests never change when tests are added or reordered.
+
+## Jobs page order (Nov 2026)
+
+- Newest job first, closed jobs last, in both lists of `job.html` and `th/job.html`. Every card has `data-posted="YYYY-MM-DD"` (first published) shown as "Posted 9 Nov 2026" / "ลงประกาศ 9 พ.ย. 2569" in its kind line.
+- When adding a job: give the new `<article>` a `data-posted` with today's date, then run `python3 tools/job_order.py` (idempotent), then `tools/build_share.py`.

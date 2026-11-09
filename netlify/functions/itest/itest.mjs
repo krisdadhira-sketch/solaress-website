@@ -25,7 +25,8 @@ import bank from "./bank.json" with { type: "json" };
 
 const PASS_PCT = bank.pass_pct || 100;   // certificate and next level only at this score
 const WORK_LEVEL = bank.work_level || 3;  // Solar ESS accepts installation work from this level
-const RETAKE_DAYS = 30, SESSION_MS = 3 * 3600 * 1000, VALID_DAYS = 365;   // certificates are valid for 1 year
+const RETAKE_DAYS = 30, SESSION_MS = 3 * 3600 * 1000, VALID_DAYS = 365;
+const TEST_MS = 10 * 60 * 1000, GRACE_MS = 2 * 60 * 1000;   // 10 minutes per test; 2-minute grace for the auto-submit to arrive   // certificates are valid for 1 year
 const validUntil = (iso) => { const d = new Date(iso); d.setFullYear(d.getFullYear() + 1); d.setDate(d.getDate() - 1); return d.toISOString(); };
 const isValid = (iso) => Date.now() <= Date.parse(validUntil(iso)) + 864e5;
 const normEmail = (v) => String(v || "").trim().toLowerCase();
@@ -131,7 +132,7 @@ export default async (req) => {
     const qs = qsOf(level), order = shuffled(qs.length), perms = order.map((k) => shuffled(qs[k].options.length));
     const sid = Date.now().toString(36) + crypto.randomBytes(8).toString("hex");
     await s.setJSON("ses/" + sid, { id: sid, phone, level, order, perms, created: Date.now() });
-    return json({ session: sid, expires: new Date(Date.now() + SESSION_MS).toISOString(), level: levelInfo(level), sections: bank.sections, pass: PASS_PCT,
+    return json({ session: sid, expires: new Date(Date.now() + SESSION_MS).toISOString(), limit: TEST_MS / 1000, deadline: new Date(Date.now() + TEST_MS).toISOString(), level: levelInfo(level), sections: bank.sections, pass: PASS_PCT,
       questions: order.map((k, n) => ({ i: n, sec: qs[k].sec, th: qs[k].th, en: qs[k].en, options: perms[n].map((o) => qs[k].options[o]) })) });
   }
 
@@ -146,7 +147,9 @@ export default async (req) => {
     const el = await eligibility(s, phone, level, email);
     if (!el.ok) return json({ error: el.reason, need: el.need, until: el.until }, 403);
     await s.delete("ses/" + ses.id);
-    const qs = qsOf(level), shown = Array.isArray(b.answers) ? b.answers.slice(0, qs.length) : [];
+    const used = Date.now() - ses.created, late = used > TEST_MS + GRACE_MS;
+    // Over the time limit and the auto-submit never arrived: nothing can be shown to be answered in time, so nothing is scored.
+    const qs = qsOf(level), shown = late ? [] : (Array.isArray(b.answers) ? b.answers.slice(0, qs.length) : []);
     const answers = Array(qs.length).fill(null);        // back to bank order and bank option numbers
     ses.order.forEach((k, n) => { const v = shown[n]; if (v !== null && v !== undefined && v !== "" && ses.perms[n][+v] !== undefined) answers[k] = ses.perms[n][+v]; });
     const sections = {};
@@ -166,9 +169,9 @@ export default async (req) => {
       await s.setJSON("cert/" + cert, { id: cert, name, level, pct, score, total, date: created, attempt: id, phone, needReg: true });
     }
     await s.setJSON("att/" + id, { id, created, level, name, phone, email, province: txt(b.province), team,
-      regType: el.reg ? el.reg.type : "", language: txt(b.language, 20), seconds: Math.max(0, Math.min(36000, parseInt(b.seconds, 10) || 0)),
+      regType: el.reg ? el.reg.type : "", language: txt(b.language, 20), seconds: Math.round(Math.min(used, TEST_MS + GRACE_MS) / 1000), timeup: !!b.timeup || used > TEST_MS, late,
       answers: given, score, total, pct, pass, sections, cert });
-    return json({ score, total, pct, pass, passMark: PASS_PCT, sections, cert, registered: !!el.reg, level: levelInfo(level), validFrom: pass ? created : null, validUntil: pass ? validUntil(created) : null });
+    return json({ score, total, pct, pass, late, timeup: !!b.timeup || used > TEST_MS, passMark: PASS_PCT, sections, cert, registered: !!el.reg, level: levelInfo(level), validFrom: pass ? created : null, validUntil: pass ? validUntil(created) : null });
   }
 
   // One-click registration from /join.html: the certificate number and the phone used for the test must match.

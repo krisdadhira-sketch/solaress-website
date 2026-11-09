@@ -116,3 +116,8 @@ Audit: axe-core (WCAG 2 A/AA) on 14 key pages went from about 2,400 contrast fai
 - `/system-check.html`, `/th/system-check.html`: free remote check for any solar system (any brand, any installer). Netlify form `system-check` (name, phone, LINE, province, kWp, inverter brand, monitoring app, battery, installer, concern, 3 optional screenshots, optional monitoring access, consent); copied to the admin inbox as "Free system check". Reply target: within 3 working days.
 - Green "FREE" promo band under the hero of `/` and `/th/`; first item of the Services menu (EN/TH/ZH).
 - Build: `python3 tools/system_check_page.py` (then the post-processors listed in its docstring).
+
+## Homeowner test: Self-Appointed Electrician (Nov 2026)
+
+- Test 19, key `home-electrician` (`tools/itest/questions_home.py`, 15 questions, section H "Home electrics for owners"), group "Homeowner Test", 10 minutes, certificate at 100%. Shown first on the test page under "For homeowners". Direct link: `/th/installer-test.html?test=home-electrician`.
+- Rule (Nov 2026): every new test question is based on what solaress.org already publishes (FAQ, Our Picks, service pages, Technical notes); each explanation names the page it comes from.

@@ -4,6 +4,7 @@ Same format as questions_brands.py: (section, th, en, [correct, wrong x3], expla
 Facts follow maker datasheets and IEC/TIS practice; never name the equipment supplier here.
 Built into netlify/functions/itest/bank.json by build_bank.py as tests 11-15."""
 from questions_brands import SIGENERGY, ENPHASE
+from questions_home import HOME
 
 P = "P"
 
@@ -612,7 +613,8 @@ PRODUCTS = [  # (test number, key, EN, TH, questions, subtitle EN, subtitle TH)
     (12, "pv", "PV Modules", "แผงโซลาร์เซลล์", PV, "Datasheets, cell types, warranties, installation", "เอกสารข้อมูลแผง ชนิดเซลล์ การรับประกัน การติดตั้ง"),
     (13, "battery", "Battery", "แบตเตอรี่", BATTERY, "LFP, capacity, BMS, LV/HV, installation and care", "LFP ความจุ BMS ระบบ LV/HV การติดตั้งและดูแล"),
     (14, "breaker", "Breakers & Protection", "เบรกเกอร์และอุปกรณ์ป้องกัน", BREAKER, "MCB, MCCB, SPD, RCBO, fuses, isolators, ATS", "MCB, MCCB, SPD, RCBO, ฟิวส์, Isolator, ATS"),
+    (19, "home-electrician", "Self-Appointed Electrician", "ช่างไฟประจำบ้าน", HOME, "For homeowners: RCBO, earthing, EV circuits, meters, CT, solar safety", "สำหรับเจ้าของบ้าน: เบรกเกอร์กันดูด สายดิน วงจร EV มิเตอร์ CT ความปลอดภัยโซลาร์"),
     (15, "cable", "Cables & Wiring", "สายไฟและการเดินสาย", CABLE, "AC and DC cables, types, sizes, wiring methods", "สาย AC และ DC ชนิด ขนาด และวิธีเดินสาย"),
 ]
 for _n, _k, _e, _t, _q, *_ in PRODUCTS:
-    assert len(_q) == (15 if _n <= 15 else 8), (_k, len(_q))
+    assert len(_q) == (15 if _n <= 15 or _k == "home-electrician" else 8), (_k, len(_q))

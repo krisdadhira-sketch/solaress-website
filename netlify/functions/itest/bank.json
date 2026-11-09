@@ -26,6 +26,11 @@
 "id": "P",
 "th": "แบรนด์และผลิตภัณฑ์",
 "en": "Brands and products"
+},
+{
+"id": "H",
+"th": "ไฟฟ้าในบ้านสำหรับเจ้าของบ้าน",
+"en": "Home electrics for owners"
 }
 ],
 "levels": [
@@ -70,7 +75,8 @@
 "sub_th": "ทุกยี่ห้อและยี่ห้อเฉพาะ เช่น Huawei, Solis, SolarEdge, Sigenergy, Enphase",
 "count": 15,
 "group_en": "Brand & Product Test",
-"group_th": "แบบทดสอบแบรนด์และผลิตภัณฑ์"
+"group_th": "แบบทดสอบแบรนด์และผลิตภัณฑ์",
+"home": false
 },
 {
 "n": 16,
@@ -81,7 +87,8 @@
 "sub_th": "แบบทดสอบเฉพาะยี่ห้อ Solis: SolisCloud, EPM, ไฮบริด S6-EH1P",
 "count": 8,
 "group_en": "Brand & Product Test",
-"group_th": "แบบทดสอบแบรนด์และผลิตภัณฑ์"
+"group_th": "แบบทดสอบแบรนด์และผลิตภัณฑ์",
+"home": false
 },
 {
 "n": 17,
@@ -92,7 +99,8 @@
 "sub_th": "แบบทดสอบเฉพาะยี่ห้อ Deye: logger, ไฮบริด SG01LP1, การต่อขนาน, AC coupling",
 "count": 8,
 "group_en": "Brand & Product Test",
-"group_th": "แบบทดสอบแบรนด์และผลิตภัณฑ์"
+"group_th": "แบบทดสอบแบรนด์และผลิตภัณฑ์",
+"home": false
 },
 {
 "n": 18,
@@ -103,7 +111,8 @@
 "sub_th": "แบบทดสอบเฉพาะยี่ห้อ GoodWe: SEMS, มิเตอร์, ES/SDT/GT, แบตเตอรี่ Lynx",
 "count": 8,
 "group_en": "Brand & Product Test",
-"group_th": "แบบทดสอบแบรนด์และผลิตภัณฑ์"
+"group_th": "แบบทดสอบแบรนด์และผลิตภัณฑ์",
+"home": false
 },
 {
 "n": 12,
@@ -114,7 +123,8 @@
 "sub_th": "เอกสารข้อมูลแผง ชนิดเซลล์ การรับประกัน การติดตั้ง",
 "count": 15,
 "group_en": "Brand & Product Test",
-"group_th": "แบบทดสอบแบรนด์และผลิตภัณฑ์"
+"group_th": "แบบทดสอบแบรนด์และผลิตภัณฑ์",
+"home": false
 },
 {
 "n": 13,
@@ -125,7 +135,8 @@
 "sub_th": "LFP ความจุ BMS ระบบ LV/HV การติดตั้งและดูแล",
 "count": 15,
 "group_en": "Brand & Product Test",
-"group_th": "แบบทดสอบแบรนด์และผลิตภัณฑ์"
+"group_th": "แบบทดสอบแบรนด์และผลิตภัณฑ์",
+"home": false
 },
 {
 "n": 14,
@@ -136,7 +147,20 @@
 "sub_th": "MCB, MCCB, SPD, RCBO, ฟิวส์, Isolator, ATS",
 "count": 15,
 "group_en": "Brand & Product Test",
-"group_th": "แบบทดสอบแบรนด์และผลิตภัณฑ์"
+"group_th": "แบบทดสอบแบรนด์และผลิตภัณฑ์",
+"home": false
+},
+{
+"n": 19,
+"key": "home-electrician",
+"en": "Self-Appointed Electrician",
+"th": "ช่างไฟประจำบ้าน",
+"sub_en": "For homeowners: RCBO, earthing, EV circuits, meters, CT, solar safety",
+"sub_th": "สำหรับเจ้าของบ้าน: เบรกเกอร์กันดูด สายดิน วงจร EV มิเตอร์ CT ความปลอดภัยโซลาร์",
+"count": 15,
+"group_en": "Homeowner Test",
+"group_th": "แบบทดสอบสำหรับเจ้าของบ้าน",
+"home": true
 },
 {
 "n": 15,
@@ -147,7 +171,8 @@
 "sub_th": "สาย AC และ DC ชนิด ขนาด และวิธีเดินสาย",
 "count": 15,
 "group_en": "Brand & Product Test",
-"group_th": "แบบทดสอบแบรนด์และผลิตภัณฑ์"
+"group_th": "แบบทดสอบแบรนด์และผลิตภัณฑ์",
+"home": false
 }
 ],
 "questions": [
@@ -5586,134 +5611,420 @@
 "explain": "Use AC SPDs on the AC side and DC SPDs rated for the string voltage on the DC side, with short, straight earth connections."
 },
 {
-"level": 15,
-"sec": "P",
-"th": "หลักการเลือกขนาดสายและเบรกเกอร์ข้อใดถูกต้อง",
-"en": "Which rule for choosing cable and breaker sizes is correct?",
+"level": 19,
+"sec": "H",
+"th": "อุปกรณ์ป้องกันเสิร์จ (SPD) และเบรกเกอร์กันดูด จะทำงานได้จริงเมื่อใด",
+"en": "When do surge protectors (SPD) and RCDs actually work?",
 "options": [
 {
-"th": "เบรกเกอร์ใหญ่กว่าพิกัดสายได้เสมอ",
-"en": "The breaker may always be larger than the cable rating"
+"th": "เมื่อติดตั้งใกล้ทีวี",
+"en": "When installed next to the TV"
 },
 {
-"th": "กระแสโหลด ≤ พิกัดเบรกเกอร์ ≤ พิกัดกระแสของสายตามวิธีการติดตั้ง",
-"en": "Load current ≤ breaker rating ≤ cable current rating for its installation method"
+"th": "เมื่อบ้านมีระบบสายดินที่ใช้งานได้จริงและทดสอบแล้ว",
+"en": "When the house has a real, tested earthing system"
 },
 {
-"th": "ใช้สายเล็กที่สุดที่ร้อยเข้าท่อได้",
-"en": "Use the smallest cable that fits the conduit"
+"th": "เมื่อใช้สายไฟอะลูมิเนียม",
+"en": "When aluminium cable is used"
 },
 {
-"th": "ขนาดสายไม่เกี่ยวกับเบรกเกอร์",
-"en": "Cable size has nothing to do with the breaker"
+"th": "ทำงานได้เสมอ ไม่เกี่ยวกับสายดิน",
+"en": "Always, earthing makes no difference"
 }
 ],
 "answer": 1,
-"explain": "The breaker protects the cable. Derate the cable for grouping, temperature and installation method."
+"explain": "solaress.org: surge and leakage protection only work with an earth that actually works."
 },
 {
-"level": 15,
-"sec": "P",
-"th": "ทำไมไม่ควรใช้สาย THW เดินฝั่ง DC จากแผงบนหลังคาแบบไม่มีท่อ",
-"en": "Why should THW cable not be used for DC string wiring run in the open on a roof?",
+"level": 19,
+"sec": "H",
+"th": "เบรกเกอร์กันไฟดูดสำหรับคนในบ้านใช้ค่าพิกัดกระแสรั่วเท่าไร",
+"en": "What leakage rating protects people from electric shock in a home?",
 "options": [
 {
-"th": "ฉนวน PVC ชั้นเดียวไม่ทน UV และไม่ได้ออกแบบสำหรับแรงดัน DC สูงของสตริง",
-"en": "Its single PVC insulation is not UV-resistant and is not designed for high string DC voltage"
+"th": "30 mA",
+"en": "30 mA"
 },
 {
-"th": "เพราะ THW ไม่มีทองแดง",
-"en": "Because THW has no copper"
+"th": "3 A",
+"en": "3 A"
 },
 {
-"th": "เพราะ THW แพงกว่าสาย PV",
-"en": "Because THW is more expensive than PV cable"
+"th": "300 mA",
+"en": "300 mA"
 },
 {
-"th": "เพราะ THW ใช้ได้เฉพาะสายดิน",
-"en": "Because THW is only for earthing"
+"th": "30 A",
+"en": "30 A"
 }
 ],
 "answer": 0,
-"explain": "THW (60227 IEC 01) is for indoor use inside conduit at up to 450/750 V AC."
+"explain": "The EV charger circuit on solaress.org uses an RCBO 40 A 30 mA: 30 mA is the leakage level that protects people."
 },
 {
-"level": 15,
-"sec": "P",
-"th": "สีสายไฟ DC ที่นิยมใช้เพื่อแยกขั้ว คือข้อใด",
-"en": "Which DC cable colours are commonly used to tell polarity apart?",
+"level": 19,
+"sec": "H",
+"th": "สาย DC ของแผงโซลาร์มีรอยฉีกขาด เจ้าของบ้านควรทำอย่างไร",
+"en": "A solar DC cable is damaged. What should the homeowner do?",
 "options": [
 {
-"th": "สีใดก็ได้ไม่ต้องติดป้าย",
-"en": "Any colour, no labels"
+"th": "ถอดขั้วต่อ MC4 ออกทันทีตอนกลางวัน",
+"en": "Unplug the MC4 connectors immediately at midday"
 },
 {
-"th": "ฟ้าเป็นบวก แดงเป็นลบ",
-"en": "Blue positive, red negative"
+"th": "ฉีดน้ำล้างให้สะอาด",
+"en": "Wash it with water"
 },
 {
-"th": "แดงเป็นบวก (+) ดำเป็นลบ (−) และติดป้ายชัดเจน",
-"en": "Red for positive (+), black for negative (−), with clear labels"
+"th": "ห้ามพันเทปเอง แจ้งช่าง ช่างจะปิดอินเวอร์เตอร์และปลด DC isolator ก่อนถอดขั้วต่อ",
+"en": "Do not tape it yourself; call a technician, who switches off the inverter and the DC isolator before unplugging connectors"
 },
 {
-"th": "เขียวเหลืองเป็นบวก",
-"en": "Green/yellow for positive"
+"th": "พันเทปพันสายให้แน่น ใช้งานต่อได้",
+"en": "Wrap it tightly with insulating tape and carry on"
 }
 ],
 "answer": 2,
-"explain": "Reverse polarity on an inverter input or battery can cause serious damage; label both ends."
+"explain": "solaress.org FAQ: a string carries hundreds of volts DC whenever there is light; damaged cable can arc and start a fire. Make safe first: inverter off, DC isolator off, then connectors."
 },
 {
-"level": 15,
-"sec": "P",
-"th": "สาย THW (60227 IEC 01) ตาม มอก. 11 เหมาะกับการเดินสายแบบใด",
-"en": "THW cable (60227 IEC 01) to TIS 11 is suitable for which wiring method?",
+"level": 19,
+"sec": "H",
+"th": "บ้านที่ติดโซลาร์ ทำไมต้องสนใจว่า RCBO เป็นแบบทางเดียวหรือสองทาง",
+"en": "In a home with solar, why does it matter whether an RCBO is one-way or two-way?",
 "options": [
 {
-"th": "พาดกลางแจ้งโดนแดดตลอด",
-"en": "Run exposed to sun outdoors"
+"th": "รุ่นสองทางใช้ได้เฉพาะระบบ 3 เฟส",
+"en": "Two-way models only work on 3-phase"
 },
 {
-"th": "ใช้เป็นสายสตริง DC 1,500 V",
-"en": "As 1,500 V DC string cable"
+"th": "รุ่นทางเดียวกันฟ้าผ่าได้ดีกว่า",
+"en": "One-way models protect better against lightning"
 },
 {
-"th": "เดินในท่อร้อยสายหรือรางเดินสายภายในอาคาร",
-"en": "Run in conduit or trunking inside buildings"
+"th": "เพราะไฟอาจไหลได้ทั้งสองทิศ จากการไฟฟ้าเข้าบ้าน และจากอินเวอร์เตอร์ออก รุ่นทางเดียวต้องต่อด้านแหล่งจ่ายให้ถูกด้าน",
+"en": "Current can flow both ways (grid to house and inverter outwards); a one-way device must have its supply side connected correctly"
 },
 {
-"th": "ฝังดินโดยตรงไม่มีท่อ",
-"en": "Direct burial without conduit"
+"th": "ไม่สำคัญ RCBO ทุกตัวเหมือนกัน",
+"en": "It does not matter; all RCBOs are the same"
 }
 ],
 "answer": 2,
-"explain": "For direct burial use a cable designed for it (e.g. NYY / CV to IEC 60502) or put cables in a buried conduit."
+"explain": "solaress.org FAQ 'RCBO: one-way or two-way?': with solar, the direction current flows through the device matters."
 },
 {
-"level": 15,
-"sec": "P",
-"th": "ทำไมต้องใส่ยางกันบาด (grommet) หรือบุชชิ่งที่รูเจาะผ่านผนังหรือตู้ไฟ",
-"en": "Why fit a grommet or bushing where cables pass through a hole in a wall or enclosure?",
+"level": 19,
+"sec": "H",
+"th": "ทำอย่างไรให้ระบบโซลาร์ที่บ้านคืนทุนเร็วขึ้น",
+"en": "How can you make a home solar system pay back faster?",
 "options": [
 {
-"th": "เพื่อให้สายร้อนเร็วขึ้น",
-"en": "To make the cable heat up faster"
+"th": "ใช้ไฟมากที่สุดตอนกลางคืน",
+"en": "Use as much as possible at night"
 },
 {
-"th": "ป้องกันฉนวนสายถูกขอบคมบาด และช่วยกันน้ำ ฝุ่น และแมลงเข้าตู้",
-"en": "To stop sharp edges cutting the insulation and to keep water, dust and insects out of the enclosure"
+"th": "ย้ายการใช้ไฟหนัก ๆ มาช่วงที่มีแดด เช่น แอร์ ปั๊ม เครื่องทำน้ำร้อน ชาร์จรถ EV",
+"en": "Move heavy use into sunny hours: air-conditioning, pumps, water heaters, EV charging"
 },
 {
-"th": "ไม่จำเป็นต้องใส่",
-"en": "It is not necessary"
+"th": "ไม่ต้องทำอะไร ระบบคืนทุนเท่ากันทุกบ้าน",
+"en": "Nothing; every house pays back the same"
 },
 {
-"th": "เพื่อเพิ่มแรงดัน",
-"en": "To raise the voltage"
+"th": "ปิดอินเวอร์เตอร์ช่วงเที่ยง",
+"en": "Switch the inverter off at noon"
 }
 ],
 "answer": 1,
-"explain": "Seal wall crossings with sleeves and silicone or fire-stop, and keep the enclosure's IP rating after drilling."
+"explain": "solaress.org FAQ: use power while the sun shines; a system sized to daytime use pays back fastest."
+},
+{
+"level": 19,
+"sec": "H",
+"th": "มิเตอร์ไฟ 1 เฟส 15(45)A ใช้ไฟต่อเนื่องได้ประมาณเท่าไรโดยไม่เกิน 80% ของพิกัด",
+"en": "A single-phase 15(45)A meter: about how much continuous power can you use while staying within 80%?",
+"options": [
+{
+"th": "ประมาณ 3 kW",
+"en": "About 3 kW"
+},
+{
+"th": "ประมาณ 10 kW",
+"en": "About 10 kW"
+},
+{
+"th": "ประมาณ 45 kW",
+"en": "About 45 kW"
+},
+{
+"th": "ไม่จำกัด",
+"en": "Unlimited"
+}
+],
+"answer": 1,
+"explain": "solaress.org Technical (VFD and peak demand case): a 1-phase 15(45)A meter allows about 10.3 kW continuous at ≤ 80%. Big new loads (EV, heat pump) may need a meter upgrade."
+},
+{
+"level": 19,
+"sec": "H",
+"th": "เบรกเกอร์กันดูด RCBO ทำหน้าที่อะไร",
+"en": "What does an RCBO do?",
+"options": [
+{
+"th": "ป้องกันฟ้าผ่าเพียงอย่างเดียว",
+"en": "Protects against lightning only"
+},
+{
+"th": "วัดหน่วยไฟฟ้าที่ใช้ในบ้าน",
+"en": "Measures the energy the house uses"
+},
+{
+"th": "สลับไปใช้ไฟจากเครื่องปั่นไฟอัตโนมัติ",
+"en": "Switches to a generator automatically"
+},
+{
+"th": "ป้องกันไฟรั่ว กระแสเกิน และไฟลัดวงจร ในอุปกรณ์ตัวเดียว",
+"en": "Protects against earth leakage, overcurrent and short circuit in one device"
+}
+],
+"answer": 3,
+"explain": "solaress.org (FAQ / Our Picks): an RCBO combines earth-leakage, overcurrent and short-circuit protection in one device."
+},
+{
+"level": 19,
+"sec": "H",
+"th": "บิลการไฟฟ้ามีหน่วยมากกว่าที่แอปอินเวอร์เตอร์แสดง สิ่งแรกที่ควรตรวจคืออะไร",
+"en": "Your electricity bill shows more units than your inverter app. What should be checked first?",
+"options": [
+{
+"th": "เปลี่ยนแผงโซลาร์ทั้งหมด",
+"en": "Replace all the panels"
+},
+{
+"th": "ตำแหน่งและทิศทางของ CT ว่าวัดสายเมนทุกเฟสถูกต้อง",
+"en": "The CT position and direction: does it measure every main phase correctly?"
+},
+{
+"th": "แจ้งการไฟฟ้าว่ามิเตอร์เสียทันที",
+"en": "Tell the utility its meter is broken straight away"
+},
+{
+"th": "ปิดอินเวอร์เตอร์ทุกคืน",
+"en": "Switch the inverter off every night"
+}
+],
+"answer": 1,
+"explain": "solaress.org Technical case 'My PEA bill shows more units than my inverter app: a CT check'."
+},
+{
+"level": 19,
+"sec": "H",
+"th": "สายดินในตู้ไฟของบ้านควรเป็นสีอะไร",
+"en": "What colour should the earth wire in a home consumer unit be?",
+"options": [
+{
+"th": "สีเขียวแถบเหลือง",
+"en": "Green with a yellow stripe"
+},
+{
+"th": "สีดำ",
+"en": "Black"
+},
+{
+"th": "สีแดง",
+"en": "Red"
+},
+{
+"th": "สีฟ้า",
+"en": "Blue"
+}
+],
+"answer": 0,
+"explain": "solaress.org (Our Picks · Grounding): earth wire is copper, green with a yellow stripe, sized to the circuit."
+},
+{
+"level": 19,
+"sec": "H",
+"th": "จะติดที่ชาร์จรถ EV ที่บ้าน วงจรที่ถูกต้องควรเป็นอย่างไร",
+"en": "You want an EV charger at home. What is the right circuit?",
+"options": [
+{
+"th": "วงจรแยกเฉพาะ มี RCBO 30 mA สายทองแดงขนาดพอสำหรับโหลดต่อเนื่อง และหลักดินของตัวเอง",
+"en": "Its own circuit with a 30 mA RCBO, copper cable sized for a continuous load, and its own earth rod"
+},
+{
+"th": "เสียบปลั๊กพ่วงจากปลั๊กเดิมในโรงรถ",
+"en": "Plug it into an extension lead from the existing garage socket"
+},
+{
+"th": "ไม่ต้องมีสายดินเพราะรถมียางรองอยู่",
+"en": "No earth is needed because the car stands on rubber tyres"
+},
+{
+"th": "ใช้สายไฟเส้นเดิมของแอร์ร่วมกัน",
+"en": "Share the air-conditioner's existing cable"
+}
+],
+"answer": 0,
+"explain": "solaress.org EV Charger: main breaker 2P 50 A, RCBO 40 A 30 mA, IEC01/THW 16 mm² copper, 5/8\" × 2.4 m earth rod with 10 mm² earth wire, insulation and earth tests."
+},
+{
+"level": 19,
+"sec": "H",
+"th": "ถ้า CT ติดกลับทิศ (ลูกศรผิดด้าน) จะเกิดอะไรขึ้น",
+"en": "What happens if the CT is fitted the wrong way round (arrow reversed)?",
+"options": [
+{
+"th": "ไม่มีผลใด ๆ",
+"en": "Nothing changes"
+},
+{
+"th": "แบตเตอรี่ชาร์จเร็วขึ้นอย่างถูกต้อง",
+"en": "The battery correctly charges faster"
+},
+{
+"th": "ระบบผลิตไฟได้มากขึ้น",
+"en": "The system produces more"
+},
+{
+"th": "ไฟที่ซื้อจากการไฟฟ้าถูกนับเป็นไฟที่ขายออก ระบบกันย้อนและแบตเตอรี่ทำงานผิด",
+"en": "Power bought from the grid is counted as export, so zero export and the battery behave wrongly"
+}
+],
+"answer": 3,
+"explain": "solaress.org Technical (CT notes): a reversed CT turns imports into exports; zero export pushes power out and the battery may charge from the grid."
+},
+{
+"level": 19,
+"sec": "H",
+"th": "ข้อใดเป็นวิธีล้างแผงโซลาร์ที่ผิดและทำให้ประกันอาจไม่คุ้มครอง",
+"en": "Which way of cleaning panels is wrong and may void the warranty?",
+"options": [
+{
+"th": "ฉีดน้ำแรงดันสูง ใช้สารเคมีรุนแรง หรือเหยียบบนแผง",
+"en": "High-pressure water, harsh chemicals or standing on the panels"
+},
+{
+"th": "ใช้แปรงขนนุ่มด้ามยาว",
+"en": "A soft long-handled brush"
+},
+{
+"th": "ให้ทีมบำรุงรักษาล้างตามรอบ",
+"en": "Scheduled cleaning by a maintenance team"
+},
+{
+"th": "ล้างด้วยน้ำสะอาดช่วงเช้าหรือเย็น",
+"en": "Clean water in the early morning or evening"
+}
+],
+"answer": 0,
+"explain": "solaress.org FAQ (warranty): wrong cleaning such as high-pressure water, harsh chemicals or stepping on panels is not covered."
+},
+{
+"level": 19,
+"sec": "H",
+"th": "ระบบโซลาร์ออนกริด (ไม่มีแบตเตอรี่) เมื่อไฟการไฟฟ้าดับจะเป็นอย่างไร",
+"en": "An on-grid solar system without battery: what happens in a blackout?",
+"options": [
+{
+"th": "จ่ายไฟให้ทั้งหมู่บ้าน",
+"en": "It supplies the whole village"
+},
+{
+"th": "ยังจ่ายไฟให้บ้านได้ตามปกติ",
+"en": "It keeps supplying the house as normal"
+},
+{
+"th": "หยุดจ่ายไฟทันที เพื่อความปลอดภัยของเจ้าหน้าที่ที่ซ่อมสาย ต้องเป็นระบบไฮบริดพร้อมแบตจึงมีไฟสำรอง",
+"en": "It stops at once to protect line workers; only a hybrid with battery gives backup power"
+},
+{
+"th": "จ่ายไฟได้เฉพาะตอนกลางคืน",
+"en": "It only supplies power at night"
+}
+],
+"answer": 2,
+"explain": "solaress.org FAQ: on-grid has no backup; hybrid adds a battery for night use and blackouts; anti-islanding stops the inverter when the grid fails."
+},
+{
+"level": 19,
+"sec": "H",
+"th": "ค่าความต้านทานดินของระบบสายดินที่ Solar ESS ตั้งเป้าไว้ตอนส่งมอบงานคือเท่าไร",
+"en": "What earth resistance does Solar ESS aim for when it hands over a job?",
+"options": [
+{
+"th": "ไม่เกิน 5 โอห์ม",
+"en": "5 ohms or less"
+},
+{
+"th": "ไม่เกิน 500 โอห์ม",
+"en": "500 ohms or less"
+},
+{
+"th": "ไม่ต้องวัด",
+"en": "It does not need measuring"
+},
+{
+"th": "ไม่เกิน 50 โอห์ม",
+"en": "50 ohms or less"
+}
+],
+"answer": 0,
+"explain": "solaress.org (Our Picks · Grounding, Preventive Maintenance): earth resistance is measured at handover and recorded, aiming for no more than 5 Ω."
+},
+{
+"level": 19,
+"sec": "H",
+"th": "สาเหตุที่พบบ่อยที่สุดของไฟไหม้ในระบบโซลาร์บนหลังคาคืออะไร",
+"en": "What is the most common cause of fire in rooftop solar?",
+"options": [
+{
+"th": "ขั้วต่อ MC4 ต่างยี่ห้อหรือย้ำหัวไม่ดี",
+"en": "Mismatched MC4 connectors or poor crimping"
+},
+{
+"th": "แผงร้อนจากแดด",
+"en": "Panels getting hot in the sun"
+},
+{
+"th": "แผงสกปรก",
+"en": "Dirty panels"
+},
+{
+"th": "ฝนตกบนแผง",
+"en": "Rain on the panels"
+}
+],
+"answer": 0,
+"explain": "solaress.org FAQ 'Why connectors matter': mismatched or badly crimped MC4 connectors are the most common cause; Solar ESS uses the same brand on both sides and the right crimp tool."
+},
+{
+"level": 15,
+"sec": "P",
+"th": "การเพิ่มขนาดสาย DC จาก 4 เป็น 6 ตร.มม. สำหรับระยะเดินสาย 40 เมตร ให้ผลหลักอย่างไร",
+"en": "Increasing DC cable from 4 to 6 mm² on a 40 m run mainly does what?",
+"options": [
+{
+"th": "เพิ่มแรงดันของแผง",
+"en": "Raises panel voltage"
+},
+{
+"th": "ไม่มีผลใดๆ",
+"en": "Has no effect"
+},
+{
+"th": "ลดแรงดันตกและการสูญเสียพลังงานในสาย",
+"en": "Reduces voltage drop and energy loss in the cable"
+},
+{
+"th": "ทำให้ไม่ต้องใช้ฟิวส์",
+"en": "Removes the need for fuses"
+}
+],
+"answer": 2,
+"explain": "Resistance falls in proportion to cross-section: 6 mm² has about two-thirds the resistance of 4 mm². Solar ESS keeps total voltage drop within 3%."
 },
 {
 "level": 15,
@@ -5722,24 +6033,76 @@
 "en": "How should PV cables be run on a roof?",
 "options": [
 {
-"th": "ปล่อยวางบนหลังคาเมทัลชีท",
-"en": "Left lying on the metal sheet"
-},
-{
-"th": "รัดด้วยคลิปทน UV ไปตามราง ไม่วางบนแผ่นหลังคา และไม่พาดผ่านขอบคม",
-"en": "Clipped along the rails with UV-rated clips, not lying on the roof sheet and away from sharp edges"
+"th": "ฝังใต้แผ่นหลังคา",
+"en": "Buried under the roof sheet"
 },
 {
 "th": "มัดด้วยลวดเหล็ก",
 "en": "Tied with steel wire"
 },
 {
-"th": "ฝังใต้แผ่นหลังคา",
-"en": "Buried under the roof sheet"
+"th": "ปล่อยวางบนหลังคาเมทัลชีท",
+"en": "Left lying on the metal sheet"
+},
+{
+"th": "รัดด้วยคลิปทน UV ไปตามราง ไม่วางบนแผ่นหลังคา และไม่พาดผ่านขอบคม",
+"en": "Clipped along the rails with UV-rated clips, not lying on the roof sheet and away from sharp edges"
 }
 ],
-"answer": 1,
+"answer": 3,
 "explain": "Cables lying on hot metal sheets age fast and get cut by sheet edges; use edge protection where they pass over metal."
+},
+{
+"level": 15,
+"sec": "P",
+"th": "ทำไมไม่ควรใช้สาย THW เดินฝั่ง DC จากแผงบนหลังคาแบบไม่มีท่อ",
+"en": "Why should THW cable not be used for DC string wiring run in the open on a roof?",
+"options": [
+{
+"th": "เพราะ THW ใช้ได้เฉพาะสายดิน",
+"en": "Because THW is only for earthing"
+},
+{
+"th": "เพราะ THW แพงกว่าสาย PV",
+"en": "Because THW is more expensive than PV cable"
+},
+{
+"th": "ฉนวน PVC ชั้นเดียวไม่ทน UV และไม่ได้ออกแบบสำหรับแรงดัน DC สูงของสตริง",
+"en": "Its single PVC insulation is not UV-resistant and is not designed for high string DC voltage"
+},
+{
+"th": "เพราะ THW ไม่มีทองแดง",
+"en": "Because THW has no copper"
+}
+],
+"answer": 2,
+"explain": "THW (60227 IEC 01) is for indoor use inside conduit at up to 450/750 V AC."
+},
+{
+"level": 15,
+"sec": "P",
+"th": "การย้ำขั้วต่อ MC4 ที่ถูกต้องคือข้อใด",
+"en": "Which is correct when crimping MC4 connectors?",
+"options": [
+{
+"th": "ใช้คีมย้ำที่ผู้ผลิตกำหนด ขั้วต่อยี่ห้อเดียวกัน ขันฝาตามแรงที่กำหนด แล้วทดสอบดึง",
+"en": "Use the maker's crimp tool and matching connectors, tighten the nut to the specified torque, then pull-test"
+},
+{
+"th": "บัดกรีแทนการย้ำ",
+"en": "Solder instead of crimping"
+},
+{
+"th": "ใช้คีมธรรมดาบีบ",
+"en": "Squeeze with ordinary pliers"
+},
+{
+"th": "พันเทปแทนการขันฝา",
+"en": "Tape instead of tightening the nut"
+}
+],
+"answer": 0,
+"explain": "A poor crimp has high resistance, heats up and can start an arc fault."
 },
 {
 "level": 15,
@@ -5748,24 +6111,76 @@
 "en": "PV1-F or H1Z2Z2-K solar DC cable meets which properties?",
 "options": [
 {
-"th": "สาย PVC ชั้นเดียวสำหรับใช้ในบ้าน",
-"en": "Single-layer PVC cable for indoor wiring"
-},
-{
 "th": "สายอะลูมิเนียมเปลือย",
 "en": "Bare aluminium cable"
 },
 {
-"th": "สายโทรศัพท์",
-"en": "Telephone cable"
-},
-{
 "th": "ทองแดงชุบดีบุก ฉนวนสองชั้นทน UV และโอโซน ทนแรงดัน DC 1.5 kV ตาม EN 50618 / IEC 62930",
 "en": "Tinned copper, double insulation resistant to UV and ozone, rated 1.5 kV DC to EN 50618 / IEC 62930"
+},
+{
+"th": "สาย PVC ชั้นเดียวสำหรับใช้ในบ้าน",
+"en": "Single-layer PVC cable for indoor wiring"
+},
+{
+"th": "สายโทรศัพท์",
+"en": "Telephone cable"
+}
+],
+"answer": 1,
+"explain": "Brands such as LINK, Phelps Dodge and HELUKABEL make EN 50618 cables; check the print on the sheath."
+},
+{
+"level": 15,
+"sec": "P",
+"th": "ทำไมต้องใส่ยางกันบาด (grommet) หรือบุชชิ่งที่รูเจาะผ่านผนังหรือตู้ไฟ",
+"en": "Why fit a grommet or bushing where cables pass through a hole in a wall or enclosure?",
+"options": [
+{
+"th": "เพื่อเพิ่มแรงดัน",
+"en": "To raise the voltage"
+},
+{
+"th": "ป้องกันฉนวนสายถูกขอบคมบาด และช่วยกันน้ำ ฝุ่น และแมลงเข้าตู้",
+"en": "To stop sharp edges cutting the insulation and to keep water, dust and insects out of the enclosure"
+},
+{
+"th": "เพื่อให้สายร้อนเร็วขึ้น",
+"en": "To make the cable heat up faster"
+},
+{
+"th": "ไม่จำเป็นต้องใส่",
+"en": "It is not necessary"
+}
+],
+"answer": 1,
+"explain": "Seal wall crossings with sleeves and silicone or fire-stop, and keep the enclosure's IP rating after drilling."
+},
+{
+"level": 15,
+"sec": "P",
+"th": "ท่อร้อยสายที่มีสายมากกว่า 2 เส้น ไม่ควรมีพื้นที่สายรวมเกินกี่เปอร์เซ็นต์ของพื้นที่หน้าตัดท่อ",
+"en": "In a conduit with more than two cables, the cables should fill no more than about what share of the conduit area?",
+"options": [
+{
+"th": "ประมาณ 10%",
+"en": "About 10%"
+},
+{
+"th": "100%",
+"en": "100%"
+},
+{
+"th": "ประมาณ 80%",
+"en": "About 80%"
+},
+{
+"th": "ประมาณ 40%",
+"en": "About 40%"
 }
 ],
 "answer": 3,
-"explain": "Brands such as LINK, Phelps Dodge and HELUKABEL make EN 50618 cables; check the print on the sheath."
+"explain": "Overfilled conduit makes cables hard to pull, damages insulation and runs hotter."
 },
 {
 "level": 15,
@@ -5782,12 +6197,12 @@
 "en": "Use a larger cross-section (about 1.6 times) and bimetal lugs where it joins copper"
 },
 {
-"th": "ไม่ต้องใช้หางปลา",
-"en": "No lugs are needed"
-},
-{
 "th": "ใช้ขนาดเล็กลง",
 "en": "Use a smaller size"
+},
+{
+"th": "ไม่ต้องใช้หางปลา",
+"en": "No lugs are needed"
 }
 ],
 "answer": 1,
@@ -5796,28 +6211,28 @@
 {
 "level": 15,
 "sec": "P",
-"th": "ท่อร้อยสายที่มีสายมากกว่า 2 เส้น ไม่ควรมีพื้นที่สายรวมเกินกี่เปอร์เซ็นต์ของพื้นที่หน้าตัดท่อ",
-"en": "In a conduit with more than two cables, the cables should fill no more than about what share of the conduit area?",
+"th": "สาย AC จากอินเวอร์เตอร์ 3 เฟส 30 kW (กระแสสูงสุด 47.9 A) ไปตู้ไฟ เลือกเบรกเกอร์และสายอย่างไร",
+"en": "A 3-phase 30 kW inverter (max 47.9 A) feeds the board. How are breaker and cable chosen?",
 "options": [
 {
-"th": "ประมาณ 40%",
-"en": "About 40%"
+"th": "เบรกเกอร์ 32 A สาย 4 ตร.มม.",
+"en": "A 32 A breaker and 4 mm² cable"
 },
 {
-"th": "100%",
-"en": "100%"
+"th": "เบรกเกอร์ 250 A สาย 2.5 ตร.มม.",
+"en": "A 250 A breaker and 2.5 mm² cable"
 },
 {
-"th": "ประมาณ 80%",
-"en": "About 80%"
+"th": "เบรกเกอร์ประมาณ 1.25 เท่าของกระแสสูงสุด (63 A) และสายที่ทนกระแสได้เกินพิกัดเบรกเกอร์ตามวิธีติดตั้ง",
+"en": "A breaker of about 1.25 × max current (63 A), and cable rated above the breaker for its installation method"
 },
 {
-"th": "ประมาณ 10%",
-"en": "About 10%"
+"th": "ไม่ต้องใช้เบรกเกอร์",
+"en": "No breaker needed"
 }
 ],
-"answer": 0,
-"explain": "Overfilled conduit makes cables hard to pull, damages insulation and runs hotter."
+"answer": 2,
+"explain": "47.9 × 1.25 ≈ 60 A → 63 A. Check voltage drop on long runs too."
 },
 {
 "level": 15,
@@ -5830,16 +6245,16 @@
 "en": "Green/yellow (or green)"
 },
 {
+"th": "ดำ",
+"en": "Black"
+},
+{
 "th": "แดง",
 "en": "Red"
 },
 {
 "th": "ฟ้า",
 "en": "Blue"
-},
-{
-"th": "ดำ",
-"en": "Black"
 }
 ],
 "answer": 0,
@@ -5848,106 +6263,28 @@
 {
 "level": 15,
 "sec": "P",
-"th": "การย้ำขั้วต่อ MC4 ที่ถูกต้องคือข้อใด",
-"en": "Which is correct when crimping MC4 connectors?",
+"th": "สาย THW (60227 IEC 01) ตาม มอก. 11 เหมาะกับการเดินสายแบบใด",
+"en": "THW cable (60227 IEC 01) to TIS 11 is suitable for which wiring method?",
 "options": [
 {
-"th": "บัดกรีแทนการย้ำ",
-"en": "Solder instead of crimping"
+"th": "เดินในท่อร้อยสายหรือรางเดินสายภายในอาคาร",
+"en": "Run in conduit or trunking inside buildings"
 },
 {
-"th": "พันเทปแทนการขันฝา",
-"en": "Tape instead of tightening the nut"
+"th": "ใช้เป็นสายสตริง DC 1,500 V",
+"en": "As 1,500 V DC string cable"
 },
 {
-"th": "ใช้คีมธรรมดาบีบ",
-"en": "Squeeze with ordinary pliers"
+"th": "พาดกลางแจ้งโดนแดดตลอด",
+"en": "Run exposed to sun outdoors"
 },
 {
-"th": "ใช้คีมย้ำที่ผู้ผลิตกำหนด ขั้วต่อยี่ห้อเดียวกัน ขันฝาตามแรงที่กำหนด แล้วทดสอบดึง",
-"en": "Use the maker's crimp tool and matching connectors, tighten the nut to the specified torque, then pull-test"
-}
-],
-"answer": 3,
-"explain": "A poor crimp has high resistance, heats up and can start an arc fault."
-},
-{
-"level": 15,
-"sec": "P",
-"th": "สาย AC จากอินเวอร์เตอร์ 3 เฟส 30 kW (กระแสสูงสุด 47.9 A) ไปตู้ไฟ เลือกเบรกเกอร์และสายอย่างไร",
-"en": "A 3-phase 30 kW inverter (max 47.9 A) feeds the board. How are breaker and cable chosen?",
-"options": [
-{
-"th": "เบรกเกอร์ประมาณ 1.25 เท่าของกระแสสูงสุด (63 A) และสายที่ทนกระแสได้เกินพิกัดเบรกเกอร์ตามวิธีติดตั้ง",
-"en": "A breaker of about 1.25 × max current (63 A), and cable rated above the breaker for its installation method"
-},
-{
-"th": "ไม่ต้องใช้เบรกเกอร์",
-"en": "No breaker needed"
-},
-{
-"th": "เบรกเกอร์ 250 A สาย 2.5 ตร.มม.",
-"en": "A 250 A breaker and 2.5 mm² cable"
-},
-{
-"th": "เบรกเกอร์ 32 A สาย 4 ตร.มม.",
-"en": "A 32 A breaker and 4 mm² cable"
+"th": "ฝังดินโดยตรงไม่มีท่อ",
+"en": "Direct burial without conduit"
 }
 ],
 "answer": 0,
-"explain": "47.9 × 1.25 ≈ 60 A → 63 A. Check voltage drop on long runs too."
-},
-{
-"level": 15,
-"sec": "P",
-"th": "สายไฟที่ใช้ฝังดินโดยตรงควรเป็นชนิดใด",
-"en": "Which cable type is suitable for direct burial?",
-"options": [
-{
-"th": "สาย VAF ฝังดิน",
-"en": "VAF cable buried directly"
-},
-{
-"th": "สาย THW เปลือยฝังดิน",
-"en": "Bare THW buried directly"
-},
-{
-"th": "สายที่ออกแบบให้ฝังดินได้ เช่น NYY หรือ CV ตาม IEC 60502 หรือใช้ท่อร้อยสายฝังดิน",
-"en": "A cable designed for burial, such as NYY or CV to IEC 60502, or cables in a buried conduit"
-},
-{
-"th": "สายโทรศัพท์",
-"en": "Telephone cable"
-}
-],
-"answer": 2,
-"explain": "Mark the route and bury at the depth required by the standard, with warning tape above."
-},
-{
-"level": 15,
-"sec": "P",
-"th": "การเพิ่มขนาดสาย DC จาก 4 เป็น 6 ตร.มม. สำหรับระยะเดินสาย 40 เมตร ให้ผลหลักอย่างไร",
-"en": "Increasing DC cable from 4 to 6 mm² on a 40 m run mainly does what?",
-"options": [
-{
-"th": "ลดแรงดันตกและการสูญเสียพลังงานในสาย",
-"en": "Reduces voltage drop and energy loss in the cable"
-},
-{
-"th": "ทำให้ไม่ต้องใช้ฟิวส์",
-"en": "Removes the need for fuses"
-},
-{
-"th": "ไม่มีผลใดๆ",
-"en": "Has no effect"
-},
-{
-"th": "เพิ่มแรงดันของแผง",
-"en": "Raises panel voltage"
-}
-],
-"answer": 0,
-"explain": "Resistance falls in proportion to cross-section: 6 mm² has about two-thirds the resistance of 4 mm². Solar ESS keeps total voltage drop within 3%."
+"explain": "For direct burial use a cable designed for it (e.g. NYY / CV to IEC 60502) or put cables in a buried conduit."
 },
 {
 "level": 15,
@@ -5956,24 +6293,102 @@
 "en": "Where is LSZH (low smoke zero halogen) cable a good choice?",
 "options": [
 {
-"th": "ในอาคารและเส้นทางหนีไฟ เพราะเมื่อไหม้มีควันน้อยและไม่มีก๊าซฮาโลเจนที่เป็นพิษ",
-"en": "Inside buildings and escape routes, because it gives little smoke and no toxic halogen gas when burning"
-},
-{
-"th": "ใต้น้ำ",
-"en": "Under water"
-},
-{
 "th": "ใช้แทนสายดินเท่านั้น",
 "en": "Only as earth wire"
 },
 {
 "th": "ใช้ได้เฉพาะฝั่ง DC",
 "en": "Only on the DC side"
+},
+{
+"th": "ใต้น้ำ",
+"en": "Under water"
+},
+{
+"th": "ในอาคารและเส้นทางหนีไฟ เพราะเมื่อไหม้มีควันน้อยและไม่มีก๊าซฮาโลเจนที่เป็นพิษ",
+"en": "Inside buildings and escape routes, because it gives little smoke and no toxic halogen gas when burning"
 }
 ],
-"answer": 0,
+"answer": 3,
 "explain": "Hospitals, offices, hotels and data centres often require LSZH cables."
+},
+{
+"level": 15,
+"sec": "P",
+"th": "สายไฟที่ใช้ฝังดินโดยตรงควรเป็นชนิดใด",
+"en": "Which cable type is suitable for direct burial?",
+"options": [
+{
+"th": "สายโทรศัพท์",
+"en": "Telephone cable"
+},
+{
+"th": "สาย VAF ฝังดิน",
+"en": "VAF cable buried directly"
+},
+{
+"th": "สายที่ออกแบบให้ฝังดินได้ เช่น NYY หรือ CV ตาม IEC 60502 หรือใช้ท่อร้อยสายฝังดิน",
+"en": "A cable designed for burial, such as NYY or CV to IEC 60502, or cables in a buried conduit"
+},
+{
+"th": "สาย THW เปลือยฝังดิน",
+"en": "Bare THW buried directly"
+}
+],
+"answer": 2,
+"explain": "Mark the route and bury at the depth required by the standard, with warning tape above."
+},
+{
+"level": 15,
+"sec": "P",
+"th": "สีสายไฟ DC ที่นิยมใช้เพื่อแยกขั้ว คือข้อใด",
+"en": "Which DC cable colours are commonly used to tell polarity apart?",
+"options": [
+{
+"th": "เขียวเหลืองเป็นบวก",
+"en": "Green/yellow for positive"
+},
+{
+"th": "ฟ้าเป็นบวก แดงเป็นลบ",
+"en": "Blue positive, red negative"
+},
+{
+"th": "สีใดก็ได้ไม่ต้องติดป้าย",
+"en": "Any colour, no labels"
+},
+{
+"th": "แดงเป็นบวก (+) ดำเป็นลบ (−) และติดป้ายชัดเจน",
+"en": "Red for positive (+), black for negative (−), with clear labels"
+}
+],
+"answer": 3,
+"explain": "Reverse polarity on an inverter input or battery can cause serious damage; label both ends."
+},
+{
+"level": 15,
+"sec": "P",
+"th": "หลักการเลือกขนาดสายและเบรกเกอร์ข้อใดถูกต้อง",
+"en": "Which rule for choosing cable and breaker sizes is correct?",
+"options": [
+{
+"th": "เบรกเกอร์ใหญ่กว่าพิกัดสายได้เสมอ",
+"en": "The breaker may always be larger than the cable rating"
+},
+{
+"th": "ขนาดสายไม่เกี่ยวกับเบรกเกอร์",
+"en": "Cable size has nothing to do with the breaker"
+},
+{
+"th": "กระแสโหลด ≤ พิกัดเบรกเกอร์ ≤ พิกัดกระแสของสายตามวิธีการติดตั้ง",
+"en": "Load current ≤ breaker rating ≤ cable current rating for its installation method"
+},
+{
+"th": "ใช้สายเล็กที่สุดที่ร้อยเข้าท่อได้",
+"en": "Use the smallest cable that fits the conduit"
+}
+],
+"answer": 2,
+"explain": "The breaker protects the cable. Derate the cable for grouping, temperature and installation method."
 }
 ]
 }

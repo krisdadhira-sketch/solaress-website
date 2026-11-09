@@ -17,7 +17,8 @@ SECTIONS = [("A", "ไฟฟ้าในระบบโซลาร์: สา�
             ("B", "การเดินสายและชนิดสายไฟ", "Wiring methods and cable types"),
             ("C", "โครงสร้าง แรงลม และการติดตั้งแผง", "Mounting, wind load and panel installation"),
             ("D", "ความต้องการและความพึงพอใจของลูกค้า", "Customer needs and satisfaction"),
-            ("P", "แบรนด์และผลิตภัณฑ์", "Brands and products")]
+            ("P", "แบรนด์และผลิตภัณฑ์", "Brands and products"),
+            ("H", "ไฟฟ้าในบ้านสำหรับเจ้าของบ้าน", "Home electrics for owners")]
 LEVELS = [(1, "Solar Enterer", "ผู้เริ่มต้นเข้าสู่โซลาร์"), (2, "Solar Enthusiast", "ผู้สนใจโซลาร์"), (3, "Solar in Practice", "ผู้ปฏิบัติงานโซลาร์"),
           (4, "Solar Professional", "มืออาชีพด้านโซลาร์"), (5, "Solar Expert", "ผู้เชี่ยวชาญด้านโซลาร์")]
 # index in the 100-question list (A 0–49, B 50–69, C 70–89, D 90–99) -> level 1–4
@@ -42,7 +43,7 @@ out = {"pass_pct": 100, "work_level": 3,
        "sections": [{"id": s, "th": th, "en": en} for s, th, en in SECTIONS],
        "levels": [{"n": n, "en": en, "th": th, "count": 25} for n, en, th in LEVELS],
        # Brand & Product Test (Nov 2026): tests 11-15, outside the level ladder
-       "products": [{"n": n, "key": k, "en": en, "th": th, "sub_en": se, "sub_th": st, "count": len(q), "group_en": "Brand & Product Test", "group_th": "แบบทดสอบแบรนด์และผลิตภัณฑ์"} for n, k, en, th, q, se, st in PRODUCTS],
+       "products": [{"n": n, "key": k, "en": en, "th": th, "sub_en": se, "sub_th": st, "count": len(q), "group_en": "Homeowner Test" if k == "home-electrician" else "Brand & Product Test", "group_th": "แบบทดสอบสำหรับเจ้าของบ้าน" if k == "home-electrician" else "แบบทดสอบแบรนด์และผลิตภัณฑ์", "home": k == "home-electrician"} for n, k, en, th, q, se, st in PRODUCTS],
        "questions": []}
 
 def add(level, sec, th, en, opts, expl):

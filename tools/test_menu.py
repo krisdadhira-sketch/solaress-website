@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-"""Add "Solar Test" (Level 1–5 installer test) to the end of the Services dropdown
-(the dropdown whose top link ends in "#projects") on every page, replacing the old standalone vocabulary link.
-Moved from the Solar ESS dropdown to Services in Nov 2026.
+"""Test links in the Solar ESS dropdown (the last top menu, "dd end") on every page (Nov 2026: test groups, flat items):
+Homeowner test, Installer Levels 1–5, Troubleshooting, Inverters, Panels & battery, Breakers, Cables.
+Each opens the test page focused on that test (?test=key or ?level=1).
 Idempotent (markers <!--tmenu-->...<!--/tmenu-->). Run from the repo root:  python3 tools/test_menu.py"""
 import re
 from pathlib import Path
@@ -20,29 +20,40 @@ L = {"en": dict(top="Test", lv="Level", mine="My levels & certificates", voc="Vo
 VOC = re.compile(r'<a href="/vocabulary\.html">(?:Solar ESS Test|แบบทดสอบ Solar ESS|Solar ESS 测试)</a>')
 
 
+GROUPS = [  # (link query, EN, TH, ZH)
+    ("?test=home-electrician", "Self-Appointed Electrician (homeowners)", "ช่างไฟประจำบ้าน (เจ้าของบ้าน)", "家庭电工（房主）"),
+    ("?level=1", "Installer Levels 1–5", "ช่างติดตั้ง ระดับ 1–5", "安装工 1–5 级"),
+    ("?test=solar-issues", "Solar issues & troubleshooting", "ปัญหาระบบโซลาร์และการแก้ไข", "光伏故障排查"),
+    ("?test=inverter", "Inverters", "อินเวอร์เตอร์", "逆变器"),
+    ("?test=pv", "Solar panels & battery", "แผงโซลาร์และแบตเตอรี่", "光伏组件与电池"),
+    ("?test=breaker", "Breakers & protection", "เบรกเกอร์และอุปกรณ์ป้องกัน", "断路器与保护"),
+    ("?test=cable", "Cables", "สายไฟ", "电缆"),
+]
+
+
 def menu(lang):
-    """Items appended to the Solar ESS dropdown: Solar Test and its 5 levels (indented). The vocabulary test is not in the menu (Nov 2026); share www.solaress.org/vocabulary.html directly."""
     t = L[lang]
-    items = "".join(f'<a href="{t["page"]}?level={i}">{t["lv"]} {i} · {(th if lang == "th" else en)}</a>' for i, (en, th) in enumerate(LV, 1))
     col = {"en": 1, "th": 2, "zh": 3}[lang]
-    prod = "".join(f'<a href="{t["page"]}?test={p[0]}">{p[col]}</a>' for p in PR)
-    # Nov 2026: one "Test" item only; levels and brand/product tests are picked on the test page itself.
-    return f'<!--tmenu--><a href="{t["page"]}">{t["top"]}</a><!--/tmenu-->'
+    items = "".join(f'<a href="{t["page"]}{g[0]}">{t["top"]} · {g[col]}</a>' for g in GROUPS)
+    return f'<!--tmenu-->{items}<!--/tmenu-->'
 
 
+SOLAR_ESS = re.compile(r'<span class="dd end"><a href="[^"]*#services">')
 n = 0
 for f in sorted(ROOT.rglob("*.html")):
+    if f.relative_to(ROOT).parts[0] in ("tools", "netlify", "node_modules", ".git"):
+        continue
     s = f.read_text(encoding="utf-8")
-    svc = re.search(r'<span class="dd"><a href="[^"]*#projects">[^<]*</a><span class="ddm">', s)
-    if not svc:
+    m0 = SOLAR_ESS.search(s)
+    if not m0:
         continue
     m = re.search(r'<html[^>]*\blang="([a-zA-Z-]+)"', s)
     lang = (m.group(1) if m else "en").lower()[:2]
     lang = lang if lang in L else "en"
     new = re.sub(r"<!--tmenu-->.*?<!--/tmenu-->", "", s, flags=re.S)
     new = VOC.sub("", new)
-    i = re.search(r'<span class="dd"><a href="[^"]*#projects">[^<]*</a><span class="ddm">', new).end()
-    j = new.index("</span></span>", i)          # end of the Services dropdown list
+    i = new.index('<span class="ddm">', SOLAR_ESS.search(new).end()) + len('<span class="ddm">')
+    j = new.index("</span></span>", i)          # end of the Solar ESS dropdown list
     new = new[:j] + menu(lang) + new[j:]
     if new != s:
         f.write_text(new, encoding="utf-8"); n += 1

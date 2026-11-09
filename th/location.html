@@ -56,14 +56,14 @@ main#main:focus{outline:0}
 <div class="box"><b>ใครควรลงทะเบียน</b><br>ช่างทุกท่านที่ต้องการรับงานกับ Solar ESS: ผ่าน<a href="/th/installer-test.html">แบบทดสอบ Solar ESS</a>อย่างน้อย 1 ชุด เป็นสมาชิก <a href="/th/team.html#network">TSIA</a> และอัปเดตตำแหน่งที่นี่อยู่เสมอ</div>
 <p style="text-align:center"><a href="/th/job.html" style="color:var(--blue);font-weight:600">ดูงานที่เปิดรับ →</a></p></main>
 <footer>Solar ESS Co. Ltd. · <a href="/th/job.html">งาน</a> · www.solaress.org · www.solar-ess.org</footer>
-<script src="/js/th-provinces.js"></script>
+<script src="/js/th-provinces.js"></script><script src="/js/geo-fill.js"></script>
 <script>(function(){var f=document.getElementById('lf'),TH=true,K='sess-installer-loc',sel=f.province;
 TH_PROV.slice().sort(function(a,b){return (TH?a[1]:a[0]).localeCompare(TH?b[1]:b[0],TH?'th':'en')}).forEach(function(p){var o=document.createElement('option');o.value=p[0];o.textContent=TH?p[1]+' ('+p[0]+')':p[0];sel.appendChild(o)});
 var q=new URLSearchParams(location.search),saved={};try{saved=JSON.parse(localStorage.getItem(K)||'{}')}catch(e){}
 ['phone','name','province','district','subdistrict','radius','line','email','contact'].forEach(function(n){var v=q.get(n)||saved[n];if(!v)return;var el=f.elements[n];if(!el)return;if(el.length&&el[0]&&el[0].type==='radio'){for(var i=0;i<el.length;i++)el[i].checked=el[i].value===v}else el.value=v});
 function near(lat,lng){var b=null,d=1e9;TH_PROV.forEach(function(p){var x=(p[2]-lat)*(p[2]-lat)+(p[3]-lng)*(p[3]-lng);if(x<d){d=x;b=p}});return b}
 document.getElementById('gps').onclick=function(){var m=document.getElementById('gmsg');if(!navigator.geolocation){m.textContent='ไม่สามารถอ่านตำแหน่งได้ กรุณาเลือกจังหวัดและอำเภอ';return}m.textContent='…';
-navigator.geolocation.getCurrentPosition(function(p){var la=p.coords.latitude,ln=p.coords.longitude;f.lat.value=la.toFixed(5);f.lng.value=ln.toFixed(5);var n=near(la,ln);if(n&&!sel.value)sel.value=n[0];m.textContent='✓ '+'พบตำแหน่งแล้ว'+' ('+la.toFixed(3)+', '+ln.toFixed(3)+')'},function(){m.textContent='ไม่สามารถอ่านตำแหน่งได้ กรุณาเลือกจังหวัดและอำเภอ'},{timeout:12000})};
+navigator.geolocation.getCurrentPosition(function(p){var la=p.coords.latitude,ln=p.coords.longitude;f.lat.value=la.toFixed(5);f.lng.value=ln.toFixed(5);var n=near(la,ln);if(n)sel.value=n[0];m.textContent='…';if(window.solGeoFill){solGeoFill(f,la,ln,'th',function(g,a){m.textContent=g?'✓ กรอกที่อยู่จาก GPS แล้ว: '+[a.subdistrict,a.district,a.province].filter(Boolean).join(', '):'พบตำแหน่งแล้ว แต่หาชื่ออำเภอ/ตำบลไม่ได้ กรุณากรอกเอง'})}else{m.textContent='✓ '+'พบตำแหน่งแล้ว'+' ('+la.toFixed(3)+', '+ln.toFixed(3)+')'}},function(){m.textContent='ไม่สามารถอ่านตำแหน่งได้ กรุณาเลือกจังหวัดและอำเภอ'},{timeout:12000})};
 f.onsubmit=function(e){e.preventDefault();var m=document.getElementById('msg');if(!f.reportValidity())return;var d={};['website','phone','name','lat','lng','province','district','subdistrict','radius','line','email'].forEach(function(n){d[n]=f.elements[n].value});
 d.contact=(f.querySelector('input[name=contact]:checked')||{}).value||'';d.consent=f.consent.checked;m.style.color='';m.textContent='…';
 fetch('/api/installers?a=update',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(d)}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(){

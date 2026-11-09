@@ -90,6 +90,8 @@ Search box under the region chips of Project Based Jobs: province / district / p
 - **Reader NPS** band above the footer of the three home pages (`js/nps-widget.js`): "How likely are you to recommend Solar ESS…?" 1–10 + optional reason. One score per IP per calendar month (Bangkok time); the IP is stored only as a salted hash. API `netlify/functions/nps/nps.mjs` at `/api/nps`, Blobs store `nps`. GA event `nps_score`.
 - Results: **/nps-admin.html** (also in the admin hub as "Reader NPS"): NPS = % promoters (9–10) − % detractors (1–6), by month, comments, delete, CSV.
 - Markup and texts (EN/TH/ZH): `python3 tools/home_search_nps.py` (idempotent), then `tools/site_search.py`.
+- **NPS on almost every page** (Nov 2026): `python3 tools/nps_everywhere.py` (idempotent) puts the same band above the footer of every public page except home pages, admin/noindex pages, share redirects, the timed tests and one-step forms (list in `SKIP`). Re-run after adding pages.
+- **Blinking score on the home pages**: badge `#npsscore` under the hero search (`js/nps-score.js`) shows NPS for the last 12 months from the public `GET /api/nps?a=score` (CDN-cached 5 min), with the average and number of ratings; it links to the rating band.
 
 ## Accessibility and reach (Nov 2026)
 

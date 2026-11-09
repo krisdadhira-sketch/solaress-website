@@ -38,7 +38,34 @@ main#main:focus{outline:0}
 .lang-sug button{margin-left:auto;background:transparent;border:0;color:#fff;font-size:22px;line-height:1;cursor:pointer;padding:2px 6px}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 </style><script src="/js/a11y.js?v=1" defer></script><!--/a11y-->
-</head><body><!--skip--><a class="skip" href="#main">ข้ามไปยังเนื้อหา</a><!--/skip-->
+<style id="nps-css">
+#npsscore{display:inline-flex;align-items:center;gap:12px;margin-top:22px;padding:10px 18px 10px 14px;border-radius:999px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.28);color:#fff;text-decoration:none;max-width:100%}
+#npsscore:hover{background:rgba(255,255,255,.16)}
+#npsscore .ns-num{font:800 30px/1 var(--display);letter-spacing:-.02em;min-width:2.2ch;text-align:center;animation:nsblink 1.2s ease-in-out infinite}
+#npsscore.good .ns-num{color:#4ADE80}#npsscore.mid .ns-num{color:#FACC15}#npsscore.low .ns-num{color:#F87171}
+#npsscore .ns-dot{width:10px;height:10px;border-radius:50%;background:#4ADE80;box-shadow:0 0 0 0 rgba(74,222,128,.7);animation:nspulse 1.6s infinite}
+#npsscore .ns-t{display:grid;gap:2px;line-height:1.25}#npsscore .ns-t b{font-size:14px}#npsscore .ns-t small{font-size:12.5px;color:#C7D2FE}
+@keyframes nsblink{0%,100%{opacity:1}50%{opacity:.25}}@keyframes nspulse{70%{box-shadow:0 0 0 10px rgba(74,222,128,0)}100%{box-shadow:0 0 0 0 rgba(74,222,128,0)}}
+#nps{background:linear-gradient(135deg,#0A1230 0%,#1E1B4B 60%,#312E81 100%);color:#fff}
+#nps .wrap{max-width:900px}
+#nps h2{font-size:clamp(24px,3.4vw,38px);color:#fff}
+#nps .eyebrow{color:#A5B4FC}
+#npsbox{margin-top:26px}
+.nps-s{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:8px}
+.nps-s button{font:700 18px var(--display);height:52px;border-radius:10px;border:1.5px solid rgba(255,255,255,.35);background:rgba(255,255,255,.06);color:#fff;cursor:pointer;transition:background .15s,transform .15s}
+.nps-s button:hover{background:rgba(255,255,255,.16);transform:translateY(-2px)}
+.nps-s button[aria-pressed=true]{background:#fff;color:#1E1B4B;border-color:#fff}
+.nps-ends{display:flex;justify-content:space-between;gap:12px;margin-top:8px;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:#C7D2FE}
+.nps-more{margin-top:18px;display:grid;gap:8px}
+.nps-more label{font-size:14px;color:#E0E7FF}
+.nps-more textarea{font:inherit;font-size:15px;border:0;border-radius:10px;padding:12px 14px;min-height:84px;resize:vertical}
+.nps-act{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-top:16px}
+.nps-send{font-family:var(--mono);font-size:13px;letter-spacing:.1em;text-transform:uppercase;padding:14px 22px;border:1.5px solid #fff;background:#fff;color:#1E1B4B;border-radius:0;cursor:pointer}
+.nps-send:disabled{opacity:.45;cursor:not-allowed}
+.nps-note{font-size:13px;color:#C7D2FE;margin:0}
+.nps-msg{margin-top:6px;font-size:18px;font-weight:600;color:#fff}
+@media(max-width:620px){.nps-s{grid-template-columns:repeat(5,minmax(0,1fr))}}
+</style></head><body><!--skip--><a class="skip" href="#main">ข้ามไปยังเนื้อหา</a><!--/skip-->
 <header><a href="/th/"><img src="/images/solar-ess-report-logo.jpg" alt="Solar ESS"></a><div class="addr"><b>Solar ESS Co. Ltd.</b><br>53 Moo 2, Tambon Nanglae, Amphoe Muang, Chiang Rai 57100<br>Tel 063 151 6694 · www.solaress.org · www.โซลาร์เอสส์.com<br><a href="/location.html">English</a></div></header>
 <main id="main"><h1>อัปเดตตำแหน่งของฉัน</h1><p class="lede">แจ้งพื้นที่ที่ท่านทำงานอยู่ เมื่อ Solar ESS มีงานใกล้ท่าน เราจะติดต่อท่านก่อน ย้ายไปทำงานพื้นที่อื่นเมื่อไร อัปเดตได้ทันที ใช้เวลาเพียง 30 วินาที</p>
 <form id="lf" novalidate><p hidden><label>Website <input name="website" tabindex="-1" autocomplete="off"></label></p>
@@ -55,6 +82,7 @@ main#main:focus{outline:0}
 <button class="btn" type="submit">บันทึกตำแหน่งของฉัน</button><p class="msg" id="msg" aria-live="polite"></p></form>
 <div class="box"><b>ใครควรลงทะเบียน</b><br>ช่างทุกท่านที่ต้องการรับงานกับ Solar ESS: ผ่าน<a href="/th/installer-test.html">แบบทดสอบ Solar ESS</a>อย่างน้อย 1 ชุด เป็นสมาชิก <a href="/th/team.html#network">TSIA</a> และอัปเดตตำแหน่งที่นี่อยู่เสมอ</div>
 <p style="text-align:center"><a href="/th/job.html" style="color:var(--blue);font-weight:600">ดูงานที่เปิดรับ →</a></p></main>
+<!--nps--><section class="band dark" id="nps"><div class="wrap"><p class="eyebrow">ความคิดเห็นของคุณ</p><h2>คุณมีแนวโน้มจะแนะนำ Solar ESS ให้เพื่อนหรือเพื่อนร่วมงานมากน้อยเพียงใด?</h2><div id="npsbox" data-lang="th" data-t="{&quot;thanks&quot;: &quot;ขอบคุณครับ บันทึกคะแนนของคุณเรียบร้อยแล้ว&quot;, &quot;done&quot;: &quot;คุณให้คะแนนเราแล้วในเดือนนี้ ขอบคุณครับ แล้วพบกันใหม่เดือนหน้า&quot;, &quot;err&quot;: &quot;ขออภัย ส่งไม่สำเร็จ กรุณาลองอีกครั้ง&quot;, &quot;sending&quot;: &quot;กำลังส่ง…&quot;, &quot;send&quot;: &quot;ส่งคะแนน&quot;}"><form novalidate><div class="nps-s" role="group" aria-label="คุณมีแนวโน้มจะแนะนำ Solar ESS ให้เพื่อนหรือเพื่อนร่วมงานมากน้อยเพียงใด?"><button type="button" value="1" aria-pressed="false" aria-label="1 / 10">1</button><button type="button" value="2" aria-pressed="false" aria-label="2 / 10">2</button><button type="button" value="3" aria-pressed="false" aria-label="3 / 10">3</button><button type="button" value="4" aria-pressed="false" aria-label="4 / 10">4</button><button type="button" value="5" aria-pressed="false" aria-label="5 / 10">5</button><button type="button" value="6" aria-pressed="false" aria-label="6 / 10">6</button><button type="button" value="7" aria-pressed="false" aria-label="7 / 10">7</button><button type="button" value="8" aria-pressed="false" aria-label="8 / 10">8</button><button type="button" value="9" aria-pressed="false" aria-label="9 / 10">9</button><button type="button" value="10" aria-pressed="false" aria-label="10 / 10">10</button></div><div class="nps-ends"><span>1 = ไม่แนะนำเลย</span><span>10 = แนะนำอย่างยิ่ง</span></div><div class="nps-more" hidden><label for="nps-c">เหตุผลหลักที่ให้คะแนนนี้ (ไม่บังคับ)</label><textarea id="nps-c" name="comment" maxlength="600"></textarea></div><input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px"><div class="nps-act"><button class="nps-send" type="submit" disabled>ส่งคะแนน</button><p class="nps-note">ให้คะแนนได้เดือนละ 1 ครั้งต่อการเชื่อมต่ออินเทอร์เน็ต เราไม่เก็บที่อยู่ IP ของคุณ</p></div></form><p class="nps-msg" role="status" hidden></p></div></div></section><script src="/js/nps-widget.js?v=1" defer></script><!--/nps-->
 <footer>Solar ESS Co. Ltd. · <a href="/th/job.html">งาน</a> · www.solaress.org · www.solar-ess.org</footer>
 <script src="/js/th-provinces.js"></script><script src="/js/geo-fill.js"></script>
 <script>(function(){var f=document.getElementById('lf'),TH=true,K='sess-installer-loc',sel=f.province;

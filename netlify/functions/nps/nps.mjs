@@ -5,6 +5,7 @@
 //   POST /api/nps                       (public) {score 1-10, comment?, lang?, page?, website (honeypot)} -> {ok} | 409 {done}
 //   GET  /api/nps?a=list[&month=YYYY-MM] (admin, header x-admin-password) -> {items, months, total}
 //   POST /api/nps?a=delete              (admin) {key}
+//   GET  /api/nps?a=score               (public) -> {nps, n, avg, since} over the last 12 months (CDN-cached 5 min)
 // NPS = % promoters (9–10) − % detractors (1–6), from −100 to +100. Passives: 7–8.
 // Records live in Netlify Blobs store "nps", keyed "<YYYY-MM>/<ip hash>".
 import crypto from "node:crypto";
@@ -58,6 +59,18 @@ export default async (req, context) => {
     const rec = { score, group: group(score), comment: str(b.comment, 600), lang: str(b.lang, 5), page: str(b.page, 120), at: new Date().toISOString(), month: m };
     await store.setJSON(key, rec);
     return json({ ok: true, month: m });
+  }
+
+  if (req.method === "GET" && a === "score") {
+    // Public headline score for the home page: last 12 months (this month and the 11 before it).
+    const months = [];
+    for (let i = 0; i < 12; i++) { const d = new Date(Date.now() + 7 * 3600e3); d.setUTCDate(1); d.setUTCMonth(d.getUTCMonth() - i); months.push(d.toISOString().slice(0, 7)); }
+    const lists = await Promise.all(months.map((mo) => store.list({ prefix: mo + "/" })));
+    const keys = lists.flatMap((l) => l.blobs.map((x) => x.key));
+    const recs = (await Promise.all(keys.map((k) => store.get(k, { type: "json" })))).filter(Boolean);
+    const t = stats(recs);
+    return new Response(JSON.stringify({ nps: t.nps, n: t.n, avg: t.avg, promoters: t.promoters, detractors: t.detractors, since: months[11] }), {
+      status: 200, headers: { "content-type": "application/json", "cache-control": "public, max-age=60", "netlify-cdn-cache-control": "public, s-maxage=300, stale-while-revalidate=600" } });
   }
 
   if (a === "list" || a === "delete") {

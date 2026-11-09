@@ -15,6 +15,7 @@ T = {
         eyebrow="Your opinion", h="How likely are you to recommend Solar ESS to a friend or colleague?",
         lo="1 = Not at all likely", hi="10 = Extremely likely", why="What is the main reason for your score? (optional)",
         send="Send my score", note="One score per month from each internet connection. Your IP address is never stored.",
+        sc=dict(lbl="Reader score (NPS)", of="average {avg}/10 · {n} ratings in the last 12 months", none="No ratings yet: be the first to rate us", rate="Rate us"),
         njs=dict(thanks="Thank you! Your score has been recorded.", done="You have already given us a score this month. Thank you, and see you again next month.",
                  err="Sorry, it could not be sent. Please try again.", sending="Sending…")),
     "th": dict(
@@ -24,6 +25,7 @@ T = {
         eyebrow="ความคิดเห็นของคุณ", h="คุณมีแนวโน้มจะแนะนำ Solar ESS ให้เพื่อนหรือเพื่อนร่วมงานมากน้อยเพียงใด?",
         lo="1 = ไม่แนะนำเลย", hi="10 = แนะนำอย่างยิ่ง", why="เหตุผลหลักที่ให้คะแนนนี้ (ไม่บังคับ)",
         send="ส่งคะแนน", note="ให้คะแนนได้เดือนละ 1 ครั้งต่อการเชื่อมต่ออินเทอร์เน็ต เราไม่เก็บที่อยู่ IP ของคุณ",
+        sc=dict(lbl="คะแนนความพึงพอใจจากผู้อ่าน (NPS)", of="เฉลี่ย {avg}/10 · จาก {n} คะแนน ใน 12 เดือนล่าสุด", none="ยังไม่มีคะแนน ร่วมให้คะแนนเป็นคนแรก", rate="ให้คะแนนเรา"),
         njs=dict(thanks="ขอบคุณครับ บันทึกคะแนนของคุณเรียบร้อยแล้ว", done="คุณให้คะแนนเราแล้วในเดือนนี้ ขอบคุณครับ แล้วพบกันใหม่เดือนหน้า",
                  err="ขออภัย ส่งไม่สำเร็จ กรุณาลองอีกครั้ง", sending="กำลังส่ง…")),
     "zh": dict(
@@ -33,6 +35,7 @@ T = {
         eyebrow="您的意见", h="您有多大可能向朋友或同事推荐 Solar ESS？",
         lo="1 = 完全不可能", hi="10 = 非常可能", why="您给出这个分数的主要原因是什么？（选填）",
         send="提交评分", note="每个网络连接每月只能评分一次。我们不会保存您的 IP 地址。",
+        sc=dict(lbl="读者推荐指数 (NPS)", of="平均 {avg}/10 · 最近 12 个月 {n} 个评分", none="暂无评分，欢迎成为第一位评分者", rate="为我们评分"),
         njs=dict(thanks="谢谢！您的评分已记录。", done="您本月已经评过分了。谢谢，下个月再见。",
                  err="抱歉，提交失败，请重试。", sending="提交中…")),
 }
@@ -59,6 +62,13 @@ CSS = """<style id="ss-css">
 </style>"""
 
 NCSS = """<style id="nps-css">
+#npsscore{display:inline-flex;align-items:center;gap:12px;margin-top:22px;padding:10px 18px 10px 14px;border-radius:999px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.28);color:#fff;text-decoration:none;max-width:100%}
+#npsscore:hover{background:rgba(255,255,255,.16)}
+#npsscore .ns-num{font:800 30px/1 var(--display);letter-spacing:-.02em;min-width:2.2ch;text-align:center;animation:nsblink 1.2s ease-in-out infinite}
+#npsscore.good .ns-num{color:#4ADE80}#npsscore.mid .ns-num{color:#FACC15}#npsscore.low .ns-num{color:#F87171}
+#npsscore .ns-dot{width:10px;height:10px;border-radius:50%;background:#4ADE80;box-shadow:0 0 0 0 rgba(74,222,128,.7);animation:nspulse 1.6s infinite}
+#npsscore .ns-t{display:grid;gap:2px;line-height:1.25}#npsscore .ns-t b{font-size:14px}#npsscore .ns-t small{font-size:12.5px;color:#C7D2FE}
+@keyframes nsblink{0%,100%{opacity:1}50%{opacity:.25}}@keyframes nspulse{70%{box-shadow:0 0 0 10px rgba(74,222,128,0)}100%{box-shadow:0 0 0 0 rgba(74,222,128,0)}}
 #nps{background:linear-gradient(135deg,#0A1230 0%,#1E1B4B 60%,#312E81 100%);color:#fff}
 #nps .wrap{max-width:900px}
 #nps h2{font-size:clamp(24px,3.4vw,38px);color:#fff}
@@ -91,6 +101,14 @@ def search_html(lg, t):
             f'<script src="/js/site-search.js?v=1" defer></script><!--/sitesearch-->')
 
 
+def score_html(lg, t):
+    js = json.dumps(t["sc"], ensure_ascii=False).replace('"', "&quot;")
+    return (f'<!--npsscore--><a id="npsscore" href="#nps" data-lang="{lg}" data-t="{js}" aria-live="polite">'
+            f'<span class="ns-dot" aria-hidden="true"></span><span class="ns-num">…</span>'
+            f'<span class="ns-t"><b>{t["sc"]["lbl"]}</b><small>{t["sc"]["rate"]} →</small></span></a>'
+            f'<script src="/js/nps-score.js?v=1" defer></script><!--/npsscore-->')
+
+
 def nps_html(lg, t):
     js = json.dumps(dict(t["njs"], send=t["send"]), ensure_ascii=False).replace('"', "&quot;")
     btns = "".join(f'<button type="button" value="{i}" aria-pressed="false" aria-label="{i} / 10">{i}</button>' for i in range(1, 11))
@@ -105,16 +123,22 @@ def nps_html(lg, t):
             f'<script src="/js/nps-widget.js?v=1" defer></script><!--/nps-->')
 
 
-for lg, path in (("en", "index.html"), ("th", "th/index.html"), ("zh", "zh/index.html")):
-    p = ROOT / path
-    s = p.read_text(encoding="utf-8")
-    s = re.sub(r"<!--sitesearch-->.*?<!--/sitesearch-->", "", s, flags=re.S)
-    s = re.sub(r"<!--nps-->.*?<!--/nps-->", "", s, flags=re.S)
-    s = re.sub(r'<style id="ss-css">.*?</style>', "", s, flags=re.S)
-    s = re.sub(r'<style id="nps-css">.*?</style>', "", s, flags=re.S)
-    s = s.replace("</head>", CSS + NCSS + "</head>", 1)
-    m = re.search(r'<div class="cta">.*?</div>', s, re.S)  # hero buttons (the only cta without a style attribute)
-    s = s[: m.end()] + search_html(lg, T[lg]) + s[m.end():]
-    s = s.replace("<footer>", nps_html(lg, T[lg]) + "\n<footer>", 1)
-    p.write_text(s, encoding="utf-8")
-    print("updated", path)
+def main():
+  for lg, path in (("en", "index.html"), ("th", "th/index.html"), ("zh", "zh/index.html")):
+      p = ROOT / path
+      s = p.read_text(encoding="utf-8")
+      s = re.sub(r"<!--sitesearch-->.*?<!--/sitesearch-->", "", s, flags=re.S)
+      s = re.sub(r"<!--nps-->.*?<!--/nps-->", "", s, flags=re.S)
+      s = re.sub(r"<!--npsscore-->.*?<!--/npsscore-->", "", s, flags=re.S)
+      s = re.sub(r'<style id="ss-css">.*?</style>', "", s, flags=re.S)
+      s = re.sub(r'<style id="nps-css">.*?</style>', "", s, flags=re.S)
+      s = s.replace("</head>", CSS + NCSS + "</head>", 1)
+      m = re.search(r'<div class="cta">.*?</div>', s, re.S)  # hero buttons (the only cta without a style attribute)
+      s = s[: m.end()] + search_html(lg, T[lg]) + score_html(lg, T[lg]) + s[m.end():]
+      s = s.replace("<footer>", nps_html(lg, T[lg]) + "\n<footer>", 1)
+      p.write_text(s, encoding="utf-8")
+      print("updated", path)
+
+
+if __name__ == "__main__":
+    main()

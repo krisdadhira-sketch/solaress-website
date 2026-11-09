@@ -97,3 +97,9 @@ Search box under the region chips of Project Based Jobs: province / district / p
 - WCAG AA contrast fixes. The site accent is now violet-blue **#5B5BD6** (the red-pink #FF2D55 was replaced everywhere, including in `tools/`); on dark bands accent text uses #A5B4FC (CSS + a runtime check in `js/a11y.js`). LINE / WhatsApp / Facebook buttons use darker brand shades so white text is readable;
 - `js/a11y.js`: **🌐 More languages** in the language switcher (Google machine translation of the same page: Lao, Burmese, Khmer, Vietnamese, Malay, Indonesian, Japanese, Korean, Hindi, French, German, Spanish, Russian, Arabic), and a one-time suggestion bar offering the visitor's own language (EN / TH / 中文) when that version exists.
 Audit: axe-core (WCAG 2 A/AA) on 14 key pages went from about 2,400 contrast failures to 40 (the remaining ones are the deliberately faded "job closed" cards).
+
+## Jobs apply form: job picker and job proposal (Nov 2026)
+
+`python3 tools/job_apply_box.py` (idempotent) on `/job.html` and `/th/job.html`, script `js/job-apply.js`:
+- **Job picker**: filter box + list built live from the open job posts on the page (closed jobs left out, on-hold jobs shown but not selectable), grouped Project jobs / Permanent roles / Open application, with a count of open jobs. The chosen job's title, location and a link back to the post are shown; hidden field `job-id` = post id. "Quote for this job →" buttons pre-select it. New job posts appear in the list automatically.
+- **Job proposal** box (project jobs only; hidden and not required for permanent roles): `price-labour-only`, `price-labour-materials`, `proposal`, `start-date`, `days-needed`. Hidden `quoted-price` is filled on submit ("Labour only: … / Labour + materials: …") so the inbox keeps working.

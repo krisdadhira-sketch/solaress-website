@@ -126,8 +126,8 @@ PKG = {
 }
 
 # ------------------------------------------------------------------ Preventive Maintenance
-PM_FORM_EN = "/downloads/Solar-ESS-PV-Cleaning-Maintenance-Report-Form-EN_Rev07_20261028.pdf"
-PM_FORM_TH = "/downloads/Solar-ESS-PV-Cleaning-Maintenance-Report-Form-TH_Rev02_20261028.pdf"
+PM_FORM_EN = "/downloads/Solar-ESS-PV-Cleaning-Maintenance-Report-Form-EN_Rev07_WM_20261111.pdf"
+PM_FORM_TH = "/downloads/Solar-ESS-PV-Cleaning-Maintenance-Report-Form-TH_Rev02_WM_20261111.pdf"
 PM = {
  "en": dict(
   title="Preventive Maintenance for Solar PV Systems | Solar ESS",

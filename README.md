@@ -145,3 +145,7 @@ Services dropdown order: Free System Check, Free Consultation, Free Quotation, F
 ## Installer hiring contract (/contract.html, /th/contract.html)
 
 Read-only pages of the contract every selected installer signs; no download. The PDF is sent by Solar ESS only after the price is agreed (master copy: Claude Docs "Installer Hiring Contract – Solar ESS", English and Thai tabs). Text in `tools/contract/en.md` and `th.md`; build with `python3 tools/contract_page.py`. Linked from the Jobs page apply box.
+
+## Free System Check example report (Nov 2026)
+
+The Free System Check pages show a real, anonymised report (6.48 kWp hybrid + 16 kWh battery, eastern Bangkok) before the request form: `python3 tools/system_check_example.py`. PDFs in `downloads/Solar-ESS-Free-System-Check-Example-Report*_Rev03_WM_20261111.pdf` (watermarked, no customer name or address), previews `images/system-check-example*.jpg`.

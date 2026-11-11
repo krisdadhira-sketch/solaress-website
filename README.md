@@ -161,6 +161,8 @@ The Free System Check pages show a real, anonymised report (6.48 kWp hybrid + 16
 
 Services > Free Plant Design now opens its own page: real design drawings (equipment frame front/rear, ground-mount section, array layout, screw piles, corner detail) with a short description each, the 4 steps, and a button to the consultation form with "Free Plant Design" preselected (`/?free=design#consult`). Build: `python3 tools/plant_design_page.py` (watermarks originals placed in `tools/design_src/1..6.jpg` into `images/design-*_Rev01_20261111.jpg`), then the post-processors in its docstring.
 
+Outdoor designs (Nov 2026): 11 pictures picked from Pictures/3 Company & Marketing/Design, group `#outdoor` on the same page (`OUT` / `OUT_SRC` in the script). To re-watermark, copy the originals into `<folder>/outdoor/` and run `DESIGN_SRC=<folder> python3 tools/plant_design_page.py`.
+
 ## Sample documents, EV drawings and maintenance photos (11 Nov 2026)
 
 - `python3 tools/clean_quote_pdf.py IN.pdf OUT.pdf --name "hide=replace" [--noprice]`: removes prices (2-decimal amounts, per-watt/metre rates, "N บาท" on price lines), names given with `--name`, fixes the old Krabi address (761 → 140/2), adds the Solar ESS watermark and a "sample" note. Savings, payback and the PEA 2.20 THB rate stay.

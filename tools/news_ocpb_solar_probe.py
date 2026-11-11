@@ -17,8 +17,8 @@ BOX = ('<div style="margin-top:26px;border:1.5px solid var(--navy);padding:20px 
 
 T = {
  "en": dict(
-  eyebrow="11 November 2026 · Thailand", h2="Unsafe rooftop solar in Thailand: what went wrong, and how to check your installer",
-  lede="In May the government ordered an urgent investigation after a home solar system melted and smelled of burning. Six months on, the lessons apply to every homeowner who is about to buy solar.",
+  eyebrow="11 November 2026 · Thailand", h2="Update: Thailand's crackdown on unsafe rooftop solar, and how to check your installer",
+  lede="A follow-up to our <a href=\"#thailand-ocpb-faulty-solar\">17 October story</a>: the full scale of the complaints, the penalties, what has changed since May, and six checks every homeowner should make before buying solar.",
   pts=[("What happened", "On 15 May 2026 PM's Office Minister Supamas Isarabhakdi ordered the Office of the Consumer Protection Board (OCPB) to investigate substandard rooftop solar. In the case that started it, parts melted and smelled of burning, the power dropped often, the electricity bill did not fall as promised, and losses passed 500,000 baht."),
        ("What was found", "Non-standard equipment; the contractor allegedly changed the home's supply from three-phase to single-phase; and aluminium wiring was used instead of the required copper."),
        ("How big the problem is", "By 20 May the OCPB had received 156 solar complaints since 2024. 84 were resolved, with damages of more than 40 million baht; the rest were still under review."),
@@ -35,8 +35,8 @@ T = {
   b1="Free System Check", b1h="/system-check.html", b2="Book a consultation", b2h="/#consult",
   lbl="Sources:", tail="Summary by Solar ESS."),
  "th": dict(
-  eyebrow="11 พฤศจิกายน 2569 · ประเทศไทย", h2="โซลาร์รูฟท็อปไม่ได้มาตรฐานในไทย: เกิดอะไรขึ้น และตรวจผู้ติดตั้งอย่างไร",
-  lede="เมื่อเดือนพฤษภาคม รัฐบาลสั่งตรวจสอบเร่งด่วนหลังระบบโซลาร์ของบ้านหลังหนึ่งละลายและมีกลิ่นไหม้ ผ่านมาหกเดือน บทเรียนนี้ยังใช้ได้กับทุกบ้านที่กำลังจะติดโซลาร์",
+  eyebrow="11 พฤศจิกายน 2569 · ประเทศไทย", h2="อัปเดต: มาตรการคุมโซลาร์รูฟท็อปไม่ได้มาตรฐาน และวิธีตรวจผู้ติดตั้ง",
+  lede="ติดตามต่อจาก<a href=\"#thailand-ocpb-faulty-solar\">ข่าววันที่ 17 ตุลาคม</a>: จำนวนเรื่องร้องเรียนทั้งหมด บทลงโทษ สิ่งที่เปลี่ยนไปตั้งแต่เดือนพฤษภาคม และ 6 ข้อที่ทุกบ้านควรตรวจก่อนซื้อโซลาร์",
   pts=[("เกิดอะไรขึ้น", "วันที่ 15 พฤษภาคม 2569 รัฐมนตรีประจำสำนักนายกรัฐมนตรี ศุภมาส อิศรภักดี สั่งให้สำนักงานคณะกรรมการคุ้มครองผู้บริโภค (สคบ.) ตรวจสอบการติดตั้งโซลาร์รูฟท็อปที่ไม่ได้มาตรฐาน กรณีที่เป็นต้นเรื่อง อุปกรณ์ละลายและมีกลิ่นไหม้ ไฟตกและไฟดับบ่อย ค่าไฟไม่ลดตามที่โฆษณา และความเสียหายเกิน 500,000 บาท"),
        ("สิ่งที่ตรวจพบ", "ใช้อุปกรณ์ไม่ได้มาตรฐาน ผู้รับเหมาถูกกล่าวหาว่าเปลี่ยนระบบไฟของบ้านจาก 3 เฟสเป็น 1 เฟส และใช้สายอะลูมิเนียมแทนสายทองแดงตามที่กำหนด"),
        ("ปัญหาใหญ่แค่ไหน", "ถึงวันที่ 20 พฤษภาคม สคบ. ได้รับเรื่องร้องเรียนเกี่ยวกับโซลาร์ 156 เรื่องตั้งแต่ปี 2567 แก้ไขแล้ว 84 เรื่อง ความเสียหายรวมกว่า 40 ล้านบาท ที่เหลืออยู่ระหว่างดำเนินการ"),

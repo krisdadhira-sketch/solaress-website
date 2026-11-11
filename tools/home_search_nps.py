@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 T = {
     "en": dict(
         label="Search solaress.org", ph="Search anything: jobs, battery, Hat Yai, 50,000 subsidy…", go="Search",
-        js=dict(none="Nothing found. Try another word, or ask us on LINE: solaress1.", other="Nothing in English; results in other languages:",
+        js=dict(none="Nothing found. Try another word, or ask us on LINE: @441hmruu.", other="Nothing in English; results in other languages:",
                 loading="Loading…", err="Search is not available right now."),
         eyebrow="Your opinion", h="How likely are you to recommend Solar ESS to a friend or colleague?",
         lo="1 = Not at all likely", hi="10 = Extremely likely", why="What is the main reason for your score? (optional)",
@@ -20,7 +20,7 @@ T = {
                  err="Sorry, it could not be sent. Please try again.", sending="Sending…")),
     "th": dict(
         label="ค้นหาในเว็บไซต์ solaress.org", ph="ค้นหาได้ทุกอย่าง: งาน, แบตเตอรี่, หาดใหญ่, เงินอุดหนุน 50,000…", go="ค้นหา",
-        js=dict(none="ไม่พบผลลัพธ์ ลองคำอื่น หรือสอบถามทาง LINE: solaress1", other="ไม่พบในภาษาไทย ผลลัพธ์จากภาษาอื่น:",
+        js=dict(none="ไม่พบผลลัพธ์ ลองคำอื่น หรือสอบถามทาง LINE: @441hmruu", other="ไม่พบในภาษาไทย ผลลัพธ์จากภาษาอื่น:",
                 loading="กำลังโหลด…", err="ระบบค้นหาไม่พร้อมใช้งานในขณะนี้"),
         eyebrow="ความคิดเห็นของคุณ", h="คุณมีแนวโน้มจะแนะนำ Solar ESS ให้เพื่อนหรือเพื่อนร่วมงานมากน้อยเพียงใด?",
         lo="1 = ไม่แนะนำเลย", hi="10 = แนะนำอย่างยิ่ง", why="เหตุผลหลักที่ให้คะแนนนี้ (ไม่บังคับ)",
@@ -30,7 +30,7 @@ T = {
                  err="ขออภัย ส่งไม่สำเร็จ กรุณาลองอีกครั้ง", sending="กำลังส่ง…")),
     "zh": dict(
         label="站内搜索 solaress.org", ph="搜索任何内容：工作、电池、合艾、补贴…", go="搜索",
-        js=dict(none="没有找到结果。请换一个词，或通过 LINE 联系我们：solaress1。", other="中文页面没有结果；其他语言的结果：",
+        js=dict(none="没有找到结果。请换一个词，或通过 LINE 联系我们：@441hmruu。", other="中文页面没有结果；其他语言的结果：",
                 loading="加载中…", err="搜索暂时不可用。"),
         eyebrow="您的意见", h="您有多大可能向朋友或同事推荐 Solar ESS？",
         lo="1 = 完全不可能", hi="10 = 非常可能", why="您给出这个分数的主要原因是什么？（选填）",

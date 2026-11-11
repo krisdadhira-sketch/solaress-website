@@ -89,7 +89,7 @@ def section(L):
             f'<div style="flex:1;min-width:260px"><p class="eyebrow">{L["eyebrow"]}</p><h2 style="font-size:clamp(28px,4vw,44px)">{L["h2"]}</h2></div></div>'
             f'<p class="lede" style="margin-top:16px;max-width:900px">{L["lede"]}</p><div class="ins-grid">{cards}</div><div class="ins-why">{why}</div>'
             f'<p class="ins-note">{L["note"]}</p><div style="margin-top:14px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="{L["consult"]}">{L["cta"]}</a>'
-            f'<a class="btn ghost" href="https://line.me/ti/p/~solaress1" target="_blank" rel="noopener">LINE: solaress1</a></div></div></section><!--/ins-->')
+            f'<a class="btn ghost" href="https://line.me/R/ti/p/@441hmruu" target="_blank" rel="noopener">LINE: @441hmruu</a></div></div></section><!--/ins-->')
 
 
 def lang_of(s):

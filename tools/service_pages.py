@@ -30,7 +30,7 @@ CSS = """<style>
 @media(max-width:820px){.svinc{grid-template-columns:minmax(0,1fr)}}
 </style>
 """
-PHONE = '<a class="btn" href="tel:+66631516694">{call} · 063 151 6694</a><a class="btn ghost" href="https://line.me/ti/p/~solaress1" target="_blank" rel="noopener">LINE: solaress1</a>'
+PHONE = '<a class="btn" href="tel:+66631516694">{call} · 063 151 6694</a><a class="btn ghost" href="https://line.me/R/ti/p/@441hmruu" target="_blank" rel="noopener">LINE: @441hmruu</a>'
 
 
 def li(xs):

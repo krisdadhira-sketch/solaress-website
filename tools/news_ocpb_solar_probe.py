@@ -72,8 +72,8 @@ for lang, path in (("en", "news.html"), ("th", "th/news.html")):
     p = ROOT / path
     s = p.read_text(encoding="utf-8")
     s = re.sub(rf'<article id="{ID}".*?</article>\n?', "", s, flags=re.S)
-    m = re.search(r'<article id="([^"]+)" data-topics="[^"]*" style="max-width:760px">', s)
-    first = m.group(0)
-    s = s[:m.start()] + article(T[lang]) + first.replace('style="max-width:760px"', SEP) + s[m.end():]
+    m = re.search(r'<article id="([^"]+)" data-topics="[^"]*" style="[^"]*">', s)
+    first = re.sub(r'style="[^"]*"', SEP, m.group(0))
+    s = s[:m.start()] + article(T[lang]) + first + s[m.end():]
     p.write_text(s, encoding="utf-8")
     print("article on", path, "before", m.group(1))

@@ -108,7 +108,7 @@ function render(){if(!DATA)return;var tf=$('f-tier').value,q=$('q').value.trim()
     '<div class="bars">'+bars+'</div><details><summary>Proposal</summary><pre>'+esc(r.proposal||'(none)')+'</pre></details></div>'+
     '<div class="c3"><div class="score">'+r.rank+'<small>rank score</small></div><div style="font-size:13px">Candidate '+r.score+'/100<br>Price '+r.priceScore+'/100</div></div>'+
     '<div class="c4 acts"><div style="font-size:13px;margin-bottom:6px">Labour '+money(d['price-labour-only'])+'<br>+ materials '+money(d['price-labour-materials'])+'</div>'+
-    (tel?'<a class="btn" href="tel:'+esc(tel)+'">📞 Call</a>':'')+'<button class="ghost st" data-id="'+esc(r.id)+'" data-s="contacted">Contacted</button><button class="ghost st" data-id="'+esc(r.id)+'" data-s="archived">Decline</button>'+
+    (tel?'<a class="btn" href="tel:'+esc(tel)+'">📞 Call</a>':'')+'<button class="ghost st" data-id="'+esc(r.id)+'" data-s="contacted">Contacted</button><button class="ghost st" data-id="'+esc(r.id)+'" data-s="archived">Decline</button><button class="ghost del" data-id="'+esc(r.id)+'" data-n="'+esc(d.name)+'" style="color:#B42318;border-color:#B42318">🗑 Delete</button>'+
     '<div style="font-size:12px;color:var(--mute)">Status: '+esc(r.status)+'</div></div></div>'}).join('')+'</div>'}).join('');
  $('list').innerHTML=h||'<div class="card">No candidates match. Change the filter above.</div>';
  $('sum').innerHTML='<div><b>'+tot.top+'</b>Top picks</div><div><b>'+tot.chance+'</b>Still in the running</div><div><b>'+tot.all+'</b>Applications</div><div><b>'+tot.jobs+'</b>Jobs with applicants</div>';
@@ -116,7 +116,7 @@ function render(){if(!DATA)return;var tf=$('f-tier').value,q=$('q').value.trim()
 function load(){api('list').then(function(j){if(j.error)throw new Error(j.error);DATA=j;try{sessionStorage.setItem('members-admin-pw',PW)}catch(e){}$('login').classList.add('hide');$('app').classList.remove('hide');render()}).catch(function(x){$('login').classList.remove('hide');$('err').textContent=x.message==='401'?'Wrong password.':x.message})}
 $('go').onclick=function(){PW=$('pw').value.trim();load()};$('pw').onkeydown=function(e){if(e.key==='Enter')$('go').click()};
 ['f-tier','q','f-open'].forEach(function(i){$(i).addEventListener('input',render)});
-$('list').addEventListener('click',function(e){var b=e.target.closest('.st');if(!b)return;b.disabled=true;api('set',{id:b.dataset.id,status:b.dataset.s}).then(load)});
+$('list').addEventListener('click',function(e){var x=e.target.closest('.del');if(x){if(!confirm('Delete the application from '+x.dataset.n+' for good? Its ID card and files are deleted too.'))return;x.disabled=true;fetch('/api/inbox?a=delete',{method:'POST',headers:{'x-admin-password':PW,'content-type':'application/json'},body:JSON.stringify({id:x.dataset.id})}).then(function(r){if(!r.ok)throw new Error(r.status);load()}).catch(function(err){x.disabled=false;alert('Could not delete ('+err.message+')')});return}var b=e.target.closest('.st');if(!b)return;b.disabled=true;api('set',{id:b.dataset.id,status:b.dataset.s}).then(load)});
 $('ai').onclick=function(){$('aimsg').textContent='Reading…';api('ai',{limit:8}).then(function(j){$('aimsg').textContent=j.error?j.error:('Read '+j.read+' proposal(s).');load()})};
 if(PW)load();})();
 </script>

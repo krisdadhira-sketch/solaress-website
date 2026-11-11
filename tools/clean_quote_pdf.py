@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Clean a customer quotation/proposal PDF for publishing on solaress.org (Nov 2026 rules):
 no prices, no personal names, no customer details, no exact locations; Solar ESS watermark on every page.
-Usage: python3 tools/clean_quote_pdf.py IN.pdf OUT.pdf [--name "text to hide=replacement" ...] [--noprice  (drawings without prices: names only)]
+Usage: python3 tools/clean_quote_pdf.py IN.pdf OUT.pdf [--name "text to hide=replacement" ...] [--noprice  (drawings without prices: names only)] [--hide REGEX ...]
 Prices: every amount with 2 decimals, every per-watt / per-metre rate, and any "N บาท" whose value also appears
 as a 2-decimal price in the document or that sits on a price line. PEA buy-back rate and savings figures stay.
 Also fixes the old Krabi branch address (761 → 140/2 หมู่ 4)."""
@@ -13,6 +13,9 @@ A = re.compile(r"[-+]?\d{1,3}(?:,\d{3})+\.\d{2}")
 BARE = re.compile(r"^\s*[-+]?\d[\d,]*\.\d{2}(?:\s*/\s*\S.*)?\s*$")
 RATE = re.compile(r"\d+(?:\.\d+)?(?=\s*บาท\s*(?:/|ต่อ)\s*(?:วัตต์|W|ม\.|\s*$))|(?<=× )\d+(?=\s*บาท)")
 BAHT = re.compile(r"[-+]?\d[\d,]*(?:\.\d+)?(?=\s*บาท)")
+THB = re.compile(r"[-+]?\d[\d,]*(?:\.\d+)?(?:\s*[–-]\s*\d[\d,]*(?:\.\d+)?)?(?=\s*THB)|(?<=THB )\d[\d,]*(?:\.\d+)?")
+PRICE_EN = re.compile(r"(?i)price|cost of|invest|turnkey|total|VAT|labour|materials|structure|payback on|per watt|THB/W|amount|instal")
+SAVE_EN = re.compile(r"(?i)saving|save|bill|tariff|kWh|per unit|electricity|/month|per month|per year|fixed|service charge|per kW")
 PRICE_LINE = re.compile(r"ราคา|ลงทุน|เหมา|ชุดละ|แผงละ|MCCB|สายแบต|แพ็กเกจ|ยื่นขอ|VAT|ค่าเผื่อ|ค่าธรรมเนียม|รวมอยู่")
 
 
@@ -28,7 +31,7 @@ def lines(page):
                 yield "".join(c["c"] for c, _ in chars), chars
 
 
-def clean(src, dst, names, prices=True):
+def clean(src, dst, names, prices=True, hides=()):
     d = fitz.open(src)
     known = set()
     for p in d:
@@ -47,6 +50,14 @@ def clean(src, dst, names, prices=True):
                 spans.append((m.start(), m.end(), "–"))
             if prices and BARE.match(t):
                 m = re.search(r"[-+]?\d[\d,]*\.\d{2}(?:\s*/\s*\S.*)?", t); spans.append((m.start(), m.end(), "–"))
+            for m in (THB.finditer(t) if prices and PRICE_EN.search(t) and not SAVE_EN.search(t) else []):
+                spans.append((m.start(), m.end(), "–"))
+            for h in hides:
+                for m in re.finditer(h, t):
+                    spans.append((m.start(), m.end(), "–"))
+            for old, new in (("089 429 6832", "089 632 5829"),):
+                for m in re.finditer(re.escape(old), t):
+                    spans.append((m.start(), m.end(), new))
             for m in (RATE.finditer(t) if prices else []):
                 spans.append((m.start(), m.end(), "–"))
             for m in (BAHT.finditer(t) if prices else []):
@@ -102,6 +113,9 @@ if __name__ == "__main__":
     names = []
     while "--name" in a:
         i = a.index("--name"); o, n = a[i + 1].split("=", 1); names.append((o, n)); del a[i:i + 2]
+    hides = []
+    while "--hide" in a:
+        i = a.index("--hide"); hides.append(a[i + 1]); del a[i:i + 2]
     pr = "--noprice" not in a
     a = [x for x in a if x != "--noprice"]
-    clean(a[0], a[1], names, pr)
+    clean(a[0], a[1], names, pr, hides)

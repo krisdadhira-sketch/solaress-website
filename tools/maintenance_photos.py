@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-"""Preventive Maintenance pages (EN/TH): "On site" photo band (cleaning + torque check), inserted after "What we check",
+"""Free System Check pages (EN/TH; moved from the retired Preventive Maintenance page, 11 Nov 2026): "On site" photo band (cleaning + torque check), inserted before the request form (#check),
 between <!--mphotos--> markers. Photos images/maint-*_Rev01_20261111.jpg, watermarked from tools/maint_src/1..3.jpg if present
-(watermark() from tools/plant_design_page.py). Idempotent. Run: python3 tools/maintenance_photos.py"""
+(watermark() from tools/plant_design_page.py). Idempotent. Run: python3 tools/maintenance_photos.py (after tools/system_check_page.py)"""
 import re, sys
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
@@ -12,13 +12,13 @@ SRC = ROOT / "tools" / "maint_src"
 NAMES = ["maint-pv-cleaning-brush", "maint-torque-end-clamp", "maint-torque-mid-clamp"]
 SUF = "_Rev01_20261111.jpg"
 T = {
- "en": dict(eyebrow="On site", h2="Cleaning and checking, in practice",
-   sub="From a recent preventive maintenance visit on a tiled home roof (Nov 2026). Click a picture to open it full size.",
+ "en": dict(eyebrow="On site", h2="When we visit: cleaning and checking",
+   sub="When a check shows dirt or loose parts, we go on site. From a recent visit to a tiled home roof (Nov 2026). Click a picture to open it full size.",
    caps=[("Panel cleaning", "A soft rotating brush on an extension pole and a water rinse lift dust and bird droppings without scratching the glass. The technician works in a high-visibility vest and stays on the roof tiles, never on the panels."),
          ("Torque check on the end clamps", "After cleaning, every end clamp is re-tightened with a torque wrench to the mounting maker's value, so panels stay fixed in strong wind. The earth wire bonded to the rail is checked at the same time."),
          ("Torque check on the mid clamps", "Mid clamps between panels are checked the same way: not too loose to hold the panel, not so tight that they bend the frame or crack the glass.")]),
- "th": dict(eyebrow="หน้างานจริง", h2="ล้างแผงและตรวจเช็ก ทำอย่างไร",
-   sub="จากการบำรุงรักษาเชิงป้องกันบนหลังคากระเบื้องบ้านพักอาศัย (พ.ย. 2569) คลิกที่ภาพเพื่อดูขนาดเต็ม",
+ "th": dict(eyebrow="หน้างานจริง", h2="เมื่อเข้าหน้างาน: ล้างแผงและตรวจเช็ก",
+   sub="เมื่อผลตรวจพบฝุ่นหรือจุดยึดหลวม เราเข้าหน้างาน ภาพจากหลังคากระเบื้องบ้านพักอาศัย (พ.ย. 2569) คลิกที่ภาพเพื่อดูขนาดเต็ม",
    caps=[("ล้างแผงโซลาร์", "ใช้แปรงหมุนขนนุ่มต่อด้ามยาวและน้ำล้าง ขจัดฝุ่นและมูลนกโดยไม่ทำให้กระจกเป็นรอย ช่างสวมเสื้อสะท้อนแสงและยืนบนกระเบื้อง ไม่เหยียบแผง"),
          ("ตรวจแรงขันแคลมป์ปลาย (End clamp)", "หลังล้างแผง ขันแคลมป์ปลายทุกตัวด้วยประแจทอร์กตามค่าของผู้ผลิตระบบยึด เพื่อให้แผงยึดแน่นเมื่อมีลมแรง พร้อมตรวจสายดินที่ต่อกับราง"),
          ("ตรวจแรงขันแคลมป์กลาง (Mid clamp)", "แคลมป์กลางระหว่างแผงตรวจด้วยวิธีเดียวกัน ไม่หลวมจนยึดแผงไม่อยู่ และไม่แน่นจนกรอบแผงงอหรือกระจกร้าว")]),
@@ -39,14 +39,13 @@ if __name__ == "__main__":
         for i, n in enumerate(NAMES):
             if (SRC / f"{i + 1}.jpg").exists():
                 watermark(SRC / f"{i + 1}.jpg", ROOT / "images" / f"{n}{SUF}")
-    for lang, path in (("en", "maintenance.html"), ("th", "th/maintenance.html")):
+    for lang, path in (("en", "system-check.html"), ("th", "th/system-check.html")):
         p = ROOT / path
         s = p.read_text(encoding="utf-8")
         s = re.sub(r"<!--mphotos-->.*?<!--/mphotos-->\n?", "", s, flags=re.S)
         s = re.sub(r'<style id="pd-css">.*?</style>\n?|<style id="mp-css">.*?</style>\n?', "", s, flags=re.S)
         s = s.replace("</head>", CSS + MCSS + "</head>", 1)
-        i = s.index('<section class="band" style="padding-block:64px;background:var(--paper)">')
-        j = s.index("</section>", i) + len("</section>")
-        s = s[:j] + "\n" + band(T[lang]) + s[j:]
+        j = s.index('<section class="band light" id="check"')
+        s = s[:j] + band(T[lang]) + s[j:]
         p.write_text(s, encoding="utf-8")
         print("photos on", path)

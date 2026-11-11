@@ -704,3 +704,9 @@
 /downloads/plant-reports/Solar-ESS-Plant-Report-SolisCloud-Oct2026-School-Tak_Rev02_20261028.pdf  /downloads/plant-reports/Solar-ESS-Plant-Report-SolisCloud-Oct2026-School-Tak_Rev02_WM_20261111.pdf  301
 /downloads/plant-reports/Solar-ESS-Plant-Report-SolisCloud-Oct2026-Shop-Koh-Samui-TH_Rev02_20261028.pdf  /downloads/plant-reports/Solar-ESS-Plant-Report-SolisCloud-Oct2026-Shop-Koh-Samui-TH_Rev02_WM_20261111.pdf  301
 /downloads/plant-reports/Solar-ESS-Plant-Report-SolisCloud-Oct2026-Shop-Koh-Samui_Rev02_20261028.pdf  /downloads/plant-reports/Solar-ESS-Plant-Report-SolisCloud-Oct2026-Shop-Koh-Samui_Rev02_WM_20261111.pdf  301
+
+# Preventive Maintenance retired 11 Nov 2026 -> Free System Check
+/maintenance.html     /system-check.html     301!
+/maintenance          /system-check.html     301!
+/th/maintenance.html  /th/system-check.html  301!
+/th/maintenance       /th/system-check.html  301!

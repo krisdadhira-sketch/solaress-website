@@ -210,4 +210,4 @@ def build(slug, lang, L):
 
 if __name__ == "__main__":
     for lang in ("en", "th"):
-        build("package", lang, PKG[lang]); build("maintenance", lang, PM[lang])
+        build("package", lang, PKG[lang])  # maintenance page retired 11 Nov 2026 (redirects to /system-check.html)

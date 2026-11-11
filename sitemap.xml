@@ -425,20 +425,6 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://solaress.org/package"/>
   </url>
   <url>
-    <loc>https://solaress.org/maintenance</loc>
-    <lastmod>2026-11-06</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://solaress.org/maintenance"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://solaress.org/th/maintenance"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://solaress.org/maintenance"/>
-  </url>
-  <url>
-    <loc>https://solaress.org/th/maintenance</loc>
-    <lastmod>2026-11-06</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://solaress.org/maintenance"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://solaress.org/th/maintenance"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://solaress.org/maintenance"/>
-  </url>
-  <url>
     <loc>https://solaress.org/community</loc>
     <lastmod>2026-11-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://solaress.org/community"/>

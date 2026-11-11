@@ -160,6 +160,30 @@ def block2(t):
             f'<label class="chk"><input type="checkbox" name="pdpa-consent" value="yes" required><span>{t["pdpa"]}</span></label>')
 
 
+SHRINK = {"en": ("Preparing your files…", "Your files are still too large ({mb} MB). Please attach smaller PDFs; the limit is 8 MB in total.", "Please complete these boxes:"),
+          "th": ("กำลังเตรียมไฟล์…", "ไฟล์แนบยังใหญ่เกินไป ({mb} MB) กรุณาแนบ PDF ที่เล็กลง รวมทุกไฟล์ไม่เกิน 8 MB", "กรุณากรอกช่องต่อไปนี้ให้ครบ:")}
+
+
+def shrink_js(lang):
+    busy, big, miss = SHRINK[lang]
+    return ("<!--jshrink--><div id=\"jform-msg\" role=\"alert\" style=\"display:none;background:#FEE2E2;color:#7F1D1D;border:1.5px solid #B42318;border-radius:10px;padding:10px 14px;margin:0 0 12px;font-size:15px\"></div>"
+            "<script>(function(){var f=document.querySelector('form[name=\"job-application\"]');if(!f)return;var box=document.getElementById('jform-msg');f.insertBefore(box,f.firstChild);"
+            "var LIM=7.5*1024*1024,sending=false;function lab(e){var l=e.closest('label');return l?(l.childNodes[0].textContent||l.textContent).trim().slice(0,70):e.name}"
+            "function show(h){box.innerHTML=h;box.style.display='block';box.scrollIntoView({behavior:'smooth',block:'center'})}"
+            "f.addEventListener('invalid',function(){var bad=[].slice.call(f.querySelectorAll(':invalid')).filter(function(e){return e.name});"
+            "if(bad.length)show('<b>" + miss + "</b><ul style=\"margin:6px 0 0 18px\">'+bad.slice(0,12).map(function(e){return '<li>'+lab(e)+'</li>'}).join('')+'</ul>')},true);"
+            "function shrink(file){return new Promise(function(res){if(!/^image\\//.test(file.type)||file.size<600000)return res(file);var img=new Image(),u=URL.createObjectURL(file);"
+            "img.onload=function(){var m=1600,w=img.naturalWidth,h=img.naturalHeight,k=Math.min(1,m/Math.max(w,h)),c=document.createElement('canvas');c.width=Math.round(w*k);c.height=Math.round(h*k);"
+            "c.getContext('2d').drawImage(img,0,0,c.width,c.height);c.toBlob(function(b){URL.revokeObjectURL(u);res(b&&b.size<file.size?new File([b],file.name.replace(/\\.[^.]+$/,'')+'.jpg',{type:'image/jpeg'}):file)},'image/jpeg',0.8)};"
+            "img.onerror=function(){res(file)};img.src=u})}"
+            "f.addEventListener('submit',function(ev){if(sending)return;ev.preventDefault();box.style.display='none';var btn=f.querySelector('[type=submit]'),old=btn&&btn.textContent;if(btn){btn.disabled=true;btn.textContent='" + busy + "'}"
+            "var ins=[].slice.call(f.querySelectorAll('input[type=file]'));Promise.all(ins.map(function(i){return Promise.all([].slice.call(i.files||[]).map(shrink)).then(function(fs){"
+            "if(fs.length&&window.DataTransfer){var dt=new DataTransfer();fs.forEach(function(x){dt.items.add(x)});try{i.files=dt.files}catch(e){}}})})).then(function(){"
+            "var tot=ins.reduce(function(a,i){return a+[].slice.call(i.files||[]).reduce(function(b,x){return b+x.size},0)},0);"
+            "if(tot>LIM){if(btn){btn.disabled=false;btn.textContent=old}show('" + big + "'.replace('{mb}',(tot/1048576).toFixed(1)));return}"
+            "sending=true;f.submit()})})})();</script><!--/jshrink-->")
+
+
 def run(path, lang):
     t = T[lang]
     s = path.read_text(encoding="utf-8")
@@ -176,6 +200,7 @@ def run(path, lang):
         f = re.sub(r"<!--jcand2-->.*?<label class=\"chk\"><input type=\"checkbox\" name=\"pdpa-consent\".*?</label>", block2(t), f, count=1, flags=re.S)
     else:
         f = re.sub(r'<label for="j-cv">.*?<label for="j-msg">.*?</label>', block2(t), f, count=1, flags=re.S)
+    f = re.sub(r"<!--jshrink-->.*?<!--/jshrink-->", "", f, flags=re.S) + shrink_js(lang)
     s = s[:a] + f + s[b:]
     # lede above the form
     s = re.sub(r'(<section class="band dark" id="apply".*?<p class="lede" style="margin-top:18px">).*?(</p>)',

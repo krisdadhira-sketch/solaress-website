@@ -149,3 +149,10 @@ Read-only pages of the contract every selected installer signs; no download. The
 ## Free System Check example report (Nov 2026)
 
 The Free System Check pages show a real, anonymised report (6.48 kWp hybrid + 16 kWh battery, eastern Bangkok) before the request form: `python3 tools/system_check_example.py`. PDFs in `downloads/Solar-ESS-Free-System-Check-Example-Report*_Rev03_WM_20261111.pdf` (watermarked, no customer name or address), previews `images/system-check-example*.jpg`.
+
+## Candidate ranking (/candidates-admin.html, Nov 2026)
+
+- The job application form is mostly numbers and tick boxes (`tools/job_candidate_form.py`): installs in 3 years, largest kWp, team size, Work-at-Height workers, electrical licence, Solar ESS test level, distance to site, job types done (`jt-*`), tools owned (`tl-*`), own insurance, plus the 4 required parts (personal info, numbers, certificates, references).
+- `netlify/functions/candidates/score.mjs`: candidate score 0–100 (`jobScore`, weights in `MAX`) and per-job ranking (`rankJob`): 80% candidate score + 20% price (cheapest labour-only price for that job = 100) + optional AI adjustment −5…+5. Tiers: Top pick (top 3, rank ≥ 55, ID/address/company present), Still in the running (rank ≥ 40, or top 5 with ≥ 30), Not now.
+- `/api/candidates` (admin password): `list` groups job applications from the inbox by job and ranks them; `set` marks contacted/declined; `ai` asks Claude to read up to 8 new written proposals (needs `ANTHROPIC_API_KEY` in Netlify; model `CANDIDATES_AI_MODEL`, default claude-haiku-5-5).
+- Admin page **/candidates-admin.html** (also in /admin): opens on "Top picks only"; Call / Contacted / Decline buttons per candidate.

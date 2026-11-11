@@ -13,6 +13,7 @@ idx = (ROOT / "index.html").read_text(encoding="utf-8")
 LOGO = re.search(r'<header class="nav">.*?<img src="(data:image/[^"]+)"', idx, re.S).group(1)
 
 PAGES = [  # id, file, label, description
+    ("candidates", "/candidates-admin.html", "Candidate ranking", "Job applicants scored and ranked per job: top picks to call first, back-ups still in the running."),
     ("jobs", "/feedback-admin.html", "Jobs & payment release", "Job posts, installer reports, customer feedback, close jobs and release payment."),
     ("applications", "/members-admin.html", "TSIA applications", "Approve, reject or hide TSIA company members and Installer Partners (every partner is a TSIA member)."),
     ("test", "/itest-admin.html", "Installer test & certificates", "Level 1–5 results, wrong answers, certificate numbers, CSV."),

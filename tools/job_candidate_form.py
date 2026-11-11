@@ -17,8 +17,8 @@ T = {
         name="Name and last name",
         lede=("To apply, fill in the 4 parts below: <b>1) personal information</b> (name, address, phone, ID card, company), "
               "<b>2) your numbers</b> (age, years of experience in this job, project values), <b>3) certificates</b> "
-              "(academic/institute and product) and <b>4) references</b> (a person and a company). We score every application on "
-              "these answers to shortlist the best candidate for each job, then send the qualified candidate our contract. "
+              "(academic/institute and product) and <b>4) references</b> (a person and a company). We score and rank every application on "
+              "these answers (numbers, not words) to shortlist the best candidates for each job, then send the qualified candidate our contract. "
               "We read every application and reply to shortlisted candidates. "
               '<a href="/contract.html" style="color:#fff;text-decoration:underline">Read the installer hiring contract</a> (read only).'),
         p1="1. Personal information",
@@ -30,6 +30,15 @@ T = {
         age="Age (years)", exp="Experience in this kind of job (years)",
         pval="Largest project you have completed (value, THB)",
         ptot="Total value of your projects in the last 3 years (THB, approximate)",
+        inst="Solar systems you installed in the last 3 years (number)", kwp="Largest solar system you installed (kWp)",
+        team="Your team: technicians you bring (number)", wah="Of them, workers with a Work-at-Height certificate (number)",
+        km="Distance from your base to this site (km, approximate)",
+        lic="Highest electrical licence in your team", lic_o=[("none","None"),("l1","Building electrician, level 1 (ช่างไฟฟ้าภายในอาคาร ระดับ 1)"),("l2","Building electrician, level 2 or higher"),("engineer","Licensed electrical engineer (กว.)")],
+        test="Solar ESS installer test passed (highest level)", test_o=[("0","Not yet"),("1","Level 1"),("2","Level 2"),("3","Level 3"),("4","Level 4"),("5","Level 5")],
+        p5="5. What you have done and what you own (tick all that apply)",
+        jt="Jobs you have done", jt_o=[("rooftop","Rooftop on-grid"),("hybrid","Hybrid with battery"),("offgrid","Off-grid"),("ground","Ground mount / carport"),("ev","EV charger"),("cleaning","PV cleaning & O&M"),("fault","Fault finding / monitoring")],
+        tl="Tools you own", tl_o=[("insulation","Insulation tester"),("clamp","DC clamp meter"),("ivcurve","I-V curve tester"),("thermal","Thermal camera"),("mc4","MC4 crimping tool"),("height","Scaffold / safety harness set"),("welder","Welding machine")],
+        ins="We have our own accident / liability insurance",
         p3="3. Certificates",
         acad="Academic / institute: your qualification and where you got it (e.g. Electrical Power Vocational Certificate, Chiang Rai Technical College). Write “None” if none.",
         acadf="Academic / institute certificate (PDF or photo, optional)",
@@ -62,6 +71,15 @@ T = {
         age="อายุ (ปี)", exp="ประสบการณ์ในงานลักษณะนี้ (ปี)",
         pval="มูลค่าโครงการที่ใหญ่ที่สุดที่เคยทำเสร็จ (บาท)",
         ptot="มูลค่ารวมของโครงการในช่วง 3 ปีที่ผ่านมา (บาท โดยประมาณ)",
+        inst="จำนวนระบบโซลาร์ที่ติดตั้งในช่วง 3 ปีที่ผ่านมา (ระบบ)", kwp="ระบบโซลาร์ที่ใหญ่ที่สุดที่เคยติดตั้ง (kWp)",
+        team="ทีมงาน: จำนวนช่างที่มาทำงาน (คน)", wah="ในจำนวนนี้ มีใบรับรองการทำงานบนที่สูง (คน)",
+        km="ระยะทางจากที่ตั้งของคุณถึงหน้างาน (กม. โดยประมาณ)",
+        lic="ใบอนุญาตด้านไฟฟ้าสูงสุดในทีม", lic_o=[("none","ไม่มี"),("l1","ช่างไฟฟ้าภายในอาคาร ระดับ 1"),("l2","ช่างไฟฟ้าภายในอาคาร ระดับ 2 ขึ้นไป"),("engineer","วิศวกรไฟฟ้า (กว.)")],
+        test="แบบทดสอบช่างติดตั้งของ Solar ESS ที่ผ่าน (ระดับสูงสุด)", test_o=[("0","ยังไม่ได้สอบ"),("1","ระดับ 1"),("2","ระดับ 2"),("3","ระดับ 3"),("4","ระดับ 4"),("5","ระดับ 5")],
+        p5="5. ผลงานและเครื่องมือของคุณ (เลือกได้หลายข้อ)",
+        jt="งานที่เคยทำ", jt_o=[("rooftop","โซลาร์บนหลังคา ออนกริด"),("hybrid","ไฮบริดพร้อมแบตเตอรี่"),("offgrid","ออฟกริด"),("ground","ติดตั้งบนพื้น / โรงจอดรถ"),("ev","ที่ชาร์จรถ EV"),("cleaning","ล้างแผงและบำรุงรักษา"),("fault","ตรวจหาปัญหา / ระบบติดตาม")],
+        tl="เครื่องมือที่มี", tl_o=[("insulation","เครื่องวัดฉนวน (Insulation tester)"),("clamp","แคลมป์มิเตอร์ DC"),("ivcurve","เครื่องวัด I-V curve"),("thermal","กล้องถ่ายภาพความร้อน"),("mc4","คีมย้ำหัว MC4"),("height","นั่งร้าน / ชุดเข็มขัดนิรภัย"),("welder","เครื่องเชื่อม")],
+        ins="ทีมของเรามีประกันอุบัติเหตุ / ประกันความรับผิดของตนเอง",
         p3="3. ใบรับรอง",
         acad="สถาบันการศึกษา: วุฒิการศึกษาและสถาบัน (เช่น ปวช. ไฟฟ้ากำลัง วิทยาลัยเทคนิคเชียงราย) หากไม่มีให้เขียนว่า “ไม่มี”",
         acadf="ใบรับรองวุฒิการศึกษา/สถาบัน (PDF หรือรูปถ่าย ไม่บังคับ)",
@@ -84,8 +102,17 @@ CSS = """<style id="jcand-css">
 .jcand{border:1.5px solid rgba(165,180,252,.55);border-radius:12px;padding:14px 14px 6px;margin:6px 0 4px;display:grid;gap:10px;background:rgba(91,91,214,.10);min-width:0}
 .jcand legend{padding:0 8px;font-weight:700;color:#C7D2FE!important;font-size:16px}
 .jcand .fine{margin:0;opacity:.85}
-.jcand input,.jcand textarea{width:100%;min-width:0;box-sizing:border-box}
+.jcand input:not([type=checkbox]),.jcand textarea,.jcand select{width:100%;min-width:0;box-sizing:border-box}
+.jchk{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:4px 14px}.jchk .chk{margin:0}
 </style>"""
+
+
+def opts(o):
+    return "".join(f'<option value="{v}">{l}</option>' for v, l in o)
+
+
+def chks(prefix, o):
+    return "".join(f'<label class="chk"><input type="checkbox" name="{prefix}-{v}" value="yes"><span>{l}</span></label>' for v, l in o)
 
 
 def block1(t):
@@ -102,7 +129,19 @@ def block2(t):
             f'<label for="j-exp">{t["exp"]}<input id="j-exp" name="experience-years" type="number" min="0" max="60" step="0.5" inputmode="decimal" required></label></div>'
             f'<div class="jp2"><label for="j-pval">{t["pval"]}<input id="j-pval" name="largest-project-value" inputmode="numeric" required placeholder="e.g. 350000"></label>'
             f'<label for="j-ptot">{t["ptot"]}<input id="j-ptot" name="total-project-value-3y" inputmode="numeric" placeholder="e.g. 2000000"></label></div>'
+            f'<div class="jp2"><label for="j-inst">{t["inst"]}<input id="j-inst" name="installs-completed" type="number" min="0" inputmode="numeric" required></label>'
+            f'<label for="j-kwp">{t["kwp"]}<input id="j-kwp" name="largest-system-kwp" type="number" min="0" step="0.1" inputmode="decimal" required></label></div>'
+            f'<div class="jp2"><label for="j-team">{t["team"]}<input id="j-team" name="team-size" type="number" min="1" inputmode="numeric" required></label>'
+            f'<label for="j-wah">{t["wah"]}<input id="j-wah" name="wah-workers" type="number" min="0" inputmode="numeric" required></label></div>'
+            f'<div class="jp2"><label for="j-lic">{t["lic"]}<select id="j-lic" name="electrician-level" required>{opts(t["lic_o"])}</select></label>'
+            f'<label for="j-test">{t["test"]}<select id="j-test" name="solar-test-level" required>{opts(t["test_o"])}</select></label></div>'
+            f'<label for="j-km">{t["km"]}<input id="j-km" name="distance-km" type="number" min="0" inputmode="numeric" required></label>'
             f'</fieldset><!--/jcand2-->'
+            f'<!--jcand5--><fieldset class="jcand" id="j-done"><legend>{t["p5"]}</legend>'
+            f'<p class="fine"><b>{t["jt"]}</b></p><div class="jchk">{chks("jt", t["jt_o"])}</div>'
+            f'<p class="fine"><b>{t["tl"]}</b></p><div class="jchk">{chks("tl", t["tl_o"])}</div>'
+            f'<label class="chk"><input type="checkbox" name="ins-own" value="yes"><span>{t["ins"]}</span></label>'
+            f'</fieldset><!--/jcand5-->'
             f'<!--jcand3--><fieldset class="jcand" id="j-certs"><legend>{t["p3"]}</legend>'
             f'<label for="j-acad">{t["acad"]}<input id="j-acad" name="academic-certificate" required></label>'
             f'<label for="j-acadf">{t["acadf"]}<input id="j-acadf" name="certificate" type="file" accept=".pdf,.jpg,.jpeg,.png,.webp"></label>'
@@ -141,8 +180,8 @@ def run(path, lang):
     # lede above the form
     s = re.sub(r'(<section class="band dark" id="apply".*?<p class="lede" style="margin-top:18px">).*?(</p>)',
                lambda m: m.group(1) + t["lede"] + m.group(2), s, count=1, flags=re.S)
-    if 'id="jcand-css"' not in s:
-        s = s.replace("</head>", CSS + "\n</head>", 1)
+    s = re.sub(r'<style id="jcand-css">.*?</style>\n?', '', s, flags=re.S)
+    s = s.replace("</head>", CSS + "\n</head>", 1)
     path.write_text(s, encoding="utf-8")
     print("updated", path.relative_to(ROOT))
 

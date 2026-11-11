@@ -16,10 +16,17 @@ sys.path.insert(0, str(ROOT / "tools"))
 os.chdir(ROOT)
 from service_pages import CSS as SVC_CSS, hero, section  # noqa: E402
 
-SRC = ROOT / "tools" / "design_src"
+SRC = Path(os.environ.get("DESIGN_SRC", str(ROOT / "tools" / "design_src")))
 SUF = "_Rev01_20261111.jpg"
 PHOTOS = ["design-equipment-frame-front", "design-equipment-frame-rear", "design-ground-mount-section",
           "design-ground-mount-array", "design-screw-piles-underside", "design-ground-mount-corner"]
+OUT = ["design-outdoor-site-layout", "design-outdoor-array-beside-buildings", "design-outdoor-screw-pile-array", "design-outdoor-a-frame",
+       "design-outdoor-field-pavilion", "design-outdoor-concrete-block-table", "design-outdoor-rock-anchor-footing", "design-outdoor-rooftop-canopy",
+       "design-outdoor-ground-frame-3d", "design-outdoor-ground-frame-side", "design-outdoor-garden-built"]
+# originals (Pictures/3 Company & Marketing/Design), in OUT order, for re-watermarking from $DESIGN_SRC/outdoor/
+OUT_SRC = ["M AVA C YONG01_0.jpg", "M AVA C YONG07_0.jpg", "โซล่าฟาร์ม V8-02_0.jpg", "ขาเหล็กทรง A วางแผงโซล่าร์เซลล์ 4 แผง007_0.jpg", "เถียงนา 03_0.jpg",
+           "งานโครงสร้างวางแผ่น7 แผ่น09_0.jpg", "S__6086662_0.jpg", "LINE_ALBUM_Design_260208_4.jpg", "S__6668298_0.jpg", "S__6668300_0.jpg",
+           "LINE_ALBUM_Design_260615_2.jpg"]
 FONT = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
 
 
@@ -72,6 +79,18 @@ L = {
         ("Ground-mount array layout", "A 17.60 m × 16.60 m field with frames every 3.32 m and purlin rows 2.10 m apart. One row of four panels (7.16 m) is shown; column heights step from 0.50 m to 1.06 m to give the tilt."),
         ("Screw piles, no concrete", "Every column stands on a screw pile with a bolted base plate: fast to install, no concrete footings to cast, and adjustable to uneven ground."),
         ("Corner detail", "Panels clamped on the purlins, the purlins on the rafters and the columns bolted to the pile plates: the full load path from panel to ground.")],
+  g3="Outdoor designs: ground mounts, frames and footings",
+  caps3=[("Site layout on a drone photo", "Buildings, the ground-mount array and north drawn over an aerial photo of the land, so the array goes where it gets sun and stays out of the way."),
+         ("Ground arrays beside the buildings", "A 3D model of the same kind of site: rows of panels on steel frames next to the houses, checked for shade and walkways before anything is built."),
+         ("Ground mount on screw piles", "A large array on Y-shaped columns set on screw piles: no concrete footings, quick to install on open land."),
+         ("A-frame stand for 4 panels", "A simple steel A-frame that holds four panels at a fixed tilt. Easy to build and move on a garden or field."),
+         ("Panels beside a field pavilion", "A row of panels on a low frame in front of a farm pavilion, giving power where there is no grid line nearby."),
+         ("Panel table on concrete blocks", "Seven panels on a single-post frame standing on precast concrete blocks: no digging, good for leased or rocky ground."),
+         ("Footing on solid rock", "Where the ground is rock, posts are bolted to a galvanised base plate with stainless steel stud bolts set 20 cm into the rock with epoxy resin and non-shrink grout."),
+         ("Canopy along a roof parapet", "A raised canopy along the edge of a flat roof: panels above head height, so the roof can still be used underneath."),
+         ("Ground frame on blocks, 3D", "A welded 2-inch box-steel frame resting on concrete blocks, drawn at 1:10 for the welder."),
+         ("Side view with dimensions", "The same frame from the side: 2.50 m panel rail, 1.90 m base, 0.30 m front and 0.92 m back legs, with a middle brace."),
+         ("From design to a built system", "A ground-mounted array finished in a hillside garden, following this kind of drawing.")],
   sh="How the free design works",
   steps=["Send your bill, roof or land photos and location (approximate is fine).",
          "We size the system to your use and draw the layout, structure and equipment wall.",
@@ -93,6 +112,18 @@ L = {
         ("ผังแผงบนพื้นที่", "พื้นที่ 17.60 × 16.60 ม. โครงทุก 3.32 ม. แนวแปห่างกัน 2.10 ม. ภาพแสดงแผง 4 แผงหนึ่งแถว (7.16 ม.) ความสูงเสาไล่จาก 0.50 ถึง 1.06 ม. เพื่อให้ได้มุมเอียง"),
         ("เสาเข็มเกลียว ไม่ต้องเทคอนกรีต", "เสาทุกต้นตั้งบนเสาเข็มเกลียวพร้อมเพลทยึดน็อต ติดตั้งเร็ว ไม่ต้องหล่อฐานคอนกรีต และปรับระดับตามพื้นที่ไม่เรียบได้"),
         ("รายละเอียดมุมโครงสร้าง", "แผงยึดบนแป แปวางบนจันทัน และเสายึดน็อตกับเพลทเสาเข็ม: เส้นทางรับน้ำหนักครบตั้งแต่แผงลงถึงพื้น")],
+  g3="งานออกแบบกลางแจ้ง: ติดตั้งบนพื้น โครงเหล็ก และฐานราก",
+  caps3=[("ผังพื้นที่บนภาพโดรน", "วางตำแหน่งอาคาร แผงบนพื้น และทิศเหนือบนภาพถ่ายทางอากาศของที่ดิน ให้แผงรับแดดเต็มที่และไม่กีดขวางทางสัญจร"),
+         ("แผงบนพื้นข้างอาคาร", "โมเดล 3 มิติของพื้นที่ลักษณะเดียวกัน แถวแผงบนโครงเหล็กข้างบ้านพัก ตรวจเงาและทางเดินก่อนเริ่มก่อสร้าง"),
+         ("ติดตั้งบนพื้นด้วยเสาเข็มเกลียว", "แผงขนาดใหญ่บนเสาทรง Y ตั้งบนเสาเข็มเกลียว ไม่ต้องเทฐานคอนกรีต ติดตั้งได้เร็วบนพื้นที่โล่ง"),
+         ("ขาเหล็กทรง A สำหรับ 4 แผง", "โครงเหล็กทรง A แบบง่าย รองรับแผง 4 แผงที่มุมเอียงคงที่ สร้างง่ายและย้ายได้ในสวนหรือไร่"),
+         ("แผงข้างเถียงนา", "แผงหนึ่งแถวบนโครงเตี้ยหน้าเถียงนา ผลิตไฟใช้ในจุดที่ไม่มีสายไฟฟ้าเข้าถึง"),
+         ("โต๊ะวางแผงบนแท่งคอนกรีต", "แผง 7 แผงบนโครงเสาเดี่ยว ตั้งบนแท่งคอนกรีตสำเร็จรูป ไม่ต้องขุดดิน เหมาะกับพื้นที่เช่าหรือพื้นหิน"),
+         ("ฐานรากบนหินแข็ง", "พื้นที่เป็นหิน ยึดเสากับเพลทเหล็กชุบกัลวาไนซ์ด้วยสตัดสแตนเลส ฝังลึก 20 ซม. ในหินด้วยอีพ็อกซีและปูนนอนชริ้งค์"),
+         ("หลังคาแผงตามแนวขอบดาดฟ้า", "โครงยกสูงตามขอบหลังคาดาดฟ้า แผงอยู่สูงเหนือศีรษะ ใช้พื้นที่ด้านล่างได้ตามปกติ"),
+         ("โครงวางบนพื้นบนแท่งคอนกรีต 3 มิติ", "โครงเหล็กกล่อง 2 นิ้วเชื่อม วางบนแท่งคอนกรีต แบบมาตราส่วน 1:10 สำหรับช่างเชื่อม"),
+         ("ด้านข้างพร้อมขนาด", "โครงเดียวกันจากด้านข้าง: รางแผงยาว 2.50 ม. ฐาน 1.90 ม. ขาหน้า 0.30 ม. ขาหลัง 0.92 ม. และค้ำกลาง"),
+         ("จากแบบสู่ระบบจริง", "แผงติดตั้งบนพื้นในสวนบนเนินเขา สร้างจากแบบลักษณะนี้")],
   sh="ขั้นตอนการออกแบบฟรี",
   steps=["ส่งบิลค่าไฟ ภาพหลังคาหรือพื้นที่ และตำแหน่งโดยประมาณ",
          "เราคำนวณขนาดระบบตามการใช้ไฟ และออกแบบผังแผง โครงสร้าง และโครงติดตั้งอุปกรณ์",
@@ -109,8 +140,14 @@ def gallery(t):
         src = f"/images/{PHOTOS[i]}{SUF}"
         return (f'<figure id="{PHOTOS[i]}"><a href="{src}" target="_blank" rel="noopener"><img src="{src}" alt="{a}" width="1559" height="920" loading="lazy" decoding="async"></a>'
                 f'<figcaption><b>{a}</b><span>{b}</span></figcaption></figure>')
+    def fig3(i):
+        a, b = t["caps3"][i]
+        src = f"/images/{OUT[i]}{SUF}"
+        return (f'<figure id="{OUT[i]}"><a href="{src}" target="_blank" rel="noopener"><img src="{src}" alt="{a}" width="1600" height="960" loading="lazy" decoding="async"></a>'
+                f'<figcaption><b>{a}</b><span>{b}</span></figcaption></figure>')
     return (f'<h3 class="pdgrp">{t["g1"]}</h3><div class="pdgal">{fig(0)}{fig(1)}</div>'
-            f'<h3 class="pdgrp">{t["g2"]}</h3><div class="pdgal">{"".join(fig(i) for i in range(2, 6))}</div>')
+            f'<h3 class="pdgrp">{t["g2"]}</h3><div class="pdgal">{"".join(fig(i) for i in range(2, 6))}</div>'
+            f'<h3 class="pdgrp" id="outdoor">{t["g3"]}</h3><div class="pdgal">{"".join(fig3(i) for i in range(len(OUT)))}</div>')
 
 
 def body(t):
@@ -156,4 +193,8 @@ if __name__ == "__main__":
             s = SRC / f"{i + 1}.jpg"
             if s.exists():
                 watermark(s, ROOT / "images" / f"{name}{SUF}")
+        o = SRC / "outdoor"
+        for name, src in zip(OUT, OUT_SRC):
+            if (o / src).exists():
+                watermark(o / src, ROOT / "images" / f"{name}{SUF}")
     build("en"); build("th")

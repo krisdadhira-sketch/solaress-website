@@ -10,13 +10,13 @@ ROOT = Path(__file__).resolve().parents[1]
 IND = ''  # all dropdown items at the same level
 M = {
  "en": [("/system-check.html", "Free System Check", 0), ("/?free=consultation#consult", "Free Consultation", 0), ("/?free=quotation#consult", "Free Quotation", 0),
-        ("/?free=design#consult", "Free Plant Design", 0), ("/package.html", "Solar Package", 0), ("/quotation.html", "Quotation", 1), ("/ev.html", "EV Charger", 0),
+        ("/design.html", "Free Plant Design", 0), ("/package.html", "Solar Package", 0), ("/quotation.html", "Quotation", 1), ("/ev.html", "EV Charger", 0),
         ("/maintenance.html", "Preventive Maintenance", 0), ("/faq.html", "FAQ", 1), ("/care.html", "Solar ESS Care", 0)],
  "th": [("/th/system-check.html", "ตรวจระบบฟรี", 0), ("/th/?free=consultation#consult", "ปรึกษาฟรี", 0), ("/th/?free=quotation#consult", "ใบเสนอราคาฟรี", 0),
-        ("/th/?free=design#consult", "ออกแบบระบบฟรี", 0), ("/th/package.html", "แพ็กเกจโซลาร์", 0), ("/th/quotation.html", "ใบเสนอราคา", 1), ("/th/ev.html", "ที่ชาร์จรถ EV", 0),
+        ("/th/design.html", "ออกแบบระบบฟรี", 0), ("/th/package.html", "แพ็กเกจโซลาร์", 0), ("/th/quotation.html", "ใบเสนอราคา", 1), ("/th/ev.html", "ที่ชาร์จรถ EV", 0),
         ("/th/maintenance.html", "บำรุงรักษาเชิงป้องกัน", 0), ("/th/faq.html", "คำถามที่พบบ่อย", 1), ("/th/care.html", "Solar ESS Care", 0)],
  "zh": [("/system-check.html", "免费系统检查（英文）", 0), ("/zh/?free=consultation#consult", "免费咨询", 0), ("/zh/?free=quotation#consult", "免费报价", 0),
-        ("/zh/?free=design#consult", "免费系统设计", 0), ("/package.html", "太阳能套餐（英文）", 0), ("/zh/quotation.html", "报价单", 1), ("/ev.html", "电动车充电（英文）", 0),
+        ("/design.html", "免费系统设计（英文）", 0), ("/package.html", "太阳能套餐（英文）", 0), ("/zh/quotation.html", "报价单", 1), ("/ev.html", "电动车充电（英文）", 0),
         ("/maintenance.html", "预防性维护（英文）", 0), ("/zh/faq.html", "常见问题", 1), ("/zh/care.html", "Solar ESS Care", 0)],
 }
 DD = re.compile(r'(<a href="(?:/th/|/zh/|/)#projects">)([^<]*)(</a><span class="ddm">)(.*?)(</span>)', re.S)

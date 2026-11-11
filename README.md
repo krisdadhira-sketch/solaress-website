@@ -156,3 +156,7 @@ The Free System Check pages show a real, anonymised report (6.48 kWp hybrid + 16
 - `netlify/functions/candidates/score.mjs`: candidate score 0–100 (`jobScore`, weights in `MAX`) and per-job ranking (`rankJob`): 80% candidate score + 20% price (cheapest labour-only price for that job = 100) + optional AI adjustment −5…+5. Tiers: Top pick (top 3, rank ≥ 55, ID/address/company present), Still in the running (rank ≥ 40, or top 5 with ≥ 30), Not now.
 - `/api/candidates` (admin password): `list` groups job applications from the inbox by job and ranks them; `set` marks contacted/declined; `ai` asks Claude to read up to 8 new written proposals (needs `ANTHROPIC_API_KEY` in Netlify; model `CANDIDATES_AI_MODEL`, default claude-haiku-5-5).
 - Admin page **/candidates-admin.html** (also in /admin): opens on "Top picks only"; Call / Contacted / Decline buttons per candidate.
+
+## Free Plant Design (/design.html, /th/design.html, Nov 2026)
+
+Services > Free Plant Design now opens its own page: real design drawings (equipment frame front/rear, ground-mount section, array layout, screw piles, corner detail) with a short description each, the 4 steps, and a button to the consultation form with "Free Plant Design" preselected (`/?free=design#consult`). Build: `python3 tools/plant_design_page.py` (watermarks originals placed in `tools/design_src/1..6.jpg` into `images/design-*_Rev01_20261111.jpg`), then the post-processors in its docstring.

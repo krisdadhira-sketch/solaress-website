@@ -478,4 +478,18 @@
     <xhtml:link rel="alternate" hreflang="th" href="https://solaress.org/th/ongoing"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://solaress.org/ongoing"/>
   </url>
-<url><loc>https://solaress.org/contract</loc></url><url><loc>https://solaress.org/th/contract</loc></url></urlset>
+<url><loc>https://solaress.org/contract</loc></url><url><loc>https://solaress.org/th/contract</loc></url>  <url>
+    <loc>https://solaress.org/design</loc>
+    <lastmod>2026-11-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://solaress.org/design"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://solaress.org/th/design"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://solaress.org/design"/>
+  </url>
+  <url>
+    <loc>https://solaress.org/th/design</loc>
+    <lastmod>2026-11-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://solaress.org/design"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://solaress.org/th/design"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://solaress.org/design"/>
+  </url>
+</urlset>

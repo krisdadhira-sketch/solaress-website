@@ -131,3 +131,9 @@ Audit: axe-core (WCAG 2 A/AA) on 14 key pages went from about 2,400 contrast fai
 
 - Newest job first, closed jobs last, in both lists of `job.html` and `th/job.html`. Every card has `data-posted="YYYY-MM-DD"` (first published) shown as "Posted 9 Nov 2026" / "ลงประกาศ 9 พ.ย. 2569" in its kind line.
 - When adding a job: give the new `<article>` a `data-posted` with today's date, then run `python3 tools/job_order.py` (idempotent), then `tools/build_share.py`.
+
+## Job application: candidate information and score (Nov 2026)
+
+- Every job application (`job-application`, /job.html#apply and /th/job.html#apply) asks for 4 parts: 1) personal information (name and last name, contact address, phone, ID card upload, company name), 2) numbers (age, years of experience in this job, largest project value, 3-year project value), 3) certificates (academic/institute and product, name required, file optional), 4) references (a person and a company), plus a PDPA consent box. Form text: `tools/job_candidate_form.py` (idempotent; run after `tools/job_apply_box.py`, then `tools/form_ink.py` and `tools/accessibility.py`).
+- `jobScore()` in `netlify/functions/submission-created.mjs` adds `candidate-score` (out of 100) and `score-breakdown` to each application in the inbox: experience 30, largest project 25, 3-year value 10, academic 15, product 10, references 10. Age is an eligibility check only (18+). ≥ 60 with ID card, address and company = "Qualified – send contract"; 40–59 = Review. The score shows as a coloured ★ badge in /inbox-admin.html.
+- ID cards and personal details stay in the private inbox (Blobs store `inbox`) and are never published.

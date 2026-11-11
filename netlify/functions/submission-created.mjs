@@ -132,8 +132,47 @@ async function saveInbox(p) {
     }
     data[k] = v;
   }
+  if (p.form_name === "job-application") {
+    try { Object.assign(data, jobScore(data, files)); } catch { /* score is a helper only */ }
+  }
   await store.setJSON("sub/" + id, {
     id, form: p.form_name, status: "new", note: "",
     created: p.created_at || new Date().toISOString(), data, files,
   });
+}
+
+// Candidate score for job applications (Nov 2026), out of 100, shown in the inbox admin so Kris can pick
+// the best candidate per job. Age is an eligibility check only (18+), not scored.
+//   Experience in this job: 3 points/year, max 30          Largest completed project: 0 at 10k THB → 25 at 1M THB (log)
+//   Project value, last 3 years: 0 at 100k → 10 at 10M (log) Academic/institute: 10 named + 5 file
+//   Product certificate: 8 named + 2 file                   References: person 5, company 5 (full only with a phone no.)
+// ≥ 60 Qualified (send contract) · 40–59 Review · < 40 Not yet.
+export function jobScore(d, files = []) {
+  const num = (v) => { const n = parseFloat(String(v ?? "").replace(/[^0-9.]/g, "")); return isFinite(n) ? n : 0; };
+  const none = (v) => !String(v ?? "").trim() || /^(none|no|n\/a|-|ไม่มี|ไม่|ไม่มีครับ|ไม่มีค่ะ)$/i.test(String(v).trim());
+  const has = (f) => files.some((x) => x.field === f) || (d[f] && typeof d[f] === "object");
+  const lg = (v, lo, hi) => (v <= lo ? 0 : Math.min(1, Math.log10(v / lo) / Math.log10(hi / lo)));
+  const ref = (v) => (none(v) ? 0 : /\d{9,}/.test(String(v).replace(/[\s-]/g, "")) ? 5 : 3);
+  const age = num(d.age);
+  const parts = {
+    experience: Math.round(Math.min(num(d["experience-years"]), 10) * 3),
+    "largest-project": Math.round(25 * lg(num(d["largest-project-value"]), 10000, 1000000)),
+    "project-value-3y": Math.round(10 * lg(num(d["total-project-value-3y"]), 100000, 10000000)),
+    academic: (none(d["academic-certificate"]) ? 0 : 10) + (has("certificate") ? 5 : 0),
+    product: (none(d["product-certificate"]) ? 0 : 8) + (has("product-certificate-file") ? 2 : 0),
+    references: ref(d["reference-person"]) + ref(d["reference-company"]),
+  };
+  const total = Object.values(parts).reduce((a, b) => a + b, 0);
+  const missing = [];
+  if (!has("id-card")) missing.push("ID card");
+  if (!String(d["contact-address"] || "").trim()) missing.push("address");
+  if (!String(d["company-name"] || "").trim()) missing.push("company");
+  const eligible = age >= 18;
+  const verdict = !eligible ? "Not eligible (under 18 or age missing)"
+    : total >= 60 && !missing.length ? "Qualified – send contract"
+    : total >= 40 ? "Review" : "Not yet";
+  return {
+    "candidate-score": `${total}/100 – ${verdict}`,
+    "score-breakdown": Object.entries(parts).map(([k, v]) => `${k} ${v}`).join(", ") + (missing.length ? ` · missing: ${missing.join(", ")}` : ""),
+  };
 }

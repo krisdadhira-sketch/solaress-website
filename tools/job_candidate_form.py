@@ -19,7 +19,8 @@ T = {
               "<b>2) your numbers</b> (age, years of experience in this job, project values), <b>3) certificates</b> "
               "(academic/institute and product) and <b>4) references</b> (a person and a company). We score every application on "
               "these answers to shortlist the best candidate for each job, then send the qualified candidate our contract. "
-              "We read every application and reply to shortlisted candidates."),
+              "We read every application and reply to shortlisted candidates. "
+              '<a href="/contract.html" style="color:#fff;text-decoration:underline">Read the installer hiring contract</a> (read only).'),
         p1="1. Personal information",
         addr="Contact address (house no., road, sub-district, district, province)",
         company="Name of company (write “Individual” if you work on your own)",
@@ -50,7 +51,8 @@ T = {
         lede=("การสมัครงานต้องกรอกข้อมูล 4 ส่วน: <b>1) ข้อมูลส่วนตัว</b> (ชื่อ ที่อยู่ เบอร์โทร บัตรประชาชน ชื่อบริษัท) "
               "<b>2) ข้อมูลตัวเลข</b> (อายุ ประสบการณ์ในงานนี้ มูลค่าโครงการ) <b>3) ใบรับรอง</b> (สถาบันการศึกษา และใบรับรองผลิตภัณฑ์) "
               "และ <b>4) บุคคล/บริษัทอ้างอิง</b> เราให้คะแนนใบสมัครทุกใบจากข้อมูลเหล่านี้เพื่อคัดเลือกผู้สมัครที่เหมาะสมที่สุดในแต่ละงาน "
-              "แล้วส่งสัญญาให้ผู้ที่ผ่านการคัดเลือก เราอ่านทุกใบสมัครและติดต่อกลับผู้ที่ผ่านการคัดเลือกเบื้องต้น"),
+              "แล้วส่งสัญญาให้ผู้ที่ผ่านการคัดเลือก เราอ่านทุกใบสมัครและติดต่อกลับผู้ที่ผ่านการคัดเลือกเบื้องต้น "
+              '<a href="/th/contract.html" style="color:#fff;text-decoration:underline">อ่านสัญญาจ้างช่างติดตั้ง</a> (อ่านได้อย่างเดียว)'),
         p1="1. ข้อมูลส่วนตัว",
         addr="ที่อยู่ติดต่อ (บ้านเลขที่ ถนน ตำบล อำเภอ จังหวัด)",
         company="ชื่อบริษัท (หากทำงานอิสระ ให้เขียนว่า “บุคคลธรรมดา”)",

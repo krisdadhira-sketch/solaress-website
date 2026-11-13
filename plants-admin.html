@@ -75,6 +75,11 @@ main#main:focus{outline:0}
 #t{font-size:13.5px}#t td,#t th{white-space:nowrap}#t td:first-child{width:auto}#t code{font-family:ui-monospace,Menlo,Consolas,monospace;color:var(--navy);font-weight:700}
 .tag{display:inline-block;font-size:11px;border-radius:6px;padding:1px 6px;background:#EEF2FF;color:var(--violet)}.tag.g{background:#F1F5F9;color:var(--mute)}
 main{max-width:1280px}
+.gen{background:#fff;border:1px solid var(--line);border-left:5px solid var(--violet);border-radius:14px;padding:16px 20px;margin:0 0 16px}
+.gen h2{margin:0 0 4px;font-size:19px}.gen .g{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px 14px;margin:12px 0}
+.gen label{font-size:12.5px;color:var(--mute);display:block}.gen input,.gen select{width:100%;padding:8px 10px;border:1.5px solid var(--line);border-radius:9px;font:inherit;color:#000;background:#fff}
+.gen .out{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.gen .code{font:700 24px ui-monospace,Menlo,Consolas,monospace;color:var(--navy);background:#EEF2FF;border-radius:10px;padding:6px 14px;min-width:220px}
+.del{background:#fff;color:var(--no);border:1px solid var(--line);padding:2px 8px;font-size:12px;border-radius:7px}
 </style>
 </head>
 <body><!--skip--><a class="skip" href="#main">Skip to content</a><!--/skip-->
@@ -83,8 +88,23 @@ main{max-width:1280px}
 <div class="login" id="login" hidden><h2 style="margin-top:0">Solar ESS Admin</h2><p class="meta">Same password as all admin pages.</p><form id="lf"><input type="password" id="pw" placeholder="Admin password" autocomplete="current-password"><button type="submit" style="width:100%">Sign in</button></form><p class="err" id="lerr"></p></div>
 <div id="app" hidden>
 <div class="hero"><p class="eyebrow">Private · Monthly Report reference</p><h1>Plant code register</h1><p>Which plant each public code stands for. The public list on the <a href="/technical-notes.html#plant-codes" style="color:#C7D2FE">Monthly Report</a> shows codes only. Format <b>[Platform][Type]-[Postcode]-[Inverter kW]-[No.]</b> · S SolisCloud, D DeyeCloud, H Huawei, E SolarEdge, N Enphase, A ATMOCE · G grid-tied, H hybrid with battery, O off-grid.</p><div class="kpis" id="k"></div></div>
+<div class="gen"><h2>Generate a new plant code</h2><p class="meta" style="margin:0">Fill in the plant. The next free number is worked out from the register, and <b>Save</b> adds the plant to this register.</p>
+<form id="gf"><div class="g">
+<div><label>Platform</label><select id="g-pf"><option value="S">S · SolisCloud</option><option value="D">D · DeyeCloud</option><option value="H">H · Huawei FusionSolar</option><option value="E">E · SolarEdge</option><option value="N">N · Enphase</option><option value="A">A · ATMOCE</option></select></div>
+<div><label>Type</label><select id="g-ty"><option value="H">H · Hybrid with battery</option><option value="G">G · Grid-tied, no battery</option><option value="O">O · Off-grid</option></select></div>
+<div><label>Postcode (or LAVTE / MMSHN…)</label><input id="g-pc" maxlength="5" placeholder="57100" required></div>
+<div><label>Inverter size (kW, total)</label><input id="g-kw" type="number" min="1" step="1" placeholder="10" required></div>
+<div><label>Plant name (private)</label><input id="g-nm" placeholder="Customer / site name" required></div>
+<div><label>Platform plant / station ID</label><input id="g-id" placeholder="e.g. 61172006"></div>
+<div><label>Area (subdistrict, district)</label><input id="g-ar" placeholder="Ban Du, Mueang Chiang Rai"></div>
+<div><label>Province</label><input id="g-pv" placeholder="Chiang Rai"></div>
+<div><label>PV (kWp)</label><input id="g-kwp" type="number" step="0.01" min="0"></div>
+<div><label>Inverter model</label><input id="g-md" placeholder="e.g. SUN-10K-SG04LP3"></div>
+<div><label>Phase</label><select id="g-ph"><option value="">–</option><option value="1P">1-phase</option><option value="3P">3-phase</option></select></div>
+<div><label>Commissioned (dd/mm/yyyy)</label><input id="g-cd" placeholder="13/11/2026"></div>
+</div><div class="out"><span class="code" id="g-code">–</span><button type="submit">Save to register</button><button type="button" id="g-cp" style="background:#fff;color:var(--ink);border:1.5px solid var(--line)">Copy code</button><span class="meta" id="g-msg"></span></div></form></div>
 <div class="tools"><input id="q" type="search" placeholder="Search code, plant name, province, postcode, inverter…"><button type="button" id="csv">Download CSV</button><button type="button" id="pr" style="background:#fff;color:var(--ink);border:1.5px solid var(--line)">Print</button></div>
-<div class="wrap"><table id="t"><thead><tr><th>Code</th><th>Plant name</th><th>SolisCloud plant ID</th><th>Area</th><th>Province</th><th>PV kWp</th><th>Inverter</th><th>Battery</th><th>Commissioned</th><th>Access</th></tr></thead><tbody></tbody></table></div>
+<div class="wrap"><table id="t"><thead><tr><th>Code</th><th>Plant name</th><th>SolisCloud plant ID</th><th>Area</th><th>Province</th><th>PV kWp</th><th>Inverter</th><th>Battery</th><th>Commissioned</th><th>Access</th><th></th></tr></thead><tbody></tbody></table></div>
 <p class="meta foot" id="up"></p>
 </div>
 </main>
@@ -92,17 +112,24 @@ main{max-width:1280px}
 (function(){var $=function(i){return document.getElementById(i)},PW='',D=[];try{PW=sessionStorage.getItem('members-admin-pw')||''}catch(e){}
 function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 function render(){var q=$('q').value.trim().toLowerCase(),h='';D.forEach(function(r){var line=[r.code,r.name,r.plant_id,r.area,r.province,r.postcode,r.inverter_model].join(' ').toLowerCase();if(q&&line.indexOf(q)<0)return;
- h+='<tr><td><code>'+esc(r.code)+'</code></td><td>'+esc(r.name)+'</td><td><a href="https://www.soliscloud.com/overview/plantStation/details/overview/'+esc(r.station_id)+'" target="_blank" rel="noopener">'+esc(r.plant_id)+' ↗</a></td><td>'+esc(r.area)+' '+esc(r.postcode)+'</td><td>'+esc(r.province)+'</td><td>'+r.pv_kwp+'</td><td>'+esc(r.inverter_model)+' <span class="tag g">'+r.inv_kw+' kW '+esc(r.phase)+'</span></td><td>'+(r.battery?'<span class="tag">Yes</span>':'<span class="tag g">No</span>')+'</td><td>'+esc(r.commissioned)+'</td><td>'+(r.access==='guest'?'<span class="tag g" title="Shared to Solar ESS as guest; model read from serial number">guest</span>':'owner')+'</td></tr>'});
- $('t').tBodies[0].innerHTML=h||'<tr><td colspan="10">No match.</td></tr>'}
+ h+='<tr><td><code>'+esc(r.code)+'</code></td><td>'+esc(r.name)+'</td><td><a href="https://www.soliscloud.com/overview/plantStation/details/overview/'+esc(r.station_id)+'" target="_blank" rel="noopener">'+esc(r.plant_id)+' ↗</a></td><td>'+esc(r.area)+' '+esc(r.postcode)+'</td><td>'+esc(r.province)+'</td><td>'+r.pv_kwp+'</td><td>'+esc(r.inverter_model)+' <span class="tag g">'+r.inv_kw+' kW '+esc(r.phase)+'</span></td><td>'+(r.battery?'<span class="tag">Yes</span>':'<span class="tag g">No</span>')+'</td><td>'+esc(r.commissioned)+'</td><td>'+(r.access==='guest'?'<span class="tag g" title="Shared to Solar ESS as guest; model read from serial number">guest</span>':'owner')+'</td><td>'+(r.source==='admin'?'<button class="del" data-c="'+esc(r.code)+'">Remove</button>':'')+'</td></tr>'});
+ $('t').tBodies[0].innerHTML=h||'<tr><td colspan="11">No match.</td></tr>'}
 function load(){fetch('/api/docs?a=plants',{headers:{'x-admin-password':PW}}).then(function(r){if(r.status===401)throw new Error('401');if(!r.ok)throw new Error(r.status);return r.json()}).then(function(j){try{sessionStorage.setItem('members-admin-pw',PW)}catch(e){}
  D=j.items||[];var kwp=D.reduce(function(a,r){return a+r.pv_kwp},0),b=D.filter(function(r){return r.battery}).length,g=D.filter(function(r){return r.access==='guest'}).length;
- $('k').innerHTML='<div><small>Plants</small><b>'+D.length+'</b><span>SolisCloud</span></div><div><small>PV capacity</small><b>'+kwp.toFixed(1)+' kWp</b><span>panels</span></div><div><small>With battery</small><b>'+b+'</b><span>type H</span></div><div><small>Guest access</small><b>'+g+'</b><span>no device rights</span></div>';
- $('up').textContent='Register updated '+j.updated+' from SolisCloud. To add DeyeCloud or Huawei plants, ask Claude to extend the register in the same format.';
+ $('k').innerHTML='<div><small>Plants</small><b>'+D.length+'</b><span>in register</span></div><div><small>PV capacity</small><b>'+kwp.toFixed(1)+' kWp</b><span>panels</span></div><div><small>With battery</small><b>'+b+'</b><span>type H</span></div><div><small>Guest access</small><b>'+g+'</b><span>no device rights</span></div>';
+ $('up').textContent='Register updated '+j.updated+' from SolisCloud. Plants added with the generator above are saved here and can be removed; the 35 SolisCloud plants come from the 13 Nov 2026 register.';
  render();$('login').hidden=true;$('app').hidden=false}).catch(function(x){PW='';$('app').hidden=true;$('login').hidden=false;$('lerr').textContent=x.message==='401'?($('pw').value?'Password is not right.':''):x.message})}
 $('lf').addEventListener('submit',function(e){e.preventDefault();PW=$('pw').value.trim();if(PW){$('lerr').textContent='Checking…';load()}});
-$('q').addEventListener('input',render);$('pr').onclick=function(){print()};
-$('csv').onclick=function(){var c=[['code','plant_name','soliscloud_plant_id','area','postcode','province','pv_kwp','inverter_model','inverter_kw','phase','battery','commissioned','access']];D.forEach(function(r){c.push([r.code,r.name,r.plant_id,r.area,r.postcode,r.province,r.pv_kwp,r.inverter_model,r.inv_kw,r.phase,r.battery?'yes':'no',r.commissioned,r.access])});
- var t='\ufeff'+c.map(function(x){return x.map(function(v){v=String(v);return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v}).join(',')}).join('\n');var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([t],{type:'text/csv'}));a.download='Solar_ESS_Plant_Codes_SolisCloud_Rev01_20261113.csv';document.body.appendChild(a);a.click();setTimeout(function(){a.remove()},1000)};
+$('q').addEventListener('input',render);
+function post(a,b){return fetch('/api/docs?a='+a,{method:'POST',headers:{'x-admin-password':PW,'content-type':'application/json'},body:JSON.stringify(b)}).then(function(r){return r.json().then(function(j){if(!r.ok)throw new Error(j.error||r.status);return j})})}
+function gv(){return{platform:$('g-pf').value,type:$('g-ty').value,postcode:$('g-pc').value.trim().toUpperCase(),inv_kw:$('g-kw').value,name:$('g-nm').value,station_id:$('g-id').value,plant_id:$('g-id').value,area:$('g-ar').value,province:$('g-pv').value,pv_kwp:$('g-kwp').value,inverter_model:$('g-md').value,phase:$('g-ph').value,commissioned:$('g-cd').value}}
+var pt;function prev(){clearTimeout(pt);pt=setTimeout(function(){var v=gv();if(!v.postcode||!v.inv_kw){$('g-code').textContent='–';return}post('plant-preview',v).then(function(j){$('g-code').textContent=j.code;$('g-msg').textContent=''}).catch(function(x){$('g-code').textContent='–';$('g-msg').textContent=x.message})},250)}
+['g-pf','g-ty','g-pc','g-kw'].forEach(function(i){$(i).addEventListener('input',prev);$(i).addEventListener('change',prev)});
+$('gf').addEventListener('submit',function(e){e.preventDefault();$('g-msg').textContent='Saving…';post('plant-add',gv()).then(function(j){$('g-msg').textContent='Saved '+j.item.code+' for '+j.item.name;$('gf').reset();$('g-code').textContent=j.item.code;load()}).catch(function(x){$('g-msg').textContent='Not saved: '+x.message})});
+$('g-cp').onclick=function(){var c=$('g-code').textContent;if(c&&c!=='–'&&navigator.clipboard)navigator.clipboard.writeText(c).then(function(){$('g-msg').textContent='Copied '+c})};
+$('t').addEventListener('click',function(e){var b=e.target.closest('.del');if(!b)return;if(!confirm('Remove '+b.dataset.c+' from the register?'))return;post('plant-del',{code:b.dataset.c}).then(load).catch(function(x){alert(x.message)})});$('pr').onclick=function(){print()};
+$('csv').onclick=function(){var c=[['code','plant_name','platform_plant_id','area','postcode','province','pv_kwp','inverter_model','inverter_kw','phase','battery','commissioned','access']];D.forEach(function(r){c.push([r.code,r.name,r.plant_id,r.area,r.postcode,r.province,r.pv_kwp,r.inverter_model,r.inv_kw,r.phase,r.battery?'yes':'no',r.commissioned,r.access])});
+ var t='\ufeff'+c.map(function(x){return x.map(function(v){v=String(v);return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v}).join(',')}).join('\n');var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([t],{type:'text/csv'}));var d=new Date(),ds=d.getFullYear()+String(d.getMonth()+1).padStart(2,'0')+String(d.getDate()).padStart(2,'0')+'_'+String(d.getHours()).padStart(2,'0')+String(d.getMinutes()).padStart(2,'0');a.download='Solar_ESS_Plant_Codes_'+ds+'.csv';document.body.appendChild(a);a.click();setTimeout(function(){a.remove()},1000)};
 if(PW)load();else $('login').hidden=false;
 })();
 </script>

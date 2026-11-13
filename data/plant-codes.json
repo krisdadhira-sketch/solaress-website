@@ -1,6 +1,6 @@
 {
  "updated": "2026-11-13",
- "source": "SolisCloud, DeyeCloud, Huawei FusionSolar, SolarEdge, ATMOCE",
+ "source": "SolisCloud, DeyeCloud, Huawei FusionSolar, SolarEdge, Enphase, ATMOCE",
  "format": "[Platform][Type]-[Postcode]-[Inverter kW]-[No.]",
  "plants": [
   {
@@ -450,6 +450,34 @@
    "phase": "1P",
    "battery": false,
    "commissioned": "2024-06"
+  },
+  {
+   "code": "NG-10270-06-01",
+   "platform": "Enphase",
+   "type": "Grid-tied, no battery",
+   "postcode": "10270",
+   "province": "Samut Prakan",
+   "country": "TH",
+   "pv_kwp": 0,
+   "inverter_kw": 6,
+   "inverter_model": "18 x Enphase IQ7A microinverters (about 6.3 kW)",
+   "phase": "1P",
+   "battery": false,
+   "commissioned": "2024-04"
+  },
+  {
+   "code": "NG-90110-05-01",
+   "platform": "Enphase",
+   "type": "Grid-tied, no battery",
+   "postcode": "90110",
+   "province": "Songkhla",
+   "country": "TH",
+   "pv_kwp": 0,
+   "inverter_kw": 5,
+   "inverter_model": "10 x Enphase IQ8P microinverters (about 4.75 kW)",
+   "phase": "1P",
+   "battery": false,
+   "commissioned": "2024-05"
   },
   {
    "code": "SG-10700-20-01",

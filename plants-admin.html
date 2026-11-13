@@ -122,7 +122,7 @@ function render(){var q=$('q').value.trim().toLowerCase(),h='';D.forEach(functio
 function load(){fetch('/api/docs?a=plants',{headers:{'x-admin-password':PW}}).then(function(r){if(r.status===401)throw new Error('401');if(!r.ok)throw new Error(r.status);return r.json()}).then(function(j){try{sessionStorage.setItem('members-admin-pw',PW)}catch(e){}
  D=j.items||[];var kwp=D.reduce(function(a,r){return a+r.pv_kwp},0),b=D.filter(function(r){return r.battery}).length,g=D.filter(function(r){return r.access==='guest'}).length;
  $('k').innerHTML='<div><small>Plants</small><b>'+D.length+'</b><span>in register</span></div><div><small>PV capacity</small><b>'+kwp.toFixed(1)+' kWp</b><span>panels</span></div><div><small>With battery</small><b>'+b+'</b><span>type H</span></div><div><small>Guest access</small><b>'+g+'</b><span>no device rights</span></div>';
- $('up').textContent='Register updated '+j.updated+' from SolisCloud. Plants added with the generator above are saved here and can be removed; the SolisCloud and DeyeCloud plants come from the 13 Nov 2026 register.';
+ $('up').textContent='Register updated '+j.updated+' from SolisCloud. Plants added with the generator above are saved here and can be removed; the SolisCloud, DeyeCloud, Huawei and ATMOCE plants come from the 13 Nov 2026 register.';
  render();loadPeople();$('login').hidden=true;$('app').hidden=false}).catch(function(x){PW='';$('app').hidden=true;$('login').hidden=false;$('lerr').textContent=x.message==='401'?($('pw').value?'Password is not right.':''):x.message})}
 $('lf').addEventListener('submit',function(e){e.preventDefault();PW=$('pw').value.trim();if(PW){$('lerr').textContent='Checking…';load()}});
 $('q').addEventListener('input',render);

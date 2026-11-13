@@ -130,20 +130,6 @@
    "commissioned": "2026-02"
   },
   {
-   "code": "DH-57000-05-01",
-   "platform": "DeyeCloud",
-   "type": "Hybrid with battery",
-   "postcode": "57000",
-   "province": "Chiang Rai",
-   "country": "TH",
-   "pv_kwp": 5,
-   "inverter_kw": 5,
-   "inverter_model": "Deye hybrid 1-phase",
-   "phase": "1P",
-   "battery": true,
-   "commissioned": "2023-07"
-  },
-  {
    "code": "DH-57100-05-01",
    "platform": "DeyeCloud",
    "type": "Hybrid with battery",
@@ -156,6 +142,20 @@
    "phase": "1P",
    "battery": true,
    "commissioned": "2025-03"
+  },
+  {
+   "code": "DH-57130-05-01",
+   "platform": "DeyeCloud",
+   "type": "Hybrid with battery",
+   "postcode": "57130",
+   "province": "Chiang Rai",
+   "country": "TH",
+   "pv_kwp": 5,
+   "inverter_kw": 5,
+   "inverter_model": "Deye hybrid 1-phase",
+   "phase": "1P",
+   "battery": true,
+   "commissioned": "2023-07"
   },
   {
    "code": "DH-57180-12-01",
@@ -312,20 +312,6 @@
    "commissioned": "2021-04"
   },
   {
-   "code": "HG-50000-05-01",
-   "platform": "Huawei FusionSolar",
-   "type": "Grid-tied, no battery",
-   "postcode": "50000",
-   "province": "Chiang Mai",
-   "country": "TH",
-   "pv_kwp": 0,
-   "inverter_kw": 5,
-   "inverter_model": "Huawei SUN2000 inverter",
-   "phase": "1P",
-   "battery": false,
-   "commissioned": "2024-05"
-  },
-  {
    "code": "HG-50130-05-01",
    "platform": "Huawei FusionSolar",
    "type": "Grid-tied, no battery",
@@ -366,6 +352,20 @@
    "phase": "3P",
    "battery": false,
    "commissioned": "2023-03"
+  },
+  {
+   "code": "HG-57000-05-01",
+   "platform": "Huawei FusionSolar",
+   "type": "Grid-tied, no battery",
+   "postcode": "57000",
+   "province": "Chiang Rai",
+   "country": "TH",
+   "pv_kwp": 0,
+   "inverter_kw": 5,
+   "inverter_model": "Huawei SUN2000 inverter",
+   "phase": "1P",
+   "battery": false,
+   "commissioned": "2024-05"
   },
   {
    "code": "HG-57000-100-01",
@@ -452,10 +452,10 @@
    "commissioned": "2024-06"
   },
   {
-   "code": "NG-10270-06-01",
+   "code": "NG-10130-06-01",
    "platform": "Enphase",
    "type": "Grid-tied, no battery",
-   "postcode": "10270",
+   "postcode": "10130",
    "province": "Samut Prakan",
    "country": "TH",
    "pv_kwp": 0,

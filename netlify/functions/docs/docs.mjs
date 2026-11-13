@@ -2,9 +2,11 @@
 // Admin (header "x-admin-password", same password as all admin pages):
 //   GET /api/docs?a=insurance      -> {html} CAR insurance policy summary
 //   GET /api/docs?a=insurance-pdf  -> the scanned policy PDF
+//   GET /api/docs?a=plants         -> plant code register (code -> plant name, SolisCloud IDs)
 import crypto from "node:crypto";
 import summary from "./summary.json" with { type: "json" };
 import policy from "./policy.json" with { type: "json" };
+import plants from "./plants.json" with { type: "json" };
 
 const VOCAB_ADMIN_HASH = "162cdaefe4e9558d229a4846cd021775:5c036e020b55e8727a91b98d8e554c7456200d65599147cff4efea07459dc0fd";
 const json = (b, s = 200) => new Response(JSON.stringify(b), { status: s, headers: { "content-type": "application/json", "cache-control": "no-store" } });
@@ -28,6 +30,7 @@ export default async (req) => {
   const a = new URL(req.url).searchParams.get("a");
   if (a === "insurance") return json({ html: summary.html, pdf: policy.name });
   if (a === "insurance-pdf") return new Response(Buffer.from(policy.b64, "base64"), { headers: { "content-type": "application/pdf", "content-disposition": `attachment; filename="${policy.name}"`, "cache-control": "no-store" } });
+  if (a === "plants") return json(plants);
   return json({ error: "unknown action" }, 400);
 };
 export const config = { path: "/api/docs" };

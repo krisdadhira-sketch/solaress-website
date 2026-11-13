@@ -111,4 +111,4 @@ d.contact=(f.querySelector('input[name=contact]:checked')||{}).value||'';d.conse
 fetch('/api/installers?a=update',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(d)}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(){
 try{var s={};['phone','name','province','district','subdistrict','radius','line','email','contact','lat','lng'].forEach(function(n){s[n]=d[n]});localStorage.setItem(K,JSON.stringify(s))}catch(x){}
 m.style.color='var(--ok)';m.textContent='✓ บันทึกแล้ว เราจะติดต่อท่านเมื่อมีงานใกล้'+' '+[d.subdistrict,d.district,d.province].filter(Boolean).join(', ')+'.';var a=document.createElement('a');a.href='/th/job.html?near=1#projects';a.textContent=' ดูงานใกล้ฉัน →';a.style.color='var(--blue)';m.appendChild(a)}).catch(function(){m.style.color='var(--no)';m.textContent='บันทึกไม่สำเร็จ กรุณาตรวจเบอร์โทรและตำแหน่ง หรือโทร 063 151 6694'})};})();</script>
-</body></html>
+<script src="/js/postcode-fill.js" defer></script></body></html>

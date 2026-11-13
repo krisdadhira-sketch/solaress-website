@@ -292,7 +292,21 @@
    "country": "TH",
    "pv_kwp": 4.84,
    "inverter_kw": 5,
-   "inverter_model": "SolarEdge inverter + 11 optimizers (size assumed 5 kW)",
+   "inverter_model": "SolarEdge 5 kW inverter + 11 optimizers",
+   "phase": "1P",
+   "battery": false,
+   "commissioned": "2021-09"
+  },
+  {
+   "code": "EG-50130-05-02",
+   "platform": "SolarEdge",
+   "type": "Grid-tied, no battery",
+   "postcode": "50130",
+   "province": "Chiang Mai",
+   "country": "TH",
+   "pv_kwp": 4.84,
+   "inverter_kw": 5,
+   "inverter_model": "SolarEdge 5 kW inverter",
    "phase": "1P",
    "battery": false,
    "commissioned": "2021-09"
@@ -306,7 +320,7 @@
    "country": "TH",
    "pv_kwp": 4.84,
    "inverter_kw": 5,
-   "inverter_model": "SolarEdge inverter + 11 optimizers (size assumed 5 kW)",
+   "inverter_model": "SolarEdge 5 kW inverter + 11 optimizers",
    "phase": "1P",
    "battery": false,
    "commissioned": "2021-04"

@@ -1,6 +1,6 @@
 {
  "updated": "2026-11-13",
- "source": "SolisCloud, DeyeCloud, Huawei FusionSolar, ATMOCE",
+ "source": "SolisCloud, DeyeCloud, Huawei FusionSolar, SolarEdge, ATMOCE",
  "format": "[Platform][Type]-[Postcode]-[Inverter kW]-[No.]",
  "plants": [
   {
@@ -282,6 +282,34 @@
    "phase": "1P",
    "battery": true,
    "commissioned": "2025-03"
+  },
+  {
+   "code": "EG-50130-05-01",
+   "platform": "SolarEdge",
+   "type": "Grid-tied, no battery",
+   "postcode": "50130",
+   "province": "Chiang Mai",
+   "country": "TH",
+   "pv_kwp": 4.84,
+   "inverter_kw": 5,
+   "inverter_model": "SolarEdge inverter + 11 optimizers (size assumed 5 kW)",
+   "phase": "1P",
+   "battery": false,
+   "commissioned": "2021-09"
+  },
+  {
+   "code": "EG-57000-05-01",
+   "platform": "SolarEdge",
+   "type": "Grid-tied, no battery",
+   "postcode": "57000",
+   "province": "Chiang Rai",
+   "country": "TH",
+   "pv_kwp": 4.84,
+   "inverter_kw": 5,
+   "inverter_model": "SolarEdge inverter + 11 optimizers (size assumed 5 kW)",
+   "phase": "1P",
+   "battery": false,
+   "commissioned": "2021-04"
   },
   {
    "code": "HG-50000-05-01",

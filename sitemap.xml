@@ -478,4 +478,18 @@
     <xhtml:link rel="alternate" hreflang="th" href="https://solaress.org/th/design"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://solaress.org/design"/>
   </url>
+  <url>
+    <loc>https://solaress.org/plants</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://solaress.org/plants"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://solaress.org/th/plants"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://solaress.org/plants"/>
+  </url>
+  <url>
+    <loc>https://solaress.org/th/plants</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://solaress.org/plants"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://solaress.org/th/plants"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://solaress.org/plants"/>
+  </url>
 </urlset>

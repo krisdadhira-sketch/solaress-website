@@ -1,0 +1,530 @@
+{
+ "updated": null,
+ "plants": {
+  "AG-57100-02-01": {
+   "province": "Chiang Rai",
+   "postcode": "57100",
+   "reports": [],
+   "jobs": []
+  },
+  "DG-57100-05-01": {
+   "province": "Chiang Rai",
+   "postcode": "57100",
+   "reports": [],
+   "jobs": []
+  },
+  "DG-57130-05-01": {
+   "province": "Chiang Rai",
+   "postcode": "57130",
+   "reports": [],
+   "jobs": []
+  },
+  "DG-57270-20-01": {
+   "province": "Chiang Rai",
+   "postcode": "57270",
+   "reports": [
+    "monthly-chicken-farm-oct2026",
+    "monthly-chicken-farm-energy-use-jul-oct2026"
+   ],
+   "jobs": []
+  },
+  "DH-10530-05-01": {
+   "province": "Bangkok",
+   "postcode": "10530",
+   "reports": [],
+   "jobs": []
+  },
+  "DH-12150-05-01": {
+   "province": "Pathum Thani",
+   "postcode": "12150",
+   "reports": [],
+   "jobs": []
+  },
+  "DH-50000-05-01": {
+   "province": "Chiang Mai",
+   "postcode": "50000",
+   "reports": [],
+   "jobs": []
+  },
+  "DH-50000-10-01": {
+   "province": "Chiang Mai",
+   "postcode": "50000",
+   "reports": [
+    "monthly-report-oct2026"
+   ],
+   "jobs": []
+  },
+  "DH-51130-08-01": {
+   "province": "Lamphun",
+   "postcode": "51130",
+   "reports": [],
+   "jobs": []
+  },
+  "DH-57100-05-01": {
+   "province": "Chiang Rai",
+   "postcode": "57100",
+   "reports": [],
+   "jobs": []
+  },
+  "DH-57130-05-01": {
+   "province": "Chiang Rai",
+   "postcode": "57130",
+   "reports": [],
+   "jobs": []
+  },
+  "DH-57180-12-01": {
+   "province": "Chiang Rai",
+   "postcode": "57180",
+   "reports": [
+    "monthly-report-oct2026-offgrid-cafe"
+   ],
+   "jobs": []
+  },
+  "DH-84140-20-01": {
+   "province": "Surat Thani",
+   "postcode": "84140",
+   "reports": [],
+   "jobs": []
+  },
+  "DH-84320-20-01": {
+   "province": "Surat Thani",
+   "postcode": "84320",
+   "reports": [],
+   "jobs": []
+  },
+  "DH-90110-05-01": {
+   "province": "Songkhla",
+   "postcode": "90110",
+   "reports": [],
+   "jobs": []
+  },
+  "DH-90110-05-02": {
+   "province": "Songkhla",
+   "postcode": "90110",
+   "reports": [],
+   "jobs": []
+  },
+  "DH-90110-05-03": {
+   "province": "Songkhla",
+   "postcode": "90110",
+   "reports": [],
+   "jobs": []
+  },
+  "DH-92000-12-01": {
+   "province": "Trang",
+   "postcode": "92000",
+   "reports": [],
+   "jobs": []
+  },
+  "DH-MMSHN-10-01": {
+   "province": "Shan State",
+   "postcode": "MMSHN",
+   "reports": [],
+   "jobs": []
+  },
+  "DH-MMSHN-10-02": {
+   "province": "Shan State",
+   "postcode": "MMSHN",
+   "reports": [],
+   "jobs": []
+  },
+  "EG-50130-05-01": {
+   "province": "Chiang Mai",
+   "postcode": "50130",
+   "reports": [],
+   "jobs": []
+  },
+  "EG-50130-05-02": {
+   "province": "Chiang Mai",
+   "postcode": "50130",
+   "reports": [],
+   "jobs": []
+  },
+  "EG-57000-05-01": {
+   "province": "Chiang Rai",
+   "postcode": "57000",
+   "reports": [],
+   "jobs": []
+  },
+  "HG-50130-05-01": {
+   "province": "Chiang Mai",
+   "postcode": "50130",
+   "reports": [
+    "monthly-report-oct2026-fusionsolar-plants",
+    "monthly-report-oct2026-health-centre-full"
+   ],
+   "jobs": []
+  },
+  "HG-50210-05-01": {
+   "province": "Chiang Mai",
+   "postcode": "50210",
+   "reports": [
+    "monthly-report-oct2026-fusionsolar-plants"
+   ],
+   "jobs": []
+  },
+  "HG-50210-50-01": {
+   "province": "Chiang Mai",
+   "postcode": "50210",
+   "reports": [
+    "monthly-report-oct2026-fusionsolar-plants"
+   ],
+   "jobs": []
+  },
+  "HG-57000-05-01": {
+   "province": "Chiang Rai",
+   "postcode": "57000",
+   "reports": [
+    "monthly-report-oct2026-fusionsolar-plants"
+   ],
+   "jobs": []
+  },
+  "HG-57000-100-01": {
+   "province": "Chiang Rai",
+   "postcode": "57000",
+   "reports": [
+    "monthly-report-oct2026-fusionsolar-plants"
+   ],
+   "jobs": []
+  },
+  "HG-57100-05-01": {
+   "province": "Chiang Rai",
+   "postcode": "57100",
+   "reports": [
+    "monthly-report-oct2026-fusionsolar-plants"
+   ],
+   "jobs": []
+  },
+  "HG-57110-20-01": {
+   "province": "Chiang Rai",
+   "postcode": "57110",
+   "reports": [
+    "monthly-report-oct2026-fusionsolar-plants"
+   ],
+   "jobs": []
+  },
+  "HG-75110-05-01": {
+   "province": "Samut Songkhram",
+   "postcode": "75110",
+   "reports": [
+    "monthly-report-oct2026-fusionsolar-plants"
+   ],
+   "jobs": []
+  },
+  "HG-90110-05-01": {
+   "province": "Songkhla",
+   "postcode": "90110",
+   "reports": [
+    "monthly-report-oct2026-fusionsolar-plants"
+   ],
+   "jobs": []
+  },
+  "HG-90110-05-02": {
+   "province": "Songkhla",
+   "postcode": "90110",
+   "reports": [
+    "monthly-report-oct2026-fusionsolar-plants"
+   ],
+   "jobs": []
+  },
+  "NG-10130-06-01": {
+   "province": "Samut Prakan",
+   "postcode": "10130",
+   "reports": [],
+   "jobs": []
+  },
+  "NG-90110-05-01": {
+   "province": "Songkhla",
+   "postcode": "90110",
+   "reports": [],
+   "jobs": []
+  },
+  "SG-10700-20-01": {
+   "province": "Bangkok",
+   "postcode": "10700",
+   "reports": [
+    "monthly-report-oct2026-soliscloud-plants"
+   ],
+   "jobs": []
+  },
+  "SG-12120-20-01": {
+   "province": "Pathum Thani",
+   "postcode": "12120",
+   "reports": [
+    "monthly-report-oct2026-soliscloud-plants"
+   ],
+   "jobs": []
+  },
+  "SG-52000-20-01": {
+   "province": "Lampang",
+   "postcode": "52000",
+   "reports": [
+    "monthly-report-oct2026-soliscloud-plants",
+    "nursing-home-pv-maintenance"
+   ],
+   "jobs": []
+  },
+  "SG-57000-10-01": {
+   "province": "Chiang Rai",
+   "postcode": "57000",
+   "reports": [
+    "monthly-report-oct2026-soliscloud-plants"
+   ],
+   "jobs": []
+  },
+  "SG-57100-20-01": {
+   "province": "Chiang Rai",
+   "postcode": "57100",
+   "reports": [
+    "phase-unbalance-voltage-pf",
+    "zero-export-production-review",
+    "phase-imbalance-datasheet",
+    "monthly-ban-doo-oct2026",
+    "monthly-report-oct2026-soliscloud-plants",
+    "heat-press-peak-control"
+   ],
+   "jobs": [
+    "install-vfd-scr-bandu-heatpress"
+   ]
+  },
+  "SG-57110-50-01": {
+   "province": "Chiang Rai",
+   "postcode": "57110",
+   "reports": [
+    "hybrid-settings-check",
+    "monthly-report-oct2026-soliscloud-plants"
+   ],
+   "jobs": []
+  },
+  "SG-90260-06-01": {
+   "province": "Songkhla",
+   "postcode": "90260",
+   "reports": [
+    "monthly-report-oct2026-soliscloud-plants"
+   ],
+   "jobs": []
+  },
+  "SG-90260-08-01": {
+   "province": "Songkhla",
+   "postcode": "90260",
+   "reports": [
+    "monthly-report-oct2026-soliscloud-plants"
+   ],
+   "jobs": []
+  },
+  "SG-LAVTE-50-01": {
+   "province": "Vientiane",
+   "postcode": "LAVTE",
+   "reports": [],
+   "jobs": []
+  },
+  "SH-12110-08-01": {
+   "province": "Pathum Thani",
+   "postcode": "12110",
+   "reports": [
+    "monthly-report-oct2026-soliscloud-plants"
+   ],
+   "jobs": []
+  },
+  "SH-50170-06-01": {
+   "province": "Chiang Mai",
+   "postcode": "50170",
+   "reports": [
+    "offgrid-farm-one-string",
+    "monthly-report-oct2026-soliscloud-plants"
+   ],
+   "jobs": []
+  },
+  "SH-51000-08-01": {
+   "province": "Lamphun",
+   "postcode": "51000",
+   "reports": [
+    "monthly-report-oct2026-soliscloud-plants"
+   ],
+   "jobs": []
+  },
+  "SH-51000-08-02": {
+   "province": "Lamphun",
+   "postcode": "51000",
+   "reports": [
+    "monthly-report-oct2026-soliscloud-plants"
+   ],
+   "jobs": []
+  },
+  "SH-52000-16-01": {
+   "province": "Lampang",
+   "postcode": "52000",
+   "reports": [
+    "monthly-report-oct2026-soliscloud-plants"
+   ],
+   "jobs": []
+  },
+  "SH-52100-08-01": {
+   "province": "Lampang",
+   "postcode": "52100",
+   "reports": [
+    "monthly-report-oct2026-soliscloud-plants"
+   ],
+   "jobs": []
+  },
+  "SH-57110-08-01": {
+   "province": "Chiang Rai",
+   "postcode": "57110",
+   "reports": [
+    "monthly-report-oct2026-soliscloud-plants"
+   ],
+   "jobs": []
+  },
+  "SH-57110-10-01": {
+   "province": "Chiang Rai",
+   "postcode": "57110",
+   "reports": [
+    "monthly-report-oct2026-soliscloud-plants"
+   ],
+   "jobs": []
+  },
+  "SH-57130-15-01": {
+   "province": "Chiang Rai",
+   "postcode": "57130",
+   "reports": [
+    "monthly-report-oct2026-soliscloud-plants"
+   ],
+   "jobs": []
+  },
+  "SH-63110-50-01": {
+   "province": "Tak",
+   "postcode": "63110",
+   "reports": [
+    "monthly-report-oct2026-soliscloud-plants"
+   ],
+   "jobs": []
+  },
+  "SH-67140-08-01": {
+   "province": "Phetchabun",
+   "postcode": "67140",
+   "reports": [
+    "monthly-report-oct2026-soliscloud-plants"
+   ],
+   "jobs": []
+  },
+  "SH-75000-20-01": {
+   "province": "Samut Songkhram",
+   "postcode": "75000",
+   "reports": [
+    "monthly-report-oct2026-soliscloud-plants"
+   ],
+   "jobs": []
+  },
+  "SH-81000-10-01": {
+   "province": "Krabi",
+   "postcode": "81000",
+   "reports": [
+    "monthly-report-oct2026-soliscloud-plants"
+   ],
+   "jobs": []
+  },
+  "SH-81120-10-01": {
+   "province": "Krabi",
+   "postcode": "81120",
+   "reports": [
+    "monthly-report-oct2026-soliscloud-plants"
+   ],
+   "jobs": []
+  },
+  "SH-84320-16-01": {
+   "province": "Surat Thani",
+   "postcode": "84320",
+   "reports": [
+    "monthly-ac-coupled-inverter-stopped",
+    "monthly-report-oct2026-soliscloud-plants"
+   ],
+   "jobs": []
+  },
+  "SH-90110-08-01": {
+   "province": "Songkhla",
+   "postcode": "90110",
+   "reports": [
+    "monthly-report-oct2026-soliscloud-plants"
+   ],
+   "jobs": []
+  },
+  "SH-90110-10-01": {
+   "province": "Songkhla",
+   "postcode": "90110",
+   "reports": [
+    "monthly-report-oct2026-soliscloud-plants"
+   ],
+   "jobs": []
+  },
+  "SH-90110-15-01": {
+   "province": "Songkhla",
+   "postcode": "90110",
+   "reports": [
+    "monthly-report-oct2026-soliscloud-plants"
+   ],
+   "jobs": []
+  },
+  "SH-90110-15-02": {
+   "province": "Songkhla",
+   "postcode": "90110",
+   "reports": [
+    "monthly-report-oct2026-soliscloud-plants"
+   ],
+   "jobs": []
+  },
+  "SH-90110-16-01": {
+   "province": "Songkhla",
+   "postcode": "90110",
+   "reports": [
+    "monthly-report-oct2026-soliscloud-plants"
+   ],
+   "jobs": []
+  },
+  "SH-90110-20-01": {
+   "province": "Songkhla",
+   "postcode": "90110",
+   "reports": [
+    "monthly-report-oct2026-soliscloud-plants"
+   ],
+   "jobs": []
+  },
+  "SH-90250-10-01": {
+   "province": "Songkhla",
+   "postcode": "90250",
+   "reports": [
+    "monthly-report-oct2026-soliscloud-plants"
+   ],
+   "jobs": []
+  },
+  "SH-90280-10-01": {
+   "province": "Songkhla",
+   "postcode": "90280",
+   "reports": [
+    "monthly-report-oct2026-soliscloud-plants"
+   ],
+   "jobs": []
+  },
+  "SH-92000-10-01": {
+   "province": "Trang",
+   "postcode": "92000",
+   "reports": [
+    "monthly-report-oct2026-soliscloud-plants"
+   ],
+   "jobs": []
+  },
+  "SH-92180-10-01": {
+   "province": "Trang",
+   "postcode": "92180",
+   "reports": [
+    "monthly-report-oct2026-soliscloud-plants"
+   ],
+   "jobs": []
+  },
+  "SH-MMSHN-08-01": {
+   "province": "Shan State",
+   "postcode": "MMSHN",
+   "reports": [],
+   "jobs": []
+  }
+ }
+}

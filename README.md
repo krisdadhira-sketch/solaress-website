@@ -177,3 +177,4 @@ Outdoor designs (Nov 2026): 11 pictures picked from Pictures/3 Company & Marketi
 ## "NEW" badge on news (/news.html, /th/news.html, /zh/news.html)
 
 `js/news-new.js` (loaded at the end of the three news pages) puts a blinking orange **NEW / ใหม่ / 新** badge in front of the eyebrow of every article dated within the last 7 days. It reads the date at the start of the eyebrow (EN "15 November 2026", TH "15 พฤศจิกายน 2569", ZH "2026年11月15日"), so newly published articles get it automatically and lose it after 7 days (`NEW_DAYS`). No blinking when the visitor prefers reduced motion.
+- **Menu badge:** `python3 tools/news_menu.py` (run after every news publish) writes `data/news-latest.json` (newest article date per language) and adds `js/news-menu.js` to every public page; it shows a blinking NEW / ใหม่ / 新 badge on the top-menu News link while the newest article in that language is at most 7 days old.

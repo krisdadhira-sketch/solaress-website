@@ -1089,5 +1089,6 @@ function fail(){msg.textContent=el.getAttribute('data-fail')}
 fetch('/api/poll?id='+id,{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(show).catch(function(){});
 el.querySelectorAll('.opts button').forEach(function(b){b.addEventListener('click',function(){fetch('/api/poll?id='+id,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({choice:b.value})}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(show).catch(fail)})})})})();</script>
 <script src="/js/news-new.js?v=1" defer></script>
+<!--newsmenu--><script src="/js/news-menu.js?v=1" defer></script><!--/newsmenu-->
 </body>
 </html>

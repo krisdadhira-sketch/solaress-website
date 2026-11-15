@@ -23,7 +23,7 @@ TOPICS = {
  'datacenter': ['hyperscalers-utility-monopoly', 'electrification-who-pays-teaser', 'data-centre-impacts-guide', 'data-centres-power-water', 'data-centres-thailand-power', 'global-energy-review-2025'],
  'innovation': ['huawei-luterra-s2-all-in-one', 'grid-forming-ai-renewables', 'module-failures-2026-what-we-check', 'inverter-cybersecurity-home-solar', 'tandem-modules-907w-certified', 'icfo-boltzmann-loss-solar-cavity', 'fraunhofer-silicon-anode-cells', 'tongwei-93-bifaciality', 'risen-anti-glare', 'mova-lumegret-s5000',
                 'solis-s6-eh3p50k-v38-vs-21a', 'thailand-solar-battery-recycling-estate'],
- 'adoption': ['topcon-cell-prices-nov2026', 'thailand-solar-market-2031', 'singapore-4gwp-solar-2035', 'vinenergo-rooftop-bess-vietnam', 'dnv-eto-2026-solar-largest-2031', 'us-solar-market-q2-2026', 'global-energy-review-2025', 'china-solar-down-rest-up', 'module-prices-october-2026', 'nz-solar-complaints-surge',
+ 'adoption': ['netze-bw-5-minute-grid-approval', 'topcon-cell-prices-nov2026', 'thailand-solar-market-2031', 'singapore-4gwp-solar-2035', 'vinenergo-rooftop-bess-vietnam', 'dnv-eto-2026-solar-largest-2031', 'us-solar-market-q2-2026', 'global-energy-review-2025', 'china-solar-down-rest-up', 'module-prices-october-2026', 'nz-solar-complaints-surge',
               'thai-rooftop-solar-policy'],
  'consumption': ['hyperscalers-utility-monopoly', 'ilsr-solar-equity-monopoly', 'cato-natural-monopoly-distribution', 'dnv-eto-2026-solar-largest-2031', 'data-centre-impacts-guide', 'data-centres-power-water', 'global-energy-review-2025', 'data-centres-thailand-power', 'tni-state-of-power-2024', 'ucs-solar-environmental-impacts'],
 }

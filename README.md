@@ -173,3 +173,7 @@ Outdoor designs (Nov 2026): 11 pictures picked from Pictures/3 Company & Marketi
 
 - `python3 tools/sample_docs_nov11b.py`: 9 more cleaned samples at the top of the Quotation pages (`<!--q1111b-->`): VFD + heater peak control, 15 kWp and 2 × 15 kW municipal on-grid, 20 kW / 48 kWh hybrid package, 29.25 kWp structure options, lodge backup options A/B/C, 600 W panel sale, off-grid café battery upgrade, sub-meter installation. `tools/clean_quote_pdf.py` now also removes English THB prices on price lines, accepts `--hide REGEX`, and replaces the old 089 429 6832 number.
 - Preventive Maintenance removed from the Services menu (covered by Free System Check). `maintenance.html` and `th/maintenance.html` deleted, 301 to `/system-check.html` in `_redirects`, removed from the sitemap; `tools/service_pages.py` no longer builds them. The on-site cleaning photos moved to the Free System Check pages (`tools/maintenance_photos.py`).
+
+## "NEW" badge on news (/news.html, /th/news.html, /zh/news.html)
+
+`js/news-new.js` (loaded at the end of the three news pages) puts a blinking orange **NEW / ใหม่ / 新** badge in front of the eyebrow of every article dated within the last 7 days. It reads the date at the start of the eyebrow (EN "15 November 2026", TH "15 พฤศจิกายน 2569", ZH "2026年11月15日"), so newly published articles get it automatically and lose it after 7 days (`NEW_DAYS`). No blinking when the visitor prefers reduced motion.

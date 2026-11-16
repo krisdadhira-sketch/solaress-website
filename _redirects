@@ -1,3 +1,7 @@
+# Plant data is admin-only (17 Nov 2026): raw files are not served; admin pages read them via /api/docs
+/data/plant-codes.json  /404.html  404!
+/data/plant-index.json  /404.html  404!
+
 # Old Wix pages (still in Google's index) -> new site. 301 = permanent, passes ranking to the new page.
 # Rules without "!" only apply when no real file exists at that path, so they never hide a live page.
 

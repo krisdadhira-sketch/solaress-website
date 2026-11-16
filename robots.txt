@@ -1,4 +1,7 @@
 User-agent: *
+Disallow: /plants
+Disallow: /th/plants
+Disallow: /data/plant-
 Allow: /
 Disallow: /members/
 Disallow: /thanks.html

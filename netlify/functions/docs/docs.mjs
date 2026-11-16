@@ -5,6 +5,8 @@
 //   GET  /api/docs?a=plants        -> plant code register (code -> plant name, platform IDs); base list + plants added in admin
 //   POST /api/docs?a=plant-add     -> {platform,type,postcode,inv_kw,name,...} generates the next free code and saves it
 //   POST /api/docs?a=plant-del     -> {code} removes a plant added in admin (base SolisCloud list is fixed in plants.json)
+//   GET  /api/docs?a=plants-page&l=en|th -> full "Plants by Province" page (admin-only since 17 Nov 2026)
+//   GET  /api/docs?a=plant-index   -> plant index (reports/jobs per plant code)
 //   GET  /api/docs?a=people        -> codes for installers, company partners, interns and customer requests:
 //        [Role]-[Postcode]-[No.]  CP company/team partner · IN individual installer · TI intern · CU customer request
 //        Codes are given once (oldest first) and kept in store "plant-codes" key "people", so they never change.
@@ -15,6 +17,7 @@ import policy from "./policy.json" with { type: "json" };
 import plants from "./plants.json" with { type: "json" };
 import { getStore } from "@netlify/blobs";
 import TH from "./th-postcodes.json" with { type: "json" };
+import PAGES from "./plants-pages.json" with { type: "json" };
 
 const VOCAB_ADMIN_HASH = "162cdaefe4e9558d229a4846cd021775:5c036e020b55e8727a91b98d8e554c7456200d65599147cff4efea07459dc0fd";
 const json = (b, s = 200) => new Response(JSON.stringify(b), { status: s, headers: { "content-type": "application/json", "cache-control": "no-store" } });
@@ -112,6 +115,8 @@ async function peopleAll() {
 export default async (req) => {
   if (!isAdmin(req)) return json({ error: "401" }, 401);
   const a = new URL(req.url).searchParams.get("a");
+  if (a === "plants-page") { const l = new URL(req.url).searchParams.get("l") === "th" ? "th" : "en"; return new Response(PAGES[l], { headers: { "content-type": "text/html; charset=utf-8", "cache-control": "no-store", "x-robots-tag": "noindex" } }); }
+  if (a === "plant-index") return json(PAGES.index);
   if (a === "insurance") return json({ html: summary.html, pdf: policy.name });
   if (a === "insurance-pdf") return new Response(Buffer.from(policy.b64, "base64"), { headers: { "content-type": "application/pdf", "content-disposition": `attachment; filename="${policy.name}"`, "cache-control": "no-store" } });
   if (req.method === "POST" && a === "people-set") {

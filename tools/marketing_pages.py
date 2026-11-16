@@ -108,7 +108,7 @@ def tax_pages():
         "<li>ทำเอกสารขออนุญาตเชื่อมต่อกับ กฟภ./กฟน. ในชื่อเจ้าของมิเตอร์</li>"
         "<li>ออก e-Tax Invoice เต็มรูปแบบในชื่อเดียวกัน พร้อมใช้ยื่นภาษี</li>"
         "<li>ติดตั้ง ทดสอบ และส่งรายงานผลผลิตรายเดือนผ่านแอป</li></ol>"
-        '<p>ดูราคาต่อ kWp และตัวอย่างบิลค่าไฟจริงก่อน-หลังติดตั้งได้ที่ <a href="/th/package">แพ็กเกจโซลาร์</a> และ <a href="/th/plants">โรงไฟฟ้าแยกตามจังหวัด</a> สนใจโครงการ 50,000 บาท อ่าน <a href="/th/solar-subsidy-50000">สรุปโครงการโซลาร์ 50,000 บาท</a></p>'
+        '<p>ดูราคาต่อ kWp และตัวอย่างบิลค่าไฟจริงก่อน-หลังติดตั้งได้ที่ <a href="/th/package">แพ็กเกจโซลาร์</a> สนใจโครงการ 50,000 บาท อ่าน <a href="/th/solar-subsidy-50000">สรุปโครงการโซลาร์ 50,000 บาท</a></p>'
         + cta("th") + SRC_TH))
     rows_en = "".join(f"<tr><td>{b}</td><td>{r}%</td><td><b>{r * 2000:,}</b></td></tr>" for r, b in RATES)
     en = (hero([("Home", "/"), ("Solar tax deduction", "/tax-deduction")], "Updated 16 November 2026",
@@ -131,7 +131,7 @@ def tax_pages():
         "<li>PEA/MEA grid-connection paperwork in the meter owner's name</li>"
         "<li>A full e-Tax Invoice in the same name, ready for your tax return</li>"
         "<li>Installation, testing and monthly production reports in the app</li></ol>"
-        '<p>See prices per kWp and real bills before and after on <a href="/package">Solar Package</a> and <a href="/plants">Plants by Province</a>.</p>'
+        '<p>See prices per kWp and real bills before and after on <a href="/package">Solar Package</a>.</p>'
         + cta("en") + SRC_EN))
     alts = [("th", "/th/tax-deduction"), ("en", "/tax-deduction"), ("x-default", "/tax-deduction")]
     faq_th = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
@@ -176,13 +176,13 @@ def province_pages():
         n = cnt.get(prov, 0)
         url = f"/th/solar-{slug}"
         links.append((th, url))
-        main = (hero([("หน้าแรก", "/th/"), ("โรงไฟฟ้าแยกตามจังหวัด", "/th/plants"), (th, url)], f"โซลาร์ เอสส์ · {th}",
+        main = (hero([("หน้าแรก", "/th/"), (th, url)], f"โซลาร์ เอสส์ · {th}",
                      f"ติดตั้งโซลาร์เซลล์{th}<br>บ้าน รีสอร์ท และธุรกิจ",
                      f"ออกแบบ ติดตั้ง และดูแลระบบออนกริด ไฮบริด และออฟกริดใน{th} ({area}) พร้อมงานขออนุญาต กฟภ. และใบกำกับภาษีอิเล็กทรอนิกส์เต็มรูปแบบ")
                 + body(
             f'<div class="kf"><div><b>200+</b><span>ระบบโซลาร์ที่ติดตั้งแล้ว เฉลี่ย 10 kW (รวมราว 2 MWp)</span></div><div><b>{n}</b><span>ระบบใน{th}ที่ติดตามผลออนไลน์ทุกเดือน</span></div><div><b>200,000 บาท</b><span>ลดหย่อนภาษีสูงสุด</span></div></div>'
             f"<h2>ทำไมคนใน{th}เลือกโซลาร์ เอสส์</h2><ul>"
-            f'<li>ติดตั้งระบบโซลาร์แล้วกว่า 200 แห่ง เฉลี่ยแห่งละ 10 kW และติดตามผลผลิตออนไลน์ใน{th}อยู่ {n} ระบบ ดูรายละเอียดได้ที่ <a href="/th/plants#prov-{slug}">โรงไฟฟ้าใน{th}</a></li>'
+            f'<li>ติดตั้งระบบโซลาร์แล้วกว่า 200 แห่ง เฉลี่ยแห่งละ 10 kW และติดตามผลผลิตออนไลน์ใน{th}อยู่ {n} ระบบ</li>'
             "<li>รายงานผลผลิตรายเดือนและตรวจระบบผ่านแอปหลังติดตั้ง</li>"
             "<li>บิลค่าไฟจริงก่อน-หลังติดตั้ง ค่ามัธยฐานประหยัด 62% (9 ไซต์)</li>"
             "<li>ประกันภัยงานก่อสร้าง Contractor All Risk (CAR) ระหว่างติดตั้ง</li></ul>"
@@ -195,8 +195,7 @@ def province_pages():
                "areaServed": {"@type": "AdministrativeArea", "name": th}, "url": SITE + url},
               {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
                   {"@type": "ListItem", "position": 1, "name": "หน้าแรก", "item": SITE + "/th/"},
-                  {"@type": "ListItem", "position": 2, "name": "โรงไฟฟ้าแยกตามจังหวัด", "item": SITE + "/th/plants"},
-                  {"@type": "ListItem", "position": 3, "name": th, "item": SITE + url}]}]
+                  {"@type": "ListItem", "position": 2, "name": th, "item": SITE + url}]}]
         page("th/solar-subsidy-50000.html", f"th/solar-{slug}.html", "th",
              f"ติดตั้งโซลาร์เซลล์{th} ราคา ลดหย่อนภาษี 200,000 | Solar ESS",
              f"รับติดตั้งโซลาร์เซลล์{th} ({area}) บ้าน รีสอร์ท ธุรกิจ ออนกริด ไฮบริด ออฟกริด ติดตั้งระบบโซลาร์แล้วกว่า 200 แห่ง ประเมินฟรีทาง LINE ลดหย่อนภาษีได้สูงสุด 200,000 บาท",

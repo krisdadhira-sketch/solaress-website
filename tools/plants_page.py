@@ -151,3 +151,4 @@ def build():
 
 if __name__ == "__main__":
     build()
+    import sys; sys.path.insert(0, "tools"); import lock_plants; lock_plants.lock()  # pages are admin-only

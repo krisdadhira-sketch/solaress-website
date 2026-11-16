@@ -2,6 +2,10 @@ User-agent: *
 Disallow: /plants
 Disallow: /th/plants
 Disallow: /data/plant-
+Disallow: /monthly-report
+Disallow: /th/monthly-report
+Disallow: /downloads/Solar-ESS-Monthly-Report-
+Disallow: /images/note-monthly-
 Allow: /
 Disallow: /members/
 Disallow: /thanks.html

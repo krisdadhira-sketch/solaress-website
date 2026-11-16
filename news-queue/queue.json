@@ -79,5 +79,45 @@
     "url": "https://www.pv-magazine.com/2026/11/03/huawei-plans-5-to-15-price-increases-for-solar-storage-equipment/"
    }
   ]
+ },
+ {
+  "pdf": "Solar-ESS-News-Solar-Recycling-2-0_Rev01_20261117.pdf",
+  "queued": "2026-11-17",
+  "publish_on": "2026-11-17",
+  "id": "solar-recycling-2-0",
+  "topics": "innovation adoption",
+  "eyebrow": "Recycling",
+  "title": "Solar recycling 2.0: from shredding panels to recovering silver",
+  "lede": "US recyclers are moving from shredding old panels to recovering silver, silicon and copper, ahead of a wave of retired panels. Thailand faces the same wave with no clear system yet. Here is the news in short.",
+  "bullets": [
+   "Until now most US recycling shredded panels, sold the glass and frame, and exported or landfilled the rest, including the silver, silicon and copper.",
+   "Glass is 70–76% and the frame 8–13% of a panel's weight, but silver (about 10 mg/W) is about 10% of module cost and about 60% of cell cost.",
+   "The IEA projects US end-of-life panels at 87,000 t a year by 2030 and 820,000 t by 2050; Rystad values recovered solar materials worldwide at US$80 billion by 2050.",
+   "We Recycle Solar plans a Texas plant by Q3 2027 claiming up to 96% recovery of silver, copper, silicon, aluminium and glass.",
+   "OnePlanet's Florida plant handles 480,000 panels a year; its new PRISM process yields 99%-pure glass and a silicon product holding 1% silver, from 2027.",
+   "Comstock Metals' 100,000 t/yr Nevada plant started in August 2026; Solarcycle is building a glass plant to supply up to 6 GW of US panel assembly a year.",
+   "23 US states have decommissioning rules and four effectively ban landfilling panels; recyclers prove quality with ISO, SEIA and SERI R2v3 certification."
+  ],
+  "thailand_note": "Thailand has no clear end-of-life system for panels yet: TDRI projects 431,000–728,000 t of panel waste by 2050, and the government is planning a recycling industrial estate and much higher fines for illegal dumping. Never landfill or burn old panels; test them first because many can be reused, then hand them to a licensed waste handler. When replacing panels or signing an EPC or PPA contract, agree now who removes and recycles the old ones.",
+  "sources": [
+   {
+    "name": "pv magazine",
+    "date": "16 November 2026",
+    "title": "Solar recycling 2.0",
+    "url": "https://www.pv-magazine.com/2026/11/16/solar-recycling-2-0/"
+   },
+   {
+    "name": "TDRI",
+    "date": "March 2026",
+    "title": "Solar boom risks leaving toxic legacy",
+    "url": "https://tdri.or.th/en/2026/03/solar-boom-risks-leaving-toxic-legacy/"
+   },
+   {
+    "name": "Nation Thailand",
+    "date": "17 October 2026",
+    "title": "Thailand prepares for surge in solar and EV battery waste with new recycling estate",
+    "url": "https://www.nationthailand.com/sustaination/40072413"
+   }
+  ]
  }
 ]

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Clean a customer quotation/proposal PDF for publishing on solaress.org (Nov 2026 rules):
 no prices, no personal names, no customer details, no exact locations; Solar ESS watermark on every page.
-Usage: python3 tools/clean_quote_pdf.py IN.pdf OUT.pdf [--name "text to hide=replacement" ...] [--noprice  (drawings without prices: names only)] [--hide REGEX ...]
+Usage: python3 tools/clean_quote_pdf.py IN.pdf OUT.pdf [--name "text to hide=replacement" ...] [--noprice  (drawings without prices: names only)] [--hide REGEX ...] [--note "first-page note text"]
 Prices: every amount with 2 decimals, every per-watt / per-metre rate, and any "N บาท" whose value also appears
 as a 2-decimal price in the document or that sits on a price line. PEA buy-back rate and savings figures stay.
 Also fixes the old Krabi branch address (761 → 140/2 หมู่ 4)."""
@@ -31,7 +31,7 @@ def lines(page):
                 yield "".join(c["c"] for c, _ in chars), chars
 
 
-def clean(src, dst, names, prices=True, hides=()):
+def clean(src, dst, names, prices=True, hides=(), first_note=None):
     d = fitz.open(src)
     known = set()
     for p in d:
@@ -67,7 +67,7 @@ def clean(src, dst, names, prices=True, hides=()):
                 if v in known or (PRICE_LINE.search(t) and not re.search(r"หน่วยละ|ประหยัด|ผลประโยชน์|รายได้", t)):
                     if len(v.replace(",", "")) >= 3:
                         spans.append((m.start(), m.end(), "–"))
-            spans.sort()
+            spans.sort(key=lambda s: (s[0], -s[1]))
             merged = []
             for s in spans:
                 if merged and s[0] < merged[-1][1]:
@@ -102,7 +102,7 @@ def clean(src, dst, names, prices=True, hides=()):
         if pno == 0:
             note = fitz.Rect(36, 8, pr.width * 0.55, 20)
             p.insert_htmlbox(note, '<div style="font-family:sans-serif;font-size:8px;color:#5B5BD6;text-align:left">' +
-                             (NOTE_P if prices else NOTE_N) + '</div>')
+                             (first_note or (NOTE_P if prices else NOTE_N)) + '</div>')
     d.set_metadata({"title": "Solar ESS sample", "author": "Solar ESS Co. Ltd.", "subject": "www.solaress.org"})
     d.save(dst, garbage=4, deflate=True)
     print("saved", dst)
@@ -116,6 +116,9 @@ if __name__ == "__main__":
     hides = []
     while "--hide" in a:
         i = a.index("--hide"); hides.append(a[i + 1]); del a[i:i + 2]
+    note = None
+    if "--note" in a:
+        i = a.index("--note"); note = a[i + 1]; del a[i:i + 2]
     pr = "--noprice" not in a
     a = [x for x in a if x != "--noprice"]
-    clean(a[0], a[1], names, pr, hides)
+    clean(a[0], a[1], names, pr, hides, note)

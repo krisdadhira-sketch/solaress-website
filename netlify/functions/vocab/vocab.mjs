@@ -1,6 +1,7 @@
 // Solar ESS vocabulary tests (www.solaress.org/vocabulary).
 // 100 synonym tests x 20 questions, easiest (test 1) to hardest (test 100),
-// plus 10 solar electrical vocabulary tests (tests 101-110, level 11 "Solar Electrical"; built by tools/vocab/build_solar.py).
+// plus 10 solar electrical vocabulary tests (tests 101-110, level 11 "Solar Electrical"; built by tools/vocab/build_solar.py),
+// plus 5 Word Power tests (tests 111-115, level 12 "Word Power": 100 advanced synonym questions; built by tools/vocab/build_word_power.py).
 // Student accounts, attempts and scores are kept in Netlify Blobs (store "vocab").
 // The answer key lives only here (bank.json), so the test page never receives the answers before grading.
 //
@@ -22,7 +23,7 @@ import crypto from "node:crypto";
 import bank from "./bank.json" with { type: "json" };
 
 const ADMIN_HASH = "162cdaefe4e9558d229a4846cd021775:5c036e020b55e8727a91b98d8e554c7456200d65599147cff4efea07459dc0fd";
-const LEVELS = ["Starter", "Elementary", "Pre-intermediate", "Intermediate", "Upper-intermediate", "Advanced", "Proficient", "Expert", "Scholar", "Master", "Solar Electrical"];
+const LEVELS = ["Starter", "Elementary", "Pre-intermediate", "Intermediate", "Upper-intermediate", "Advanced", "Proficient", "Expert", "Scholar", "Master", "Solar Electrical", "Word Power"];
 const levelOf = (n) => Math.ceil(n / 10);
 
 const json = (b, s = 200) => new Response(JSON.stringify(b), { status: s, headers: { "content-type": "application/json", "cache-control": "no-store" } });

@@ -1,4 +1,4 @@
-// Admin-only static files: Monthly Report pages, Monthly Report PDFs and their preview images.
+// Admin-only static files: Monthly Report pages, Monthly Report PDFs and their preview images, and internal PDFs (Solar-ESS-Internal-*).
 // A valid "ss_admin" cookie (set by /api/admin-session after the admin password) lets the file through.
 // Without it: pages show a sign-in box, PDFs/images return 404. Same password as all admin pages.
 const enc = new TextEncoder();
@@ -45,5 +45,5 @@ export default async (req, context) => {
   return new Response(page(p.startsWith("/th/") ? "th" : "en"), { status: 401, headers: { "content-type": "text/html; charset=utf-8", "cache-control": "no-store", "x-robots-tag": "noindex" } });
 };
 export const config = {
-  pattern: ["^/(th/)?monthly-report(\\.html)?$", "^/downloads/Solar-ESS-Monthly-Report-.*$", "^/images/note-monthly-.*$"],
+  pattern: ["^/(th/)?monthly-report(\\.html)?$", "^/downloads/Solar-ESS-Monthly-Report-.*$", "^/images/note-monthly-.*$", "^/downloads/Solar-ESS-Internal-.*$"],
 };

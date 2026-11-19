@@ -17,7 +17,7 @@ SOL = D + "Solar-ESS-Sample-Quotation-5.4kWp-Solis6kW-Hybrid-AIKO675_Rev03_WM_20
 HUA = D + "Solar-ESS-Sample-Quotation-5.4kWp-Huawei5kW-AIKO675_Rev02_WM_20261118.pdf"
 CMP = D + "Solar-ESS-PV-Module-Comparison-AIKO675-vs-LONGi650-TH_Rev02_WM_20261118.pdf"
 PKG = D + "Solar-ESS-Sample-Package-House-Chiangrai-14.5kWp-10kW-TH_Rev37_WM_20261118.pdf"
-CO2 = D + "Solar-ESS-Carbon-Credits-Solar-Briefing-TH_Rev01_WM_20261117.pdf"
+CO2 = D + "Solar-ESS-Carbon-Credits-Solar-Briefing-TH_Rev02_WM_20261119.pdf"  # public version; the full internal Rev01 is admin-only
 SEP = 'style="max-width:760px;margin-top:64px;padding-top:48px;border-top:1.5px solid var(--navy)"'
 
 

@@ -78,7 +78,9 @@
    "reports": [
     "monthly-report-oct2026-offgrid-cafe"
    ],
-   "jobs": []
+   "jobs": [
+    "battery-addon-gen-maesuai-offgrid-cafe"
+   ]
   },
   "DH-84140-20-01": {
    "province": "Surat Thani",

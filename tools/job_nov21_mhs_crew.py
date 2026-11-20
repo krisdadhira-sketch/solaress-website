@@ -22,7 +22,7 @@ T = {
         h3="Crew wanted for a 15 kW hybrid solar + 32 kWh battery project near Mae Hong Son: electricians, solar installers, roof workers and labourers",
         where="Pang Mu area, Mueang Mae Hong Son, Mae Hong Son", maplbl="Area map (approx.) ↗",
         facts=[("16.90 kWp", "26 × 650 W anti-glare panels"), ("15 kW", "3-phase hybrid inverter"), ("2 × 16 kWh", "LiFePO4 batteries (32 kWh)"),
-               ("฿1,200 / day", "Certified electrician"), ("฿1,000 / day", "Solar installer"), ("฿900 / day", "Roof worker"), ("฿550 / day", "Labourer"),
+               ("฿1,000 / day", "Experienced certified electrician or solar installer, work-at-height certified"), ("฿900 / day", "Roof worker"), ("฿550 / day", "Labourer"),
                ("Dec 2026", "Start date confirmed once materials reach site")],
         fit=("Solar ESS has signed a turnkey contract to install a hybrid solar + battery system on the roof of a Buddhist meditation centre just outside Mae Hong Son town, "
              "and we are building the site crew. <b>Solar ESS supplies all equipment and materials and leads the work on site</b>; you join our team on a day rate. "
@@ -30,11 +30,11 @@ T = {
              "Safety first: work at height with harness and lifeline, follow the site lead’s instructions, and respect the temple grounds (quiet, modest dress, no alcohol or smoking on site). "
              "Workers from outside Mae Hong Son: tell us in your application if you need lodging."),
         roles=[
-            ("Certified electrician", ["Hold an electrician certificate (สาขาช่างไฟฟ้า / licensed electrician); 3-phase experience required",
+            ("Certified electrician", ["Experienced; hold an electrician certificate and a work-at-height certificate; 3-phase experience required",
                                        "Install the 15 kW 3-phase hybrid inverter, AC combiner, breakers, SPD and the earthing system",
                                        "Wire the 2 batteries with the BMS link, the PV strings to the inverter and the inverter to the building supply",
                                        "Test (insulation, polarity, Voc, earth resistance), start up with the Solar ESS team and record all readings"]),
-            ("Solar installer", ["At least 1 year of rooftop PV experience (mounting, MC4, string wiring)",
+            ("Solar installer", ["At least 1 year of rooftop PV experience (mounting, MC4, string wiring); work-at-height certificate required",
                                  "Fix rails and hooks to the roof structure and mount 26 panels on the southwest side of the roof",
                                  "Make up MC4 connectors, run PV cable in conduit, label strings and bond all frames and rails"]),
             ("Roof worker", ["Experience on tile / double-wave roofs; can work safely at height",
@@ -59,7 +59,7 @@ T = {
         h3="รับสมัครทีมงานโครงการโซลาร์ไฮบริด 15 kW พร้อมแบตเตอรี่ 32 kWh ใกล้ตัวเมืองแม่ฮ่องสอน: ช่างไฟฟ้า ช่างติดตั้งโซลาร์ ช่างหลังคา และคนงานทั่วไป",
         where="บริเวณ ต.ปางหมู อ.เมืองแม่ฮ่องสอน จ.แม่ฮ่องสอน", maplbl="แผนที่บริเวณ (โดยประมาณ) ↗",
         facts=[("16.90 kWp", "แผงกันแสงสะท้อน 650 W × 26"), ("15 kW", "อินเวอร์เตอร์ไฮบริด 3 เฟส"), ("2 × 16 kWh", "แบตเตอรี่ LiFePO4 (32 kWh)"),
-               ("฿1,200 / วัน", "ช่างไฟฟ้ามีใบรับรอง"), ("฿1,000 / วัน", "ช่างติดตั้งโซลาร์"), ("฿900 / วัน", "ช่างหลังคา"), ("฿550 / วัน", "คนงานทั่วไป"),
+               ("฿1,000 / วัน", "ช่างไฟฟ้ามีใบรับรองหรือช่างติดตั้งโซลาร์ที่มีประสบการณ์ มีใบรับรองการทำงานบนที่สูง"), ("฿900 / วัน", "ช่างหลังคา"), ("฿550 / วัน", "คนงานทั่วไป"),
                ("ธ.ค. 2569", "ยืนยันวันเริ่มงานเมื่ออุปกรณ์ถึงหน้างาน")],
         fit=("Solar ESS ลงนามสัญญาติดตั้งระบบโซลาร์ไฮบริดพร้อมแบตเตอรี่แบบเหมารวมบนหลังคาสถานปฏิบัติธรรมแห่งหนึ่งใกล้ตัวเมืองแม่ฮ่องสอน และกำลังรวมทีมหน้างาน "
              "<b>Solar ESS จัดหาอุปกรณ์และวัสดุทั้งหมด และเป็นผู้ควบคุมงานหน้างาน</b> ท่านเข้าร่วมทีมโดยรับค่าแรงรายวัน "
@@ -67,11 +67,11 @@ T = {
              "ความปลอดภัยต้องมาก่อน: ทำงานบนที่สูงต้องใช้เข็มขัดนิรภัยและเชือกช่วยชีวิต ปฏิบัติตามหัวหน้างาน และเคารพสถานที่ปฏิบัติธรรม (สุภาพ แต่งกายเรียบร้อย ห้ามสุราและบุหรี่ในพื้นที่) "
              "ผู้สมัครจากนอกจังหวัดแม่ฮ่องสอน: หากต้องการที่พัก กรุณาแจ้งในใบสมัคร"),
         roles=[
-            ("ช่างไฟฟ้ามีใบรับรอง", ["มีใบรับรองช่างไฟฟ้า มีประสบการณ์งานไฟฟ้า 3 เฟส",
+            ("ช่างไฟฟ้ามีใบรับรอง", ["มีประสบการณ์ มีใบรับรองช่างไฟฟ้าและใบรับรองการทำงานบนที่สูง มีประสบการณ์งานไฟฟ้า 3 เฟส",
                                     "ติดตั้งอินเวอร์เตอร์ไฮบริด 15 kW 3 เฟส ตู้ AC combiner เบรกเกอร์ SPD และระบบสายดิน",
                                     "เดินสายแบตเตอรี่ 2 ชุดพร้อมสาย BMS สาย PV เข้าอินเวอร์เตอร์ และอินเวอร์เตอร์เข้าระบบไฟของอาคาร",
                                     "ทดสอบ (ความเป็นฉนวน ขั้ว Voc ค่าความต้านทานดิน) เปิดระบบร่วมกับทีม Solar ESS และบันทึกค่าทั้งหมด"]),
-            ("ช่างติดตั้งโซลาร์", ["มีประสบการณ์ติดตั้งโซลาร์บนหลังคาอย่างน้อย 1 ปี (ระบบยึดแผง MC4 การเดินสายสตริง)",
+            ("ช่างติดตั้งโซลาร์", ["มีประสบการณ์ติดตั้งโซลาร์บนหลังคาอย่างน้อย 1 ปี (ระบบยึดแผง MC4 การเดินสายสตริง) ต้องมีใบรับรองการทำงานบนที่สูง",
                                   "ยึดรางและขอเข้ากับโครงหลังคา ติดตั้งแผง 26 แผงบนหลังคาฝั่งทิศตะวันตกเฉียงใต้",
                                   "เข้าหัว MC4 เดินสาย PV ในท่อ ติดป้ายสตริง และต่อฝากโครงแผงและรางทั้งหมด"]),
             ("ช่างหลังคา", ["มีประสบการณ์หลังคากระเบื้อง / ลอนคู่ ทำงานบนที่สูงได้อย่างปลอดภัย",

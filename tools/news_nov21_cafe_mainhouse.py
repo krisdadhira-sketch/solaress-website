@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""21 Nov 2026: Old House battery sizing review for the off-grid café, plant DH-57180-12-01 (Mae Suai, Chiang Rai 57180).
+"""21 Nov 2026: Main House battery sizing review for the off-grid café, plant DH-57180-12-01 (Mae Suai, Chiang Rai 57180).
 1. News: plant-review article at the top of /news.html and /th/news.html with the watermarked public PDF
    (no prices, no customer name or details, approximate location only).
 2. Jobs: project job for nearby installers - add 1 or 2 LiFePO4 batteries + generator connection (cites the plant code,
@@ -10,9 +10,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 CODE = "DH-57180-12-01"
-PDF = "/downloads/Solar-ESS-Plant-Review-Offgrid-Cafe-Old-House-Battery-Sizing_Rev01_WM_20261121.pdf"
-IMG = "/images/doc-plant-review-offgrid-cafe-old-house-battery.jpg"
-AID = "plant-review-offgrid-cafe-old-house-battery"
+PDF = "/downloads/Solar-ESS-Plant-Review-Offgrid-Cafe-Main-House-Battery-Sizing_Rev01_WM_20261121.pdf"
+PDF_TH = "/downloads/Solar-ESS-Plant-Review-Offgrid-Cafe-Main-House-Battery-Sizing-TH_Rev01_WM_20261121.pdf"
+IMG_TH = "/images/doc-plant-review-offgrid-cafe-main-house-battery-th.jpg"
+IMG = "/images/doc-plant-review-offgrid-cafe-main-house-battery.jpg"
+AID = "plant-review-offgrid-cafe-main-house-battery"
 JID = "battery-addon-gen-maesuai-offgrid-cafe"
 JOB = "Battery add-on + generator connection – off-grid café, Mae Suai (plant DH-57180-12-01)"
 SEP = 'style="max-width:760px;margin-top:64px;padding-top:48px;border-top:1.5px solid var(--navy)"'
@@ -21,7 +23,7 @@ PCODE = lambda lang: f'<a class="pcode" href="{"/th" if lang == "th" else ""}/mo
 N = {
     "en": dict(eb="21 November 2026 · Plant review",
                h2="Off-grid café, Mae Suai: is the energy enough, and how much battery is needed?",
-               lede="A review of the Old House system at plant DH-57180-12-01 (postcode 57180): 11.6 kWp, a Deye 10 kW off-grid inverter and 20.5 kWh of LiFePO4, with no grid and no generator.",
+               lede="A review of the Main House system at plant DH-57180-12-01 (postcode 57180): 11.6 kWp, a Deye 10 kW off-grid inverter and 20.5 kWh of LiFePO4, with no grid and no generator.",
                pts=[("Normal days are covered", "In October solar supplied 100% of use (8–15 kWh a day). The battery was full by about 10:30 and only 15–47% was used at night."),
                     ("Cloudy spells are not", "The two batteries hold about one day of use. Two or three dull days in a row will run them empty."),
                     ("Peaks", "Kettles, hair dryers and the coffee machine together with the air-conditioners can pass the 10 kW inverter. Run them one at a time."),
@@ -30,13 +32,13 @@ N = {
                btn="Open the PDF ↓ · English", foot="Prices, names and customer details removed. Solar ESS Working Group."),
     "th": dict(eb="21 พฤศจิกายน 2569 · รีวิวโรงไฟฟ้า",
                h2="คาเฟ่ออฟกริด แม่สรวย: ไฟพอไหม และต้องเพิ่มแบตเตอรี่เท่าไร?",
-               lede="รีวิวระบบบ้านหลังเดิม รหัสโรงไฟฟ้า DH-57180-12-01 (รหัสไปรษณีย์ 57180): แผง 11.6 kWp อินเวอร์เตอร์ออฟกริด Deye 10 kW และแบตเตอรี่ LiFePO4 20.5 kWh ไม่มีไฟการไฟฟ้าและไม่มีเครื่องปั่นไฟ",
+               lede="รีวิวระบบบ้านหลัก รหัสโรงไฟฟ้า DH-57180-12-01 (รหัสไปรษณีย์ 57180): แผง 11.6 kWp อินเวอร์เตอร์ออฟกริด Deye 10 kW และแบตเตอรี่ LiFePO4 20.5 kWh ไม่มีไฟการไฟฟ้าและไม่มีเครื่องปั่นไฟ",
                pts=[("วันปกติไฟพอ", "เดือนตุลาคมโซลาร์จ่ายไฟได้ 100% ของการใช้ (8–15 หน่วยต่อวัน) แบตเตอรี่เต็มประมาณ 10:30 น. และใช้กลางคืนเพียง 15–47%"),
                     ("ฟ้าครึ้มหลายวันไม่พอ", "แบตเตอรี่ 2 ลูกเก็บไฟได้ราว 1 วัน ถ้าฟ้าครึ้ม 2–3 วันติดกันแบตเตอรี่จะหมด"),
                     ("ไฟกระชาก", "กาต้มน้ำ ไดร์เป่าผม และเครื่องชงกาแฟ ใช้พร้อมแอร์อาจเกินอินเวอร์เตอร์ 10 kW ควรใช้ทีละเครื่อง"),
                     ("ต้องเพิ่มแบตเตอรี่เท่าไร", "เพิ่ม 1 ลูก (รวม 30.7 kWh) อยู่ได้ราว 1.5 วันไม่มีแดดที่การใช้ปัจจุบัน เพิ่ม 2 ลูก (41 kWh) เฉพาะเมื่อห้องพักใช้ไฟกลางคืนมากขึ้น"),
                     ("ไฟสำรอง", "เครื่องปั่นไฟขนาดเล็กต่อเข้าช่อง GEN ของอินเวอร์เตอร์ เป็นทางเดียวที่ครอบคลุมช่วงฝนตกยาวได้ทั้งหมด")],
-               btn="เปิด PDF ↓ · ภาษาอังกฤษ", foot="ตัดราคา ชื่อ และข้อมูลลูกค้าออกแล้ว Solar ESS Working Group."),
+               btn="เปิด PDF ↓ · ภาษาไทย", foot="ตัดราคา ชื่อ และข้อมูลลูกค้าออกแล้ว Solar ESS Working Group."),
 }
 
 ICO = ('<div class="ico"><svg viewBox="0 0 30 30" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">'
@@ -50,7 +52,7 @@ J = {
                facts=[("10 kW", "Deye off-grid inverter (existing)"), ("2 → 3 or 4", "51.2 V 200 Ah LiFePO4 batteries"), ("≈5 kVA", "Generator on the GEN input"),
                       ("฿4,500–6,000", "Pay guide · option A"), ("฿5,500–7,500", "Pay guide · option B")],
                fit=("An off-grid café and homestay (no grid) needs more storage and a backup source – read the plant review before you quote: "
-                    f'<a href="{PDF}">Old House load &amp; battery report (PDF)</a> · {{PCODE}}. '
+                    f'<a href="{PDF}">Main House load &amp; battery report (PDF)</a> · {{PCODE}}. '
                     "<b>Solar ESS supplies</b> the battery(ies) – the same 51.2 V 200 Ah model as the existing two – the DC breaker, breaker box and busbar box. "
                     "<b>The installer supplies</b> DC cable and lugs, the generator cable to the GEN input, conduit and consumables. "
                     "The generator itself is supplied and installed by the generator company; you make the connection with them on site. "
@@ -77,7 +79,7 @@ J = {
                facts=[("10 kW", "อินเวอร์เตอร์ออฟกริด Deye (เดิม)"), ("2 → 3 หรือ 4", "แบตเตอรี่ LiFePO4 51.2 V 200 Ah"), ("≈5 kVA", "เครื่องปั่นไฟต่อช่อง GEN"),
                       ("฿4,500–6,000", "ค่าแรงแนะนำ · ทางเลือก A"), ("฿5,500–7,500", "ค่าแรงแนะนำ · ทางเลือก B")],
                fit=("คาเฟ่และโฮมสเตย์ระบบออฟกริด (ไม่มีไฟการไฟฟ้า) ต้องการแบตเตอรี่เพิ่มและไฟสำรอง – กรุณาอ่านรีวิวโรงไฟฟ้าก่อนเสนอราคา: "
-                    f'<a href="{PDF}">รายงานโหลดและแบตเตอรี่บ้านหลังเดิม (PDF)</a> · {{PCODE}} '
+                    f'<a href="{PDF_TH}">รายงานโหลดและแบตเตอรี่บ้านหลัก (PDF)</a> · {{PCODE}} '
                     "<b>Solar ESS จัดหา</b>แบตเตอรี่ (รุ่น 51.2 V 200 Ah เดียวกับ 2 ลูกเดิม) เบรกเกอร์ DC กล่องเบรกเกอร์ และกล่องบัสบาร์ "
                     "<b>ผู้รับเหมาจัดหา</b>สาย DC และหางปลา สายจากเครื่องปั่นไฟเข้าช่อง GEN ท่อร้อยสาย และวัสดุสิ้นเปลือง "
                     "เครื่องปั่นไฟจัดหาและติดตั้งโดยบริษัทเครื่องปั่นไฟ ผู้รับเหมาต่อเชื่อมร่วมกับช่างของบริษัทที่หน้างาน "
@@ -102,12 +104,14 @@ J = {
 
 def news(lang):
     t = N[lang]
+    pdf, img = (PDF_TH, IMG_TH) if lang == "th" else (PDF, IMG)
+    alt = (f'<a class="btn ghost" href="{PDF}" download>เปิด PDF ↓ · ภาษาอังกฤษ</a>' if lang == "th" else f'<a class="btn ghost" href="{PDF_TH}" download>Open the PDF ↓ · Thai</a>')
     lis = "".join(f'<li style="margin-bottom:10px"><b>{a}:</b> {b}</li>' for a, b in t["pts"])
     return (f'<article id="{AID}" style="max-width:760px">\n<p class="eyebrow">{t["eb"]}</p><h2 style="font-size:clamp(26px,3.6vw,40px)">{t["h2"]}</h2>\n'
             f'<p class="lede" style="margin-top:16px;opacity:1">{t["lede"]}</p>\n<ul style="margin-top:22px;padding-left:20px">{lis}</ul>\n'
             f'<p style="margin-top:14px">{PCODE(lang)}</p>\n'
-            f'<p style="margin-top:22px"><a href="{PDF}"><img src="{IMG}" alt="{"หน้าแรกของเอกสาร Solar ESS" if lang == "th" else "First page of the Solar ESS document"}" width="579" height="819" loading="lazy" style="width:100%;max-width:360px;height:auto;border:1.5px solid var(--line)"></a></p>\n'
-            f'<p style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="{PDF}" download>{t["btn"]}</a></p>\n'
+            f'<p style="margin-top:22px"><a href="{pdf}"><img src="{img}" alt="{"หน้าแรกของเอกสาร Solar ESS" if lang == "th" else "First page of the Solar ESS document"}" width="579" height="819" loading="lazy" style="width:100%;max-width:360px;height:auto;border:1.5px solid var(--line)"></a></p>\n'
+            f'<p style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="{pdf}" download>{t["btn"]}</a>{alt}</p>\n'
             f'<p style="margin-top:20px;font-size:14px;color:var(--mute)">{t["foot"]}</p>\n</article>\n')
 
 

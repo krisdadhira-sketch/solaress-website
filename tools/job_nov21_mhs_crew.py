@@ -22,7 +22,7 @@ T = {
         h3="Crew wanted for a 15 kW hybrid solar + 32 kWh battery project near Mae Hong Son: electricians, solar installers, roof workers and labourers",
         where="Pang Mu area, Mueang Mae Hong Son, Mae Hong Son", maplbl="Area map (approx.) ↗",
         facts=[("16.90 kWp", "26 × 650 W anti-glare panels"), ("15 kW", "3-phase hybrid inverter"), ("2 × 16 kWh", "LiFePO4 batteries (32 kWh)"),
-               ("฿1,000 / day", "Experienced certified electrician or solar installer, work-at-height certified"), ("฿900 / day", "Roof worker"), ("฿550 / day", "Labourer"),
+               ("฿1,000 / day", "Experienced certified electrician or solar installer, work-at-height certified"), ("฿900 / day", "Roof worker, work-at-height certified"), ("฿550 / day", "Labourer"),
                ("Dec 2026", "Start date confirmed once materials reach site")],
         fit=("Solar ESS has signed a turnkey contract to install a hybrid solar + battery system on the roof of a Buddhist meditation centre just outside Mae Hong Son town, "
              "and we are building the site crew. <b>Solar ESS supplies all equipment and materials and leads the work on site</b>; you join our team on a day rate. "
@@ -37,14 +37,14 @@ T = {
             ("Solar installer", ["At least 1 year of rooftop PV experience (mounting, MC4, string wiring); work-at-height certificate required",
                                  "Fix rails and hooks to the roof structure and mount 26 panels on the southwest side of the roof",
                                  "Make up MC4 connectors, run PV cable in conduit, label strings and bond all frames and rails"]),
-            ("Roof worker", ["Experience on tile / double-wave roofs; can work safely at height",
+            ("Roof worker", ["Experience on tile / double-wave roofs; work-at-height certificate required",
                              "Open and re-seal the roof at each hook so the roof stays watertight; replace any broken tiles",
                              "Set up ladders, roof walkways and lifelines; lift panels and rails safely"]),
             ("Labourer", ["Fit and willing; no experience needed – we train you on site",
                           "Unload and carry panels, batteries (heavy) and materials; help the installers on the ground and on the roof",
                           "Keep the site clean and tidy every day"]),
         ],
-        rmk=("<b>Remark:</b> apply with the form below and attach your <b>resume (CV)</b>, plus your <b>certificates</b> if you have them (electrician licence, work-at-height). "
+        rmk=("<b>Remark:</b> apply with the form below and attach your <b>resume (CV)</b>, plus your <b>certificates</b> (work-at-height certificate required for electricians, solar installers and roof workers; electrician certificate for electricians). "
              "Choose this job in the form and write the role you apply for (electrician, solar installer, roof worker or labourer) and the days you are available. "
              "We will then contact you back to discuss the work. We apologize if your Facebook message has not been answered. "
              "<b>Please read every detail of this job carefully – do not ask questions by Facebook Messenger, apply with the form below.</b>"
@@ -59,7 +59,7 @@ T = {
         h3="รับสมัครทีมงานโครงการโซลาร์ไฮบริด 15 kW พร้อมแบตเตอรี่ 32 kWh ใกล้ตัวเมืองแม่ฮ่องสอน: ช่างไฟฟ้า ช่างติดตั้งโซลาร์ ช่างหลังคา และคนงานทั่วไป",
         where="บริเวณ ต.ปางหมู อ.เมืองแม่ฮ่องสอน จ.แม่ฮ่องสอน", maplbl="แผนที่บริเวณ (โดยประมาณ) ↗",
         facts=[("16.90 kWp", "แผงกันแสงสะท้อน 650 W × 26"), ("15 kW", "อินเวอร์เตอร์ไฮบริด 3 เฟส"), ("2 × 16 kWh", "แบตเตอรี่ LiFePO4 (32 kWh)"),
-               ("฿1,000 / วัน", "ช่างไฟฟ้ามีใบรับรองหรือช่างติดตั้งโซลาร์ที่มีประสบการณ์ มีใบรับรองการทำงานบนที่สูง"), ("฿900 / วัน", "ช่างหลังคา"), ("฿550 / วัน", "คนงานทั่วไป"),
+               ("฿1,000 / วัน", "ช่างไฟฟ้ามีใบรับรองหรือช่างติดตั้งโซลาร์ที่มีประสบการณ์ มีใบรับรองการทำงานบนที่สูง"), ("฿900 / วัน", "ช่างหลังคา มีใบรับรองการทำงานบนที่สูง"), ("฿550 / วัน", "คนงานทั่วไป"),
                ("ธ.ค. 2569", "ยืนยันวันเริ่มงานเมื่ออุปกรณ์ถึงหน้างาน")],
         fit=("Solar ESS ลงนามสัญญาติดตั้งระบบโซลาร์ไฮบริดพร้อมแบตเตอรี่แบบเหมารวมบนหลังคาสถานปฏิบัติธรรมแห่งหนึ่งใกล้ตัวเมืองแม่ฮ่องสอน และกำลังรวมทีมหน้างาน "
              "<b>Solar ESS จัดหาอุปกรณ์และวัสดุทั้งหมด และเป็นผู้ควบคุมงานหน้างาน</b> ท่านเข้าร่วมทีมโดยรับค่าแรงรายวัน "
@@ -74,14 +74,14 @@ T = {
             ("ช่างติดตั้งโซลาร์", ["มีประสบการณ์ติดตั้งโซลาร์บนหลังคาอย่างน้อย 1 ปี (ระบบยึดแผง MC4 การเดินสายสตริง) ต้องมีใบรับรองการทำงานบนที่สูง",
                                   "ยึดรางและขอเข้ากับโครงหลังคา ติดตั้งแผง 26 แผงบนหลังคาฝั่งทิศตะวันตกเฉียงใต้",
                                   "เข้าหัว MC4 เดินสาย PV ในท่อ ติดป้ายสตริง และต่อฝากโครงแผงและรางทั้งหมด"]),
-            ("ช่างหลังคา", ["มีประสบการณ์หลังคากระเบื้อง / ลอนคู่ ทำงานบนที่สูงได้อย่างปลอดภัย",
+            ("ช่างหลังคา", ["มีประสบการณ์หลังคากระเบื้อง / ลอนคู่ ต้องมีใบรับรองการทำงานบนที่สูง",
                            "เปิดและอุดกันซึมหลังคาทุกจุดที่ยึดขอ หลังคาต้องไม่รั่ว เปลี่ยนกระเบื้องที่แตก",
                            "ติดตั้งบันได ทางเดินบนหลังคา และเชือกช่วยชีวิต ยกแผงและรางขึ้นหลังคาอย่างปลอดภัย"]),
             ("คนงานทั่วไป", ["ร่างกายแข็งแรง ตั้งใจทำงาน ไม่ต้องมีประสบการณ์ – สอนงานหน้างาน",
                             "ขนถ่ายแผง แบตเตอรี่ (น้ำหนักมาก) และวัสดุ ช่วยช่างทั้งบนพื้นและบนหลังคา",
                             "ดูแลหน้างานให้สะอาดเรียบร้อยทุกวัน"]),
         ],
-        rmk=("<b>หมายเหตุ:</b> สมัครผ่านแบบฟอร์มด้านล่าง แนบ<b>ประวัติส่วนตัว (Resume / CV)</b> และ<b>ใบรับรอง</b> (ถ้ามี เช่น ใบรับรองช่างไฟฟ้า ใบรับรองการทำงานบนที่สูง) "
+        rmk=("<b>หมายเหตุ:</b> สมัครผ่านแบบฟอร์มด้านล่าง แนบ<b>ประวัติส่วนตัว (Resume / CV)</b> และ<b>ใบรับรอง</b> (ช่างไฟฟ้า ช่างติดตั้งโซลาร์ และช่างหลังคา ต้องมีใบรับรองการทำงานบนที่สูง ช่างไฟฟ้าต้องมีใบรับรองช่างไฟฟ้า) "
              "เลือกงานนี้ในแบบฟอร์ม ระบุตำแหน่งที่สมัคร (ช่างไฟฟ้า ช่างติดตั้งโซลาร์ ช่างหลังคา หรือคนงานทั่วไป) และวันที่สะดวกทำงาน "
              "จากนั้นทางเราจะติดต่อกลับเพื่อพูดคุยรายละเอียดงาน ขออภัยหากข้อความทาง Facebook ของท่านยังไม่ได้รับการตอบกลับ "
              "<b>กรุณาอ่านรายละเอียดงานให้ครบถ้วน ไม่ต้องสอบถามทางข้อความ Facebook – กรุณาสมัครผ่านแบบฟอร์มด้านล่าง</b>"

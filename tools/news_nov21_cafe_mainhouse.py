@@ -10,8 +10,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 CODE = "DH-57180-12-01"
-PDF = "/downloads/Solar-ESS-Plant-Review-Offgrid-Cafe-Main-House-Battery-Sizing_Rev01_WM_20261121.pdf"
-PDF_TH = "/downloads/Solar-ESS-Plant-Review-Offgrid-Cafe-Main-House-Battery-Sizing-TH_Rev01_WM_20261121.pdf"
+PDF = "/downloads/Solar-ESS-Plant-Review-Offgrid-Cafe-Main-House-Battery-Sizing_Rev02_WM_20261121.pdf"
+PDF_TH = "/downloads/Solar-ESS-Plant-Review-Offgrid-Cafe-Main-House-Battery-Sizing-TH_Rev02_WM_20261121.pdf"
 IMG_TH = "/images/doc-plant-review-offgrid-cafe-main-house-battery-th.jpg"
 IMG = "/images/doc-plant-review-offgrid-cafe-main-house-battery.jpg"
 AID = "plant-review-offgrid-cafe-main-house-battery"
@@ -24,7 +24,8 @@ N = {
     "en": dict(eb="21 November 2026 · Plant review",
                h2="Off-grid café, Mae Suai: is the energy enough, and how much battery is needed?",
                lede="A review of the Main House system at plant DH-57180-12-01 (postcode 57180): 11.6 kWp, a Deye 10 kW off-grid inverter and 20.5 kWh of LiFePO4, with no grid and no generator.",
-               pts=[("Normal days are covered", "In October solar supplied 100% of use (8–15 kWh a day). The battery was full by about 10:30 and only 15–47% was used at night."),
+               pts=[("Normal days are covered", "In October solar supplied 100% of use (8–15 kWh a day). November confirms it: 1–20 November averaged 11.1 kWh a day, and even the busiest day (18 Nov, 21.1 kWh) used only 57% of the battery."),
+                    ("Solar is wasted", "Once the battery is full around 13:00, the inverter cuts the panels back; the array delivers only about 12.5 kWh a day of what it could give."),
                     ("Cloudy spells are not", "The two batteries hold about one day of use. Two or three dull days in a row will run them empty."),
                     ("Peaks", "Kettles, hair dryers and the coffee machine together with the air-conditioners can pass the 10 kW inverter. Run them one at a time."),
                     ("How much battery", "One more battery (30.7 kWh) gives about 1.5 days without sun at today’s use; two more (41 kWh) only if guest-room night use grows."),
@@ -33,7 +34,8 @@ N = {
     "th": dict(eb="21 พฤศจิกายน 2569 · รีวิวโรงไฟฟ้า",
                h2="คาเฟ่ออฟกริด แม่สรวย: ไฟพอไหม และต้องเพิ่มแบตเตอรี่เท่าไร?",
                lede="รีวิวระบบบ้านหลัก รหัสโรงไฟฟ้า DH-57180-12-01 (รหัสไปรษณีย์ 57180): แผง 11.6 kWp อินเวอร์เตอร์ออฟกริด Deye 10 kW และแบตเตอรี่ LiFePO4 20.5 kWh ไม่มีไฟการไฟฟ้าและไม่มีเครื่องปั่นไฟ",
-               pts=[("วันปกติไฟพอ", "เดือนตุลาคมโซลาร์จ่ายไฟได้ 100% ของการใช้ (8–15 หน่วยต่อวัน) แบตเตอรี่เต็มประมาณ 10:30 น. และใช้กลางคืนเพียง 15–47%"),
+               pts=[("วันปกติไฟพอ", "เดือนตุลาคมโซลาร์จ่ายไฟได้ 100% ของการใช้ (8–15 หน่วยต่อวัน) เดือนพฤศจิกายนยืนยัน: วันที่ 1–20 พ.ย. ใช้ไฟเฉลี่ย 11.1 หน่วยต่อวัน แม้วันที่ใช้มากที่สุด (18 พ.ย. 21.1 หน่วย) ใช้แบตเตอรี่เพียง 57%"),
+                    ("ไฟจากแผงถูกทิ้ง", "เมื่อแบตเตอรี่เต็มราว 13:00 น. อินเวอร์เตอร์จะลดกำลังแผง แผงจ่ายไฟได้จริงเพียงวันละประมาณ 12.5 หน่วย"),
                     ("ฟ้าครึ้มหลายวันไม่พอ", "แบตเตอรี่ 2 ลูกเก็บไฟได้ราว 1 วัน ถ้าฟ้าครึ้ม 2–3 วันติดกันแบตเตอรี่จะหมด"),
                     ("ไฟกระชาก", "กาต้มน้ำ ไดร์เป่าผม และเครื่องชงกาแฟ ใช้พร้อมแอร์อาจเกินอินเวอร์เตอร์ 10 kW ควรใช้ทีละเครื่อง"),
                     ("ต้องเพิ่มแบตเตอรี่เท่าไร", "เพิ่ม 1 ลูก (รวม 30.7 kWh) อยู่ได้ราว 1.5 วันไม่มีแดดที่การใช้ปัจจุบัน เพิ่ม 2 ลูก (41 kWh) เฉพาะเมื่อห้องพักใช้ไฟกลางคืนมากขึ้น"),

@@ -2,7 +2,7 @@
 """'Jobs near me' on /job.html and /th/job.html.
 - Every project card gets data-lat/data-lng: the APPROXIMATE centre of its area (district level, never the site),
   matched from the card's "where" line with PLACES below. Cards that can be done anywhere get no coordinates.
-- Adds a bar under the job search: GPS button, province select, distance select. Cards are sorted nearest first,
+- Adds a bar under the job search: GPS button, province select, distance select. Cards stay newest first (distance only filters and labels them),
   each shows "≈ N km", and cards beyond the chosen distance are hidden (works with region chips + search).
 - Uses the location an installer saved on /location.html (same browser) automatically.
 Idempotent (markers <!--jnear-->, <!--jnearjs-->). Re-run after adding jobs:  python3 tools/job_near.py
@@ -48,8 +48,8 @@ def geo_from_en():
     return out
 
 T = {
- "en": dict(gps="📍 Jobs near me", prov="…or choose your province", any="Any distance", km="within {} km", sorted="Nearest jobs first, from", mine="your location", none="No jobs within this distance yet. Choose a larger distance, or keep your location updated and we will tell you when one opens near you.", upd="Update my location", no="Could not get your location. Choose your province instead.", aw="≈ {} km away", anyw="can be done anywhere"),
- "th": dict(gps="📍 งานใกล้ฉัน", prov="…หรือเลือกจังหวัดของท่าน", any="ทุกระยะทาง", km="ภายใน {} กม.", sorted="เรียงงานที่ใกล้ที่สุดก่อน จาก", mine="ตำแหน่งของท่าน", none="ยังไม่มีงานในระยะนี้ เลือกระยะที่ไกลขึ้น หรืออัปเดตตำแหน่งไว้ เราจะแจ้งท่านเมื่อมีงานใกล้", upd="อัปเดตตำแหน่งของฉัน", no="ไม่สามารถอ่านตำแหน่งได้ กรุณาเลือกจังหวัดแทน", aw="ห่าง ≈ {} กม.", anyw="ทำได้จากทุกที่"),
+ "en": dict(gps="📍 Jobs near me", prov="…or choose your province", any="Any distance", km="within {} km", sorted="Newest jobs first · distance from", mine="your location", none="No jobs within this distance yet. Choose a larger distance, or keep your location updated and we will tell you when one opens near you.", upd="Update my location", no="Could not get your location. Choose your province instead.", aw="≈ {} km away", anyw="can be done anywhere"),
+ "th": dict(gps="📍 งานใกล้ฉัน", prov="…หรือเลือกจังหวัดของท่าน", any="ทุกระยะทาง", km="ภายใน {} กม.", sorted="เรียงงานใหม่ล่าสุดก่อน · ระยะทางจาก", mine="ตำแหน่งของท่าน", none="ยังไม่มีงานในระยะนี้ เลือกระยะที่ไกลขึ้น หรืออัปเดตตำแหน่งไว้ เราจะแจ้งท่านเมื่อมีงานใกล้", upd="อัปเดตตำแหน่งของฉัน", no="ไม่สามารถอ่านตำแหน่งได้ กรุณาเลือกจังหวัดแทน", aw="ห่าง ≈ {} กม.", anyw="ทำได้จากทุกที่"),
 }
 
 def build(lang, geo):
@@ -77,7 +77,7 @@ def build(lang, geo):
       'function km(a,b,c,d){var r=Math.PI/180,x=Math.sin((c-a)*r/2),y=Math.sin((d-b)*r/2);return 12742*Math.asin(Math.sqrt(x*x+Math.cos(a*r)*Math.cos(c*r)*y*y))}'
       'function base(){if(q)q.dispatchEvent(new Event("input"))}'
       'function apply(){if(!HOME)return;var max=+R.value,k=0;cs.forEach(function(c){var la=parseFloat(c.getAttribute("data-lat")),ln=parseFloat(c.getAttribute("data-lng")),d=isNaN(la)?null:km(HOME[0],HOME[1],la,ln);c._d=d;var w=c.querySelector(".where span"),b=c.querySelector(".jdist");if(!b&&w){b=document.createElement("span");b.className="jdist";w.appendChild(b)}if(b){b.textContent=d==null?T.anyw:(d<5?T.aw.replace("≈ ","").replace("{}","< 5"):T.aw.replace("{}",Math.round(d/5)*5));b.className="jdist"+(d!=null&&d<=50?" near":"")}if(d!=null&&d>max)c.hidden=true;if(!c.hidden)k++});'
-      'cs.slice().sort(function(a,b){return(a._d==null?5e4:a._d)-(b._d==null?5e4:b._d)}).forEach(function(c){box.appendChild(c)});var em=$("jobs-empty");if(em){em.style.display=k?"none":"block";if(!k)em.textContent=T.none}N.textContent=T.sorted+" "+LBL+(max<9999?" · "+T.km.replace("{}",max):"")+" · "+k}'
+      'cs.forEach(function(c){box.appendChild(c)});var em=$("jobs-empty");if(em){em.style.display=k?"none":"block";if(!k)em.textContent=T.none}N.textContent=T.sorted+" "+LBL+(max<9999?" · "+T.km.replace("{}",max):"")+" · "+k}'
       'function set(la,ln,l){HOME=[la,ln];LBL=l;base();apply()}'
       '$("jn-gps").onclick=function(){if(!navigator.geolocation){N.textContent=T.no;return}N.textContent="…";navigator.geolocation.getCurrentPosition(function(p){P.value="";set(p.coords.latitude,p.coords.longitude,T.mine);try{var s=JSON.parse(localStorage.getItem("sess-installer-loc")||"{}");s.lat=p.coords.latitude.toFixed(5);s.lng=p.coords.longitude.toFixed(5);localStorage.setItem("sess-installer-loc",JSON.stringify(s))}catch(e){}},function(){N.textContent=T.no},{timeout:12000})};'
       'P.onchange=function(){var p=TH_PROV_FIND(P.value);if(p)set(p[2],p[3],TH?p[1]:p[0]);else{HOME=null;N.textContent="";ORD.forEach(function(c){box.appendChild(c);var b=c.querySelector(".jdist");if(b)b.remove()});base()}};R.onchange=function(){base();apply()};'

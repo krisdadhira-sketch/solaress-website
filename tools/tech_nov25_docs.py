@@ -4,7 +4,7 @@ Five PDFs cleaned with tools/clean_quote_pdf.py (no prices, no personal names, n
 locations; watermark on every page). Each entry shows the plant code or postcode area.
   Case study: Koh Samui resort ATS / grid failures (DH-84320-20-01), PEA units vs DeyeCloud at a chicken farm
               (DG-57270-20-01), ROLLER 600 cost-saving proposal (SG-57100-20-01).
-  System design: 16.90 kWp / 10 kW hybrid design + BOM near Mae Hong Son (58000), AC combiner box labelled photo.
+  System design: 16.90 kWp / 15 kW / 32 kWh hybrid design + BOM (Rev06) near Mae Hong Son (58000), AC combiner box labelled photo.
 NOT published: the letter to the Samui resort (private correspondence, contract amounts) and the ATS job sheet
 (already on the Jobs page since 24 Nov).
 Idempotent (<!--t1125--> markers). Run, then tools/build_share.py, tools/site_search.py, tools/analytics_tag.py."""
@@ -16,7 +16,7 @@ D = "downloads/"
 SAMUI = D + "Solar-ESS-Case-Study-Koh-Samui-Resort-When-The-Lights-Went-Out_Rev18_WM_20261125.pdf"
 FARM = D + "Solar-ESS-Technical-Note-PEA-Units-vs-Solar-Data-Chicken-Farm_Rev01_WM_20261125.pdf"
 ROLL = D + "Solar-ESS-Roller-600-Cost-Saving-Proposal-TH_Rev01_WM_20261125.pdf"
-MHS = D + "Solar-ESS-Hybrid-16.9kWp-10kW-Design-BOM-Mae-Hong-Son-TH_Rev05_WM_20261125.pdf"
+MHS = D + "Solar-ESS-Hybrid-16.9kWp-15kW-32kWh-Design-BOM-Mae-Hong-Son-TH_Rev06_WM_20261125.pdf"
 ACB = D + "Solar-ESS-AC-Combiner-Box-Labelled_Rev03_WM_20261125.pdf"
 
 
@@ -57,13 +57,13 @@ N = [
   "th": ("ข้อเสนอ", "SG-57100-20-01 · ROLLER 600: ลดค่าไฟเครื่องรีดร้อนเกือบครึ่งหนึ่ง",
          "ต่อยอดจากกรณีศึกษาเครื่องรีดร้อนที่โรงงานเดียวกันในเชียงราย (รหัสไปรษณีย์ 57100) หาวิธีที่คุ้มค่าที่สุดในการลดค่าไฟของเครื่อง ซึ่งอยู่ที่ประมาณ 42,000 บาทต่อเดือน ตัดราคาออกแล้ว",
          ["ลดพลังงานที่เครื่องต้องใช้ก่อน แล้วจึงผลิตไฟเอง", "สามมาตรการรวมกัน ลดค่าไฟได้ประมาณ 46% เมื่อเดินเครื่อง 8 ชั่วโมงต่อวัน", "โซลาร์ออนกริด 30 kWp ไม่มีแบตเตอรี่ คืนทุนประมาณ 5.4 ปี", "ทำไมไม่แนะนำแบตเตอรี่ 60 kWh ตามข้อเสนอเดิม (คืนทุนประมาณ 16 ปี)"])}),
- ("design", "hybrid-16-9kwp-10kw-mae-hong-son", MHS, "th", "58000", {
-  "en": ("System design", "Postcode 58000 · 16.90 kWp hybrid with 10 kW and 16 kWh: roof design and bill of materials",
-         "Rooftop design for a two-storey building near Mae Hong Son town (postcode area 58000): 26 LONGi Hi-MO X10 Anti-Glare 650 W panels in two rows on the southwest-facing roof, a Solis 10 kW three-phase hybrid and a 16 kWh battery. Thai PDF.",
-         ["Roof layout: 2 rows of 13 panels, out of sight from the guest balconies", "About 55–58 kWh a day, 20,500 kWh a year", "Selected circuits stay on when the PEA grid fails", "Full bill of materials by category"]),
-  "th": ("ออกแบบระบบ", "รหัสไปรษณีย์ 58000 · ไฮบริด 16.90 kWp อินเวอร์เตอร์ 10 kW แบตเตอรี่ 16 kWh: แบบติดตั้งบนหลังคาและรายการวัสดุ",
-         "แบบติดตั้งบนหลังคาอาคาร 2 ชั้นใกล้ตัวเมืองแม่ฮ่องสอน (รหัสไปรษณีย์ 58000) แผง LONGi Hi-MO X10 Anti-Glare 650 W × 26 แผง 2 แถว บนหลังคาด้านทิศตะวันตกเฉียงใต้ ไฮบริดอินเวอร์เตอร์ Solis 10 kW 3 เฟส และแบตเตอรี่ 16 kWh",
-         ["ผังหลังคา: 2 แถว แถวละ 13 แผ่น มองไม่เห็นจากระเบียงห้องพัก", "ผลิตไฟประมาณ 55–58 หน่วยต่อวัน หรือ 20,500 หน่วยต่อปี", "วงจรที่เลือกไว้มีไฟใช้ต่อเมื่อไฟ กฟภ. ดับ", "รายการวัสดุครบตามหมวด"])}),
+ ("design", "hybrid-16-9kwp-15kw-mae-hong-son", MHS, "th", "58000", {
+  "en": ("System design", "Postcode 58000 · 16.90 kWp hybrid with 15 kW and 32 kWh: roof design and bill of materials",
+         "Rooftop design for a two-storey building near Mae Hong Son town (postcode area 58000): 26 LONGi Hi-MO X10 Anti-Glare 650 W panels in two rows on the southwest-facing roof, a Solis 15 kW three-phase hybrid and two 16 kWh batteries (32 kWh). Thai PDF.",
+         ["Roof layout: 2 rows of 13 panels, out of sight from the guest balconies", "Solis S6-EH3P15K02-NV-YD-L: takes up to 24 kW of PV, so the 16.90 kWp array is within its rating", "Two batteries in parallel: about 14 kW from storage and roughly twice the night backup of one", "About 55–58 kWh a day, 20,500 kWh a year (conservative)", "Full bill of materials by category"]),
+  "th": ("ออกแบบระบบ", "รหัสไปรษณีย์ 58000 · ไฮบริด 16.90 kWp อินเวอร์เตอร์ 15 kW แบตเตอรี่ 32 kWh: แบบติดตั้งบนหลังคาและรายการวัสดุ",
+         "แบบติดตั้งบนหลังคาอาคาร 2 ชั้นใกล้ตัวเมืองแม่ฮ่องสอน (รหัสไปรษณีย์ 58000) แผง LONGi Hi-MO X10 Anti-Glare 650 W × 26 แผง 2 แถว บนหลังคาด้านทิศตะวันตกเฉียงใต้ ไฮบริดอินเวอร์เตอร์ Solis 15 kW 3 เฟส และแบตเตอรี่ 16 kWh 2 ชุด (32 kWh)",
+         ["ผังหลังคา: 2 แถว แถวละ 13 แผ่น มองไม่เห็นจากระเบียงห้องพัก", "Solis S6-EH3P15K02-NV-YD-L รับกำลังแผงได้สูงสุด 24 kW แผง 16.90 kWp จึงอยู่ในพิกัด", "แบตเตอรี่ 2 ชุดต่อขนาน จ่ายไฟได้ประมาณ 14 kW สำรองไฟกลางคืนได้ราวเท่าตัวของ 1 ชุด", "ผลิตไฟประมาณ 55–58 หน่วยต่อวัน หรือ 20,500 หน่วยต่อปี (ประมาณการแบบอนุรักษ์)", "รายการวัสดุครบตามหมวด"])}),
  ("design", "ac-combiner-box-labelled", ACB, "en", None, {
   "en": ("Reference photo", "AC combiner box with ATS: every device labelled",
          "A real AC combiner box from a single-phase hybrid installation with an automatic transfer switch. Each of the nine devices is numbered and described, and the grid connections are marked.",
